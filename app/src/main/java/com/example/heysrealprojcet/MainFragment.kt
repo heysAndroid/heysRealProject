@@ -51,6 +51,13 @@ class MainFragment : Fragment() {
          super.onPageSelected(position)
          positon = position
          Log.i("position: ", positon.toString())
+
+         if(binding.viewpager.currentItem == 2) {
+            binding.guestButton.visibility = View.VISIBLE
+         }
+         else {
+            binding.guestButton.visibility = View.INVISIBLE
+         }
       }
    }
 }
