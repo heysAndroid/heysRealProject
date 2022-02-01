@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet
+package com.example.heysrealprojcet.ui.intro
 
 import android.os.Bundle
 import android.util.Log
@@ -7,16 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.heysrealprojcet.databinding.MainFragmentBinding
+import com.example.heysrealprojcet.R
+import com.example.heysrealprojcet.databinding.IntroFragmentBinding
 
-class MainFragment : Fragment() {
-   private lateinit var binding: MainFragmentBinding
+class IntroFragment : Fragment() {
+   private lateinit var binding: IntroFragmentBinding
    private lateinit var customPagerAdapter: CustomPagerAdapter
    private lateinit var imageList: MutableList<Int>
    private var positon: Int = 0
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = MainFragmentBinding.inflate(inflater, container, false)
+      binding = IntroFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -31,13 +32,11 @@ class MainFragment : Fragment() {
       binding.indicator.setViewPager(binding.viewpager)
       binding.viewpager.registerOnPageChangeCallback(pageChangeCallback)
 
-      binding.btnSkip.setOnClickListener {
-         // 스킵 버튼 클릭시
+      binding.btnSkip.setOnClickListener { // 스킵 버튼 클릭시
          binding.viewpager.currentItem = 2
       }
 
-      binding.nextButton.setOnClickListener {
-         // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
+      binding.nextButton.setOnClickListener { // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
          when (positon) {
             0 -> binding.viewpager.currentItem = 1
             1 -> binding.viewpager.currentItem = 2
@@ -52,10 +51,9 @@ class MainFragment : Fragment() {
          positon = position
          Log.i("position: ", positon.toString())
 
-         if(binding.viewpager.currentItem == 2) {
+         if (binding.viewpager.currentItem == 2) {
             binding.guestButton.visibility = View.VISIBLE
-         }
-         else {
+         } else {
             binding.guestButton.visibility = View.INVISIBLE
          }
       }

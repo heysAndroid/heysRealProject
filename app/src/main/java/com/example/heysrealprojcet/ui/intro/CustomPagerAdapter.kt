@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet
+package com.example.heysrealprojcet.ui.intro
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
