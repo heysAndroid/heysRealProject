@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.IntroFragmentBinding
@@ -40,6 +41,7 @@ class IntroFragment : Fragment() {
          when (positon) {
             0 -> binding.viewpager.currentItem = 1
             1 -> binding.viewpager.currentItem = 2
+            2 -> findNavController().navigate(R.id.action_introFragment_to_mainFragment)
          }
       }
    }

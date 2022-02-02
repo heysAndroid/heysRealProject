@@ -9,5 +9,14 @@
         android:id="@+id/introFragment"
         android:name="com.example.heysrealprojcet.ui.intro.IntroFragment"
         android:label="IntroFragment"
-        tools:layout="@layout/intro_fragment" />
+        tools:layout="@layout/intro_fragment" >
+        <action
+            android:id="@+id/action_introFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.heysrealprojcet.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment" />
 </navigation>
