@@ -51,10 +51,23 @@ class IntroFragment : Fragment() {
          positon = position
          Log.i("position: ", positon.toString())
 
-         if (binding.viewpager.currentItem == 2) {
-            binding.guestButton.visibility = View.VISIBLE
-         } else {
-            binding.guestButton.visibility = View.INVISIBLE
+         when (binding.viewpager.currentItem) {
+            2 -> {
+               binding.text1.text = "성장하는 청춘 스토리"
+               binding.text2.text = "같이 만들어가요!"
+               binding.nextButton.text = "가입전에 둘러볼래요!"
+               binding.guestButton.visibility = View.VISIBLE
+            }
+            1 -> {
+               binding.text1.text = "팀 빌딩부터 소통까지"
+               binding.text2.text = "여기서 다-해결해요!"
+               binding.nextButton.text = "다음"
+               binding.guestButton.visibility = View.INVISIBLE
+            }
+            else -> {
+               binding.text1.text = "커리어 빌딩을 위한"
+               binding.text2.text = "관심정보 여기 다-있다!"
+            }
          }
       }
    }
