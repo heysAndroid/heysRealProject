@@ -12,30 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:background="@color/white"
-        android:textColor="@color/gray_949494"
-        android:text="건너뛰기" />
+        android:text="건너뛰기"
+        android:textColor="@color/gray_949494" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="54dp"
-        android:text="커리어 빌딩을 위한"
-        android:fontFamily="@font/notosanskr"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="관심정보 여기 다-있다!"
-        android:fontFamily="@font/notosanskr"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="84dp" />
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/indicator"
@@ -46,19 +30,20 @@
         app:ci_margin="4dp"
         app:ci_width="7dp" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_building" />
 
     <Button
         android:id="@+id/guestButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_margin="16dp"
-        android:text="이미 가입했어요!"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="26dp"
         android:background="@drawable/intent_button"
+        android:text="이미 가입했어요!"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="invisible" />
@@ -67,11 +52,10 @@
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="16dp"
         android:background="@drawable/intent_button"
-        android:textColor="@color/white"
         android:text="다음"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 </LinearLayout>

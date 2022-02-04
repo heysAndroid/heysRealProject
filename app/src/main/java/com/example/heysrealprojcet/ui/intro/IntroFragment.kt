@@ -14,7 +14,7 @@ import com.example.heysrealprojcet.databinding.IntroFragmentBinding
 class IntroFragment : Fragment() {
    private lateinit var binding: IntroFragmentBinding
    private lateinit var customPagerAdapter: CustomPagerAdapter
-   private lateinit var imageList: MutableList<Int>
+   private lateinit var imageList: MutableList<String>
    private var positon: Int = 0
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,7 +24,11 @@ class IntroFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      imageList = mutableListOf(R.drawable.pic1, R.drawable.pic2, R.drawable.pic3)
+      imageList = mutableListOf(
+         "커리어 빌딩을 위한\n관심정보 여기 다-있다!",
+         "성장하는 청춘 스토리\n같이 만들어가요!",
+         "팀 빌딩부터 소통까지\n여기서 다-해결해요!"
+      )
 
       customPagerAdapter = CustomPagerAdapter()
       customPagerAdapter.submitList(imageList)
@@ -55,20 +59,12 @@ class IntroFragment : Fragment() {
 
          when (binding.viewpager.currentItem) {
             2 -> {
-               binding.text1.text = "성장하는 청춘 스토리"
-               binding.text2.text = "같이 만들어가요!"
                binding.nextButton.text = "가입전에 둘러볼래요!"
                binding.guestButton.visibility = View.VISIBLE
             }
             1 -> {
-               binding.text1.text = "팀 빌딩부터 소통까지"
-               binding.text2.text = "여기서 다-해결해요!"
                binding.nextButton.text = "다음"
                binding.guestButton.visibility = View.INVISIBLE
-            }
-            else -> {
-               binding.text1.text = "커리어 빌딩을 위한"
-               binding.text2.text = "관심정보 여기 다-있다!"
             }
          }
       }
