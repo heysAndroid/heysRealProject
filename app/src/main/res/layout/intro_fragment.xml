@@ -11,16 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:background="@color/white"
+        android:textColor="@color/gray_949494"
         android:text="건너뛰기" />
 
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="54dp"
         android:text="커리어 빌딩을 위한"
-        android:textSize="20sp"
+        android:fontFamily="@font/notosanskr"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -29,14 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="관심정보 여기 다-있다!"
-        android:textSize="20sp"
+        android:fontFamily="@font/notosanskr"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        app:ci_drawable="@drawable/black_radius"
+        app:ci_drawable="@drawable/orange_radius"
         app:ci_height="7dp"
         app:ci_margin="4dp"
         app:ci_width="7dp" />
@@ -50,18 +55,23 @@
         android:id="@+id/guestButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:paddingHorizontal="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="16dp"
         android:text="이미 가입했어요!"
-        android:textSize="15sp"
+        android:background="@drawable/intent_button"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:visibility="invisible" />
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:paddingHorizontal="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/intent_button"
+        android:textColor="@color/white"
         android:text="다음"
-        android:textSize="15sp" />
+        android:textSize="18sp" />
 </LinearLayout>

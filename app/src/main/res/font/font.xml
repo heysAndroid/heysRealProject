@@ -4,4 +4,8 @@
         android:fontWeight="700"
         android:font="@font/jalnan"/>
 
+    <font android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/notosanskr"/>
+
 </font-family>
