@@ -30,11 +30,21 @@
         app:ci_margin="4dp"
         app:ci_width="7dp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <ImageView
         android:layout_width="230dp"
         android:layout_height="230dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_building" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/guestButton"
