@@ -8,4 +8,19 @@
         android:fontWeight="700"
         android:font="@font/notosanskr"/>
 
+    <font android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/josefin_700"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/josefin_400"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/roboto_400"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/roboto_700"/>
 </font-family>

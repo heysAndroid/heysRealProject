@@ -18,7 +18,11 @@
         android:id="@+id/mainFragment"
         android:name="com.example.heysrealprojcet.ui.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
     <fragment
         android:id="@+id/logoFragment"
         android:name="com.example.heysrealprojcet.LogoFragment"
@@ -28,4 +32,18 @@
             android:id="@+id/action_logoFragment_to_introFragment"
             app:destination="@id/introFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.example.heysrealprojcet.ui.join.JoinFragment"
+        android:label="join_fragment"
+        tools:layout="@layout/join_fragment" >
+        <action
+            android:id="@+id/action_joinFragment_to_joinPhoneFragment"
+            app:destination="@id/joinPhoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinPhoneFragment"
+        android:name="com.example.heysrealprojcet.ui.join.JoinPhoneFragment"
+        android:label="join_phone_fragment"
+        tools:layout="@layout/join_phone_fragment" />
 </navigation>

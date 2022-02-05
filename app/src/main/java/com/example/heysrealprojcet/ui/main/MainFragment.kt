@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
@@ -27,6 +29,9 @@ class MainFragment : Fragment() {
       binding.contestList.adapter = contestRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
+//      binding.mainFragment.setOnClickListener {
+//         findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
+//      }
    }
 
    private fun makeList() {
