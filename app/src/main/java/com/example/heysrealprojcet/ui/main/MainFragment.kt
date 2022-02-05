@@ -12,29 +12,32 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
-   private lateinit var binding: MainFragmentBinding
+    private lateinit var binding: MainFragmentBinding
 
-   private lateinit var contestRecyclerViewAdapter: ContestRecyclerViewAdapter
-   private lateinit var typeList: MutableList<String>
+    private lateinit var contestRecyclerViewAdapter: ContestRecyclerViewAdapter
+    private lateinit var typeList: MutableList<String>
 
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = MainFragmentBinding.inflate(inflater, container, false)
-      return binding.root
-   }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = MainFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      super.onViewCreated(view, savedInstanceState)
-      makeList()
-      contestRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList)
-      binding.contestList.adapter = contestRecyclerViewAdapter
-      binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        makeList()
+        contestRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList)
+        binding.contestList.adapter = contestRecyclerViewAdapter
+        binding.contestList.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-//      binding.mainFragment.setOnClickListener {
-//         findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
-//      }
-   }
+        binding.jobContainer.setOnClickListener { findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment) }
+    }
 
-   private fun makeList() {
-      typeList = mutableListOf("관심분야별", "마감 임박", "많이 찾는", "새로 열린")
-   }
+    private fun makeList() {
+        typeList = mutableListOf("관심분야별", "마감 임박", "많이 찾는", "새로 열린")
+    }
 }

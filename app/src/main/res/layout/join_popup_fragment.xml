@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#6F6F6F"
     android:orientation="vertical"
-    tools:context=".ui.join.JoinFragment">
+    tools:context=".ui.join.JoinPopupFragment">
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -58,6 +58,7 @@
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -67,7 +68,5 @@
             android:text="동의하고 시작하기"
             android:textColor="@color/white"
             android:textSize="20sp" />
-
     </LinearLayout>
-
 </LinearLayout>
