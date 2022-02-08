@@ -46,5 +46,5 @@
         android:id="@+id/joinPhoneFragment"
         android:name="com.example.heysrealprojcet.ui.join.JoinPhoneFragment"
         android:label="JoinPhoneFragment"
-        tools:layout="@layout/JoinPhoneFragment" />
+        tools:layout="@layout/join_phone_fragment" />
 </navigation>

@@ -28,6 +28,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.bottomNavigationView.itemIconTintList = null // 아이콘이 태마색으로 변경되는 것 막음
+        var menu = binding.bottomNavigationView.menu
+
+
         makeList()
         contestRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList)
         binding.contestList.adapter = contestRecyclerViewAdapter
@@ -35,9 +39,29 @@ class MainFragment : Fragment() {
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
         binding.jobContainer.setOnClickListener { findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment) }
+
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.page_home -> {
+//                    menu.findItem(R.id.page_home).setIcon(R.drawable.intent_building)
+                    false
+                }
+                R.id.page_channel -> {
+//                    findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
+                    false
+                }
+                R.id.page_mypage -> {
+//                    findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
+                    false
+                }
+            }
+            true
+        }
     }
 
     private fun makeList() {
         typeList = mutableListOf("관심분야별", "마감 임박", "많이 찾는", "새로 열린")
     }
+
+
 }
