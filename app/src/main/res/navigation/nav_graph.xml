@@ -9,7 +9,7 @@
         android:id="@+id/introFragment"
         android:name="com.example.heysrealprojcet.ui.intro.IntroFragment"
         android:label="IntroFragment"
-        tools:layout="@layout/intro_fragment" >
+        tools:layout="@layout/intro_fragment">
         <action
             android:id="@+id/action_introFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/mainFragment"
         android:name="com.example.heysrealprojcet.ui.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/main_fragment">
 
         <action
             android:id="@+id/action_mainFragment_to_joinPopupFragment"
@@ -28,7 +28,7 @@
         android:id="@+id/logoFragment"
         android:name="com.example.heysrealprojcet.LogoFragment"
         android:label="logo_fragment"
-        tools:layout="@layout/logo_fragment" >
+        tools:layout="@layout/logo_fragment">
         <action
             android:id="@+id/action_logoFragment_to_introFragment"
             app:destination="@id/introFragment" />
@@ -37,14 +37,32 @@
         android:id="@+id/joinPopupFragment"
         android:name="com.example.heysrealprojcet.ui.join.JoinPopupFragment"
         android:label="JoinPopupFragment"
-        tools:layout="@layout/join_popup_fragment" >
+        tools:layout="@layout/join_popup_fragment">
         <action
             android:id="@+id/action_joinPopupFragment_to_joinPhoneFragment"
             app:destination="@id/joinPhoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPhoneFragment"
-        android:name="com.example.heysrealprojcet.ui.join.JoinPhoneFragment"
+        android:name="com.example.heysrealprojcet.ui.join.phone.JoinPhoneFragment"
         android:label="JoinPhoneFragment"
-        tools:layout="@layout/JoinPhoneFragment" />
+        tools:layout="@layout/join_phone_fragment">
+        <action
+            android:id="@+id/action_joinPhoneFragment_to_joinPasswordFragment"
+            app:destination="@id/joinPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinPasswordFragment"
+        android:name="com.example.heysrealprojcet.ui.join.password.JoinPasswordFragment"
+        android:label="JoinPasswordFragment"
+        tools:layout="@layout/join_password_fragment" >
+        <action
+            android:id="@+id/action_joinPasswordFragment_to_joinNameFragment"
+            app:destination="@id/joinNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinNameFragment"
+        android:name="com.example.heysrealprojcet.ui.join.name.JoinNameFragment"
+        android:label="JoinNameFragment"
+        tools:layout="@layout/join_name_fragment" />
 </navigation>
