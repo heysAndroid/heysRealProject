@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.join.password.JoinPasswordViewModel" />
+            type="com.example.heysrealprojcet.ui.join.name.JoinNameViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:fontFamily="@font/josefin_700"
-                android:text="비밀번호를 입력해주세요"
+                android:text="이름을 알려주세요"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
-                android:text="비밀번호는 한 번만 입력하니 정확히 입력해주세요."
+                android:text="실명 기반의 신뢰할 수 있는 커뮤니티를 만들어 가요."
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -51,8 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="아직 8자리가 아니에요"
-                android:textColor="@color/ff0000"
+                android:text="이름이 너무 길어요"
+                android:textColor="@color/green_4fb6b2"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -64,20 +64,13 @@
 
                 <EditText
                     android:id="@+id/password"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/roboto_700"
-                    android:hint="Heys2022!"
-                    android:maxLength="11"
-                    android:text="@={vm.password}"
-                    android:textSize="36sp" />
-
-                <ImageView
-                    android:id="@+id/isVisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_visible" />
+                    android:fontFamily="@font/roboto_700"
+                    android:hint="홍길동"
+                    android:maxLength="4"
+                    android:text="@={vm.name}"
+                    android:textSize="36sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -87,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="47dp"
             android:background="@color/ff6e20"
-            android:text="3초만에 헤이즈 가입하기"
+            android:text="다음"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
