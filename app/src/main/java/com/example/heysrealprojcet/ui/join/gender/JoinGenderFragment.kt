@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinGenderFragmentBinding
 
 class JoinGenderFragment : Fragment() {
@@ -23,7 +24,7 @@ class JoinGenderFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.okButton.setOnClickListener { }
+      binding.okButton.setOnClickListener { findNavController().navigate(R.id.action_joinGenderFragment_to_joinAgeFragment) }
 
       viewModel.isMale.observe(viewLifecycleOwner, { isMale ->
          if (isMale) {

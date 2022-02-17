@@ -64,7 +64,7 @@
         android:id="@+id/joinNameFragment"
         android:name="com.example.heysrealprojcet.ui.join.name.JoinNameFragment"
         android:label="JoinNameFragment"
-        tools:layout="@layout/join_name_fragment" >
+        tools:layout="@layout/join_name_fragment">
         <action
             android:id="@+id/action_joinNameFragment_to_joinGenderFragment"
             app:destination="@id/joinGenderFragment" />
@@ -73,5 +73,14 @@
         android:id="@+id/joinGenderFragment"
         android:name="com.example.heysrealprojcet.ui.join.gender.JoinGenderFragment"
         android:label="JoinGenderFragment"
-        tools:layout="@layout/join_gender_fragment" />
+        tools:layout="@layout/join_gender_fragment">
+        <action
+            android:id="@+id/action_joinGenderFragment_to_joinAgeFragment"
+            app:destination="@id/joinAgeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinAgeFragment"
+        android:name="com.example.heysrealprojcet.ui.join.age.JoinAgeFragment"
+        android:label="JoinAgeFragment"
+        tools:layout="@layout/join_age_fragment" />
 </navigation>
