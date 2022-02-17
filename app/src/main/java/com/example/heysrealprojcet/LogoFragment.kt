@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.databinding.LogoFragmentBinding
@@ -13,6 +14,9 @@ class LogoFragment : Fragment() {
     private lateinit var binding: LogoFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val mWindow = requireActivity().window
+        mWindow.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
         binding = LogoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_mainFragment_to_joinPopupFragment"
             app:destination="@id/joinPopupFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_studyFragment"
+            app:destination="@id/studyFragment" />
     </fragment>
     <fragment
         android:id="@+id/logoFragment"
@@ -47,4 +50,9 @@
         android:name="com.example.heysrealprojcet.ui.join.JoinPhoneFragment"
         android:label="JoinPhoneFragment"
         tools:layout="@layout/join_phone_fragment" />
+    <fragment
+        android:id="@+id/studyFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.StudyFragment"
+        android:label="study_fragment"
+        tools:layout="@layout/study_fragment" />
 </navigation>
