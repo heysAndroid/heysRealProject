@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="이름이 너무 길어요"
-                android:textColor="@color/green_4fb6b2"
+                android:textColor="@color/ff0000"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -80,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="47dp"
             android:background="@color/ff6e20"
+            android:paddingVertical="19dp"
             android:text="다음"
             android:textColor="@color/white"
             android:textSize="20sp" />
