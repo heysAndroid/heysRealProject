@@ -45,24 +45,17 @@
                 android:textColor="@color/ff0000"
                 android:textSize="12sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_700"
-                    android:hint="22"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:text="@={vm.age}"
-                    android:textSize="36sp" />
-            </LinearLayout>
+                android:fontFamily="@font/roboto_700"
+                android:hint="22"
+                android:inputType="number"
+                android:maxLength="4"
+                android:text="@={vm.age}"
+                android:textSize="36sp" />
         </LinearLayout>
 
         <Button
