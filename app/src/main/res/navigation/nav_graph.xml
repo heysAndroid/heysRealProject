@@ -48,8 +48,8 @@
         android:label="JoinPhoneFragment"
         tools:layout="@layout/join_phone_fragment">
         <action
-            android:id="@+id/action_joinPhoneFragment_to_joinPasswordFragment"
-            app:destination="@id/joinPasswordFragment" />
+            android:id="@+id/action_joinPhoneFragment_to_phoneVerificationFragment"
+            app:destination="@id/phoneVerificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPasswordFragment"
@@ -82,5 +82,14 @@
         android:id="@+id/joinAgeFragment"
         android:name="com.example.heysrealprojcet.ui.join.age.JoinAgeFragment"
         android:label="JoinAgeFragment"
-        tools:layout="@layout/join_age_fragment" />
+        tools:layout="@layout/join_age_fragment"></fragment>
+    <fragment
+        android:id="@+id/phoneVerificationFragment"
+        android:name="com.example.heysrealprojcet.ui.join.phone.JoinVerificationFragment"
+        android:label="PhoneVerificationFragment"
+        tools:layout="@layout/join_phone_verification_fragment">
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_joinPasswordFragment"
+            app:destination="@id/joinPasswordFragment" />
+    </fragment>
 </navigation>

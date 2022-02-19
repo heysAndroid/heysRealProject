@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.join.phone.JoinPhoneViewModel" />
+            type="com.example.heysrealprojcet.ui.join.phone.JoinVerificationViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,12 +28,12 @@
                 android:src="@drawable/ic_back" />
 
             <TextView
-                android:id="@+id/description1"
+                android:id="@+id/phoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/josefin_700"
-                android:text="핸드폰 번호를 입력해주세요"
+                android:text="010-1234-5678"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -42,32 +42,58 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="로그인/회원가입에 필요해요."
+                android:text="문자로 보내드린 6자리 인증번호를 적어주세요."
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <EditText
-                android:id="@+id/phoneInput"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="46dp"
-                android:fontFamily="@font/roboto_700"
-                android:hint="010-1234-5678"
-                android:inputType="phone"
-                android:maxLength="11"
-                android:padding="0dp"
-                android:text="@={vm.phone}"
-                android:textSize="36sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/phoneInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_700"
+                    android:hint="인증번호(6자리)"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:padding="0dp"
+                    android:text="@={vm.verificationNumber}"
+                    android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/resendButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    android:fontFamily="@font/roboto_700"
+                    android:gravity="right"
+                    android:text="@string/string_01"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/roboto_400"
+                android:text="인증번호 입력 시간이 2분 58초 남았습니다." />
         </LinearLayout>
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="59dp"
+            android:layout_marginTop="18dp"
             android:background="@color/ff6e20"
             android:paddingVertical="19.5dp"
-            android:text="인증하기"
+            android:text="다음"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
