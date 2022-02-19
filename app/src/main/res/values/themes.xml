@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.HeysRealProjcet" parent="Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">@color/gray_99a2ad</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">@color/color_99a2ad</item>
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
