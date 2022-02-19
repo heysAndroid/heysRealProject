@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinInterestFragmentBinding
 
 class JoinInterestFragment : Fragment() {
@@ -24,6 +22,6 @@ class JoinInterestFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.okButton.setOnClickListener { findNavController().navigate(R.id.action_joinNameFragment_to_joinGenderFragment) }
+      binding.okButton.setOnClickListener {  }
    }
 }
