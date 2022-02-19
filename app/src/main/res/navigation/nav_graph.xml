@@ -26,6 +26,7 @@
         <action
             android:id="@+id/action_mainFragment_to_studyFragment"
             app:destination="@id/studyFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/logoFragment"
@@ -104,4 +105,9 @@
         android:name="com.example.heysrealprojcet.ui.join.interest.JoinInterestFragment"
         android:label="JoinInterestFragment"
         tools:layout="@layout/join_interest_fragment" />
+    <fragment
+        android:id="@+id/studyFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.StudyFragment"
+        android:label="study_fragment"
+        tools:layout="@layout/study_fragment" />
 </navigation>
