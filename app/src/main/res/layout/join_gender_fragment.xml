@@ -43,7 +43,6 @@
                 android:layout_marginTop="55dp"
                 android:orientation="horizontal">
 
-
                 <Button
                     android:id="@+id/male"
                     android:layout_width="0dp"
@@ -66,7 +65,6 @@
                     android:tag="female"
                     android:text="여자"
                     android:textColor="@color/gray_949494" />
-
             </LinearLayout>
         </LinearLayout>
 
