@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
         mWindow.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         mWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         mWindow.statusBarColor = ContextCompat.getColor(
-            requireActivity(), R.color.ff6e20
+            requireActivity(), R.color.color_ff6e20
         )
 
         binding = MainFragmentBinding.inflate(inflater, container, false)

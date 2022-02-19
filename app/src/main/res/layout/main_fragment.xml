@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:orientation="horizontal"
-                android:background="@color/ff6e20">
+                android:background="@color/color_ff6e20">
 
                 <TextView
                     android:layout_width="0dp"
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center"
                     android:layout_marginRight="16dp"
-                    android:background="@color/ff6e20"
+                    android:background="@color/color_ff6e20"
                     android:src="@drawable/ic_filter_list_white" />
             </LinearLayout>
 
@@ -67,7 +67,7 @@
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
                     android:text="모두보기"
-                    android:textColor="@color/gray_949494"
+                    android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -101,7 +101,7 @@
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
                     android:text="모두보기"
-                    android:textColor="@color/gray_949494"
+                    android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -134,7 +134,7 @@
                         android:layout_marginTop="4dp"
                         android:text="직무이해도를 높일 수 있는 대외활동을 추천해드려요"
                         android:textAlignment="center"
-                        android:textColor="@color/black_474747"
+                        android:textColor="@color/color_474747"
                         android:textSize="12sp" />
 
                     <Button
@@ -172,7 +172,7 @@
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
                     android:text="모두보기"
-                    android:textColor="@color/gray_949494"
+                    android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -254,7 +254,7 @@
                     android:layout_marginStart="16dp"
                     android:gravity="center|start"
                     android:text="사이드 프로젝트로\n성장하는 청춘을 만들어갈\n헤이즈를 찾아보세요!"
-                    android:textColor="@color/black_101010"
+                    android:textColor="@color/color_101010"
                     android:textSize="20sp" />
 
                 <ImageView

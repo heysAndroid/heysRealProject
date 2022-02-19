@@ -53,7 +53,7 @@
                     android:onClick="@{(v) -> vm.onClickGender(v)}"
                     android:tag="male"
                     android:text="남자"
-                    android:textColor="@color/gray_949494" />
+                    android:textColor="@color/color_949494" />
 
                 <Button
                     android:id="@+id/female"
@@ -64,7 +64,7 @@
                     android:onClick="@{(v) -> vm.onClickGender(v)}"
                     android:tag="female"
                     android:text="여자"
-                    android:textColor="@color/gray_949494" />
+                    android:textColor="@color/color_949494" />
             </LinearLayout>
         </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="47dp"
-            android:background="@color/ff6e20"
+            android:background="@color/color_ff6e20"
             android:paddingVertical="19dp"
             android:text="다음"
             android:textColor="@color/white"

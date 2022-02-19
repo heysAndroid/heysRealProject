@@ -13,7 +13,7 @@
         android:layout_gravity="right"
         android:background="@android:color/transparent"
         android:text="건너뛰기"
-        android:textColor="@color/gray_949494" />
+        android:textColor="@color/color_949494" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"

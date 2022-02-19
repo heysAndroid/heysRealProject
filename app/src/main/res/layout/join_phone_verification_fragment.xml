@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:background="@color/ff6e20"
+            android:background="@color/color_ff6e20"
             android:paddingVertical="19.5dp"
             android:text="다음"
             android:textColor="@color/white"
