@@ -25,19 +25,7 @@ class JoinPhoneFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.okButton.setOnClickListener {
-         with(binding) {
-            description1.text = viewModel.phone.value
-            description2.text = "문자로 보내드린 6자리 인증번호를 적어주세요."
-            phoneInput.hint = "인증번호(6자리)"
-            timeText.visibility = View.VISIBLE
-            resendButton.visibility = View.VISIBLE
-            it.visibility = View.GONE
-            nextButton.visibility=View.VISIBLE
-         }
-      }
-
-      binding.nextButton.setOnClickListener {
-         findNavController().navigate(R.id.action_joinPhoneFragment_to_joinPasswordFragment)
+         findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment)
       }
    }
 }
