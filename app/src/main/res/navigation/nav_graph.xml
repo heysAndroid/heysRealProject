@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_mainFragment_to_joinPopupFragment"
             app:destination="@id/joinPopupFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_studyFragment"
+            app:destination="@id/studyFragment" />
     </fragment>
     <fragment
         android:id="@+id/logoFragment"

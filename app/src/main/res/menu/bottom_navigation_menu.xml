@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_home"
+        android:icon="@drawable/ic_click_circle"
+        android:title="헤이즈" />
+
+    <item
+        android:id="@+id/page_channel"
+        android:icon="@drawable/ic_triangle"
+        android:title="채널" />
+
+    <item
+        android:id="@+id/page_mypage"
+        android:icon="@drawable/ic_triangle"
+        android:title="마이페이지"/>
+</menu>

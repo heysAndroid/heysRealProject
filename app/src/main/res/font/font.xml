@@ -13,12 +13,17 @@
         android:font="@font/josefin_700"/>
 
     <font android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/josefin_500"/>
+
+    <font android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/josefin_400"/>
 
     <font android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/roboto_400"/>
+
 
     <font android:fontStyle="normal"
         android:fontWeight="700"
