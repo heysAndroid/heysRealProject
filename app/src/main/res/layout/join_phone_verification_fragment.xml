@@ -87,11 +87,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/nextButton"
+            android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:background="@color/color_ff6e20"
+            android:background="@drawable/bg_ok_button"
+            android:enabled="false"
             android:paddingVertical="19.5dp"
             android:text="다음"
             android:textColor="@color/white"

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinPhoneVerificationFragmentBinding
@@ -24,8 +25,11 @@ class JoinVerificationFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.nextButton.setOnClickListener {
+      binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_phoneVerificationFragment_to_joinPasswordFragment)
       }
+      viewModel.verificationNumber.asLiveData().observe(viewLifecycleOwner, {
+         binding.okButton.isEnabled = it.length == 6
+      })
    }
 }

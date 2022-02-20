@@ -34,6 +34,7 @@ class JoinGenderFragment : Fragment() {
             binding.female.isSelected = true
             binding.male.isSelected = false
          }
+         isMale?.let { binding.okButton.isEnabled = true }
       })
    }
 }

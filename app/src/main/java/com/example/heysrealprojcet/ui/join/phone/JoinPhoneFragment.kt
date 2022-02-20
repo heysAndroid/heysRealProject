@@ -27,5 +27,9 @@ class JoinPhoneFragment : Fragment() {
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment)
       }
+
+      viewModel.phone.observe(viewLifecycleOwner, {
+         binding.okButton.isEnabled = it.length == 11
+      })
    }
 }
