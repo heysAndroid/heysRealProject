@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ok_button"
-            android:enabled="false"
+            android:enabled="@{vm.isEnabled}"
             android:paddingVertical="19.5dp"
             android:text="다음"
             android:textColor="@color/white"
