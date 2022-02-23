@@ -23,13 +23,10 @@ class JoinPhoneFragment : Fragment() {
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      super.onViewCreated(view, savedInstanceState)
+      super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
+      binding.lifecycleOwner = this
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment)
       }
-
-      viewModel.phone.observe(viewLifecycleOwner, {
-         binding.okButton.isEnabled = it.length == 11
-      })
    }
 }
