@@ -104,7 +104,11 @@
         android:id="@+id/joinInterestFragment"
         android:name="com.example.heysrealprojcet.ui.join.interest.JoinInterestFragment"
         android:label="JoinInterestFragment"
-        tools:layout="@layout/join_interest_fragment" />
+        tools:layout="@layout/join_interest_fragment" >
+        <action
+            android:id="@+id/action_joinInterestFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studyFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.StudyFragment"
