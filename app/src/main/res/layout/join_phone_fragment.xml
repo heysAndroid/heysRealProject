@@ -11,7 +11,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -60,11 +60,15 @@
                 android:textSize="36sp" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="59dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
             android:paddingVertical="19.5dp"

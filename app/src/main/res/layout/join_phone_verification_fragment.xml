@@ -86,11 +86,15 @@
                 android:text="인증번호 입력 시간이 2분 58초 남았습니다." />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="false"
             android:paddingVertical="19.5dp"
