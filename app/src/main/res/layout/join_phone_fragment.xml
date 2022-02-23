@@ -54,7 +54,7 @@
                 android:fontFamily="@font/roboto_700"
                 android:hint="010-1234-5678"
                 android:inputType="phone"
-                android:maxLength="11"
+                android:maxLength="13"
                 android:padding="0dp"
                 android:text="@={vm.phoneNumber}"
                 android:textSize="36sp" />

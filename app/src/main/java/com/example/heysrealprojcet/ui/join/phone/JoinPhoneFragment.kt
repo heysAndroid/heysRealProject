@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.join.phone
 
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,5 +29,6 @@ class JoinPhoneFragment : Fragment() {
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment)
       }
+      binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
    }
 }
