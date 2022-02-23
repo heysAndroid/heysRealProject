@@ -25,6 +25,8 @@ class JoinVerificationFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
+      viewModel.phoneNumber.value = arguments?.getString("phoneNumber")
+
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_phoneVerificationFragment_to_joinPasswordFragment)
       }

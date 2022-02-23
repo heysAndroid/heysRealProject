@@ -99,6 +99,10 @@
         <action
             android:id="@+id/action_phoneVerificationFragment_to_joinPasswordFragment"
             app:destination="@id/joinPasswordFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string"
+            android:defaultValue="010-1234-5678" />
     </fragment>
     <fragment
         android:id="@+id/joinInterestFragment"

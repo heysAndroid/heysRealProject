@@ -5,6 +5,7 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,7 +28,7 @@ class JoinPhoneFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener {
-         findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment)
+         findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment, bundleOf("phoneNumber" to viewModel.phoneNumber.value))
       }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
    }
