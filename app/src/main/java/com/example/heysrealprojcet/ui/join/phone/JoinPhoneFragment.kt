@@ -1,10 +1,12 @@
 package com.example.heysrealprojcet.ui.join.phone
 
+import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,5 +33,9 @@ class JoinPhoneFragment : Fragment() {
          findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment, bundleOf("phoneNumber" to viewModel.phoneNumber.value))
       }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
+
+      // 화면 들어오자마자 키보드 보이기
+      val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      inputMethodManager.showSoftInput(binding.phoneInput, 0)
    }
 }
