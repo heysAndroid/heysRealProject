@@ -74,7 +74,8 @@
                     android:gravity="right"
                     android:text="@string/string_01"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:onClick="@{() -> vm.timerStart()}" />
             </LinearLayout>
 
             <TextView
@@ -83,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
                 android:fontFamily="@font/roboto_400"
-                android:text="인증번호 입력 시간이 2분 58초 남았습니다." />
+                android:text="@{vm.timeText}"
+                tools:text="인증번호 입력 시간이 03분 00초 남았습니다" />
         </LinearLayout>
 
         <View

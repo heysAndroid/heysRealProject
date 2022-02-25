@@ -27,6 +27,10 @@ class JoinVerificationFragment : Fragment() {
       binding.lifecycleOwner = this
       viewModel.phoneNumber.value = arguments?.getString("phoneNumber")
 
+      if(viewModel.phoneNumber.value!!.isNotEmpty()) {
+         viewModel.timerStart()
+      }
+
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_phoneVerificationFragment_to_joinPasswordFragment)
       }
