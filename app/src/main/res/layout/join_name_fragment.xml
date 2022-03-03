@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_700"
                     android:hint="홍길동"
-                    android:maxLength="4"
+                    android:maxLength="8"
                     android:text="@={vm.name}"
                     android:textSize="36sp" />
             </LinearLayout>

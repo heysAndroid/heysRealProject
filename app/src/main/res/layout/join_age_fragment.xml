@@ -53,7 +53,7 @@
                 android:fontFamily="@font/roboto_700"
                 android:hint="22"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="2"
                 android:text="@={vm.age}"
                 android:textSize="36sp" />
         </LinearLayout>
