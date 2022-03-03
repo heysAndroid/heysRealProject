@@ -26,6 +26,9 @@ class JoinPasswordViewModel : ViewModel() {
       if (password.value?.length == 8) {
          _isEnabled.value = true
          description.value = "알맞은 비밀번호에요"
+      } else {
+         _isEnabled.value = false
+         description.value = "아직 8자리가 아니에요"
       }
    }
 

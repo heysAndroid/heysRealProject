@@ -15,8 +15,6 @@ class JoinNameViewModel : ViewModel() {
    }
 
    private fun isCorrect() {
-      if (!name.value.isNullOrBlank()) {
-         _isEnabled.value = true
-      }
+      _isEnabled.value = !name.value.isNullOrBlank()
    }
 }
