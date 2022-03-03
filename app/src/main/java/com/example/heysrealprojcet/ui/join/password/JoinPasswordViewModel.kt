@@ -18,7 +18,6 @@ class JoinPasswordViewModel : ViewModel() {
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-
    init {
       viewModelScope.launch { password.collect { isCorrect() } }
    }
