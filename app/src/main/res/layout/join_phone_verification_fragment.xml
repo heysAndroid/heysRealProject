@@ -57,6 +57,7 @@
                     android:id="@+id/phoneInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@null"
                     android:fontFamily="@font/roboto_700"
                     android:hint="인증번호(6자리)"
                     android:inputType="number"

@@ -50,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
+                android:background="@null"
                 android:fontFamily="@font/roboto_700"
                 android:hint="22"
                 android:inputType="number"

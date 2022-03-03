@@ -66,6 +66,7 @@
                     android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@null"
                     android:fontFamily="@font/roboto_700"
                     android:hint="홍길동"
                     android:maxLength="8"
