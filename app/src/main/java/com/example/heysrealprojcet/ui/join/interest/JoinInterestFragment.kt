@@ -24,6 +24,11 @@ class JoinInterestFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.okButton.setOnClickListener { findNavController().navigate(R.id.action_joinInterestFragment_to_mainFragment) }
+      binding.lifecycleOwner = this
+      binding.okButton.setOnClickListener { goToMain() }
+   }
+
+   private fun goToMain() {
+      findNavController().navigate(R.id.action_joinInterestFragment_to_mainFragment)
    }
 }
