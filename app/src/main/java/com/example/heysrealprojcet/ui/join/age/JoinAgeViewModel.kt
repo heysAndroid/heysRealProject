@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.join.age
 
 import androidx.lifecycle.*
+import com.example.heysrealprojcet.util.UserPreference
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -11,7 +12,12 @@ class JoinAgeViewModel : ViewModel() {
    val isEnabled: LiveData<Boolean> = _isEnabled
 
    init {
-      viewModelScope.launch { age.asFlow().collect { isCorrect() } }
+      viewModelScope.launch {
+         age.asFlow().collect {
+            UserPreference.age = it
+            isCorrect()
+         }
+      }
    }
 
    private fun isCorrect() {

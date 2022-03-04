@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.util.UserPreference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -19,7 +20,12 @@ class JoinPasswordViewModel : ViewModel() {
    val isEnabled: LiveData<Boolean> = _isEnabled
 
    init {
-      viewModelScope.launch { password.collect { isCorrect() } }
+      viewModelScope.launch {
+         password.collect {
+            UserPreference.password = it
+            isCorrect()
+         }
+      }
    }
 
    private fun isCorrect() {

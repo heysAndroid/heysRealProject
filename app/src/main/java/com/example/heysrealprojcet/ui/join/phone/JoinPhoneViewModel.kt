@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.join.phone
 
 import androidx.lifecycle.*
+import com.example.heysrealprojcet.util.UserPreference
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -13,6 +14,9 @@ class JoinPhoneViewModel : ViewModel() {
    init {
       viewModelScope.launch {
          phoneNumber.asFlow().collect {
+            if (phoneNumber.value?.contains('-') == true) {
+               UserPreference.phoneNumber = phoneNumber.value?.replace("-", "").toString()
+            }
             isElevenDigit()
          }
       }

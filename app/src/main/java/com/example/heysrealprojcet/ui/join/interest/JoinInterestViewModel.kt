@@ -8,7 +8,7 @@ class JoinInterestViewModel : ViewModel() {
    private val totalMax = 3
    private var total = MutableStateFlow(0)
    val totalString = MutableStateFlow("${total.value}/3")
-   private val interestArray = mutableListOf<String>()
+   private val interestList = mutableListOf<String>()
 
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
@@ -17,17 +17,17 @@ class JoinInterestViewModel : ViewModel() {
          if (v.isSelected) {
             v.isSelected = false
             total.value -= 1
-            interestArray.remove(item)
+            interestList.remove(item)
          } else {
             v.isSelected = true
             total.value += 1
-            interestArray.add(item)
+            interestList.add(item)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
             total.value -= 1
-            interestArray.remove(item)
+            interestList.remove(item)
          }
       }
       totalString.value = "${total.value}/$totalMax"
