@@ -29,13 +29,15 @@ class JoinPhoneFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
       binding.lifecycleOwner = this
-      binding.okButton.setOnClickListener {
-         findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment, bundleOf("phoneNumber" to viewModel.phoneNumber.value))
-      }
+      binding.okButton.setOnClickListener { goToPhoneVerification() }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 
       // 화면 들어오자마자 키보드 보이기
       val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
+   }
+
+   private fun goToPhoneVerification() {
+      findNavController().navigate(R.id.action_joinPhoneFragment_to_phoneVerificationFragment, bundleOf("phoneNumber" to viewModel.phoneNumber.value))
    }
 }
