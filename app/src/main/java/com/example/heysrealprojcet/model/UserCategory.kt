@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserCategory(
-   @SerialName("preference") val preference: Int,
-   @SerialName("categoryId") val categoryId: Int
+  @SerialName("preference") val preference: Int,
+  @SerialName("categoryId") val categoryId: Int
 ) : java.io.Serializable
