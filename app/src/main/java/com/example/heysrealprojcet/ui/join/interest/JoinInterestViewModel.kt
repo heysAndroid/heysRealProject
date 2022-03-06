@@ -25,6 +25,8 @@ class JoinInterestViewModel @Inject constructor(
    private val _isSuccess = MutableLiveData<Boolean>()
    val isSuccess: LiveData<Boolean> = _isSuccess
 
+   val accessToken = MutableLiveData<String>()
+
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
 
@@ -52,9 +54,10 @@ class JoinInterestViewModel @Inject constructor(
       CoroutineScope(Dispatchers.IO).launch {
          signupRepository.signup(user)?.let { response ->
             if (response.isSuccessful) {
-               response.body()?.let {
+               response.body()?.let { body ->
                   _isSuccess.postValue(true)
-                  Log.w("====== sign up ======", it.toString())
+                  accessToken.postValue(body.accessToken)
+                  Log.w("====== sign up ======", body.toString())
                }
             } else {
                _isSuccess.postValue(false)

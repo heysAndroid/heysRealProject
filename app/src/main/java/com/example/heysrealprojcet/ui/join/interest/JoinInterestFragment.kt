@@ -48,17 +48,19 @@ class JoinInterestFragment : Fragment() {
          userCategories = listOf(UserCategory(preference = 1, categoryId = 2)))
 
       viewModel.signup(user)
-      viewModel.isSuccess.observe(viewLifecycleOwner, {
-         val alert = AlertDialog.Builder(requireContext())
-         if (it) {
-            alert.setTitle("회원가입 성공")
-               .setMessage("이름 : ${user.name}\n 핸드폰 번호 : ${user.phone}\n 나이 : ${user.age}")
-               .setPositiveButton("확인") { _, _ ->
-                  goToMain()
-               }.create().show()
-         } else {
-            alert.setTitle("회원가입 실패").setMessage("회원가입에 실패했습니다").create().show()
-         }
+      viewModel.isSuccess.observe(viewLifecycleOwner, { isSuccess ->
+         viewModel.accessToken.observe(viewLifecycleOwner, {
+            val alert = AlertDialog.Builder(requireContext())
+            if (isSuccess) {
+               alert.setTitle("${user.name}님 회원가입 성공")
+                  .setMessage("accessToken: ${viewModel.accessToken.value}")
+                  .setPositiveButton("확인") { _, _ ->
+                     goToMain()
+                  }.create().show()
+            } else {
+               alert.setTitle("회원가입 실패").setMessage("회원가입에 실패했습니다").create().show()
+            }
+         })
       })
    }
 }
