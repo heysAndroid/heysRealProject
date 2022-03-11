@@ -4,20 +4,18 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.repository.SignupRepository
+import com.example.heysrealprojcet.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class JoinInterestViewModel @Inject constructor(
-   private val signupRepository: SignupRepository) : ViewModel() {
+   private val signupRepository: SignupRepository) : BaseViewModel() {
 
    /*
    * 관심 분야
@@ -77,7 +75,7 @@ class JoinInterestViewModel @Inject constructor(
    }
 
    fun signup(user: User) {
-      CoroutineScope(Dispatchers.IO).launch {
+      viewModelScope.launch(exceptionHandler) {
          signupRepository.signup(user)?.let { response ->
             if (response.isSuccessful) {
                response.body()?.let { body ->
