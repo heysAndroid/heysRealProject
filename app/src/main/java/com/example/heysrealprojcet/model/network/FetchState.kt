@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.model
+package com.example.heysrealprojcet.model.network
 
 enum class FetchState {
    BAD_INTERNET,

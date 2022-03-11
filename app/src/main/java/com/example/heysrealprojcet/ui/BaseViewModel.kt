@@ -3,7 +3,7 @@ package com.example.heysrealprojcet.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.heysrealprojcet.model.FetchState
+import com.example.heysrealprojcet.model.network.FetchState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.HttpException
 import java.net.SocketException

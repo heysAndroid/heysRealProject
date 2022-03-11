@@ -12,6 +12,7 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinInterestFragmentBinding
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.UserCategory
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,20 +48,26 @@ class JoinInterestFragment : Fragment() {
          password = UserPreference.password,
          userCategories = listOf(UserCategory(preference = 1, categoryId = 2)))
 
+
       viewModel.signup(user)
-      viewModel.isSuccess.observe(viewLifecycleOwner, { isSuccess ->
-         viewModel.accessToken.observe(viewLifecycleOwner, {
-            val alert = AlertDialog.Builder(requireContext())
-            if (isSuccess) {
+      viewModel.response.observe(viewLifecycleOwner, { response ->
+         val alert = AlertDialog.Builder(requireContext())
+         when (response) {
+            is NetworkResult.Success -> {
+               UserPreference.accessToken = response.data?.accessToken ?: ""
                alert.setTitle("${user.name}님 회원가입 성공")
-                  .setMessage("accessToken: ${viewModel.accessToken.value}")
-                  .setPositiveButton("확인") { _, _ ->
-                     goToMain()
-                  }.create().show()
-            } else {
-               alert.setTitle("회원가입 실패").setMessage("회원가입에 실패했습니다").create().show()
+                  .setMessage("accessToken: ${UserPreference.accessToken}")
+                  .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
             }
-         })
+
+            is NetworkResult.Error -> {
+               alert.setTitle("회원가입 실패").setMessage("회원가입에 실패했습니다.").create().show()
+            }
+
+            is NetworkResult.Loading -> {
+               alert.setTitle("로딩 중").setMessage("회원가입이 지연되고 있습니다.").create().show()
+            }
+         }
       })
    }
 }

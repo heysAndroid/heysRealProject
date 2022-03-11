@@ -1,11 +1,12 @@
 package com.example.heysrealprojcet.ui.join.interest
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.model.LoginResponse
 import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,8 +29,8 @@ class JoinInterestViewModel @Inject constructor(
    /*
    * 네트워크 호출
     */
-   private val _isSuccess = MutableLiveData<Boolean>()
-   val isSuccess: LiveData<Boolean> = _isSuccess
+   private val _response: MutableLiveData<NetworkResult<LoginResponse>> = MutableLiveData()
+   val response: LiveData<NetworkResult<LoginResponse>> = _response
 
    /*
    * 시작하기 버튼
@@ -37,19 +38,11 @@ class JoinInterestViewModel @Inject constructor(
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   val accessToken = MutableLiveData<String>()
-
    init {
-      viewModelScope.launch {
-         total.collect {
-            isSelected()
-         }
-      }
+      viewModelScope.launch { total.collect { isSelected() } }
    }
 
-   private fun isSelected() {
-      _isEnabled.value = total.value > 0
-   }
+   private fun isSelected() { _isEnabled.value = total.value > 0 }
 
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
@@ -74,20 +67,9 @@ class JoinInterestViewModel @Inject constructor(
       totalString.value = "${total.value}/$totalMax"
    }
 
-   fun signup(user: User) {
-      viewModelScope.launch(exceptionHandler) {
-         signupRepository.signup(user)?.let { response ->
-            if (response.isSuccessful) {
-               response.body()?.let { body ->
-                  _isSuccess.postValue(true)
-                  accessToken.postValue(body.accessToken)
-                  Log.w("====== sign up ======", body.toString())
-               }
-            } else {
-               _isSuccess.postValue(false)
-               Log.e("======== ERROR ========", response.message().toString())
-            }
-         }
+   fun signup(user: User) = viewModelScope.launch {
+      signupRepository.signup(user).collect { values ->
+         _response.value = values
       }
    }
 }

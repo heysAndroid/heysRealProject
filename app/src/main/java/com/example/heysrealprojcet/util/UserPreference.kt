@@ -43,4 +43,6 @@ object UserPreference : KotprefModel() {
    * ? 모르겠음
     */
    var categoryId by intPref(2)
+
+   var accessToken by stringPref()
 }
