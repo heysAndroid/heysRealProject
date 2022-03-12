@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// Hilt 로 생성자에 repository 전달
 @HiltViewModel
 class JoinInterestViewModel @Inject constructor(
    private val signupRepository: SignupRepository) : BaseViewModel() {
@@ -42,7 +43,9 @@ class JoinInterestViewModel @Inject constructor(
       viewModelScope.launch { total.collect { isSelected() } }
    }
 
-   private fun isSelected() { _isEnabled.value = total.value > 0 }
+   private fun isSelected() {
+      _isEnabled.value = total.value > 0
+   }
 
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
@@ -68,6 +71,7 @@ class JoinInterestViewModel @Inject constructor(
    }
 
    fun signup(user: User) = viewModelScope.launch {
+      // repository 의 함수를 호출해서 _response 에 api 응답을 저장
       signupRepository.signup(user).collect { values ->
          _response.value = values
       }

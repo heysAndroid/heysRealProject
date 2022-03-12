@@ -48,10 +48,11 @@ class JoinInterestFragment : Fragment() {
          password = UserPreference.password,
          userCategories = listOf(UserCategory(preference = 1, categoryId = 2)))
 
-
       viewModel.signup(user)
       viewModel.response.observe(viewLifecycleOwner, { response ->
          val alert = AlertDialog.Builder(requireContext())
+
+         // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
                UserPreference.accessToken = response.data?.accessToken ?: ""

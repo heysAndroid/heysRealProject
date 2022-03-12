@@ -10,10 +10,16 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
+/*
+* Hilt 로 Api 클래스 생성자로 전달 => 객체 간 종속성 줄이기
+ */
+
 class SignupRepository @Inject constructor(
    private val signUpApi: SignUpApi) : BaseApiResponse() {
+   // BaseApiResponse() 의 safeApiCall 에 signup() 을 인자로 전달
    suspend fun signup(user: User): Flow<NetworkResult<LoginResponse>> {
       return flow {
+         // api 응답을 방출한다.
          emit(safeApiCall { signUpApi.signup(user) })
       }.flowOn(Dispatchers.IO)
    }
