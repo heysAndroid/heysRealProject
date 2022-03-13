@@ -1,16 +1,15 @@
 package com.example.heysrealprojcet.ui.intro
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.IntroFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class IntroFragment : Fragment() {
    private lateinit var binding: IntroFragmentBinding
@@ -18,7 +17,10 @@ class IntroFragment : Fragment() {
    private lateinit var imageList: MutableList<String>
    private var positon: Int = 0
 
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+   override fun onCreateView(
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?): View? {
       val mWindow = requireActivity().window
       mWindow.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
       mWindow.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -39,20 +41,25 @@ class IntroFragment : Fragment() {
       customPagerAdapter.submitList(imageList)
 
       binding.viewpager.adapter = customPagerAdapter
-      binding.indicator.setViewPager(binding.viewpager)
       binding.viewpager.registerOnPageChangeCallback(pageChangeCallback)
+      binding.indicator.setViewPager(binding.viewpager)
 
-      binding.btnSkip.setOnClickListener { // 스킵 버튼 클릭시
-         binding.viewpager.currentItem = 2
-      }
-
-      binding.nextButton.setOnClickListener { // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
+      // 스킵 버튼 클릭시
+      binding.btnSkip.setOnClickListener { binding.viewpager.currentItem = 2 }
+      // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
+      binding.nextButton.setOnClickListener {
          when (positon) {
             0 -> binding.viewpager.currentItem = 1
             1 -> binding.viewpager.currentItem = 2
-            2 -> findNavController().navigate(R.id.action_introFragment_to_mainFragment)
+            2 -> goToNonmemberMain()
          }
       }
+   }
+
+   private fun goToNonmemberMain() {
+      val intent = Intent(requireContext(), MainActivity::class.java)
+      startActivity(intent)
+      requireActivity().finish()
    }
 
    private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {

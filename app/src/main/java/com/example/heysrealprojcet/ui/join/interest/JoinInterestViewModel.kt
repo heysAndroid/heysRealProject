@@ -8,7 +8,7 @@ import com.example.heysrealprojcet.model.network.response.LoginResponse
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.repository.SignupRepository
-import com.example.heysrealprojcet.ui.BaseViewModel
+import com.example.heysrealprojcet.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

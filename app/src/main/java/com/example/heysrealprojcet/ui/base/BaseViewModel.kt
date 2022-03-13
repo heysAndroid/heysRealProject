@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui
+package com.example.heysrealprojcet.ui.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
