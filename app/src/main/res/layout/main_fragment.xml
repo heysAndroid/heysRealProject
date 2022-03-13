@@ -21,19 +21,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
-                android:background="@color/color_ff6e20">
+                android:background="@color/color_ff6e20"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="16dp"
-                    android:textColor="@color/white"
+                    android:layout_weight="1"
                     android:fontFamily="@font/jalnan"
-                    android:textSize="20sp"
-                    android:text="Heys!"/>
+                    android:text="Heys!"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -138,6 +138,7 @@
                         android:textSize="12sp" />
 
                     <Button
+                        android:id="@+id/chooseButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="65dp"
@@ -240,7 +241,7 @@
                 android:textSize="20sp" />
 
             <FrameLayout
-                android:id="@+id/descriptionText"
+                android:id="@+id/descriptionContainer"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginHorizontal="16dp"
@@ -274,8 +275,8 @@
         android:layout_height="70dp"
         android:background="@color/white"
         app:itemBackground="@drawable/ripple_background"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:itemTextColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.ContestItemViewBinding
 
-class ContestRecyclerViewAdapter(private val type: MutableList<String>) : RecyclerView.Adapter<ContestRecyclerViewAdapter.ViewHolder>() {
+class ContestRecyclerViewAdapter(
+   private val type: MutableList<String>,
+   private val onclick: (item: String) -> Unit) :
+   RecyclerView.Adapter<ContestRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestItemViewBinding
 
-   inner class ViewHolder(private val binding: ContestItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: String) {
-         binding.typeText.text = type
+   inner class ViewHolder(private val binding: ContestItemViewBinding) :
+      RecyclerView.ViewHolder(binding.root) {
+      fun bind(item: String) {
+         binding.typeText.text = item
+         binding.root.setOnClickListener { onclick.invoke(item) }
       }
    }
 
