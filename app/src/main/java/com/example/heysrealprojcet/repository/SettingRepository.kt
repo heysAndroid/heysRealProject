@@ -1,7 +1,7 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.SettingApi
-import com.example.heysrealprojcet.model.LoginResponse
+import com.example.heysrealprojcet.model.network.response.LoginResponse
 import com.example.heysrealprojcet.model.network.NetworkResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
