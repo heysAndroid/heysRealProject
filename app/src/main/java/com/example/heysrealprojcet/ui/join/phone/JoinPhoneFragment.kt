@@ -15,7 +15,6 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinPhoneFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class JoinPhoneFragment : Fragment() {
     private lateinit var binding: JoinPhoneFragmentBinding
     private val viewModel: JoinPhoneViewModel by viewModels()

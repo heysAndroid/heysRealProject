@@ -2,10 +2,8 @@ package com.example.heysrealprojcet.ui.join.phone
 
 import androidx.lifecycle.*
 import com.example.heysrealprojcet.util.UserPreference
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
-@HiltViewModel
 class JoinPhoneViewModel : ViewModel() {
    val phoneNumber = MutableLiveData("")
 
