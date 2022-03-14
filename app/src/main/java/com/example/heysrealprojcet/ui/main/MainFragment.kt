@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
+import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
@@ -42,20 +44,26 @@ class MainFragment : Fragment() {
       binding.contestList.layoutManager = LinearLayoutManager(
          requireContext(), RecyclerView.HORIZONTAL, false)
 
-      with(binding) {
-         contestAllText.setOnClickListener { goToJoin() }
-         activityAllText.setOnClickListener { goToJoin() }
-         jobContainer.setOnClickListener { goToJoin() }
-         chooseButton.setOnClickListener { goToJoin() }
-         studyAllText.setOnClickListener { goToJoin() }
-         studyContainer.setOnClickListener { goToJoin() }
-         descriptionContainer.setOnClickListener { goToJoin() }
+      // 로그인 안하면 회원가입 팝업 띄우도록
+      if (isLogin()) {
+         binding.studyContainer.setOnClickListener { goToStudy() }
+      } else {
+         with(binding) {
+            contestAllText.setOnClickListener { goToJoin() }
+            activityAllText.setOnClickListener { goToJoin() }
+            jobContainer.setOnClickListener { goToJoin() }
+            chooseButton.setOnClickListener { goToJoin() }
+            studyAllText.setOnClickListener { goToJoin() }
+            studyContainer.setOnClickListener { goToJoin() }
+            descriptionContainer.setOnClickListener { goToJoin() }
+         }
       }
+      Log.d("=== accessToken ===", UserPreference.accessToken)
 
       binding.bottomNavigationView.setOnItemSelectedListener { item ->
          when (item.itemId) {
             R.id.page_home -> {
-//                    menu.findItem(R.id.page_home).setIcon(R.drawable.intent_building)
+//               menu.findItem(R.id.page_home).setIcon(R.drawable.intent_building)
                false
             }
             R.id.page_channel -> {
@@ -78,4 +86,10 @@ class MainFragment : Fragment() {
    private fun goToJoin() {
       findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
    }
+
+   private fun goToStudy() {
+      findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+   }
+
+   private fun isLogin(): Boolean = UserPreference.accessToken.isNotEmpty()
 }
