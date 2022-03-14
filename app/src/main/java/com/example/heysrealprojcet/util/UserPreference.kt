@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet.util
 
 import com.chibatching.kotpref.KotprefModel
-import com.chibatching.kotpref.gsonpref.gsonPref
 
 object UserPreference : KotprefModel() {
    /*
@@ -44,5 +43,13 @@ object UserPreference : KotprefModel() {
     */
    var categoryId by intPref(2)
 
+   /*
+   * 로그인 / 회원가입 시 accessToken 에 값 저장
+    */
    var accessToken by stringPref()
+
+   /*
+   * 기존 유저인지 신규 유저인지
+    */
+   var isExistingUser by booleanPref(false)
 }
