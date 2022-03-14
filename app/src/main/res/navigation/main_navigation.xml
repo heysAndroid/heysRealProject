@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nonmember_navigation"
-    app:startDestination="@id/mainFragment">
+    android:id="@+id/main_navigation">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -17,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_studyFragment"
             app:destination="@id/studyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_joinPhoneFragment"
+            app:destination="@id/joinPhoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPopupFragment"
