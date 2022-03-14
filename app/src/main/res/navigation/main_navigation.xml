@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_joinPasswordFragment_to_joinNameFragment"
             app:destination="@id/joinNameFragment" />
+        <action
+            android:id="@+id/action_joinPasswordFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinNameFragment"
