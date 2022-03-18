@@ -32,7 +32,7 @@
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/josefin_700"
                 android:text="마지막이에요!\n관심 분야를 선택해주세요"
                 android:textColor="@color/black"
@@ -52,15 +52,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="21dp"
                 android:text="@{vm.totalString}"
-                android:textColor="@color/black"
+                android:textColor="@color/color_ff6e20"
                 android:textSize="14sp"
                 tools:text="0/3" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginVertical="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -70,37 +71,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/bg_interest_button"
-                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="27dp"
-                    android:paddingVertical="12dp"
-                    android:tag="planning"
-                    android:text="기획/아이디어"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/design"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_interest_button"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="27dp"
-                    android:paddingVertical="12dp"
-                    android:tag="design"
-                    android:text="디자인"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="planning"
+                    android:text="기획"
+                    android:textColor="@drawable/interest_text" />
 
                 <Button
-                    android:id="@+id/it"
+                    android:id="@+id/design"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
@@ -108,9 +89,48 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:tag="it"
-                    android:text="IT"
-                    android:textColor="@color/black" />
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="design"
+                    android:text="디자인"
+                    android:textColor="@drawable/interest_text" />
+
+                <Button
+                    android:id="@+id/programming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="programming"
+                    android:text="개발"
+                    android:textColor="@drawable/interest_text" />
+
+                <Button
+                    android:id="@+id/data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="data"
+                    android:text="개발"
+                    android:textColor="@drawable/interest_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/marketing"
@@ -121,11 +141,26 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="35dp"
-                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
                     android:tag="marketing"
                     android:text="광고/마케팅"
-                    android:textColor="@color/black" />
+                    android:textColor="@drawable/interest_text" />
+
+                <Button
+                    android:id="@+id/media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="media"
+                    android:text="미디어 콘텐츠/전시"
+                    android:textColor="@drawable/interest_text" />
 
                 <Button
                     android:id="@+id/language"
@@ -135,22 +170,22 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="21dp"
-                    android:paddingVertical="13dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
                     android:tag="language"
                     android:text="언어"
-                    android:textColor="@color/black" />
+                    android:textColor="@drawable/interest_text" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginVertical="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/mediaContents"
+                    android:id="@+id/business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
@@ -158,25 +193,40 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="22dp"
-                    android:paddingVertical="12dp"
-                    android:tag="mediaContents"
-                    android:text="미디어 콘텐츠"
-                    android:textColor="@color/black" />
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="business"
+                    android:text="경영/비즈니스"
+                    android:textColor="@drawable/interest_text" />
 
                 <Button
                     android:id="@+id/economics"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
                     android:background="@drawable/bg_interest_button"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="22dp"
-                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
                     android:tag="economics"
                     android:text="금융/경제"
-                    android:textColor="@color/black" />
+                    android:textColor="@drawable/interest_text" />
+
+                <Button
+                    android:id="@+id/education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="education"
+                    android:text="인사/교육"
+                    android:textColor="@drawable/interest_text" />
             </LinearLayout>
 
             <LinearLayout
@@ -187,7 +237,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/exam"
+                    android:id="@+id/engineering"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
@@ -195,11 +245,26 @@
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
-                    android:paddingHorizontal="21dp"
-                    android:paddingVertical="13dp"
-                    android:tag="exam"
-                    android:text="시험"
-                    android:textColor="@color/black" />
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="engineering"
+                    android:text="엔지니어링/설계"
+                    android:textColor="@drawable/interest_text" />
+
+                <Button
+                    android:id="@+id/welfare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="6dp"
+                    android:tag="welfare"
+                    android:text="공공/복지"
+                    android:textColor="@drawable/interest_text" />
 
                 <Button
                     android:id="@+id/etc"
@@ -213,7 +278,7 @@
                     android:paddingVertical="13dp"
                     android:tag="etc"
                     android:text="기타"
-                    android:textColor="@color/black" />
+                    android:textColor="@drawable/interest_text" />
             </LinearLayout>
         </LinearLayout>
 
@@ -226,11 +291,12 @@
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="9dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
-            android:gravity="bottom|center_horizontal"
-            android:paddingVertical="19dp"
-            android:text="시작하기"
+            android:gravity="center"
+            android:text="헤이즈 시작하기"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
