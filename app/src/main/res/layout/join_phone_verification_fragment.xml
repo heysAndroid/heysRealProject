@@ -73,10 +73,10 @@
                     android:layout_marginEnd="18dp"
                     android:fontFamily="@font/roboto_700"
                     android:gravity="right"
+                    android:onClick="@{() -> vm.timerStart()}"
                     android:text="@string/string_01"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:onClick="@{() -> vm.timerStart()}" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
@@ -98,9 +98,10 @@
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="9.5dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
-            android:paddingVertical="19.5dp"
             android:text="다음"
             android:textColor="@color/white"
             android:textSize="20sp" />
