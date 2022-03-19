@@ -2,25 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:background="@color/color_ff6e20"
                 android:orientation="horizontal">
 
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
-                    android:text="모두보기"
+                    android:text="더보기"
                     android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -76,19 +76,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="34dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_margin="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/activityText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="적성찾기 실무형 대외활동"
                     android:textColor="@color/black"
@@ -98,69 +98,38 @@
                     android:id="@+id/activityAllText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
-                    android:text="모두보기"
+                    android:text="더보기"
                     android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/jobContainer"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activityList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="16dp"
-                android:background="@drawable/bg_activity">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="18dp"
-                        android:layout_marginTop="18dp"
-                        android:text="관심 직무를 알려주세요"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="32dp"
-                        android:layout_marginTop="4dp"
-                        android:text="직무이해도를 높일 수 있는 대외활동을 추천해드려요"
-                        android:textAlignment="center"
-                        android:textColor="@color/color_474747"
-                        android:textSize="12sp" />
-
-                    <Button
-                        android:id="@+id/chooseButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="65dp"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_white_button"
-                        android:text="관심 직무 선택하기"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-                </LinearLayout>
-            </FrameLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="34dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_margin="16dp"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/studyField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:text="#기획"
+                    android:textColor="@color/color_ff6e20"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/studyText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="스터디 윗미"
                     android:textColor="@color/black"
@@ -170,9 +139,8 @@
                     android:id="@+id/studyAllText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:drawableEnd="@drawable/ic_all"
-                    android:text="모두보기"
+                    android:text="더보기"
                     android:textColor="@color/color_949494"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -194,7 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:text="관심사 맞춤\n 스터디"
+                        android:text="관심분야\n 맞춤 스터디"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -217,7 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:text="너,\n내 동료가\n되어라!"
+                        android:text="간편하게\n스터디 만들기"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -231,52 +199,54 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/heysText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="함께 성장하는 헤이즈"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/heysText"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="16dp"-->
+            <!--                android:text="함께 성장하는 헤이즈"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="20sp" />-->
 
-            <FrameLayout
-                android:id="@+id/descriptionContainer"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="86dp"
-                android:background="@drawable/bg_activity">
+            <!--            <FrameLayout-->
+            <!--                android:id="@+id/descriptionContainer"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="150dp"-->
+            <!--                android:layout_marginHorizontal="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginBottom="86dp"-->
+            <!--                android:background="@drawable/bg_activity">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:gravity="center|start"
-                    android:text="사이드 프로젝트로\n성장하는 청춘을 만들어갈\n헤이즈를 찾아보세요!"
-                    android:textColor="@color/color_101010"
-                    android:textSize="20sp" />
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginStart="16dp"-->
+            <!--                    android:gravity="center|start"-->
+            <!--                    android:text="사이드 프로젝트로\n성장하는 청춘을 만들어갈\n헤이즈를 찾아보세요!"-->
+            <!--                    android:textColor="@color/color_101010"-->
+            <!--                    android:textSize="20sp" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="94dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_next" />
-            </FrameLayout>
+            <!--                <ImageView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="end"-->
+            <!--                    android:layout_marginTop="94dp"-->
+            <!--                    android:layout_marginEnd="16dp"-->
+            <!--                    android:src="@drawable/ic_next" />-->
+            <!--            </FrameLayout>-->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
+        android:paddingBottom="60dp"
         app:itemBackground="@drawable/ripple_background"
-        app:itemTextColor="@android:color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nestedScrollView"
         app:menu="@menu/bottom_navigation_menu" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

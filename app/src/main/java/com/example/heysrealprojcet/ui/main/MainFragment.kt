@@ -18,31 +18,34 @@ import com.example.heysrealprojcet.util.UserPreference
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
    private lateinit var contestRecyclerViewAdapter: ContestRecyclerViewAdapter
+   private lateinit var activityRecyclerViewAdapter: ContestRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
 
-   override fun onCreateView(
-      inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       // 상태바 색 변경
       val mWindow = requireActivity().window
       mWindow.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
       mWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-      mWindow.statusBarColor = ContextCompat.getColor(
-         requireActivity(), R.color.color_ff6e20)
-
+      mWindow.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.color_ff6e20)
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.bottomNavigationView.itemIconTintList = null // 아이콘이 태마색으로 변경되는 것 막음
-      var menu = binding.bottomNavigationView.menu
+
+      // 아이콘이 태마색으로 변경되는 것 막음
+      binding.bottomNavigation.itemIconTintList = null
+      var menu = binding.bottomNavigation.menu
 
       makeList()
       contestRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList) { goToJoin() }
+      activityRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList) { goToJoin() }
+
       binding.contestList.adapter = contestRecyclerViewAdapter
-      binding.contestList.layoutManager = LinearLayoutManager(
-         requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.activityList.adapter = activityRecyclerViewAdapter
+      binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
       // 로그인 안하면 회원가입 팝업 띄우도록
       if (isLogin()) {
@@ -51,16 +54,13 @@ class MainFragment : Fragment() {
          with(binding) {
             contestAllText.setOnClickListener { goToJoin() }
             activityAllText.setOnClickListener { goToJoin() }
-            jobContainer.setOnClickListener { goToJoin() }
-            chooseButton.setOnClickListener { goToJoin() }
             studyAllText.setOnClickListener { goToJoin() }
             studyContainer.setOnClickListener { goToJoin() }
-            descriptionContainer.setOnClickListener { goToJoin() }
          }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
 
-      binding.bottomNavigationView.setOnItemSelectedListener { item ->
+      binding.bottomNavigation.setOnItemSelectedListener { item ->
          when (item.itemId) {
             R.id.page_home -> {
 //               menu.findItem(R.id.page_home).setIcon(R.drawable.intent_building)

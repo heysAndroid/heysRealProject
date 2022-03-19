@@ -13,5 +13,5 @@
     <item
         android:id="@+id/page_mypage"
         android:icon="@drawable/ic_triangle"
-        android:title="마이페이지"/>
+        android:title="마이페이지" />
 </menu>
