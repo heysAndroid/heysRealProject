@@ -9,10 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_99a2ad">#99A2AD</color>
+    <color name="color_fe7f3b">#FE7F3B</color>
     <color name="color_f2f3f5">#F2F3F5</color>
     <color name="color_red">#FF0000</color>
     <color name="color_ff6e20">#FF6E20</color>
     <color name="color_ffb085">#FFB085</color>
+    <color name="color_e4e4e4">#E4E4E4</color>
     <color name="color_e5e5e5">#E5E5E5</color>
     <color name="color_949494">#949494</color>
     <color name="color_474747">#474747</color>
