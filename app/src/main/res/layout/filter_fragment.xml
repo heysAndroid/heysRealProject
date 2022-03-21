@@ -61,14 +61,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
+                android:background="@drawable/bg_filter_interest_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:paddingVertical="6.5dp"
-                android:paddingHorizontal="15dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="6.5dp"
                 android:text="기획"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="planning"
+                android:textColor="@drawable/bg_filter_interest_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -80,8 +81,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="디자인"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="design"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -93,8 +95,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="개발"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="it"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -105,8 +108,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="데이터/인공지능"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="data"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
         </LinearLayout>
 
@@ -126,8 +130,9 @@
                 android:paddingHorizontal="15dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="광고/마케팅"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="marketing"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -137,10 +142,11 @@
                 android:paddingHorizontal="15dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="미디어 콘텐츠/전시"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="mediaContents"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -151,8 +157,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="언어"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="language"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
         </LinearLayout>
 
@@ -166,14 +173,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/bg_filter_interest_button_normal"
+                android:background="@drawable/bg_filter_interest_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="6.5dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="경영/비지니스"
-                android:textColor="@color/white" />
+                android:tag="business"
+                android:textColor="@drawable/bg_filter_interest_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -185,8 +193,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="금융/경제"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="economics"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -197,8 +206,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="인사/교육"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="education"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
         </LinearLayout>
 
@@ -212,14 +222,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/bg_filter_interest_button_normal"
+                android:background="@drawable/bg_filter_interest_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="6.5dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="엔진니어링/설계"
-                android:textColor="@color/white" />
+                android:tag="engineering"
+                android:textColor="@drawable/bg_filter_interest_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -231,8 +242,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="공공/복지"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="public"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -243,8 +255,9 @@
                 android:minHeight="0dp"
                 android:onClick="@{(v) -> vm.onClickInterest(v)}"
                 android:text="기타"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_filter_interest_button_normal"/>
+                android:tag="etc"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:background="@drawable/bg_filter_interest_button"/>
 
         </LinearLayout>
 
@@ -278,7 +291,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/bg_filter_activity_button"
-                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:onClick="@{(v) -> vm.onClickActivity(v)}"
                 android:text="온 오프라인"
                 android:textColor="@drawable/bg_filter_activity_button"
                 android:tag="on/off"/>
@@ -288,7 +301,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/bg_filter_activity_button"
-                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:onClick="@{(v) -> vm.onClickActivity(v)}"
                 android:text="오프라인"
                 android:textColor="@drawable/bg_filter_activity_button"
                 android:tag="off"/>
@@ -298,7 +311,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/bg_filter_activity_button"
-                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:onClick="@{(v) -> vm.onClickActivity(v)}"
                 android:text="온라인"
                 android:textColor="@drawable/bg_filter_activity_button"
                 android:tag="on"/>
@@ -337,9 +350,11 @@
                 android:minWidth="0dp"
                 android:paddingHorizontal="25dp"
                 android:paddingVertical="16dp"
-                android:background="@drawable/bg_filter_time_button_normal"
+                android:background="@drawable/bg_filter_time_button"
+                android:onClick="@{(v) -> vm.onClickTime(v)}"
                 android:text="7일"
-                android:textColor="@color/white" />
+                android:tag="week"
+                android:textColor="@drawable/bg_filter_time_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -349,9 +364,11 @@
                 android:minWidth="0dp"
                 android:paddingHorizontal="18.5dp"
                 android:paddingVertical="16dp"
-                android:background="@drawable/bg_filter_time_button_normal"
+                android:background="@drawable/bg_filter_time_button"
+                android:onClick="@{(v) -> vm.onClickTime(v)}"
                 android:text="1개월"
-                android:textColor="@color/white" />
+                android:tag="one"
+                android:textColor="@drawable/bg_filter_time_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -361,9 +378,11 @@
                 android:minWidth="0dp"
                 android:paddingHorizontal="18.5dp"
                 android:paddingVertical="16dp"
-                android:background="@drawable/bg_filter_time_button_normal"
+                android:background="@drawable/bg_filter_time_button"
+                android:onClick="@{(v) -> vm.onClickTime(v)}"
                 android:text="3개월"
-                android:textColor="@color/white" />
+                android:tag="three"
+                android:textColor="@drawable/bg_filter_time_button" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -373,9 +392,11 @@
                 android:minWidth="0dp"
                 android:paddingHorizontal="18.5dp"
                 android:paddingVertical="16dp"
-                android:background="@drawable/bg_filter_time_button_normal"
+                android:background="@drawable/bg_filter_time_button"
+                android:onClick="@{(v) -> vm.onClickTime(v)}"
                 android:text="6개월"
-                android:textColor="@color/white" />
+                android:tag="six"
+                android:textColor="@drawable/bg_filter_time_button" />
 
         </LinearLayout>
 

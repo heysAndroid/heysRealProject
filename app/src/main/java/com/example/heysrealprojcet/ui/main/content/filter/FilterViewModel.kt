@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class FilterViewModel: ViewModel() {
-    private val interestMax = 2
+    private val interestMax = 3
     private val activityMax = 1
     private val timeMax = 1
 
@@ -13,8 +13,6 @@ class FilterViewModel: ViewModel() {
     private var activityTotal = MutableStateFlow(0)
     private var timeTotal = MutableStateFlow(0)
 
-
-    val interestTotalString = MutableStateFlow("${interestTotal.value}/3")
 
     private val interestArray = mutableListOf<String>()
     private val activityArray = mutableListOf<String>()
@@ -41,7 +39,6 @@ class FilterViewModel: ViewModel() {
                 interestArray.remove(item)
             }
         }
-        interestTotalString.value = "${interestTotal.value}/$interestMax"
     }
 
     fun onClickActivity(v: View) {
@@ -67,6 +64,24 @@ class FilterViewModel: ViewModel() {
     }
 
     fun onClickTime(v: View) {
+        val item = v.tag.toString()
 
+        if(timeTotal.value < timeMax) {
+            if (v.isSelected) {
+                v.isSelected = false
+                timeTotal.value -= 1
+                timeArray.remove(item)
+            } else {
+                v.isSelected = true
+                timeTotal.value += 1
+                timeArray.add(item)
+            }
+        } else {
+            if (v.isSelected) {
+                v.isSelected = false
+                timeTotal.value -= 1
+                timeArray.remove(item)
+            }
+        }
     }
 }
