@@ -12,39 +12,39 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyFragmentBinding
 
 class StudyFragment : Fragment() {
-    private lateinit var binding: StudyFragmentBinding
+   private lateinit var binding: StudyFragmentBinding
 
-    private lateinit var studyRecyclerViewAdapter: StudyRecyclerViewAdapter
-    private lateinit var studyRecyclerViewAdapter2: StudyRecyclerViewAdapter2
-    private lateinit var typeList: MutableList<String>
-    private lateinit var typeList2: MutableList<String>
+   private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
+   private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
+   private lateinit var typeList: MutableList<String>
+   private lateinit var startDateList: MutableList<String>
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = StudyFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      binding = StudyFragmentBinding.inflate(inflater, container, false)
+      return binding.root
+   }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
 
-        makeList()
-        studyRecyclerViewAdapter = StudyRecyclerViewAdapter(type = typeList)
-        binding.studyContentList1.adapter = studyRecyclerViewAdapter
-        binding.studyContentList1.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      makeList()
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList)
+      binding.categoryList.adapter = categoryRecyclerViewAdapter
+      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-        studyRecyclerViewAdapter2 = StudyRecyclerViewAdapter2(type2 = typeList2)
-        binding.studyContentList2.adapter = studyRecyclerViewAdapter2
-        binding.studyContentList2.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList)
+      binding.studyList.adapter = studyItemRecyclerViewAdapter
+      binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
-        binding.filterButton.setOnClickListener {
-            findNavController().navigate(R.id.action_studyFragment_to_filterFragment)
-        }
-    }
+      binding.filterButton.setOnClickListener { goToFilter() }
+   }
 
-    private fun makeList() {
-        typeList = mutableListOf("관심 분야", "마감 임박", "많이 찾는", "새로 열린")
-        typeList2 = mutableListOf("개설한지 6일된 헤이즈", "개설한지 90일된 헤이즈", "개설한지 7일된 헤이즈")
-    }
+   private fun makeList() {
+      typeList = mutableListOf("관심 분야", "마감 임박", "많이 찾는", "새로 열린")
+      startDateList = mutableListOf("개설한지 6일", "개설한지 90일", "개설한지 7일")
+   }
+
+   private fun goToFilter() {
+      findNavController().navigate(R.id.action_studyFragment_to_filterFragment)
+   }
 }

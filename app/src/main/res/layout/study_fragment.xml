@@ -3,37 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.main.content.StudyFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:src="@drawable/ic_back" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:textSize="16sp"
             android:fontFamily="@font/josefin_700"
-            android:textStyle="bold"
-            android:text="공모전"/>
-
-
+            android:gravity="center"
+            android:text="스터디"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studyContentList1"
+        android:id="@+id/categoryList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="14dp"
@@ -42,36 +39,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/filterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:background="@color/white"
-            android:src="@drawable/ic_filter_list"
-            android:layout_marginRight="8dp"/>
+            android:src="@drawable/ic_filter_list" />
 
         <TextView
-            android:id="@+id/filter_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="8dp"
-            android:text="맞춤 필터"/>
+            android:text="맞춤 필터" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="4"/>
+            android:text="4"
+            android:textColor="@color/color_ff6e20"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="마감 숨김"
+            android:textColor="@color/color_919191" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:trackTint="@color/color_ff6e20" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studyContentList2"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="21dp" />
+        android:layout_height="8dp"
+        android:background="@color/color_e5e5e5" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studyList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

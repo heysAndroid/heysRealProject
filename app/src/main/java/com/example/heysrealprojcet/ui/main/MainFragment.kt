@@ -55,7 +55,7 @@ class MainFragment : Fragment() {
             contestAllText.setOnClickListener { goToJoin() }
             activityAllText.setOnClickListener { goToJoin() }
             studyAllText.setOnClickListener { goToJoin() }
-            studyContainer.setOnClickListener { goToJoin() }
+            studyContainer.setOnClickListener { goToStudy() }
          }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
