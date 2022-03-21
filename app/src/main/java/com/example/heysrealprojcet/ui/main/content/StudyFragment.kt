@@ -1,12 +1,14 @@
 package com.example.heysrealprojcet.ui.main.content
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyFragmentBinding
 
 class StudyFragment : Fragment() {
@@ -36,6 +38,9 @@ class StudyFragment : Fragment() {
         binding.studyContentList2.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
+        binding.filterButton.setOnClickListener {
+            findNavController().navigate(R.id.action_studyFragment_to_filterFragment)
+        }
     }
 
     private fun makeList() {
