@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content
+package com.example.heysrealprojcet.ui.main.content.study
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyFragmentBinding
+import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
 class StudyFragment : Fragment() {
    private lateinit var binding: StudyFragmentBinding
 
-   private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
+   private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
    private lateinit var startDateList: MutableList<String>
@@ -28,8 +29,8 @@ class StudyFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       makeList()
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList)
-      binding.categoryList.adapter = categoryRecyclerViewAdapter
+      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
+      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
       studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList)

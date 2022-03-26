@@ -1,17 +1,17 @@
-package com.example.heysrealprojcet.ui.main
+package com.example.heysrealprojcet.ui.main.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heysrealprojcet.databinding.ContestItemViewBinding
+import com.example.heysrealprojcet.databinding.CategoryItemViewBinding
 
-class ContestRecyclerViewAdapter(
+class CategoryRecyclerViewAdapter(
    private val type: MutableList<String>,
    private val onclick: (item: String) -> Unit) :
-   RecyclerView.Adapter<ContestRecyclerViewAdapter.ViewHolder>() {
-   private lateinit var binding: ContestItemViewBinding
+   RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
+   private lateinit var binding: CategoryItemViewBinding
 
-   inner class ViewHolder(private val binding: ContestItemViewBinding) :
+   inner class ViewHolder(private val binding: CategoryItemViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
       fun bind(item: String) {
          binding.typeText.text = item
@@ -20,7 +20,7 @@ class ContestRecyclerViewAdapter(
    }
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-      binding = ContestItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      binding = CategoryItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       return ViewHolder(binding)
    }
 

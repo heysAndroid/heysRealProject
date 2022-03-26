@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_mainFragment_to_joinPhoneFragment"
             app:destination="@id/joinPhoneFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contestFragment"
+            app:destination="@id/contestFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPopupFragment"
@@ -101,9 +104,9 @@
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.StudyFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyFragment"
         android:label="study_fragment"
-        tools:layout="@layout/study_fragment" >
+        tools:layout="@layout/study_fragment">
         <action
             android:id="@+id/action_studyFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
@@ -111,9 +114,15 @@
     <fragment
         android:id="@+id/filterFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.filter.FilterFragment"
-        android:label="FilterFragment" >
+        android:label="FilterFragment"
+        tools:layout="@layout/filter_fragment"></fragment>
+    <fragment
+        android:id="@+id/contestFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestFragment"
+        android:label="ContestFragment"
+        tools:layout="@layout/contest_fragment">
         <action
-            android:id="@+id/action_filterFragment_to_studyFragment2"
-            app:destination="@id/studyFragment" />
+            android:id="@+id/action_contestFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
 </navigation>

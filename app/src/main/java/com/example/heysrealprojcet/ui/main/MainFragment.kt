@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
+import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
-   private lateinit var contestRecyclerViewAdapter: ContestRecyclerViewAdapter
-   private lateinit var activityRecyclerViewAdapter: ContestRecyclerViewAdapter
+   private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
+   private lateinit var activityRecyclerViewAdapter: CategoryRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,10 +40,10 @@ class MainFragment : Fragment() {
       var menu = binding.bottomNavigation.menu
 
       makeList()
-      contestRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList) { goToJoin() }
-      activityRecyclerViewAdapter = ContestRecyclerViewAdapter(type = typeList) { goToJoin() }
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
+      activityRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
 
-      binding.contestList.adapter = contestRecyclerViewAdapter
+      binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
       binding.activityList.adapter = activityRecyclerViewAdapter
       binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -52,7 +53,7 @@ class MainFragment : Fragment() {
          binding.studyContainer.setOnClickListener { goToStudy() }
       } else {
          with(binding) {
-            contestAllText.setOnClickListener { goToJoin() }
+            contestAllText.setOnClickListener { goToContest() }
             activityAllText.setOnClickListener { goToJoin() }
             studyAllText.setOnClickListener { goToJoin() }
             studyContainer.setOnClickListener { goToStudy() }
@@ -89,6 +90,10 @@ class MainFragment : Fragment() {
 
    private fun goToStudy() {
       findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+   }
+
+   private fun goToContest() {
+      findNavController().navigate(R.id.action_mainFragment_to_contestFragment)
    }
 
    private fun isLogin(): Boolean = UserPreference.accessToken.isNotEmpty()

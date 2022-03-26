@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content
+package com.example.heysrealprojcet.ui.main.content.study
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ class StudyItemRecyclerViewAdapter(private val startDate: MutableList<String>) :
       }
    }
 
-   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudyItemRecyclerViewAdapter.ViewHolder {
+   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
       binding = StudyItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       return ViewHolder(binding)
    }
