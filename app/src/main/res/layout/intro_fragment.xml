@@ -25,7 +25,7 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ci_drawable="@drawable/orange_radius"
+        app:ci_drawable="@drawable/bg_circle_ff6e20"
         app:ci_height="7dp"
         app:ci_margin="4dp"
         app:ci_width="7dp" />
@@ -53,7 +53,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="26dp"
         android:layout_marginBottom="17dp"
-        android:background="@drawable/intent_button"
+        android:background="@drawable/bg_ff6e20_radius_30"
         android:text="이미 가입했어요!"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -66,7 +66,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="18dp"
-        android:background="@drawable/intent_button"
+        android:background="@drawable/bg_ff6e20_radius_30"
         android:text="다음"
         android:textColor="@color/white"
         android:textSize="18sp" />

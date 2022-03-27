@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
-        android:background="@drawable/join_activity"
+        android:background="@drawable/bg_white_radius_38"
         android:orientation="vertical">
 
         <TextView
