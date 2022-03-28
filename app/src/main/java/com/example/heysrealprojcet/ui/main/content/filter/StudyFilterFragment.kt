@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyfilterFragmentBinding
 
 class StudyFilterFragment: Fragment() {
@@ -27,7 +25,7 @@ class StudyFilterFragment: Fragment() {
         binding.lifecycleOwner = this
 
         binding.btnApply.setOnClickListener {
-            findNavController().navigate(R.id.action_studyFilterFragment_to_studyFragment)
+            // findNavController().navigate(R.id.action_studyFilterFragment_to_studyFragment)
         }
     }
 }
