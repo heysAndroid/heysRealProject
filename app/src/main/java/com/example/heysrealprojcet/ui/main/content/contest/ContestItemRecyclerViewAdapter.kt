@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.ContestItemViewBinding
 
-class ContestItemRecyclerViewAdapter(private val host: MutableList<String>) : RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
+class ContestItemRecyclerViewAdapter(private val host: MutableList<String>, private val onClickListener: () -> Unit) : RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestItemViewBinding
 
    inner class ViewHolder(private val binding: ContestItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(host: String) {
          binding.host.text = host
+         binding.root.setOnClickListener { onClickListener.invoke() }
       }
    }
 

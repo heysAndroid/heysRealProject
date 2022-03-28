@@ -33,7 +33,7 @@ class ContestListFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList)
+      contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList) { goToDetail() }
       binding.contestList.adapter = contestItemRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
@@ -46,6 +46,10 @@ class ContestListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_contestFragment_to_filterFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_filterFragment)
+   }
+
+   private fun goToDetail() {
+      findNavController().navigate(R.id.action_contestListFragment_to_contestDetailFragment)
    }
 }
