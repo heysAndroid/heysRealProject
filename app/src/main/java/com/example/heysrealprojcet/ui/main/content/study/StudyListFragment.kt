@@ -9,11 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.StudyFragmentBinding
+import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
-class StudyFragment : Fragment() {
-   private lateinit var binding: StudyFragmentBinding
+class StudyListFragment : Fragment() {
+   private lateinit var binding: StudyListFragmentBinding
 
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
@@ -21,7 +21,7 @@ class StudyFragment : Fragment() {
    private lateinit var startDateList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = StudyFragmentBinding.inflate(inflater, container, false)
+      binding = StudyListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 

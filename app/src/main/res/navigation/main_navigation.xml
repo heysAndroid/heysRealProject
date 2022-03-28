@@ -104,9 +104,9 @@
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyListFragment"
         android:label="study_fragment"
-        tools:layout="@layout/study_fragment">
+        tools:layout="@layout/study_list_fragment">
         <action
             android:id="@+id/action_studyFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
@@ -118,9 +118,9 @@
         tools:layout="@layout/filter_fragment"></fragment>
     <fragment
         android:id="@+id/contestFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestListFragment"
         android:label="ContestFragment"
-        tools:layout="@layout/contest_fragment">
+        tools:layout="@layout/contest_list_fragment">
         <action
             android:id="@+id/action_contestFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
