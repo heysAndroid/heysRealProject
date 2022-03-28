@@ -25,7 +25,7 @@
             android:id="@+id/processType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_study_timeout"
+            android:background="@drawable/bg_study_remain_time"
             android:fontFamily="@font/roboto_700"
             android:paddingTop="5dp"
             android:text="정원 마감까지 3명"

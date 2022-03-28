@@ -9,11 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ContestFragmentBinding
+import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
-class ContestFragment : Fragment() {
-   private lateinit var binding: ContestFragmentBinding
+class ContestListFragment : Fragment() {
+   private lateinit var binding: ContestListFragmentBinding
 
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
@@ -21,7 +21,7 @@ class ContestFragment : Fragment() {
    private lateinit var hostList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ContestFragmentBinding.inflate(inflater, container, false)
+      binding = ContestListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -33,7 +33,7 @@ class ContestFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList)
+      contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList) { goToDetail() }
       binding.contestList.adapter = contestItemRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
@@ -46,6 +46,10 @@ class ContestFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_contestFragment_to_filterFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_filterFragment)
+   }
+
+   private fun goToDetail() {
+      findNavController().navigate(R.id.action_contestListFragment_to_contestDetailFragment)
    }
 }

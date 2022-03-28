@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.main.content.study.StudyFragment">
+    tools:context=".ui.main.content.study.StudyListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/josefin_700"
             android:gravity="center"
-            android:text="공모전"
+            android:text="스터디"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -88,7 +88,7 @@
         android:background="@color/color_e5e5e5" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/contestList"
+        android:id="@+id/studyList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

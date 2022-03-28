@@ -21,7 +21,7 @@
             app:destination="@id/joinPhoneFragment" />
         <action
             android:id="@+id/action_mainFragment_to_contestFragment"
-            app:destination="@id/contestFragment" />
+            app:destination="@id/contestListFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPopupFragment"
@@ -104,9 +104,9 @@
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyListFragment"
         android:label="study_fragment"
-        tools:layout="@layout/study_fragment">
+        tools:layout="@layout/study_list_fragment">
         <action
             android:id="@+id/action_studyFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
@@ -117,12 +117,29 @@
         android:label="FilterFragment"
         tools:layout="@layout/filter_fragment"></fragment>
     <fragment
-        android:id="@+id/contestFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestFragment"
+        android:id="@+id/contestListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestListFragment"
         android:label="ContestFragment"
-        tools:layout="@layout/contest_fragment">
+        tools:layout="@layout/contest_list_fragment">
         <action
-            android:id="@+id/action_contestFragment_to_filterFragment"
+            android:id="@+id/action_contestListFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_contestListFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contestDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.detail.ContestDetailFragment"
+        android:label="ContestDetailFragment"
+        tools:layout="@layout/contest_detail_fragment">
+        <action
+            android:id="@+id/action_contestDetailFragment_to_heysListFragment"
+            app:destination="@id/heysListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heysListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysListFragment"
+        android:label="HeysListFragment"
+        tools:layout="@layout/heys_list_fragment" />
 </navigation>
