@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.filter
+package com.example.heysrealprojcet.ui.main.content.study.filter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.databinding.FilterFragmentBinding
+import com.example.heysrealprojcet.databinding.StudyFilterFragmentBinding
 
-class FilterFragment : Fragment() {
-   private lateinit var binding: FilterFragmentBinding
-   private val viewModel: FilterViewModel by viewModels()
+class StudyFilterFragment : Fragment() {
+   private lateinit var binding: StudyFilterFragmentBinding
+   private val viewModel: StudyFilterViewModel by viewModels()
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = FilterFragmentBinding.inflate(inflater, container, false)
+      binding = StudyFilterFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -24,9 +24,6 @@ class FilterFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
-      binding.btnApply.setOnClickListener {
-         findNavController().navigateUp()
-      }
+      binding.btnApply.setOnClickListener { findNavController().navigateUp() }
    }
 }

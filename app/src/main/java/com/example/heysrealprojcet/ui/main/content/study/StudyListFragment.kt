@@ -14,7 +14,6 @@ import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAd
 
 class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
-
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
@@ -46,6 +45,6 @@ class StudyListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_studyFragment_to_filterFragment)
+      findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
    }
 }

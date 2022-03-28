@@ -46,7 +46,7 @@ class ContestListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_contestListFragment_to_filterFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestFilterFragment)
    }
 
    private fun goToDetail() {

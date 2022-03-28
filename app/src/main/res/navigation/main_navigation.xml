@@ -108,22 +108,22 @@
         android:label="study_fragment"
         tools:layout="@layout/study_list_fragment">
         <action
-            android:id="@+id/action_studyFragment_to_filterFragment"
-            app:destination="@id/filterFragment" />
+            android:id="@+id/action_studyFragment_to_studyFilterFragment"
+            app:destination="@id/studyFilterFragment" />
     </fragment>
     <fragment
-        android:id="@+id/filterFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.filter.FilterFragment"
+        android:id="@+id/contestFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contest.filter.ContestFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/filter_fragment"></fragment>
+        tools:layout="@layout/contest_filter_fragment"></fragment>
     <fragment
         android:id="@+id/contestListFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestListFragment"
         android:label="ContestFragment"
         tools:layout="@layout/contest_list_fragment">
         <action
-            android:id="@+id/action_contestListFragment_to_filterFragment"
-            app:destination="@id/filterFragment" />
+            android:id="@+id/action_contestListFragment_to_contestFilterFragment"
+            app:destination="@id/contestFilterFragment" />
         <action
             android:id="@+id/action_contestListFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
@@ -142,4 +142,9 @@
         android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysListFragment"
         android:label="HeysListFragment"
         tools:layout="@layout/heys_list_fragment" />
+    <fragment
+        android:id="@+id/studyFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.filter.StudyFilterFragment"
+        android:label="StudyFilterFragment"
+        tools:layout="@layout/study_filter_fragment" />
 </navigation>
