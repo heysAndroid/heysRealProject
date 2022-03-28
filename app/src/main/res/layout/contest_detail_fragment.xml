@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -48,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_919191_60_radius_5"
                     android:minWidth="0dp"
+                    android:minHeight="0dp"
                     android:paddingHorizontal="15dp"
                     android:paddingVertical="9.5dp"
                     android:text="D-13"
@@ -58,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/bg_919191_radius_5"
+                    android:minHeight="0dp"
                     android:paddingHorizontal="15dp"
                     android:paddingVertical="9.5dp"
                     android:text="온·오프라인"
@@ -67,7 +68,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
 
@@ -77,6 +78,7 @@
                     android:src="@drawable/ic_eye" />
 
                 <TextView
+                    android:id="@+id/hits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -100,7 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,7 +138,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
                         android:layout_marginVertical="22dp"
                         android:text="3개의 헤이즈에서\n팀원을 모집해요"
                         android:textColor="@color/black"
@@ -171,10 +173,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/host"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 android:text="과학기술정보통신부, 연구개발특구진흥재단/인공지능팩토리"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
@@ -190,6 +194,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -199,6 +204,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/endDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -212,19 +218,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="21dp"
                 android:text="참여 대상"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/target"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="21dp"
-                android:text="누구나 참여 가능"
+                android:layout_marginBottom="16dp"
+                android:text="누구나 지원 가능"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -239,12 +246,13 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/benefit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:text="누구나 참여 가능"
+                android:text="1천만원 이상"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -311,7 +319,8 @@
                 android:background="@drawable/bg_ok_button_enabled"
                 android:text="홈페이지 지원"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
