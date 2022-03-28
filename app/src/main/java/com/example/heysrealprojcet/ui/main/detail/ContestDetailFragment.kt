@@ -26,6 +26,6 @@ class ContestDetailFragment : Fragment() {
    }
 
    private fun goToHeys() {
-      findNavController().navigate(R.id.action_contestDetailFragment_to_heysListFragment)
+      findNavController().navigate(R.id.action_contestDetailFragment_to_heysChannelListFragment)
    }
 }

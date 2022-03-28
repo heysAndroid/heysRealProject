@@ -32,7 +32,7 @@ class StudyListFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList)
+      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList) {}
       binding.studyList.adapter = studyItemRecyclerViewAdapter
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 

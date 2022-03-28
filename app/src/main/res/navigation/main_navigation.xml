@@ -134,17 +134,26 @@
         android:label="ContestDetailFragment"
         tools:layout="@layout/contest_detail_fragment">
         <action
-            android:id="@+id/action_contestDetailFragment_to_heysListFragment"
-            app:destination="@id/heysListFragment" />
+            android:id="@+id/action_contestDetailFragment_to_heysChannelListFragment"
+            app:destination="@id/heysChannelListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysListFragment"
+        android:id="@+id/heysChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysChannelListFragment"
         android:label="HeysListFragment"
-        tools:layout="@layout/heys_list_fragment" />
+        tools:layout="@layout/heys_channel_list_fragment">
+        <action
+            android:id="@+id/action_heysChannelListFragment_to_heysChannelDetailFragment"
+            app:destination="@id/heysChannelDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studyFilterFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.study.filter.StudyFilterFragment"
         android:label="StudyFilterFragment"
         tools:layout="@layout/study_filter_fragment" />
+    <fragment
+        android:id="@+id/heysChannelDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysChannelDetailFragment"
+        android:label="HeysChannelDetailFragment"
+        tools:layout="@layout/heys_channel_detail_fragment" />
 </navigation>

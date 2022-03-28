@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
 
-class StudyItemRecyclerViewAdapter(private val startDate: MutableList<String>) : RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
+class StudyItemRecyclerViewAdapter(private val startDate: MutableList<String>, private val onClickListener: () -> Unit) : RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: StudyItemViewBinding
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(startDate: String) {
          binding.startDate.text = startDate
+         binding.root.setOnClickListener { onClickListener.invoke() }
       }
    }
 

@@ -60,7 +60,9 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_item2_view.xml" value="0.4834123222748815" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_item_view.xml" value="0.4" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/bg_919191_60_radius_5.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/bg_919191_90_radius_5.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/bg_circle_ff6e20.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/bg_f3f3f3_radius_10.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/bg_ff6e20_radius_30.xml" value="0.101" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/intent_button.xml" value="0.13645833333333332" />
@@ -68,6 +70,8 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/orange_radius.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_919191_radius_5.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_activity.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_circle_e5e5e5.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f3f3f3_radius_30.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ff6e20_radius_5.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button_normal.xml" value="0.1" />
@@ -90,6 +94,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_button.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_all.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_back.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_circle_ff6320.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_click_circle.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_close.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_eye.xml" value="0.19114583333333332" />
@@ -100,6 +105,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_password_toggle.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_person.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_rectangle.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_rectangle_e5e5e5.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_search.xml" value="0.19114583333333332" />
@@ -113,11 +119,15 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_detail_item_view.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_view.xml" value="0.175" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_filter_fragment.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_fragment.xml" value="0.1703125" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_item_view.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_list_fragment.xml" value="0.175" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_fragment.xml" value="0.159375" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_layout.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_detail_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_list_fragment.xml" value="0.175" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_detail_fragment.xml" value="0.22" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list.xml" value="0.1703125" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list_fragment.xml" value="0.175" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_activity.xml" value="0.175" />
