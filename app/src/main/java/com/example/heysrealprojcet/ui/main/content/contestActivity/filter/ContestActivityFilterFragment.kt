@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.databinding.ContestActivityFilterFragmentBinding
+import com.example.heysrealprojcet.ui.main.content.contest.filter.ContestActivityFilterViewModel
 
 class ContestActivityFilterFragment : Fragment() {
    private lateinit var binding: ContestActivityFilterFragmentBinding
