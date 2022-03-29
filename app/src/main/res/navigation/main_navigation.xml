@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_contestFragment"
             app:destination="@id/contestListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_activityListFragment"
+            app:destination="@id/activityListFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinPopupFragment"
@@ -156,4 +159,16 @@
         android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysChannelDetailFragment"
         android:label="HeysChannelDetailFragment"
         tools:layout="@layout/heys_channel_detail_fragment" />
+    <fragment
+        android:id="@+id/activityListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.activity.ActivityListFragment"
+        android:label="ActivityListFragment"
+        tools:layout="@layout/activity_list_fragment">
+        <action
+            android:id="@+id/action_activityListFragment_to_contestFilterFragment"
+            app:destination="@id/contestFilterFragment" />
+        <action
+            android:id="@+id/action_activityListFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
+    </fragment>
 </navigation>
