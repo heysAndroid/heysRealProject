@@ -5,23 +5,25 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class StudyFilterViewModel : ViewModel() {
+   private var choiceInterest = mutableListOf<View>()
+   private var choiceActivity: View?  = null
    private var choiceRegion: View? = null
+   private var choicePurpose: View? = null
 
    private val interestMax = 3
    private val activityMax = 1
    private val regionMax = 1
-   private val timeMax = 1
+   private val purposeMax = 1
 
    private var interestTotal = MutableStateFlow(0)
    private var activityTotal = MutableStateFlow(0)
    private var regionTotal = MutableStateFlow(0)
-   private var timeTotal = MutableStateFlow(0)
-
+   private var purposeTotal = MutableStateFlow(0)
 
    private val interestArray = mutableListOf<String>()
    private val activityArray = mutableListOf<String>()
    private val regionArray = mutableListOf<String>()
-   private val timeArray = mutableListOf<String>()
+   private val purposeArray = mutableListOf<String>()
 
 
    fun onClickInterest(v: View) {
@@ -29,16 +31,19 @@ class StudyFilterViewModel : ViewModel() {
 
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
+            choiceInterest.remove(v)
             v.isSelected = false
             interestTotal.value -= 1
             interestArray.remove(item)
          } else {
+            choiceInterest.add(v)
             v.isSelected = true
             interestTotal.value += 1
             interestArray.add(item)
          }
       } else {
          if (v.isSelected) {
+            choiceInterest.remove(v)
             v.isSelected = false
             interestTotal.value -= 1
             interestArray.remove(item)
@@ -55,6 +60,7 @@ class StudyFilterViewModel : ViewModel() {
             activityTotal.value -= 1
             activityArray.remove(item)
          } else {
+            choiceActivity = v
             v.isSelected = true
             activityTotal.value += 1
             activityArray.add(item)
@@ -80,7 +86,7 @@ class StudyFilterViewModel : ViewModel() {
       val item = v.tag.toString()
 
       try {
-         if (activityArray[0].slice(0..5) == "contact") {
+         if (activityArray[0].slice(0..6) == "contact") {
             if (regionTotal.value < regionMax) {
                if (v.isSelected) {
                   choiceRegion = null
@@ -110,22 +116,44 @@ class StudyFilterViewModel : ViewModel() {
    fun onClickPurpose(v: View) {
       val item = v.tag.toString()
 
-      if (timeTotal.value < timeMax) {
+      if (purposeTotal.value < purposeMax) {
          if (v.isSelected) {
             v.isSelected = false
-            timeTotal.value -= 1
-            timeArray.remove(item)
+            purposeTotal.value -= 1
+            purposeArray.remove(item)
          } else {
+            choicePurpose = v
             v.isSelected = true
-            timeTotal.value += 1
-            timeArray.add(item)
+            purposeTotal.value += 1
+            purposeArray.add(item)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
-            timeTotal.value -= 1
-            timeArray.remove(item)
+            purposeTotal.value -= 1
+            purposeArray.remove(item)
          }
       }
+   }
+
+   fun onClickInit() {
+      for (i in choiceInterest.indices) {
+         choiceInterest[i].isSelected = false
+      }
+      interestTotal.value = 0
+      choiceInterest.clear()
+
+      choiceActivity?.isSelected = false
+      activityTotal.value = 0
+      activityArray.clear()
+
+      choiceRegion?.isSelected = false
+      regionTotal.value = 0
+      choiceRegion = null
+      regionArray.clear()
+
+      choicePurpose?.isSelected = false
+      purposeTotal.value = 0
+      purposeArray.clear()
    }
 }

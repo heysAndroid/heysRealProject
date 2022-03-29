@@ -527,6 +527,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="26dp"
                 android:layout_marginRight="10dp"
+                android:onClick="@{(v) -> vm.onClickInit()}"
                 android:background="@drawable/ic_refresh" />
 
             <TextView
