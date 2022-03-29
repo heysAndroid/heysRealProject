@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.detail.heys
+package com.example.heysrealprojcet.ui.main.content.channel
 
 import android.os.Bundle
 import android.view.LayoutInflater

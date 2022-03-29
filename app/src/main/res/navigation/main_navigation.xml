@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/contestActivityDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.ContestActivityDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.detail.ContestActivityDetailFragment"
         android:label="ContestActivityDetailFragment"
         tools:layout="@layout/contest_activity_detail_fragment">
         <action
@@ -142,7 +142,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.channel.HeysChannelListFragment"
         android:label="HeysListFragment"
         tools:layout="@layout/heys_channel_list_fragment">
         <action
@@ -156,9 +156,13 @@
         tools:layout="@layout/study_filter_fragment" />
     <fragment
         android:id="@+id/heysChannelDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.main.detail.heys.HeysChannelDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.channel.HeysChannelDetailFragment"
         android:label="HeysChannelDetailFragment"
-        tools:layout="@layout/heys_channel_detail_fragment" />
+        tools:layout="@layout/heys_channel_detail_fragment" >
+        <action
+            android:id="@+id/action_heysChannelDetailFragment_to_memberHeysListFragment"
+            app:destination="@id/memberHeysListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/activityListFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.activity.ActivityListFragment"
@@ -171,4 +175,9 @@
             android:id="@+id/action_activityListFragment_to_contestActivityDetailFragment"
             app:destination="@id/contestActivityDetailFragment" />
     </fragment>
+    <fragment
+        tools:layout="@layout/member_heys_list_fragment"
+        android:id="@+id/memberHeysListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.channel.MemberHeysListFragment"
+        android:label="MemberHeysListFragment" />
 </navigation>
