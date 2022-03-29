@@ -54,7 +54,7 @@ class MainFragment : Fragment() {
       } else {
          with(binding) {
             contestAllText.setOnClickListener { goToContest() }
-            activityAllText.setOnClickListener { goToJoin() }
+            activityAllText.setOnClickListener { goToActivity() }
             studyAllText.setOnClickListener { goToJoin() }
             studyContainer.setOnClickListener { goToStudy() }
          }
@@ -94,6 +94,10 @@ class MainFragment : Fragment() {
 
    private fun goToContest() {
       findNavController().navigate(R.id.action_mainFragment_to_contestFragment)
+   }
+
+   private fun goToActivity() {
+      findNavController().navigate(R.id.action_mainFragment_to_activityListFragment)
    }
 
    private fun isLogin(): Boolean = UserPreference.accessToken.isNotEmpty()
