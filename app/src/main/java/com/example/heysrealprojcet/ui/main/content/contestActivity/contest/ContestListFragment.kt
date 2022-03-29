@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.activity
+package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ActivityListFragmentBinding
+import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.main.content.contest.ContestItemRecyclerViewAdapter
 
-class ActivityListFragment : Fragment() {
-   private lateinit var binding: ActivityListFragmentBinding
+class ContestListFragment : Fragment() {
+   private lateinit var binding: ContestListFragmentBinding
 
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
@@ -22,7 +21,7 @@ class ActivityListFragment : Fragment() {
    private lateinit var hostList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ActivityListFragmentBinding.inflate(inflater, container, false)
+      binding = ContestListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -35,8 +34,8 @@ class ActivityListFragment : Fragment() {
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
       contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList) { goToDetail() }
-      binding.activityList.adapter = contestItemRecyclerViewAdapter
-      binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.contestList.adapter = contestItemRecyclerViewAdapter
+      binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.filterButton.setOnClickListener { goToFilter() }
    }
@@ -47,10 +46,10 @@ class ActivityListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_activityListFragment_to_contestFilterFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestActivityFilterFragment)
    }
 
    private fun goToDetail() {
-      findNavController().navigate(R.id.action_activityListFragment_to_contestDetailFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestDetailFragment)
    }
 }

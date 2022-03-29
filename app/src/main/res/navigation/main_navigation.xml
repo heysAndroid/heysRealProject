@@ -115,18 +115,18 @@
             app:destination="@id/studyFilterFragment" />
     </fragment>
     <fragment
-        android:id="@+id/contestFilterFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contest.filter.ContestFilterFragment"
+        android:id="@+id/contestActivityFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.filter.ContestActivityFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/contest_filter_fragment"></fragment>
+        tools:layout="@layout/contest_activity_filter_fragment"></fragment>
     <fragment
         android:id="@+id/contestListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contest.ContestListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.ContestListFragment"
         android:label="ContestFragment"
         tools:layout="@layout/contest_list_fragment">
         <action
-            android:id="@+id/action_contestListFragment_to_contestFilterFragment"
-            app:destination="@id/contestFilterFragment" />
+            android:id="@+id/action_contestListFragment_to_contestActivityFilterFragment"
+            app:destination="@id/contestActivityFilterFragment" />
         <action
             android:id="@+id/action_contestListFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
@@ -161,12 +161,12 @@
         tools:layout="@layout/heys_channel_detail_fragment" />
     <fragment
         android:id="@+id/activityListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.activity.ActivityListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.activity.ActivityListFragment"
         android:label="ActivityListFragment"
         tools:layout="@layout/activity_list_fragment">
         <action
-            android:id="@+id/action_activityListFragment_to_contestFilterFragment"
-            app:destination="@id/contestFilterFragment" />
+            android:id="@+id/action_activityListFragment_to_contestActivityFilterFragment"
+            app:destination="@id/contestActivityFilterFragment" />
         <action
             android:id="@+id/action_activityListFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />

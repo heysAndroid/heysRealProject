@@ -1,10 +1,10 @@
-package com.example.heysrealprojcet.ui.main.content.contest.filter
+package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
 
 import android.view.View
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class ContestFilterViewModel : ViewModel() {
+class ContestActivityFilterViewModel : ViewModel() {
    private val interestMax = 3
    private val activityMax = 1
    private val timeMax = 1
