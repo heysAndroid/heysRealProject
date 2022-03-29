@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contest.filter
+package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
 
 import android.view.View
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 class ContestActivityFilterViewModel : ViewModel() {
    private var choiceInterest = mutableListOf<View>()
-   private var choiceActivity: View?  = null
+   private var choiceActivity: View? = null
    private var choiceTime: View? = null
 
    private val interestMax = 3
