@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.detail
+package com.example.heysrealprojcet.ui.main.content.contestActivity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ContestDetailFragmentBinding
+import com.example.heysrealprojcet.databinding.ContestActivityDetailFragmentBinding
 
-class ContestDetailFragment : Fragment() {
-   private lateinit var binding: ContestDetailFragmentBinding
+class ContestActivityDetailFragment : Fragment() {
+   private lateinit var binding: ContestActivityDetailFragmentBinding
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = ContestDetailFragmentBinding.inflate(inflater, container, false)
+      binding = ContestActivityDetailFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -26,6 +26,6 @@ class ContestDetailFragment : Fragment() {
    }
 
    private fun goToHeys() {
-      findNavController().navigate(R.id.action_contestDetailFragment_to_heysChannelListFragment)
+      findNavController().navigate(R.id.action_contestActivityDetailFragment_to_heysChannelListFragment)
    }
 }

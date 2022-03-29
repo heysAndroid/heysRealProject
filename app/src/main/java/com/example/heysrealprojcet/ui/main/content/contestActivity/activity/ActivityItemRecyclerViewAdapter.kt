@@ -1,12 +1,12 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
+package com.example.heysrealprojcet.ui.main.content.contestActivity.activity
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.ContestActivityItemViewBinding
 
-class ContestItemRecyclerViewAdapter(private val host: MutableList<String>, private val onClickListener: () -> Unit) :
-   RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
+class ActivityItemRecyclerViewAdapter(private val host: MutableList<String>, private val onClickListener: () -> Unit) :
+   RecyclerView.Adapter<ActivityItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestActivityItemViewBinding
 
    inner class ViewHolder(private val binding: ContestActivityItemViewBinding) : RecyclerView.ViewHolder(binding.root) {

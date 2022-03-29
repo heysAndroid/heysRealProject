@@ -128,16 +128,16 @@
             android:id="@+id/action_contestListFragment_to_contestActivityFilterFragment"
             app:destination="@id/contestActivityFilterFragment" />
         <action
-            android:id="@+id/action_contestListFragment_to_contestDetailFragment"
-            app:destination="@id/contestDetailFragment" />
+            android:id="@+id/action_contestListFragment_to_contestActivityDetailFragment"
+            app:destination="@id/contestActivityDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/contestDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.main.detail.ContestDetailFragment"
-        android:label="ContestDetailFragment"
-        tools:layout="@layout/contest_detail_fragment">
+        android:id="@+id/contestActivityDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.ContestActivityDetailFragment"
+        android:label="ContestActivityDetailFragment"
+        tools:layout="@layout/contest_activity_detail_fragment">
         <action
-            android:id="@+id/action_contestDetailFragment_to_heysChannelListFragment"
+            android:id="@+id/action_contestActivityDetailFragment_to_heysChannelListFragment"
             app:destination="@id/heysChannelListFragment" />
     </fragment>
     <fragment
@@ -168,7 +168,7 @@
             android:id="@+id/action_activityListFragment_to_contestActivityFilterFragment"
             app:destination="@id/contestActivityFilterFragment" />
         <action
-            android:id="@+id/action_activityListFragment_to_contestDetailFragment"
-            app:destination="@id/contestDetailFragment" />
+            android:id="@+id/action_activityListFragment_to_contestActivityDetailFragment"
+            app:destination="@id/contestActivityDetailFragment" />
     </fragment>
 </navigation>

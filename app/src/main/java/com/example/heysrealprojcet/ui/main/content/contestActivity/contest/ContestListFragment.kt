@@ -50,6 +50,6 @@ class ContestListFragment : Fragment() {
    }
 
    private fun goToDetail() {
-      findNavController().navigate(R.id.action_contestListFragment_to_contestDetailFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestActivityDetailFragment)
    }
 }
