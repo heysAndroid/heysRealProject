@@ -79,6 +79,20 @@ class StudyFilterViewModel : ViewModel() {
                choiceRegion = null
             }
          }
+         else {
+            choiceActivity?.isSelected = false
+            activityArray.remove(activityArray[0])
+            v.isSelected = true
+            choiceActivity = v
+            activityArray.add(item)
+
+            if (choiceRegion != null) {
+               choiceRegion!!.isSelected = false
+               regionTotal.value -= 1
+               regionArray.remove(regionArray[0])
+               choiceRegion = null
+            }
+         }
       }
    }
 
@@ -106,6 +120,13 @@ class StudyFilterViewModel : ViewModel() {
                   regionTotal.value -= 1
                   regionArray.remove(item)
                }
+               else {
+                  choiceRegion?.isSelected = false
+                  regionArray.remove(regionArray[0])
+                  v.isSelected = true
+                  choiceRegion = v
+                  regionArray.add(item)
+               }
             }
          }
       } catch (e: Exception) {
@@ -132,6 +153,13 @@ class StudyFilterViewModel : ViewModel() {
             v.isSelected = false
             purposeTotal.value -= 1
             purposeArray.remove(item)
+         }
+         else {
+            choicePurpose?.isSelected = false
+            purposeArray.remove(purposeArray[0])
+            v.isSelected = true
+            choicePurpose = v
+            purposeArray.add(item)
          }
       }
    }

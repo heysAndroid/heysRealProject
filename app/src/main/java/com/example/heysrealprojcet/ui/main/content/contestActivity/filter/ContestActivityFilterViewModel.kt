@@ -66,6 +66,13 @@ class ContestActivityFilterViewModel : ViewModel() {
             activityTotal.value -= 1
             activityArray.remove(item)
          }
+         else {
+            choiceActivity?.isSelected = false
+            activityArray.remove(activityArray[0])
+            v.isSelected = true
+            choiceActivity = v
+            activityArray.add(item)
+         }
       }
    }
 
@@ -88,6 +95,13 @@ class ContestActivityFilterViewModel : ViewModel() {
             v.isSelected = false
             timeTotal.value -= 1
             timeArray.remove(item)
+         }
+         else {
+            choiceTime?.isSelected = false
+            timeArray.remove(timeArray[0])
+            v.isSelected = true
+            choiceTime = v
+            timeArray.add(item)
          }
       }
    }
