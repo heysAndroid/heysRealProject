@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.ui.join.interest
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.example.heysrealprojcet.model.UserCategory
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
+import org.mindrot.jbcrypt.BCrypt
 
 @AndroidEntryPoint
 class JoinInterestFragment : Fragment() {
@@ -45,11 +47,12 @@ class JoinInterestFragment : Fragment() {
          phone = UserPreference.phoneNumber,
          age = UserPreference.age,
          gender = UserPreference.gender,
-         password = UserPreference.password,
+         // 암호화한 비밀번호
+         encryptedPassword = encryptPassword(UserPreference.password),
          userCategories = listOf(UserCategory(preference = 1, categoryId = 2)))
 
       viewModel.signup(user)
-      viewModel.response.observe(viewLifecycleOwner, { response ->
+      viewModel.response.observe(viewLifecycleOwner) { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          // api 응답 별로 처리
@@ -69,6 +72,15 @@ class JoinInterestFragment : Fragment() {
                alert.setTitle("로딩 중").setMessage("회원가입이 지연되고 있습니다.").create().show()
             }
          }
-      })
+      }
+   }
+
+   fun encryptPassword(password: String): String {
+      val passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(10))
+      Log.d("암호화 password: ", passwordHashed)
+
+      val isValidPassword = BCrypt.checkpw(password, passwordHashed)
+      Log.w("암호화 검증: ", isValidPassword.toString())
+      return passwordHashed
    }
 }

@@ -1,15 +1,15 @@
 package com.example.heysrealprojcet.model
 
-import kotlinx.serialization.SerialName
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class User(
-  @SerialName("name") val name: String,
-  @SerialName("phone") val phone: String,
-  @SerialName("age") val age: String,
-  @SerialName("gender") val gender: String,
-  @SerialName("role") val role: String = "user",
-  @SerialName("password") val password: String,
-  @SerialName("userCategories") val userCategories: List<UserCategory>
+   @SerializedName("name") val name: String,
+   @SerializedName("phone") val phone: String,
+   @SerializedName("age") val age: String,
+   @SerializedName("gender") val gender: String,
+   @SerializedName("role") val role: String = "user",
+   @SerializedName("password") val encryptedPassword: String,
+   @SerializedName("userCategories") val userCategories: List<UserCategory>
 ) : java.io.Serializable
