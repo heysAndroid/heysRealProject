@@ -2,9 +2,12 @@ package com.example.heysrealprojcet.api
 
 import com.example.heysrealprojcet.model.network.response.LoginResponse
 import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 /*
 * 회원가입 api
@@ -15,4 +18,7 @@ interface SignUpApi {
    // => blocking 없이 시간이 오래 걸리는 작업도 수행 가능함
    @POST("auth/signup")
    suspend fun signup(@Body user: User): Response<LoginResponse>
+
+   @GET("users/{phone_number}/check")
+   suspend fun checkPhoneNumber(@Path("phone_number") phoneNumber: String): Response<CheckPhoneNumberResponse>
 }

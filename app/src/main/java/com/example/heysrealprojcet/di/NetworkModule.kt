@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-   const val base_url = "http://35.208.91.78/api/"
+   const val base_url = "http://ec2-54-185-82-6.us-west-2.compute.amazonaws.com:4000/"
 
    @Provides
    @Singleton
