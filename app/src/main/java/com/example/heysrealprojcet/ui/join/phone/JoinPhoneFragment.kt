@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,16 +46,14 @@ class JoinPhoneFragment : Fragment() {
    private fun requestCheckPhoneNumber() {
       val phoneNumber = ("82").plus(UserPreference.phoneNumber.replace('-', ' ').drop(1))
       viewModel.checkPhoneNumber(phoneNumber)
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      viewModel.response.observe(viewLifecycleOwner) {
          val alert = AlertDialog.Builder(requireContext())
 
-         when (response) {
-            is NetworkResult.Success -> { 
-               alert.setTitle("알림")
-                  .setMessage("등록되지 않은 전화번호입니다.")
-                  .setPositiveButton("확인") { _, _ -> goToPhoneVerification() }.create().show()
+         when (it) {
+            is NetworkResult.Success -> {
+               UserPreference.isExistingUser = it.data?.isUserExisted == true
+               goToPhoneVerification()
             }
-
             is NetworkResult.Error -> {
                alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
             }
