@@ -34,18 +34,17 @@ class JoinVerificationViewModel : ViewModel() {
    private val _requestResendPhoneAuth = MutableLiveData<Boolean>()
    val requestResendPhoneAuth: LiveData<Boolean> = _requestResendPhoneAuth
 
-   private val _authComplete = MutableLiveData<Boolean>()
-   val authComplete: LiveData<Boolean> = _authComplete
-
    init {
+      requestPhoneNumberAuth()
+
       viewModelScope.launch {
          verificationNumber.collect {
-            isCorrectVerificationNumber()
+            checkDigit()
          }
       }
    }
 
-   private fun isCorrectVerificationNumber() {
+   private fun checkDigit() {
       _isEnabled.value = verificationNumber.value?.length == 6
    }
 
@@ -73,15 +72,11 @@ class JoinVerificationViewModel : ViewModel() {
       }
    }
 
-   fun requestPhoneNumberAuth() {
+   private fun requestPhoneNumberAuth() {
       if (!isResendPhoneAuth) {
          _requestPhoneAuth.value = !UserPreference.phoneNumber.isNullOrBlank()
       } else {
          _requestResendPhoneAuth.value = !UserPreference.phoneNumber.isNullOrBlank()
       }
-   }
-
-   fun authComplete() {
-      _authComplete.value = true
    }
 }

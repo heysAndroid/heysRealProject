@@ -1,5 +1,6 @@
 package com.example.heysrealprojcet.ui.join.phone
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,13 +36,14 @@ class JoinVerificationFragment : Fragment() {
             verifyPhoneNumberWithCode(credential)
          }
 
+         @SuppressLint("LongLogTag")
          override fun onVerificationFailed(e: FirebaseException) {
-            Log.w("aaaaaaa", "onVerificationFailed", e)
-            Toast.makeText(requireContext(), "aaaaaa 인증 실패", Toast.LENGTH_LONG).show()
+            Log.w("=== onVerificationFailed ===", e)
+            Toast.makeText(requireContext(), "휴대폰 인증에 실패했습니다.", Toast.LENGTH_LONG).show()
          }
 
          override fun onCodeSent(verficationId: String, token: PhoneAuthProvider.ForceResendingToken) {
-            Log.d("bbbbbbb", "onCodeSent: $verficationId")
+            Log.d("=== onCodeSent ===", verficationId)
             storedVerificationId = verficationId
             resendToken = token
          }
@@ -59,6 +61,7 @@ class JoinVerificationFragment : Fragment() {
       return binding.root
    }
 
+   @SuppressLint("LongLogTag")
    private fun initViewModelCallback() {
       with(viewModel) {
          requestPhoneAuth.observe(viewLifecycleOwner) {
@@ -66,7 +69,7 @@ class JoinVerificationFragment : Fragment() {
                viewModel.phoneAuthNumber = ""
                val phoneNumber = "+82" + UserPreference.phoneNumber.substring(1)
                startPhoneNumberVerification(phoneNumber)
-               Log.w("ccccccccc phoneNum: ", phoneNumber)
+               Log.w("=== phoneNum ===", phoneNumber)
             } else {
                Toast.makeText(requireContext(), "전화번호를 입력해주세요", Toast.LENGTH_LONG).show()
             }
@@ -74,11 +77,13 @@ class JoinVerificationFragment : Fragment() {
 
          // resend 부분 추가해야함!
 
-         authComplete.observe(viewLifecycleOwner) {
-            Log.w("ddddddd", storedVerificationId)
-            Log.w("eeeeeeeee", viewModel.verificationNumber.value)
-            val phoneCredential = PhoneAuthProvider.getCredential(storedVerificationId, viewModel.verificationNumber.value)
-            verifyPhoneNumberWithCode(phoneCredential)
+         isEnabled.observe(viewLifecycleOwner) {
+            if (it) {
+               Log.w("=== StoredVerification ID ===", storedVerificationId)
+               Log.w("=== Verification Number ===", viewModel.verificationNumber.value)
+               val phoneCredential = PhoneAuthProvider.getCredential(storedVerificationId, viewModel.verificationNumber.value)
+               verifyPhoneNumberWithCode(phoneCredential)
+            }
          }
       }
    }
@@ -86,21 +91,22 @@ class JoinVerificationFragment : Fragment() {
    private fun startPhoneNumberVerification(phoneNumber: String) {
       val options = PhoneAuthOptions.newBuilder(firebaseAuth)
          .setPhoneNumber(phoneNumber)
-         .setTimeout(90L, TimeUnit.SECONDS)
+         .setTimeout(120L, TimeUnit.SECONDS)
          .setActivity(requireActivity())
          .setCallbacks(callbacks)
          .build()
       PhoneAuthProvider.verifyPhoneNumber(options)
    }
 
+   @SuppressLint("LongLogTag")
    private fun verifyPhoneNumberWithCode(phoneAuthCredential: PhoneAuthCredential) {
       Firebase.auth.signInWithCredential(phoneAuthCredential)
          .addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
-               Log.d("HERE", "signInWithCredential:success")
-               goToJoinPassword()
+               Log.d("=== signInWithCredential ===", "success")
+               binding.okButton.setOnClickListener { goToJoinPassword() }
             } else {
-               Toast.makeText(requireContext(), "!!!!인증 실패!!!!", Toast.LENGTH_LONG).show()
+               Toast.makeText(requireContext(), "인증 번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
             }
          }
    }
