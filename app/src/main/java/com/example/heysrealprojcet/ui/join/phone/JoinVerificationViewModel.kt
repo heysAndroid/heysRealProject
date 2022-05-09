@@ -17,7 +17,7 @@ class JoinVerificationViewModel : ViewModel() {
    private var _timeTextMinute: Int = 0
    private var _timeTextSecond: Int = 0
    private val _timeText = MutableLiveData<String>()
-   private lateinit var a: Job
+   private lateinit var job: Job
 
    val timeText: LiveData<String>
       get() = _timeText
@@ -36,7 +36,7 @@ class JoinVerificationViewModel : ViewModel() {
 
    init {
       requestPhoneNumberAuth()
-
+      timerStart()
       viewModelScope.launch {
          verificationNumber.collect {
             checkDigit()
@@ -50,12 +50,12 @@ class JoinVerificationViewModel : ViewModel() {
 
    fun timerStart() {
       // 초기화 확인 -> 종료
-      if (::a.isInitialized) a.cancel()
+      if (::job.isInitialized) job.cancel()
 
-      _timeTextMinute = 3
+      _timeTextMinute = 2
       _timeTextSecond = 0
 
-      a = viewModelScope.launch {
+      job = viewModelScope.launch {
          while (_timeTextMinute >= 0 && _timeTextSecond >= 0) {
             if (_timeTextMinute > 0 && _timeTextSecond == 0) {
                _timeTextMinute -= 1
@@ -78,5 +78,9 @@ class JoinVerificationViewModel : ViewModel() {
       } else {
          _requestResendPhoneAuth.value = !UserPreference.phoneNumber.isNullOrBlank()
       }
+   }
+
+   fun setResendEnabled() {
+      _requestResendPhoneAuth.value = true
    }
 }

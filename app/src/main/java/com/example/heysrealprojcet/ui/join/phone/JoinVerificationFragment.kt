@@ -55,7 +55,6 @@ class JoinVerificationFragment : Fragment() {
    ): View? {
       binding = JoinPhoneVerificationFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
-
       firebaseAuth = Firebase.auth
       initViewModelCallback()
       return binding.root
@@ -75,8 +74,13 @@ class JoinVerificationFragment : Fragment() {
             }
          }
 
-         // resend 부분 추가해야함!
-
+         requestResendPhoneAuth.observe(viewLifecycleOwner) {
+            if (it) {
+               viewModel.phoneAuthNumber = ""
+               val phoneNumber = "+82" + UserPreference.phoneNumber.substring(1)
+               resendVerificationCode(phoneNumber, resendToken)
+            }
+         }
          isEnabled.observe(viewLifecycleOwner) {
             if (it) {
                Log.w("=== StoredVerification ID ===", storedVerificationId)
@@ -98,6 +102,19 @@ class JoinVerificationFragment : Fragment() {
       PhoneAuthProvider.verifyPhoneNumber(options)
    }
 
+   private fun resendVerificationCode(phoneNumber: String, token: PhoneAuthProvider.ForceResendingToken?) {
+      val optionsBuilder = PhoneAuthOptions.newBuilder(firebaseAuth)
+         .setPhoneNumber(phoneNumber)
+         .setTimeout(120L, TimeUnit.SECONDS)
+         .setActivity(requireActivity())
+         .setCallbacks(callbacks)
+
+      if (token != null) {
+         optionsBuilder.setForceResendingToken(token)
+      }
+      PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
+   }
+
    @SuppressLint("LongLogTag")
    private fun verifyPhoneNumberWithCode(phoneAuthCredential: PhoneAuthCredential) {
       Firebase.auth.signInWithCredential(phoneAuthCredential)
@@ -115,7 +132,6 @@ class JoinVerificationFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       viewModel.phoneNumber.value = arguments?.getString("phoneNumber")
-
       if (viewModel.phoneNumber.value!!.isNotEmpty()) {
          viewModel.timerStart()
       }
