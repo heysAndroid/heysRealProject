@@ -1,0 +1,34 @@
+package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.databinding.CategoryItemInterestViewBinding
+
+class activityRecyclerViewAdapter(
+   private val type: MutableList<String>,
+   private val onclick: (item: String) -> Unit) :
+   RecyclerView.Adapter<activityRecyclerViewAdapter.ViewHolder>() {
+      private lateinit var binding: CategoryItemInterestViewBinding
+
+      inner class ViewHolder(private val binding: CategoryItemInterestViewBinding):
+         RecyclerView.ViewHolder(binding.root) {
+         fun bind(item: String) {
+            binding.typeText.text = item
+            binding.root.setOnClickListener { onclick.invoke(item) }
+         }
+      }
+
+   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+      binding = CategoryItemInterestViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      return ViewHolder(binding)
+   }
+
+   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+      holder.bind(type[position])
+   }
+
+   override fun getItemCount(): Int {
+      return type.size
+   }
+}
