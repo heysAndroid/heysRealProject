@@ -82,5 +82,6 @@ class JoinVerificationViewModel : ViewModel() {
 
    fun setResendEnabled() {
       _requestResendPhoneAuth.value = true
+      timerStart()
    }
 }
