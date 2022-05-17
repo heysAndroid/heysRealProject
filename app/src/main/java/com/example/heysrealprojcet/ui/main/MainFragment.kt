@@ -14,12 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
-   private lateinit var activityRecyclerViewAdapter: CategoryRecyclerViewAdapter
+   private lateinit var activityRecyclerViewAdapter: activityRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,7 +42,7 @@ class MainFragment : Fragment() {
 
       makeList()
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
-      activityRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
+      activityRecyclerViewAdapter = activityRecyclerViewAdapter(type = typeList) { goToJoin() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)

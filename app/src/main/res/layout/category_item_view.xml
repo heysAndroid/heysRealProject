@@ -21,29 +21,27 @@
                 android:id="@+id/typeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_262626"
                 android:text="관심\n분야별"
                 android:textSize="36sp" />
 
             <TextView
+                android:id="@+id/function_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9.7dp"
-                android:text="#개발에 관심가질\n공모전을 모아뒀어요!"/>
+                android:text="관심분야 #개발과 \n 관련있는 공모전이에요!"
+                android:textSize="12sp" />
+
 
         </LinearLayout>
 
         <ImageView
-            android:layout_width="151dp"
-            android:layout_height="79dp"
-            android:layout_marginBottom="32dp"
-            android:layout_gravity="bottom"
-            android:src="@drawable/main_home_character_line"/>
-
-        <ImageView
-            android:layout_width="134dp"
-            android:layout_height="201dp"
+            android:layout_width="88.5dp"
+            android:layout_height="109.15dp"
             android:layout_gravity="right|bottom"
-            android:src="@drawable/main_home_character"/>
+            android:layout_margin="24dp"
+            android:src="@drawable/character_passion"/>
     </FrameLayout>
 
 </LinearLayout>
