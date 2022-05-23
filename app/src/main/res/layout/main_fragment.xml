@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -31,14 +32,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="32dp">
+                        android:layout_marginLeft="32dp"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="17dp"
-                            android:src="@drawable/main_logo"/>
+                            android:src="@drawable/main_logo" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -49,9 +50,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="나에게 꼭 맞는"
                                 android:textColor="@color/white"
-                                android:textSize="16sp"
-                                android:text="나에게 꼭 맞는"/>
+                                android:textSize="16sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -62,10 +63,10 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:text="맞춤형 공모전"
                                     android:textColor="@color/white"
-                                    android:textStyle="bold"
                                     android:textSize="24sp"
-                                    android:text="맞춤형 공모전"/>
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/contestAllText"
@@ -85,16 +86,16 @@
                     android:id="@+id/contestList"
                     android:layout_width="wrap_content"
                     android:layout_height="300dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_alignParentBottom="true" />
+                    android:layout_marginTop="12dp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -111,7 +112,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id  ="@+id/activityText"
+                        android:id="@+id/activityText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -196,29 +197,29 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:background="@drawable/bg_white_radius_16"
-                        android:paddingBottom="10dp"
-                        android:elevation="10dp">
+                        android:elevation="10dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="10dp"
                             android:layout_marginLeft="22dp"
-                            android:src="@drawable/character_personal"/>
+                            android:src="@drawable/character_personal" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginLeft="12dp"
-                            android:layout_gravity="center_vertical">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="나를 위한 맞춤형"/>
+                                android:text="나를 위한 맞춤형" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -228,15 +229,15 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="24sp"
-                                    android:text="스터디 "/>
+                                    android:text="스터디 "
+                                    android:textSize="24sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="24sp"
+                                    android:text="둘러보기"
                                     android:textColor="@color/color_f7bc26"
-                                    android:text="둘러보기"/>
+                                    android:textSize="24sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -258,19 +259,19 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginLeft="22dp"
-                                android:src="@drawable/character_personal"/>
+                                android:src="@drawable/character_personal" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="12dp"
-                                android:layout_gravity="center_vertical">
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="개인 맞춤형"/>
+                                    android:text="개인 맞춤형" />
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -280,15 +281,15 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="24sp"
-                                        android:text="스터디 "/>
+                                        android:text="스터디 "
+                                        android:textSize="24sp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="24sp"
+                                        android:text="개설하기"
                                         android:textColor="@color/color_53c740"
-                                        android:text="개설하기"/>
+                                        android:textSize="24sp" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
