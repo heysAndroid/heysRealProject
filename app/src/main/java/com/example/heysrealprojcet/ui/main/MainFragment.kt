@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +27,6 @@ class MainFragment : Fragment() {
       val mWindow = requireActivity().window
       mWindow.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
       mWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-      mWindow.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.color_ff6e20)
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
