@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation">
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/myChannelFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -158,7 +159,7 @@
         android:id="@+id/heysChannelDetailFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.channel.HeysChannelDetailFragment"
         android:label="HeysChannelDetailFragment"
-        tools:layout="@layout/heys_channel_detail_fragment" >
+        tools:layout="@layout/heys_channel_detail_fragment">
         <action
             android:id="@+id/action_heysChannelDetailFragment_to_memberHeysListFragment"
             app:destination="@id/memberHeysListFragment" />
@@ -176,8 +177,18 @@
             app:destination="@id/contestActivityDetailFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/member_heys_list_fragment"
         android:id="@+id/memberHeysListFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.channel.MemberHeysListFragment"
-        android:label="MemberHeysListFragment" />
+        android:label="MemberHeysListFragment"
+        tools:layout="@layout/member_heys_list_fragment" />
+    <fragment
+        android:id="@+id/myChannelFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
+        android:label="MyChannelFragment"
+        tools:layout="@layout/my_channel_fragment" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.MyPageFragment"
+        android:label="MyPageFragment"
+        tools:layout="@layout/my_page_fragment" />
 </navigation>

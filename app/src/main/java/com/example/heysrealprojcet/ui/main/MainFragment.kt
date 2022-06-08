@@ -23,21 +23,16 @@ class MainFragment : Fragment() {
    private lateinit var typeList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      // 상태바 색 변경
       val mWindow = requireActivity().window
       mWindow.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
       mWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-
-      // 아이콘이 태마색으로 변경되는 것 막음
-      binding.bottomNavigation.itemIconTintList = null
-      var menu = binding.bottomNavigation.menu
-
       makeList()
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
       activityRecyclerViewAdapter = activityRecyclerViewAdapter(type = typeList) { goToJoin() }
@@ -59,24 +54,10 @@ class MainFragment : Fragment() {
          }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
+   }
 
-      binding.bottomNavigation.setOnItemSelectedListener { item ->
-         when (item.itemId) {
-            R.id.page_home -> {
-//               menu.findItem(R.id.page_home).setIcon(R.drawable.intent_building)
-               false
-            }
-            R.id.page_channel -> {
-//                    findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
-               false
-            }
-            R.id.page_mypage -> {
-//                    findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
-               false
-            }
-         }
-         true
-      }
+   private fun changeFragment(fragment: Fragment) {
+      requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
    }
 
    private fun makeList() {

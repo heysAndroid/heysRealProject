@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_home"
-        android:icon="@drawable/ic_circle_ff6320"
-        android:title="헤이즈" />
+        android:id="@+id/myChannelFragment"
+        android:icon="@drawable/ic_my_channel"
+        android:title="내 채널" />
 
     <item
-        android:id="@+id/page_channel"
-        android:icon="@drawable/ic_triangle"
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_heys_logo"
         android:title="채널" />
 
     <item
-        android:id="@+id/page_mypage"
-        android:icon="@drawable/ic_triangle"
+        android:id="@+id/myPageFragment"
+        android:icon="@drawable/ic_my_page"
         android:title="마이페이지" />
 </menu>
