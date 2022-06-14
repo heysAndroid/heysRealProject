@@ -2,17 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/intro"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="235dp"
+        android:layout_height="220dp"
+        android:src="@drawable/ic_onboarding2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:fontFamily="@font/notosanskr"
-        android:text="커리어 빌딩을 위한\n관심정보 여기 다-있다!"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="26dp"
+        android:orientation="vertical"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:id="@+id/introText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="더 쉽게"
+            android:textAlignment="center"
+            android:textColor="@color/color_828282"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/introText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/notosanskr"
+            android:text="누구나 가능한\n효율적인 모임 활동"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>

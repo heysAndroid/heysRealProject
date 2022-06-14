@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <Button
@@ -25,21 +25,11 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ci_drawable="@drawable/bg_circle_ff6e20"
+        android:layout_marginTop="12dp"
+        app:ci_drawable="@drawable/bg_circle_f7bc26"
         app:ci_height="7dp"
         app:ci_margin="4dp"
         app:ci_width="7dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <ImageView
-        android:layout_width="236dp"
-        android:layout_height="236dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_building" />
 
     <View
         android:layout_width="match_parent"
@@ -50,13 +40,11 @@
         android:id="@+id/userButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="17dp"
-        android:background="@drawable/bg_ff6e20_radius_30"
+        android:background="@color/color_e1e1e1"
+        android:paddingVertical="20dp"
         android:text="이미 가입했어요!"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textColor="@color/color_828282"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
     <Button
@@ -64,10 +52,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="18dp"
-        android:background="@drawable/bg_ff6e20_radius_30"
+        android:background="@color/color_53c740"
+        android:paddingVertical="20dp"
         android:text="다음"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 </LinearLayout>

@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.IntroFragmentBinding
+import com.example.heysrealprojcet.model.IntroDescription
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 
 class IntroFragment : Fragment() {
    private lateinit var binding: IntroFragmentBinding
    private lateinit var customPagerAdapter: CustomPagerAdapter
-   private lateinit var imageList: MutableList<String>
+   private lateinit var imageList: MutableList<IntroDescription>
    private var positon: Int = 0
 
    override fun onCreateView(
@@ -54,9 +56,9 @@ class IntroFragment : Fragment() {
 
    private fun setImageList() {
       imageList = mutableListOf(
-         "커리어 빌딩을 위한\n관심정보 여기 다-있다!",
-         "성장하는 청춘 스토리\n같이 만들어가요!",
-         "팀 빌딩부터 소통까지\n여기서 다-해결해요!"
+         IntroDescription("더 쉽게", "누구나 가능한\n효율적인 모임 활동", resources.getDrawable(R.drawable.ic_onboarding1)),
+         IntroDescription("더 빠르게", "마음 맞는\n팀원들과 함께 성장", resources.getDrawable(R.drawable.ic_onboarding2)),
+         IntroDescription("더 섬세하게", "나만을 위한 커리어&관심분야\n맞춤 서비스 제공", resources.getDrawable(R.drawable.ic_onboarding3)),
       )
    }
 
