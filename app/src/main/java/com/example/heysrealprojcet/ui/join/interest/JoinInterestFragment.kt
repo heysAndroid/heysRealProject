@@ -38,7 +38,7 @@ class JoinInterestFragment : Fragment() {
    }
 
    private fun goToMain() {
-      findNavController().navigate(R.id.action_joinInterestFragment_to_mainFragment)
+     // findNavController().navigate(R.id.action_joinInterestFragment_to_mainFragment)
    }
 
    private fun requestSignUp() {

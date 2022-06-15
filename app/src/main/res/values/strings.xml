@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">HeysRealProjcet</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="string_01"><u>재전송</u></string>
+    <string name="string_01">재전송</string>
 </resources>

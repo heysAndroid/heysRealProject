@@ -29,6 +29,6 @@ class JoinAgeFragment : Fragment() {
    }
 
    private fun goToInterest() {
-      findNavController().navigate(R.id.action_joinAgeFragment_to_joinInterestFragment)
+      //findNavController().navigate(R.id.action_joinAgeFragment_to_joinInterestFragment)
    }
 }

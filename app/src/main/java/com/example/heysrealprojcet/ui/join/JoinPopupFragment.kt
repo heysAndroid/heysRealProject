@@ -1,5 +1,6 @@
 package com.example.heysrealprojcet.ui.join
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,21 +9,27 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinPopupFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
 
 class JoinPopupFragment : Fragment() {
-    private lateinit var binding: JoinPopupFragmentBinding
+   private lateinit var binding: JoinPopupFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = JoinPopupFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+   override fun onCreateView(
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
+   ): View? {
+      binding = JoinPopupFragmentBinding.inflate(inflater, container, false)
+      return binding.root
+   }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.nextButton.setOnClickListener { findNavController().navigate(R.id.action_joinPopupFragment_to_joinPhoneFragment) }
-    }
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      binding.nextButton.setOnClickListener {
+         val intent = Intent(requireContext(), JoinActivity::class.java)
+         startActivity(intent)
+         requireActivity().finish()
+      }
+   }
 }

@@ -24,7 +24,9 @@ class JoinGenderFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      binding.okButton.setOnClickListener { findNavController().navigate(R.id.action_joinGenderFragment_to_joinAgeFragment) }
+      binding.okButton.setOnClickListener {
+         //   findNavController().navigate(R.id.action_joinGenderFragment_to_joinAgeFragment)
+      }
 
       viewModel.isMale.observe(viewLifecycleOwner, { isMale ->
          if (isMale) {

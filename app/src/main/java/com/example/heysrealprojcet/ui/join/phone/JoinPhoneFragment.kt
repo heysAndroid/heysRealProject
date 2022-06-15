@@ -67,7 +67,7 @@ class JoinPhoneFragment : Fragment() {
 
    private fun goToPhoneVerification() {
       findNavController().navigate(
-         R.id.action_joinPhoneFragment_to_phoneVerificationFragment,
+         R.id.action_joinPhoneFragment_to_joinVerificationFragment,
          bundleOf("phoneNumber" to viewModel.phoneNumber.value))
    }
 }

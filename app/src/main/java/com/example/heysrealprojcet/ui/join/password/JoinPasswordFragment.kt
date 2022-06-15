@@ -29,6 +29,6 @@ class JoinPasswordFragment : Fragment() {
    }
 
    private fun goToJoinName() {
-      findNavController().navigate(R.id.action_joinPasswordFragment_to_joinNameFragment)
+     // findNavController().navigate(R.id.action_joinPasswordFragment_to_joinNameFragment)
    }
 }

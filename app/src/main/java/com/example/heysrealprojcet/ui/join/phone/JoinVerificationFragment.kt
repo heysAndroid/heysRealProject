@@ -138,6 +138,6 @@ class JoinVerificationFragment : Fragment() {
    }
 
    private fun goToJoinPassword() {
-      findNavController().navigate(R.id.action_phoneVerificationFragment_to_joinPasswordFragment)
+      findNavController().navigate(R.id.action_joinVerificationFragment_to_joinPasswordFragment)
    }
 }

@@ -40,6 +40,6 @@ class JoinNameFragment : Fragment() {
    }
 
    private fun goToGender() {
-      findNavController().navigate(R.id.action_joinNameFragment_to_joinGenderFragment)
+     // findNavController().navigate(R.id.action_joinNameFragment_to_joinGenderFragment)
    }
 }
