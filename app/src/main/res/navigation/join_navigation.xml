@@ -18,7 +18,7 @@
         android:id="@+id/joinVerificationFragment"
         android:name="com.example.heysrealprojcet.ui.join.phone.JoinVerificationFragment"
         android:label="JoinVerificationFragment"
-        tools:layout="@layout/join_phone_verification_fragment" >
+        tools:layout="@layout/join_phone_verification_fragment">
         <action
             android:id="@+id/action_joinVerificationFragment_to_joinPasswordFragment"
             app:destination="@id/joinPasswordFragment" />
@@ -27,5 +27,14 @@
         android:id="@+id/joinPasswordFragment"
         android:name="com.example.heysrealprojcet.ui.join.password.JoinPasswordFragment"
         android:label="JoinPasswordFragment"
-        tools:layout="@layout/join_password_fragment" />
+        tools:layout="@layout/join_password_fragment">
+        <action
+            android:id="@+id/action_joinPasswordFragment_to_joinNameFragment"
+            app:destination="@id/joinNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinNameFragment"
+        android:name="com.example.heysrealprojcet.ui.join.name.JoinNameFragment"
+        android:label="JoinNameFragment"
+        tools:layout="@layout/join_name_fragment" />
 </navigation>
