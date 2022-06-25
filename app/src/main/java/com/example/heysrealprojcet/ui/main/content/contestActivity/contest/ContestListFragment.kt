@@ -29,9 +29,9 @@ class ContestListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       makeList()
-      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
-      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
-      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+//      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
+//      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
+//      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
       contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList) { goToDetail() }
       binding.contestList.adapter = contestItemRecyclerViewAdapter

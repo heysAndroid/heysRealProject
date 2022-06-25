@@ -1,16 +1,46 @@
 package com.example.heysrealprojcet.ui.main.category
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.CategoryDetailItemViewBinding
+import kotlinx.coroutines.flow.MutableStateFlow
 
-class CategoryDetailRecyclerViewAdapter(private val type: MutableList<String>) : RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
+class CategoryDetailRecyclerViewAdapter(private val type: MutableList<CategoryViewData>) : RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryDetailItemViewBinding
+   private var choiceImage: View? = null
+   private val totalMax = 1
+   private var total = MutableStateFlow(0)
 
    inner class ViewHolder(private val binding: CategoryDetailItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: String) {
-         binding.typeText.text = type
+      fun bind(type: CategoryViewData) {
+         binding.typeText.text = type.textfilter
+         binding.typeImage.setImageResource(type.image)
+
+         // 이미지 클릭 효과
+         binding.typeImage.setOnClickListener {
+            if (total.value < totalMax) {
+               if (binding.typeImage.isSelected) {
+                  binding.typeImage.isSelected = false
+                  total.value -= 1
+               } else {
+                  binding.typeImage.isSelected = true
+                  total.value += 1
+                  choiceImage = binding.typeImage
+               }
+            } else {
+               if (binding.typeImage.isSelected) {
+                  binding.typeImage.isSelected = false
+                  total.value -= 1
+               } else {
+                  choiceImage?.isSelected = false
+                  binding.typeImage.isSelected = true
+                  total.value += 1
+                  choiceImage = binding.typeImage
+               }
+            }
+         }
       }
    }
 

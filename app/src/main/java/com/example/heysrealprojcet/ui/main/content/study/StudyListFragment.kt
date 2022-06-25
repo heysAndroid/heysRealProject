@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.category.CategoryViewData
 
 class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
-   private lateinit var typeList: MutableList<String>
+   private lateinit var typeList: MutableList<CategoryViewData>
    private lateinit var startDateList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,8 +41,15 @@ class StudyListFragment : Fragment() {
    }
 
    private fun makeList() {
-      typeList = mutableListOf("관심 분야", "마감 임박", "많이 찾는", "새로 열린")
-      startDateList = mutableListOf("개설한지 6일", "개설한지 90일", "개설한지 7일")
+      typeList = mutableListOf(
+         CategoryViewData("관심 분야", R.drawable.character_passion_interest),
+         CategoryViewData("마감 임박", R.drawable.character_passion_finish),
+         CategoryViewData("많이 찾는", R.drawable.character_passion_many),
+         CategoryViewData("새로 열린", R.drawable.character_passion_new)
+      )
+
+      startDateList = mutableListOf("마감", "D-34", "D-15")
+
    }
 
    private fun goToFilter() {

@@ -28,9 +28,9 @@ class ActivityListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       makeList()
-      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
-      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
-      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+//      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
+//      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
+//      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
       activityItemRecyclerViewAdapter = ActivityItemRecyclerViewAdapter(host = hostList) { goToDetail() }
       binding.activityList.adapter = activityItemRecyclerViewAdapter
