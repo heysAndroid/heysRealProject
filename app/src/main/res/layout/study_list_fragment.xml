@@ -72,6 +72,16 @@
             android:textSize="16sp"
             android:text="맞춤 필터" />
 
+        <TextView
+            android:id="@+id/filterCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_f7bc26"
+            android:text="3" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"

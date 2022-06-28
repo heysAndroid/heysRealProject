@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class StudyFilterViewModel : ViewModel() {
+
    private var choiceInterest = mutableListOf<View>()
    private var choiceActivity: View?  = null
    private var choiceRegion: View? = null
@@ -24,7 +25,6 @@ class StudyFilterViewModel : ViewModel() {
    private val activityArray = mutableListOf<String>()
    private val regionArray = mutableListOf<String>()
    private val purposeArray = mutableListOf<String>()
-
 
    fun onClickInterest(v: View) {
       val item = v.tag.toString()

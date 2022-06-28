@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.CategoryDetailItemViewBinding
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class CategoryDetailRecyclerViewAdapter(private val type: MutableList<CategoryViewData>) : RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
+class CategoryDetailRecyclerViewAdapter(
+   private val type: MutableList<CategoryViewData>) :
+   RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryDetailItemViewBinding
    private var choiceImage: View? = null
    private val totalMax = 1
@@ -17,6 +19,12 @@ class CategoryDetailRecyclerViewAdapter(private val type: MutableList<CategoryVi
       fun bind(type: CategoryViewData) {
          binding.typeText.text = type.textfilter
          binding.typeImage.setImageResource(type.image)
+
+         if (type.isSelected) {
+            binding.typeImage.isSelected = true
+            total.value += 1
+            choiceImage = binding.typeImage
+         }
 
          // 이미지 클릭 효과
          binding.typeImage.setOnClickListener {
