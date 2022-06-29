@@ -8,7 +8,7 @@ import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.util.UserPreference
 
 class JoinGenderViewModel : ViewModel() {
-   private val _isMale = MutableLiveData<Boolean>()
+   private val _isMale = MutableLiveData(true)
    val isMale: LiveData<Boolean> = _isMale
 
    private val _isFemale = MutableLiveData<Boolean>()
@@ -18,21 +18,25 @@ class JoinGenderViewModel : ViewModel() {
    val isNonBinary: LiveData<Boolean> = _isNonBinary
 
    fun onClickGender(v: View) {
-      if (v.tag == "male") {
-         _isMale.value = true
-         _isFemale.value = false
-         _isNonBinary.value = false
-         UserPreference.gender = Gender.Male.gender
-      } else if (v.tag == "female") {
-         _isMale.value = false
-         _isFemale.value = true
-         _isNonBinary.value = false
-         UserPreference.gender = Gender.Female.gender
-      } else {
-         _isMale.value = false
-         _isFemale.value = false
-         _isNonBinary.value = true
-         UserPreference.gender = Gender.NonBinary.gender
+      when (v.tag) {
+         "male" -> {
+            _isMale.value = true
+            _isFemale.value = false
+            _isNonBinary.value = false
+            UserPreference.gender = Gender.Male.gender
+         }
+         "female" -> {
+            _isMale.value = false
+            _isFemale.value = true
+            _isNonBinary.value = false
+            UserPreference.gender = Gender.Female.gender
+         }
+         else -> {
+            _isMale.value = false
+            _isFemale.value = false
+            _isNonBinary.value = true
+            UserPreference.gender = Gender.NonBinary.gender
+         }
       }
    }
 }
