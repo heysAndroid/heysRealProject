@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinGenderFragmentBinding
 
 class JoinGenderFragment : Fragment() {
@@ -28,15 +26,17 @@ class JoinGenderFragment : Fragment() {
          //   findNavController().navigate(R.id.action_joinGenderFragment_to_joinAgeFragment)
       }
 
-      viewModel.isMale.observe(viewLifecycleOwner, { isMale ->
-         if (isMale) {
-            binding.female.isSelected = false
-            binding.male.isSelected = true
-         } else {
-            binding.female.isSelected = true
-            binding.male.isSelected = false
-         }
+      viewModel.isMale.observe(viewLifecycleOwner) { isMale ->
+         binding.male.isSelected = isMale
          isMale?.let { binding.okButton.isEnabled = true }
-      })
+      }
+
+      viewModel.isFemale.observe(viewLifecycleOwner) { isFemale ->
+         binding.female.isSelected = isFemale
+      }
+
+      viewModel.isNonBinary.observe(viewLifecycleOwner) { isNonBinary ->
+         binding.nonBinary.isSelected = isNonBinary
+      }
    }
 }
