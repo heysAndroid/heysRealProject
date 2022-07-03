@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
+import com.example.heysrealprojcet.model.ContestMain
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
 import com.example.heysrealprojcet.util.UserPreference
@@ -20,7 +21,8 @@ class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
    private lateinit var activityRecyclerViewAdapter: activityRecyclerViewAdapter
-   private lateinit var typeList: MutableList<String>
+   private lateinit var contestList: MutableList<ContestMain>
+   private lateinit var activityList: MutableList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       val mWindow = requireActivity().window
@@ -33,9 +35,11 @@ class MainFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      makeList()
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(type = typeList) { goToJoin() }
-      activityRecyclerViewAdapter = activityRecyclerViewAdapter(type = typeList) { goToJoin() }
+      makeActivityList()
+      makeContestList()
+
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToJoin() }
+      activityRecyclerViewAdapter = activityRecyclerViewAdapter(type = activityList) { goToJoin() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -60,8 +64,16 @@ class MainFragment : Fragment() {
       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
    }
 
-   private fun makeList() {
-      typeList = mutableListOf("관심분야별", "마감 임박", "많이 찾는", "새로 열린")
+   private fun makeActivityList() {
+      activityList = mutableListOf("관심분야별", "마감 임박", "많이 찾는", "새로 열린")
+   }
+
+   private fun makeContestList() {
+      contestList = mutableListOf(
+         ContestMain("관심분야별", R.drawable.ic_character_1),
+         ContestMain("마감 임박", R.drawable.ic_character_2),
+         ContestMain("많이 찾는", R.drawable.ic_character_3),
+         ContestMain("새로 열린", R.drawable.ic_character_4))
    }
 
    private fun goToJoin() {
