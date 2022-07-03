@@ -37,7 +37,7 @@
                         android:gravity="right"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:text="수정"/>
+                        android:text="배경변경"/>
                 </LinearLayout>
 
                 <ImageView
@@ -56,43 +56,6 @@
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:background="@drawable/bg_f3f3f3_radius_16">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="18dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="16dp"
-                            android:layout_marginLeft="6dp"
-                            android:text="Heys와 대화할 수 있어요!"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"/>
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="18dp"
-                            android:background="@color/color_f8f9fc"
-                            android:src="@drawable/ic_next_26"/>
-                    </LinearLayout>
-                </FrameLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -221,6 +184,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="32dp"
+                    android:text="꼭 확인해주세요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="더 궁금하신 점은 프로필로 문의해주세요"
+                    android:textColor="@color/color_828282"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
                     android:text="리더를 소개해요"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -260,103 +242,13 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="34dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2dp"
-                        android:textColor="@color/color_f7bc26"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="명이 참여중이에요"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:background="@drawable/bg_f3f3f3_radius_16">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:text="아직 참여중인 Hey가 없어요"
-                        android:textColor="@color/color_828282"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2dp"
-                        android:textColor="@color/color_f7bc26"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="명이 참여중이에요"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:background="@drawable/bg_f3f3f3_radius_16">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:text="아직 참여중인 Hey가 없어요"
-                        android:textColor="@color/color_828282"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="46dp"
+                    android:layout_marginTop="48dp"
                     android:background="@drawable/bg_ok_button_enabled"
-                    android:text="홈페이지 지원"
+                    android:text="채널 만들기"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
