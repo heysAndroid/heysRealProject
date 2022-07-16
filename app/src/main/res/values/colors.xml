@@ -9,9 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_1a77D671">#1A77D671</color>
+    <color name="color_99828282">#99828282</color>
     <color name="color_828282">#828282</color>
+    <color name="color_0d828282">#0D828282</color>
     <color name="color_f8f9fc">#F8F9FC</color>
     <color name="color_53c740">#53C740</color>
+    <color name="color_1a53c740">#1A53C740</color>
     <color name="color_262626">#262626</color>
     <color name="color_f7bc26">#F7BC26</color>
     <color name="color_e4e4e4">#E4E4E4</color>
