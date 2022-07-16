@@ -116,8 +116,9 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_interest_view.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_view.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_form_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_name_fragment.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_number_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.136" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_filter_fragment.xml" value="0.2477355072463768" />
@@ -139,6 +140,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_fragment.xml" value="0.16" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_inform_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_list_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_name_fragment.xml" value="0.152" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_template.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_template_fragment.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list_fragment.xml" value="0.25181159420289856" />
