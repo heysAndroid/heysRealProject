@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_heysChannelListFragment_to_heysChannelDetailFragment"
             app:destination="@id/heysChannelDetailFragment" />
+        <action
+            android:id="@+id/action_heysChannelListFragment_to_heysChannelFreePreviewFragment"
+            app:destination="@id/heysChannelFreePreviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/studyFilterFragment"
@@ -116,4 +119,9 @@
         android:name="com.example.heysrealprojcet.ui.user.myPage.MyPageFragment"
         android:label="MyPageFragment"
         tools:layout="@layout/my_page_fragment" />
+    <fragment
+        android:id="@+id/heysChannelFreePreviewFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.channel.HeysChannelFreePreviewFragment"
+        android:label="HeysChannelFreePreviewFragment"
+        tools:layout="@layout/heys_channel_free_preview_fragment"/>
 </navigation>

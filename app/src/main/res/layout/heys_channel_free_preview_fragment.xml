@@ -159,39 +159,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="32dp"
-                    android:text="이런 활동을 해요"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="시인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다! 관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다.더 궁금하신 점은 프로필로 문의해주세요. 5줄 이상이면 자세히 보기로 펼쳐보게됩니다."
+                    android:textSize="16sp"/>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
-                    android:text="인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다!"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="19dp"
+                    android:drawableEnd="@drawable/ic_expand"
+                    android:text="자세히 보기"
                     android:textColor="@color/color_828282"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
-                <TextView
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="32dp"
-                    android:text="이런 분을 찾아요"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
-                    android:text="전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다. 관련 기초 지식이 있으시면 좋을 것 같습니다"
-                    android:textColor="@color/color_828282"
-                    android:textSize="16sp" />
+                    android:layout_height="1dp"
+                    android:background="@color/color_e1e1e1" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -233,6 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="12dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/ic_circle_d9d9d9"/>
 
                     <LinearLayout
@@ -257,6 +244,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnMake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"

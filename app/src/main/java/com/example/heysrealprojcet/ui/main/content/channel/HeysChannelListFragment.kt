@@ -32,10 +32,18 @@ class HeysChannelListFragment : Fragment() {
       heysItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList) { goToChannelDetail() }
       binding.heysList.adapter = heysItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+
+      binding.makeChannel.setOnClickListener {
+         goToChannelList()
+      }
    }
 
    private fun makeList() {
       startDateList = mutableListOf("개설한지 6일", "개설한지 90일", "개설한지 7일")
+   }
+
+   private fun goToChannelList() {
+      findNavController().navigate(R.id.action_heysChannelListFragment_to_heysChannelFreePreviewFragment)
    }
 
    private fun goToChannelDetail() {
