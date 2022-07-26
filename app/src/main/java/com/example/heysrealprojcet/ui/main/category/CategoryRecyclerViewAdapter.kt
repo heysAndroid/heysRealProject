@@ -8,18 +8,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.CategoryItemViewBinding
+import com.example.heysrealprojcet.model.ContestMain
 
 class CategoryRecyclerViewAdapter(
-   private val type: MutableList<String>,
+   private val list: MutableList<ContestMain>,
    private val onclick: (item: String) -> Unit) :
    RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemViewBinding
 
    inner class ViewHolder(private val binding: CategoryItemViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
-      fun bind(item: String) {
-         binding.typeText.text = item
-         binding.root.setOnClickListener { onclick.invoke(item) }
+      fun bind(item: ContestMain) {
+         binding.typeText.text = item.type
+         binding.image.setImageResource(item.resId)
+         binding.root.setOnClickListener { onclick.invoke(item.type) }
 
          // 텍스트 일부 스타일 적용
          var content = binding.functionText.text
@@ -39,10 +41,10 @@ class CategoryRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(type[position])
+      holder.bind(list[position])
    }
 
    override fun getItemCount(): Int {
-      return type.size
+      return list.size
    }
 }

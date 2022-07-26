@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="48dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:src="@drawable/ic_close_24"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="어떤 형태로 활동하는 채널인가요?"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:text="비대면의 경우 전국으로 표시됩니다."/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/channel_dialog_button"
+            android:paddingHorizontal="100dp"
+            android:paddingVertical="18dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/color_828282"
+            android:textSize="16sp"
+            android:text="온, 오프라인"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/channel_dialog_button"
+            android:paddingHorizontal="120dp"
+            android:paddingVertical="18dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/color_828282"
+            android:textSize="16sp"
+            android:text="온라인"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/channel_dialog_button"
+            android:paddingHorizontal="112dp"
+            android:paddingVertical="18dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/color_828282"
+            android:textSize="16sp"
+            android:text="오프라인"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_f7bc26_radius_8"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="저장하기"/>
+    </LinearLayout>
+</ScrollView>
