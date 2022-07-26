@@ -123,5 +123,23 @@
         android:id="@+id/heysChannelFreePreviewFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.channel.HeysChannelFreePreviewFragment"
         android:label="HeysChannelFreePreviewFragment"
-        tools:layout="@layout/heys_channel_free_preview_fragment"/>
+        tools:layout="@layout/heys_channel_free_preview_fragment">
+        <action
+            android:id="@+id/action_heysChannelFreePreviewFragment_to_heysChannelFreeFragment"
+            app:destination="@id/heysChannelFreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heysChannelFreeFragment"
+        android:name="com.example.heysrealprojcet.HeysChannelFreeFragment"
+        android:label="HeysChannelFreeFragment"
+        tools:layout="@layout/heys_channel_free_fragment">
+        <action
+            android:id="@+id/action_heysChannelFreeFragment_to_heysChannelInformFragment"
+            app:destination="@id/heysChannelInformFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heysChannelInformFragment"
+        android:name="com.example.heysrealprojcet.HeysChannelInformFragment"
+        android:label="HeysChannelInformFragment"
+        tools:layout="@layout/heys_channel_inform_fragment"/>
 </navigation>

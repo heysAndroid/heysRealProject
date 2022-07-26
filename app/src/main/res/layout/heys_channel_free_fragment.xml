@@ -39,6 +39,7 @@
                 android:id="@+id/edt_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="top"
                 android:background="@drawable/bg_channel_edittext"
                 android:padding="16dp"
                 android:textColor="@color/black"
@@ -77,12 +78,13 @@
             android:layout_weight="1"/>
 
         <Button
+            android:id="@+id/btnPreview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:layout_marginHorizontal="24dp"
             android:enabled="@{vm.isEnabled}"
-            android:background="@drawable/bg_f7bc26_radius_8"
+            android:background="@drawable/bg_e1_radius_8"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:text="미리보기"/>
