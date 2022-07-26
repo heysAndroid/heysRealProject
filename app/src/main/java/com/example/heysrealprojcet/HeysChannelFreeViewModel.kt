@@ -1,44 +1,23 @@
 package com.example.heysrealprojcet
 
-import android.view.View
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
+import androidx.lifecycle.*
+import kotlinx.coroutines.launch
 
 class HeysChannelFreeViewModel: ViewModel() {
-   private var choiceform: View? = null
+   val edtText = MutableLiveData<String>()
 
-   private val formMax = 1
+   private val _isEnabled = MutableLiveData<Boolean>()
+   val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private var formTotal = MutableStateFlow(0)
-
-   private val formArray = mutableListOf<String>()
-
-   fun onClickForm(v: View) {
-      val item = v.tag.toString()
-
-      if(formTotal.value < formMax) {
-         if(v.isSelected) {
-            v.isSelected = false
-            formTotal.value -= 1
-            formArray.remove(item)
-         } else {
-            choiceform = v
-            v.isSelected = true
-            formTotal.value += 1
-            formArray.add(item)
-         }
-      } else {
-         if (v.isSelected) {
-            v.isSelected = false
-            formTotal.value -= 1
-            formArray.remove(item)
-         } else {
-            choiceform?.isSelected =false
-            formArray.remove(formArray[0])
-            v.isSelected = true
-            choiceform = v
-            formArray.add(item)
+   init {
+      viewModelScope.launch {
+         edtText.asFlow().collect {
+            isCorrect()
          }
       }
+   }
+
+   private fun isCorrect() {
+      _isEnabled.value = !edtText.value.isNullOrBlank()
    }
 }
