@@ -24,18 +24,18 @@ class ContestActivityDetailFragment : Fragment() {
       binding.lifecycleOwner = this
       binding.goToHeys.setOnClickListener { goToHeys() }
 
-      if(binding.introduce.lineCount > 5) {
-         binding.layoutExpand.visibility = View.VISIBLE
-         binding.detail.visibility = View.GONE
-      }
-
-      binding.detail.setOnClickListener {
-         if (binding.layoutExpand.visibility == View.VISIBLE) {
-            binding.layoutExpand.visibility = View.GONE
-         } else {
-            binding.layoutExpand.visibility = View.VISIBLE
-         }
-      }
+//      if(binding.introduce.lineCount > 5) {
+//         binding.layoutExpand.visibility = View.VISIBLE
+//         binding.detail.visibility = View.GONE
+//      }
+//
+//      binding.detail.setOnClickListener {
+//         if (binding.layoutExpand.visibility == View.VISIBLE) {
+//            binding.layoutExpand.visibility = View.GONE
+//         } else {
+//            binding.layoutExpand.visibility = View.VISIBLE
+//         }
+//      }
    }
 
    private fun goToHeys() {

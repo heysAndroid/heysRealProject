@@ -47,6 +47,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f3f3f3_radius_30.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f7bc26_radius_8.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f8f9fc_radius_16.xml" value="0.1445" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_fd494a_radius_4.xml" value="0.141" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ff6e20_radius_5.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button.xml" value="0.1445" />
@@ -133,7 +134,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment_dialog.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment_dialog.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.176" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_filter_fragment.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_free_preview_fragment.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_item_view.xml" value="0.213768115942029" />

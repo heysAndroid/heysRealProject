@@ -43,7 +43,7 @@ class HeysChannelListFragment : Fragment() {
    }
 
    private fun goToChannelList() {
-      findNavController().navigate(R.id.action_heysChannelListFragment_to_heysChannelFreePreviewFragment)
+      findNavController().navigate(R.id.action_heysChannelListFragment_to_heysChannelNameFragment)
    }
 
    private fun goToChannelDetail() {

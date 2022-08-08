@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelFreePreviewFragmentBinding
 
 class HeysChannelFreePreviewFragment: Fragment() {
@@ -21,13 +19,5 @@ class HeysChannelFreePreviewFragment: Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      binding.btnMake.setOnClickListener {
-         goToChannelMake()
-      }
-   }
-
-   // 채널 생성 페이지로 이동
-   private fun goToChannelMake() {
-      findNavController().navigate(R.id.action_heysChannelFreePreviewFragment_to_heysChannelFreeFragment)
    }
 }

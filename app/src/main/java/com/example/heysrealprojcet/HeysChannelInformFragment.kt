@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.databinding.HeysChannelInformFragmentBinding
 
 class HeysChannelInformFragment : Fragment() {
    private lateinit var binding: HeysChannelInformFragmentBinding
-   private val viewModel : HeysChannelInformViewModel by viewModels()
+   private val viewModel: HeysChannelInformViewModel by viewModels()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = HeysChannelInformFragmentBinding.inflate(inflater, container, false)
@@ -47,5 +48,14 @@ class HeysChannelInformFragment : Fragment() {
          val customDialog = ChannelWayDialogFragment()
          customDialog.show(childFragmentManager, "CustomDialog")
       }
+
+      binding.btnNext.setOnClickListener {
+         goToName()
+      }
+   }
+
+   private fun goToName() {
+      findNavController().navigate(R.id.action_heysChannelInformFragment_to_heysChannelFreeFragment)
    }
 }
+
