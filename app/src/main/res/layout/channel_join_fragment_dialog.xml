@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data>
-        <variable
-            name="vm"
-            type="com.example.heysrealprojcet.ChannelWayDialogViewModel" />
-    </data>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -36,36 +30,40 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="어떻게 모집하나요?"/>
+            android:text="최대 몇 명까지 참여 가능한가요?"/>
 
-
-        <Button
-            android:id="@+id/btnApproval"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/channel_dialog_button"
-            android:paddingHorizontal="34dp"
-            android:paddingVertical="18dp"
-            android:layout_marginTop="24dp"
-            android:textColor="@drawable/channel_dialog_button"
+            android:layout_marginTop="4dp"
             android:textSize="16sp"
-            android:text="바로승인\n신청과 동시에 채널 입장이 가능합니다."
-            android:tag="approval"
-            android:onClick="@{(v) -> vm.onClickWay(v)}"/>
+            android:text="대면·비대면/비대면 최대 500명\n대면 최대 50명"/>
 
-        <Button
-            android:id="@+id/btnDecide"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/channel_dialog_button"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="18dp"
             android:layout_marginTop="24dp"
-            android:textColor="@drawable/channel_dialog_button"
-            android:textSize="16sp"
-            android:text="승인 결정\n신청자의 프로필을 보고 참여를 결정합니다."
-            android:tag="decide"
-            android:onClick="@{(v) -> vm.onClickWay(v)}"/>
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:hint="0"
+                android:paddingLeft="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/black"
+                android:text="명"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSave"

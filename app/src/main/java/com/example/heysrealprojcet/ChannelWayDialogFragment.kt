@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.heysrealprojcet.databinding.ChannelPurposeFragmentDialogBinding
+import com.example.heysrealprojcet.databinding.ChannelWayFragmentDialogBinding
 
-class ChannelPurposeDialogFragment: DialogFragment() {
-   private lateinit var binding: ChannelPurposeFragmentDialogBinding
-   private val viewModel: ChannelPurposeDialogViewModel by viewModels()
+class ChannelWayDialogFragment: DialogFragment() {
+   private lateinit var binding: ChannelWayFragmentDialogBinding
+   private val viewModel : ChannelWayDialogViewModel by viewModels()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ChannelPurposeFragmentDialogBinding.inflate(inflater, container, false)
+      binding = ChannelWayFragmentDialogBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -22,7 +22,11 @@ class ChannelPurposeDialogFragment: DialogFragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      binding.btnCapability.isSelected = true
-      viewModel.choicePurpose = binding.btnCapability
+      binding.btnApproval.isSelected = true
+      viewModel.choiceWay = binding.btnApproval
+
+      binding.btnSave.setOnClickListener {
+         dialog!!.dismiss()
+      }
    }
 }

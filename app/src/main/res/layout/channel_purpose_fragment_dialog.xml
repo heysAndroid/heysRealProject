@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="24dp"
-        android:paddingTop="48dp">
+        android:paddingTop="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +52,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnCapability"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/channel_dialog_button"
@@ -59,20 +60,23 @@
                 android:paddingVertical="18dp"
                 android:layout_marginRight="8dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
-                android:textColor="@color/color_828282"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textStyle="bold"
                 android:textSize="16sp"
                 android:text="역량강화"
-                android:tag="capability"/>
+                android:tag="역량강화"/>
 
             <Button
+                android:id="@+id/btnSkill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/channel_dialog_button"
                 android:paddingHorizontal="40dp"
                 android:paddingVertical="18dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
-                android:textColor="@color/color_828282"
+                android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="실력향상"
                 android:tag="skill"/>
 
@@ -85,6 +89,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnExperience"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/channel_dialog_button"
@@ -92,20 +97,23 @@
                 android:paddingVertical="18dp"
                 android:layout_marginRight="8dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
-                android:textColor="@color/color_828282"
+                android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="창업/협업 경험"
                 android:tag="experience"/>
 
             <Button
+                android:id="@+id/btnPortfolio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/channel_dialog_button"
                 android:paddingHorizontal="32dp"
                 android:paddingVertical="18dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
-                android:textColor="@color/color_828282"
+                android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="포토폴리오"
                 android:tag="portfolio"/>
 
