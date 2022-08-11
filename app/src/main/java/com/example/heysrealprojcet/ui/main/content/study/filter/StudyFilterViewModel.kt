@@ -1,6 +1,8 @@
 package com.example.heysrealprojcet.ui.main.content.study.filter
 
+import android.graphics.Typeface
 import android.view.View
+import android.widget.Button
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -29,15 +31,19 @@ class StudyFilterViewModel : ViewModel() {
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
 
+      var button = v as Button
+
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
             choiceInterest.remove(v)
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
          } else {
             choiceInterest.add(v)
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             interestTotal.value += 1
             interestArray.add(item)
          }
@@ -45,6 +51,7 @@ class StudyFilterViewModel : ViewModel() {
          if (v.isSelected) {
             choiceInterest.remove(v)
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
          }
@@ -54,26 +61,32 @@ class StudyFilterViewModel : ViewModel() {
    fun onClickActivity(v: View) {
       val item = v.tag.toString()
 
+      val button = v as Button
+
       if (activityTotal.value < activityMax) {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             activityTotal.value -= 1
             activityArray.remove(item)
          } else {
             choiceActivity = v
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             activityTotal.value += 1
             activityArray.add(item)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             activityTotal.value -= 1
             activityArray.remove(item)
 
             // 대면·비대면, 대면 클릭 해제시 지역 클릭 해제
             if (choiceRegion != null) {
                choiceRegion!!.isSelected = false
+               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
                regionArray.remove(regionArray[0])
                choiceRegion = null
@@ -81,13 +94,16 @@ class StudyFilterViewModel : ViewModel() {
          }
          else {
             choiceActivity?.isSelected = false
+            (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
             activityArray.remove(activityArray[0])
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             choiceActivity = v
             activityArray.add(item)
 
             if (choiceRegion != null) {
                choiceRegion!!.isSelected = false
+               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
                regionArray.remove(regionArray[0])
                choiceRegion = null
@@ -99,17 +115,21 @@ class StudyFilterViewModel : ViewModel() {
    fun onClickRegion(v: View) {
       val item = v.tag.toString()
 
+      var button = v as Button
+
       try {
          if (activityArray[0].slice(0..6) == "contact") {
             if (regionTotal.value < regionMax) {
                if (v.isSelected) {
                   choiceRegion = null
                   v.isSelected = false
+                  button.setTypeface(null, Typeface.NORMAL)
                   regionTotal.value -= 1
                   regionArray.remove(item)
                } else {
                   choiceRegion = v
                   v.isSelected = true
+                  button.setTypeface(null, Typeface.BOLD)
                   regionTotal.value += 1
                   regionArray.add(item)
                }
@@ -117,47 +137,57 @@ class StudyFilterViewModel : ViewModel() {
                if (v.isSelected) {
                   choiceRegion = null
                   v.isSelected = false
+                  button.setTypeface(null, Typeface.NORMAL)
                   regionTotal.value -= 1
                   regionArray.remove(item)
                }
                else {
                   choiceRegion?.isSelected = false
+                  (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
                   regionArray.remove(regionArray[0])
                   v.isSelected = true
+                  button.setTypeface(null, Typeface.BOLD)
                   choiceRegion = v
                   regionArray.add(item)
                }
             }
          }
       } catch (e: Exception) {
-         //Toast.makeText(this, "비대면의 경우 활동 지역을 선택할 수 없습니다.", Toast.LENGTH_SHORT).show()
+         // Toast.makeText(this, "비대면의 경우 활동 지역을 선택할 수 없습니다.", Toast.LENGTH_SHORT).show()
       }
    }
 
    fun onClickPurpose(v: View) {
       val item = v.tag.toString()
 
+      var button = v as Button
+
       if (purposeTotal.value < purposeMax) {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             purposeTotal.value -= 1
             purposeArray.remove(item)
          } else {
             choicePurpose = v
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             purposeTotal.value += 1
             purposeArray.add(item)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             purposeTotal.value -= 1
             purposeArray.remove(item)
          }
          else {
             choicePurpose?.isSelected = false
+            (choicePurpose as Button).setTypeface(null, Typeface.NORMAL)
             purposeArray.remove(purposeArray[0])
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             choicePurpose = v
             purposeArray.add(item)
          }
@@ -167,20 +197,30 @@ class StudyFilterViewModel : ViewModel() {
    fun onClickInit() {
       for (i in choiceInterest.indices) {
          choiceInterest[i].isSelected = false
+         (choiceInterest[i] as Button).setTypeface(null, Typeface.NORMAL)
       }
       interestTotal.value = 0
       choiceInterest.clear()
 
       choiceActivity?.isSelected = false
+      if (choiceActivity != null) {
+         (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
+      }
       activityTotal.value = 0
       activityArray.clear()
 
       choiceRegion?.isSelected = false
+      if (choiceRegion != null) {
+         (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+      }
       regionTotal.value = 0
       choiceRegion = null
       regionArray.clear()
 
       choicePurpose?.isSelected = false
+      if (choiceRegion != null) {
+         (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+      }
       purposeTotal.value = 0
       purposeArray.clear()
    }
