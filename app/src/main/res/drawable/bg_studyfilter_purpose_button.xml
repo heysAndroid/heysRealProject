@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/bg_studyfilter_purpose_button_selected"
         android:state_selected="true"
-        android:color="@color/color_ff6e20"/>
+        android:color="@color/color_53c740"/>
     <item android:drawable="@drawable/bg_studyfilter_purpose_button_normal"
         android:state_selected="false"
-        android:color="@color/white"/>
+        android:color="@color/color_828282"/>
 </selector>

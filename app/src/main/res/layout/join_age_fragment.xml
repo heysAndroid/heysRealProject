@@ -16,47 +16,57 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="31dp"
+            android:layout_margin="16dp"
             android:orientation="vertical">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_arrow_back_53c740" />
 
             <TextView
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:fontFamily="@font/josefin_700"
+                android:layout_marginTop="16dp"
                 android:text="나이를 알려주세요"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="39dp"
-                android:text="최대 2자리까지 입력할 수 있어요."
-                android:textColor="@color/color_ff0000"
+                android:layout_marginTop="10dp"
+                android:text="숫자가 너무 길어요!"
+                android:textColor="@color/color_fd494a"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/age"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
-                android:background="@null"
-                android:fontFamily="@font/roboto_700"
-                android:hint="22"
-                android:inputType="number"
-                android:maxLength="2"
-                android:text="@={vm.age}"
-                android:textSize="36sp" />
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/ageEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:hint="22"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingHorizontal="16dp"
+                    android:text="@={vm.age}" />
+
+                <Button
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_delete" />
+            </FrameLayout>
         </LinearLayout>
 
         <View
@@ -68,10 +78,9 @@
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="9.5dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
+            android:paddingVertical="20dp"
             android:text="다음"
             android:textColor="@color/white"
             android:textSize="20sp" />

@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinAgeFragmentBinding
 
 class JoinAgeFragment : Fragment() {
    private lateinit var binding: JoinAgeFragmentBinding
    private val viewModel: JoinAgeViewModel by viewModels()
-
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
@@ -26,6 +25,14 @@ class JoinAgeFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener { goToInterest() }
+
+      viewModel.isEnabled.observe(viewLifecycleOwner) {
+         if (it) {
+            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_focused)
+         } else {
+            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
+         }
+      }
    }
 
    private fun goToInterest() {
