@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="vm"
             type="com.example.heysrealprojcet.ChannelPurposeDialogViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:paddingHorizontal="24dp"
         android:paddingTop="24dp">
 
@@ -21,101 +24,101 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:src="@drawable/ic_close_24"/>
+                android:src="@drawable/ic_close_24" />
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:text="어떤 목적의 헤이즈 채널인가요?"
             android:textColor="@color/black"
-            android:text="어떤 목적의 헤이즈 채널인가요?"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:text="같은 목적을 Hey들과 함께 목표를 \n이루어 보세요."/>
+            android:text="같은 목적을 Hey들과 함께 목표를 \n이루어 보세요."
+            android:textSize="16sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnCapability"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
                 android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="40dp"
-                android:paddingVertical="18dp"
-                android:layout_marginRight="8dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textStyle="bold"
-                android:textSize="16sp"
+                android:paddingVertical="18dp"
+                android:tag="역량강화"
                 android:text="역량강화"
-                android:tag="역량강화"/>
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnSkill"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="40dp"
-                android:paddingVertical="18dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                android:paddingVertical="18dp"
+                android:tag="skill"
+                android:text="실력향상"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="실력향상"
-                android:tag="skill"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnExperience"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
                 android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="18dp"
-                android:layout_marginRight="8dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                android:paddingVertical="18dp"
+                android:tag="experience"
+                android:text="창업/협업 경험"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="창업/협업 경험"
-                android:tag="experience"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnPortfolio"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="32dp"
-                android:paddingVertical="18dp"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                android:paddingVertical="18dp"
+                android:tag="portfolio"
+                android:text="포트폴리오"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="포토폴리오"
-                android:tag="portfolio"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -126,9 +129,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="14dp"
             android:background="@drawable/bg_f7bc26_radius_8"
+            android:text="저장하기"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="저장하기"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </layout>

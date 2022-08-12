@@ -1,28 +1,39 @@
 package com.example.heysrealprojcet
 
-import android.os.Bundle
+import android.app.Dialog
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelPurposeFragmentDialogBinding
 
-class ChannelPurposeDialogFragment: DialogFragment() {
+class ChannelPurposeDialog(private val context: Context, private val viewModel: ChannelPurposeDialogViewModel) {
    private lateinit var binding: ChannelPurposeFragmentDialogBinding
-   private val viewModel: ChannelPurposeDialogViewModel by viewModels()
+   private val dialog = Dialog(context)
+   private lateinit var listener: ChannelPurposeDialogOnClickListener
 
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ChannelPurposeFragmentDialogBinding.inflate(inflater, container, false)
+   fun show() {
+      binding = ChannelPurposeFragmentDialogBinding.inflate(LayoutInflater.from(context))
       binding.vm = viewModel
-      return binding.root
+      dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+      dialog.setContentView(binding.root)
+      dialog.setCancelable(false)
+      dialog.show()
+
+      binding.btnSave.setOnClickListener {
+         listener.onClick(viewModel.btnText)
+         dialog.dismiss()
+      }
    }
 
-   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      super.onViewCreated(view, savedInstanceState)
-      binding.lifecycleOwner = this
+   fun setOnOKClickListener(listener: (String) -> Unit) {
+      this.listener = object : ChannelPurposeDialogOnClickListener {
+         override fun onClick(content: String) {
+            listener(content)
+         }
+      }
+   }
 
-      binding.btnCapability.isSelected = true
-      viewModel.choicePurpose = binding.btnCapability
+   interface ChannelPurposeDialogOnClickListener {
+      fun onClick(content: String)
    }
 }
