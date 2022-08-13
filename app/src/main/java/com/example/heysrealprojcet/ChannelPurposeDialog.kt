@@ -4,16 +4,37 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.Window
-import com.example.heysrealprojcet.databinding.ChannelPurposeFragmentDialogBinding
+import com.example.heysrealprojcet.databinding.ChannelPurposeDialogBinding
+import com.example.heysrealprojcet.enums.ChannelPurpose
 
 class ChannelPurposeDialog(private val context: Context, private val viewModel: ChannelPurposeDialogViewModel) {
-   private lateinit var binding: ChannelPurposeFragmentDialogBinding
+   private lateinit var binding: ChannelPurposeDialogBinding
    private val dialog = Dialog(context)
    private lateinit var listener: ChannelPurposeDialogOnClickListener
 
-   fun show() {
-      binding = ChannelPurposeFragmentDialogBinding.inflate(LayoutInflater.from(context))
+   init {
+      binding = ChannelPurposeDialogBinding.inflate(LayoutInflater.from(context))
       binding.vm = viewModel
+
+      val button = when (viewModel.btnText) {
+         ChannelPurpose.Capability.purpose -> {
+            binding.btnCapability
+         }
+         ChannelPurpose.Skill.purpose -> {
+            binding.btnSkill
+         }
+         ChannelPurpose.Foundation.purpose -> {
+            binding.btnExperience
+         }
+         else -> {
+            binding.btnPortfolio
+         }
+      }
+      button.isSelected = true
+      viewModel.selectedView = button
+   }
+
+   fun show() {
       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
       dialog.setContentView(binding.root)
       dialog.setCancelable(false)

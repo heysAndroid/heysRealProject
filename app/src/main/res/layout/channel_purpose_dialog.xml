@@ -63,7 +63,6 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
                 android:paddingVertical="18dp"
-                android:tag="역량강화"
                 android:text="역량강화"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
@@ -77,12 +76,10 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
                 android:paddingVertical="18dp"
-                android:tag="skill"
                 android:text="실력향상"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -100,7 +97,6 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
                 android:paddingVertical="18dp"
-                android:tag="experience"
                 android:text="창업/협업 경험"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
@@ -114,12 +110,10 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
                 android:paddingVertical="18dp"
-                android:tag="portfolio"
                 android:text="포트폴리오"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <Button

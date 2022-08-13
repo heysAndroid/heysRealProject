@@ -6,47 +6,33 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class ChannelPurposeDialogViewModel : ViewModel() {
-
-   var choicePurpose: View? = null
-
-   private val purposeMax = 1
-
-   private var purposeTotal = MutableStateFlow(0)
-
-   private val purposeArray = mutableListOf<String>()
-
+   var selectedView: View? = null
+   private val selectMax = 1
+   private var selectedTotal = MutableStateFlow(0)
    var btnText = "역량강화"
 
    fun onClickPurpose(v: View) {
       val button = v as Button
       btnText = button.text.toString()
+      selectedView?.isSelected = false
 
-      choicePurpose?.isSelected = false
-      val item = v.tag.toString()
-
-      if (purposeTotal.value < purposeMax) {
+      if (selectedTotal.value < selectMax) {
          if (v.isSelected) {
             v.isSelected = false
-            purposeTotal.value -= 1
-            purposeArray.remove(item)
+            selectedTotal.value -= 1
          } else {
-            choicePurpose = v
+            selectedView = v
             v.isSelected = true
-            purposeTotal.value += 1
-            purposeArray.add(item)
+            selectedTotal.value += 1
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
-            purposeTotal.value -= 1
-            purposeArray.remove(item)
-         }
-         else {
-            choicePurpose?.isSelected = false
-            purposeArray.remove(purposeArray[0])
+            selectedTotal.value -= 1
+         } else {
+            selectedView?.isSelected = false
             v.isSelected = true
-            choicePurpose = v
-            purposeArray.add(item)
+            selectedView = v
          }
       }
    }
