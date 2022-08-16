@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.example.heysrealprojcet.databinding.HeysChannelInformFragmentBinding
 class HeysChannelInformFragment : Fragment() {
    private lateinit var binding: HeysChannelInformFragmentBinding
    private val viewModel: HeysChannelInformViewModel by viewModels()
+   private val purposeDialogViewModel: ChannelPurposeDialogViewModel by viewModels()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = HeysChannelInformFragmentBinding.inflate(inflater, container, false)
@@ -24,14 +24,12 @@ class HeysChannelInformFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      viewModel.isPurpose.observe(viewLifecycleOwner) { purpose ->
-         Log.e("태그2", purpose)
-         binding.purpose.text = purpose
-      }
-
-      binding.btnPurpose.setOnClickListener {
-         val customDialog = ChannelPurposeDialogFragment()
-         customDialog.show(childFragmentManager, "CustomDialog")
+      binding.purposeContainer.setOnClickListener {
+         val purposeDialog = ChannelPurposeDialog(requireContext(), purposeDialogViewModel)
+         purposeDialog.setOnOKClickListener { content ->
+            binding.purpose.text = content
+         }
+         purposeDialog.show()
       }
 
       binding.btnForm.setOnClickListener {
