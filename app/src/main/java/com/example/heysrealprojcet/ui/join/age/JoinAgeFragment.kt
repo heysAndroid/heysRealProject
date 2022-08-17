@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinAgeFragmentBinding
 
@@ -36,6 +37,6 @@ class JoinAgeFragment : Fragment() {
    }
 
    private fun goToInterest() {
-      //findNavController().navigate(R.id.action_joinAgeFragment_to_joinInterestFragment)
+      findNavController().navigate(R.id.action_joinAgeFragment_to_joinInterestFragment)
    }
 }
