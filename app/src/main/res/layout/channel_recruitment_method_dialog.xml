@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ChannelWayDialogViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:paddingHorizontal="24dp"
         android:paddingTop="24dp">
 
@@ -21,51 +24,46 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:src="@drawable/ic_close_24"/>
+                android:src="@drawable/ic_close_24" />
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="어떻게 모집하나요?"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="어떻게 모집하나요?"/>
-
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnApproval"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/channel_dialog_button"
-            android:paddingHorizontal="34dp"
-            android:paddingVertical="18dp"
             android:layout_marginTop="24dp"
-            android:textColor="@drawable/channel_dialog_button"
-            android:textSize="16sp"
+            android:background="@drawable/channel_dialog_button"
+            android:onClick="@{(v) -> vm.onClickWay(v)}"
+            android:paddingVertical="18dp"
             android:text="바로승인\n신청과 동시에 채널 입장이 가능합니다."
-            android:tag="approval"
-            android:onClick="@{(v) -> vm.onClickWay(v)}"/>
+            android:textColor="@drawable/channel_dialog_button"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnDecide"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/channel_dialog_button"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="18dp"
             android:layout_marginTop="24dp"
-            android:textColor="@drawable/channel_dialog_button"
-            android:textSize="16sp"
+            android:background="@drawable/channel_dialog_button"
+            android:onClick="@{(v) -> vm.onClickWay(v)}"
+            android:paddingVertical="18dp"
             android:text="승인 결정\n신청자의 프로필을 보고 참여를 결정합니다."
-            android:tag="decide"
-            android:onClick="@{(v) -> vm.onClickWay(v)}"/>
+            android:textColor="@drawable/channel_dialog_button"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnSave"
@@ -74,9 +72,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="14dp"
             android:background="@drawable/bg_f7bc26_radius_8"
+            android:text="저장하기"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="저장하기"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </layout>

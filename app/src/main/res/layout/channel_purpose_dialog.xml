@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ChannelPurposeDialogViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

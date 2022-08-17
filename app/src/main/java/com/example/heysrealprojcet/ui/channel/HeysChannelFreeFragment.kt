@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet
+package com.example.heysrealprojcet.ui.channel
 
 import android.os.Bundle
 import android.text.InputFilter
@@ -9,9 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelFreeFragmentBinding
 
-class HeysChannelFreeFragment: Fragment() {
+class HeysChannelFreeFragment : Fragment() {
    private lateinit var binding: HeysChannelFreeFragmentBinding
    private val viewModel: HeysChannelFreeViewModel by viewModels()
 

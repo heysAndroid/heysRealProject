@@ -1,10 +1,10 @@
-package com.example.heysrealprojcet
+package com.example.heysrealprojcet.ui.channel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HeysChannelInformViewModel: ViewModel() {
+class HeysChannelInformViewModel : ViewModel() {
    private val _isPurpose = MutableLiveData<String>()
    val isPurpose: LiveData<String> = _isPurpose
 

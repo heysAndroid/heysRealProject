@@ -121,7 +121,7 @@
         tools:layout="@layout/my_page_fragment" />
     <fragment
         android:id="@+id/heysChannelNameFragment"
-        android:name="com.example.heysrealprojcet.HeysChannelNameFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelNameFragment"
         android:label="HeysChannelNameFragment"
         tools:layout="@layout/heys_channel_name_fragment">
         <action
@@ -130,7 +130,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelInformFragment"
-        android:name="com.example.heysrealprojcet.HeysChannelInformFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelInformFragment"
         android:label="HeysChannelInformFragment"
         tools:layout="@layout/heys_channel_inform_fragment">
         <action
@@ -139,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelFreeFragment"
-        android:name="com.example.heysrealprojcet.HeysChannelFreeFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelFreeFragment"
         android:label="HeysChannelFreeFragment"
         tools:layout="@layout/heys_channel_free_fragment">
         <action

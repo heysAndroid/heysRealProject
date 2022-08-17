@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ChannelFormDialogViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel" />
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:paddingHorizontal="24dp"
         android:paddingTop="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -26,71 +29,71 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:src="@drawable/ic_close_24"/>
+                    android:src="@drawable/ic_close_24" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:text="어떤 형태로 활동하는 채널인가요?"
                 android:textColor="@color/black"
-                android:text="어떤 형태로 활동하는 채널인가요?"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textSize="16sp"
-                android:text="비대면의 경우 전국으로 표시됩니다."/>
+                android:text="비대면의 경우 전국으로 표시됩니다."
+                android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btnOnOff"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnBoth"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="100dp"
-                android:paddingVertical="18dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="24dp"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:text="온, 오프라인"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickForm(v)}"
+                android:paddingVertical="18dp"
                 android:tag="onOff"
-                android:onClick="@{(v) -> vm.onClickForm(v)}"/>
+                android:text="온, 오프라인"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btnOn"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnOnline"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="120dp"
-                android:paddingVertical="18dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="12dp"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:text="온라인"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickForm(v)}"
+                android:paddingVertical="18dp"
                 android:tag="on"
-                android:onClick="@{(v) -> vm.onClickForm(v)}"/>
+                android:text="온라인"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btnOff"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnOffline"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/channel_dialog_button"
-                android:paddingHorizontal="112dp"
-                android:paddingVertical="18dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="12dp"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:text="오프라인"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickForm(v)}"
+                android:paddingVertical="18dp"
                 android:tag="off"
-                android:onClick="@{(v) -> vm.onClickForm(v)}"/>
+                android:text="오프라인"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnSave"
@@ -99,10 +102,10 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="14dp"
                 android:background="@drawable/bg_f7bc26_radius_8"
+                android:text="저장하기"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="저장하기"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </layout>

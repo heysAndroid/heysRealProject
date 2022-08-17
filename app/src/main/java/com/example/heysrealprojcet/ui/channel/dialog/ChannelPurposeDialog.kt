@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet
+package com.example.heysrealprojcet.ui.channel.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelPurposeDialogBinding
 import com.example.heysrealprojcet.enums.ChannelPurpose
+import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel
 
 class ChannelPurposeDialog(private val context: Context, private val viewModel: ChannelPurposeDialogViewModel) {
-   private lateinit var binding: ChannelPurposeDialogBinding
+   private var binding: ChannelPurposeDialogBinding = ChannelPurposeDialogBinding.inflate(LayoutInflater.from(context))
    private val dialog = Dialog(context)
    private lateinit var listener: ChannelPurposeDialogOnClickListener
 
    init {
-      binding = ChannelPurposeDialogBinding.inflate(LayoutInflater.from(context))
       binding.vm = viewModel
 
       val button = when (viewModel.btnText) {

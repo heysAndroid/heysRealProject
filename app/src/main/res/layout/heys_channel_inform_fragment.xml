@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.HeysChannelInformViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.HeysChannelInformViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -105,24 +105,29 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/form"
+                <LinearLayout
+                    android:id="@+id/formContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="14dp"
-                    android:text="대면·비대면/전국"
-                    android:textColor="@color/color_828282"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/btnForm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_next_82" />
+                    <TextView
+                        android:id="@+id/form"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text="온,오프라인"
+                        android:textColor="@color/color_828282"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_next_82" />
+                </LinearLayout>
             </LinearLayout>
 
             <View
@@ -150,23 +155,30 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/join"
+                <LinearLayout
+                    android:id="@+id/capacityContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="14dp"
-                    android:text="최대 50명"
-                    android:textColor="@color/color_828282"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/btnJoin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_next_82" />
+                    <TextView
+                        android:id="@+id/capacity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text="최대 50명"
+                        android:textColor="@color/color_828282"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_next_82" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -195,24 +207,29 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/way"
+                <LinearLayout
+                    android:id="@+id/recruitmentMethodContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="14dp"
-                    android:text="승인 결정"
-                    android:textColor="@color/color_828282"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/btnWay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_next_82" />
+                    <TextView
+                        android:id="@+id/recruitmentMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text="승인 결정"
+                        android:textColor="@color/color_828282"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_next_82" />
+                </LinearLayout>
             </LinearLayout>
 
             <View
