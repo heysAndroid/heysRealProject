@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelFreeFragmentBinding
+import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelFreeViewModel
 
 class HeysChannelFreeFragment : Fragment() {
    private lateinit var binding: HeysChannelFreeFragmentBinding

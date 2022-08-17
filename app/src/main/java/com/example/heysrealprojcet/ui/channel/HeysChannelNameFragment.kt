@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelNameFragmentBinding
+import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelNameViewModel
 
 class HeysChannelNameFragment : Fragment() {
    private lateinit var binding : HeysChannelNameFragmentBinding

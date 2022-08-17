@@ -3,7 +3,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.HeysChannelFreeViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelFreeViewModel" />
     </data>
 
     <LinearLayout

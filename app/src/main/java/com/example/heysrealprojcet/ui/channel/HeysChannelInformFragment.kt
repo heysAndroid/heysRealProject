@@ -16,6 +16,7 @@ import com.example.heysrealprojcet.ui.channel.dialog.ChannelRecruitmentMethodDia
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel
+import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelInformViewModel
 
 class HeysChannelInformFragment : Fragment() {
    private lateinit var binding: HeysChannelInformFragmentBinding

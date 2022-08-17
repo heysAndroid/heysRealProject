@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.HeysChannelInformViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelInformViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
