@@ -41,11 +41,11 @@ class HeysChannelFreeFragment : Fragment() {
       }
 
       binding.btnPreview.setOnClickListener {
-         goToFreeView()
+         goToFreePreview()
       }
    }
 
-   private fun goToFreeView() {
+   private fun goToFreePreview() {
       findNavController().navigate(R.id.action_heysChannelFreeFragment_to_heysChannelFreePreviewFragment)
    }
 }

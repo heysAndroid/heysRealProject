@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.heysrealprojcet.databinding.HeysChannelFreePreviewFragmentBinding
 
-class HeysChannelFreePreviewFragment: Fragment() {
+class HeysChannelFreePreviewFragment : Fragment() {
    private lateinit var binding: HeysChannelFreePreviewFragmentBinding
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
