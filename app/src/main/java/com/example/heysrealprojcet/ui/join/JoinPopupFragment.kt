@@ -6,11 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.JoinPopupFragmentBinding
-import com.example.heysrealprojcet.ui.main.MainActivity
-import com.example.heysrealprojcet.util.UserPreference
 
 class JoinPopupFragment : Fragment() {
    private lateinit var binding: JoinPopupFragmentBinding

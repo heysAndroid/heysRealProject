@@ -4,69 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6F6F6F"
+    android:gravity="bottom"
     android:orientation="vertical"
     tools:context=".ui.join.JoinPopupFragment">
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#6F6F6F"
-        android:src="@drawable/ic_close" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
         android:background="@drawable/bg_white_radius_38"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/josefin_700"
-            android:text="성장곡선 커리어 그리기를\n 시작해볼까요?"
-            android:textSize="20sp" />
+            android:layout_marginTop="42dp"
+            android:text="성장곡선을 그려볼까요?"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="11.5dp"
-            android:fontFamily="@font/josefin_700"
+            android:layout_marginTop="24dp"
             android:text="개인정보 수집·이용 동의"
-            android:textSize="12sp" />
+            android:textColor="@color/color_828282"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/josefin_700"
+            android:layout_marginTop="12dp"
             android:text="서비스 이용 약관"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="11.5dp"
-            android:fontFamily="@font/josefin_700"
-            android:text="커뮤니티 가이드 라인"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="14dp"
             android:background="@drawable/join_button"
-            android:fontFamily="@font/josefin_400"
-            android:text="동의하고 시작하기"
+            android:paddingVertical="16dp"
+            android:text="동의하고 시작"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>
