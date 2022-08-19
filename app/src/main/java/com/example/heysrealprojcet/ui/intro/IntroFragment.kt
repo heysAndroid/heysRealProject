@@ -44,12 +44,12 @@ class IntroFragment : Fragment() {
 
       binding.skipButton.setOnClickListener { binding.viewpager.currentItem = 2 }
       binding.userButton.setOnClickListener { goToMain(true) }
+      binding.lookButton.setOnClickListener { goToMain(false) }
       // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
       binding.nextButton.setOnClickListener {
          when (positon) {
             0 -> binding.viewpager.currentItem = 1
             1 -> binding.viewpager.currentItem = 2
-            2 -> goToMain(false)
          }
       }
    }
@@ -80,10 +80,12 @@ class IntroFragment : Fragment() {
             2 -> {
                binding.nextButton.text = "가입전에 둘러볼래요!"
                binding.userButton.visibility = View.VISIBLE
+               binding.nextButton.visibility = View.INVISIBLE
             }
             1 -> {
                binding.nextButton.text = "다음"
                binding.userButton.visibility = View.INVISIBLE
+               binding.nextButton.visibility = View.VISIBLE
             }
          }
       }

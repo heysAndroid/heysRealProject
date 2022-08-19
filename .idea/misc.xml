@@ -27,6 +27,8 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_activity.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_circle_e5e5e5.xml" value="0.1315" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_e1_radius_8.xml" value="0.142" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_focused.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f3f3f3_radius_30.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f7bc26_radius_8.xml" value="0.142" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter.xml" value="0.1" />
@@ -44,6 +46,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_16.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_30.xml" value="0.1315" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_38.xml" value="0.1315" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_8.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_finish.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_interest.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_many.xml" value="0.1" />
@@ -71,6 +74,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next_26.xml" value="0.1315" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next_ff.xml" value="0.1315" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_onboarding2.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_plus.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_rectangle.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_ripple_effect.xml" value="0.1" />
@@ -112,7 +116,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_name_fragment.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list_fragment.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_activity.xml" value="0.25181159420289856" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_age_fragment.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_fragment.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_interest_fragment.xml" value="0.12335359675785208" />
