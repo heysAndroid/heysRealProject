@@ -20,6 +20,8 @@ class JoinPopupFragment : Fragment() {
 
    override fun onDestroy() {
       super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
    }
 
    override fun onCreateView(
