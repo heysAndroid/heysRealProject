@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.category.CategoryViewData
 
@@ -22,6 +23,8 @@ class StudyListFragment : Fragment() {
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
       return binding.root
    }
 
