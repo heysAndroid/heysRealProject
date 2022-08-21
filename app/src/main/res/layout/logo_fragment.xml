@@ -3,15 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_ff6e20">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/jalnan"
-        android:text="Heys!"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="64sp" />
+        android:paddingVertical="7.5dp"
+        android:paddingHorizontal="25dp"
+        android:textColor="@color/color_f8f9fc"
+        android:textSize="12sp"
+        android:text="함께하는 스펙업!"
+        android:background="@drawable/bg_262626_radius_15"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12.61dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_hey"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_s"/>
+
+    </LinearLayout>
 </LinearLayout>

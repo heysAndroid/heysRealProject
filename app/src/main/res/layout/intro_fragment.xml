@@ -11,6 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:layout_marginRight="32dp"
+        android:layout_marginVertical="18dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         android:background="@android:color/transparent"
         android:text="건너뛰기"
         android:textColor="@color/color_949494" />
@@ -41,25 +45,57 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/userButton"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_e1e1e1"
-        android:paddingVertical="20dp"
-        android:text="이미 가입했어요!"
-        android:textColor="@color/color_828282"
-        android:textSize="20sp"
-        android:visibility="invisible" />
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="14dp">
 
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@color/color_53c740"
-        android:paddingVertical="20dp"
-        android:text="다음"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_f7bc26_radius_8"
+            android:paddingVertical="16dp"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/userButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_white_radius_8"
+                android:paddingVertical="16dp"
+                android:layout_marginRight="12dp"
+                android:text="이미 가입했어요"
+                android:textColor="@color/color_f7bc26"
+                android:textSize="16sp"
+                android:visibility="visible"
+                android:stateListAnimator="@null"/>
+
+            <Button
+                android:id="@+id/lookButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_f7bc26_radius_8"
+                android:paddingVertical="16dp"
+                android:text="가입전에 둘러볼래요"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="visible"
+                android:stateListAnimator="@null"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
 </LinearLayout>
