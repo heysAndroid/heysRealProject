@@ -21,47 +21,27 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/intent_button.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/join_button.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/orange_radius.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_0d828282_radius_16.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_1a53c740_radius_16.xml" value="0.1455" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_262626_radius_15.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_53c740_radius_16.xml" value="0.1315" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_77d671_radius_12.xml" value="0.161" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_828282_radius_16.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_919191_radius_5.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_activity.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_create_button.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_create_button_normal.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_create_button_selected.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_edit_text.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_edittext.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_edittext_focused.xml" value="0.1395" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_edittext_normal.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_channel_edittext_selected.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_circle_e5e5e5.xml" value="0.1315" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_circle_f7bc26.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_e1_radius_8.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_e1e1e1_radius_8.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_disabled.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_focused.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_normal.xml" value="0.1455" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_e1_radius_8.xml" value="0.142" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_focused.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_edittext_normal.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f3f3f3_radius_30.xml" value="0.161" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f7bc26_radius_8.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f8f9fc_radius_16.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_fd494a_radius_4.xml" value="0.141" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ff6e20_radius_5.xml" value="0.1445" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_f7bc26_radius_8.xml" value="0.142" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button_normal.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_activity_button_selected.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_apply_button.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_filter_time_button.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_gender_button.xml" value="0.1445" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_gender_button_normal.xml" value="0.1445" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_interest_button.xml" value="0.124" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_interest_button_normal.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_interest_button_selected.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_main_list.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ok_button.xml" value="0.1" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ok_button_disabled.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_ok_button_enabled.xml" value="0.1515" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_purpose_dialog_button.xml" value="0.1395" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_study_list.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_study_radius_16.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_study_remain_time.xml" value="0.161" />
@@ -70,8 +50,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_16.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_30.xml" value="0.1315" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_38.xml" value="0.1315" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/channel_create_button.xml" value="0.1455" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/channel_dialog_button.xml" value="0.1465" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_white_radius_8.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_finish.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_interest.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/character_passion_many.xml" value="0.1" />
@@ -79,7 +58,9 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/dafd.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_add_heys.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_all.xml" value="0.15416666666666667" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_arrow_back_53c740.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_back.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_before.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_circle.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_circle_d9d9d9.xml" value="0.1515" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_circle_ff6320.xml" value="0.1315" />
@@ -90,8 +71,12 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_filter_button.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_filter_list.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_filter_list_white.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_female.xml" value="0.1465" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_female_selected.xml" value="0.1465" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_female.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_female_selected.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_male.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_male_selected.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_male_unselected.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_gender_nonbinary.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_group.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_heys_profile_with_dot.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_icon.xml" value="0.38229166666666664" />
@@ -100,8 +85,9 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_my_page.xml" value="0.1515" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next_26.xml" value="0.1315" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next_82.xml" value="0.1455" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_next_ff.xml" value="0.1315" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_onboarding2.xml" value="0.153" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_password_toggle.xml" value="0.153" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_plus.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_rectangle.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_ripple_effect.xml" value="0.1" />
@@ -111,7 +97,6 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ic_visible.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/interest_text.xml" value="0.161" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/join_activity.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/purpose_channel_button.xml" value="0.1455" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/ripple_background.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/switch_thumb.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/switch_track_off.xml" value="0.1" />
@@ -124,22 +109,13 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_detail_item_view.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_interest_view.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_view.xml" value="0.25181159420289856" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_form_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_form_fragment_dialog.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_join_fragment_dialog.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_name_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_number_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_number_fragment_dialog.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment_dialog.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment.xml" value="0.2" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment_dialog.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_recruitment_method_dialog.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.136" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_filter_fragment.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_free_preview_fragment.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_item_view.xml" value="0.213768115942029" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_preview_fragment.xml" value="0.22644927536231885" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_template_preview_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_template_preview_fragment.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_filter_fragment.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_item_view.xml" value="0.1" />
@@ -148,41 +124,33 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_fragment.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_layout.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_page.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_create.xml" value="0.152" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_detail_fragment.xml" value="0.213768115942029" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free.xml" value="0.20811965811965813" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_preview_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_inform_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_list_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_name_fragment.xml" value="0.152" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_template.xml" value="0.2" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_template_fragment.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_fragment.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_list_fragment.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_name_fragment.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list_fragment.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_activity.xml" value="0.25181159420289856" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_activity.xml" value="0.24320652173913043" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_age_fragment.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/intro_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_age_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_fragment.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_gender_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_interest_fragment.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_interest_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_name_1_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_name_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_password_fragment.xml" value="0.25181159420289856" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_phone_fragment.xml" value="0.2" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_phone_verification_fragment.xml" value="0.176" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_popup_fragment.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_name_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_password_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_phone_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_phone_verification_fragment.xml" value="0.4753199268738574" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/join_popup_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/logo_activity.xml" value="0.2046875" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/logo_fragment.xml" value="0.176" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/logo_fragment.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/main_activity.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/main_fragment.xml" value="0.2" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/member_heys_item_view.xml" value="0.2" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/member_heys_item_view.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/member_heys_list_fragment.xml" value="0.12335359675785208" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/my_channel_fragment.xml" value="0.24320652173913043" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/my_page_fragment.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/my_page_fragment.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/sex_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_filter.xml" value="0.11626139817629179" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_filter_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_filter_fragment.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_fragment.xml" value="0.1037037037037037" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_item2_view.xml" value="0.4834123222748815" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_item_view.xml" value="0.264" />
@@ -270,13 +238,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/age_fragment.xml" value="0.175" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_detail_item_view.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_view.xml" value="0.175" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_form_fragment_dialog.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_join_fragment_dialog.xml" value="0.22" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_dialog.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_purpose_fragment_dialog.xml" value="0.1" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_recruitment_method_dialog.xml" value="0.10371376811594203" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_recruitment_method_fragment.xml" value="0.16510416666666666" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/channel_way_fragment_dialog.xml" value="0.22" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_detail_fragment.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_filter_fragment.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/contest_activity_item_view.xml" value="0.1703125" />
@@ -289,11 +251,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_fragment.xml" value="0.159375" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/filter_layout.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_detail_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_fragment.xml" value="0.1234375" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_free_preview_fragment.xml" value="0.16510416666666666" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_inform_fragment.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_list_fragment.xml" value="0.175" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_channel_name_fragment.xml" value="0.1234375" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_detail_fragment.xml" value="0.22" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list.xml" value="0.1703125" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/heys_list_fragment.xml" value="0.175" />

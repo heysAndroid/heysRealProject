@@ -2,7 +2,6 @@
 <layout>
 
     <data>
-
         <variable
             name="vm"
             type="com.example.heysrealprojcet.ui.join.name.JoinNameViewModel" />
@@ -13,23 +12,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="19dp"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_back" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="26dp"
             android:orientation="vertical">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_arrow_back_53c740" />
 
             <TextView
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="이름을 알려주세요"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -39,25 +40,15 @@
                 android:id="@+id/description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="실명 기반의 신뢰할 수 있는 커뮤니티를 만들어 가요."
                 android:textColor="@color/color_828282"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/description3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="이름이 너무 길어요!"
-                android:textColor="@color/color_fd494a"
-                android:textSize="12sp"
-                android:visibility="@{vm.isDescriptionVisible}" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -69,10 +60,22 @@
                     android:hint="홍길동"
                     android:maxLength="8"
                     android:paddingHorizontal="16dp"
-                    android:paddingVertical="12dp"
                     android:text="@={vm.name}"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/description3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:text="이름이 너무 길어요!"
+                android:textColor="@color/color_fd494a"
+                android:textSize="12sp"
+                android:visibility="@{vm.isDescriptionVisible}" />
+
         </LinearLayout>
 
         <View
@@ -85,10 +88,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ok_button"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="14dp"
             android:enabled="@{vm.isEnabled}"
-            android:paddingVertical="20dp"
             android:text="다음"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
     </LinearLayout>
 </layout>

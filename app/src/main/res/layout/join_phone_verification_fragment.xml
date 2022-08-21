@@ -14,24 +14,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="19dp"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_back" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="31dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="26dp"
             android:orientation="vertical">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_arrow_back_53c740" />
 
             <TextView
                 android:id="@+id/phoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:text="@{vm.phoneNumber}"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -45,7 +46,7 @@
                 android:layout_marginTop="18dp"
                 android:text="문자로 보내드린 6자리 인증번호를 적어주세요."
                 android:textColor="@color/color_828282"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -61,32 +62,67 @@
                     android:hint="인증번호(6자리)"
                     android:inputType="number"
                     android:maxLength="6"
-                    android:padding="0dp"
+                    android:paddingLeft="16dp"
                     android:text="@={vm.verificationNumber}"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/resendButton"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:background="@drawable/bg_resend_button"
-                    android:gravity="center"
-                    android:onClick="@{() -> vm.setResendEnabled()}"
-                    android:text="@string/string_01"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="right|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/resendButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> vm.setResendEnabled()}"
+                        android:text="@string/string_01"
+                        android:textColor="@color/color_f7bc26"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="right"
+                        android:background="@color/color_f7bc26" />
+
+                </LinearLayout>
             </FrameLayout>
 
-            <TextView
-                android:id="@+id/timeText"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@{vm.timeText}"
-                android:textColor="@color/color_828282"
-                tools:text="인증번호 입력 시간이 03분 00초 남았습니다" />
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:text="인증번호 입력 시간이 "/>
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.timeText}"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="3분 00초" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:text=" 남았습니다."/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <View
@@ -99,9 +135,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ok_button"
-            android:enabled="@{vm.isEnabled()}"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="14dp"
+            android:enabled="@{vm.isEnabled}"
             android:text="인증하기"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
     </LinearLayout>
 </layout>

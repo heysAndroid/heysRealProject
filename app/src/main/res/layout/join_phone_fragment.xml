@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="vm"
             type="com.example.heysrealprojcet.ui.join.phone.JoinPhoneViewModel" />
@@ -14,24 +13,25 @@
         android:background="@color/color_f8f9fc"
         android:orientation="vertical">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="19dp"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_back" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginHorizontal="32dp"
             android:orientation="vertical">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingVertical="16dp"
-                android:src="@drawable/ic_arrow_back_53c740" />
 
             <TextView
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="휴대폰 번호를 입력해주세요"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -41,10 +41,10 @@
                 android:id="@+id/description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="12dp"
                 android:text="로그인이나 회원가입에 필요해요."
                 android:textColor="@color/color_828282"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -54,26 +54,18 @@
                     android:id="@+id/phoneInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/bg_edittext"
-                    android:hint="01012345678"
+                    android:hint="ex)01012345678"
                     android:inputType="phone"
                     android:maxLength="13"
-                    android:padding="12dp"
-                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="16dp"
                     android:text="@={vm.phoneNumber}"
                     android:textColor="@color/black"
-                    android:textSize="14sp">
+                    android:textSize="16sp">
 
                     <requestFocus />
                 </EditText>
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_delete" />
             </FrameLayout>
 
         </LinearLayout>
@@ -88,9 +80,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_ok_button"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="14dp"
             android:enabled="@{vm.isEnabled}"
             android:text="인증하기"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
     </LinearLayout>
 </layout>

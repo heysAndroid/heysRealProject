@@ -63,9 +63,9 @@ class JoinVerificationViewModel : ViewModel() {
             }
             _timeTextSecond -= 1
             if ("$_timeTextSecond".length == 2) {
-               _timeText.value = "인증번호 입력 시간이 0${_timeTextMinute}분 ${_timeTextSecond}초 남았습니다"
+               _timeText.value = "${_timeTextMinute}분 ${_timeTextSecond}초 남았습니다"
             } else {
-               _timeText.value = "인증번호 입력 시간이 0${_timeTextMinute}분 0${_timeTextSecond}초 남았습니다"
+               _timeText.value = "${_timeTextMinute}분 0${_timeTextSecond}초 남았습니다"
             }
             delay(1000L)
          }

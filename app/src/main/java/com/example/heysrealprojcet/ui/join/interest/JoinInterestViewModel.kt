@@ -1,6 +1,8 @@
 package com.example.heysrealprojcet.ui.join.interest
 
+import android.graphics.Typeface
 import android.view.View
+import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -50,19 +52,24 @@ class JoinInterestViewModel @Inject constructor(
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
 
+      var button = v as Button
+
       if (total.value < totalMax) {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             total.value -= 1
             interestList.remove(item)
          } else {
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             total.value += 1
             interestList.add(item)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             total.value -= 1
             interestList.remove(item)
          }
