@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,19 +13,18 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-   private val binding by lazy {
-      MainActivityBinding.inflate(layoutInflater)
-   }
+   private lateinit var binding: MainActivityBinding
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-
-      initBinding()
+      binding = MainActivityBinding.inflate(layoutInflater)
+      setContentView(binding.root)
       setNavigationGraph()
    }
 
-   private fun initBinding() {
-      setContentView(binding.root)
+   fun hideBottomNavigation(state: Boolean) {
+      if (state) binding.bottomNavigation.visibility = View.GONE
+      else binding.bottomNavigation.visibility = View.VISIBLE
    }
 
    private fun setNavigationGraph() {
