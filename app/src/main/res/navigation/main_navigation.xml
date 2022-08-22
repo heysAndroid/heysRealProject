@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/contestActivityDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.detail.ContestActivityDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail.ContestActivityDetailFragment"
         android:label="ContestActivityDetailFragment"
         tools:layout="@layout/contest_activity_detail_fragment">
         <action

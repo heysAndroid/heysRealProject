@@ -8,11 +8,24 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.MemberHeysListFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class MemberHeysListFragment : Fragment() {
    private lateinit var binding: MemberHeysListFragmentBinding
    private lateinit var memberHeysItemRecyclerViewAdapter: MemberHeysItemRecyclerViewAdapter
    private lateinit var userNameList: MutableList<String>
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

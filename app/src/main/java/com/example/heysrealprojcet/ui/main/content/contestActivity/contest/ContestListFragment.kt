@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
 class ContestListFragment : Fragment() {
@@ -19,6 +20,18 @@ class ContestListFragment : Fragment() {
    private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
    private lateinit var hostList: MutableList<String>
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ContestListFragmentBinding.inflate(inflater, container, false)

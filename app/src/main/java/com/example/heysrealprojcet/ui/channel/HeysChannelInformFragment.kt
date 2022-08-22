@@ -17,6 +17,7 @@ import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel
 import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelInformViewModel
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class HeysChannelInformFragment : Fragment() {
    private lateinit var binding: HeysChannelInformFragmentBinding
@@ -25,6 +26,18 @@ class HeysChannelInformFragment : Fragment() {
    private val purposeDialogViewModel: ChannelPurposeDialogViewModel by viewModels()
    private val formDialogViewModel: ChannelFormDialogViewModel by viewModels()
    private val recruitmentMethodDialogViewModel: ChannelRecruitmentMethodDialogViewModel by viewModels()
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = HeysChannelInformFragmentBinding.inflate(inflater, container, false)

@@ -10,10 +10,23 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelNameFragmentBinding
 import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelNameViewModel
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class HeysChannelNameFragment : Fragment() {
    private lateinit var binding : HeysChannelNameFragmentBinding
    private val viewModel: HeysChannelNameViewModel by viewModels()
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = HeysChannelNameFragmentBinding.inflate(inflater, container, false)
