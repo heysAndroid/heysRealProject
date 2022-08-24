@@ -16,7 +16,7 @@ import com.example.heysrealprojcet.ui.main.content.study.StudyItemRecyclerViewAd
 class HeysChannelListFragment : Fragment() {
    private lateinit var binding: HeysChannelListFragmentBinding
    private lateinit var heysItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
-   private lateinit var startDateList: MutableList<String>
+   private lateinit var startDateList: MutableList<Int>
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class HeysChannelListFragment : Fragment() {
    }
 
    private fun makeList() {
-      startDateList = mutableListOf("개설한지 6일", "개설한지 90일", "개설한지 7일")
+      startDateList = mutableListOf(3, 10, 5, 2, 0)
    }
 
    private fun goToChannelList() {

@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
-import com.example.heysrealprojcet.ui.main.category.CategoryViewData
 
 class StudyItemRecyclerViewAdapter(
-   private val type: MutableList<CategoryViewData>,
+//   private val type: MutableList<CategoryViewData>,
    private val startDate: MutableList<Int>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
