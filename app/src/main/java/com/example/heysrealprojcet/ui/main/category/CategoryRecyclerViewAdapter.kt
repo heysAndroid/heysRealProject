@@ -20,14 +20,16 @@ class CategoryRecyclerViewAdapter(
       RecyclerView.ViewHolder(binding.root) {
       fun bind(item: ContestMain) {
          binding.typeText.text = item.type
+         binding.functionText.text = item.function
          binding.image.setImageResource(item.resId)
          binding.root.setOnClickListener { onclick.invoke(item.type) }
 
          // 텍스트 일부 스타일 적용
-         var content = binding.functionText.text
-         var word = "#개발"
-         var start = content.indexOf(word)
-         var end = start + word.length
+         var content = item.function
+         var word = listOf("#개발", "마감", "많이찾는", "새로열린")
+
+         var start = content.indexOf(word[position])
+         var end = start + word[position].length
 
          val builder = SpannableStringBuilder(content)
          builder.setSpan(ForegroundColorSpan(Color.parseColor("#F7BC26")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

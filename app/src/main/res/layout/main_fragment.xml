@@ -16,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/color_f8f9fc"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -73,6 +74,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="32dp"
                                     android:drawableEnd="@drawable/ic_next_ff"
+                                    android:drawablePadding="10dp"
                                     android:text="더보기"
                                     android:textColor="@color/white"
                                     android:textSize="16sp" />
@@ -94,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="44dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -115,8 +117,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="나에게 필요한"
+                        android:text="추천 대외활동"
                         android:textColor="@color/color_262626"
+                        android:textStyle="bold"
                         android:textSize="24sp" />
 
                     <TextView
@@ -125,6 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="16dp"
                         android:drawableEnd="@drawable/ic_next_26"
+                        android:drawablePadding="10dp"
                         android:text="더보기"
                         android:textColor="@color/color_262626"
                         android:textSize="16sp" />
@@ -155,6 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#개발 "
+                        android:textStyle="bold"
                         android:textColor="@color/color_53c740"
                         android:textSize="24sp" />
 
@@ -165,13 +170,15 @@
                         android:textColor="@color/color_262626"
                         android:textSize="24sp" />
 
-                    <TextView
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_s"/>
+
+                    <View
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="S"
-                        android:textColor="@color/color_f7bc26"
-                        android:textSize="24sp" />
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
 
                     <TextView
                         android:id="@+id/studyAllText"
@@ -179,6 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="16dp"
                         android:drawableEnd="@drawable/ic_next_26"
+                        android:drawablePadding="10dp"
                         android:text="더보기"
                         android:textColor="@color/color_262626"
                         android:textSize="16sp" />
@@ -190,14 +198,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginBottom="44dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_white_radius_16"
-                        android:elevation="10dp"
                         android:orientation="horizontal"
                         android:paddingBottom="10dp">
 
@@ -218,6 +225,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/color_262626"
                                 android:text="나를 위한 맞춤형" />
 
                             <LinearLayout
@@ -229,6 +238,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="스터디 "
+                                    android:textColor="@color/color_262626"
                                     android:textSize="24sp" />
 
                                 <TextView
@@ -236,7 +246,9 @@
                                     android:layout_height="wrap_content"
                                     android:text="둘러보기"
                                     android:textColor="@color/color_f7bc26"
+                                    android:textStyle="bold"
                                     android:textSize="24sp" />
+
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -246,6 +258,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_white_radius_16"
+                        android:paddingBottom="10dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -270,6 +284,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/color_262626"
                                     android:text="개인 맞춤형" />
 
                                 <LinearLayout
@@ -281,56 +296,23 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="스터디 "
+                                        android:textColor="@color/color_262626"
                                         android:textSize="24sp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="개설하기"
+                                        android:textStyle="bold"
                                         android:textColor="@color/color_53c740"
                                         android:textSize="24sp" />
+
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/heysText"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_margin="16dp"-->
-            <!--                android:text="함께 성장하는 헤이즈"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textSize="20sp" />-->
-
-            <!--            <FrameLayout-->
-            <!--                android:id="@+id/descriptionContainer"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="150dp"-->
-            <!--                android:layout_marginHorizontal="16dp"-->
-            <!--                android:layout_marginTop="16dp"-->
-            <!--                android:layout_marginBottom="86dp"-->
-            <!--                android:background="@drawable/bg_activity">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginStart="16dp"-->
-            <!--                    android:gravity="center|start"-->
-            <!--                    android:text="사이드 프로젝트로\n성장하는 청춘을 만들어갈\n헤이즈를 찾아보세요!"-->
-            <!--                    android:textColor="@color/color_101010"-->
-            <!--                    android:textSize="20sp" />-->
-
-            <!--                <ImageView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:layout_marginTop="94dp"-->
-            <!--                    android:layout_marginEnd="16dp"-->
-            <!--                    android:src="@drawable/ic_next" />-->
-            <!--            </FrameLayout>-->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
