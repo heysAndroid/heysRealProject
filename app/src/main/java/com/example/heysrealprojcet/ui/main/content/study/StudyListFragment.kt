@@ -19,7 +19,7 @@ class StudyListFragment : Fragment() {
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<CategoryViewData>
-   private lateinit var startDateList: MutableList<String>
+   private lateinit var startDateList: MutableList<Int>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
@@ -36,26 +36,27 @@ class StudyListFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList) {}
+      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList, type = typeList) {}
       binding.studyList.adapter = studyItemRecyclerViewAdapter
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.filterButton.setOnClickListener { goToFilter() }
+
    }
 
    private fun makeList() {
       typeList = mutableListOf(
-         CategoryViewData("관심 분야", R.drawable.character_passion_interest),
-         CategoryViewData("마감 임박", R.drawable.character_passion_finish),
-         CategoryViewData("많이 찾는", R.drawable.character_passion_many),
-         CategoryViewData("새로 열린", R.drawable.character_passion_new)
+         CategoryViewData("관심 분야", R.drawable.character_passion_interest, true),
+         CategoryViewData("마감 임박", R.drawable.character_passion_finish, false),
+         CategoryViewData("많이 찾는", R.drawable.character_passion_many, false),
+         CategoryViewData("새로 열린", R.drawable.character_passion_new, false)
       )
-
-      startDateList = mutableListOf("마감", "D-34", "D-15")
-
+      startDateList = mutableListOf(3, 10, 5, 2, 0)
    }
 
    private fun goToFilter() {
       findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
    }
+
+
 }
