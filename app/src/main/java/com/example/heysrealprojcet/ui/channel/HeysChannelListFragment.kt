@@ -12,11 +12,12 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelListFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.content.study.StudyItemRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.content.study.StudyViewData
 
 class HeysChannelListFragment : Fragment() {
    private lateinit var binding: HeysChannelListFragmentBinding
    private lateinit var heysItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
-   private lateinit var startDateList: MutableList<Int>
+   private lateinit var studyList: MutableList<StudyViewData>
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -42,7 +43,7 @@ class HeysChannelListFragment : Fragment() {
       binding.lifecycleOwner = this
 
       makeList()
-      heysItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList) { goToChannelDetail() }
+      heysItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToChannelDetail() }
       binding.heysList.adapter = heysItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
@@ -52,7 +53,12 @@ class HeysChannelListFragment : Fragment() {
    }
 
    private fun makeList() {
-      startDateList = mutableListOf(3, 10, 5, 2, 0)
+      studyList = mutableListOf(
+         StudyViewData(3, R.drawable.sample_image, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
+         StudyViewData(10, R.drawable.sample_image, "칠팔구십일이삼사오...", "개설한지 7일", 500),
+         StudyViewData(5, R.drawable.sample_image, "2022 이랜드재단 ESG 서포터즈", "개설한지 7일", 1000),
+         StudyViewData(2, R.drawable.sample_image, "제3회 \n연구개발 특구", "개설한지 7일", 2)
+      )
    }
 
    private fun goToChannelList() {

@@ -19,7 +19,7 @@ class StudyListFragment : Fragment() {
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<CategoryViewData>
-   private lateinit var startDateList: MutableList<Int>
+   private lateinit var studyList: MutableList<StudyViewData>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
@@ -36,7 +36,7 @@ class StudyListFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(startDate = startDateList) {}
+      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) {}
       binding.studyList.adapter = studyItemRecyclerViewAdapter
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
@@ -46,12 +46,18 @@ class StudyListFragment : Fragment() {
 
    private fun makeList() {
       typeList = mutableListOf(
-         CategoryViewData("관심 분야", R.drawable.character_passion_interest, true),
-         CategoryViewData("마감 임박", R.drawable.character_passion_finish, false),
-         CategoryViewData("많이 찾는", R.drawable.character_passion_many, false),
-         CategoryViewData("새로 열린", R.drawable.character_passion_new, false)
+         CategoryViewData("관심 분야", R.drawable.character_creative_interest, true),
+         CategoryViewData("마감 임박", R.drawable.character_creative_finish, false),
+         CategoryViewData("많이 찾는", R.drawable.character_creative_many, false),
+         CategoryViewData("새로 열린", R.drawable.character_creative_new, false)
       )
-      startDateList = mutableListOf(3, 10, 5, 2, 0)
+//      startDateList = mutableListOf(3, 10, 5, 2, 0)
+      studyList = mutableListOf(
+         StudyViewData(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
+         StudyViewData(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),
+         StudyViewData(5, R.drawable.bg_study_list, "2022 이랜드재단 ESG 서포터즈", "이랜드재단", 1000),
+         StudyViewData(2, R.drawable.bg_study_list, "제3회 \n연구개발 특구", "과학기술정보통신부, 연구개발...", 2)
+      )
    }
 
    private fun goToFilter() {

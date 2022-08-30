@@ -80,11 +80,13 @@ class IntroFragment : Fragment() {
             2 -> {
                binding.nextButton.text = "가입전에 둘러볼래요!"
                binding.userButton.visibility = View.VISIBLE
+               binding.lookButton.visibility = View.VISIBLE
                binding.nextButton.visibility = View.INVISIBLE
             }
             1 -> {
                binding.nextButton.text = "다음"
                binding.userButton.visibility = View.INVISIBLE
+               binding.lookButton.visibility = View.INVISIBLE
                binding.nextButton.visibility = View.VISIBLE
             }
          }
