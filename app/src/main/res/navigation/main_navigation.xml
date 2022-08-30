@@ -150,5 +150,5 @@
         android:id="@+id/heysChannelFreePreviewFragment"
         android:name="com.example.heysrealprojcet.ui.channel.HeysChannelFreePreviewFragment"
         android:label="HeysChannelFreePreviewFragment"
-        tools:layout="@layout/heys_channel_free_preview_fragment"/>
+        tools:layout="@layout/heys_channel_free_preview_fragment" />
 </navigation>

@@ -35,7 +35,7 @@ class HeysChannelDetailFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      // binding.heysAll.setOnClickListener { goToMemberList() }
+      binding.heysAll.setOnClickListener { goToMemberList() }
 
       binding.detail.setOnClickListener {
          if (binding.layoutExpand.visibility == View.VISIBLE) {
