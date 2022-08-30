@@ -75,7 +75,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_circle_d9d9d9" />
+                            android:src="@drawable/ic_congratulation" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -123,12 +123,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:src="@drawable/ic_flag" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="역량가아화를 목표로 하는 채널이에요"
+                        android:text="역량강화를 목표로 하는 채널이에요"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:src="@drawable/ic_person" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -167,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:src="@drawable/ic_location" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:src="@drawable/ic_key" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -356,7 +356,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="명이 참여중이에요"
+                        android:text="명이 승인 대기중이에요"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
