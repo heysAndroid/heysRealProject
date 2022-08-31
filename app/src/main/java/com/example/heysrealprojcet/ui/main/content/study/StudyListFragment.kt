@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
+import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.category.CategoryViewData
@@ -19,7 +20,7 @@ class StudyListFragment : Fragment() {
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<CategoryViewData>
-   private lateinit var studyList: MutableList<StudyViewData>
+   private lateinit var studyList: MutableList<Study>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
@@ -51,18 +52,16 @@ class StudyListFragment : Fragment() {
          CategoryViewData("많이 찾는", R.drawable.character_creative_many, false),
          CategoryViewData("새로 열린", R.drawable.character_creative_new, false)
       )
-//      startDateList = mutableListOf(3, 10, 5, 2, 0)
+
       studyList = mutableListOf(
-         StudyViewData(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
-         StudyViewData(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),
-         StudyViewData(5, R.drawable.bg_study_list, "2022 이랜드재단 ESG 서포터즈", "이랜드재단", 1000),
-         StudyViewData(2, R.drawable.bg_study_list, "제3회 \n연구개발 특구", "과학기술정보통신부, 연구개발...", 2)
+         Study(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
+         Study(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),
+         Study(5, R.drawable.bg_study_list, "2022 이랜드재단 ESG 서포터즈", "이랜드재단", 1000),
+         Study(2, R.drawable.bg_study_list, "제3회 \n연구개발 특구", "과학기술정보통신부, 연구개발...", 2)
       )
    }
 
    private fun goToFilter() {
       findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
    }
-
-
 }

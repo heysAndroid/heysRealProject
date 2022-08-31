@@ -1,6 +1,6 @@
-package com.example.heysrealprojcet.ui.main.content.study
+package com.example.heysrealprojcet.model
 
-data class StudyViewData(
+data class Study(
    val startDate: Int,
    val image: Int,
    val title: String,

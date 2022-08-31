@@ -6,34 +6,33 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
+import com.example.heysrealprojcet.model.Study
 
 class StudyItemRecyclerViewAdapter(
-   private val type: MutableList<StudyViewData>,
+   private val type: MutableList<Study>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: StudyItemViewBinding
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: StudyViewData) {
+      fun bind(type: Study) {
          binding.startDate.text = "D-${type.startDate}"
          binding.image.setImageResource(type.image)
          binding.title.text = type.title
          binding.content.text = type.content
          binding.see.text = type.see.toString()
 
-         if(type.startDate == 0) {
+         var bgShape = binding.startDate.background as GradientDrawable
+         if (type.startDate == 0) {
             binding.startDate.text = "마감"
-            var bgShape: GradientDrawable = binding.startDate.background as GradientDrawable
             bgShape.setColor(Color.parseColor("#828282"))
          }
 
-         if(type.startDate in 2..5) {
-            var bgShape: GradientDrawable = binding.startDate.background as GradientDrawable
+         if (type.startDate in 2..5) {
             bgShape.setColor(Color.parseColor("#53C740"))
          }
 
-         if(type.startDate in 6..10) {
-            var bgShape: GradientDrawable = binding.startDate.background as GradientDrawable
+         if (type.startDate in 6..10) {
             bgShape.setColor(Color.parseColor("#F7BC26"))
          }
 
