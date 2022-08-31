@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
-import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
 class ContestListFragment : Fragment() {
    private lateinit var binding: ContestListFragmentBinding
-
-   private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<String>
    private lateinit var hostList: MutableList<String>

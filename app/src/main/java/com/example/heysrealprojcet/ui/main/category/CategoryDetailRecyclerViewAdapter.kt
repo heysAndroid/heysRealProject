@@ -8,7 +8,7 @@ import com.example.heysrealprojcet.databinding.CategoryDetailItemViewBinding
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class CategoryDetailRecyclerViewAdapter(
-   private val type: MutableList<CategoryViewData>) :
+   private val type: MutableList<Category>) :
    RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryDetailItemViewBinding
    private var choiceImage: View? = null
@@ -16,8 +16,8 @@ class CategoryDetailRecyclerViewAdapter(
    private var total = MutableStateFlow(0)
 
    inner class ViewHolder(private val binding: CategoryDetailItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: CategoryViewData) {
-         binding.typeText.text = type.textfilter
+      fun bind(type: Category) {
+         binding.typeText.text = type.textFilter
          binding.typeImage.setImageResource(type.image)
 
          if (type.isSelected) {

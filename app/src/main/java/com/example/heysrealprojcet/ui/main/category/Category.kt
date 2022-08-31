@@ -1,7 +1,7 @@
 package com.example.heysrealprojcet.ui.main.category
 
-data class CategoryViewData(
-   val textfilter: String,
+data class Category(
+   val textFilter: String,
    val image: Int,
    val isSelected: Boolean
 )

@@ -12,14 +12,14 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.main.category.Category
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.main.category.CategoryViewData
 
 class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
-   private lateinit var typeList: MutableList<CategoryViewData>
+   private lateinit var typeList: MutableList<Category>
    private lateinit var studyList: MutableList<Study>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,10 +47,10 @@ class StudyListFragment : Fragment() {
 
    private fun makeList() {
       typeList = mutableListOf(
-         CategoryViewData("관심 분야", R.drawable.character_creative_interest, true),
-         CategoryViewData("마감 임박", R.drawable.character_creative_finish, false),
-         CategoryViewData("많이 찾는", R.drawable.character_creative_many, false),
-         CategoryViewData("새로 열린", R.drawable.character_creative_new, false)
+         Category("관심 분야", R.drawable.character_creative_interest, true),
+         Category("마감 임박", R.drawable.character_creative_finish, false),
+         Category("많이 찾는", R.drawable.character_creative_many, false),
+         Category("새로 열린", R.drawable.character_creative_new, false)
       )
 
       studyList = mutableListOf(

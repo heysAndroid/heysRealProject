@@ -16,8 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginHorizontal="27dp"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -30,8 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textAlignment="center"
                 android:text="스터디"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -39,20 +39,19 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categoryList"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"/>
-
+            android:layout_marginBottom="32dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="28dp"
         android:orientation="horizontal">
 
@@ -68,8 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="16sp"
-            android:text="맞춤 필터" />
+            android:text="맞춤 필터"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/filterCount"
@@ -77,9 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
+            android:text="3"
             android:textColor="@color/color_f7bc26"
-            android:text="3" />
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
@@ -95,8 +94,8 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:track="@drawable/switch_track_selector"
-            android:thumb="@drawable/switch_thumb"/>
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track_selector" />
 
     </LinearLayout>
 
@@ -104,5 +103,5 @@
         android:id="@+id/studyList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="32dp"/>
+        android:layout_marginHorizontal="32dp" />
 </LinearLayout>

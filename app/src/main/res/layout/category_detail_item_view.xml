@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="vm"-->
-<!--            type="com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewModel"/>-->
-
-<!--    </data>-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp">
 
-    <ImageButton
-        android:id="@+id/typeImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"/>
+        <ImageButton
+            android:id="@+id/typeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/character_creative_interest" />
 
-    <TextView
-        android:id="@+id/typeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="관심분야"
-        android:textSize="16sp"
-        android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/typeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:text="관심분야"
+            android:textSize="16sp" />
     </LinearLayout>
 </layout>
