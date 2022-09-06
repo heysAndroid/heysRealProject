@@ -108,7 +108,11 @@
         android:id="@+id/memberHeysListFragment"
         android:name="com.example.heysrealprojcet.ui.channel.MemberHeysListFragment"
         android:label="MemberHeysListFragment"
-        tools:layout="@layout/member_heys_list_fragment" />
+        tools:layout="@layout/member_heys_list_fragment" >
+        <action
+            android:id="@+id/action_memberHeysListFragment_to_heysChannelChatFragment"
+            app:destination="@id/heysChannelChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
@@ -151,4 +155,9 @@
         android:name="com.example.heysrealprojcet.ui.channel.HeysChannelFreePreviewFragment"
         android:label="HeysChannelFreePreviewFragment"
         tools:layout="@layout/heys_channel_free_preview_fragment" />
+    <fragment
+        android:id="@+id/heysChannelChatFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.chat.HeysChannelChatFragment"
+        android:label="HeysChannelChatFragment"
+        tools:layout="@layout/heys_channel_chat_fragment" />
 </navigation>

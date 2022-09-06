@@ -12,7 +12,7 @@ class MemberHeysItemRecyclerViewAdapter(private val name: MutableList<String>, p
    inner class ViewHolder(private val binding: MemberHeysItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(name: String) {
          binding.name.text = name
-         binding.root.setOnClickListener { onClickListener.invoke() }
+         binding.goToProfile.setOnClickListener { onClickListener.invoke() }
       }
    }
 

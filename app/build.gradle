@@ -99,4 +99,7 @@ dependencies {
 
     // Declare the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // circular image in profile
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
