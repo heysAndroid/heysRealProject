@@ -11,10 +11,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:paddingHorizontal="27dp"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:paddingVertical="16dp">
+            android:paddingTop="19dp"
+            android:paddingBottom="16dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -26,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginRight="24dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -44,8 +44,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:text="3"
-                    android:textColor="@color/color_ff6e20"
-                    android:textSize="14sp"
+                    android:textColor="@color/color_f7bc26"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -59,8 +59,8 @@
             android:layout_marginHorizontal="32dp"
             android:gravity="center_vertical"
             android:background="@drawable/bg_white_radius_16"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="12dp"
             android:orientation="horizontal">
 
             <ImageButton

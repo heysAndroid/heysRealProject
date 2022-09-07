@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/bg_white_radius_16"
     android:orientation="horizontal"
     android:paddingHorizontal="16dp"
@@ -26,10 +26,11 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_study_closed"
             android:gravity="center"
-            android:paddingHorizontal="6dp"
             android:text="마감"
             android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="12sp" />
+
     </FrameLayout>
 
     <LinearLayout
