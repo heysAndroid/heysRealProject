@@ -18,9 +18,9 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="19dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="19dp"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_back" />
 
         <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="관심있는 정보, 팀, 모임을 쉽게 찾아보세요!"
+                android:text="관심있는 정보, 스터디, 프로젝트를 쉽게\n찾아보세요!"
                 android:textColor="@color/color_949494"
                 android:textSize="16sp" />
 
@@ -78,8 +78,8 @@
                     android:paddingVertical="6dp"
                     android:tag="planning"
                     android:text="기획"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/design"
@@ -94,8 +94,8 @@
                     android:paddingVertical="6dp"
                     android:tag="design"
                     android:text="디자인"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/programming"
@@ -110,8 +110,8 @@
                     android:paddingVertical="6dp"
                     android:tag="programming"
                     android:text="개발"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/economics"
@@ -125,8 +125,8 @@
                     android:paddingVertical="6dp"
                     android:tag="economics"
                     android:text="금융/경제"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -141,8 +141,8 @@
                     android:id="@+id/data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_interest_button"
                     android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_interest_button"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="@{(v) -> vm.onClickInterest(v)}"
@@ -150,8 +150,8 @@
                     android:paddingVertical="6dp"
                     android:tag="data"
                     android:text="데이터/인공지능"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/language"
@@ -166,8 +166,8 @@
                     android:paddingVertical="6dp"
                     android:tag="language"
                     android:text="언어"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/education"
@@ -181,8 +181,8 @@
                     android:paddingVertical="6dp"
                     android:tag="education"
                     android:text="인사/교육"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -205,8 +205,8 @@
                     android:paddingVertical="6dp"
                     android:tag="welfare"
                     android:text="공공/복지"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/business"
@@ -221,8 +221,8 @@
                     android:paddingVertical="6dp"
                     android:tag="business"
                     android:text="경영/비즈니스"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/marketing"
@@ -236,8 +236,8 @@
                     android:paddingVertical="6dp"
                     android:tag="marketing"
                     android:text="광고/마케팅"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -261,8 +261,8 @@
                     android:paddingVertical="6dp"
                     android:tag="engineering"
                     android:text="엔지니어링/설계"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/media"
@@ -276,8 +276,8 @@
                     android:paddingVertical="6dp"
                     android:tag="media"
                     android:text="미디어 콘텐츠/전시"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/interest_text" />
+                    android:textColor="@drawable/interest_text"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -294,8 +294,8 @@
                 android:paddingVertical="6dp"
                 android:tag="etc"
                 android:text="기타"
-                android:textSize="16sp"
-                android:textColor="@drawable/interest_text" />
+                android:textColor="@drawable/interest_text"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -308,14 +308,14 @@
             android:id="@+id/okButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_ok_button"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
             android:text="헤이즈 시작하기!"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </layout>
