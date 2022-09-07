@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MemberHeysListFragmentBinding
+import com.example.heysrealprojcet.model.UserProfile
+import com.example.heysrealprojcet.ui.channel.profile.ProfileDialog
 import com.example.heysrealprojcet.ui.main.MainActivity
 
 class MemberHeysListFragment : Fragment() {
    private lateinit var binding: MemberHeysListFragmentBinding
    private lateinit var memberHeysItemRecyclerViewAdapter: MemberHeysItemRecyclerViewAdapter
-   private lateinit var userNameList: MutableList<String>
+   private lateinit var userList: MutableList<UserProfile>
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -40,17 +42,22 @@ class MemberHeysListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       makeList()
-      memberHeysItemRecyclerViewAdapter = MemberHeysItemRecyclerViewAdapter(name = userNameList) { showProfileDialog() }
+      memberHeysItemRecyclerViewAdapter = MemberHeysItemRecyclerViewAdapter(userProfile = userList) { showProfileDialog(it) }
       binding.heysList.adapter = memberHeysItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
    }
 
    private fun makeList() {
-      userNameList = mutableListOf("이름1", "이름2", "이름3", "이름4", "이름5")
+      userList = mutableListOf(
+         UserProfile("이름1", listOf("IT", "기획", "UX"), "대학생", listOf("user research", "figma", "ms office")),
+         UserProfile("이름2", listOf("IT", "개발", "안드로이드"), "대학생", listOf("Android Studio", "Kotlin", "Java")),
+         UserProfile("이름3", listOf("웹", "프로그래밍"), "직장인", listOf("JavaScript", "React", "Bootstrap")),
+         UserProfile("이름4", listOf("프로그래밍", "데이터", "통계"), "취준생", listOf("pandas", "AI", "Machine Learning")),
+         UserProfile("이름5", listOf("개발", "어플", "iOS"), "취준생", listOf("Swift", "iOS", "XCode")))
    }
 
-   private fun showProfileDialog() {
-      ProfileDialog(requireContext()) { goToChat() }.show()
+   private fun showProfileDialog(userProfile: UserProfile) {
+      ProfileDialog(requireContext(), userProfile = userProfile) { goToChat() }.show()
    }
 
    private fun goToChat() {

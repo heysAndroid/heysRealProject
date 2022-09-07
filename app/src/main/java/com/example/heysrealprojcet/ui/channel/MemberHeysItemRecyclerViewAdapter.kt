@@ -2,17 +2,20 @@ package com.example.heysrealprojcet.ui.channel
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.MemberHeysItemViewBinding
+import com.example.heysrealprojcet.model.UserProfile
+import com.example.heysrealprojcet.ui.channel.profile.ProfileDiffCallback
 
-class MemberHeysItemRecyclerViewAdapter(private val name: MutableList<String>, private val onClickListener: () -> Unit) :
-   RecyclerView.Adapter<MemberHeysItemRecyclerViewAdapter.ViewHolder>() {
+class MemberHeysItemRecyclerViewAdapter(private val userProfile: MutableList<UserProfile>, private val onClickListener: (UserProfile) -> Unit) :
+   ListAdapter<UserProfile, MemberHeysItemRecyclerViewAdapter.ViewHolder>(ProfileDiffCallback) {
    private lateinit var binding: MemberHeysItemViewBinding
 
    inner class ViewHolder(private val binding: MemberHeysItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(name: String) {
-         binding.name.text = name
-         binding.goToProfile.setOnClickListener { onClickListener.invoke() }
+      fun bind(userProfile: UserProfile) {
+         binding.name.text = userProfile.name
+         binding.goToProfile.setOnClickListener { onClickListener.invoke(userProfile) }
       }
    }
 
@@ -22,10 +25,10 @@ class MemberHeysItemRecyclerViewAdapter(private val name: MutableList<String>, p
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(name[position])
+      holder.bind(userProfile[position])
    }
 
    override fun getItemCount(): Int {
-      return name.size
+      return userProfile.size
    }
 }
