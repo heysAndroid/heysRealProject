@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -8,17 +8,18 @@
             type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel" />
     </data>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="24dp">
+        android:background="@drawable/dialog_inset_56_16"
+        android:paddingTop="32dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="28dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,19 +36,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:src="@drawable/ic_close_24" />
+                    android:src="@drawable/ic_close" />
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="어떤 형태로 활동하는 채널인가요?"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="비대면의 경우 전국으로 표시됩니다."
@@ -95,12 +97,173 @@
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="지역"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
             <Button
+                android:id="@+id/btnWhole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_filter_region_button"
+                android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                android:layout_marginTop="12dp"
+                android:paddingVertical="18dp"
+                android:tag="whole"
+                android:text="전국"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_region_button" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnSeoul"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="seoul"
+                    android:text="서울시"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+                <Button
+                    android:id="@+id/btnGyeonggi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="gyeonggi"
+                    android:text="경기도"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnIncheon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="9dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="incheon"
+                    android:text="인천시"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+                <Button
+                    android:id="@+id/btnGangwon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="gangwon"
+                    android:text="강원도"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnChungcheong"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="9dp"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="chungcheong"
+                    android:text="충청도"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+                <Button
+                    android:id="@+id/btnJeolla"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="jeolla"
+                    android:text="전라도"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGyeongsang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="9dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="gyeongsang"
+                    android:text="경상도"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+
+                <Button
+                    android:id="@+id/btnJeju"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="18dp"
+                    android:background="@drawable/bg_filter_region_button"
+                    android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                    android:tag="Jeju"
+                    android:text="제주시"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_region_button" />
+            </LinearLayout>
+
+           <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="14dp"
+                android:paddingVertical="16dp"
                 android:background="@drawable/bg_f7bc26_radius_8"
                 android:text="저장하기"
                 android:textColor="@color/white"

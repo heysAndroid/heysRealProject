@@ -11,9 +11,9 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
+        android:background="@drawable/dialog_inset_16"
+        android:paddingHorizontal="40dp"
         android:paddingTop="24dp">
 
         <LinearLayout
@@ -30,12 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:src="@drawable/ic_close_24" />
+                android:src="@drawable/ic_close" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="어떤 목적의 헤이즈 채널인가요?"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -65,8 +66,7 @@
                 android:paddingVertical="18dp"
                 android:text="역량강화"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnSkill"
@@ -78,8 +78,7 @@
                 android:paddingVertical="18dp"
                 android:text="실력향상"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -99,8 +98,7 @@
                 android:paddingVertical="18dp"
                 android:text="창업/협업 경험"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/btnPortfolio"
@@ -112,8 +110,7 @@
                 android:paddingVertical="18dp"
                 android:text="포트폴리오"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <Button
@@ -122,6 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="14dp"
+            android:paddingVertical="16dp"
             android:background="@drawable/bg_f7bc26_radius_8"
             android:text="저장하기"
             android:textColor="@color/white"

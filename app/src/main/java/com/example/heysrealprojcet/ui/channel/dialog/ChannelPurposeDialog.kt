@@ -2,6 +2,9 @@ package com.example.heysrealprojcet.ui.channel.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelPurposeDialogBinding
@@ -31,11 +34,13 @@ class ChannelPurposeDialog(private val context: Context, private val viewModel: 
          }
       }
       button.isSelected = true
+      button.setTypeface(null, Typeface.BOLD)
       viewModel.selectedView = button
    }
 
    fun show() {
       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+      dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog.setContentView(binding.root)
       dialog.setCancelable(false)
       dialog.show()

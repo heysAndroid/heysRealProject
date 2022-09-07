@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.*
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelCapacityDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelFormDialog
@@ -53,6 +54,7 @@ class HeysChannelInformFragment : Fragment() {
          val purposeDialog = ChannelPurposeDialog(requireContext(), purposeDialogViewModel)
          purposeDialog.setOnOKClickListener { content ->
             binding.purpose.text = content
+            binding.purpose.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
          purposeDialog.show()
       }
@@ -61,6 +63,7 @@ class HeysChannelInformFragment : Fragment() {
          val formDialog = ChannelFormDialog(requireContext(), formDialogViewModel)
          formDialog.setOnOKClickListener { content ->
             binding.form.text = content
+            binding.form.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
          formDialog.show()
       }
@@ -68,7 +71,8 @@ class HeysChannelInformFragment : Fragment() {
       binding.capacityContainer.setOnClickListener {
          val capacityDialog = ChannelCapacityDialog(requireContext())
          capacityDialog.setOnOKClickListener { content ->
-            binding.capacity.text = "최대${content}명"
+            binding.capacity.text = "최대 ${content}명"
+            binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
          capacityDialog.show()
       }
@@ -77,6 +81,7 @@ class HeysChannelInformFragment : Fragment() {
          val recruitmentMethodDialog = ChannelRecruitmentMethodDialog(requireContext(), recruitmentMethodDialogViewModel)
          recruitmentMethodDialog.setOnOKClickListener { content ->
             binding.recruitmentMethod.text = content
+            binding.recruitmentMethod.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
          recruitmentMethodDialog.show()
       }
