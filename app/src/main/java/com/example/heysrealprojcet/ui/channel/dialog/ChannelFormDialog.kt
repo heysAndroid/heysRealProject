@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelFormDialogBinding
 import com.example.heysrealprojcet.enums.ChannelForm
@@ -68,8 +69,13 @@ class ChannelFormDialog(private val context: Context, private val viewModel: Cha
       button2.setTypeface(null, Typeface.BOLD)
       viewModel.selectedView = button
       viewModel.choiceRegion = button2
+      viewModel.region = binding.region
 
-
+      if (button.text.contains("온")) {
+         binding.region.visibility = View.VISIBLE
+      } else {
+         binding.region.visibility = View.GONE
+      }
    }
 
    fun show() {
@@ -80,7 +86,23 @@ class ChannelFormDialog(private val context: Context, private val viewModel: Cha
       dialog.show()
 
       binding.btnSave.setOnClickListener {
-         listener.onClick("${viewModel.formText}/${viewModel.regionText}")
+         val button = when (viewModel.formText) {
+            ChannelForm.Offline.form -> {
+               binding.btnOffline
+            }
+            ChannelForm.Online.form -> {
+               binding.btnOnline
+            }
+            else -> {
+               binding.btnBoth
+            }
+         }
+
+         if (button.text.contains("온")) {
+            listener.onClick("${viewModel.formText}/${viewModel.regionText}")
+         } else {
+            listener.onClick("${viewModel.formText}")
+         }
          dialog.dismiss()
       }
    }
