@@ -3,12 +3,14 @@ package com.example.heysrealprojcet.ui.channel.dialog.viewModel
 import android.graphics.Typeface
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class ChannelFormDialogViewModel : ViewModel() {
    var selectedView: View? = null
    var choiceRegion: View? = null
+   var region: LinearLayout? = null
 
    private val formMax = 1
    private val regionMax = 1
@@ -47,6 +49,12 @@ class ChannelFormDialogViewModel : ViewModel() {
             button.setTypeface(null, Typeface.BOLD)
             selectedView = v
          }
+      }
+
+      if (formText.contains("온")) {
+         region?.visibility = View.VISIBLE
+      } else {
+         region?.visibility = View.GONE
       }
    }
 
