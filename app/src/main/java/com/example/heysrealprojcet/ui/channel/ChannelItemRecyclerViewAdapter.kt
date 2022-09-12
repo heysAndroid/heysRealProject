@@ -33,6 +33,7 @@ class ChannelItemRecyclerViewAdapter(
                // 지금은 전체 인원으로 표기
                // TODO (전체 인원) - (신청 인원) 으로 수정 필요
                binding.status.text = "${channel.status.status} ${channel.capacity}명"
+               binding.status.setPadding(6, 0, 6, 0)
             }
          }
       }

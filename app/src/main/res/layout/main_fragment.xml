@@ -109,7 +109,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -138,6 +137,7 @@
                     android:id="@+id/activityList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="34dp" />
 
                 <TextView
@@ -167,6 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="스터디"
+                        android:textStyle="bold"
                         android:textColor="@color/color_262626"
                         android:textSize="24sp" />
 

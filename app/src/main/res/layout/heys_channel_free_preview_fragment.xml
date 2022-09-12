@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="31dp"
                     android:text="채널을 소개해요"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -78,8 +78,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_flag" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -100,8 +100,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_person" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -122,8 +122,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_location" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -144,8 +144,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="4dp"
-                        android:src="@drawable/ic_rectangle_16" />
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_key" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="31dp"
                     android:text="시인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다! 관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다.더 궁금하신 점은 프로필로 문의해주세요. 5줄 이상이면 자세히 보기로 펼쳐보게됩니다."
                     android:textSize="16sp" />
 
@@ -168,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginVertical="19dp"
+                    android:layout_marginBottom="19dp"
                     android:drawableEnd="@drawable/ic_expand"
                     android:text="자세히 보기"
                     android:textColor="@color/color_828282"
@@ -216,11 +216,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="12dp"
-                        android:src="@drawable/ic_circle_d9d9d9" />
+                        android:src="@drawable/example_image" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -248,7 +248,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginBottom="14dp"
+                    android:padding="16dp"
                     android:background="@drawable/bg_ok_button_enabled"
                     android:text="채널 만들기"
                     android:textColor="@color/white"

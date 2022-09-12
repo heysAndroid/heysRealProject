@@ -117,43 +117,39 @@ class StudyFilterViewModel : ViewModel() {
 
       var button = v as Button
 
-      try {
-         if (activityArray[0].slice(0..6) == "contact") {
-            if (regionTotal.value < regionMax) {
-               if (v.isSelected) {
-                  choiceRegion = null
-                  v.isSelected = false
-                  button.setTypeface(null, Typeface.NORMAL)
-                  regionTotal.value -= 1
-                  regionArray.remove(item)
-               } else {
-                  choiceRegion = v
-                  v.isSelected = true
-                  button.setTypeface(null, Typeface.BOLD)
-                  regionTotal.value += 1
-                  regionArray.add(item)
-               }
+      if (activityArray[0].contains("contact")) {
+         if (regionTotal.value < regionMax) {
+            if (v.isSelected) {
+               choiceRegion = null
+               v.isSelected = false
+               button.setTypeface(null, Typeface.NORMAL)
+               regionTotal.value -= 1
+               regionArray.remove(item)
             } else {
-               if (v.isSelected) {
-                  choiceRegion = null
-                  v.isSelected = false
-                  button.setTypeface(null, Typeface.NORMAL)
-                  regionTotal.value -= 1
-                  regionArray.remove(item)
-               }
-               else {
-                  choiceRegion?.isSelected = false
-                  (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
-                  regionArray.remove(regionArray[0])
-                  v.isSelected = true
-                  button.setTypeface(null, Typeface.BOLD)
-                  choiceRegion = v
-                  regionArray.add(item)
-               }
+               choiceRegion = v
+               v.isSelected = true
+               button.setTypeface(null, Typeface.BOLD)
+               regionTotal.value += 1
+               regionArray.add(item)
+            }
+         } else {
+            if (v.isSelected) {
+               choiceRegion = null
+               v.isSelected = false
+               button.setTypeface(null, Typeface.NORMAL)
+               regionTotal.value -= 1
+               regionArray.remove(item)
+            }
+            else {
+               choiceRegion?.isSelected = false
+               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+               regionArray.remove(regionArray[0])
+               v.isSelected = true
+               button.setTypeface(null, Typeface.BOLD)
+               choiceRegion = v
+               regionArray.add(item)
             }
          }
-      } catch (e: Exception) {
-         // Toast.makeText(this, "비대면의 경우 활동 지역을 선택할 수 없습니다.", Toast.LENGTH_SHORT).show()
       }
    }
 

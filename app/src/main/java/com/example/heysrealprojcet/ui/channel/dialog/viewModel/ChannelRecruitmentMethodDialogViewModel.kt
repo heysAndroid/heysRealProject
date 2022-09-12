@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class ChannelRecruitmentMethodDialogViewModel : ViewModel() {
    var selectedView: View? = null
    private val wayMax = 1
-   private var wayTotal = MutableStateFlow(0)
+   private var wayTotal = MutableStateFlow(1)
    var btnText = "승인 결정"
 
    fun onClickWay(v: View) {
       val button = v as Button
       btnText = if (button.text.toString().contains("바로")) {
-         "바로승인"
+         "바로 승인"
       } else {
          "승인 결정"
       }
