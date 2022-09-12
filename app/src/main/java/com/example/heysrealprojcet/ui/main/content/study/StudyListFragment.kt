@@ -37,7 +37,7 @@ class StudyListFragment : Fragment() {
       binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
       binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) {}
+      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToDetail() }
       binding.studyList.adapter = studyItemRecyclerViewAdapter
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
@@ -63,5 +63,9 @@ class StudyListFragment : Fragment() {
 
    private fun goToFilter() {
       findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
+   }
+
+   private fun goToDetail() {
+      findNavController().navigate(R.id.action_studyFragment_to_heysChannelDetailFragment)
    }
 }

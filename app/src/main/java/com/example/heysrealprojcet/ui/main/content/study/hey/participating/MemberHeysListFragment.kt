@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.study
+package com.example.heysrealprojcet.ui.main.content.study.hey.participating
 
 import android.os.Bundle
 import android.view.LayoutInflater

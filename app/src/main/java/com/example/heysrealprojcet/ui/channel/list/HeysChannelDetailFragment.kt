@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.create
+package com.example.heysrealprojcet.ui.channel.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,9 +46,15 @@ class HeysChannelDetailFragment : Fragment() {
             binding.layoutExpand.animate().setDuration(200).rotation(0f)
          }
       }
+
+      binding.waitingHeysList.setOnClickListener { goToWaitingHeysList() }
    }
 
    private fun goToMemberList() {
       findNavController().navigate(R.id.action_heysChannelDetailFragment_to_memberHeysListFragment)
+   }
+
+   private fun goToWaitingHeysList() {
+      findNavController().navigate(R.id.action_heysChannelDetailFragment_to_waitingHeyListFragment)
    }
 }
