@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel
+package com.example.heysrealprojcet.ui.main.content.study
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

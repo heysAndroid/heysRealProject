@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelListFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.list.HeysChannelListFragment"
         android:label="HeysListFragment"
         tools:layout="@layout/heys_channel_list_fragment">
         <action
@@ -85,7 +85,7 @@
         tools:layout="@layout/study_filter_fragment" />
     <fragment
         android:id="@+id/heysChannelDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelDetailFragment"
         android:label="HeysChannelDetailFragment"
         tools:layout="@layout/heys_channel_detail_fragment">
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/memberHeysListFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.MemberHeysListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.MemberHeysListFragment"
         android:label="MemberHeysListFragment"
         tools:layout="@layout/member_heys_list_fragment" >
         <action
@@ -125,7 +125,7 @@
         tools:layout="@layout/my_page_fragment" />
     <fragment
         android:id="@+id/heysChannelNameFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelNameFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelNameFragment"
         android:label="HeysChannelNameFragment"
         tools:layout="@layout/heys_channel_name_fragment">
         <action
@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelInformFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelInformFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelInformFragment"
         android:label="HeysChannelInformFragment"
         tools:layout="@layout/heys_channel_inform_fragment">
         <action
@@ -143,7 +143,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelFreeFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelFreeFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelFreeFragment"
         android:label="HeysChannelFreeFragment"
         tools:layout="@layout/heys_channel_free_fragment">
         <action
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/heysChannelFreePreviewFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.HeysChannelFreePreviewFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelFreePreviewFragment"
         android:label="HeysChannelFreePreviewFragment"
         tools:layout="@layout/heys_channel_free_preview_fragment" >
         <action
