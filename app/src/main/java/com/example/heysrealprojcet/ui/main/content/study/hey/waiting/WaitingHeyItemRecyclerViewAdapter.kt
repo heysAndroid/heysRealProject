@@ -8,13 +8,14 @@ import com.example.heysrealprojcet.databinding.WaitingHeyItemViewBinding
 import com.example.heysrealprojcet.model.UserProfile
 import com.example.heysrealprojcet.ui.channel.profile.ProfileDiffCallback
 
-class WaitingHeyItemRecyclerViewAdapter(private val userProfile: MutableList<UserProfile>, private val onClickListener: (UserProfile) -> Unit) :
+class WaitingHeyItemRecyclerViewAdapter(private val userProfile: MutableList<UserProfile>, private val onClickListener: () -> Unit) :
    ListAdapter<UserProfile, WaitingHeyItemRecyclerViewAdapter.ViewHolder>(ProfileDiffCallback) {
    private lateinit var binding: WaitingHeyItemViewBinding
 
    inner class ViewHolder(private val binding: WaitingHeyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(userProfile: UserProfile) {
          binding.name.text = userProfile.name
+         binding.cancel.setOnClickListener { onClickListener.invoke() }
       }
    }
 

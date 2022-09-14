@@ -39,7 +39,11 @@ class WaitingHeyListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       makeList()
-      waitingHeyItemRecyclerViewAdapter = WaitingHeyItemRecyclerViewAdapter(userProfile = userList) {  }
+      waitingHeyItemRecyclerViewAdapter = WaitingHeyItemRecyclerViewAdapter(userProfile = userList) {
+         // 클릭 리스너 전달
+         val bottomSheet = ApprovalCancelBottomSheet(requireContext())
+         bottomSheet.show(childFragmentManager, bottomSheet.tag)
+      }
       binding.waitingHeysList.adapter = waitingHeyItemRecyclerViewAdapter
       binding.waitingHeysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
    }
