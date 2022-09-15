@@ -47,10 +47,10 @@ class StudyListFragment : Fragment() {
 
    private fun makeList() {
       typeList = mutableListOf(
-         Category("관심 분야", R.drawable.character_creative_interest, true),
-         Category("마감 임박", R.drawable.character_creative_finish, false),
-         Category("많이 찾는", R.drawable.character_creative_many, false),
-         Category("새로 열린", R.drawable.character_creative_new, false)
+         Category("관심 분야", R.drawable.character_personal_interest, true),
+         Category("마감 임박", R.drawable.character_personal_finish, false),
+         Category("많이 찾는", R.drawable.character_personal_many, false),
+         Category("새로 열린", R.drawable.character_personal_new, false)
       )
 
       studyList = mutableListOf(
