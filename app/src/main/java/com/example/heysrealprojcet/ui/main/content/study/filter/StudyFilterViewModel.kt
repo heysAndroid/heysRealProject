@@ -117,7 +117,7 @@ class StudyFilterViewModel : ViewModel() {
 
       var button = v as Button
 
-      if (activityArray[0].contains("contact")) {
+      if (activityArray.isNotEmpty() && activityArray[0].contains("online")) {
          if (regionTotal.value < regionMax) {
             if (v.isSelected) {
                choiceRegion = null
@@ -214,8 +214,8 @@ class StudyFilterViewModel : ViewModel() {
       regionArray.clear()
 
       choicePurpose?.isSelected = false
-      if (choiceRegion != null) {
-         (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+      if (choicePurpose != null) {
+         (choicePurpose as Button).setTypeface(null, Typeface.NORMAL)
       }
       purposeTotal.value = 0
       purposeArray.clear()

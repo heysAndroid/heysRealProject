@@ -330,8 +330,8 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginHorizontal="32dp"
                     android:paddingVertical="18dp"
-                    android:tag="contact/untact"
-                    android:text="대면·비대면"
+                    android:tag="online/offline"
+                    android:text="온·오프라인"
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_filter_activity_button" />
 
@@ -343,8 +343,21 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="32dp"
                     android:paddingVertical="18dp"
-                    android:tag="contact"
-                    android:text="대면"
+                    android:tag="offline"
+                    android:text="오프라인"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_activity_button" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_filter_activity_button"
+                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:paddingVertical="18dp"
+                    android:tag="online"
+                    android:text="온라인"
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_filter_activity_button" />
 
@@ -353,7 +366,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_filter_region_button"
                     android:onClick="@{(v) -> vm.onClickRegion(v)}"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="32dp"
                     android:paddingVertical="18dp"
                     android:tag="whole"
@@ -496,19 +509,6 @@
                         android:textColor="@drawable/bg_filter_region_button" />
                 </LinearLayout>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:paddingVertical="18dp"
-                    android:tag="untact"
-                    android:text="비대면"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/bg_filter_activity_button" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -516,6 +516,7 @@
                     android:layout_marginLeft="32dp"
                     android:text="활동 목적"
                     android:textSize="16sp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -540,21 +541,22 @@
 
                     <Button
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_studyfilter_purpose_button"
                         android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="skill"
                         android:text="실력향상"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_studyfilter_purpose_button" />
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="32dp"
                     android:layout_marginHorizontal="32dp"
                     android:orientation="horizontal">
 
