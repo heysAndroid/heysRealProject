@@ -45,6 +45,7 @@
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:padding="10dp"
         android:text="요청 취소"
         android:textColor="@color/color_ff6e20"
         android:textSize="12sp"
