@@ -49,10 +49,17 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
       binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
          override fun onItemSelected(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
             val selectedView = adapterView?.selectedView as TextView
+
             if (selectedView.text == "작성하기") {
                binding.editText.visibility = View.VISIBLE
+               setOkButtonEnabled()
             } else {
                binding.editText.visibility = View.INVISIBLE
+               if (selectedView.text.contains("이유")) {
+                  setOkButtonDisabled()
+               } else {
+                  setOkButtonEnabled()
+               }
             }
          }
 
@@ -60,5 +67,15 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
 
          }
       }
+   }
+
+   private fun setOkButtonEnabled() {
+      binding.okButton.isEnabled = true
+      binding.okButton.setBackgroundResource(R.drawable.bg_ok_button_enabled)
+   }
+
+   private fun setOkButtonDisabled() {
+      binding.okButton.isEnabled = false
+      binding.okButton.setBackgroundResource(R.drawable.bg_ok_button_disabled)
    }
 }
