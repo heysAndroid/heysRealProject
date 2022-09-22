@@ -123,7 +123,14 @@
         android:id="@+id/myChannelFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
         android:label="MyChannelFragment"
-        tools:layout="@layout/my_channel_fragment" />
+        tools:layout="@layout/my_channel_fragment" >
+        <action
+            android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
+            app:destination="@id/myChannelNotificationFragment" />
+        <action
+            android:id="@+id/action_myChannelFragment_to_myChannelPrivateNotificationFragment"
+            app:destination="@id/myChannelPrivateNotificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myPageFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.MyPageFragment"
@@ -175,4 +182,13 @@
         android:name="com.example.heysrealprojcet.ui.main.content.study.hey.waiting.WaitingHeyListFragment"
         android:label="WaitingHeyListFragment"
         tools:layout="@layout/waiting_hey_list_fragment" />
+    <fragment
+        android:id="@+id/myChannelNotificationFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.MyChannelNotificationFragment"
+        android:label="MyChannelNotificationFragment"
+        tools:layout="@layout/my_channel_notification_fragment"/>
+    <fragment
+        android:id="@+id/myChannelPrivateNotificationFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.privateNotification.MyChannelPrivateNotificationFragment"
+        android:label="MyChannelPrivateNotificationFragment" />
 </navigation>
