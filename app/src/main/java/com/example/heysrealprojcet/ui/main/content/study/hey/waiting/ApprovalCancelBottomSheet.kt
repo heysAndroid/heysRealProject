@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet.ui.main.content.study.hey.waiting
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,8 +48,12 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
    private fun setupSpinnerHandler() {
       binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
          override fun onItemSelected(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-            // TODO
-            // 선택 처리
+            val selectedView = adapterView?.selectedView as TextView
+            if (selectedView.text == "작성하기") {
+               binding.editText.visibility = View.VISIBLE
+            } else {
+               binding.editText.visibility = View.INVISIBLE
+            }
          }
 
          override fun onNothingSelected(p0: AdapterView<*>?) {
