@@ -29,7 +29,7 @@
         android:divider="@color/color_f7bc26"
         android:dividerHeight="2dp"
         android:spinnerMode="dropdown"
-        android:theme="@style/MatchSpinnerTheme" />
+        android:theme="@style/SpinnerTheme" />
 
     <EditText
         android:id="@+id/editText"
