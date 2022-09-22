@@ -1,12 +1,14 @@
 package com.example.heysrealprojcet.ui.main.content.study.hey.waiting
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ApprovalCancelBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -47,9 +49,12 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
    private fun setupSpinnerHandler() {
       binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
          override fun onItemSelected(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+            // TODO
+            // 선택 처리
          }
 
          override fun onNothingSelected(p0: AdapterView<*>?) {
+
          }
       }
    }

@@ -1,9 +1,12 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/spinner"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/spinnerText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="15dp"
     android:paddingStart="16dp"
     android:text="요청 실수"
     android:textColor="@color/black"
-    android:textSize="14sp" />
+    android:textSize="14sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />

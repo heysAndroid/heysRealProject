@@ -19,16 +19,14 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
+        style="@style/SpinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_spinner"
-        android:overlapAnchor="false"
-        android:spinnerMode="dropdown"
-        android:tooltipText="kkkk" />
+        android:spinnerMode="dropdown" />
 
     <EditText
         android:id="@+id/editText"
