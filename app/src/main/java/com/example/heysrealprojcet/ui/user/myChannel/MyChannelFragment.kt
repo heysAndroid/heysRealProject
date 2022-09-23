@@ -23,6 +23,12 @@ class MyChannelFragment : Fragment() {
 
       binding.bell.setOnClickListener { gotoNotification() }
       binding.mail.setOnClickListener { gotoPrivateNotification() }
+
+      binding.btnReader.setOnClickListener { gotoChattingReader() }
+   }
+
+   private fun gotoChattingReader() {
+      findNavController().navigate(R.id.action_myChannelFragment_to_myChannelCattingReader)
    }
 
    private fun gotoNotification() {
