@@ -19,17 +19,31 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner"
-        style="@style/SpinnerStyle"
+    <FrameLayout
+        android:id="@+id/spinnerContainer"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="10dp"
-        android:divider="@color/color_f7bc26"
-        android:dividerHeight="2dp"
-        android:spinnerMode="dropdown"
-        android:theme="@style/SpinnerTheme" />
+        android:layout_marginTop="10dp">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner"
+            style="@style/SpinnerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:divider="@color/color_f7bc26"
+            android:dividerHeight="2dp"
+            android:spinnerMode="dropdown"
+            android:theme="@style/SpinnerTheme" />
+
+        <ImageView
+            android:id="@+id/spinnerArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_dropdown_expand" />
+    </FrameLayout>
 
     <EditText
         android:id="@+id/editText"

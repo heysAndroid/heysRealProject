@@ -18,6 +18,7 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ApprovalCancelBottomSheetBinding.inflate(inflater, container, false)
+
       return binding.root
    }
 
@@ -28,6 +29,10 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
       val behavior = BottomSheetBehavior.from<View>(bottomSheet!!)
       behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
+      binding.spinnerArrow.setOnClickListener {
+         // TODO
+         // 클릭리스너 추가
+      }
       setupSpinner()
       setupSpinnerHandler()
    }
@@ -48,8 +53,9 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
    private fun setupSpinnerHandler() {
       binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
          override fun onItemSelected(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-            val selectedView = adapterView?.selectedView as TextView
+            binding.spinnerArrow.setImageResource(R.drawable.ic_dropdown_expand)
 
+            val selectedView = adapterView?.selectedView as TextView
             if (selectedView.text == "작성하기") {
                binding.editText.visibility = View.VISIBLE
                setOkButtonEnabled()
@@ -61,6 +67,7 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
                   setOkButtonEnabled()
                }
             }
+
          }
 
          override fun onNothingSelected(p0: AdapterView<*>?) {
