@@ -21,6 +21,12 @@ class MyChannelChattingReader : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       binding.notice.setOnClickListener { gotoNotice() }
+
+      binding.btnManage.setOnClickListener { gotoManage() }
+   }
+
+   private fun gotoManage() {
+      findNavController().navigate(R.id.action_myChannelCattingReader_to_myChannelManageFragment)
    }
 
    private fun gotoNotice() {
