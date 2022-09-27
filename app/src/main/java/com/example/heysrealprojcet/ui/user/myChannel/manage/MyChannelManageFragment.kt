@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyChannelManageBinding
 
 class MyChannelManageFragment : Fragment() {
@@ -20,10 +18,5 @@ class MyChannelManageFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-      binding.btnApproval.setOnClickListener { gotoApproval() }
-   }
-
-   private fun gotoApproval() {
-      findNavController().navigate(R.id.action_myChannelManageFragment_to_manageApprovalFragment)
    }
 }

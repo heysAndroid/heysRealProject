@@ -225,14 +225,5 @@
         android:id="@+id/myChannelManageFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.MyChannelManageFragment"
         android:label="MyChannelManageFragment"
-        tools:layout="@layout/my_channel_manage">
-        <action
-            android:id="@+id/action_myChannelManageFragment_to_manageApprovalFragment"
-            app:destination="@id/manageApprovalFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/manageApprovalFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.approval.ManageApprovalFragment"
-        android:label="ManageApprovalFragment"
-        tools:layout="@layout/manage_approval_fragment"/>
+        tools:layout="@layout/my_channel_manage"/>
 </navigation>
