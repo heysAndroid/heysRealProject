@@ -203,6 +203,9 @@
         <action
             android:id="@+id/action_myChannelCattingReader_to_chattingReaderNotice"
             app:destination="@id/chattingReaderNotice" />
+        <action
+            android:id="@+id/action_myChannelCattingReader_to_myChannelManageFragment"
+            app:destination="@id/myChannelManageFragment" />
     </fragment>
     <fragment
         android:id="@+id/chattingReaderNotice"
@@ -218,4 +221,16 @@
         android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNoticePost"
         android:label="ChattingReaderNoticePost"
         tools:layout="@layout/chatting_reader_notice_post"/>
+    <fragment
+        android:id="@+id/myChannelManageFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.MyChannelManageFragment"
+        android:label="MyChannelManageFragment"
+        tools:layout="@layout/my_channel_manage">
+        <action
+            android:id="@+id/action_myChannelManageFragment_to_waitingHeyListFragment"
+            app:destination="@id/waitingHeyListFragment" />
+        <action
+            android:id="@+id/action_myChannelManageFragment_to_memberHeysListFragment"
+            app:destination="@id/memberHeysListFragment" />
+    </fragment>
 </navigation>
