@@ -15,6 +15,8 @@ class WaitingHeyItemRecyclerViewAdapter(private val userProfile: MutableList<Use
    inner class ViewHolder(private val binding: WaitingHeyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(userProfile: UserProfile) {
          binding.name.text = userProfile.name
+         binding.introduction.text = userProfile.introduction
+         binding.profile.setImageResource(userProfile.imageResId)
 //         binding.cancel.setOnClickListener { onClickListener.invoke() }
       }
    }

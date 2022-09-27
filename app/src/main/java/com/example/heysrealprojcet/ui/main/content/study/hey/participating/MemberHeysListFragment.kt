@@ -49,11 +49,11 @@ class MemberHeysListFragment : Fragment() {
 
    private fun makeList() {
       userList = mutableListOf(
-         UserProfile("이름1", listOf("IT", "기획", "UX"), "대학생", listOf("user research", "figma", "ms office")),
-         UserProfile("이름2", listOf("IT", "개발", "안드로이드"), "대학생", listOf("Android Studio", "Kotlin", "Java")),
-         UserProfile("이름3", listOf("웹", "프로그래밍"), "직장인", listOf("JavaScript", "React", "Bootstrap")),
-         UserProfile("이름4", listOf("프로그래밍", "데이터", "통계"), "취준생", listOf("pandas", "AI", "Machine Learning")),
-         UserProfile("이름5", listOf("개발", "어플", "iOS"), "취준생", listOf("Swift", "iOS", "XCode")))
+         UserProfile("이름1", listOf("IT", "기획", "UX"), "대학생", listOf("user research", "figma", "ms office"), imageResId = R.drawable.ic_user_profile1),
+         UserProfile("이름2", listOf("IT", "개발", "안드로이드"), "대학생", listOf("Android Studio", "Kotlin", "Java"), imageResId = R.drawable.ic_user_profile2),
+         UserProfile("이름3", listOf("웹", "프로그래밍"), "직장인", listOf("JavaScript", "React", "Bootstrap"), imageResId = R.drawable.ic_user_profile1),
+         UserProfile("이름4", listOf("프로그래밍", "데이터", "통계"), "취준생", listOf("pandas", "AI", "Machine Learning"), imageResId = R.drawable.ic_user_profile2),
+         UserProfile("이름5", listOf("개발", "어플", "iOS"), "취준생", listOf("Swift", "iOS", "XCode"), imageResId = R.drawable.ic_user_profile2))
    }
 
    private fun showProfileDialog(userProfile: UserProfile) {
