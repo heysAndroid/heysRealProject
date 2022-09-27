@@ -225,5 +225,12 @@
         android:id="@+id/myChannelManageFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.MyChannelManageFragment"
         android:label="MyChannelManageFragment"
-        tools:layout="@layout/my_channel_manage"/>
+        tools:layout="@layout/my_channel_manage">
+        <action
+            android:id="@+id/action_myChannelManageFragment_to_waitingHeyListFragment"
+            app:destination="@id/waitingHeyListFragment" />
+        <action
+            android:id="@+id/action_myChannelManageFragment_to_memberHeysListFragment"
+            app:destination="@id/memberHeysListFragment" />
+    </fragment>
 </navigation>
