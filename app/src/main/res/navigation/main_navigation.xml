@@ -123,7 +123,7 @@
         android:id="@+id/myChannelFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
         android:label="MyChannelFragment"
-        tools:layout="@layout/my_channel_fragment" >
+        tools:layout="@layout/my_channel_fragment">
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
             app:destination="@id/myChannelNotificationFragment" />
@@ -138,7 +138,11 @@
         android:id="@+id/myPageFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.MyPageFragment"
         android:label="MyPageFragment"
-        tools:layout="@layout/my_page_fragment" />
+        tools:layout="@layout/my_page_fragment">
+        <action
+            android:id="@+id/action_myPageFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/heysChannelNameFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.HeysChannelNameFragment"
@@ -189,12 +193,12 @@
         android:id="@+id/myChannelNotificationFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.MyChannelNotificationFragment"
         android:label="MyChannelNotificationFragment"
-        tools:layout="@layout/my_channel_notification_fragment"/>
+        tools:layout="@layout/my_channel_notification_fragment" />
     <fragment
         android:id="@+id/myChannelPrivateNotificationFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.privateNotification.MyChannelPrivateNotificationFragment"
         android:label="MyChannelPrivateNotificationFragment"
-        tools:layout="@layout/my_channel_private_notification_fragment"/>
+        tools:layout="@layout/my_channel_private_notification_fragment" />
     <fragment
         android:id="@+id/myChannelCattingReader"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.MyChannelChattingReader"
@@ -220,7 +224,7 @@
         android:id="@+id/chattingReaderNoticePost"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNoticePost"
         android:label="ChattingReaderNoticePost"
-        tools:layout="@layout/chatting_reader_notice_post"/>
+        tools:layout="@layout/chatting_reader_notice_post" />
     <fragment
         android:id="@+id/myChannelManageFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.MyChannelManageFragment"
@@ -233,4 +237,9 @@
             android:id="@+id/action_myChannelManageFragment_to_memberHeysListFragment"
             app:destination="@id/memberHeysListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/setting_fragment" />
 </navigation>

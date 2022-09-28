@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyPageFragmentBinding
 
 class MyPageFragment : Fragment() {
@@ -20,5 +22,10 @@ class MyPageFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.root.setOnClickListener { goToSetting() }
+   }
+
+   private fun goToSetting() {
+      findNavController().navigate(R.id.action_myPageFragment_to_settingFragment)
    }
 }
