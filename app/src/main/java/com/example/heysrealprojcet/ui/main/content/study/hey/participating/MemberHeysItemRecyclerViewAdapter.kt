@@ -15,6 +15,7 @@ class MemberHeysItemRecyclerViewAdapter(private val userProfile: MutableList<Use
    inner class ViewHolder(private val binding: MemberHeysItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(userProfile: UserProfile) {
          binding.name.text = userProfile.name
+         binding.profile.setImageResource(userProfile.imageResId)
          binding.goToProfile.setOnClickListener { onClickListener.invoke(userProfile) }
       }
    }
