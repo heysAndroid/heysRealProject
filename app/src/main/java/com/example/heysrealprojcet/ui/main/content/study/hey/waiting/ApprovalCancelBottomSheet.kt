@@ -18,7 +18,6 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ApprovalCancelBottomSheetBinding.inflate(inflater, container, false)
-
       return binding.root
    }
 
@@ -33,6 +32,7 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
          // TODO
          binding.spinnerArrow.setImageResource(R.drawable.ic_dropdown_close)
       }
+      binding.okButton.setOnClickListener { dismiss() }
       setupSpinner()
       setupSpinnerHandler()
    }
