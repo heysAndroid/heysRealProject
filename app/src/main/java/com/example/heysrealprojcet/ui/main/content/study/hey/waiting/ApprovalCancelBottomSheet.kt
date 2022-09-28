@@ -29,9 +29,9 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
       val behavior = BottomSheetBehavior.from<View>(bottomSheet!!)
       behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-      binding.spinnerArrow.setOnClickListener {
+      binding.spinnerContainer.setOnClickListener {
          // TODO
-         // 클릭리스너 추가
+         binding.spinnerArrow.setImageResource(R.drawable.ic_dropdown_close)
       }
       setupSpinner()
       setupSpinnerHandler()

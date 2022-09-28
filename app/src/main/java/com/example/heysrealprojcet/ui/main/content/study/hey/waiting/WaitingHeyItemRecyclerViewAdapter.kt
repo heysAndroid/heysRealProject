@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.main.content.study.hey.waiting
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,11 @@ class WaitingHeyItemRecyclerViewAdapter(private val userProfile: MutableList<Use
          binding.name.text = userProfile.name
          binding.introduction.text = userProfile.introduction
          binding.profile.setImageResource(userProfile.imageResId)
-//         binding.cancel.setOnClickListener { onClickListener.invoke() }
+
+         if (userProfile.name == "이름1") {
+            binding.cancelButton.visibility = View.VISIBLE
+         }
+         binding.cancelButton.setOnClickListener { onClickListener.invoke() }
       }
    }
 
