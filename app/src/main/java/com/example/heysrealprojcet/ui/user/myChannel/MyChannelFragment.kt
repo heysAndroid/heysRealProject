@@ -23,7 +23,6 @@ class MyChannelFragment : Fragment() {
 
       binding.bell.setOnClickListener { gotoNotification() }
       binding.mail.setOnClickListener { gotoPrivateNotification() }
-
       binding.btnReader.setOnClickListener { gotoChattingReader() }
    }
 

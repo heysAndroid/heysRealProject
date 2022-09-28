@@ -8,7 +8,7 @@ import com.example.heysrealprojcet.model.NotificationList
 
 class MyChannelNotificationViewAdapter(
    private val list: MutableList<NotificationList>
-   ) : RecyclerView.Adapter<MyChannelNotificationViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<MyChannelNotificationViewAdapter.ViewHolder>() {
    private lateinit var binding: NotificationItemViewBinding
 
    inner class ViewHolder(private val binding: NotificationItemViewBinding) :

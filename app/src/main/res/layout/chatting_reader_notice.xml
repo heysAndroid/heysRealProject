@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,80 +16,80 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/btnSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:text="저장"
                 android:textColor="@color/black"
-                android:text="저장"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="32dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:text="제목"
                 android:textColor="@color/color_262626"
-                android:text="제목"/>
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:text="현재 27자 / 최대 32자"
                 android:textColor="@color/color_828282"
-                android:textSize="12sp"
-                android:text="현재 27자 / 최대 32자"/>
+                android:textSize="12sp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_f7bc26_radius_16"
                 android:layout_marginTop="13dp"
+                android:background="@drawable/bg_f7bc26_radius_16"
                 android:paddingVertical="16dp"
                 android:paddingLeft="16dp"
                 android:textColor="@color/color_262626"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="14sp"
+                android:text="내용"
                 android:textColor="@color/color_262626"
-                android:text="내용"/>
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:text="현재 111자 / 최대 1500자"
                 android:textColor="@color/color_828282"
-                android:textSize="12sp"
-                android:text="현재 111자 / 최대 1500자"/>
+                android:textSize="12sp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_e1_radius_16"
                 android:gravity="top"
-                android:textSize="14sp"
                 android:textColor="@color/color_262626"
-                android:background="@drawable/bg_e1_radius_16"/>
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 </layout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,62 +16,62 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:text="수정"
                 android:textColor="@color/black"
-                android:text="수정"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="23dp"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="23dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_7b61ff_radius_5"
+                android:gravity="center"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:padding="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="19dp"
                     android:layout_height="13.19dp"
                     android:layout_marginRight="4dp"
-                    android:src="@drawable/ic_loudspeaker"/>
+                    android:src="@drawable/ic_loudspeaker" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:text="공지"
                     android:textColor="@color/white"
-                    android:text="공지"/>
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="24sp"
+                android:text="공지글 제목이 보여져요. 최대 1줄까지 보여져요."
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="공지글 제목이 보여져요. 최대 1줄까지 보여져요."/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -81,9 +82,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_circle_d9d9d9"/>
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_circle_d9d9d9" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -93,15 +94,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:text="리더 이름"
                         android:textColor="@color/color_262626"
-                        android:text="리더 이름"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="1개월 전"/>
+                        android:text="1개월 전" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -109,14 +110,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:textSize="14sp"
+                android:text="환영합니다 🎉 \n- 입장 후 간단한 자기소개와 함께 멤버들에게 인사해주세요.\n - 주제와 관련된 신뢰할 수 있는 정보를 적극적으로 공유해주세요. \n- 도움이 되는 정보에는 반응이나 답글을 꼭 \n남겨주세요."
                 android:textColor="@color/color_262626"
-                android:text="환영합니다 🎉 \n- 입장 후 간단한 자기소개와 함께 멤버들에게 인사해주세요.\n - 주제와 관련된 신뢰할 수 있는 정보를 적극적으로 공유해주세요. \n- 도움이 되는 정보에는 반응이나 답글을 꼭 \n남겨주세요."/>
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,116 +128,116 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/ic_good"/>
+                        android:background="@drawable/ic_good" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="12sp"
+                        android:text="좋아요"
                         android:textColor="@color/black"
-                        android:text="좋아요"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:text="0"
                         android:textColor="@color/color_f7bc26"
-                        android:text="0"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/ic_cheer"/>
+                        android:background="@drawable/ic_cheer" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="12sp"
+                        android:text="좋아요"
                         android:textColor="@color/black"
-                        android:text="좋아요"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:text="0"
                         android:textColor="@color/color_f7bc26"
-                        android:text="0"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/ic_check"/>
+                        android:background="@drawable/ic_check" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="12sp"
+                        android:text="좋아요"
                         android:textColor="@color/black"
-                        android:text="좋아요"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:text="0"
                         android:textColor="@color/color_f7bc26"
-                        android:text="0"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/ic_save"/>
+                        android:background="@drawable/ic_save" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="12sp"
+                        android:text="좋아요"
                         android:textColor="@color/black"
-                        android:text="좋아요"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:text="0"
                         android:textColor="@color/color_f7bc26"
-                        android:text="0"/>
+                        android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
