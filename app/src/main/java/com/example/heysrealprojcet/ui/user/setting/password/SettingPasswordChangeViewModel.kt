@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.setting
+package com.example.heysrealprojcet.ui.user.setting.password
 
 import android.text.InputType
 import androidx.lifecycle.LiveData
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class SettingPasswordVerificationViewModel : ViewModel() {
+class SettingPasswordChangeViewModel : ViewModel() {
    val password = MutableStateFlow("")
    private val isPasswordVisible = MutableLiveData(true)
    val passwordInputType = MutableLiveData(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.setting
+package com.example.heysrealprojcet.ui.user.setting.password
 
 import android.content.Context
 import android.os.Bundle
@@ -28,7 +28,7 @@ class SettingPasswordVerificationFragment : Fragment() {
 
       val inputMethodManager =
          requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-      inputMethodManager.showSoftInput(binding.phoneInput, 0)
+      inputMethodManager.showSoftInput(binding.password, 0)
    }
 
    private fun goToPasswordChange() {
