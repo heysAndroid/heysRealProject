@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.join.phone.JoinVerificationViewModel" />
+            type="com.example.heysrealprojcet.ui.user.setting.phone.SettingPhoneVerificationViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -139,7 +139,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
             android:enabled="@{vm.isEnabled}"
-            android:text="새 핸드폰 번호로 변경하기"
+            android:text="인증하기"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="16sp" />
