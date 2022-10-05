@@ -7,35 +7,27 @@
     android:background="@drawable/bg_profile_popup"
     android:paddingBottom="14dp">
 
-    <ImageButton
-        android:id="@+id/closeButton"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/ic_close_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/introduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="36dp"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="44dp"
+        android:letterSpacing="-.05"
         android:text="예시로 넣는 35자 소개글입니다.\n헤이즈에게 나를 소개해보세요!"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/color_f7bc26"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/closeButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImage"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="14dp"
         android:src="@drawable/ic_profile_sample"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +121,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_ok_button_enabled"
+        android:paddingHorizontal="32dp"
         android:text="대화하기"
         android:textColor="@color/white"
         android:textSize="16sp"

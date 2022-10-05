@@ -24,7 +24,6 @@ class ProfileDialog(context: Context, private val userProfile: UserProfile, priv
          // 배경 투명하게
          window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
          setData(userProfile)
-         closeButton.setOnClickListener { dismiss() }
          chatButton.setOnClickListener {
             okClickListener()
             dismiss()
@@ -35,15 +34,12 @@ class ProfileDialog(context: Context, private val userProfile: UserProfile, priv
    private fun setData(userProfile: UserProfile) {
       with(binding) {
          name.text = userProfile.name
-
          var interestString = ""
          userProfile.interest.forEach {
             interestString += "#${it} "
          }
          interestContent.text = interestString
-
          jobContent.text = userProfile.job
-
          var skillString = ""
          userProfile.skill.forEachIndexed { index, skill ->
             // 마지막 아이템에는 컴마 안붙이게
