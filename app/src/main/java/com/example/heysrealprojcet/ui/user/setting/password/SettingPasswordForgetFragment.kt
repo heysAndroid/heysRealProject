@@ -21,9 +21,7 @@ class SettingPasswordForgetFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
       binding.btnNext.setOnClickListener { goToPasswordChange() }
-
       viewModel.timerStart()
    }
 

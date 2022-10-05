@@ -23,7 +23,6 @@ class SettingPasswordChangeFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
       binding.okButton.setOnClickListener { goToSetting() }
 
       val inputMethodManager =

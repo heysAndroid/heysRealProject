@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.heysrealprojcet.databinding.SettingPasswordVerificationFragmentBinding
 
 class SettingPasswordVerificationFragment : Fragment() {
-   private lateinit var binding : SettingPasswordVerificationFragmentBinding
+   private lateinit var binding: SettingPasswordVerificationFragmentBinding
    private val viewModel: SettingPasswordVerificationViewModel by viewModels()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,7 +23,6 @@ class SettingPasswordVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
       binding.btnNext.setOnClickListener { goToPasswordChange() }
 
       val inputMethodManager =
