@@ -23,9 +23,14 @@ class MyPageFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.goToSetting.setOnClickListener { goToSetting() }
+      binding.channelContainer.setOnClickListener { goToEngagedChannel() }
    }
 
    private fun goToSetting() {
       findNavController().navigate(R.id.action_myPageFragment_to_settingFragment)
+   }
+
+   private fun goToEngagedChannel() {
+      findNavController().navigate(R.id.action_myPageFragment_to_engagedChannelListFragment)
    }
 }

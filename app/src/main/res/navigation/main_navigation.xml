@@ -142,6 +142,9 @@
         <action
             android:id="@+id/action_myPageFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_engagedChannelListFragment"
+            app:destination="@id/engagedChannelListFragment" />
     </fragment>
     <fragment
         android:id="@+id/heysChannelNameFragment"
@@ -242,4 +245,9 @@
         android:name="com.example.heysrealprojcet.ui.user.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/setting_fragment" />
+    <fragment
+        android:id="@+id/engagedChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.user.engagedChannel.EngagedChannelListFragment"
+        android:label="EngagedChannelListFragment"
+        tools:layout="@layout/engaged_channel_list_fragment" />
 </navigation>
