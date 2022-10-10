@@ -31,12 +31,11 @@ class EngagedChannelListFragment : Fragment() {
 
       makeList()
       engagedChannelItemRecyclerViewAdapter = EngagedChannelItemRecyclerViewAdapter(channel = channelList) {
-         // TODO
-         // 클릭이벤트 설정
+         val bottomSheet = ApprovalCancelBottomSheet(requireContext())
+         bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
       binding.channelList.adapter = engagedChannelItemRecyclerViewAdapter
       binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-
    }
 
    private fun makeList() {

@@ -40,17 +40,6 @@
                 android:textColor="@color/color_828282"
                 android:textSize="16sp" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bg_f7bc26_stroke_radius_8"
-            android:text="요청 취소"
-            android:textColor="@color/color_f7bc26"
-            android:textSize="16sp"
-            android:visibility="gone" />
     </LinearLayout>
 
     <View

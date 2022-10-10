@@ -8,7 +8,7 @@ import com.example.heysrealprojcet.databinding.EngagedChannelItemViewBinding
 import com.example.heysrealprojcet.model.Channel
 
 class EngagedChannelItemRecyclerViewAdapter(private val channel: MutableList<Channel>, private val onClickListener: () -> Unit) :
-   ListAdapter<Channel, EngagedChannelItemRecyclerViewAdapter.ViewHolder>(ChannelDiffCallback) {
+   ListAdapter<Channel, EngagedChannelItemRecyclerViewAdapter.ViewHolder>(EngagedChannelDiffCallback) {
    private lateinit var binding: EngagedChannelItemViewBinding
 
    inner class ViewHolder(private val binding: EngagedChannelItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
