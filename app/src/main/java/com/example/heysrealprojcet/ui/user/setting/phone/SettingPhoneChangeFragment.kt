@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPhoneChangeFragmentBinding
 
 class SettingPhoneChangeFragment : Fragment() {
@@ -32,9 +35,8 @@ class SettingPhoneChangeFragment : Fragment() {
    }
 
    private fun goToPhoneVerification() {
-      TODO("핸드폰 인증 페이지로 이동")
-//      findNavController().navigate(
-//         R.id.,
-//         bundleOf("phoneNumber" to viewModel.phoneNumber.value))
+      findNavController().navigate(
+         R.id.action_settingPhoneChangeFragment_to_settingPhoneVerificationFragment,
+         bundleOf("phoneNumber" to viewModel.phoneNumber.value))
    }
 }

@@ -59,4 +59,8 @@ class SettingPasswordForgetViewModel : ViewModel() {
          }
       }
    }
+
+   fun setResendEnabled() {
+      timerStart()
+   }
 }

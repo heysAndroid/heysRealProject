@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPasswordForgetFragmentBinding
 
 class SettingPasswordForgetFragment : Fragment() {
@@ -21,11 +23,13 @@ class SettingPasswordForgetFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.btnNext.setOnClickListener { goToPasswordChange() }
+
       viewModel.timerStart()
+
+      binding.btnNext.setOnClickListener { goToPasswordChange() }
    }
 
    private fun goToPasswordChange() {
-      TODO("비밀번호 변경 페이지로 이동")
+      findNavController().navigate(R.id.action_settingPasswordForgetFragment_to_settingPasswordChangeFragment)
    }
 }

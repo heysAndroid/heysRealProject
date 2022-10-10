@@ -60,4 +60,8 @@ class SettingPhoneVerificationViewModel : ViewModel() {
          }
       }
    }
+
+   fun setResendEnabled() {
+      timerStart()
+   }
 }

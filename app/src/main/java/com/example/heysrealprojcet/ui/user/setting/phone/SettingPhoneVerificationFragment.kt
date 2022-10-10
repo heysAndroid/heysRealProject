@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPhoneVerificationFragmentBinding
 
 class SettingPhoneVerificationFragment : Fragment() {
@@ -27,5 +29,11 @@ class SettingPhoneVerificationFragment : Fragment() {
       if (viewModel.phoneNumber.value!!.isNotEmpty()) {
          viewModel.timerStart()
       }
+
+      binding.okButton.setOnClickListener { goToSetting() }
+   }
+
+   private fun goToSetting() {
+      findNavController().navigate(R.id.action_settingPhoneVerificationFragment_to_settingFragment)
    }
 }

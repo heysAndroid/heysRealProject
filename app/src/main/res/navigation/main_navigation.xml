@@ -244,10 +244,65 @@
         android:id="@+id/settingFragment"
         android:name="com.example.heysrealprojcet.ui.user.setting.SettingFragment"
         android:label="SettingFragment"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/setting_fragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_settingPhoneChangeFragment"
+            app:destination="@id/settingPhoneChangeFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingPasswordVerificationFragment"
+            app:destination="@id/settingPasswordVerificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
         android:name="com.example.heysrealprojcet.ui.user.engagedChannel.EngagedChannelListFragment"
         android:label="EngagedChannelListFragment"
         tools:layout="@layout/engaged_channel_list_fragment" />
+    <fragment
+        android:id="@+id/settingPasswordChangeFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.password.SettingPasswordChangeFragment"
+        android:label="SettingPasswordChangeFragment"
+        tools:layout="@layout/setting_password_change_fragment">
+        <action
+            android:id="@+id/action_settingPasswordChangeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingPasswordForgetFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.password.SettingPasswordForgetFragment"
+        android:label="SettingPasswordForgetFragment"
+        tools:layout="@layout/setting_password_forget_fragment">
+        <action
+            android:id="@+id/action_settingPasswordForgetFragment_to_settingPasswordChangeFragment"
+            app:destination="@id/settingPasswordChangeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingPasswordVerificationFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.password.SettingPasswordVerificationFragment"
+        android:label="SettingPasswordVerificationFragment"
+        tools:layout="@layout/setting_password_verification_fragment">
+        <action
+            android:id="@+id/action_settingPasswordVerificationFragment_to_settingPasswordChangeFragment"
+            app:destination="@id/settingPasswordChangeFragment" />
+        <action
+            android:id="@+id/action_settingPasswordVerificationFragment_to_settingPasswordForgetFragment"
+            app:destination="@id/settingPasswordForgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingPhoneChangeFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.phone.SettingPhoneChangeFragment"
+        android:label="SettingPhoneChangeFragment"
+        tools:layout="@layout/setting_phone_change_fragment">
+        <action
+            android:id="@+id/action_settingPhoneChangeFragment_to_settingPhoneVerificationFragment"
+            app:destination="@id/settingPhoneVerificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingPhoneVerificationFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.phone.SettingPhoneVerificationFragment"
+        android:label="SettingPhoneVerificationFragment"
+        tools:layout="@layout/setting_phone_verification_fragment">
+        <action
+            android:id="@+id/action_settingPhoneVerificationFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
 </navigation>

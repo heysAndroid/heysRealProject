@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPasswordChangeFragmentBinding
 
 class SettingPasswordChangeFragment : Fragment() {
@@ -31,6 +33,6 @@ class SettingPasswordChangeFragment : Fragment() {
    }
 
    private fun goToSetting() {
-      TODO("비밀번호 변경 후 설정 페이지로 다시 이동")
+      findNavController().navigate(R.id.action_settingPasswordChangeFragment_to_settingFragment)
    }
 }

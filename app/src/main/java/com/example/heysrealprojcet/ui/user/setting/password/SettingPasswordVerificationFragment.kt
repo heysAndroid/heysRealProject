@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPasswordVerificationFragmentBinding
 
 class SettingPasswordVerificationFragment : Fragment() {
@@ -23,6 +25,7 @@ class SettingPasswordVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.passwordForget.setOnClickListener { goToPasswordForget() }
       binding.btnNext.setOnClickListener { goToPasswordChange() }
 
       val inputMethodManager =
@@ -30,7 +33,11 @@ class SettingPasswordVerificationFragment : Fragment() {
       inputMethodManager.showSoftInput(binding.password, 0)
    }
 
+   private fun goToPasswordForget() {
+      findNavController().navigate(R.id.action_settingPasswordVerificationFragment_to_settingPasswordForgetFragment)
+   }
+
    private fun goToPasswordChange() {
-      TODO("비밀번호 변경 페이지 이동")
+      findNavController().navigate(R.id.action_settingPasswordVerificationFragment_to_settingPasswordChangeFragment)
    }
 }

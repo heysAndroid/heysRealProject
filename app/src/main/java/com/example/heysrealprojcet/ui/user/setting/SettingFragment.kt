@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingFragmentBinding
 
 class SettingFragment : Fragment() {
@@ -20,5 +22,16 @@ class SettingFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
+      binding.phoneChange.setOnClickListener { gotoPhoneChange() }
+      binding.passwordChange.setOnClickListener { gotoPasswordVerification() }
+   }
+
+   private fun gotoPhoneChange() {
+      findNavController().navigate(R.id.action_settingFragment_to_settingPhoneChangeFragment)
+   }
+
+   private fun gotoPasswordVerification() {
+      findNavController().navigate(R.id.action_settingFragment_to_settingPasswordVerificationFragment)
    }
 }
