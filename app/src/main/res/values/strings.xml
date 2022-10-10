@@ -10,4 +10,12 @@
         <item>작성하기</item>
         <item>승인 요청을 취소하는 이유를 알려주세요.</item>
     </string-array>
+    <string-array name="spinner_channel_leave">
+        <item>신청 실수</item>
+        <item>개인 일정</item>
+        <item>부적절한 활동</item>
+        <item>운영에 대한 불만</item>
+        <item>작성하기</item>
+        <item>채널을 나가는 이유를 알려주세요.</item>
+    </string-array>
 </resources>

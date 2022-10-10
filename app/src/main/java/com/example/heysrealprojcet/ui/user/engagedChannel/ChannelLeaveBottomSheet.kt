@@ -9,15 +9,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ApprovalCancelBottomSheetBinding
+import com.example.heysrealprojcet.databinding.ChannelLeaveBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() {
-   private lateinit var binding: ApprovalCancelBottomSheetBinding
+class ChannelLeaveBottomSheet(context: Context) : BottomSheetDialogFragment() {
+   private lateinit var binding: ChannelLeaveBottomSheetBinding
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ApprovalCancelBottomSheetBinding.inflate(inflater, container, false)
+      binding = ChannelLeaveBottomSheetBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -38,7 +38,7 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
    }
 
    private fun setupSpinner() {
-      val cancelReasons = resources.getStringArray(R.array.spinner_approval_cancel)
+      val cancelReasons = resources.getStringArray(R.array.spinner_channel_leave)
 
       val adapter = object : ArrayAdapter<String>(requireContext(), R.layout.spinner_item_view) {
          override fun getCount(): Int {
@@ -67,7 +67,6 @@ class ApprovalCancelBottomSheet(context: Context) : BottomSheetDialogFragment() 
                   setOkButtonEnabled()
                }
             }
-
          }
 
          override fun onNothingSelected(p0: AdapterView<*>?) {

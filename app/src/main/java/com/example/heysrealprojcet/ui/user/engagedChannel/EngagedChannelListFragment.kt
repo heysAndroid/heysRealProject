@@ -31,7 +31,7 @@ class EngagedChannelListFragment : Fragment() {
 
       makeList()
       engagedChannelItemRecyclerViewAdapter = EngagedChannelItemRecyclerViewAdapter(channel = channelList) {
-         val bottomSheet = ApprovalCancelBottomSheet(requireContext())
+         val bottomSheet = ChannelLeaveBottomSheet(requireContext())
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
       binding.channelList.adapter = engagedChannelItemRecyclerViewAdapter
