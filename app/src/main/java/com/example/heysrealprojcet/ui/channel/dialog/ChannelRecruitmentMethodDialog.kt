@@ -41,7 +41,7 @@ class ChannelRecruitmentMethodDialog(private val context: Context, private val v
       }
       var builder = SpannableStringBuilder(binding.btnApproval.text)
       builder.setSpan(RelativeSizeSpan(1.6f), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-      builder.setSpan(RelativeSizeSpan(1.4f), 6, binding.btnApproval.text.length-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      builder.setSpan(RelativeSizeSpan(1.4f), 6, binding.btnApproval.text.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
       binding.btnApproval.text = builder
 
       binding.btnDecide.text = buildSpannedString {
@@ -50,7 +50,7 @@ class ChannelRecruitmentMethodDialog(private val context: Context, private val v
       }
       builder = SpannableStringBuilder(binding.btnDecide.text)
       builder.setSpan(RelativeSizeSpan(1.6f), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-      builder.setSpan(RelativeSizeSpan(1.4f), 6, binding.btnDecide.text.length-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      builder.setSpan(RelativeSizeSpan(1.4f), 6, binding.btnDecide.text.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
       binding.btnDecide.text = builder
    }
 

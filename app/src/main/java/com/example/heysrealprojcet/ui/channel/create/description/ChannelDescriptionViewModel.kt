@@ -1,9 +1,9 @@
-package com.example.heysrealprojcet.ui.channel.viewModel
+package com.example.heysrealprojcet.ui.channel.create.description
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
-class HeysChannelFreeViewModel: ViewModel() {
+class ChannelDescriptionViewModel : ViewModel() {
    val edtText = MutableLiveData<String>()
 
    private val _isEnabled = MutableLiveData<Boolean>()

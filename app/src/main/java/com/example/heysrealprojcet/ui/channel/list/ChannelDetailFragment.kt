@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.HeysChannelDetailFragmentBinding
+import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class HeysChannelDetailFragment : Fragment() {
-   private lateinit var binding: HeysChannelDetailFragmentBinding
+class ChannelDetailFragment : Fragment() {
+   private lateinit var binding: ChannelDetailFragmentBinding
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class HeysChannelDetailFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = HeysChannelDetailFragmentBinding.inflate(inflater, container, false)
+      binding = ChannelDetailFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 

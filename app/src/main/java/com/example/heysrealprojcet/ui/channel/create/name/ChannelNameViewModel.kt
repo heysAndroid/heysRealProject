@@ -1,9 +1,9 @@
-package com.example.heysrealprojcet.ui.channel.viewModel
+package com.example.heysrealprojcet.ui.channel.create.name
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
-class HeysChannelNameViewModel: ViewModel() {
+class ChannelNameViewModel: ViewModel() {
    var name = MutableLiveData<String>()
 
    private val _isEnabled = MutableLiveData<Boolean>()

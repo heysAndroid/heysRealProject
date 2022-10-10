@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.create
+package com.example.heysrealprojcet.ui.channel.create.inform
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.HeysChannelInformFragmentBinding
+import com.example.heysrealprojcet.databinding.ChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelCapacityDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelPurposeDialog
@@ -17,12 +17,11 @@ import com.example.heysrealprojcet.ui.channel.dialog.ChannelRecruitmentMethodDia
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel
-import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelInformViewModel
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class HeysChannelInformFragment : Fragment() {
-   private lateinit var binding: HeysChannelInformFragmentBinding
-   private val viewModel: HeysChannelInformViewModel by viewModels()
+class ChannelInformFragment : Fragment() {
+   private lateinit var binding: ChannelInformFragmentBinding
+   private val viewModel: ChannelInformViewModel by viewModels()
 
    private val purposeDialogViewModel: ChannelPurposeDialogViewModel by viewModels()
    private val formDialogViewModel: ChannelFormDialogViewModel by viewModels()
@@ -41,7 +40,7 @@ class HeysChannelInformFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = HeysChannelInformFragmentBinding.inflate(inflater, container, false)
+      binding = ChannelInformFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }

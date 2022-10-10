@@ -82,8 +82,7 @@ class ChannelFormDialogViewModel : ViewModel() {
                v.isSelected = false
                button.setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
-            }
-            else {
+            } else {
                choiceRegion?.isSelected = false
                (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
                v.isSelected = true

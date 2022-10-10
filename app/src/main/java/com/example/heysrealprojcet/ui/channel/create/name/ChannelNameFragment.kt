@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.create
+package com.example.heysrealprojcet.ui.channel.create.name
 
 import android.os.Bundle
 import android.text.InputFilter
@@ -10,13 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.HeysChannelFreeFragmentBinding
-import com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelFreeViewModel
+import com.example.heysrealprojcet.databinding.ChannelNameFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class HeysChannelFreeFragment : Fragment() {
-   private lateinit var binding: HeysChannelFreeFragmentBinding
-   private val viewModel: HeysChannelFreeViewModel by viewModels()
+class ChannelNameFragment : Fragment() {
+   private lateinit var binding: ChannelNameFragmentBinding
+   private val viewModel: ChannelNameViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -31,7 +30,7 @@ class HeysChannelFreeFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = HeysChannelFreeFragmentBinding.inflate(inflater, container, false)
+      binding = ChannelNameFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -40,25 +39,24 @@ class HeysChannelFreeFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      //EditText 글자 제한
       binding.edtIntroduce.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
 
       viewModel.isEnabled.observe(viewLifecycleOwner) {
          if (it) {
             binding.letterCount.text = "${binding.edtIntroduce.length()}"
             binding.edtIntroduce.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_channel_edittext_focused)
-            binding.btnPreview.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_f7bc26_radius_8)
+            binding.btnNext.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_f7bc26_radius_8)
          } else {
-            binding.btnPreview.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_e1_radius_8)
+            binding.btnNext.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_e1_radius_8)
          }
       }
 
-      binding.btnPreview.setOnClickListener {
-         goToFreePreview()
+      binding.btnNext.setOnClickListener {
+         goToInform()
       }
    }
 
-   private fun goToFreePreview() {
-      findNavController().navigate(R.id.action_heysChannelFreeFragment_to_heysChannelFreePreviewFragment)
+   private fun goToInform() {
+      findNavController().navigate(R.id.action_heysChannelNameFragment_to_heysChannelInformFragment)
    }
 }

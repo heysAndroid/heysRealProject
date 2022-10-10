@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.viewModel.HeysChannelNameViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.create.description.ChannelDescriptionViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="19dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="19dp">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="27dp"
             android:background="@color/white"
-            android:src="@drawable/ic_back"/>
+            android:src="@drawable/ic_back" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="27dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="헤이즈 채널을 소개해주세요."
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="24sp"
-                android:text="헤이즈 채널 이름을 알려주세요."/>
+                android:textStyle="bold" />
+
 
             <EditText
                 android:id="@+id/edt_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
                 android:background="@drawable/bg_channel_edittext"
+                android:gravity="top"
+                android:hint="아래 예시를 참고해서 헤이즈 채널에 대해 자유롭게 소개해보세요! \n \n채널 내용(선택)\n팀원 자격(선택)\n참여자에게 기대하는 역량(선택)\n채널에 대해 궁금한 점들은 리더 프로필에서 직접 문의해주세요!(필수) "
                 android:padding="16dp"
-                android:text="@={vm.name}"
+                android:text="@={vm.edtText}"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_width="327dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
@@ -74,20 +79,19 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/btnPreview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
-            android:paddingVertical="16dp"
-            android:background="@drawable/bg_ok_button"
+            android:background="@drawable/bg_e1_radius_8"
             android:enabled="@{vm.isEnabled}"
+            android:paddingVertical="16dp"
+            android:text="미리보기"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="다음"/>
+            android:textSize="16sp" />
     </LinearLayout>
 </layout>

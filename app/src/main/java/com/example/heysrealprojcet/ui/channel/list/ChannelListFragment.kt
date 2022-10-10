@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.HeysChannelListFragmentBinding
+import com.example.heysrealprojcet.databinding.ChannelListFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelStatus
 import com.example.heysrealprojcet.model.Channel
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class HeysChannelListFragment : Fragment() {
-   private lateinit var binding: HeysChannelListFragmentBinding
+class ChannelListFragment : Fragment() {
+   private lateinit var binding: ChannelListFragmentBinding
    private lateinit var heysItemRecyclerViewAdapter: ChannelItemRecyclerViewAdapter
    private lateinit var channelList: MutableList<Channel>
 
@@ -34,7 +34,7 @@ class HeysChannelListFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = HeysChannelListFragmentBinding.inflate(inflater, container, false)
+      binding = ChannelListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.create
+package com.example.heysrealprojcet.ui.channel.create.preview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.HeysChannelFreePreviewFragmentBinding
+import com.example.heysrealprojcet.databinding.ChannelPreviewFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class HeysChannelFreePreviewFragment : Fragment() {
-   private lateinit var binding: HeysChannelFreePreviewFragmentBinding
+class ChannelPreviewFragment : Fragment() {
+   private lateinit var binding: ChannelPreviewFragmentBinding
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class HeysChannelFreePreviewFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = HeysChannelFreePreviewFragmentBinding.inflate(inflater, container, false)
+      binding = ChannelPreviewFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
