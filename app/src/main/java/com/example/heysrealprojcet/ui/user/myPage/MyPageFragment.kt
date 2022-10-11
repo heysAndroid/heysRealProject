@@ -22,8 +22,11 @@ class MyPageFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.goToSetting.setOnClickListener { goToSetting() }
-      binding.channelContainer.setOnClickListener { goToEngagedChannel() }
+      with(binding) {
+         goToSetting.setOnClickListener { goToSetting() }
+         engagedChannelContainer.setOnClickListener { goToEngagedChannel() }
+         waitingChannelContainer.setOnClickListener { goToWaitingChannel() }
+      }
    }
 
    private fun goToSetting() {
@@ -32,5 +35,9 @@ class MyPageFragment : Fragment() {
 
    private fun goToEngagedChannel() {
       findNavController().navigate(R.id.action_myPageFragment_to_engagedChannelListFragment)
+   }
+
+   private fun goToWaitingChannel() {
+      findNavController().navigate(R.id.action_myPageFragment_to_waitingChannelListFragment)
    }
 }

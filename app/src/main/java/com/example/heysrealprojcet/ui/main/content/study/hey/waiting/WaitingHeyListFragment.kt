@@ -11,6 +11,7 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.WaitingHeyListFragmentBinding
 import com.example.heysrealprojcet.model.UserProfile
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.user.channel.waitingChannel.ChannelCancelBottomSheet
 
 class WaitingHeyListFragment : Fragment() {
    private lateinit var binding: WaitingHeyListFragmentBinding
@@ -42,7 +43,7 @@ class WaitingHeyListFragment : Fragment() {
       makeList()
       waitingHeyItemRecyclerViewAdapter = WaitingHeyItemRecyclerViewAdapter(userProfile = userList) {
          // 클릭 리스너 전달
-         val bottomSheet = ApprovalCancelBottomSheet(requireContext())
+         val bottomSheet = ChannelCancelBottomSheet(requireContext())
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
       binding.waitingHeysList.adapter = waitingHeyItemRecyclerViewAdapter

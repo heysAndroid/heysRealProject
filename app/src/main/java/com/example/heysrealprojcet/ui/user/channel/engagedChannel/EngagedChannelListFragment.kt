@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.engagedChannel
+package com.example.heysrealprojcet.ui.user.channel.engagedChannel
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.engagedChannel
+package com.example.heysrealprojcet.ui.user.channel.waitingChannel
 
 import android.content.Context
 import android.os.Bundle
@@ -9,15 +9,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ChannelLeaveBottomSheetBinding
+import com.example.heysrealprojcet.databinding.ChannelCancelBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ChannelLeaveBottomSheet(context: Context) : BottomSheetDialogFragment() {
-   private lateinit var binding: ChannelLeaveBottomSheetBinding
+class ChannelCancelBottomSheet(context: Context) : BottomSheetDialogFragment() {
+   private lateinit var binding: ChannelCancelBottomSheetBinding
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = ChannelLeaveBottomSheetBinding.inflate(inflater, container, false)
+      binding = ChannelCancelBottomSheetBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -33,13 +33,17 @@ class ChannelLeaveBottomSheet(context: Context) : BottomSheetDialogFragment() {
          binding.spinnerArrow.setImageResource(R.drawable.ic_dropdown_close)
       }
       binding.closeButton.setOnClickListener { dismiss() }
-      binding.okButton.setOnClickListener { dismiss() }
+      binding.okButton.setOnClickListener {
+         // TODO
+         // 취소 처리
+         dismiss()
+      }
       setupSpinner()
       setupSpinnerHandler()
    }
 
    private fun setupSpinner() {
-      val cancelReasons = resources.getStringArray(R.array.spinner_channel_leave)
+      val cancelReasons = resources.getStringArray(R.array.spinner_approval_cancel)
 
       val adapter = object : ArrayAdapter<String>(requireContext(), R.layout.spinner_item_view) {
          override fun getCount(): Int {
@@ -68,6 +72,7 @@ class ChannelLeaveBottomSheet(context: Context) : BottomSheetDialogFragment() {
                   setOkButtonEnabled()
                }
             }
+
          }
 
          override fun onNothingSelected(p0: AdapterView<*>?) {

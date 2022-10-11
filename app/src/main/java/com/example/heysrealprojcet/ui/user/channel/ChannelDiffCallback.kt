@@ -1,9 +1,9 @@
-package com.example.heysrealprojcet.ui.user.engagedChannel
+package com.example.heysrealprojcet.ui.user.channel
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.heysrealprojcet.model.Channel
 
-object EngagedChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {
+object ChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {
    override fun areItemsTheSame(oldItem: Channel, newItem: Channel): Boolean {
       return oldItem == newItem
    }

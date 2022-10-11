@@ -145,6 +145,9 @@
         <action
             android:id="@+id/action_myPageFragment_to_engagedChannelListFragment"
             app:destination="@id/engagedChannelListFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_waitingChannelListFragment"
+            app:destination="@id/waitingChannelListFragment" />
     </fragment>
     <fragment
         android:id="@+id/heysChannelNameFragment"
@@ -244,7 +247,7 @@
         android:id="@+id/settingFragment"
         android:name="com.example.heysrealprojcet.ui.user.setting.SettingFragment"
         android:label="SettingFragment"
-        tools:layout="@layout/setting_fragment" >
+        tools:layout="@layout/setting_fragment">
         <action
             android:id="@+id/action_settingFragment_to_settingPhoneChangeFragment"
             app:destination="@id/settingPhoneChangeFragment" />
@@ -254,7 +257,7 @@
     </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
-        android:name="com.example.heysrealprojcet.ui.user.engagedChannel.EngagedChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.user.channel.engagedChannel.EngagedChannelListFragment"
         android:label="EngagedChannelListFragment"
         tools:layout="@layout/engaged_channel_list_fragment" />
     <fragment
@@ -305,4 +308,9 @@
             android:id="@+id/action_settingPhoneVerificationFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/waitingChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.user.channel.waitingChannel.WaitingChannelListFragment"
+        android:label="WaitingChannelListFragment"
+        tools:layout="@layout/waiting_channel_list_fragment" />
 </navigation>
