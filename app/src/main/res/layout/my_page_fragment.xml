@@ -215,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginHorizontal="32dp"
-                    android:background="@color/color_f8f9fc" />
+                    android:background="@color/color_e1e1e1" />
 
                 <LinearLayout
                     android:id="@+id/waitingChannelContainer"
