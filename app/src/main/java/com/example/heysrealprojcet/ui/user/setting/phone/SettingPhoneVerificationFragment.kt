@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.user.setting.phone
 
 import android.os.Bundle
+import android.telephony.PhoneNumberUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPhoneVerificationFragmentBinding
+import java.util.*
 
 class SettingPhoneVerificationFragment : Fragment() {
    private lateinit var binding: SettingPhoneVerificationFragmentBinding
@@ -23,8 +25,8 @@ class SettingPhoneVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
-      viewModel.phoneNumber.value = arguments?.getString("phoneNumber")
+      val phoneNumber = arguments?.getString("phoneNumber")
+      viewModel.phoneNumber.value = PhoneNumberUtils.formatNumber(phoneNumber, Locale.getDefault().country)
 
       if (viewModel.phoneNumber.value!!.isNotEmpty()) {
          viewModel.timerStart()
