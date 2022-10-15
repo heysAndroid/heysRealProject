@@ -12,10 +12,29 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPhoneChangeFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class SettingPhoneChangeFragment : Fragment() {
    private lateinit var binding: SettingPhoneChangeFragmentBinding
    private val viewModel: SettingPhoneChangeViewModel by viewModels()
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = SettingPhoneChangeFragmentBinding.inflate(inflater, container, false)
