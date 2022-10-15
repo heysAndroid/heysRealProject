@@ -18,6 +18,6 @@ class SettingPhoneChangeViewModel : ViewModel() {
    }
 
    private fun isElevenDigit() {
-      _isEnabled.value = phoneNumber.value?.length == 13
+      _isEnabled.value = phoneNumber.value?.length == 11
    }
 }
