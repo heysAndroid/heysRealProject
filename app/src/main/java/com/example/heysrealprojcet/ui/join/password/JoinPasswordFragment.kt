@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.join.password
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,21 @@ class JoinPasswordFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.passwordToggle.setOnClickListener {
+         viewModel.togglePasswordVisible()
+         changeInputType()
+      }
       binding.okButton.setOnClickListener { goToJoinName() }
+   }
+
+   private fun changeInputType() {
+      if (viewModel.isPasswordVisible.value == true) {
+         binding.password.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+         binding.password.setSelection(binding.password.length())
+      } else {
+         binding.password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+         binding.password.setSelection(binding.password.length())
+      }
    }
 
    private fun goToJoinName() {

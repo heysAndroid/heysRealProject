@@ -1,11 +1,10 @@
 package com.example.heysrealprojcet.ui.user.setting.password
 
-import android.content.Context
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -25,12 +24,22 @@ class SettingPasswordVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.passwordToggle.setOnClickListener {
+         viewModel.togglePasswordVisible()
+         changeInputType()
+      }
       binding.passwordForget.setOnClickListener { goToPasswordForget() }
       binding.btnNext.setOnClickListener { goToPasswordChange() }
+   }
 
-      val inputMethodManager =
-         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-      inputMethodManager.showSoftInput(binding.password, 0)
+   private fun changeInputType() {
+      if (viewModel.isPasswordVisible.value == true) {
+         binding.password.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+         binding.password.setSelection(binding.password.length())
+      } else {
+         binding.password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+         binding.password.setSelection(binding.password.length())
+      }
    }
 
    private fun goToPasswordForget() {
