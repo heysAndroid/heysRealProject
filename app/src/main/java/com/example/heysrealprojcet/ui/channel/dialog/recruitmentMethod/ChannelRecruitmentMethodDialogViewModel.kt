@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog.viewModel
+package com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod
 
 import android.view.View
 import android.widget.Button

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog.viewModel
+package com.example.heysrealprojcet.ui.channel.dialog.form
 
 import android.graphics.Typeface
 import android.view.View

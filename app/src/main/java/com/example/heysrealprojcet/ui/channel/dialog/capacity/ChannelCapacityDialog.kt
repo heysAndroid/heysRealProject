@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog
+package com.example.heysrealprojcet.ui.channel.dialog.capacity
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelCapacityDialogBinding
-import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelCapacityDialogViewModel
 
 class ChannelCapacityDialog(private val context: Context, private val viewModel: ChannelCapacityDialogViewModel) {
    private var binding: ChannelCapacityDialogBinding = ChannelCapacityDialogBinding.inflate(LayoutInflater.from(context))

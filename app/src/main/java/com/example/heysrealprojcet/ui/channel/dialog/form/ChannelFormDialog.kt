@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog
+package com.example.heysrealprojcet.ui.channel.dialog.form
 
 import android.app.Dialog
 import android.content.Context
@@ -11,7 +11,6 @@ import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelFormDialogBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRegion
-import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel
 
 class ChannelFormDialog(private val context: Context, private val viewModel: ChannelFormDialogViewModel) {
    private var binding: ChannelFormDialogBinding = ChannelFormDialogBinding.inflate(LayoutInflater.from(context))
