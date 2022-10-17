@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/bg_channel_edittext"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:maxLength="1500"
                 android:padding="16dp"
                 android:text="@={vm.name}"
