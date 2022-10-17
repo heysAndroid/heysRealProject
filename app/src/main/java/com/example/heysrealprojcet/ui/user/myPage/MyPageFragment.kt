@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyPageFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class MyPageFragment : Fragment() {
    private lateinit var binding: MyPageFragmentBinding
@@ -19,11 +20,24 @@ class MyPageFragment : Fragment() {
       return binding.root
    }
 
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
+
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       with(binding) {
          goToSetting.setOnClickListener { goToSetting() }
+         editProfile.setOnClickListener { goToProfileEdit() }
          engagedChannelContainer.setOnClickListener { goToEngagedChannel() }
          waitingChannelContainer.setOnClickListener { goToWaitingChannel() }
       }
@@ -39,5 +53,9 @@ class MyPageFragment : Fragment() {
 
    private fun goToWaitingChannel() {
       findNavController().navigate(R.id.action_myPageFragment_to_waitingChannelListFragment)
+   }
+
+   private fun goToProfileEdit() {
+      findNavController().navigate(R.id.action_myPageFragment_to_profileEditFragment)
    }
 }

@@ -148,6 +148,9 @@
         <action
             android:id="@+id/action_myPageFragment_to_waitingChannelListFragment"
             app:destination="@id/waitingChannelListFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_profileEditFragment"
+            app:destination="@id/profileEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/heysChannelNameFragment"
@@ -313,4 +316,9 @@
         android:name="com.example.heysrealprojcet.ui.user.channel.waitingChannel.WaitingChannelListFragment"
         android:label="WaitingChannelListFragment"
         tools:layout="@layout/waiting_channel_list_fragment" />
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditFragment"
+        android:label="ProfileEditFragment"
+        tools:layout="@layout/profile_edit_fragment" />
 </navigation>
