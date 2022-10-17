@@ -6,12 +6,17 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.Window
-import com.example.heysrealprojcet.databinding.ChannelJoinDialogBinding
+import com.example.heysrealprojcet.databinding.ChannelCapacityDialogBinding
+import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelCapacityDialogViewModel
 
-class ChannelCapacityDialog(private val context: Context) {
-   private var binding: ChannelJoinDialogBinding = ChannelJoinDialogBinding.inflate(LayoutInflater.from(context))
+class ChannelCapacityDialog(private val context: Context, private val viewModel: ChannelCapacityDialogViewModel) {
+   private var binding: ChannelCapacityDialogBinding = ChannelCapacityDialogBinding.inflate(LayoutInflater.from(context))
    private val dialog = Dialog(context)
    private lateinit var listener: ChannelCapacityDialogOnClickListener
+
+   init {
+      binding.vm = viewModel
+   }
 
    fun show() {
       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -21,7 +26,9 @@ class ChannelCapacityDialog(private val context: Context) {
       dialog.show()
 
       binding.btnSave.setOnClickListener {
-         listener.onClick(binding.edtText.text.toString())
+         val capacityString = binding.edtText.text.toString()
+         listener.onClick(capacityString)
+         viewModel.updateCapacity(capacityString.toInt())
          dialog.dismiss()
       }
    }

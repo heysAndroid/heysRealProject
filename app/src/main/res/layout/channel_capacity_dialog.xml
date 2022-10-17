@@ -2,9 +2,10 @@
 <layout>
 
     <data>
+
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.dialog.ChannelCapacityDialog" />
+            type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelCapacityDialogViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="대면·비대면/비대면 최대 500명\n대면 최대 50명"
+            android:text="온·오프라인/온라인 최대 500명\n오프라인 최대 50명"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -60,16 +61,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bg_edittext"
-                android:hint="0"
+                android:hint="50"
                 android:inputType="number"
                 android:paddingLeft="16dp"
+                android:text="@{vm.capacity.toString()}"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-12dp"
+                android:layout_marginLeft="-14dp"
                 android:text="명"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -81,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="14dp"
-            android:paddingVertical="16dp"
             android:background="@drawable/bg_f7bc26_radius_8"
+            android:paddingVertical="16dp"
             android:text="저장하기"
             android:textColor="@color/white"
             android:textSize="16sp"

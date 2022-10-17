@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/dialog_inset_56_16"
-        android:paddingTop="32dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingHorizontal="24dp"
-            android:paddingTop="28dp"
-            android:orientation="vertical">
+            android:paddingTop="28dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,21 +110,21 @@
                     android:layout_marginTop="24dp"
                     android:text="지역"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnWhole"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/bg_filter_region_button"
                     android:onClick="@{(v) -> vm.onClickRegion(v)}"
-                    android:layout_marginTop="12dp"
                     android:paddingVertical="18dp"
                     android:tag="whole"
                     android:text="전국"
-                    android:textSize="16sp"
-                    android:textColor="@drawable/bg_filter_region_button" />
+                    android:textColor="@drawable/bg_filter_region_button"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,26 +138,26 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="seoul"
                         android:text="서울시"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/btnGyeonggi"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="gyeonggi"
                         android:text="경기도"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -172,26 +172,26 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="incheon"
                         android:text="인천시"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/btnGangwon"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="gangwon"
                         android:text="강원도"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -205,28 +205,28 @@
                         android:id="@+id/btnChungcheong"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginRight="9dp"
-                        android:paddingVertical="18dp"
+                        android:layout_weight="1"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="chungcheong"
                         android:text="충청도"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/btnJeolla"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="jeolla"
                         android:text="전라도"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -242,37 +242,37 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="gyeongsang"
                         android:text="경상도"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/btnJeju"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingVertical="18dp"
                         android:background="@drawable/bg_filter_region_button"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
                         android:tag="Jeju"
                         android:text="제주시"
-                        android:textSize="16sp"
-                        android:textColor="@drawable/bg_filter_region_button" />
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
-           <Button
+            <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="14dp"
-                android:paddingVertical="16dp"
                 android:background="@drawable/bg_f7bc26_radius_8"
+                android:paddingVertical="16dp"
                 android:text="저장하기"
                 android:textColor="@color/white"
                 android:textSize="16sp"

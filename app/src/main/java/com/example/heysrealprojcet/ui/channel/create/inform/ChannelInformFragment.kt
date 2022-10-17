@@ -14,6 +14,7 @@ import com.example.heysrealprojcet.ui.channel.dialog.ChannelCapacityDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.ChannelRecruitmentMethodDialog
+import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelCapacityDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelPurposeDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel
@@ -26,6 +27,7 @@ class ChannelInformFragment : Fragment() {
    private val purposeDialogViewModel: ChannelPurposeDialogViewModel by viewModels()
    private val formDialogViewModel: ChannelFormDialogViewModel by viewModels()
    private val recruitmentMethodDialogViewModel: ChannelRecruitmentMethodDialogViewModel by viewModels()
+   private val capacityDialogViewModel: ChannelCapacityDialogViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -68,7 +70,7 @@ class ChannelInformFragment : Fragment() {
       }
 
       binding.capacityContainer.setOnClickListener {
-         val capacityDialog = ChannelCapacityDialog(requireContext())
+         val capacityDialog = ChannelCapacityDialog(requireContext(), capacityDialogViewModel)
          capacityDialog.setOnOKClickListener { content ->
             binding.capacity.text = "최대 ${content}명"
             binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
