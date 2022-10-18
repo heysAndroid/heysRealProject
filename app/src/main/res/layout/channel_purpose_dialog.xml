@@ -11,8 +11,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@drawable/dialog_inset_16"
+        android:orientation="vertical"
         android:paddingHorizontal="40dp"
         android:paddingTop="24dp">
 
@@ -27,6 +27,7 @@
                 android:layout_weight="1" />
 
             <ImageButton
+                android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -78,7 +79,7 @@
                 android:paddingVertical="18dp"
                 android:text="실력향상"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +99,7 @@
                 android:paddingVertical="18dp"
                 android:text="창업/협업 경험"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnPortfolio"
@@ -110,7 +111,7 @@
                 android:paddingVertical="18dp"
                 android:text="포트폴리오"
                 android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button
@@ -119,8 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="14dp"
-            android:paddingVertical="16dp"
             android:background="@drawable/bg_f7bc26_radius_8"
+            android:paddingVertical="16dp"
             android:text="저장하기"
             android:textColor="@color/white"
             android:textSize="16sp"

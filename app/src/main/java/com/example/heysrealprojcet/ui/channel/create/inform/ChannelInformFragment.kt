@@ -11,12 +11,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialog
-import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
-import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
-import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel
+import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialogViewModel
+import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialogViewModel
+import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialogViewModel
 import com.example.heysrealprojcet.ui.main.MainActivity
 
@@ -87,9 +87,7 @@ class ChannelInformFragment : Fragment() {
          recruitmentMethodDialog.show()
       }
 
-      binding.btnNext.setOnClickListener {
-         goToName()
-      }
+      binding.btnNext.setOnClickListener { goToName() }
    }
 
    private fun goToName() {

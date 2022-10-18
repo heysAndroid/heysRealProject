@@ -22,15 +22,11 @@ class ChannelRecruitmentMethodDialog(private val context: Context, private val v
 
    init {
       binding.vm = viewModel
-
       val button = when (viewModel.btnText) {
-         ChannelRecruitmentMethod.Decide.method -> {
-            binding.btnDecide
-         }
-         else -> {
-            binding.btnApproval
-         }
+         ChannelRecruitmentMethod.Decide.method -> binding.btnDecide
+         else -> binding.btnApproval
       }
+
       button.isSelected = true
       viewModel.selectedView = button
 
@@ -64,6 +60,7 @@ class ChannelRecruitmentMethodDialog(private val context: Context, private val v
          listener.onClick(viewModel.btnText)
          dialog.dismiss()
       }
+      binding.closeButton.setOnClickListener { dialog.dismiss() }
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {

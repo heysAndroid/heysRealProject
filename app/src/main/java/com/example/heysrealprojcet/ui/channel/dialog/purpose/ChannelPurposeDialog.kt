@@ -19,18 +19,10 @@ class ChannelPurposeDialog(private val context: Context, private val viewModel: 
       binding.vm = viewModel
 
       val button = when (viewModel.btnText) {
-         ChannelPurpose.Capability.purpose -> {
-            binding.btnCapability
-         }
-         ChannelPurpose.Skill.purpose -> {
-            binding.btnSkill
-         }
-         ChannelPurpose.Foundation.purpose -> {
-            binding.btnExperience
-         }
-         else -> {
-            binding.btnPortfolio
-         }
+         ChannelPurpose.Capability.purpose -> binding.btnCapability
+         ChannelPurpose.Skill.purpose -> binding.btnSkill
+         ChannelPurpose.Foundation.purpose -> binding.btnExperience
+         else -> binding.btnPortfolio
       }
       button.isSelected = true
       button.setTypeface(null, Typeface.BOLD)
@@ -48,6 +40,7 @@ class ChannelPurposeDialog(private val context: Context, private val viewModel: 
          listener.onClick(viewModel.btnText)
          dialog.dismiss()
       }
+      binding.closeButton.setOnClickListener { dialog.dismiss() }
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {

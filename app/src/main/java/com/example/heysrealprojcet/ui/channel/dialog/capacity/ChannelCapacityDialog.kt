@@ -30,6 +30,10 @@ class ChannelCapacityDialog(private val context: Context, private val viewModel:
          viewModel.updateCapacity(capacityString.toInt())
          dialog.dismiss()
       }
+
+      binding.closeButton.setOnClickListener {
+         dialog.dismiss()
+      }
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {

@@ -21,45 +21,21 @@ class ChannelFormDialog(private val context: Context, private val viewModel: Cha
       binding.vm = viewModel
 
       val button = when (viewModel.formText) {
-         ChannelForm.Offline.form -> {
-            binding.btnOffline
-         }
-         ChannelForm.Online.form -> {
-            binding.btnOnline
-         }
-         else -> {
-            binding.btnBoth
-         }
+         ChannelForm.Offline.form -> binding.btnOffline
+         ChannelForm.Online.form -> binding.btnOnline
+         else -> binding.btnBoth
       }
 
       val button2 = when (viewModel.regionText) {
-         ChannelRegion.Whole.region -> {
-            binding.btnWhole
-         }
-         ChannelRegion.Seoul.region -> {
-            binding.btnSeoul
-         }
-         ChannelRegion.Gyeonggi.region -> {
-            binding.btnGyeonggi
-         }
-         ChannelRegion.Incheon.region -> {
-            binding.btnIncheon
-         }
-         ChannelRegion.Gangwon.region -> {
-            binding.btnGangwon
-         }
-         ChannelRegion.Chungcheong.region -> {
-            binding.btnChungcheong
-         }
-         ChannelRegion.Jeolla.region -> {
-            binding.btnJeolla
-         }
-         ChannelRegion.Gyeongsang.region -> {
-            binding.btnGyeongsang
-         }
-         else -> {
-            binding.btnJeju
-         }
+         ChannelRegion.Whole.region -> binding.btnWhole
+         ChannelRegion.Seoul.region -> binding.btnSeoul
+         ChannelRegion.Gyeonggi.region -> binding.btnGyeonggi
+         ChannelRegion.Incheon.region -> binding.btnIncheon
+         ChannelRegion.Gangwon.region -> binding.btnGangwon
+         ChannelRegion.Chungcheong.region -> binding.btnChungcheong
+         ChannelRegion.Jeolla.region -> binding.btnJeolla
+         ChannelRegion.Gyeongsang.region -> binding.btnGyeongsang
+         else -> binding.btnJeju
       }
 
       button.isSelected = true
@@ -86,15 +62,9 @@ class ChannelFormDialog(private val context: Context, private val viewModel: Cha
 
       binding.btnSave.setOnClickListener {
          val button = when (viewModel.formText) {
-            ChannelForm.Offline.form -> {
-               binding.btnOffline
-            }
-            ChannelForm.Online.form -> {
-               binding.btnOnline
-            }
-            else -> {
-               binding.btnBoth
-            }
+            ChannelForm.Offline.form -> binding.btnOffline
+            ChannelForm.Online.form -> binding.btnOnline
+            else -> binding.btnBoth
          }
 
          if (button.text.contains("온")) {
@@ -104,6 +74,8 @@ class ChannelFormDialog(private val context: Context, private val viewModel: Cha
          }
          dialog.dismiss()
       }
+
+      binding.closeButton.setOnClickListener { dialog.dismiss() }
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {

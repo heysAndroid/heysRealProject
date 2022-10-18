@@ -252,7 +252,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/bg_f7bc26_radius_8"
+            android:background="@drawable/bg_ok_button"
             android:paddingVertical="16dp"
             android:text="다음"
             android:textColor="@color/white"
