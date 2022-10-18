@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog.viewModel
+package com.example.heysrealprojcet.ui.channel.dialog.capacity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

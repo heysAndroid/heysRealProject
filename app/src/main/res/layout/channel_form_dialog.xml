@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelFormDialogViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialogViewModel" />
     </data>
 
     <ScrollView

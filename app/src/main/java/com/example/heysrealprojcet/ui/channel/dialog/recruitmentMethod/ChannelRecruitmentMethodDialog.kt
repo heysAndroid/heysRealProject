@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.dialog
+package com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod
 
 import android.app.Dialog
 import android.content.Context
@@ -13,7 +13,6 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import com.example.heysrealprojcet.databinding.ChannelRecruitmentMethodDialogBinding
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
-import com.example.heysrealprojcet.ui.channel.dialog.viewModel.ChannelRecruitmentMethodDialogViewModel
 
 
 class ChannelRecruitmentMethodDialog(private val context: Context, private val viewModel: ChannelRecruitmentMethodDialogViewModel) {
