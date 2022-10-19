@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +14,13 @@ import com.example.heysrealprojcet.databinding.ActivityListFragmentBinding
 import com.example.heysrealprojcet.model.Activities
 import com.example.heysrealprojcet.ui.main.category.Category
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ActivityListFragment : Fragment() {
    private lateinit var binding: ActivityListFragmentBinding
+   private val viewModel: ActivityListViewModel by viewModels()
+
    private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var activityItemRecyclerViewAdapter: ActivityItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<Category>
@@ -36,8 +41,8 @@ class ActivityListFragment : Fragment() {
       activityItemRecyclerViewAdapter = ActivityItemRecyclerViewAdapter(host = hostList) { goToDetail() }
       binding.activityList.adapter = activityItemRecyclerViewAdapter
       binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-
       binding.filterButton.setOnClickListener { goToFilter() }
+      binding.pingTest.setOnClickListener { viewModel.ping() }
    }
 
    private fun makeList() {

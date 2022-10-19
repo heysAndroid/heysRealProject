@@ -96,8 +96,18 @@
             android:layout_height="wrap_content"
             android:thumb="@drawable/switch_thumb"
             android:track="@drawable/switch_track_selector" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/pingTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_7b61ff_radius_8"
+        android:text="ping 테스트"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activityList"
