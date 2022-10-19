@@ -15,7 +15,6 @@ import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDia
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
-import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialogViewModel
 import com.example.heysrealprojcet.ui.main.MainActivity
@@ -24,7 +23,6 @@ class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
    private val viewModel: ChannelInformViewModel by viewModels()
 
-   private val purposeDialogViewModel: ChannelPurposeDialogViewModel by viewModels()
    private val formDialogViewModel: ChannelFormDialogViewModel by viewModels()
    private val recruitmentMethodDialogViewModel: ChannelRecruitmentMethodDialogViewModel by viewModels()
    private val capacityDialogViewModel: ChannelCapacityDialogViewModel by viewModels()
@@ -52,12 +50,12 @@ class ChannelInformFragment : Fragment() {
       binding.lifecycleOwner = this
 
       binding.purposeContainer.setOnClickListener {
-         val purposeDialog = ChannelPurposeDialog(requireContext(), purposeDialogViewModel)
+         val purposeDialog = ChannelPurposeDialog()
          purposeDialog.setOnOKClickListener { content ->
             binding.purpose.text = content
             binding.purpose.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
-         purposeDialog.show()
+         purposeDialog.show(childFragmentManager, null)
       }
 
       binding.formContainer.setOnClickListener {

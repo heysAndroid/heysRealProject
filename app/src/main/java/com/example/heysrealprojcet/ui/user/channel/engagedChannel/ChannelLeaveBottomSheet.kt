@@ -1,6 +1,5 @@
 package com.example.heysrealprojcet.ui.user.channel.engagedChannel
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,7 @@ import com.example.heysrealprojcet.databinding.ChannelLeaveBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ChannelLeaveBottomSheet(context: Context) : BottomSheetDialogFragment() {
+class ChannelLeaveBottomSheet : BottomSheetDialogFragment() {
    private lateinit var binding: ChannelLeaveBottomSheetBinding
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
