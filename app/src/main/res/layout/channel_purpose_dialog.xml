@@ -9,9 +9,9 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/dialog_inset_16"
+        android:background="@drawable/bg_dialog_inset_16_square"
         android:orientation="vertical"
         android:paddingHorizontal="40dp"
         android:paddingTop="24dp">
