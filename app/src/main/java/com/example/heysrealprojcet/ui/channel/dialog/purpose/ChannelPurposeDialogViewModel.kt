@@ -14,6 +14,5 @@ class ChannelPurposeDialogViewModel : ViewModel() {
    fun onClickPurpose(v: View) {
       val button = v as Button
       _selectedPurpose.value = button.text.toString()
-      ChannelPreference.channelPurpose = selectedPurpose.value.toString()
    }
 }

@@ -39,8 +39,9 @@ class ChannelPurposeDialog : DialogFragment() {
       }
 
       binding.btnSave.setOnClickListener {
+         ChannelPreference.channelPurpose = viewModel.selectedPurpose.value.toString()
          // 채널 정보 fragment 로 선택값 전달
-         listener.onClick(viewModel.selectedPurpose.value.toString())
+         listener.onClick("${ChannelPreference.channelPurpose}")
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
