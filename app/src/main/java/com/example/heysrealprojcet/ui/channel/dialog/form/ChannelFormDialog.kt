@@ -64,8 +64,12 @@ class ChannelFormDialog : DialogFragment() {
       }
 
       binding.btnSave.setOnClickListener {
-         ChannelPreference.channelForm = viewModel.selectedForm.value.toString()
-         ChannelPreference.channelRegion = viewModel.selectedRegion.value.toString()
+         if (viewModel.selectedForm.value != null) {
+            ChannelPreference.channelForm = viewModel.selectedForm.value.toString()
+         }
+         if (viewModel.selectedRegion.value != null) {
+            ChannelPreference.channelRegion = viewModel.selectedRegion.value.toString()
+         }
 
          when (viewModel.selectedForm.value) {
             ChannelForm.Online.form -> listener.onClick("${ChannelPreference.channelForm}")
