@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,8 +28,6 @@ class ChannelPurposeDialog : DialogFragment() {
       dialog?.setCancelable(false)
 
       previousSelectedPurpose()
-      Log.w("selectedPrevious: ", ChannelPreference.channelPurpose)
-
       viewModel.selectedPurpose.observe(viewLifecycleOwner) {
          unselectAllButton()
          when (it) {

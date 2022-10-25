@@ -13,7 +13,6 @@ import com.example.heysrealprojcet.databinding.ChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialog
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
-import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialogViewModel
@@ -23,7 +22,6 @@ class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
    private val viewModel: ChannelInformViewModel by viewModels()
 
-   private val formDialogViewModel: ChannelFormDialogViewModel by viewModels()
    private val recruitmentMethodDialogViewModel: ChannelRecruitmentMethodDialogViewModel by viewModels()
    private val capacityDialogViewModel: ChannelCapacityDialogViewModel by viewModels()
 
@@ -59,12 +57,12 @@ class ChannelInformFragment : Fragment() {
       }
 
       binding.formContainer.setOnClickListener {
-         val formDialog = ChannelFormDialog(requireContext(), formDialogViewModel)
+         val formDialog = ChannelFormDialog()
          formDialog.setOnOKClickListener { content ->
             binding.form.text = content
             binding.form.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
-         formDialog.show()
+         formDialog.show(childFragmentManager, null)
       }
 
       binding.capacityContainer.setOnClickListener {
