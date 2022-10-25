@@ -86,10 +86,10 @@ class ChannelPurposeDialog : DialogFragment() {
 
    private fun previousSelectedPurpose() {
       when (ChannelPreference.channelPurpose) {
-         ChannelPurpose.Skill.purpose -> binding.btnSkill.isSelected = true
-         ChannelPurpose.Capability.purpose -> binding.btnCapability.isSelected = true
-         ChannelPurpose.Experience.purpose -> binding.btnExperience.isSelected = true
-         ChannelPurpose.Portfolio.purpose -> binding.btnPortfolio.isSelected = true
+         ChannelPurpose.Skill.purpose -> selectSkillButton()
+         ChannelPurpose.Capability.purpose -> selectCapabilityButton()
+         ChannelPurpose.Experience.purpose -> selectExperienceButton()
+         ChannelPurpose.Portfolio.purpose -> selectPortfolioButton()
          else -> {}
       }
    }
