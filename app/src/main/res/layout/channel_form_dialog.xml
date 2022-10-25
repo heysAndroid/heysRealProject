@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="비대면의 경우 전국으로 표시됩니다."
+                android:text="온라인의 경우 전국으로 표시됩니다."
                 android:textSize="16sp" />
 
             <Button
@@ -66,7 +66,21 @@
                 android:onClick="@{(v) -> vm.onClickForm(v)}"
                 android:paddingVertical="18dp"
                 android:tag="onOff"
-                android:text="온, 오프라인"
+                android:text="온·오프라인"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnOffine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickForm(v)}"
+                android:paddingVertical="18dp"
+                android:tag="on"
+                android:text="오프라인"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp" />
 
@@ -79,36 +93,23 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickForm(v)}"
                 android:paddingVertical="18dp"
-                android:tag="on"
-                android:text="온라인"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/btnOffline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/channel_dialog_button"
-                android:onClick="@{(v) -> vm.onClickForm(v)}"
-                android:paddingVertical="18dp"
                 android:tag="off"
-                android:text="오프라인"
+                android:text="온라인"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp" />
 
 
             <LinearLayout
-                android:id="@+id/region"
+                android:id="@+id/regionContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:text="지역"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -228,7 +229,6 @@
                         android:text="전라도"
                         android:textColor="@drawable/bg_filter_region_button"
                         android:textSize="16sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -272,7 +272,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="14dp"
-                android:background="@drawable/bg_f7bc26_radius_8"
+                android:background="@drawable/bg_53c740_radius_8"
                 android:paddingVertical="16dp"
                 android:text="저장하기"
                 android:textColor="@color/white"
