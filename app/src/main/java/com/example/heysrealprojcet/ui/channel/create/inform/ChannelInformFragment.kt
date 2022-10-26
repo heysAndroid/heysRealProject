@@ -15,14 +15,11 @@ import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDia
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
-import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialogViewModel
 import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
    private val viewModel: ChannelInformViewModel by viewModels()
-
-   private val recruitmentMethodDialogViewModel: ChannelRecruitmentMethodDialogViewModel by viewModels()
    private val capacityDialogViewModel: ChannelCapacityDialogViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,12 +72,12 @@ class ChannelInformFragment : Fragment() {
       }
 
       binding.recruitmentMethodContainer.setOnClickListener {
-         val recruitmentMethodDialog = ChannelRecruitmentMethodDialog(requireContext(), recruitmentMethodDialogViewModel)
+         val recruitmentMethodDialog = ChannelRecruitmentMethodDialog()
          recruitmentMethodDialog.setOnOKClickListener { content ->
             binding.recruitmentMethod.text = content
             binding.recruitmentMethod.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
          }
-         recruitmentMethodDialog.show()
+         recruitmentMethodDialog.show(childFragmentManager, null)
       }
 
       binding.btnNext.setOnClickListener { goToName() }
