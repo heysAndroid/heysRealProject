@@ -31,7 +31,7 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
       dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.setCancelable(false)
 
-      setTextSize()
+      previousSelectedMethod()
       viewModel.selectedRecruitmentMethod.observe(viewLifecycleOwner) {
          unselectAllRecruitMethodButton()
          when (it) {
@@ -91,6 +91,13 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
             append("승인 결정" + "\n")
             append("신청자의 프로필을 보고 참여를 결정합니다.")
          }
+      }
+   }
+
+   private fun previousSelectedMethod() {
+      when (ChannelPreference.channelRecruitmentMethod) {
+         ChannelRecruitmentMethod.Decide.method -> selectDecideButton()
+         ChannelRecruitmentMethod.Approval.method -> selectApprovalButton()
       }
    }
 
