@@ -32,6 +32,8 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
       dialog?.setCancelable(false)
 
       previousSelectedMethod()
+      if (ChannelPreference.channelRecruitmentMethod.isEmpty()) setTextSize()
+
       viewModel.selectedRecruitmentMethod.observe(viewLifecycleOwner) {
          unselectAllRecruitMethodButton()
          when (it) {
