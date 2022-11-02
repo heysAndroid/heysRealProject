@@ -46,7 +46,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="채널목적"
+                    android:text="채널 목적"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="14dp"
-                        android:text="역량강화"
+                        android:text="선택해주세요"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -117,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="14dp"
-                        android:text="온,오프라인/전국"
+                        android:text="선택해주세요"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -166,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="14dp"
-                        android:text="최대 50명"
+                        android:text="선택해주세요"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -215,7 +215,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="14dp"
-                        android:text="승인 결정"
+                        android:text="선택해주세요"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -264,7 +264,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="14dp"
-                        android:text="7일 이내"
+                        android:text="선택해주세요"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />

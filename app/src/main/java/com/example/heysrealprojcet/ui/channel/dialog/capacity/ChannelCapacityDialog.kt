@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.Window
 import com.example.heysrealprojcet.databinding.ChannelCapacityDialogBinding
 
-class ChannelCapacityDialog(private val context: Context, private val viewModel: ChannelCapacityDialogViewModel) {
+class ChannelCapacityDialog(context: Context, private val viewModel: ChannelCapacityDialogViewModel) {
    private var binding: ChannelCapacityDialogBinding = ChannelCapacityDialogBinding.inflate(LayoutInflater.from(context))
    private val dialog = Dialog(context)
    private lateinit var listener: ChannelCapacityDialogOnClickListener

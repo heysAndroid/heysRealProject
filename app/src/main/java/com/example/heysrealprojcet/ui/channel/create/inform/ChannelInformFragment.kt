@@ -16,6 +16,7 @@ import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.ChannelPreference
 
 class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
@@ -43,12 +44,13 @@ class ChannelInformFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      ChannelPreference.reset()
 
       binding.purposeContainer.setOnClickListener {
          val purposeDialog = ChannelPurposeDialog()
          purposeDialog.setOnOKClickListener { content ->
             binding.purpose.text = content
-            binding.purpose.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
+            binding.purpose.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
          purposeDialog.show(childFragmentManager, null)
       }
@@ -57,7 +59,7 @@ class ChannelInformFragment : Fragment() {
          val formDialog = ChannelFormDialog()
          formDialog.setOnOKClickListener { content ->
             binding.form.text = content
-            binding.form.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
+            binding.form.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
          formDialog.show(childFragmentManager, null)
       }
@@ -66,7 +68,7 @@ class ChannelInformFragment : Fragment() {
          val capacityDialog = ChannelCapacityDialog(requireContext(), capacityDialogViewModel)
          capacityDialog.setOnOKClickListener { content ->
             binding.capacity.text = "최대 ${content}명"
-            binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
+            binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
          capacityDialog.show()
       }
@@ -75,7 +77,7 @@ class ChannelInformFragment : Fragment() {
          val recruitmentMethodDialog = ChannelRecruitmentMethodDialog()
          recruitmentMethodDialog.setOnOKClickListener { content ->
             binding.recruitmentMethod.text = content
-            binding.recruitmentMethod.setTextColor(ContextCompat.getColor(context!!, R.color.color_53c740))
+            binding.recruitmentMethod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
          recruitmentMethodDialog.show(childFragmentManager, null)
       }
