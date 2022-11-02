@@ -9,7 +9,7 @@ object ChannelPreference : KotprefModel() {
       channelRegion = ""
       channelCapacity = 0
       channelRecruitmentMethod = ""
-      channelRecruitPeriod = 0
+      channelRecruitPeriod = ""
    }
 
    /*
@@ -40,5 +40,5 @@ object ChannelPreference : KotprefModel() {
    /*
   모집 기간
    */
-   var channelRecruitPeriod by intPref()
+   var channelRecruitPeriod by stringPref()
 }
