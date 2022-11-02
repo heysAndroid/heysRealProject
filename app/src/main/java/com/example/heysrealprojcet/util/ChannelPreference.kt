@@ -3,6 +3,15 @@ package com.example.heysrealprojcet.util
 import com.chibatching.kotpref.KotprefModel
 
 object ChannelPreference : KotprefModel() {
+   fun reset() {
+      channelPurpose = ""
+      channelForm = ""
+      channelRegion = ""
+      channelCapacity = 0
+      channelRecruitmentMethod = ""
+      channelRecruitPeriod = 0
+   }
+
    /*
    채널목적
     */
@@ -27,4 +36,9 @@ object ChannelPreference : KotprefModel() {
    모집 방식
     */
    var channelRecruitmentMethod by stringPref()
+
+   /*
+  모집 기간
+   */
+   var channelRecruitPeriod by intPref()
 }
