@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.channel.dialog.capacity
 
 import androidx.lifecycle.*
+import com.example.heysrealprojcet.util.ChannelPreference
 import kotlinx.coroutines.launch
 
 class ChannelCapacityDialogViewModel : ViewModel() {
@@ -10,6 +11,10 @@ class ChannelCapacityDialogViewModel : ViewModel() {
    val isEnabled: LiveData<Boolean> = _isEnabled
 
    init {
+      if (ChannelPreference.channelCapacity != 0) {
+         ChannelPreference.channelCapacity?.let { capacity.value = it.toString() }
+      }
+
       viewModelScope.launch {
          capacity.asFlow().collect {
             isFilled()
