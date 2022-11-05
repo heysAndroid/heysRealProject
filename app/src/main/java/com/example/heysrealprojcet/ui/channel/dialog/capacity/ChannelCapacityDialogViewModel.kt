@@ -1,14 +1,24 @@
 package com.example.heysrealprojcet.ui.channel.dialog.capacity
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import kotlinx.coroutines.launch
 
 class ChannelCapacityDialogViewModel : ViewModel() {
-   private val _capacity = MutableLiveData(50)
-   val capacity: LiveData<Int> = _capacity
+   var capacity = MutableLiveData<String>()
 
-   fun updateCapacity(value: Int) {
-      _capacity.value = value
+   private val _isEnabled = MutableLiveData<Boolean>()
+   val isEnabled: LiveData<Boolean> = _isEnabled
+
+   init {
+      viewModelScope.launch {
+         capacity.asFlow().collect {
+            isFilled()
+         }
+      }
+   }
+
+   private fun isFilled() {
+      _isEnabled.value = !capacity.value.isNullOrBlank()
+
    }
 }
