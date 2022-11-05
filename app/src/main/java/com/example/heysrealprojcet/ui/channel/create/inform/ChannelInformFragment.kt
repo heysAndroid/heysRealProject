@@ -66,12 +66,12 @@ class ChannelInformFragment : Fragment() {
       }
 
       binding.capacityContainer.setOnClickListener {
-         val capacityDialog = ChannelCapacityDialog(requireContext(), capacityDialogViewModel)
+         val capacityDialog = ChannelCapacityDialog()
          capacityDialog.setOnOKClickListener { content ->
             binding.capacity.text = "최대 ${content}명"
             binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
-         capacityDialog.show()
+         capacityDialog.show(childFragmentManager, null)
       }
 
       binding.recruitmentMethodContainer.setOnClickListener {

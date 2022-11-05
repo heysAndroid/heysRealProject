@@ -1,39 +1,43 @@
 package com.example.heysrealprojcet.ui.channel.dialog.capacity
 
-import android.app.Dialog
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.example.heysrealprojcet.databinding.ChannelCapacityDialogBinding
+import com.example.heysrealprojcet.util.ChannelPreference
 
-class ChannelCapacityDialog(context: Context, private val viewModel: ChannelCapacityDialogViewModel) {
-   private var binding: ChannelCapacityDialogBinding = ChannelCapacityDialogBinding.inflate(LayoutInflater.from(context))
-   private val dialog = Dialog(context)
+class ChannelCapacityDialog : DialogFragment() {
+   private lateinit var binding: ChannelCapacityDialogBinding
+   private val viewModel by viewModels<ChannelCapacityDialogViewModel>()
    private lateinit var listener: ChannelCapacityDialogOnClickListener
 
-   init {
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      binding = ChannelCapacityDialogBinding.inflate(inflater, container, false)
       binding.vm = viewModel
-   }
 
-   fun show() {
-      dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-      dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-      dialog.setContentView(binding.root)
-      dialog.setCancelable(false)
-      dialog.show()
+      dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+      dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+      dialog?.setCancelable(false)
 
       binding.btnSave.setOnClickListener {
-         val capacityString = binding.edtText.text.toString()
-         listener.onClick(capacityString)
-         viewModel.updateCapacity(capacityString.toInt())
-         dialog.dismiss()
+         viewModel.capacity.value?.toInt()?.let { ChannelPreference.channelCapacity = it }
+         viewModel.capacity.value?.let { listener.onClick(it) }
+         dialog?.dismiss()
       }
+      binding.closeButton.setOnClickListener { dismiss() }
 
-      binding.closeButton.setOnClickListener {
-         dialog.dismiss()
-      }
+      return binding.root
+   }
+
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      binding.lifecycleOwner = this
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {
