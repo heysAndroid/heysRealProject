@@ -57,10 +57,10 @@ class ChannelDetailFragment : Fragment() {
    }
 
    private fun goToMemberList() {
-      findNavController().navigate(R.id.action_heysChannelDetailFragment_to_memberHeysListFragment)
+      findNavController().navigate(R.id.action_channelDetailFragment_to_memberHeysListFragment)
    }
 
    private fun goToWaitingHeysList() {
-      findNavController().navigate(R.id.action_heysChannelDetailFragment_to_waitingHeyListFragment)
+      findNavController().navigate(R.id.action_channelDetailFragment_to_waitingHeyListFragment)
    }
 }

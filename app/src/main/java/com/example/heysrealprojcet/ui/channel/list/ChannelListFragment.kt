@@ -61,10 +61,10 @@ class ChannelListFragment : Fragment() {
    }
 
    private fun goToChannelList() {
-      findNavController().navigate(R.id.action_heysChannelListFragment_to_heysChannelNameFragment)
+      findNavController().navigate(R.id.action_channelListFragment_to_channelNameFragment)
    }
 
    private fun goToChannelDetail() {
-      findNavController().navigate(R.id.action_heysChannelListFragment_to_heysChannelDetailFragment)
+      findNavController().navigate(R.id.action_channelListFragment_to_channelDetailFragment)
    }
 }

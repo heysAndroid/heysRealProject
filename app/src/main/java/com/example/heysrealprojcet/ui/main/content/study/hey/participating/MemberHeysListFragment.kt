@@ -61,6 +61,6 @@ class MemberHeysListFragment : Fragment() {
    }
 
    private fun goToChat() {
-      findNavController().navigate(R.id.action_memberHeysListFragment_to_heysChannelChatFragment)
+      findNavController().navigate(R.id.action_memberHeysListFragment_to_channelChatFragment)
    }
 }

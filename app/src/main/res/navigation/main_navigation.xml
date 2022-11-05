@@ -41,7 +41,7 @@
             app:destination="@id/studyFilterFragment" />
         <action
             android:id="@+id/action_studyFragment_to_heysChannelDetailFragment"
-            app:destination="@id/heysChannelDetailFragment" />
+            app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/contestActivityFilterFragment"
@@ -66,20 +66,20 @@
         android:label="ContestActivityDetailFragment"
         tools:layout="@layout/contest_activity_detail_fragment">
         <action
-            android:id="@+id/action_contestActivityDetailFragment_to_heysChannelListFragment"
-            app:destination="@id/heysChannelListFragment" />
+            android:id="@+id/action_contestActivityDetailFragment_to_channelListFragment"
+            app:destination="@id/channelListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelListFragment"
+        android:id="@+id/channelListFragment"
         android:name="com.example.heysrealprojcet.ui.channel.list.ChannelListFragment"
-        android:label="HeysListFragment"
+        android:label="ChannelListFragment"
         tools:layout="@layout/channel_list_fragment">
         <action
-            android:id="@+id/action_heysChannelListFragment_to_heysChannelDetailFragment"
-            app:destination="@id/heysChannelDetailFragment" />
+            android:id="@+id/action_channelListFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
         <action
-            android:id="@+id/action_heysChannelListFragment_to_heysChannelNameFragment"
-            app:destination="@id/heysChannelNameFragment" />
+            android:id="@+id/action_channelListFragment_to_channelNameFragment"
+            app:destination="@id/channelNameFragment" />
     </fragment>
     <fragment
         android:id="@+id/studyFilterFragment"
@@ -87,15 +87,15 @@
         android:label="StudyFilterFragment"
         tools:layout="@layout/study_filter_fragment" />
     <fragment
-        android:id="@+id/heysChannelDetailFragment"
+        android:id="@+id/channelDetailFragment"
         android:name="com.example.heysrealprojcet.ui.channel.list.ChannelDetailFragment"
-        android:label="HeysChannelDetailFragment"
+        android:label="ChannelDetailFragment"
         tools:layout="@layout/channel_detail_fragment">
         <action
-            android:id="@+id/action_heysChannelDetailFragment_to_memberHeysListFragment"
+            android:id="@+id/action_channelDetailFragment_to_memberHeysListFragment"
             app:destination="@id/memberHeysListFragment" />
         <action
-            android:id="@+id/action_heysChannelDetailFragment_to_waitingHeyListFragment"
+            android:id="@+id/action_channelDetailFragment_to_waitingHeyListFragment"
             app:destination="@id/waitingHeyListFragment" />
     </fragment>
     <fragment
@@ -116,8 +116,8 @@
         android:label="MemberHeysListFragment"
         tools:layout="@layout/member_heys_list_fragment">
         <action
-            android:id="@+id/action_memberHeysListFragment_to_heysChannelChatFragment"
-            app:destination="@id/heysChannelChatFragment" />
+            android:id="@+id/action_memberHeysListFragment_to_channelChatFragment"
+            app:destination="@id/channelChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
@@ -153,45 +153,45 @@
             app:destination="@id/profileEditFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelNameFragment"
+        android:id="@+id/channelNameFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.name.ChannelNameFragment"
-        android:label="HeysChannelNameFragment"
+        android:label="ChannelNameFragment"
         tools:layout="@layout/channel_name_fragment">
         <action
-            android:id="@+id/action_heysChannelNameFragment_to_heysChannelInformFragment"
-            app:destination="@id/heysChannelInformFragment" />
+            android:id="@+id/action_channelNameFragment_to_channelInformFragment"
+            app:destination="@id/channelInformFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelInformFragment"
+        android:id="@+id/channelInformFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.inform.ChannelInformFragment"
-        android:label="HeysChannelInformFragment"
+        android:label="ChannelInformFragment"
         tools:layout="@layout/channel_inform_fragment">
         <action
-            android:id="@+id/action_heysChannelInformFragment_to_heysChannelFreeFragment"
-            app:destination="@id/heysChannelFreeFragment" />
+            android:id="@+id/action_channelInformFragment_to_channelFreeFragment"
+            app:destination="@id/channelDescriptionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelFreeFragment"
+        android:id="@+id/channelDescriptionFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.description.ChannelDescriptionFragment"
-        android:label="HeysChannelFreeFragment"
+        android:label="ChannelDescriptionFragment"
         tools:layout="@layout/channel_description_fragment">
         <action
-            android:id="@+id/action_heysChannelFreeFragment_to_heysChannelFreePreviewFragment"
-            app:destination="@id/heysChannelFreePreviewFragment" />
+            android:id="@+id/action_channelDescriptionFragment_to_channelPreviewFragment"
+            app:destination="@id/channelPreviewFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelFreePreviewFragment"
+        android:id="@+id/channelPreviewFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.preview.ChannelPreviewFragment"
-        android:label="HeysChannelFreePreviewFragment"
+        android:label="ChannelPreviewFragment"
         tools:layout="@layout/channel_preview_fragment">
         <action
-            android:id="@+id/action_heysChannelFreePreviewFragment_to_heysChannelDetailFragment"
-            app:destination="@id/heysChannelDetailFragment" />
+            android:id="@+id/action_channelPreviewFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/heysChannelChatFragment"
+        android:id="@+id/channelChatFragment"
         android:name="com.example.heysrealprojcet.ui.channel.chat.HeysChannelChatFragment"
-        android:label="HeysChannelChatFragment"
+        android:label="ChannelChatFragment"
         tools:layout="@layout/heys_channel_chat_fragment" />
     <fragment
         android:id="@+id/waitingHeyListFragment"

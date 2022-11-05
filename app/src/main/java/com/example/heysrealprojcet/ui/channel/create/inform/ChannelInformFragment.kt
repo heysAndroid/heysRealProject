@@ -96,7 +96,7 @@ class ChannelInformFragment : Fragment() {
    }
 
    private fun goToName() {
-      findNavController().navigate(R.id.action_heysChannelInformFragment_to_heysChannelFreeFragment)
+      findNavController().navigate(R.id.action_channelInformFragment_to_channelFreeFragment)
    }
 }
 
