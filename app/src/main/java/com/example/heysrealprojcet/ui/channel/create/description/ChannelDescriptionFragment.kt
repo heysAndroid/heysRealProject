@@ -52,12 +52,10 @@ class ChannelDescriptionFragment : Fragment() {
          }
       }
 
-      binding.btnPreview.setOnClickListener {
-         goToFreePreview()
-      }
+      binding.btnPreview.setOnClickListener { goToChannelPreview() }
    }
 
-   private fun goToFreePreview() {
-      findNavController().navigate(R.id.action_heysChannelFreeFragment_to_heysChannelFreePreviewFragment)
+   private fun goToChannelPreview() {
+      findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelPreviewFragment)
    }
 }
