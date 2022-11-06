@@ -59,6 +59,9 @@ class ChannelPreviewFragment() : Fragment() {
       binding.btnMake.setOnClickListener { goToDetail() }
    }
 
+   // TODO
+   // 1) detail 프래그먼트로 이동
+   // 2) 생성완료 프래그먼트 생성
    private fun goToDetail() {
       findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment)
    }
