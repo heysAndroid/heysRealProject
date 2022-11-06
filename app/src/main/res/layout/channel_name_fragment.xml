@@ -73,7 +73,6 @@
                     android:text="/1500"
                     android:textColor="@color/color_99828282"
                     android:textSize="12sp" />
-
             </LinearLayout>
         </LinearLayout>
 
