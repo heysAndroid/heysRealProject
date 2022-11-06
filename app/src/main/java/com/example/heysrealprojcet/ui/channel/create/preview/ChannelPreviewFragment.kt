@@ -13,9 +13,10 @@ import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class ChannelPreviewFragment : Fragment() {
+class ChannelPreviewFragment() : Fragment() {
    private lateinit var binding: ChannelPreviewFragmentBinding
    private val viewModel by viewModels<ChannelPreviewViewModel>()
+   var isExpanded = false
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -41,6 +42,20 @@ class ChannelPreviewFragment : Fragment() {
 
       setChannelRegion()
       setChannelRecruitmentMethod()
+
+      binding.btnDetail.setOnClickListener {
+         if (isExpanded) {
+            binding.channelDescription.maxLines = 5
+            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand, 0)
+            isExpanded = false
+         } else {
+            // TODO
+            // close 리소스 수정
+            binding.channelDescription.maxLines = Int.MAX_VALUE
+            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_dropdown_close, 0)
+            isExpanded = true
+         }
+      }
       binding.btnMake.setOnClickListener { goToDetail() }
    }
 
