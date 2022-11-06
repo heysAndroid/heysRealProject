@@ -12,6 +12,7 @@ import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ChannelDetailFragment : Fragment() {
    private lateinit var binding: ChannelDetailFragmentBinding
+   var isExpanded = false
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -41,18 +42,21 @@ class ChannelDetailFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.heysAll.setOnClickListener { goToMemberList() }
 
-      binding.detail.setOnClickListener {
-         if (binding.layoutExpand.visibility == View.VISIBLE) {
-            binding.layoutExpand.visibility = View.GONE
-            binding.layoutExpand.animate().setDuration(200).rotation(0f)
+      binding.heysAll.setOnClickListener { goToMemberList() }
+      binding.btnDetail.setOnClickListener {
+         if (isExpanded) {
+            binding.channelDescription.maxLines = 5
+            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand, 0)
+            isExpanded = false
          } else {
-            binding.layoutExpand.visibility = View.VISIBLE
-            binding.layoutExpand.animate().setDuration(200).rotation(0f)
+            // TODO
+            // close 리소스 수정
+            binding.channelDescription.maxLines = Int.MAX_VALUE
+            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_dropdown_close, 0)
+            isExpanded = true
          }
       }
-
       binding.waitingHeysList.setOnClickListener { goToWaitingHeysList() }
    }
 

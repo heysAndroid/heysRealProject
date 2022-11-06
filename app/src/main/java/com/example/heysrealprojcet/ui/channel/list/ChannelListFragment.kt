@@ -16,7 +16,7 @@ import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ChannelListFragment : Fragment() {
    private lateinit var binding: ChannelListFragmentBinding
-   private lateinit var heysItemRecyclerViewAdapter: ChannelItemRecyclerViewAdapter
+   private lateinit var channelItemRecyclerViewAdapter: ChannelItemRecyclerViewAdapter
    private lateinit var channelList: MutableList<Channel>
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +43,8 @@ class ChannelListFragment : Fragment() {
       binding.lifecycleOwner = this
 
       makeList()
-      heysItemRecyclerViewAdapter = ChannelItemRecyclerViewAdapter(type = channelList) { goToChannelDetail() }
-      binding.heysList.adapter = heysItemRecyclerViewAdapter
+      channelItemRecyclerViewAdapter = ChannelItemRecyclerViewAdapter(type = channelList) { goToChannelDetail() }
+      binding.heysList.adapter = channelItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.makeChannel.setOnClickListener {

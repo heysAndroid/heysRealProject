@@ -41,10 +41,11 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="296dp"
+                    android:layout_width="match_parent"
                     android:layout_height="176dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="26dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/bg_sample_image_full" />
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="16dp"
-                    android:text="제3회 연구개발특구 \nAI SPARK 챌린지 팀원 모집해요!"
+                    android:text="제3회 연구개발특구 AI\n SPARK 챌린지 팀원 모집해요!"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -83,7 +84,7 @@
                             android:layout_marginLeft="4dp"
                             android:text="Heys와 대화할 수 있어요!"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <View
@@ -95,6 +96,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginRight="18dp"
                             android:background="@color/color_f8f9fc"
                             android:src="@drawable/ic_next_26" />
 
@@ -199,26 +201,19 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout_expand"
+                <TextView
+                    android:id="@+id/channelDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="32dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="12dp"
-                        android:text="시인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다! 관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다.더 궁금하신 점은 프로필로 문의해주세요. 5줄 이상이면 자세히 보기로 펼쳐보게됩니다."
-                        android:textSize="16sp" />
-
-                </LinearLayout>
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:maxLines="5"
+                    android:text="시인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다! 관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다.더 궁금하신 점은 프로필로 문의해주세요. 5줄 이상이면 자세히 보기로 펼쳐보게됩니다."
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/detail"
+                    android:id="@+id/btnDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -290,7 +285,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -349,7 +344,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -396,7 +391,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginVertical="8dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingVertical="16dp">
 
                         <TextView
                             android:layout_width="match_parent"
