@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_channelDetailFragment_to_waitingHeyListFragment"
             app:destination="@id/waitingHeyListFragment" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_myChannelFragment"
+            app:destination="@id/myChannelFragment" />
     </fragment>
     <fragment
         android:id="@+id/activityListFragment"

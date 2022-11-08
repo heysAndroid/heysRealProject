@@ -58,6 +58,7 @@ class ChannelDetailFragment : Fragment() {
          }
       }
       binding.waitingHeysList.setOnClickListener { goToWaitingHeysList() }
+      binding.btnJoin.setOnClickListener { goToMyChannel() }
    }
 
    private fun goToMemberList() {
@@ -66,5 +67,9 @@ class ChannelDetailFragment : Fragment() {
 
    private fun goToWaitingHeysList() {
       findNavController().navigate(R.id.action_channelDetailFragment_to_waitingHeyListFragment)
+   }
+
+   private fun goToMyChannel() {
+      findNavController().navigate(R.id.action_channelDetailFragment_to_myChannelFragment)
    }
 }

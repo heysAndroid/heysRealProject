@@ -252,6 +252,7 @@
                     android:layout_gravity="center"
                     android:layout_marginVertical="19dp"
                     android:drawableEnd="@drawable/ic_expand"
+                    android:drawablePadding="4dp"
                     android:text="자세히 보기"
                     android:textColor="@color/color_828282"
                     android:textSize="14sp" />
