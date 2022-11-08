@@ -50,16 +50,17 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="257dp"
+                android:layout_height="277dp"
                 android:layout_marginHorizontal="32dp"
-                android:background="@drawable/bg_channel_contest"
+                android:background="@drawable/bg_channel_contest_card"
                 android:orientation="vertical"
-                android:paddingVertical="20dp">
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -85,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="17.5dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:text="제3회 연구개발특구\nAI SPARK 챌린지\n팀원 모집해요!"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -105,7 +106,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="6.4dp"
+                        android:layout_marginRight="6dp"
                         android:src="@drawable/ic_chat" />
 
                     <TextView
@@ -133,7 +134,7 @@
                 android:layout_height="257dp"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/bg_channel_activity"
+                android:background="@drawable/bg_channel_activity_card"
                 android:orientation="vertical"
                 android:paddingVertical="20dp">
 
@@ -201,7 +202,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_channel_contest"
+                android:background="@drawable/bg_channel_contest_card"
                 android:orientation="vertical"
                 android:paddingVertical="20dp">
 
