@@ -246,10 +246,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="둘러보기"
-                                    android:textColor="@color/color_f7bc26"
+                                    android:textColor="@color/color_34d676"
                                     android:textStyle="bold"
                                     android:textSize="24sp" />
-
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

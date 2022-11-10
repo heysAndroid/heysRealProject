@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">HeysRealProjcet</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="string_01">재요청</string>
     <string-array name="spinner_approval_cancel">
         <item>요청 실수</item>
         <item>개인 일정</item>

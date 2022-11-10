@@ -33,7 +33,7 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ci_drawable="@drawable/bg_circle_f7bc26"
+        app:ci_drawable="@drawable/bg_circle_34d676"
         app:ci_height="7dp"
         app:ci_margin="4dp"
         app:ci_width="7dp" />
@@ -53,7 +53,7 @@
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_f7bc26_radius_8"
+            android:background="@drawable/bg_34d676_radius_8"
             android:paddingVertical="16dp"
             android:text="다음"
             android:textColor="@color/white"
@@ -76,8 +76,9 @@
                 android:paddingVertical="16dp"
                 android:layout_marginRight="12dp"
                 android:text="이미 가입했어요"
-                android:textColor="@color/color_f7bc26"
+                android:textColor="@color/color_34d676"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:visibility="invisible"
                 android:stateListAnimator="@null"/>
 
@@ -86,15 +87,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/bg_f7bc26_radius_8"
+                android:background="@drawable/bg_34d676_radius_8"
                 android:paddingVertical="16dp"
                 android:text="가입전에 둘러볼래요"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:visibility="invisible"
                 android:stateListAnimator="@null"/>
-
         </LinearLayout>
-
     </FrameLayout>
 </LinearLayout>

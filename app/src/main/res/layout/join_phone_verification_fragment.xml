@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{() -> vm.setResendEnabled()}"
-                        android:text="@string/string_01"
+                        android:text="재요청"
                         android:textColor="@color/color_f7bc26"
                         android:textSize="16sp" />
 
