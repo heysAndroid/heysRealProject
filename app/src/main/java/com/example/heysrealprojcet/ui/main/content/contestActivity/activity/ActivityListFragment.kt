@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ActivityListFragmentBinding
 import com.example.heysrealprojcet.model.Activities
+import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.category.Category
 import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +26,18 @@ class ActivityListFragment : Fragment() {
    private lateinit var activityItemRecyclerViewAdapter: ActivityItemRecyclerViewAdapter
    private lateinit var typeList: MutableList<Category>
    private lateinit var hostList: MutableList<Activities>
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ActivityListFragmentBinding.inflate(inflater, container, false)

@@ -22,10 +22,20 @@ class StudyListFragment : Fragment() {
    private lateinit var typeList: MutableList<Category>
    private lateinit var studyList: MutableList<Study>
 
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = StudyListFragmentBinding.inflate(inflater, container, false)
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
+
+   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      binding = StudyListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
