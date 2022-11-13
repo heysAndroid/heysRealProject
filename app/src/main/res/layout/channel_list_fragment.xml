@@ -34,7 +34,7 @@
                     android:layout_gravity="center"
                     android:text="헤이즈 채널"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView

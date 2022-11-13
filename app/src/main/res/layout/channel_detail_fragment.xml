@@ -58,7 +58,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
@@ -68,13 +68,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginHorizontal="14dp"
                         android:layout_marginVertical="16dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_congratulation" />
 
@@ -82,6 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="4dp"
+                            android:layout_gravity="center"
                             android:text="Heys와 대화할 수 있어요!"
                             android:textColor="@color/black"
                             android:textSize="16sp"
@@ -96,12 +97,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginRight="18dp"
+                            android:layout_marginRight="14dp"
                             android:background="@color/color_f8f9fc"
                             android:src="@drawable/ic_next_26" />
-
                     </LinearLayout>
-                </FrameLayout>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -306,7 +306,7 @@
                     <TextView
                         android:id="@+id/heysAll"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:drawableEnd="@drawable/ic_all"
                         android:text="전체보기"
                         android:textColor="@color/color_828282"
@@ -392,7 +392,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginVertical="8dp"
                         android:orientation="vertical"
                         android:paddingVertical="16dp">
 

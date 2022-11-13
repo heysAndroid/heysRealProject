@@ -131,12 +131,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="257dp"
+                android:layout_height="277dp"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="24dp"
                 android:background="@drawable/bg_channel_activity_card"
                 android:orientation="vertical"
-                android:paddingVertical="20dp">
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -198,13 +198,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="257dp"
+                android:layout_height="277dp"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_channel_contest_card"
                 android:orientation="vertical"
-                android:paddingVertical="20dp">
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -221,7 +220,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="17.5dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginLeft="16dp"
                     android:text="금융/IT 취업 준비\n같이해요!"
                     android:textColor="@color/black"
@@ -232,6 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="55dp"
                     android:background="@drawable/bg_f8f9fc_radius_30"
                     android:orientation="horizontal"
                     android:paddingVertical="14dp"
@@ -242,12 +242,12 @@
                         android:layout_width="18dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="6.4dp"
-                        android:src="@drawable/ic_hand" />
+                        android:src="@drawable/ic_congratulation2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="김태리님이 1시간 전에 인사했어요."
+                        android:text="Heys와 대화할 수 있어요!"
                         android:textColor="@color/color_262626"
                         android:textSize="14sp" />
 

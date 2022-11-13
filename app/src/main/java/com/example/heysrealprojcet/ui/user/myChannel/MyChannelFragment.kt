@@ -8,9 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyChannelFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class MyChannelFragment : Fragment() {
    private lateinit var binding: MyChannelFragmentBinding
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = MyChannelFragmentBinding.inflate(inflater, container, false)

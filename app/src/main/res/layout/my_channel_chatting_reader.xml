@@ -49,40 +49,45 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_7b61ff_radius_30"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="199dp"
-            android:layout_marginBottom="132dp"
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_loudspeaker"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="328dp"
+                android:background="@drawable/bg_7b61ff_radius_30"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:textStyle="bold"
-                android:text="헤이즈 채널의 운영 규칙을 공지해보세요!"
-                android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_loudspeaker"/>
 
-            <Button
-                android:id="@+id/notice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:paddingVertical="6.5dp"
-                android:paddingHorizontal="25.5dp"
-                android:layout_marginTop="19dp"
-                android:text="공지하기"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_f7bc26_radius_5"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textStyle="bold"
+                    android:text="헤이즈 채널의 운영 규칙을 공지해보세요!"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingVertical="6.5dp"
+                    android:paddingHorizontal="25.5dp"
+                    android:layout_marginTop="19dp"
+                    android:text="공지하기"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_34d676_radius_5"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +127,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_f7bc26_radius_5"
+                    android:background="@drawable/bg_34d676_radius_5"
                     android:padding="7.2dp"
                     android:src="@drawable/ic_up"/>
             </LinearLayout>

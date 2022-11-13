@@ -134,7 +134,7 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
-                                android:textColor="@color/color_f7bc26"
+                                android:textColor="@color/color_34d676"
                                 android:text="3"/>
 
                             <TextView
@@ -340,6 +340,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="46dp"
+                    android:layout_marginBottom="14dp"
                     android:minHeight="0dp"
                     android:paddingVertical="16dp"
                     android:background="@drawable/bg_ok_button_enabled"
@@ -347,7 +348,6 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
