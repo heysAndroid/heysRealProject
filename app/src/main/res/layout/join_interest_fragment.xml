@@ -310,6 +310,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
+            android:paddingVertical="16dp"
             android:background="@drawable/bg_ok_button"
             android:enabled="@{vm.isEnabled}"
             android:text="헤이즈 시작하기!"
