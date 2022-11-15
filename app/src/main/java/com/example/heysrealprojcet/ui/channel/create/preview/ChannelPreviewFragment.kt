@@ -79,7 +79,7 @@ class ChannelPreviewFragment() : Fragment() {
 
    private fun setChannelRecruitmentMethod() {
       binding.channelRecruitmentMethod.text = if (viewModel.channelRecruitmentMethod.value == ChannelRecruitmentMethod.Approval.method) {
-         "승인이 필요하지 않은 채널이에요."
+         "승인없이 바로 참여가능한 채널이에요."
       } else {
          "승인이 필요한 채널이에요."
       }
