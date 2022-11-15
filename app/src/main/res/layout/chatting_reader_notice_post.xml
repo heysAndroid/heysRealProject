@@ -149,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -170,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="좋아요"
+                        android:text="힘내요"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -178,7 +178,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -199,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="좋아요"
+                        android:text="확인했어요"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -207,7 +207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -228,7 +228,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="좋아요"
+                        android:text="저장했어요"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -236,7 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>

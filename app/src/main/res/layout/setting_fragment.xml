@@ -9,7 +9,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="18dp">
+            android:paddingTop="18dp"
+            android:paddingBottom="72dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="변경"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -192,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="변경"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>

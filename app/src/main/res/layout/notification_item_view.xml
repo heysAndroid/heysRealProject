@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
+            android:layout_marginRight="13dp"
             android:text="IT 관련 신규 공고가 올라왔어요. 어떤 공고가 올라왔는지 확인해볼까요?"
             android:textColor="@color/color_828282"
             android:textSize="12sp"/>

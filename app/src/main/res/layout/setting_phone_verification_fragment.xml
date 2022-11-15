@@ -77,14 +77,14 @@
                         android:layout_height="wrap_content"
                         android:onClick="@{() -> vm.setResendEnabled()}"
                         android:text="재요청"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_gravity="right"
-                        android:background="@color/color_f7bc26" />
+                        android:background="@color/color_34d676" />
                 </LinearLayout>
             </FrameLayout>
 

@@ -61,7 +61,7 @@
                         android:letterSpacing="-.05"
                         android:text="예시로 넣는 35자 소개글입니다.\n헤이즈에게 나를 소개해보세요!"
                         android:textAlignment="center"
-                        android:textColor="@color/color_f7bc26"
+                        android:textColor="@color/color_34d676"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -151,8 +151,9 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_f7bc26_stroke_radius_8"
                             android:paddingHorizontal="32dp"
+                            android:paddingVertical="16dp"
                             android:text="프로필 수정"
-                            android:textColor="@color/color_f7bc26"
+                            android:textColor="@color/color_34d676"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -165,6 +166,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_ok_button_enabled"
                             android:paddingHorizontal="32dp"
+                            android:paddingVertical="16dp"
                             android:text="프로필 공유"
                             android:textColor="@color/white"
                             android:textSize="16sp"
@@ -254,14 +256,29 @@
                     android:background="@drawable/bg_7b61ff_stroke_radius_16"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="42dp"
-                        android:text="헤이즈앱을 어떻게 생각하시나요?"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="헤이즈앱"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="을 어떻게 생각하시나요?"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
