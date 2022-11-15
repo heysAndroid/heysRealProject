@@ -324,6 +324,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        android:textSize="16sp"
                         android:text="여기로 문의해주세요"/>
 
                     <TextView
