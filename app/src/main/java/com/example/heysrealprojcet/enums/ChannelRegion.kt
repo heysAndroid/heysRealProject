@@ -1,6 +1,6 @@
 package com.example.heysrealprojcet.enums
 
-enum class ChannelRegion(val region:String) {
+enum class ChannelRegion(val region: String) {
    Whole("전국"),
    Seoul("서울시"),
    Gyeonggi("경기도"),

@@ -3,7 +3,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                     android:layout_weight="1" />
 
                 <ImageButton
-                    android:id="@+id/bell"
+                    android:id="@+id/notification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -48,221 +49,12 @@
                     android:src="@drawable/ic_mail" />
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myChannelList"
                 android:layout_width="match_parent"
-                android:layout_height="277dp"
+                android:layout_height="match_parent"
                 android:layout_marginHorizontal="32dp"
-                android:background="@drawable/bg_channel_contest_card"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/ic_crown" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_7b61ff_radius_30"
-                        android:paddingHorizontal="15dp"
-                        android:paddingVertical="8dp"
-                        android:text="공모전"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="17.5dp"
-                    android:layout_marginStart="16dp"
-                    android:text="제3회 연구개발특구\nAI SPARK 챌린지\n팀원 모집해요!"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/btnReader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/bg_f8f9fc_radius_30"
-                    android:orientation="horizontal"
-                    android:paddingVertical="14dp"
-                    android:paddingLeft="14dp"
-                    android:paddingRight="17dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="6dp"
-                        android:src="@drawable/ic_chat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="남주혁이 방금 대화했어요."
-                        android:textColor="@color/color_262626"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_next_26" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="277dp"
-                android:layout_marginHorizontal="32dp"
-                android:background="@drawable/bg_channel_activity_card"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:background="@drawable/bg_fd494a_radius_30"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="8dp"
-                    android:text="대외활동"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="17.5dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="제3회 연구개발특구\nAI SPARK 챌린지\n팀원 모집해요!"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/bg_f8f9fc_radius_30"
-                    android:orientation="horizontal"
-                    android:paddingVertical="14dp"
-                    android:paddingLeft="14dp"
-                    android:paddingRight="17dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="6.4dp"
-                        android:src="@drawable/ic_hand" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="김태리님이 1시간 전에 인사했어요."
-                        android:textColor="@color/color_262626"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_next_26" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="277dp"
-                android:layout_marginHorizontal="32dp"
-                android:background="@drawable/bg_channel_contest_card"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:background="@drawable/bg_262626_radius_30"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="8dp"
-                    android:text="스터디"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="금융/IT 취업 준비\n같이해요!"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="55dp"
-                    android:background="@drawable/bg_f8f9fc_radius_30"
-                    android:orientation="horizontal"
-                    android:paddingVertical="14dp"
-                    android:paddingLeft="14dp"
-                    android:paddingRight="17dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="6.4dp"
-                        android:src="@drawable/ic_congratulation2" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Heys와 대화할 수 있어요!"
-                        android:textColor="@color/color_262626"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_next_26" />
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_marginBottom="72dp" />
         </LinearLayout>
     </ScrollView>
 </layout>
