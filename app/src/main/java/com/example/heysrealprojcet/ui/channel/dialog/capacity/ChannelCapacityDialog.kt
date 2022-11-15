@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelCapacityDialogBinding
 import com.example.heysrealprojcet.util.ChannelPreference
 
@@ -24,6 +26,19 @@ class ChannelCapacityDialog : DialogFragment() {
       dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
       dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.setCancelable(false)
+
+      // Edittext 배경 변경
+      viewModel.isEnabled.observe(this) {
+         if (it) {
+            setEditTextEnabled()
+         } else {
+            if (viewModel.capacity.value == "") {
+               setEditTextEnabled()
+            } else {
+               setEditTextDisabled()
+            }
+         }
+      }
 
       binding.btnSave.setOnClickListener {
          viewModel.capacity.value?.toInt()?.let { ChannelPreference.channelCapacity = it }
@@ -50,5 +65,15 @@ class ChannelCapacityDialog : DialogFragment() {
 
    interface ChannelCapacityDialogOnClickListener {
       fun onClick(content: String)
+   }
+
+   private fun setEditTextEnabled() {
+      binding.capacityEdittext.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext)
+      binding.capacityRangeText.visibility = View.GONE
+   }
+
+   private fun setEditTextDisabled() {
+      binding.capacityEdittext.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
+      binding.capacityRangeText.visibility = View.VISIBLE
    }
 }

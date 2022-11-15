@@ -57,7 +57,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/edtText"
+                android:id="@+id/capacityEdittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -76,6 +76,17 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/capacityRangeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="참여 가능한 최대 인원 수를 넘었어요!"
+            android:textColor="@color/color_fd494a"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btnSave"
