@@ -225,7 +225,7 @@
     </fragment>
     <fragment
         android:id="@+id/chattingReaderNotice"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNotice"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNoticeFragment"
         android:label="ChattingReaderNotice"
         tools:layout="@layout/chatting_reader_notice">
         <action
