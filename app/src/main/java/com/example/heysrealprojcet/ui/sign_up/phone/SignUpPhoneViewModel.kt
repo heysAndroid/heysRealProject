@@ -42,10 +42,4 @@ class SignUpPhoneViewModel @Inject constructor(
    private fun isElevenDigit() {
       _isEnabled.value = phoneNumber.value?.length == 13
    }
-
-   fun checkPhoneNumber(phoneNumber: String) = viewModelScope.launch {
-      signupRepository.checkPhoneNumber(phoneNumber).collect { values ->
-         _response.value = values
-      }
-   }
 }
