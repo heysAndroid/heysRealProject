@@ -3,7 +3,9 @@ package com.example.heysrealprojcet.ui.user.myChannel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyChannelItemViewBinding
+import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.Channel
 
 class MyChannelItemRecyclerViewAdapter(private val type: MutableList<Channel>, private val onClickListener: () -> Unit) :
@@ -15,6 +17,12 @@ class MyChannelItemRecyclerViewAdapter(private val type: MutableList<Channel>, p
          binding.card.setBackgroundResource(channel.resId)
          binding.channelTitle.text = channel.title
          binding.channelType.text = channel.type.type
+
+         when (channel.type) {
+            ChannelType.Contest -> binding.channelType.setBackgroundResource(R.drawable.bg_7b61ff_radius_30)
+            ChannelType.Activity -> binding.channelType.setBackgroundResource(R.drawable.bg_fd494a_radius_30)
+            else -> binding.channelType.setBackgroundResource(R.drawable.bg_262626_radius_30)
+         }
          binding.goToChat.setOnClickListener { onClickListener.invoke() }
       }
    }
