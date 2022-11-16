@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
 import com.example.heysrealprojcet.model.User
-import com.example.heysrealprojcet.model.UserCategory
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,23 +40,22 @@ class SignUpInterestFragment : Fragment() {
 
    private fun requestSignUp() {
       val user = User(
-         name = UserPreference.name,
          phone = UserPreference.phoneNumber,
+         username = UserPreference.name,
+         password = UserPreference.password,
          age = UserPreference.age,
          gender = UserPreference.gender,
-         // 암호화한 비밀번호
-         encryptedPassword = encryptPassword(UserPreference.password),
-         userCategories = listOf(UserCategory(preference = 1, categoryId = 2)))
+         interests = viewModel.interestList as ArrayList<String>)
 
-      viewModel.signup(user)
+      viewModel.signUp(user)
       viewModel.response.observe(viewLifecycleOwner) { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
-               UserPreference.accessToken = response.data?.accessToken ?: ""
-               alert.setTitle("${user.name}님 회원가입 성공")
+               UserPreference.accessToken = response.data?.token ?: ""
+               alert.setTitle("${user.username}님 회원가입 성공")
                   .setMessage("accessToken: ${UserPreference.accessToken}")
                   .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
             }
@@ -73,7 +71,7 @@ class SignUpInterestFragment : Fragment() {
       }
    }
 
-   fun encryptPassword(password: String): String {
+   private fun encryptPassword(password: String): String {
       val passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(10))
       Log.d("암호화 password: ", passwordHashed)
 

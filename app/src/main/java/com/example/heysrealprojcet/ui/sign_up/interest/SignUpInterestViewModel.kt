@@ -11,9 +11,12 @@ import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.LoginResponse
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
+import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 // Hilt 로 생성자에 repository 전달
@@ -27,7 +30,7 @@ class SignUpInterestViewModel @Inject constructor(
    private val totalMax = 3
    private var total = MutableStateFlow(0)
    val totalString = MutableStateFlow("${total.value}/3")
-   private val interestList = mutableListOf<String>()
+   val interestList = mutableListOf<String>()
 
    /*
    * 네트워크 호출
@@ -50,8 +53,6 @@ class SignUpInterestViewModel @Inject constructor(
    }
 
    fun onClickInterest(v: View) {
-      val item = v.tag.toString()
-
       var button = v as Button
 
       if (total.value < totalMax) {
@@ -59,27 +60,28 @@ class SignUpInterestViewModel @Inject constructor(
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             total.value -= 1
-            interestList.remove(item)
+            interestList.remove(button.text)
          } else {
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             total.value += 1
-            interestList.add(item)
+            interestList.add(button.text.toString())
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             total.value -= 1
-            interestList.remove(item)
+            interestList.remove(button.text)
          }
       }
       totalString.value = "${total.value}/$totalMax"
+      UserPreference.interests = Json.encodeToString(interestList)
    }
 
-   fun signup(user: User) = viewModelScope.launch {
+   fun signUp(user: User) = viewModelScope.launch {
       // repository 의 함수를 호출해서 _response 에 api 응답을 저장
-      signupRepository.signup(user).collect { values ->
+      signupRepository.signUp(user).collect { values ->
          _response.value = values
       }
    }

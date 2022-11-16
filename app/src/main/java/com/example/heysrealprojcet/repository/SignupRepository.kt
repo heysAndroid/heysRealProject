@@ -17,10 +17,10 @@ import javax.inject.Inject
 class SignupRepository @Inject constructor(
    private val signUpApi: SignUpApi) : BaseApiResponse() {
    // BaseApiResponse() 의 safeApiCall 에 signup() 을 인자로 전달
-   suspend fun signup(user: User): Flow<NetworkResult<LoginResponse>> {
+   suspend fun signUp(user: User): Flow<NetworkResult<LoginResponse>> {
       return flow {
          // api 응답을 방출한다.
-         emit(safeApiCall { signUpApi.signup(user) })
+         emit(safeApiCall { signUpApi.signUp(user) })
       }.flowOn(Dispatchers.IO)
    }
 }

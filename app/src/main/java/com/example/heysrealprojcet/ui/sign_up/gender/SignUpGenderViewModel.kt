@@ -23,19 +23,19 @@ class SignUpGenderViewModel : ViewModel() {
             _isMale.value = true
             _isFemale.value = false
             _isNonBinary.value = false
-            UserPreference.gender = Gender.Male.gender
+            UserPreference.gender = Gender.Male.genderEnglish
          }
          "female" -> {
             _isMale.value = false
             _isFemale.value = true
             _isNonBinary.value = false
-            UserPreference.gender = Gender.Female.gender
+            UserPreference.gender = Gender.Female.genderEnglish
          }
          else -> {
             _isMale.value = false
             _isFemale.value = false
             _isNonBinary.value = true
-            UserPreference.gender = Gender.NonBinary.gender
+            UserPreference.gender = Gender.NonBinary.genderEnglish
          }
       }
    }

@@ -13,7 +13,7 @@ class SignUpAgeViewModel : ViewModel() {
    init {
       viewModelScope.launch {
          age.asFlow().collect {
-            UserPreference.age = it
+            UserPreference.age = it.toInt()
             isCorrect()
          }
       }
