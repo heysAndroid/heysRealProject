@@ -26,9 +26,9 @@
     </fragment>
     <fragment
         android:id="@+id/joinPopupFragment"
-        android:name="com.example.heysrealprojcet.ui.join.JoinPopupFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.SignUpPopupFragment"
         android:label="JoinPopupFragment"
-        tools:layout="@layout/join_popup_fragment">
+        tools:layout="@layout/sign_up_popup_fragment">
 
     </fragment>
     <fragment

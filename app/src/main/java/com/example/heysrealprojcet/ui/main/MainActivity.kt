@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
       val navController = navHostFragment.navController
       val navGraph = navController.navInflater.inflate(R.navigation.main_navigation)
       if (UserPreference.isExistingUser) {
-         navGraph.startDestination = R.id.joinPhoneFragment
+         navGraph.startDestination = R.id.signUpPhoneFragment
       } else {
          navGraph.startDestination = R.id.mainFragment
       }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/join_navigation"
+    app:startDestination="@id/signUpPhoneFragment">
+
+    <fragment
+        android:id="@+id/signUpPhoneFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.phone.SignUpPhoneFragment"
+        android:label="SignUpPhoneFragment"
+        tools:layout="@layout/sign_up_phone_fragment">
+        <action
+            android:id="@+id/action_signUpPhoneFragment_to_signUpVerificationFragment"
+            app:destination="@id/signUpVerificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpVerificationFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.phone.SignUpVerificationFragment"
+        android:label="SignUpVerificationFragment"
+        tools:layout="@layout/sign_up_phone_verification_fragment">
+        <action
+            android:id="@+id/action_signUpVerificationFragment_to_signUpPasswordFragment"
+            app:destination="@id/signUpPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPasswordFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.password.SignUpPasswordFragment"
+        android:label="SignUpPasswordFragment"
+        tools:layout="@layout/sign_up_password_fragment">
+        <action
+            android:id="@+id/action_signUpPasswordFragment_to_signUpNameFragment"
+            app:destination="@id/signUpNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpNameFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.name.SignUpNameFragment"
+        android:label="SignUpNameFragment"
+        tools:layout="@layout/sign_up_name_fragment">
+        <action
+            android:id="@+id/action_signUpNameFragment_to_signUpGenderFragment"
+            app:destination="@id/signUpGenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpGenderFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.gender.SignUpGenderFragment"
+        android:label="SignUpGenderFragment"
+        tools:layout="@layout/sign_up_gender_fragment">
+        <action
+            android:id="@+id/action_signUpGenderFragment_to_signUpAgeFragment"
+            app:destination="@id/signUpAgeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAgeFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.age.SignUpAgeFragment"
+        android:label="SignUpAgeFragment"
+        tools:layout="@layout/sign_up_age_fragment">
+        <action
+            android:id="@+id/action_signUpAgeFragment_to_signUpInterestFragment"
+            app:destination="@id/signUpInterestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpInterestFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_up.interest.SignUpInterestFragment"
+        android:label="SignUpInterestFragment"
+        tools:layout="@layout/sign_up_interest_fragment" />
+</navigation>
