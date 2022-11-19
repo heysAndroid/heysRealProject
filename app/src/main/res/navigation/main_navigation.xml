@@ -323,5 +323,9 @@
         android:id="@+id/profileEditFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditFragment"
         android:label="ProfileEditFragment"
-        tools:layout="@layout/profile_edit_fragment" />
+        tools:layout="@layout/profile_edit_fragment" >
+        <action
+            android:id="@+id/action_profileEditFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+    </fragment>
 </navigation>
