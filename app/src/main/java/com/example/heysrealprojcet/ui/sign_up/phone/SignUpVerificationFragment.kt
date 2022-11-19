@@ -81,12 +81,15 @@ class SignUpVerificationFragment : Fragment() {
                resendVerificationCode(phoneNumber, resendToken)
             }
          }
-         isEnabled.observe(viewLifecycleOwner) {
+
+         is6Digit.observe(viewLifecycleOwner) {
             if (it) {
                Log.w("=== StoredVerification ID ===", storedVerificationId)
                Log.w("=== Verification Number ===", viewModel.verificationNumber.value)
                val phoneCredential = PhoneAuthProvider.getCredential(storedVerificationId, viewModel.verificationNumber.value)
                verifyPhoneNumberWithCode(phoneCredential)
+            } else {
+               binding.okButton.isEnabled = false
             }
          }
       }
@@ -121,8 +124,9 @@ class SignUpVerificationFragment : Fragment() {
          .addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
                Log.d("=== signInWithCredential ===", "success")
-               binding.okButton.setOnClickListener { goToJoinPassword() }
+               binding.okButton.isEnabled = true
             } else {
+               Log.w("=== verify Error ===", task.exception.toString())
                Toast.makeText(requireContext(), "인증 번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
             }
          }
@@ -131,10 +135,12 @@ class SignUpVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
       viewModel.phoneNumber.value = arguments?.getString("phoneNumber")
       if (viewModel.phoneNumber.value!!.isNotEmpty()) {
          viewModel.timerStart()
       }
+      binding.okButton.setOnClickListener { goToJoinPassword() }
    }
 
    private fun goToJoinPassword() {

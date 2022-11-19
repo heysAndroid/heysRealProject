@@ -22,8 +22,8 @@ class SignUpVerificationViewModel : ViewModel() {
    val timeText: LiveData<String>
       get() = _timeText
 
-   private val _isEnabled = MutableLiveData<Boolean>()
-   val isEnabled: LiveData<Boolean> = _isEnabled
+   private val _is6Digit = MutableLiveData<Boolean>()
+   val is6Digit: LiveData<Boolean> = _is6Digit
 
    var isResendPhoneAuth: Boolean = false
    var phoneAuthNumber: String = ""
@@ -45,7 +45,7 @@ class SignUpVerificationViewModel : ViewModel() {
    }
 
    private fun checkDigit() {
-      _isEnabled.value = verificationNumber.value?.length == 6
+      _is6Digit.value = verificationNumber.value?.length == 6
    }
 
    fun timerStart() {
