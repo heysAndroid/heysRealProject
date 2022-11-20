@@ -3,7 +3,6 @@ package com.example.heysrealprojcet.repository
 import com.example.heysrealprojcet.api.SignUpApi
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
-import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.model.network.response.LoginResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -18,16 +17,10 @@ import javax.inject.Inject
 class SignupRepository @Inject constructor(
    private val signUpApi: SignUpApi) : BaseApiResponse() {
    // BaseApiResponse() 의 safeApiCall 에 signup() 을 인자로 전달
-   suspend fun signup(user: User): Flow<NetworkResult<LoginResponse>> {
+   suspend fun signUp(user: User): Flow<NetworkResult<LoginResponse>> {
       return flow {
          // api 응답을 방출한다.
-         emit(safeApiCall { signUpApi.signup(user) })
-      }.flowOn(Dispatchers.IO)
-   }
-
-   suspend fun checkPhoneNumber(phoneNumber: String): Flow<NetworkResult<CheckPhoneNumberResponse>> {
-      return flow {
-         emit(safeApiCall { signUpApi.checkPhoneNumber(phoneNumber) })
+         emit(safeApiCall { signUpApi.signUp(user) })
       }.flowOn(Dispatchers.IO)
    }
 }

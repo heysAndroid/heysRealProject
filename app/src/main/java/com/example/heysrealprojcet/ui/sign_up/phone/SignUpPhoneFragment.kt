@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ import com.example.heysrealprojcet.databinding.SignUpPhoneFragmentBinding
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @AndroidEntryPoint
 class SignUpPhoneFragment : Fragment() {
@@ -48,7 +51,7 @@ class SignUpPhoneFragment : Fragment() {
 
    private fun requestCheckPhoneNumber() {
       val phoneNumber = ("82").plus(UserPreference.phoneNumber.replace('-', ' ').drop(1))
-      viewModel.checkPhoneNumber(phoneNumber)
+      // viewModel.checkPhoneNumber(phoneNumber)
       viewModel.response.observe(viewLifecycleOwner) {
          val alert = AlertDialog.Builder(requireContext())
 

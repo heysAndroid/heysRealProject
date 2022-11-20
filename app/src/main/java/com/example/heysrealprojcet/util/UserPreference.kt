@@ -16,7 +16,7 @@ object UserPreference : KotprefModel() {
    /*
    * 사용자 나이
     */
-   var age by stringPref()
+   var age by intPref()
 
    /*
    * 사용자 성별
@@ -24,24 +24,14 @@ object UserPreference : KotprefModel() {
    var gender by stringPref()
 
    /*
-   * 사용자 역할 (기본 : user)
-    */
-   var role by stringPref("user")
-
-   /*
    * 사용자 비밀번호
     */
    var password by stringPref()
 
    /*
-   * 사용자 관심 분야 (api 대로 일단 만들어놓음)
+   * 사용자 관심 분야
     */
-   var preference by intPref(1)
-
-   /*
-   * ? 모르겠음
-    */
-   var categoryId by intPref(2)
+   var interests by stringPref()
 
    /*
    * 로그인 / 회원가입 시 accessToken 에 값 저장
