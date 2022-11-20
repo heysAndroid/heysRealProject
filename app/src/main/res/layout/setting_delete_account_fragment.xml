@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="19dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:text="탈퇴하시려는\n이유가 무엇인가요?"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="중복으로 선택할 수 있어요."
+                android:textColor="@color/color_828282"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="26dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="32dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="기대했던 앱이 아니에요."
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="이용하기 어렵고 불편해요."
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="원하는 콘텐츠가 없어요."
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="재가입해서 다시 활동하고 싶어요."
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="오류가 너무 많아요."
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="작성하기"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_e1_34d676_radius_16"
+                    android:textAlignment="viewStart"/>
+
+                <EditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_channel_edittext"
+                    android:paddingLeft="16dp"
+                    android:paddingVertical="16dp"
+                    android:hint="더 나은 헤이즈가 될 수 있도록 의견을 알려주세요."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ok_button"
+            android:paddingVertical="16dp"
+            android:layout_marginVertical="14dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

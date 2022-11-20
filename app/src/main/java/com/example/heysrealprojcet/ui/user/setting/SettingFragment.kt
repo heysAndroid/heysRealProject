@@ -44,6 +44,11 @@ class SettingFragment : Fragment() {
 
       binding.phoneChange.setOnClickListener { gotoPhoneChange() }
       binding.passwordChange.setOnClickListener { gotoPasswordVerification() }
+      binding.deleteAccount.setOnClickListener { gotoDeleteAccount() }
+   }
+
+   private fun gotoDeleteAccount() {
+      findNavController().navigate(R.id.action_settingFragment_to_settingDeleteAccountFragment)
    }
 
    private fun gotoPhoneChange() {

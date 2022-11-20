@@ -260,6 +260,9 @@
         <action
             android:id="@+id/action_settingFragment_to_settingPasswordVerificationFragment"
             app:destination="@id/settingPasswordVerificationFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingDeleteAccountFragment"
+            app:destination="@id/settingDeleteAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
@@ -327,5 +330,11 @@
         <action
             android:id="@+id/action_profileEditFragment_to_myPageFragment"
             app:destination="@id/myPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingDeleteAccountFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteAccountFragment"
+        android:label="SettingDeleteAccountFragment"
+        tools:layout="@layout/setting_delete_account_fragment">
     </fragment>
 </navigation>
