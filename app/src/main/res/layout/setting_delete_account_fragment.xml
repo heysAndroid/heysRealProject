@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteAccountViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,8 +59,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="noExpect"
                     android:text="기대했던 앱이 아니에요."
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
@@ -65,9 +72,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:layout_marginTop="8dp"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="hard"
                     android:text="이용하기 어렵고 불편해요."
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
@@ -77,9 +86,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:layout_marginTop="8dp"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="noWant"
                     android:text="원하는 콘텐츠가 없어요."
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
@@ -89,9 +100,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:layout_marginTop="8dp"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="rejoin"
                     android:text="재가입해서 다시 활동하고 싶어요."
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
@@ -101,9 +114,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:layout_marginTop="8dp"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="error"
                     android:text="오류가 너무 많아요."
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
@@ -113,16 +128,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_e1_34d676_radius_16"
+                    android:onClick="@{(v) -> vm.onClickReason(v)}"
                     android:layout_marginTop="8dp"
                     android:paddingLeft="16dp"
                     android:paddingVertical="16dp"
+                    android:tag="write"
                     android:text="작성하기"
                     android:textSize="16sp"
                     android:textColor="@drawable/bg_e1_34d676_radius_16"
                     android:textAlignment="viewStart"/>
 
                 <EditText
-                    android:id="@+id/nameEditText"
+                    android:id="@+id/edt_write"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"

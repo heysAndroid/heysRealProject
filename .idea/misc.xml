@@ -258,7 +258,7 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/private_notification_item_view.xml" value="0.2" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/profile_dialog.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/profile_edit_fragment.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_delete_account_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_delete_account_fragment.xml" value="0.1631578947368421" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_fragment.xml" value="0.264" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_password_change_fragment.xml" value="0.176" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_password_forget_fragment.xml" value="0.264" />
@@ -266,6 +266,8 @@
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_phone_change_fragment.xml" value="0.176" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_phone_verification_fragment.xml" value="0.152" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/sex_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/sign_up_gender_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/sign_up_interest_fragment.xml" value="0.1" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/spinner_item_view.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_filter.xml" value="0.11626139817629179" />
         <entry key="..\:/Users/BEAK/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/study_filter_fragment.xml" value="0.2" />
