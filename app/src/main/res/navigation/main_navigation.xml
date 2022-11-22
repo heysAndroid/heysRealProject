@@ -336,5 +336,13 @@
         android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteAccountFragment"
         android:label="SettingDeleteAccountFragment"
         tools:layout="@layout/setting_delete_account_fragment">
+        <action
+            android:id="@+id/action_settingDeleteAccountFragment_to_settingDeleteDecideFragment"
+            app:destination="@id/settingDeleteDecideFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingDeleteDecideFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteDecideFragment"
+        android:label="SettingDeleteDecideFragment"
+        tools:layout="@layout/setting_delete_decide_fragment"/>
 </navigation>

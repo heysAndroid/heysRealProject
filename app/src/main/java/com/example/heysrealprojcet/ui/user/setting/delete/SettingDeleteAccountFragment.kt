@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingDeleteAccountFragmentBinding
 
 class SettingDeleteAccountFragment : Fragment() {
@@ -34,5 +36,11 @@ class SettingDeleteAccountFragment : Fragment() {
       viewModel.isEnabled.observe(viewLifecycleOwner) { isEnabled ->
          binding.btnNext.isEnabled = isEnabled
       }
+
+      binding.btnNext.setOnClickListener { gotoDeleteDecide() }
+   }
+
+   private fun gotoDeleteDecide() {
+      findNavController().navigate(R.id.action_settingDeleteAccountFragment_to_settingDeleteDecideFragment)
    }
 }
