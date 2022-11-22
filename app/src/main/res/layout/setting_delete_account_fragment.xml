@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="8dp"
                 android:text="중복으로 선택할 수 있어요."
                 android:textColor="@color/color_828282"
                 android:textSize="16sp"/>
