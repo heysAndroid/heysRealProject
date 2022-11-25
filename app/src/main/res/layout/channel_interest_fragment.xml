@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.heysrealprojcet.ui.channel.create.interest.ChannelInterestViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="19dp">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="27dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="마지막이에요!\n어떤 관심분야를 가진 헤이즈를\n모집하고 싶나요?"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/interestCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.interestString}"
+                    android:textColor="@color/color_53c740"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="0/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="planning"
+                    android:text="기획"
+                    android:textColor="@drawable/bg_filter_interest_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="design"
+                    android:text="디자인"
+                    android:textColor="@drawable/bg_filter_interest_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="it"
+                    android:text="개발"
+                    android:textColor="@drawable/bg_filter_interest_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="economics"
+                    android:text="금융/경제"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="data"
+                    android:text="데이터/인공지능"
+                    android:textColor="@drawable/bg_filter_interest_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="language"
+                    android:text="언어"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="education"
+                    android:text="인사/교육"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="public"
+                    android:text="공공/복지"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="business"
+                    android:text="경영/비지니스"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="marketing"
+                    android:text="광고/마케팅"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="engineering"
+                    android:text="엔진니어링/설계"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:tag="mediaContents"
+                    android:text="미디어 콘텐츠/전시"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/bg_filter_interest_button" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:tag="etc"
+                android:text="기타"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_ok_button"
+            android:enabled="@{vm.isEnabled}"
+            android:paddingVertical="16dp"
+            android:text="미리보기"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

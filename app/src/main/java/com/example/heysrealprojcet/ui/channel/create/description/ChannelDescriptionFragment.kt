@@ -40,10 +40,10 @@ class ChannelDescriptionFragment : Fragment() {
 
       //EditText 글자 제한
       binding.edtIntroduce.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
-      binding.btnPreview.setOnClickListener { goToChannelPreview() }
+      binding.btnPreview.setOnClickListener { goToChannelInterest() }
    }
 
-   private fun goToChannelPreview() {
-      findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelPreviewFragment)
+   private fun goToChannelInterest() {
+      findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelInterestFragment)
    }
 }

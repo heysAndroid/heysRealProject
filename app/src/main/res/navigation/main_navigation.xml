@@ -179,8 +179,8 @@
         android:label="ChannelDescriptionFragment"
         tools:layout="@layout/channel_description_fragment">
         <action
-            android:id="@+id/action_channelDescriptionFragment_to_channelPreviewFragment"
-            app:destination="@id/channelPreviewFragment" />
+            android:id="@+id/action_channelDescriptionFragment_to_channelInterestFragment"
+            app:destination="@id/channelInterestFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelPreviewFragment"
@@ -355,6 +355,15 @@
         tools:layout="@layout/back_button_popup_fragment">
         <action
             android:id="@+id/action_backButtonPopupFragment_to_channelPreviewFragment"
+            app:destination="@id/channelPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelInterestFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.interest.ChannelInterestFragment"
+        android:label="ChannelInterestFragment"
+        tools:layout="@layout/channel_interest_fragment">
+        <action
+            android:id="@+id/action_channelInterestFragment_to_channelPreviewFragment"
             app:destination="@id/channelPreviewFragment" />
     </fragment>
 </navigation>
