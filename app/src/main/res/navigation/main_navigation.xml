@@ -190,6 +190,9 @@
         <action
             android:id="@+id/action_channelPreviewFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
+        <action
+            android:id="@+id/action_channelPreviewFragment_to_backButtonPopupFragment"
+            app:destination="@id/backButtonPopupFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelChatFragment"
@@ -345,4 +348,13 @@
         android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteDecideFragment"
         android:label="SettingDeleteDecideFragment"
         tools:layout="@layout/setting_delete_decide_fragment"/>
+    <fragment
+        android:id="@+id/backButtonPopupFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.BackButtonPopupFragment"
+        android:label="BackButtonPopupFragment"
+        tools:layout="@layout/back_button_popup_fragment">
+        <action
+            android:id="@+id/action_backButtonPopupFragment_to_channelPreviewFragment"
+            app:destination="@id/channelPreviewFragment" />
+    </fragment>
 </navigation>
