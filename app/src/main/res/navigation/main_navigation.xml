@@ -354,8 +354,13 @@
         android:label="BackButtonPopupFragment"
         tools:layout="@layout/back_button_popup_fragment">
         <action
-            android:id="@+id/action_backButtonPopupFragment_to_channelPreviewFragment"
-            app:destination="@id/channelPreviewFragment" />
+            android:id="@+id/action_backButtonPopupFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_backButtonPopupFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelInterestFragment"

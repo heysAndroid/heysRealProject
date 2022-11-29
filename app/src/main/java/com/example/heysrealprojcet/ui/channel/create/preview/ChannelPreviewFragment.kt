@@ -57,6 +57,11 @@ class ChannelPreviewFragment() : Fragment() {
          }
       }
       binding.btnMake.setOnClickListener { goToDetail() }
+      binding.btnBack.setOnClickListener { goToBack() }
+   }
+
+   private fun goToBack() {
+      findNavController().navigate(R.id.action_channelPreviewFragment_to_backButtonPopupFragment)
    }
 
    // TODO
