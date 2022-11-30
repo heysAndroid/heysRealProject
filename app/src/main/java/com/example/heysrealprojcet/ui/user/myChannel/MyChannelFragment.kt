@@ -46,7 +46,7 @@ class MyChannelFragment : Fragment() {
    }
 
    private fun goToChat() {
-      findNavController().navigate(R.id.action_myChannelFragment_to_myChannelCattingReader)
+      findNavController().navigate(R.id.action_myChannelFragment_to_chattingFragment)
    }
 
    private fun gotoNotification() {

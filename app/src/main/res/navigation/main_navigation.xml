@@ -136,6 +136,9 @@
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
             app:destination="@id/myChannelCattingReader" />
+        <action
+            android:id="@+id/action_myChannelFragment_to_chattingFragment"
+            app:destination="@id/chattingFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -329,7 +332,7 @@
         android:id="@+id/profileEditFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditFragment"
         android:label="ProfileEditFragment"
-        tools:layout="@layout/profile_edit_fragment" >
+        tools:layout="@layout/profile_edit_fragment">
         <action
             android:id="@+id/action_profileEditFragment_to_myPageFragment"
             app:destination="@id/myPageFragment" />
@@ -347,7 +350,7 @@
         android:id="@+id/settingDeleteDecideFragment"
         android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteDecideFragment"
         android:label="SettingDeleteDecideFragment"
-        tools:layout="@layout/setting_delete_decide_fragment"/>
+        tools:layout="@layout/setting_delete_decide_fragment" />
     <fragment
         android:id="@+id/backButtonPopupFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.BackButtonPopupFragment"
@@ -371,4 +374,9 @@
             android:id="@+id/action_channelInterestFragment_to_channelPreviewFragment"
             app:destination="@id/channelPreviewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chattingFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingFragment"
+        android:label="ChattingFragment"
+        tools:layout="@layout/chatting_fragment" />
 </navigation>

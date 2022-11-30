@@ -109,7 +109,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_plus_54"
+                    android:src="@drawable/ic_add_chat"
                     android:background="@android:color/transparent"/>
 
                 <TextView
