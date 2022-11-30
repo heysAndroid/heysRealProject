@@ -104,4 +104,7 @@ dependencies {
 
     // circular image in profile
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // 채팅서버
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
 }
