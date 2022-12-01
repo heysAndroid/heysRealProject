@@ -1,7 +1,7 @@
 package com.example.heysrealprojcet.model
 
-data class ActivityMain(
+data class ExtracuricularType(
+   val description: String,
    val type: String,
-   val type2: String,
    val resId: Int
 )
