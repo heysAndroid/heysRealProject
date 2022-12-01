@@ -11,11 +11,11 @@
             android:id="@+id/typeImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/character_creative_interest"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:src="@drawable/character_creative_interest" />
 
         <TextView
-            android:id="@+id/typeText"
+            android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

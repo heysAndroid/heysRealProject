@@ -17,7 +17,7 @@ class CategoryDetailRecyclerViewAdapter(
 
    inner class ViewHolder(private val binding: CategoryDetailItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(type: Category) {
-         binding.typeText.text = type.textFilter
+         binding.type.text = type.textFilter
          binding.typeImage.setImageResource(type.image)
 
          if (type.isSelected) {

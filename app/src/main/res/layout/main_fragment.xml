@@ -26,7 +26,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:background="@color/color_f7bc26"
+                    android:background="@color/color_1bbc47d"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -75,7 +75,7 @@
                                     android:layout_marginEnd="32dp"
                                     android:drawableEnd="@drawable/ic_next_ff"
                                     android:drawablePadding="10dp"
-                                    android:text="더보기"
+                                    android:text="전체보기"
                                     android:textColor="@color/white"
                                     android:textSize="16sp" />
                             </LinearLayout>
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -118,17 +118,16 @@
                         android:layout_weight="1"
                         android:text="추천 대외활동"
                         android:textColor="@color/color_262626"
-                        android:textStyle="bold"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/activityAllText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
                         android:drawableEnd="@drawable/ic_next_26"
                         android:drawablePadding="10dp"
-                        android:text="더보기"
+                        android:text="전체보기"
                         android:textColor="@color/color_262626"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -137,14 +136,14 @@
                     android:id="@+id/activityList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginBottom="34dp" />
 
                 <TextView
                     android:id="@+id/studyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="32dp"
                     android:text="함께 성장하는"
                     android:textColor="@color/color_262626"
                     android:textSize="16sp" />
@@ -159,36 +158,35 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#개발 "
-                        android:textStyle="bold"
-                        android:textColor="@color/color_53c740"
-                        android:textSize="24sp" />
+                        android:textColor="@color/color_1bbc47d"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="스터디"
-                        android:textStyle="bold"
                         android:textColor="@color/color_262626"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_s"/>
+                        android:src="@drawable/ic_s" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/studyAllText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
                         android:drawableEnd="@drawable/ic_next_26"
                         android:drawablePadding="10dp"
-                        android:text="더보기"
+                        android:text="전체보기"
                         android:textColor="@color/color_262626"
                         android:textSize="16sp" />
 
@@ -226,9 +224,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12sp"
+                                android:text="나를 위한 맞춤형"
                                 android:textColor="@color/color_262626"
-                                android:text="나를 위한 맞춤형" />
+                                android:textSize="12sp" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -246,9 +244,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="둘러보기"
-                                    android:textColor="@color/color_34d676"
-                                    android:textStyle="bold"
-                                    android:textSize="24sp" />
+                                    android:textColor="@color/color_1bbc47d"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -259,8 +257,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/bg_white_radius_16"
-                        android:paddingBottom="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -284,8 +282,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/color_262626"
-                                    android:text="개인 맞춤형" />
+                                    android:text="개인 맞춤형"
+                                    android:textColor="@color/color_262626" />
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -303,9 +301,9 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="개설하기"
-                                        android:textStyle="bold"
-                                        android:textColor="@color/color_53c740"
-                                        android:textSize="24sp" />
+                                        android:textColor="@color/color_1bbc47d"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
                             </LinearLayout>

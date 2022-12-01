@@ -1,7 +1,7 @@
 package com.example.heysrealprojcet.model
 
-data class ContestMain(
+data class ContestType(
    val type: String,
-   val function: String,
+   val description: String,
    val resId: Int
 )

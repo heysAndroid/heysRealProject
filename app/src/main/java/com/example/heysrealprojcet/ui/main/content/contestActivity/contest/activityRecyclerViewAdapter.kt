@@ -4,21 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.CategoryItemInterestViewBinding
-import com.example.heysrealprojcet.model.ActivityMain
+import com.example.heysrealprojcet.model.ExtracurricularType
 
 class activityRecyclerViewAdapter(
-   private val list: MutableList<ActivityMain>,
+   private val list: MutableList<ExtracurricularType>,
    private val onclick: (item: String) -> Unit) :
    RecyclerView.Adapter<activityRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemInterestViewBinding
 
    inner class ViewHolder(private val binding: CategoryItemInterestViewBinding):
       RecyclerView.ViewHolder(binding.root) {
-      fun bind(item: ActivityMain) {
-         binding.typeText.text = item.type
-         binding.typeText2.text = item.type2
+      fun bind(item: ExtracurricularType) {
+         binding.type.text = item.description
+         binding.typeText2.text = item.type
          binding.image.setImageResource(item.resId)
-         binding.root.setOnClickListener { onclick.invoke(item.type) }
+         binding.root.setOnClickListener { onclick.invoke(item.description) }
       }
    }
 
