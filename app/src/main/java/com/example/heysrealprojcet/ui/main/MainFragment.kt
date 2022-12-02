@@ -43,7 +43,6 @@ class MainFragment : Fragment() {
          }
          statusBarColor = defaultStatusBarColor
       }
-
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
@@ -53,24 +52,19 @@ class MainFragment : Fragment() {
       makeActivityList()
       makeContestList()
 
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToJoin() }
-      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToJoin() }
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToSignUp() }
+      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToSignUp() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
       binding.activityList.adapter = activityRecyclerViewAdapter
       binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
-      // 로그인 안하면 회원가입 팝업 띄우도록
-      if (isLogin()) {
-         binding.studyContainer.setOnClickListener { goToStudy() }
-      } else {
-         with(binding) {
-            contestAllText.setOnClickListener { goToContest() }
-            activityAllText.setOnClickListener { goToActivity() }
-            studyAllText.setOnClickListener { goToJoin() }
-            studyContainer.setOnClickListener { goToStudy() }
-         }
+      
+      with(binding) {
+         contestAllText.setOnClickListener { goToContest() }
+         activityAllText.setOnClickListener { goToActivity() }
+         studyAllText.setOnClickListener { goToSignUp() }
+         studyContainer.setOnClickListener { goToStudy() }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
    }
@@ -95,8 +89,8 @@ class MainFragment : Fragment() {
          ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_shining))
    }
 
-   private fun goToJoin() {
-      findNavController().navigate(R.id.action_mainFragment_to_joinPopupFragment)
+   private fun goToSignUp() {
+      findNavController().navigate(R.id.action_mainFragment_to_signUpPopupFragment)
    }
 
    private fun goToStudy() {
