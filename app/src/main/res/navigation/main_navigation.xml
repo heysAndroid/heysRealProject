@@ -12,9 +12,6 @@
         tools:layout="@layout/main_fragment">
 
         <action
-            android:id="@+id/action_mainFragment_to_signUpPopupFragment"
-            app:destination="@id/signUpPopupFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_studyFragment"
             app:destination="@id/studyFragment" />
         <action
@@ -24,11 +21,6 @@
             android:id="@+id/action_mainFragment_to_activityListFragment"
             app:destination="@id/activityListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/signUpPopupFragment"
-        android:name="com.example.heysrealprojcet.ui.sign_up.SignUpPopupFragment"
-        android:label="SignUpPopupFragment"
-        tools:layout="@layout/sign_up_popup_fragment"></fragment>
     <fragment
         android:id="@+id/studyFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.study.StudyListFragment"

@@ -18,6 +18,7 @@ import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.sign_up.SignUpPopupBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
@@ -90,7 +91,8 @@ class MainFragment : Fragment() {
    }
 
    private fun goToSignUp() {
-      findNavController().navigate(R.id.action_mainFragment_to_signUpPopupFragment)
+      val bottomSheet = SignUpPopupBottomSheet()
+      bottomSheet.show(childFragmentManager, bottomSheet.tag)
    }
 
    private fun goToStudy() {
