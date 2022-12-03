@@ -33,7 +33,7 @@ class ContestItemRecyclerViewAdapter(
          }
 
          if (type.startDate in 6..10) {
-            bgShape.setColor(Color.parseColor("#F7BC26"))
+            bgShape.setColor(Color.parseColor("#FD4158"))
          }
 
          binding.root.setOnClickListener { onClickListener.invoke() }

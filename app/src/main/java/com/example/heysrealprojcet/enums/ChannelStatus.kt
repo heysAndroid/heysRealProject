@@ -1,5 +1,5 @@
 package com.example.heysrealprojcet.enums
 
 enum class ChannelStatus(val status: String) {
-   New("신규"), Normal("정원 마감까지"), Closed("마감")
+   New("참여가능"), Normal("참여가능"), Closed("마감")
 }

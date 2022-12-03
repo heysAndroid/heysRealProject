@@ -56,7 +56,7 @@ class ContestListFragment : Fragment() {
 
    private fun makeList() {
       typeList = mutableListOf(
-         Category("관심 분야", R.drawable.character_passion_interest, true),
+         Category("관심 분야", R.drawable.character_passion_interest, false),
          Category("마감 임박", R.drawable.character_passion_finish, false),
          Category("많이 찾는", R.drawable.character_passion_many, false),
          Category("새로 열린", R.drawable.character_passion_new, false)
