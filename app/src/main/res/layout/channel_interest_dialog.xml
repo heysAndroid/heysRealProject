@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.heysrealprojcet.ui.channel.dialog.interest.ChannelInterestDialogViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_inset_16_square"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:src="@drawable/ic_close" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="관심 분야는 무엇인가요?"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="관심분야가 비슷한 팀원을 모집해보세요!"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/selectText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="0/3"
+            android:textColor="@color/color_53c740"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPlanning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="기획"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnDesign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="디자인"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="개발"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnEconomics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="금융/경제"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="데이터/인공지능"
+                android:textColor="@drawable/bg_filter_interest_button"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="언어"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+            <Button
+                android:id="@+id/btnEducation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="인사/교육"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPublic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="공공/복지"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+            <Button
+                android:id="@+id/btnBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="경영/비즈니스"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEngineering"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="엔지니어링/설계"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+            <Button
+                android:id="@+id/btnMediaContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="미디어 콘텐츠/전시"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMarketing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="광고/마케팅"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+
+            <Button
+                android:id="@+id/btnEtc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_filter_interest_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="@{(v) -> vm.onClickInterest(v)}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="기타"
+                android:textSize="16sp"
+                android:textColor="@drawable/bg_filter_interest_button" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_ok_button"
+            android:paddingVertical="16dp"
+            android:text="저장하기"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

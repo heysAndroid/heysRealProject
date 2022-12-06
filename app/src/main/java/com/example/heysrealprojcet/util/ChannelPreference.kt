@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.util
 
 import com.chibatching.kotpref.KotprefModel
+import com.chibatching.kotpref.gsonpref.gsonPref
 
 object ChannelPreference : KotprefModel() {
    fun reset() {
@@ -41,4 +42,9 @@ object ChannelPreference : KotprefModel() {
   모집 기간
    */
    var channelRecruitPeriod by stringPref()
+
+   /*
+  관심 분야
+   */
+   var channelInterest by gsonPref(arrayListOf<String>())
 }

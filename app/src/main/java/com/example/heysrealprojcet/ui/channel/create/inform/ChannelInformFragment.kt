@@ -13,6 +13,7 @@ import com.example.heysrealprojcet.databinding.ChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialog
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
+import com.example.heysrealprojcet.ui.channel.dialog.interest.ChannelInterestDialog
 import com.example.heysrealprojcet.ui.channel.dialog.period.ChannelPeriodDialog
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
@@ -90,6 +91,15 @@ class ChannelInformFragment : Fragment() {
             binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
          }
          recruitmentPeriodDialog.show(childFragmentManager, null)
+      }
+
+      binding.interestContainer.setOnClickListener {
+         val interestDialog = ChannelInterestDialog()
+         interestDialog.setOnOKClickListener { content ->
+            binding.interest.text = content
+            binding.interest.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+         }
+         interestDialog.show(childFragmentManager, null)
       }
 
       binding.btnNext.setOnClickListener { goToName() }
