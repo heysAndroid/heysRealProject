@@ -139,7 +139,7 @@
             android:background="@drawable/bg_ok_button"
             android:enabled="false"
             android:paddingVertical="16dp"
-            android:text="다음"
+            android:text="인증하기"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />

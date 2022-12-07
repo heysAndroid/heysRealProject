@@ -8,7 +8,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainActivityBinding
-import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,11 +30,8 @@ class MainActivity : AppCompatActivity() {
       val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
       val navController = navHostFragment.navController
       val navGraph = navController.navInflater.inflate(R.navigation.main_navigation)
-      if (UserPreference.isExistingUser) {
-         navGraph.startDestination = R.id.signUpPhoneFragment
-      } else {
-         navGraph.startDestination = R.id.mainFragment
-      }
+      navGraph.startDestination = R.id.mainFragment
+
       navHostFragment.navController.graph = navGraph
       initNavigation()
    }

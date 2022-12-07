@@ -44,6 +44,6 @@ class ChannelDescriptionFragment : Fragment() {
    }
 
    private fun goToChannelInterest() {
-      findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelInterestFragment)
+      findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelPreviewFragment)
    }
 }

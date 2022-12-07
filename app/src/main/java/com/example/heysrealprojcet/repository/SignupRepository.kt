@@ -1,8 +1,10 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.SignUpApi
+import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.model.network.response.LoginResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +23,12 @@ class SignupRepository @Inject constructor(
       return flow {
          // api 응답을 방출한다.
          emit(safeApiCall { signUpApi.signUp(user) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   suspend fun signIn(phoneNumber: Phone): Flow<NetworkResult<CheckPhoneNumberResponse>> {
+      return flow {
+         emit(safeApiCall { signUpApi.checkPhoneNumber(phoneNumber) })
       }.flowOn(Dispatchers.IO)
    }
 }

@@ -12,6 +12,7 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.IntroFragmentBinding
 import com.example.heysrealprojcet.model.IntroDescription
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.sign_in.SignInActivity
 import com.example.heysrealprojcet.util.UserPreference
 
 class IntroFragment : Fragment() {
@@ -63,7 +64,11 @@ class IntroFragment : Fragment() {
    }
 
    private fun goToMain(isExistingUser: Boolean) {
-      val intent = Intent(requireContext(), MainActivity::class.java)
+      val intent = if(isExistingUser) {
+         Intent(requireContext(), SignInActivity::class.java)
+      } else {
+         Intent(requireContext(), MainActivity::class.java)
+      }
       UserPreference.isExistingUser = isExistingUser
       startActivity(intent)
       requireActivity().finish()

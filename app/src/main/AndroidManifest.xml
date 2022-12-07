@@ -27,6 +27,10 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".ui.sign_in.SignInActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.sign_up.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />

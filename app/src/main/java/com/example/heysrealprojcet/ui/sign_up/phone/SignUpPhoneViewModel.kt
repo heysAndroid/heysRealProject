@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.repository.SignupRepository
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpPhoneViewModel @Inject constructor(
-   private val signupRepository: SignupRepository
+   private val signupRepository: SignupRepository,
 ) : BaseViewModel() {
    val phoneNumber = MutableLiveData("")
 
@@ -41,5 +42,11 @@ class SignUpPhoneViewModel @Inject constructor(
 
    private fun isElevenDigit() {
       _isEnabled.value = phoneNumber.value?.length == 13
+   }
+
+   fun checkPhoneNumber(phoneNumber: Phone) = viewModelScope.launch {
+      signupRepository.signIn(phoneNumber).collect { values ->
+         _response.value = values
+      }
    }
 }
