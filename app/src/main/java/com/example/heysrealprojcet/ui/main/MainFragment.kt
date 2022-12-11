@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
       binding.activityList.adapter = activityRecyclerViewAdapter
       binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      
+
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
          activityAllText.setOnClickListener { goToActivity() }
@@ -76,10 +76,10 @@ class MainFragment : Fragment() {
 
    private fun makeActivityList() {
       activityList = mutableListOf(
-         ExtracurricularType("취향저격", "관심분야별", R.drawable.ic_interested),
-         ExtracurricularType("서둘러요!", "마감임박", R.drawable.ic_hurry),
-         ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding),
-         ExtracurricularType("어디보자", "새로 열린", R.drawable.ic_finding_with_glasses))
+         ExtracurricularType("취향저격", "관심분야별", R.drawable.ic_heart_with_glasses),
+         ExtracurricularType("서둘러요!", "마감임박", R.drawable.ic_calendar),
+         ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_drawing_board),
+         ExtracurricularType("어디보자", "새로 열린", R.drawable.ic_glitter_water))
    }
 
    private fun makeContestList() {
