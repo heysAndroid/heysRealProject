@@ -26,7 +26,7 @@ class SignupRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   suspend fun signIn(phoneNumber: Phone): Flow<NetworkResult<CheckPhoneNumberResponse>> {
+   suspend fun checkPhoneNumber(phoneNumber: Phone): Flow<NetworkResult<CheckPhoneNumberResponse>> {
       return flow {
          emit(safeApiCall { signUpApi.checkPhoneNumber(phoneNumber) })
       }.flowOn(Dispatchers.IO)

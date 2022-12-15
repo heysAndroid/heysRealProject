@@ -1,6 +1,5 @@
-package com.example.heysrealprojcet.ui.sign_up.password
+package com.example.heysrealprojcet.ui.sign_in.password
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -10,17 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.SignUpPasswordFragmentBinding
-import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.databinding.SignInPasswordFragmentBinding
 
-class SignUpPasswordFragment : Fragment() {
-   private lateinit var binding: SignUpPasswordFragmentBinding
-   private val viewModel: SignUpPasswordViewModel by viewModels()
+class SignInPasswordFragment : Fragment() {
+   private lateinit var binding: SignInPasswordFragmentBinding
+   private val viewModel: SignInPasswordViewModel by viewModels()
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = SignUpPasswordFragmentBinding.inflate(inflater, container, false)
+      binding = SignInPasswordFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -32,7 +30,11 @@ class SignUpPasswordFragment : Fragment() {
          viewModel.togglePasswordVisible()
          changeInputType()
       }
-      binding.okButton.setOnClickListener { goToJoinName() }
+
+      binding.okButton.setOnClickListener {
+         // TODO 로그인
+         goToMain()
+      }
    }
 
    private fun changeInputType() {
@@ -45,7 +47,7 @@ class SignUpPasswordFragment : Fragment() {
       }
    }
 
-   private fun goToJoinName() {
-      findNavController().navigate(R.id.action_signUpPasswordFragment_to_signUpNameFragment)
+   private fun goToMain() {
+      findNavController().navigate(R.id.action_signInPasswordFragment_to_mainNavigation)
    }
 }

@@ -1,6 +1,8 @@
 package com.example.heysrealprojcet.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,7 +20,10 @@ class MainActivity : AppCompatActivity() {
       super.onCreate(savedInstanceState)
       binding = MainActivityBinding.inflate(layoutInflater)
       setContentView(binding.root)
-      setNavigationGraph()
+
+      val intentText = intent.getStringExtra(Intent.EXTRA_TEXT)
+      Log.w("intentText, ", intentText.toString())
+      intentText?.let { setNavigationGraph(it) }
    }
 
    fun hideBottomNavigation(state: Boolean) {
@@ -26,12 +31,16 @@ class MainActivity : AppCompatActivity() {
       else binding.bottomNavigation.visibility = View.VISIBLE
    }
 
-   private fun setNavigationGraph() {
+   private fun setNavigationGraph(intent: String) {
       val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
       val navController = navHostFragment.navController
-      val navGraph = navController.navInflater.inflate(R.navigation.main_navigation)
-      navGraph.startDestination = R.id.mainFragment
+      val navGraph = navController.navInflater.inflate(R.navigation.sign_up_navigation)
 
+      if (intent == "login") {
+         navGraph.startDestination = R.id.signInPhoneFragment
+      } else {
+         navGraph.startDestination = R.id.signUpPhoneFragment
+      }
       navHostFragment.navController.graph = navGraph
       initNavigation()
    }

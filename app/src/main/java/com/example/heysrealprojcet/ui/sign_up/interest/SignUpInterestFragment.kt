@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
@@ -35,7 +37,7 @@ class SignUpInterestFragment : Fragment() {
    }
 
    private fun goToMain() {
-      // findNavController().navigate(R.id.action_joinInterestFragment_to_mainFragment)
+      findNavController().navigate(R.id.main_navigation)
    }
 
    private fun requestSignUp() {

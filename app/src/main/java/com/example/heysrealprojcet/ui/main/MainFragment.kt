@@ -53,8 +53,8 @@ class MainFragment : Fragment() {
       makeActivityList()
       makeContestList()
 
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToSignUp() }
-      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToSignUp() }
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToContest() }
+      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToActivity() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -106,6 +106,4 @@ class MainFragment : Fragment() {
    private fun goToActivity() {
       findNavController().navigate(R.id.action_mainFragment_to_activityListFragment)
    }
-
-   private fun isLogin(): Boolean = UserPreference.accessToken.isNotEmpty()
 }

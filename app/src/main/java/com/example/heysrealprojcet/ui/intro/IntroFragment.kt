@@ -2,7 +2,6 @@ package com.example.heysrealprojcet.ui.intro
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,6 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.IntroFragmentBinding
 import com.example.heysrealprojcet.model.IntroDescription
 import com.example.heysrealprojcet.ui.main.MainActivity
-import com.example.heysrealprojcet.ui.sign_in.SignInActivity
-import com.example.heysrealprojcet.util.UserPreference
 
 class IntroFragment : Fragment() {
    private lateinit var binding: IntroFragmentBinding
@@ -44,8 +41,9 @@ class IntroFragment : Fragment() {
       binding.indicator.setViewPager(binding.viewpager)
 
       binding.skipButton.setOnClickListener { binding.viewpager.currentItem = 2 }
-      binding.userButton.setOnClickListener { goToMain(true) }
-      binding.lookButton.setOnClickListener { goToMain(false) }
+      binding.loginButton.setOnClickListener { goToLogin() }
+      binding.signUpButton.setOnClickListener { goToSignUp() }
+
       // 다음 버튼 누를때마다 viewPager 페이지 바꾸기
       binding.nextButton.setOnClickListener {
          when (positon) {
@@ -63,13 +61,20 @@ class IntroFragment : Fragment() {
       )
    }
 
-   private fun goToMain(isExistingUser: Boolean) {
-      val intent = if(isExistingUser) {
-         Intent(requireContext(), SignInActivity::class.java)
-      } else {
-         Intent(requireContext(), MainActivity::class.java)
+   private fun goToLogin() {
+      val intent = Intent(requireContext(), MainActivity::class.java).apply {
+         putExtra(Intent.EXTRA_TEXT, "login")
+         type = "text/plain"
       }
-      UserPreference.isExistingUser = isExistingUser
+      startActivity(intent)
+      requireActivity().finish()
+   }
+
+   private fun goToSignUp() {
+      val intent = Intent(requireContext(), MainActivity::class.java).apply {
+         putExtra(Intent.EXTRA_TEXT, "signUp")
+         type = "text/plain"
+      }
       startActivity(intent)
       requireActivity().finish()
    }
@@ -79,19 +84,18 @@ class IntroFragment : Fragment() {
       override fun onPageSelected(position: Int) {
          super.onPageSelected(position)
          positon = position
-         Log.i("position: ", positon.toString())
 
          when (binding.viewpager.currentItem) {
             2 -> {
                binding.nextButton.text = "가입전에 둘러볼래요!"
-               binding.userButton.visibility = View.VISIBLE
-               binding.lookButton.visibility = View.VISIBLE
+               binding.loginButton.visibility = View.VISIBLE
+               binding.signUpButton.visibility = View.VISIBLE
                binding.nextButton.visibility = View.INVISIBLE
             }
             1 -> {
                binding.nextButton.text = "다음"
-               binding.userButton.visibility = View.INVISIBLE
-               binding.lookButton.visibility = View.INVISIBLE
+               binding.loginButton.visibility = View.INVISIBLE
+               binding.signUpButton.visibility = View.INVISIBLE
                binding.nextButton.visibility = View.VISIBLE
             }
          }

@@ -5,6 +5,7 @@
     android:id="@+id/sign_up_navigation"
     app:startDestination="@id/signUpPhoneFragment">
 
+    <include app:graph="@navigation/main_navigation" />
     <fragment
         android:id="@+id/signUpPhoneFragment"
         android:name="com.example.heysrealprojcet.ui.sign_up.phone.SignUpPhoneFragment"
@@ -63,5 +64,28 @@
         android:id="@+id/signUpInterestFragment"
         android:name="com.example.heysrealprojcet.ui.sign_up.interest.SignUpInterestFragment"
         android:label="SignUpInterestFragment"
-        tools:layout="@layout/sign_up_interest_fragment" />
+        tools:layout="@layout/sign_up_interest_fragment">
+        <action
+            android:id="@+id/action_signUpInterestFragment_to_mainNavigation"
+            app:destination="@id/main_navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInPhoneFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_in.phone.SignInPhoneFragment"
+        android:label="SignInPhoneFragment"
+        tools:layout="@layout/sign_in_phone_fragment">
+
+        <action
+            android:id="@+id/action_signInPhoneFragment_to_signInPasswordFragment"
+            app:destination="@id/signInPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInPasswordFragment"
+        android:name="com.example.heysrealprojcet.ui.sign_in.password.SignInPasswordFragment"
+        android:label="SignInPasswordFragment"
+        tools:layout="@layout/sign_in_password_fragment">
+        <action
+            android:id="@+id/action_signInPasswordFragment_to_mainNavigation"
+            app:destination="@id/main_navigation" />
+    </fragment>
 </navigation>

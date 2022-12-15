@@ -1,6 +1,5 @@
 package com.example.heysrealprojcet.ui.sign_up.phone
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
@@ -8,16 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.databinding.CustomToastMessageBinding
 import com.example.heysrealprojcet.databinding.SignUpPhoneFragmentBinding
-import com.example.heysrealprojcet.model.Phone
-import com.example.heysrealprojcet.model.network.NetworkResult
-import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -37,15 +31,7 @@ class SignUpPhoneFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
       binding.lifecycleOwner = this
-
-      binding.okButton.setOnClickListener {
-         if(UserPreference.isExistingUser) {
-            requestCheckPhoneNumber()
-         }
-         else {
-            goToPhoneVerification()
-         }
-      }
+      binding.okButton.setOnClickListener { goToPhoneVerification() }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 
       // 화면 들어오자마자 키보드 보이기
@@ -54,37 +40,39 @@ class SignUpPhoneFragment : Fragment() {
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
    }
 
+   /*
    private fun requestCheckPhoneNumber() {
-      // TODO 회원가입 여부 API 확인하기 위해 주석 처리
-//      val phoneNumber = ("82").plus(UserPreference.phoneNumber.replace('-', ' ').drop(1))
-      val phoneNumber = UserPreference.phoneNumber.replace('-', ' ')
-      viewModel.checkPhoneNumber(Phone(phoneNumber))
-      viewModel.response.observe(viewLifecycleOwner) { response ->
-         val alert = AlertDialog.Builder(requireContext())
+      CoroutineScope(Dispatchers.Main).launch {
+         launch {
+            viewModel.checkPhoneNumber(Phone(UserPreference.phoneNumber))
+         }.join()
+         delay(200)
+         launch {
+            viewModel.response.observe(viewLifecycleOwner) { response ->
+               val alert = AlertDialog.Builder(requireContext())
+               when (response) {
+                  is NetworkResult.Success -> {
+                     UserPreference.isExistingUser = response.data?.isUserExisted == true
+                     if (response.data?.isUserExisted == true) {
+                        binding.okButton.isEnabled = true
+                     } else {
+                        createToast(requireContext(), "일치하는 계정이 없어요!").show()
+                        binding.okButton.isEnabled = false
+                     }
+                  }
+                  is NetworkResult.Error -> {
+                     alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
+                  }
 
-         when (response) {
-            is NetworkResult.Success -> {
-               UserPreference.isExistingUser = response.data?.isUserExisted == true
-               if(UserPreference.isExistingUser) {
-                  goToPassword()
-               } else {
-                  createToast(requireContext(), "일치하는 계정이 없어요!").show()
+                  is NetworkResult.Loading -> {
+                     alert.setTitle("로딩 중").setMessage("전화번호 체크가 지연되고 있습니다.").create().show()
+                  }
                }
-            }
-            is NetworkResult.Error -> {
-               alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
-            }
-
-            is NetworkResult.Loading -> {
-               alert.setTitle("로딩 중").setMessage("전화번호 체크가 지연되고 있습니다.").create().show()
             }
          }
       }
    }
-
-   private fun goToPassword() {
-      findNavController().navigate(com.example.heysrealprojcet.R.id.action_signUpPhoneFragment2_to_signUpPasswordFragment2)
-   }
+*/
 
    private fun goToPhoneVerification() {
       findNavController().navigate(
@@ -92,6 +80,7 @@ class SignUpPhoneFragment : Fragment() {
          bundleOf("phoneNumber" to viewModel.phoneNumber.value))
    }
 
+   /*
    private fun createToast(context: Context, message: String): Toast {
       val binding = CustomToastMessageBinding.inflate(layoutInflater)
       binding.message.text = message
@@ -102,4 +91,5 @@ class SignUpPhoneFragment : Fragment() {
          view = binding.root
       }
    }
+    */
 }

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.phone
+package com.example.heysrealprojcet.ui.sign_in.phone
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpPhoneViewModel @Inject constructor(
+class SignInPhoneViewModel @Inject constructor(
    private val signupRepository: SignupRepository,
 ) : BaseViewModel() {
    val phoneNumber = MutableLiveData("")

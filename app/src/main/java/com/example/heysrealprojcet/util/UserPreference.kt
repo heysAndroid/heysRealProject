@@ -39,7 +39,7 @@ object UserPreference : KotprefModel() {
    var accessToken by stringPref()
 
    /*
-   * 기존 유저인지 신규 유저인지
+   * 신규 유저인지
     */
    var isExistingUser by booleanPref(false)
 }
