@@ -56,7 +56,8 @@ class SignUpVerificationFragment : Fragment() {
       binding = SignUpPhoneVerificationFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       firebaseAuth = Firebase.auth
-      initViewModelCallback()
+      binding.okButton.isEnabled = true
+      //initViewModelCallback()
       return binding.root
    }
 
