@@ -20,18 +20,6 @@ class MyPageFragment : Fragment() {
       return binding.root
    }
 
-   override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      val mainActivity = activity as MainActivity
-      mainActivity.hideBottomNavigation(true)
-   }
-
-   override fun onDestroy() {
-      super.onDestroy()
-      val mainActivity = activity as MainActivity
-      mainActivity.hideBottomNavigation(false)
-   }
-
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
