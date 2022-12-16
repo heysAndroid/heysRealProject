@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpAgeFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class SignUpAgeFragment : Fragment() {
    private lateinit var binding: SignUpAgeFragmentBinding
@@ -20,6 +21,24 @@ class SignUpAgeFragment : Fragment() {
       binding = SignUpAgeFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
+   }
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

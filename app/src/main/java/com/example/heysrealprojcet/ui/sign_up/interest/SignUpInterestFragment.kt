@@ -13,6 +13,7 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 import org.mindrot.jbcrypt.BCrypt
@@ -21,6 +22,24 @@ import org.mindrot.jbcrypt.BCrypt
 class SignUpInterestFragment : Fragment() {
    private lateinit var binding: SignUpInterestFragmentBinding
    private val viewModel: SignUpInterestViewModel by viewModels()
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

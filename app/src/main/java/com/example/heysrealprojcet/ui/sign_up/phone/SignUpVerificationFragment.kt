@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpPhoneVerificationFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -48,6 +49,24 @@ class SignUpVerificationFragment : Fragment() {
             resendToken = token
          }
       }
+   }
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
    }
 
    override fun onCreateView(
