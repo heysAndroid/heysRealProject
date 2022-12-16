@@ -28,6 +28,12 @@ class MainFragment : Fragment() {
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var activityList: MutableList<ExtracurricularType>
 
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
+
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       val mWindow = requireActivity().window
       mWindow.apply {
