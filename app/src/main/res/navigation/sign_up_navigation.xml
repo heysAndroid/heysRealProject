@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_signUpPhoneFragment_to_signUpVerificationFragment"
             app:destination="@id/signUpVerificationFragment" />
+        <action
+            android:id="@+id/action_signUpPhoneFragment_to_signInPhoneFragment"
+            app:destination="@id/signInPhoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpVerificationFragment"

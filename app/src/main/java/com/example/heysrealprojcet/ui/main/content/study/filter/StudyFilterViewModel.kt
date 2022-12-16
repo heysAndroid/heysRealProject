@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class StudyFilterViewModel : ViewModel() {
 
    private var choiceInterest = mutableListOf<View>()
-   private var choiceActivity: View?  = null
+   private var choiceActivity: View? = null
    private var choiceRegion: View? = null
    private var choicePurpose: View? = null
 
@@ -91,8 +91,7 @@ class StudyFilterViewModel : ViewModel() {
                regionArray.remove(regionArray[0])
                choiceRegion = null
             }
-         }
-         else {
+         } else {
             choiceActivity?.isSelected = false
             (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
             activityArray.remove(activityArray[0])
@@ -139,8 +138,7 @@ class StudyFilterViewModel : ViewModel() {
                button.setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
                regionArray.remove(item)
-            }
-            else {
+            } else {
                choiceRegion?.isSelected = false
                (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
                regionArray.remove(regionArray[0])
@@ -177,8 +175,7 @@ class StudyFilterViewModel : ViewModel() {
             button.setTypeface(null, Typeface.NORMAL)
             purposeTotal.value -= 1
             purposeArray.remove(item)
-         }
-         else {
+         } else {
             choicePurpose?.isSelected = false
             (choicePurpose as Button).setTypeface(null, Typeface.NORMAL)
             purposeArray.remove(purposeArray[0])

@@ -52,7 +52,6 @@ class StudyListFragment : Fragment() {
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.filterButton.setOnClickListener { goToFilter() }
-
    }
 
    private fun makeList() {
