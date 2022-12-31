@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,7 +10,7 @@
             type="com.example.heysrealprojcet.ui.channel.dialog.period.ChannelPeriodDialogViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_dialog_inset_16_square"
@@ -30,7 +32,7 @@
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_close" />
         </LinearLayout>
 
@@ -46,66 +48,128 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="48dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn7Day"
-                android:layout_width="0dp"
+            <ImageButton
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/channel_dialog_button"
-                android:onClick="@{(v) -> vm.onClickPeriod(v)}"
-                android:paddingVertical="18dp"
-                android:text="7일 이내"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp" />
+                android:background="@color/white"
+                android:src="@drawable/ic_calendar_back"/>
 
-            <Button
-                android:id="@+id/btn1Month"
+            <View
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/channel_dialog_button"
-                android:onClick="@{(v) -> vm.onClickPeriod(v)}"
-                android:paddingVertical="18dp"
-                android:text="1개월 이내"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_828282"
+                tools:text="2023년 1월"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:src="@drawable/ic_calendar_forward"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="23dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn3Month"
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/channel_dialog_button"
-                android:onClick="@{(v) -> vm.onClickPeriod(v)}"
-                android:paddingVertical="18dp"
-                android:text="3개월 이내"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp" />
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="일"/>
 
-            <Button
-                android:id="@+id/btn6Month"
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/channel_dialog_button"
-                android:onClick="@{(v) -> vm.onClickPeriod(v)}"
-                android:paddingVertical="18dp"
-                android:text="6개월 이내"
-                android:textColor="@drawable/channel_dialog_button"
-                android:textSize="16sp" />
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="월"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="화"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="수"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="목"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="금"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e1e1e1"
+                android:text="토"/>
         </LinearLayout>
+
+        <com.kizitonwose.calendarview.CalendarView
+            android:id="@+id/cafeteria_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:cv_dayViewResource="@layout/item_calendar_day"
+            app:cv_orientation="vertical"
+            app:cv_hasBoundaries="true"
+            app:cv_inDateStyle="allMonths"
+            app:cv_outDateStyle="endOfGrid"
+            app:cv_scrollMode="paged"/>
 
         <Button
             android:id="@+id/btnSave"
@@ -115,7 +179,7 @@
             android:layout_marginBottom="14dp"
             android:background="@drawable/bg_34d676_radius_8"
             android:paddingVertical="16dp"
-            android:text="저장하기"
+            android:text="다음"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
