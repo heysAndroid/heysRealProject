@@ -10,6 +10,7 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 class CafeteriaContainer(
     view: View,
     private val calendarView: CalendarView,
+    private val viewModel: ChannelPeriodDialogViewModel
 ) : ViewContainer(view){
 
     private val bind = ItemCalendarDayBinding.bind(view)
@@ -24,9 +25,7 @@ class CafeteriaContainer(
     fun bind(day: CalendarDay) {
         this.day = day
 
-        if(day.owner != DayOwner.THIS_MONTH) {
-            bind.itemCalendarDate.text = ""
-        } else {
+        if(day.owner == DayOwner.THIS_MONTH) {
             bind.itemCalendarDate.text = day.date.dayOfMonth.toString()
         }
     }
