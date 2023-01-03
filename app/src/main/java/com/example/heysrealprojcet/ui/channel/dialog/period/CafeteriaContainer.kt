@@ -1,5 +1,6 @@
 package com.example.heysrealprojcet.ui.channel.dialog.period
 
+import android.graphics.Typeface
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.heysrealprojcet.R
@@ -73,6 +74,20 @@ class CafeteriaContainer(
                     }
                 }
             )
+        )
+
+        bind.itemCalendarDate.setTypeface(null,
+            when (day.date) {
+                viewModel.selectedDate.value?.get(0) -> {
+                    Typeface.BOLD
+                }
+                viewModel.selectedDate.value?.get(1) -> {
+                    Typeface.BOLD
+                }
+                else -> {
+                    Typeface.NORMAL
+                }
+            }
         )
     }
 }
