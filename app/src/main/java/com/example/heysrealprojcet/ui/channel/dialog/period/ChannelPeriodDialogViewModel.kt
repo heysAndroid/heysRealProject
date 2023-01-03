@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import java.time.LocalDate
 
 class ChannelPeriodDialogViewModel : ViewModel() {
-   var selectedList = arrayListOf<LocalDate?>()
+   var selectedList = arrayListOf<LocalDate>()
 
-   private val _selectedDate: MutableLiveData<ArrayList<LocalDate?>> = MutableLiveData()
-   val selectedDate: LiveData<ArrayList<LocalDate?>> = _selectedDate
+   private val _selectedDate: MutableLiveData<ArrayList<LocalDate>> = MutableLiveData()
+   val selectedDate: LiveData<ArrayList<LocalDate>> = _selectedDate
 
-   fun updateSelectedDate(selectedDate: ArrayList<LocalDate?>) {
+   fun updateSelectedDate(selectedDate: ArrayList<LocalDate>) {
       _selectedDate.value = selectedDate
    }
 }
