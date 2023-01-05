@@ -40,4 +40,13 @@
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_radius_16</item>
     </style>
+
+    <style name="HeysDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/white</item>
+        <item name="android:calendarTextColor">@color/white</item>
+        <item name="android:dayOfWeekBackground">@color/white</item>
+        <item name="android:yearListSelectorColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/color_53c740</item>
+        <item name="colorControlNormal">@color/color_e1e1e1</item>
+    </style>
 </resources>

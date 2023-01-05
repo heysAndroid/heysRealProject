@@ -46,13 +46,13 @@ class SignUpAgeFragment : Fragment() {
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener { goToInterest() }
 
-      viewModel.isEnabled.observe(viewLifecycleOwner) {
-         if (it) {
-            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_focused)
-         } else {
-            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
-         }
-      }
+//      viewModel.isEnabled.observe(viewLifecycleOwner) {
+//         if (it) {
+//            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_focused)
+//         } else {
+//            binding.ageEditText.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
+//         }
+//      }
    }
 
    private fun goToInterest() {
