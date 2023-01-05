@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data>
-
-        <variable
-            name="vm"
-            type="com.example.heysrealprojcet.ui.sign_up.age.SignUpAgeViewModel" />
-    </data>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,6 +41,7 @@
 
 
             <DatePicker
+                android:id="@+id/datePicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="128dp"
@@ -71,12 +65,11 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
             android:background="@drawable/bg_ok_button"
-            android:enabled="@{vm.isEnabled}"
+            android:enabled="false"
             android:paddingVertical="16dp"
             android:text="다음"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 </layout>
