@@ -22,22 +22,24 @@ class CafeteriaContainer(
 
     init {
         view.setOnClickListener {
-            when (viewModel.selectedList.size) {
-                0 -> {
-                    viewModel.selectedList.add(day.date)
-                    viewModel.updateSelectedDate(viewModel.selectedList)
-                    calendarView.notifyDateChanged(day.date)
-                }
-                1 -> {
-                    viewModel.selectedList.add(day.date)
-                    viewModel.selectedList.sort()
-                    viewModel.updateSelectedDate(viewModel.selectedList)
-                    calendarView.notifyCalendarChanged()
-                }
-                2 -> {
-                    viewModel.updateSelectedDate(arrayListOf(day.date))
-                    calendarView.notifyCalendarChanged()
-                    viewModel.selectedList = arrayListOf(day.date)
+            if (day.owner == DayOwner.THIS_MONTH) {
+                when (viewModel.selectedList.size) {
+                    0 -> {
+                        viewModel.selectedList.add(day.date)
+                        viewModel.updateSelectedDate(viewModel.selectedList)
+                        calendarView.notifyDateChanged(day.date)
+                    }
+                    1 -> {
+                        viewModel.selectedList.add(day.date)
+                        viewModel.selectedList.sort()
+                        viewModel.updateSelectedDate(viewModel.selectedList)
+                        calendarView.notifyCalendarChanged()
+                    }
+                    2 -> {
+                        viewModel.updateSelectedDate(arrayListOf(day.date))
+                        calendarView.notifyCalendarChanged()
+                        viewModel.selectedList = arrayListOf(day.date)
+                    }
                 }
             }
         }
