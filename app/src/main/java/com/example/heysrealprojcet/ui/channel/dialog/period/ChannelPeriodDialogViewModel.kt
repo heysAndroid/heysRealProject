@@ -11,7 +11,17 @@ class ChannelPeriodDialogViewModel : ViewModel() {
    private val _selectedDate: MutableLiveData<ArrayList<LocalDate>> = MutableLiveData()
    val selectedDate: LiveData<ArrayList<LocalDate>> = _selectedDate
 
+   private val _isEnabled = MutableLiveData(false)
+   val isEnabled: LiveData<Boolean> = _isEnabled
+
    fun updateSelectedDate(selectedDate: ArrayList<LocalDate>) {
       _selectedDate.value = selectedDate
+   }
+
+   fun onEnabled() {
+      _isEnabled.value = true
+   }
+   fun unEnabled() {
+      _isEnabled.value = false
    }
 }

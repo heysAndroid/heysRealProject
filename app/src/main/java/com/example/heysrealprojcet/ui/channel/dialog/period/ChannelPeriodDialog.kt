@@ -18,7 +18,6 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
 
-
 class ChannelPeriodDialog : DialogFragment() {
    private lateinit var binding: ChannelPeriodDialogBinding
    private val viewModel by viewModels<ChannelPeriodDialogViewModel>()
@@ -31,6 +30,7 @@ class ChannelPeriodDialog : DialogFragment() {
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ChannelPeriodDialogBinding.inflate(inflater, container, false)
       binding.vm = viewModel
+      binding.lifecycleOwner = this
 
       dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
@@ -80,7 +80,6 @@ class ChannelPeriodDialog : DialogFragment() {
          binding.yearMonth.text = currentTime.format(formatter)
       }
 
-
       binding.calendarForward.setOnClickListener {
          if(calendarPosition in 1..12) {
             currentTime = currentTime.withMonth(calendarPosition)
@@ -109,6 +108,11 @@ class ChannelPeriodDialog : DialogFragment() {
             CafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
 
          override fun bind(container: CafeteriaContainer, day: CalendarDay) = container.bind(day)
+      }
+
+      viewModel.selectedDate.observe(viewLifecycleOwner) {
+         if(it.size == 2) viewModel.onEnabled()
+         else viewModel.unEnabled()
       }
 
       binding.btnSave.setOnClickListener {
