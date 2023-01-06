@@ -24,6 +24,6 @@ class LogoFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       Handler().postDelayed({
          findNavController().navigate(R.id.action_logoFragment_to_introFragment)
-      }, 1500)
+      }, 3000)
    }
 }
