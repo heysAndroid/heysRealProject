@@ -33,7 +33,7 @@
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="휴대폰 번호를 입력해주세요"
+                android:text="휴대전화번호를 입력해주세요"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />

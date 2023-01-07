@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -95,13 +96,14 @@ class SignInPhoneFragment : Fragment() {
    }
 
    private fun createToast(context: Context, message: String): Toast {
-      val binding = CustomToastMessageBinding.inflate(layoutInflater)
-      binding.message.text = message
+      val bind = CustomToastMessageBinding.inflate(layoutInflater)
+      bind.message.text = message
 
       // TODO 토스트 메시지 위치 설정
       return Toast(context).apply {
          duration = Toast.LENGTH_SHORT
-         view = binding.root
+         setGravity(Gravity.NO_GRAVITY, 0, binding.okButton.translationY.toInt()-42)
+         view = bind.root
       }
    }
 }
