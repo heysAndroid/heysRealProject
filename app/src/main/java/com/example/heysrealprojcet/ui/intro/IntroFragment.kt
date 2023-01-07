@@ -57,7 +57,7 @@ class IntroFragment : Fragment() {
       imageList = mutableListOf(
          IntroDescription("더 쉽게", "누구나 가능한\n효율적인 모임 활동", resources.getDrawable(R.drawable.ic_onboarding1)),
          IntroDescription("더 빠르게", "마음 맞는\n팀원들과 함께 성장", resources.getDrawable(R.drawable.ic_onboarding2)),
-         IntroDescription("더 섬세하게", "나만을 위한 커리어&관심분야\n맞춤 서비스 제공", resources.getDrawable(R.drawable.ic_onboarding3)),
+         IntroDescription("더 섬세하게", "나만을 위한 관심분야\n맞춤 서비스 제공", resources.getDrawable(R.drawable.ic_onboarding3)),
       )
    }
 
