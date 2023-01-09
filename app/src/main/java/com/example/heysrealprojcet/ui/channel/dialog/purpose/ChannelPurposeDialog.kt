@@ -32,6 +32,8 @@ class ChannelPurposeDialog : DialogFragment() {
          unselectAllButton()
          when (it) {
             ChannelPurpose.Capability.purpose -> selectCapabilityButton()
+            ChannelPurpose.Networking.purpose -> selectNetworkingButton()
+            ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
             ChannelPurpose.Skill.purpose -> selectSkillButton()
             ChannelPurpose.Experience.purpose -> selectExperienceButton()
             else -> selectPortfolioButton()
@@ -45,13 +47,22 @@ class ChannelPurposeDialog : DialogFragment() {
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
-
       return binding.root
    }
 
    private fun selectCapabilityButton() {
       binding.btnCapability.isSelected = true
       binding.btnCapability.setTypeface(null, Typeface.BOLD)
+   }
+
+   private fun selectNetworkingButton() {
+      binding.btnNetworking.isSelected = true
+      binding.btnNetworking.setTypeface(null, Typeface.BOLD)
+   }
+
+   private fun selectJobSeekingButton() {
+      binding.btnJobSeeking.isSelected = true
+      binding.btnJobSeeking.setTypeface(null, Typeface.BOLD)
    }
 
    private fun selectSkillButton() {
@@ -74,6 +85,12 @@ class ChannelPurposeDialog : DialogFragment() {
          btnCapability.isSelected = false
          btnCapability.setTypeface(null, Typeface.NORMAL)
 
+         btnNetworking.isSelected = false
+         btnNetworking.setTypeface(null, Typeface.NORMAL)
+
+         btnJobSeeking.isSelected = false
+         btnJobSeeking.setTypeface(null, Typeface.NORMAL)
+
          btnSkill.isSelected = false
          btnSkill.setTypeface(null, Typeface.NORMAL)
 
@@ -88,6 +105,8 @@ class ChannelPurposeDialog : DialogFragment() {
    private fun previousSelectedPurpose() {
       when (ChannelPreference.channelPurpose) {
          ChannelPurpose.Skill.purpose -> selectSkillButton()
+         ChannelPurpose.Networking.purpose -> selectNetworkingButton()
+         ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
          ChannelPurpose.Capability.purpose -> selectCapabilityButton()
          ChannelPurpose.Experience.purpose -> selectExperienceButton()
          ChannelPurpose.Portfolio.purpose -> selectPortfolioButton()

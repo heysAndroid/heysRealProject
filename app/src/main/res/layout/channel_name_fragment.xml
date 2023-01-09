@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="헤이즈 채널 이름을 알려주세요."
+                android:text="채널 이름을 알려주세요."
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -44,7 +44,7 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/bg_channel_edittext"
                 android:inputType="textMultiLine"
-                android:maxLength="35"
+                android:maxLength="30"
                 android:padding="16dp"
                 android:text="@={vm.name}"
                 android:textColor="@color/black"
@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/35"
+                    android:text="/30"
                     android:textColor="@color/color_99828282"
                     android:textSize="12sp" />
             </LinearLayout>

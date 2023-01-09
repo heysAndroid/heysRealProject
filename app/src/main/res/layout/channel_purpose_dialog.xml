@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
@@ -70,6 +70,39 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/btnNetworking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                android:paddingVertical="18dp"
+                android:text="소통/네트워킹"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnJobSeeking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/channel_dialog_button"
+                android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                android:paddingVertical="18dp"
+                android:text="취업준비"
+                android:textColor="@drawable/channel_dialog_button"
+                android:textSize="16sp" />
+
+            <Button
                 android:id="@+id/btnSkill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -77,14 +110,14 @@
                 android:background="@drawable/channel_dialog_button"
                 android:onClick="@{(v) -> vm.onClickPurpose(v)}"
                 android:paddingVertical="18dp"
-                android:text="실력향상"
+                android:text="학습능력 향상"
                 android:textColor="@drawable/channel_dialog_button"
                 android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 

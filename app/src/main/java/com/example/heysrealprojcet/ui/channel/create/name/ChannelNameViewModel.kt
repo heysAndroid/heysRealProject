@@ -11,7 +11,7 @@ class ChannelNameViewModel : ViewModel() {
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private val _letterCount = MutableLiveData<Int>(0)
+   private val _letterCount = MutableLiveData(0)
    val letterCount: LiveData<Int> = _letterCount
 
    init {
