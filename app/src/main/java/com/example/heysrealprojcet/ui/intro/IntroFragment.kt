@@ -91,12 +91,14 @@ class IntroFragment : Fragment() {
                binding.loginButton.visibility = View.VISIBLE
                binding.signUpButton.visibility = View.VISIBLE
                binding.nextButton.visibility = View.INVISIBLE
+               binding.skipButton.visibility = View.INVISIBLE
             }
             1 -> {
                binding.nextButton.text = "다음"
                binding.loginButton.visibility = View.INVISIBLE
                binding.signUpButton.visibility = View.INVISIBLE
                binding.nextButton.visibility = View.VISIBLE
+               binding.skipButton.visibility = View.VISIBLE
             }
          }
       }

@@ -1,10 +1,12 @@
 package com.example.heysrealprojcet.ui.sign_up.name
 
+import android.content.Context
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -56,6 +58,12 @@ class SignUpNameFragment : Fragment() {
             return@InputFilter null
          }
       })
+
+      // 화면 들어오자마자 키보드 보이기
+      val inputMethodManager =
+         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      binding.name.requestFocus()
+      inputMethodManager.showSoftInput(binding.name, 0)
    }
 
    private fun goToGender() {

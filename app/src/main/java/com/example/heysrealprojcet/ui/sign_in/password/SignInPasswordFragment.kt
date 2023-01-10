@@ -1,10 +1,12 @@
 package com.example.heysrealprojcet.ui.sign_in.password
 
+import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -54,6 +56,12 @@ class SignInPasswordFragment : Fragment() {
          // TODO 로그인
          goToMain()
       }
+
+      // 화면 들어오자마자 키보드 보이기
+      val inputMethodManager =
+         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      binding.password.requestFocus()
+      inputMethodManager.showSoftInput(binding.password, 0)
    }
 
    private fun changeInputType() {

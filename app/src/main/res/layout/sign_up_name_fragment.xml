@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:layout_marginTop="19dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginLeft="27dp"
             android:src="@drawable/ic_back" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="실명 기반의 신뢰할 수 있는 커뮤니티를 만들어 가요."
+                android:text="실명 기반의 신뢰할 수 있는 커뮤니티를\n만들어가요."
                 android:textColor="@color/color_828282"
                 android:textSize="16sp" />
 
