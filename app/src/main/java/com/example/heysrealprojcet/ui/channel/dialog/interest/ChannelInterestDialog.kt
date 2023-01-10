@@ -34,55 +34,55 @@ class ChannelInterestDialog : DialogFragment() {
       viewModel.selectedInterest.observe(viewLifecycleOwner) {
          when (it) {
             ChannelInterest.Planning.interest -> {
-               if(!binding.btnPlanning.isSelected && ChannelPreference.channelInterest.size != 3) selectPlanningButton()
+               if (!binding.btnPlanning.isSelected && ChannelPreference.channelInterest.size != 3) selectPlanningButton()
                else unselectPlanningButton()
             }
             ChannelInterest.Design.interest -> {
-               if(!binding.btnDesign.isSelected && ChannelPreference.channelInterest.size != 3) selectDesignButton()
+               if (!binding.btnDesign.isSelected && ChannelPreference.channelInterest.size != 3) selectDesignButton()
                else unselectDesignButton()
             }
             ChannelInterest.It.interest -> {
-               if(!binding.btnIt.isSelected && ChannelPreference.channelInterest.size != 3) selectItButton()
+               if (!binding.btnIt.isSelected && ChannelPreference.channelInterest.size != 3) selectItButton()
                else unselectItButton()
             }
             ChannelInterest.Economics.interest -> {
-               if(!binding.btnEconomics.isSelected && ChannelPreference.channelInterest.size != 3) selectEconomicsButton()
+               if (!binding.btnEconomics.isSelected && ChannelPreference.channelInterest.size != 3) selectEconomicsButton()
                else unselectEconomicsButton()
             }
             ChannelInterest.Data.interest -> {
-               if(!binding.btnData.isSelected && ChannelPreference.channelInterest.size != 3) selectDataButton()
+               if (!binding.btnData.isSelected && ChannelPreference.channelInterest.size != 3) selectDataButton()
                else unselectDataButton()
             }
             ChannelInterest.Language.interest -> {
-               if(!binding.btnLanguage.isSelected && ChannelPreference.channelInterest.size != 3) selectLanguageButton()
+               if (!binding.btnLanguage.isSelected && ChannelPreference.channelInterest.size != 3) selectLanguageButton()
                else unselectLanguageButton()
             }
             ChannelInterest.Education.interest -> {
-               if(!binding.btnEducation.isSelected && ChannelPreference.channelInterest.size != 3) selectEducationButton()
+               if (!binding.btnEducation.isSelected && ChannelPreference.channelInterest.size != 3) selectEducationButton()
                else unselectEducationButton()
             }
             ChannelInterest.Public.interest -> {
-               if(!binding.btnPublic.isSelected && ChannelPreference.channelInterest.size != 3) selectPublicButton()
+               if (!binding.btnPublic.isSelected && ChannelPreference.channelInterest.size != 3) selectPublicButton()
                else unselectPublicButton()
             }
             ChannelInterest.Business.interest -> {
-               if(!binding.btnBusiness.isSelected && ChannelPreference.channelInterest.size != 3) selectBusinessButton()
+               if (!binding.btnBusiness.isSelected && ChannelPreference.channelInterest.size != 3) selectBusinessButton()
                else unselectBusinessButton()
             }
             ChannelInterest.Engineering.interest -> {
-               if(!binding.btnEngineering.isSelected && ChannelPreference.channelInterest.size != 3) selectEngineeringButton()
+               if (!binding.btnEngineering.isSelected && ChannelPreference.channelInterest.size != 3) selectEngineeringButton()
                else unselectEngineeringButton()
             }
             ChannelInterest.MediaContents.interest -> {
-               if(!binding.btnMediaContents.isSelected && ChannelPreference.channelInterest.size != 3) selectMediaContentsButton()
+               if (!binding.btnMediaContents.isSelected && ChannelPreference.channelInterest.size != 3) selectMediaContentsButton()
                else unselectMediaContentsButton()
             }
             ChannelInterest.Marketing.interest -> {
-               if(!binding.btnMarketing.isSelected && ChannelPreference.channelInterest.size != 3) selectMarketingButton()
+               if (!binding.btnMarketing.isSelected && ChannelPreference.channelInterest.size != 3) selectMarketingButton()
                else unselectMarketingButton()
             }
             ChannelInterest.Etc.interest -> {
-               if(!binding.btnEtc.isSelected && ChannelPreference.channelInterest.size != 3) selectEtcButton()
+               if (!binding.btnEtc.isSelected && ChannelPreference.channelInterest.size != 3) selectEtcButton()
                else unselectEtcButton()
             }
             else -> {}
@@ -90,7 +90,7 @@ class ChannelInterestDialog : DialogFragment() {
       }
 
       viewModel.isSelected.observe(viewLifecycleOwner) {
-         when(it) {
+         when (it) {
             true -> ChannelPreference.channelInterest.add(viewModel.selectedInterest.value.toString())
             false -> ChannelPreference.channelInterest.remove(viewModel.selectedInterest.value.toString())
          }
@@ -99,7 +99,7 @@ class ChannelInterestDialog : DialogFragment() {
       }
 
       binding.btnSave.setOnClickListener {
-         when(ChannelPreference.channelInterest.size) {
+         when (ChannelPreference.channelInterest.size) {
             1 -> listener.onClick("${ChannelPreference.channelInterest[0]}")
             2 -> listener.onClick("${ChannelPreference.channelInterest[0]} 외 1개")
             3 -> listener.onClick("${ChannelPreference.channelInterest[0]} 외 2개")
@@ -247,7 +247,7 @@ class ChannelInterestDialog : DialogFragment() {
    }
 
    private fun previousSelectedInterest() {
-      for(i in ChannelPreference.channelInterest.indices) {
+      for (i in ChannelPreference.channelInterest.indices) {
          when (ChannelPreference.channelInterest[i]) {
             ChannelInterest.Planning.interest -> selectPlanningButton()
             ChannelInterest.Design.interest -> selectDesignButton()

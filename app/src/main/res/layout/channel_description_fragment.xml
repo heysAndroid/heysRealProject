@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,91 +10,215 @@
             type="com.example.heysrealprojcet.ui.channel.create.description.ChannelDescriptionViewModel" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="19dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
-            android:background="@color/white"
-            android:src="@drawable/ic_back" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="27dp"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="헤이즈 채널을 소개해주세요."
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-
-            <EditText
-                android:id="@+id/edt_introduce"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_channel_edittext"
-                android:gravity="top"
-                android:hint="아래 예시를 참고해서 헤이즈 채널에 대해 자유롭게 소개해보세요! \n \n채널 내용(선택)\n팀원 자격(선택)\n참여자에게 기대하는 역량(선택)\n채널에 대해 궁금한 점들은 리더 프로필에서 직접 문의해주세요!(필수)"
-                android:padding="16dp"
-                android:text="@={vm.edtText}"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:addTextChangedListener="@{vm.textWatcher}"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="16dp"
-                android:gravity="right"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/letterCount"
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.letterCount.toString()}"
-                    android:textColor="@color/color_99828282"
-                    android:textSize="12sp" />
+                    android:layout_marginLeft="27dp"
+                    android:background="@color/white"
+                    android:paddingVertical="12dp"
+                    android:src="@drawable/ic_back" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="/1500"
-                    android:textColor="@color/color_99828282"
-                    android:textSize="12sp" />
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="채널을 소개해주세요."
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="이런 활동을 해요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/channelDescriptionField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_channel_edittext"
+                        android:gravity="top"
+                        android:hint="최소 30자 이상 아래 예시 항목을 참고해서 채널에 대해 자유롭게 소개해보세요!\n주제 및 목표\n- 운영방식 및 일정(횟수)\n- 기타\n\n"
+                        android:maxLength="1500"
+                        android:padding="16dp"
+                        android:text="@={vm.channelDescription}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:addTextChangedListener="@{vm.channelDescriptionTextWatcher}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/channelDescriptionLetterCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.channelDescriptionLetterCount.toString()}"
+                            android:textColor="@color/color_99828282"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/1500"
+                            android:textColor="@color/color_99828282"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="이런 분을 찾아요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/memberField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_channel_edittext"
+                        android:gravity="top"
+                        android:hint="최소 30자 이상 아래 예시 항목을 참고해서 마음 맞는 팀원을 찾아보세요!\n모집 인원 및 역할\n- 태도(적극성, 성실함, 책임감 등)\n- 우대 역량\n- 기타"
+                        android:maxLength="1500"
+                        android:padding="16dp"
+                        android:text="@={vm.memberDescription}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:addTextChangedListener="@{vm.memberDescriptionTextWatcher}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/memberDescriptionLetterCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.memberDescriptionLetterCount.toString()}"
+                            android:textColor="@color/color_99828282"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/1500"
+                            android:textColor="@color/color_99828282"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="여기로 지원 및 문의해주세요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/linkField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_channel_edittext"
+                        android:gravity="top"
+                        android:hint="이메일, 카카오 ID 및 오픈채팅방, 구글폼 링크 등"
+                        android:padding="16dp"
+                        android:text="@={vm.link}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:addTextChangedListener="@{vm.channelDescriptionTextWatcher}" />
+
+                    <LinearLayout
+                        android:id="@+id/additionalLinkContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:layout_height="50dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="32dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/addLinkView"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/white"
+                            android:src="@drawable/ic_add_channel" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:text="링크 추가하기"
+                            android:textColor="@color/color_53c740"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="14dp"
+                android:background="@drawable/bg_ok_button"
+                android:enabled="@{vm.isEnabled}"
+                android:paddingVertical="16dp"
+                android:text="미리보기"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btnPreview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/bg_ok_button"
-            android:enabled="@{vm.isEnabled}"
-            android:paddingVertical="16dp"
-            android:text="미리보기"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
 </layout>

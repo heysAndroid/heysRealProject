@@ -6,33 +6,52 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class ChannelDescriptionViewModel : ViewModel() {
-   val edtText = MutableLiveData<String>()
+   val channelDescription = MutableLiveData<String>()
+   val memberDescription = MutableLiveData<String>()
+   val link = MutableLiveData<String>()
 
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private val _letterCount = MutableLiveData(0)
-   val letterCount: LiveData<Int> = _letterCount
+   private val _channelDescriptionLetterCount = MutableLiveData(0)
+   val channelDescriptionLetterCount: LiveData<Int> = _channelDescriptionLetterCount
+
+   private val _memberDescriptionLetterCount = MutableLiveData(0)
+   val memberDescriptionLetterCount: LiveData<Int> = _memberDescriptionLetterCount
 
    init {
       viewModelScope.launch {
-         edtText.asFlow().collect {
+         channelDescription.asFlow().collect {
             isCorrect()
          }
       }
    }
 
    private fun isCorrect() {
-      _isEnabled.value = !edtText.value.isNullOrBlank()
+      _isEnabled.value = !channelDescription.value.isNullOrBlank() && !memberDescription.value.isNullOrBlank()
    }
 
-   val textWatcher = object : TextWatcher {
+   val channelDescriptionTextWatcher = object : TextWatcher {
       override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
       }
 
       override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-         _letterCount.value = p0?.length
+         _channelDescriptionLetterCount.value = p0?.length
+      }
+
+      override fun afterTextChanged(p0: Editable?) {
+
+      }
+   }
+
+   val memberDescriptionTextWatcher = object : TextWatcher {
+      override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+      }
+
+      override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+         _memberDescriptionLetterCount.value = p0?.length
       }
 
       override fun afterTextChanged(p0: Editable?) {

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDescriptionFragmentBinding
+import com.example.heysrealprojcet.ui.channel.create.description.view.ChannelLinkView
 import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ChannelDescriptionFragment : Fragment() {
@@ -39,8 +40,12 @@ class ChannelDescriptionFragment : Fragment() {
       binding.lifecycleOwner = this
 
       //EditText 글자 제한
-      binding.edtIntroduce.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
+      binding.channelDescriptionField.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
       binding.btnPreview.setOnClickListener { goToChannelInterest() }
+      binding.addLinkView.setOnClickListener {
+         val linkView = ChannelLinkView(requireContext())
+         binding.additionalLinkContainer.addView(linkView)
+      }
    }
 
    private fun goToChannelInterest() {
