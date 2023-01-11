@@ -23,23 +23,10 @@ class CafeteriaContainer(
     init {
         view.setOnClickListener {
             if (day.owner == DayOwner.THIS_MONTH) {
-                when (viewModel.selectedList.size) {
-                    0 -> {
-                        viewModel.selectedList.add(day.date)
-                        viewModel.updateSelectedDate(viewModel.selectedList)
-                        calendarView.notifyDateChanged(day.date)
-                    }
-                    1 -> {
-                        viewModel.selectedList.add(day.date)
-                        viewModel.selectedList.sort()
-                        viewModel.updateSelectedDate(viewModel.selectedList)
-                        calendarView.notifyCalendarChanged()
-                    }
-                    2 -> {
-                        viewModel.updateSelectedDate(arrayListOf(day.date))
-                        calendarView.notifyCalendarChanged()
-                        viewModel.selectedList = arrayListOf(day.date)
-                    }
+                if(day.date.month == LocalDate.now().month && day.date.dayOfMonth >= LocalDate.now().dayOfMonth) {
+                    isSelectedDate()
+                } else if(day.date.month != LocalDate.now().month) {
+                    isSelectedDate()
                 }
             }
         }
@@ -50,6 +37,11 @@ class CafeteriaContainer(
 
         if(day.owner == DayOwner.THIS_MONTH) {
             bind.itemCalendarDate.text = day.date.dayOfMonth.toString()
+            if(day.date.month == LocalDate.now().month && day.date.dayOfMonth < LocalDate.now().dayOfMonth) {
+                bind.itemCalendarDate.setTextColor(ContextCompat.getColor(view.context, R.color.color_e1e1e1))
+            } else {
+                bind.itemCalendarDate.setTextColor(ContextCompat.getColor(view.context, R.color.color_828282))
+            }
         }
         initDate()
 
@@ -68,7 +60,6 @@ class CafeteriaContainer(
 
     private fun initDate() {
         bind.itemCalendarDate.setBackgroundResource(0)
-        bind.itemCalendarDate.setTextColor(ContextCompat.getColor(view.context, R.color.color_828282))
         bind.itemCalendarDate.setTypeface(null, Typeface.NORMAL)
     }
 
@@ -87,5 +78,26 @@ class CafeteriaContainer(
     private fun isWithinRange(date: LocalDate): Boolean {
         return date.isAfter(viewModel.selectedDate.value!![0])
                 && date.isBefore(viewModel.selectedDate.value!![1])
+    }
+
+    private fun isSelectedDate() {
+        when (viewModel.selectedList.size) {
+            0 -> {
+                viewModel.selectedList.add(day.date)
+                viewModel.updateSelectedDate(viewModel.selectedList)
+                calendarView.notifyDateChanged(day.date)
+            }
+            1 -> {
+                viewModel.selectedList.add(day.date)
+                viewModel.selectedList.sort()
+                viewModel.updateSelectedDate(viewModel.selectedList)
+                calendarView.notifyCalendarChanged()
+            }
+            2 -> {
+                viewModel.updateSelectedDate(arrayListOf(day.date))
+                calendarView.notifyCalendarChanged()
+                viewModel.selectedList = arrayListOf(day.date)
+            }
+        }
     }
 }
