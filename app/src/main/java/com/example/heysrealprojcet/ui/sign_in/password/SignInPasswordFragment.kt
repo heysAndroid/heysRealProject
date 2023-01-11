@@ -1,7 +1,9 @@
 package com.example.heysrealprojcet.ui.sign_in.password
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPasswordFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInPasswordFragment : Fragment() {
    private lateinit var binding: SignInPasswordFragmentBinding
    private val viewModel: SignInPasswordViewModel by viewModels()
@@ -51,8 +56,7 @@ class SignInPasswordFragment : Fragment() {
       }
 
       binding.okButton.setOnClickListener {
-         // TODO 로그인
-         goToMain()
+         requestLogin(UserPreference.phoneNumber, UserPreference.password)
       }
    }
 
@@ -63,6 +67,28 @@ class SignInPasswordFragment : Fragment() {
       } else {
          binding.password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
          binding.password.setSelection(binding.password.length())
+      }
+   }
+
+   private fun requestLogin(username: String, password: String) {
+      viewModel.login(username, password)
+      viewModel.response.observe(viewLifecycleOwner) { response ->
+         val alert = AlertDialog.Builder(requireContext())
+
+         when (response.isSuccessful) {
+            true -> {
+               alert.setTitle("로그인 성공")
+                  .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
+               val token = response.headers()["Authorization"]?.split(" ")?.last()
+               Log.w("Header: ", token.toString())
+               token.let { UserPreference.accessToken = it.toString() }
+            }
+
+            false -> {
+               alert.setTitle("로그인 실패").setMessage("로그인에 실패했습니다.").create().show()
+               Log.w("error: ", response.errorBody().toString())
+            }
+         }
       }
    }
 

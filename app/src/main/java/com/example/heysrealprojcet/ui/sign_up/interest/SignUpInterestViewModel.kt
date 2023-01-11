@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.User
 import com.example.heysrealprojcet.model.network.NetworkResult
-import com.example.heysrealprojcet.model.network.response.LoginResponse
+import com.example.heysrealprojcet.model.network.response.SignUpResponse
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.UserPreference
@@ -35,8 +35,8 @@ class SignUpInterestViewModel @Inject constructor(
    /*
    * 네트워크 호출
     */
-   private val _response: MutableLiveData<NetworkResult<LoginResponse>> = MutableLiveData()
-   val response: LiveData<NetworkResult<LoginResponse>> = _response
+   private val _response: MutableLiveData<NetworkResult<SignUpResponse>> = MutableLiveData()
+   val response: LiveData<NetworkResult<SignUpResponse>> = _response
 
    /*
    * 시작하기 버튼
