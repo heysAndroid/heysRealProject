@@ -85,15 +85,15 @@ class MainFragment : Fragment() {
          ExtracurricularType("취향저격", "내 관심분야별", R.drawable.ic_interested),
          ExtracurricularType("서둘러요!", "마감 임박!", R.drawable.ic_hurry),
          ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding),
-         ExtracurricularType("어디보자", "새로 열린", R.drawable.ic_finding_with_glasses))
+         ExtracurricularType("어디보자", "새로 열린", R.drawable.ic_new))
    }
 
    private fun makeContestList() {
       contestList = mutableListOf(
-         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_heart),
-         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_calendar),
-         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board),
-         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_shining))
+         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_drawing_board1),
+         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2),
+         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3),
+         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4))
    }
 
    private fun goToSignUp() {
