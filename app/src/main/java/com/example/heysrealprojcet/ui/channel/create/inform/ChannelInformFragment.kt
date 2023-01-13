@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.channel.create.inform
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDia
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.interest.ChannelInterestDialog
 import com.example.heysrealprojcet.ui.channel.dialog.period.ChannelPeriodDialog
+import com.example.heysrealprojcet.ui.channel.dialog.period.ChannelTimeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialog
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.main.MainActivity
@@ -86,11 +88,19 @@ class ChannelInformFragment : Fragment() {
 
       binding.recruitmentPeriodContainer.setOnClickListener {
          val recruitmentPeriodDialog = ChannelPeriodDialog()
+         val recruitmentTimeDialog = ChannelTimeDialog()
+
          recruitmentPeriodDialog.setOnOKClickListener { content ->
-            binding.recruitmentPeriod.text = content
-            binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            //binding.recruitmentPeriod.text = content
+            //binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            recruitmentTimeDialog.show(childFragmentManager, null)
          }
          recruitmentPeriodDialog.show(childFragmentManager, null)
+
+         recruitmentTimeDialog.setOnOKClickListener { content ->
+            Log.w("dueDate: ", ChannelPreference.channelRecruitLastDay)
+            Log.w("dueTime: ", ChannelPreference.channelRecruitLastTime)
+         }
       }
 
       binding.interestContainer.setOnClickListener {

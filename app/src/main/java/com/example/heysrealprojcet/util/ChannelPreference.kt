@@ -10,7 +10,8 @@ object ChannelPreference : KotprefModel() {
       channelRegion = ""
       channelCapacity = 0
       channelRecruitmentMethod = ""
-      channelRecruitPeriod = ""
+      channelRecruitLastDay = ""
+      channelRecruitLastTime = ""
    }
 
    /*
@@ -39,9 +40,14 @@ object ChannelPreference : KotprefModel() {
    var channelRecruitmentMethod by stringPref()
 
    /*
-  모집 기간
+  모집 마감 날짜
    */
-   var channelRecruitPeriod by stringPref()
+   var channelRecruitLastDay by stringPref()
+
+   /*
+  모집 마감 시간
+   */
+   var channelRecruitLastTime by stringPref()
 
    /*
   관심 분야

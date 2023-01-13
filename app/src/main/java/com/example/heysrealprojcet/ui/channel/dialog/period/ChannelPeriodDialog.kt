@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.channel.dialog.period
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,8 +47,8 @@ class ChannelPeriodDialog : DialogFragment() {
       binding.yearMonth.text = currentTime.format(formatter)
 
       binding.calendarBack.setOnClickListener {
-         if(currentTime.year > YearMonth.now().year) {
-            if(calendarPosition == 1) {
+         if (currentTime.year > YearMonth.now().year) {
+            if (calendarPosition == 1) {
                calendarPosition = 12
                currentTime = currentTime.minusYears(1)
                currentTime = currentTime.withMonth(calendarPosition)
@@ -65,9 +66,8 @@ class ChannelPeriodDialog : DialogFragment() {
                )
                currentTime = currentTime.withMonth(calendarPosition)
             }
-         }
-         else {
-            if(currentTime.year == YearMonth.now().year && calendarPosition > YearMonth.now().month.value) {
+         } else {
+            if (currentTime.year == YearMonth.now().year && calendarPosition > YearMonth.now().month.value) {
                calendarPosition -= 1
                binding.cafeteriaCalendar.setup(
                   currentTime.withMonth(calendarPosition),
@@ -81,7 +81,7 @@ class ChannelPeriodDialog : DialogFragment() {
       }
 
       binding.calendarForward.setOnClickListener {
-         if(calendarPosition in 1..12) {
+         if (calendarPosition in 1..12) {
             currentTime = currentTime.withMonth(calendarPosition)
             binding.cafeteriaCalendar.setup(
                currentTime.withMonth(calendarPosition),
@@ -89,8 +89,7 @@ class ChannelPeriodDialog : DialogFragment() {
                WeekFields.of(Locale.getDefault()).firstDayOfWeek
             )
             calendarPosition += 1
-         }
-         else {
+         } else {
             calendarPosition = 1
             currentTime = currentTime.plusYears(1)
             currentTime = currentTime.withMonth(calendarPosition)
@@ -111,13 +110,14 @@ class ChannelPeriodDialog : DialogFragment() {
       }
 
       viewModel.selectedDate.observe(viewLifecycleOwner) {
-         if(it.size == 2) viewModel.onEnabled()
+         if (it.size == 2) viewModel.onEnabled()
          else viewModel.unEnabled()
       }
 
       binding.btnSave.setOnClickListener {
          // 채널 정보 fragment 로 선택값 전달
-         listener.onClick(ChannelPreference.channelRecruitPeriod)
+         listener.onClick(ChannelPreference.channelRecruitLastDay)
+         Log.w("last date: ", ChannelPreference.channelRecruitLastDay)
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }

@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.channel.dialog.period
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.heysrealprojcet.util.ChannelPreference
 import java.time.LocalDate
 
 class ChannelPeriodDialogViewModel : ViewModel() {
@@ -16,11 +17,13 @@ class ChannelPeriodDialogViewModel : ViewModel() {
 
    fun updateSelectedDate(selectedDate: ArrayList<LocalDate>) {
       _selectedDate.value = selectedDate
+      ChannelPreference.channelRecruitLastDay = selectedDate.last().toString()
    }
 
    fun onEnabled() {
       _isEnabled.value = true
    }
+
    fun unEnabled() {
       _isEnabled.value = false
    }
