@@ -15,6 +15,7 @@ class CategoryRecyclerViewAdapter(
    private val onclick: (item: String) -> Unit) :
    RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemViewBinding
+   private var point = 0
 
    inner class ViewHolder(private val binding: CategoryItemViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
@@ -28,6 +29,12 @@ class CategoryRecyclerViewAdapter(
          var word = listOf("#개발", "마감", "많이찾는", "새로열린")
          var start = content.indexOf(word[position])
          var end = start + word[position].length
+
+         if(position == point) {
+            binding.itemView.alpha = 1F
+         } else {
+            binding.itemView.alpha = 0.3F
+         }
 
          val builder = SpannableStringBuilder(content)
          builder.setSpan(ForegroundColorSpan(Color.parseColor("#1BC47D")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -46,5 +53,10 @@ class CategoryRecyclerViewAdapter(
 
    override fun getItemCount(): Int {
       return list.size
+   }
+
+   fun setBackground(point: Int) {
+      this.point = point
+      notifyDataSetChanged()
    }
 }

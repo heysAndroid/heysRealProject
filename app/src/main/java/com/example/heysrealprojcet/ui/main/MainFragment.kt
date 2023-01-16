@@ -74,6 +74,17 @@ class MainFragment : Fragment() {
          studyContainer.setOnClickListener { goToStudy() }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
+
+      val onScrollListener = object : RecyclerView.OnScrollListener() {
+         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val lastVisibleItemPosition =
+               (recyclerView.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+            categoryRecyclerViewAdapter.setBackground(lastVisibleItemPosition)
+         }
+      }
+      binding.contestList.setOnScrollListener(onScrollListener)
    }
 
    private fun changeFragment(fragment: Fragment) {
