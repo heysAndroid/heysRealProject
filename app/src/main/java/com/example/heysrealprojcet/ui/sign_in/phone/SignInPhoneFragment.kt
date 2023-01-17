@@ -4,17 +4,15 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.CustomToastMessageBinding
 import com.example.heysrealprojcet.databinding.SignInPhoneFragmentBinding
 import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
@@ -26,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignInPhoneFragment : Fragment() {
    private lateinit var binding: SignInPhoneFragmentBinding
    private val viewModel: SignInPhoneViewModel by viewModels()
+   private lateinit var viewa: View
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -63,6 +62,12 @@ class SignInPhoneFragment : Fragment() {
       val inputMethodManager =
          requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
+
+      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
+         if(it) {
+            CustomSnackBar.make(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
+         }
+      }
    }
 
    private fun requestCheckPhoneNumber() {
@@ -74,7 +79,7 @@ class SignInPhoneFragment : Fragment() {
                if (response.data?.isUserExisted == true) {
                   goToPassword()
                } else {
-                  createToast(requireContext(), "일치하는 계정이 없어요!").show()
+                  viewModel.showSnackBar()
                   binding.okButton.isEnabled = false
                }
             }
@@ -92,18 +97,6 @@ class SignInPhoneFragment : Fragment() {
    private fun goToPassword() {
       if (findNavController().currentDestination?.id == R.id.signInPhoneFragment) {
          findNavController().navigate(R.id.action_signInPhoneFragment_to_signInPasswordFragment)
-      }
-   }
-
-   private fun createToast(context: Context, message: String): Toast {
-      val bind = CustomToastMessageBinding.inflate(layoutInflater)
-      bind.message.text = message
-
-      // TODO 토스트 메시지 위치 설정
-      return Toast(context).apply {
-         duration = Toast.LENGTH_SHORT
-         setGravity(Gravity.NO_GRAVITY, 0, binding.okButton.translationY.toInt()-42)
-         view = bind.root
       }
    }
 }

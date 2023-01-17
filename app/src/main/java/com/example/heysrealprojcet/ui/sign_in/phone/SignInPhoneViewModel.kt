@@ -23,6 +23,9 @@ class SignInPhoneViewModel @Inject constructor(
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
+   private var _showSnackBarEvent = MutableLiveData<Boolean>(false)
+   val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
+
    /*
    * 네트워크 호출
     */
@@ -48,5 +51,9 @@ class SignInPhoneViewModel @Inject constructor(
       signupRepository.checkPhoneNumber(phoneNumber).collect { values ->
          _response.value = values
       }
+   }
+
+   fun showSnackBar() {
+      _showSnackBarEvent.value = true
    }
 }
