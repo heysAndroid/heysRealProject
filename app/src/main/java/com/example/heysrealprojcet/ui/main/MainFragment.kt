@@ -18,7 +18,6 @@ import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.sign_up.SignUpPopupBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
@@ -70,7 +69,6 @@ class MainFragment : Fragment() {
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
          activityAllText.setOnClickListener { goToActivity() }
-         studyAllText.setOnClickListener { goToSignUp() }
          studyContainer.setOnClickListener { goToStudy() }
       }
       Log.d("=== accessToken ===", UserPreference.accessToken)
@@ -105,11 +103,6 @@ class MainFragment : Fragment() {
          ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2),
          ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3),
          ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4))
-   }
-
-   private fun goToSignUp() {
-      val bottomSheet = SignUpPopupBottomSheet()
-      bottomSheet.show(childFragmentManager, bottomSheet.tag)
    }
 
    private fun goToStudy() {
