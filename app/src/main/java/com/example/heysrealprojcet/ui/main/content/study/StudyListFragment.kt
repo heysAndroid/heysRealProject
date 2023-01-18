@@ -12,14 +12,10 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.ui.main.MainActivity
-import com.example.heysrealprojcet.ui.main.category.Category
-import com.example.heysrealprojcet.ui.main.category.CategoryDetailRecyclerViewAdapter
 
 class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
-   private lateinit var categoryDetailRecyclerViewAdapter: CategoryDetailRecyclerViewAdapter
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
-   private lateinit var typeList: MutableList<Category>
    private lateinit var studyList: MutableList<Study>
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,10 +39,6 @@ class StudyListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       makeList()
-      categoryDetailRecyclerViewAdapter = CategoryDetailRecyclerViewAdapter(type = typeList)
-      binding.categoryList.adapter = categoryDetailRecyclerViewAdapter
-      binding.categoryList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
       studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToDetail() }
       binding.studyList.adapter = studyItemRecyclerViewAdapter
       binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -55,13 +47,6 @@ class StudyListFragment : Fragment() {
    }
 
    private fun makeList() {
-      typeList = mutableListOf(
-         Category("관심 분야", R.drawable.ch_study_filter_interest, false),
-         Category("마감 임박", R.drawable.ch_study_filter_finish, false),
-         Category("많이 찾는", R.drawable.ch_study_filter_popular, false),
-         Category("새로 열린", R.drawable.ch_study_filter_new, false)
-      )
-
       studyList = mutableListOf(
          Study(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
          Study(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),

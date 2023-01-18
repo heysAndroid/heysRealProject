@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="154dp"
     android:layout_marginBottom="16dp"
     android:background="@drawable/bg_white_radius_16"
     android:orientation="horizontal"
@@ -34,7 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:orientation="vertical">
 
@@ -42,7 +42,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="제 3회 연구 개발 특구"
+            android:text="제 3회 방구석 아이디어톤 모집"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -51,9 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="24dp"
-            android:text="과학기술정보통신부, 연구개발..."
+            android:layout_marginEnd="24dp"
+            android:text="므모 MMO"
             android:textSize="12sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
                 android:src="@drawable/ic_eye" />
 
             <TextView
@@ -85,13 +90,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_77d671_radius_12"
                 android:gravity="center"
                 android:text="15팀 빌딩"
                 android:textColor="@color/color_53c740"
                 android:textSize="12sp" />
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
