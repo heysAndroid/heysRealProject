@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,9 +40,13 @@ class StudyListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       makeList()
-      studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToDetail() }
-      binding.studyList.adapter = studyItemRecyclerViewAdapter
-      binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      if(studyList.isNotEmpty()) {
+         studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToDetail() }
+         binding.studyList.adapter = studyItemRecyclerViewAdapter
+         binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      } else {
+         binding.noListImage.isVisible = true
+      }
 
       binding.filterButton.setOnClickListener { goToFilter() }
    }
