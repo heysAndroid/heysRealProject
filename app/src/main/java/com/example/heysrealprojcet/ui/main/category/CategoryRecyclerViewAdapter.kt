@@ -15,7 +15,10 @@ class CategoryRecyclerViewAdapter(
    private val onclick: (item: String) -> Unit) :
    RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemViewBinding
-   private var point = 0
+
+   init {
+      setHasStableIds(true)
+   }
 
    inner class ViewHolder(private val binding: CategoryItemViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
@@ -30,7 +33,7 @@ class CategoryRecyclerViewAdapter(
          var start = content.indexOf(word[position])
          var end = start + word[position].length
 
-         if(position == point) {
+         if(item.bool) {
             binding.itemView.alpha = 1F
          } else {
             binding.itemView.alpha = 0.3F
@@ -55,8 +58,7 @@ class CategoryRecyclerViewAdapter(
       return list.size
    }
 
-   fun setBackground(point: Int) {
-      this.point = point
-      notifyDataSetChanged()
+   override fun getItemId(position: Int): Long {
+      return position.toLong()
    }
 }

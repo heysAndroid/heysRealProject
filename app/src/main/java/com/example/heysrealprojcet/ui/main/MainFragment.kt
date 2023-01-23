@@ -26,6 +26,7 @@ class MainFragment : Fragment() {
    private lateinit var activityRecyclerViewAdapter: activityRecyclerViewAdapter
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var activityList: MutableList<ExtracurricularType>
+   private var position = 0
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -79,7 +80,13 @@ class MainFragment : Fragment() {
 
             val lastVisibleItemPosition =
                (recyclerView.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
-            categoryRecyclerViewAdapter.setBackground(lastVisibleItemPosition)
+
+            if(lastVisibleItemPosition != -1) {
+               contestList[position].bool = false
+               position = lastVisibleItemPosition
+               contestList[lastVisibleItemPosition].bool = true
+               categoryRecyclerViewAdapter.notifyDataSetChanged()
+            }
          }
       }
       binding.contestList.setOnScrollListener(onScrollListener)
@@ -99,10 +106,10 @@ class MainFragment : Fragment() {
 
    private fun makeContestList() {
       contestList = mutableListOf(
-         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_drawing_board1),
-         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2),
-         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3),
-         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4))
+         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_drawing_board1, true),
+         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2, false),
+         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3, false),
+         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4, false))
    }
 
    private fun goToStudy() {
