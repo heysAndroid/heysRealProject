@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
 import com.example.heysrealprojcet.model.User
@@ -22,6 +23,7 @@ import org.mindrot.jbcrypt.BCrypt
 class SignUpInterestFragment : Fragment() {
    private lateinit var binding: SignUpInterestFragmentBinding
    private val viewModel: SignUpInterestViewModel by viewModels()
+   private val viewModel2: InterestViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class SignUpInterestFragment : Fragment() {
    ): View? {
       binding = SignUpInterestFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
+      binding.vm2 = viewModel2
       return binding.root
    }
 
@@ -66,7 +69,7 @@ class SignUpInterestFragment : Fragment() {
          password = UserPreference.password,
          age = UserPreference.age,
          gender = UserPreference.gender,
-         interests = viewModel.interestList as ArrayList<String>)
+         interests = viewModel2.interestList as ArrayList<String>)
 
       viewModel.signUp(user)
       viewModel.response.observe(viewLifecycleOwner) { response ->
