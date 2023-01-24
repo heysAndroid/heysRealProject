@@ -21,59 +21,76 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingVertical="12dp">
 
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="27dp"
+                        android:layout_marginStart="27dp"
                         android:background="@android:color/transparent"
                         android:src="@drawable/ic_back" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/bg_extracuricular_sample" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="온,오프라인"
-                        android:textColor="@color/color_262626"
-                        android:textSize="12sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="1" />
 
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_send" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_bookmark" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_extracuricular_sample" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_fd494a_radius_4"
-                        android:gravity="center"
-                        android:text="D-3"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/bg_34d676_radius_4"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="3dp"
+                        android:text="D-180"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="12dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_expand" />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:text="롯데마트 ZRT 1기 모집"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -83,32 +100,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:text="#기획/아이디어 #광고/마케팅 #웹/모바일/IT #대외활동/서포터즈 #취업/창업"
                     android:textColor="@color/color_828282" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="3.5dp"
-                        android:src="@drawable/ic_eye" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="850"
-                        android:textColor="@color/color_828282"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -132,6 +126,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
                                 android:text="3"
                                 android:textColor="@color/color_34d676"
                                 android:textSize="16sp"
@@ -140,7 +135,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="개의 헤이즈에서"
+                                android:text="개의 채널에서"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -149,11 +144,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="팀원을 모집해요"
+                            android:text="팀원을 찾고 있어요."
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
-
                     </LinearLayout>
 
                     <Button
@@ -165,19 +159,18 @@
                         android:background="@drawable/bg_f7bc26_radius_8"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="12dp"
-                        android:text="헤이즈 보기"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="10dp"
+                        android:text="채널 보기"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
-
                 </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginVertical="32dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -194,18 +187,11 @@
                         android:text="롯데마트"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="24dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
                         android:text="기간"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -224,18 +210,11 @@
                         android:text="마감일 2022년 3월 31일 18:00 까지"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="18dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
                         android:text="참여 대상"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -243,22 +222,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="10dp"
                         android:text="누구나 지원 가능"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="24dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         android:text="시상 및 혜택"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -270,18 +242,11 @@
                         android:text="500만원"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="24dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         android:text="자세히 알려드려요"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -295,23 +260,11 @@
                         \n- 2022년 12월 22일(목) ~ 2023년 3월 9일(목)\n- 12주차 오프라인 미팅 활동 예정\n- 롯데마트 본사(잠실), 롯데 리테일 아카데미(영등포) 外 활동 예정\n※ 세부 커리큘럼은 추 후 ZRT 카페 공유 예정\n\n3. 주요 활동\n- 마케팅 전략 개발 조별 활동\n1) 브랜드 커뮤니케이션 : 롯데마트 브랜드 홍보/광고 전략 개발\n2) 마케팅 전략 개발 : 롯데마트 오프라인 매장 방문 활성화 전략 개발\n- Z 세대 심층 그룹 토론을 통한 트렌드 연구\n\n4. 모집 부문\n- 15 명\n- 분야별 인원\n1) 브랜드 커뮤니케이션 0명\n2) 마케팅 전략 개발 0명\n※ 최종 합격 후 지원 분야와 다르게 배치 될 수 있습니다\n- 우대사항 : 마케팅 공모전 참여 경험자, 디자인 툴 활용 우수자"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/color_e1e1e1" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="24dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         android:text="여기로 문의해주세요"
                         android:textColor="@color/black"
                         android:textSize="16sp"
@@ -324,21 +277,23 @@
                         android:text="이메일 : ma131@naver.com"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp" />
-                </LinearLayout>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="46dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/bg_ok_button_enabled"
-                    android:minHeight="0dp"
-                    android:paddingVertical="16dp"
-                    android:text="홈페이지 지원"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="여기로 지원해주세요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_clip" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
