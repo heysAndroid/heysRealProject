@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="vm"
             type="com.example.heysrealprojcet.InterestViewModel" />
@@ -11,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:paddingBottom="36dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="36dp">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -22,8 +22,8 @@ import org.mindrot.jbcrypt.BCrypt
 @AndroidEntryPoint
 class SignUpInterestFragment : Fragment() {
    private lateinit var binding: SignUpInterestFragmentBinding
-   private val viewModel: SignUpInterestViewModel by viewModels()
-   private val viewModel2: InterestViewModel by viewModels()
+   private val signUpInterestViewModel: SignUpInterestViewModel by viewModels()
+   private val interestViewModel: InterestViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -47,8 +47,8 @@ class SignUpInterestFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = SignUpInterestFragmentBinding.inflate(inflater, container, false)
-      binding.vm = viewModel
-      binding.vm2 = viewModel2
+      binding.vm = signUpInterestViewModel
+      binding.vm2 = interestViewModel
       return binding.root
    }
 
@@ -69,10 +69,10 @@ class SignUpInterestFragment : Fragment() {
          password = UserPreference.password,
          age = UserPreference.age,
          gender = UserPreference.gender,
-         interests = viewModel2.interestList as ArrayList<String>)
+         interests = interestViewModel.interestList as ArrayList<String>)
 
-      viewModel.signUp(user)
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      signUpInterestViewModel.signUp(user)
+      signUpInterestViewModel.response.observe(viewLifecycleOwner) { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          // api 응답 별로 처리
