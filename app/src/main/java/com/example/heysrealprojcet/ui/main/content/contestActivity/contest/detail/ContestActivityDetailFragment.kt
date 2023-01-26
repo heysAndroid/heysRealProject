@@ -49,6 +49,12 @@ class ContestActivityDetailFragment : Fragment() {
 //            binding.layoutExpand.visibility = View.VISIBLE
 //         }
 //      }
+
+      binding.lookButton.setOnClickListener { goToLook() }
+   }
+
+   private fun goToLook() {
+      findNavController().navigate(R.id.action_contestActivityDetailFragment_to_contestDetailLookFragment)
    }
 
    private fun goToHeys() {

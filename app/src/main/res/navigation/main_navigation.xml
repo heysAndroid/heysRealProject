@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_contestActivityDetailFragment_to_channelListFragment"
             app:destination="@id/channelListFragment" />
+        <action
+            android:id="@+id/action_contestActivityDetailFragment_to_contestDetailLookFragment"
+            app:destination="@id/contestDetailLookFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
@@ -361,4 +364,13 @@
         android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingFragment"
         android:label="ChattingFragment"
         tools:layout="@layout/chatting_fragment" />
+    <fragment
+        android:id="@+id/contestDetailLookFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail.ContestDetailLookFragment"
+        android:label="ContestDetailLookFragment"
+        tools:layout="@layout/contest_detail_look_fragment">
+        <action
+            android:id="@+id/action_contestDetailLookFragment_to_contestActivityDetailFragment"
+            app:destination="@id/contestActivityDetailFragment" />
+    </fragment>
 </navigation>
