@@ -31,6 +31,12 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
       dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.setCancelable(false)
 
+      return binding.root
+   }
+
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      binding.lifecycleOwner = this
       previousSelectedMethod()
       if (ChannelPreference.channelRecruitmentMethod.isEmpty()) setTextSize()
 
@@ -47,7 +53,6 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
-      return binding.root
    }
 
    private fun selectDecideButton() {

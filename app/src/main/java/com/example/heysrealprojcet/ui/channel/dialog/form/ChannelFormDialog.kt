@@ -28,6 +28,13 @@ class ChannelFormDialog : DialogFragment() {
       dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.setCancelable(false)
 
+      return binding.root
+   }
+
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      binding.lifecycleOwner = this
+
       previousSelectedForm()
       previousSelectedRegion()
       viewModel.selectedForm.observe(viewLifecycleOwner) {
@@ -78,8 +85,6 @@ class ChannelFormDialog : DialogFragment() {
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
-
-      return binding.root
    }
 
    private fun unselectAllFormButton() {
