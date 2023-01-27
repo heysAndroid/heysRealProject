@@ -3,13 +3,20 @@ package com.example.heysrealprojcet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.heysrealprojcet.databinding.CustomSnackbarBinding
 import com.google.android.material.snackbar.Snackbar
 
-class CustomSnackBar(view: View, private val message: String, private val anchorView: View) {
-   companion object {
-      fun make(view: View, message: String, anchorView: View) = CustomSnackBar(view, message, anchorView)
+open class Snack (open val view: View, open val message: String, open val anchorView: View?)
+
+class CustomSnackBar(
+   override val view: View,
+   override val message: String,
+   override val anchorView: View?) : Snack(view, message, anchorView) {
+
+   constructor(view: View, message: String, anchorView: View?, move: Boolean) : this(view, message, anchorView) {
+      snackBarBinding.move.isVisible = move
    }
 
    private val context = view.context
@@ -17,7 +24,7 @@ class CustomSnackBar(view: View, private val message: String, private val anchor
    private val snackBarLayout = snackBar.view as Snackbar.SnackbarLayout
 
    private val inflater = LayoutInflater.from(context)
-   private val snackBarBinding : CustomSnackbarBinding =
+   private val snackBarBinding: CustomSnackbarBinding =
       DataBindingUtil.inflate(inflater, R.layout.custom_snackbar, null, false)
 
    init {
@@ -36,6 +43,7 @@ class CustomSnackBar(view: View, private val message: String, private val anchor
 
    private fun initData() {
       snackBarBinding.message.text = message
+      snackBarBinding.move.isVisible = false
    }
 
    fun show() {

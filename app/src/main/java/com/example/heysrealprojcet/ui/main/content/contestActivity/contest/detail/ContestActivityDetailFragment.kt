@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestActivityDetailFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ContestActivityDetailFragment : Fragment() {
    private lateinit var binding: ContestActivityDetailFragmentBinding
+   private val viewModel: ContestActivityDetailViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -29,6 +33,7 @@ class ContestActivityDetailFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = ContestActivityDetailFragmentBinding.inflate(inflater, container, false)
+      binding.vm = viewModel
       return binding.root
    }
 
@@ -49,6 +54,18 @@ class ContestActivityDetailFragment : Fragment() {
 //            binding.layoutExpand.visibility = View.VISIBLE
 //         }
 //      }
+
+      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
+         if(it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+      }
+
+      viewModel.isSelected.observe(viewLifecycleOwner, Observer {
+         binding.bookmarkButton.isSelected = it
+
+         if(viewModel.isSelected.value == true) {
+            viewModel.showSnackBar()
+         }
+      })
 
       binding.lookButton.setOnClickListener { goToLook() }
    }

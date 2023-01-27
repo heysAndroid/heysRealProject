@@ -24,7 +24,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignInPhoneFragment : Fragment() {
    private lateinit var binding: SignInPhoneFragmentBinding
    private val viewModel: SignInPhoneViewModel by viewModels()
-   private lateinit var viewa: View
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -64,9 +63,7 @@ class SignInPhoneFragment : Fragment() {
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
 
       viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if(it) {
-            CustomSnackBar.make(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
-         }
+         if(it) CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
       }
    }
 
