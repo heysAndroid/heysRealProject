@@ -67,6 +67,11 @@ class ContestActivityDetailFragment : Fragment() {
          }
       })
 
+      binding.btnShare.setOnClickListener {
+         val bottomSheet = ContestShareBottomSheet()
+         bottomSheet.show(childFragmentManager, null)
+      }
+
       binding.lookButton.setOnClickListener { goToLook() }
    }
 
