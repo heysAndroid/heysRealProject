@@ -12,9 +12,10 @@ import com.example.heysrealprojcet.model.ContestType
 
 class CategoryRecyclerViewAdapter(
    private val list: MutableList<ContestType>,
-   private val onclick: (item: String) -> Unit) :
-   RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
+   private val onclick: (item: String) -> Unit
+): RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemViewBinding
+   private var a = 0f
 
    init {
       setHasStableIds(true)
@@ -28,15 +29,22 @@ class CategoryRecyclerViewAdapter(
          binding.root.setOnClickListener { onclick.invoke(item.type) }
 
          // 텍스트 일부 스타일 적용
-         var content = item.description
-         var word = listOf("#개발", "마감", "많이찾는", "새로열린")
-         var start = content.indexOf(word[position])
-         var end = start + word[position].length
+         val content = item.description
+         val word = listOf("#개발", "마감", "많이찾는", "새로열린")
+         val start = content.indexOf(word[position])
+         val end = start + word[position].length
 
-         if(item.bool) {
+         if (item.bool) {
             binding.itemView.alpha = 1F
+            if (a != 0F) {
+               binding.card.cardElevation = a
+            }
          } else {
             binding.itemView.alpha = 0.3F
+            if (binding.card.cardElevation != 0F) {
+               a = binding.card.cardElevation
+            }
+            binding.card.cardElevation = 0F
          }
 
          val builder = SpannableStringBuilder(content)
