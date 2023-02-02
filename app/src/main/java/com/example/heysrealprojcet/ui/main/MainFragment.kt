@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.MarginItemDecoration
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.model.ContestType
@@ -64,8 +65,15 @@ class MainFragment : Fragment() {
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.contestList.addItemDecoration(
+         MarginItemDecoration(
+            resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
+
       binding.activityList.adapter = activityRecyclerViewAdapter
       binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.activityList.addItemDecoration(
+         MarginItemDecoration(
+            resources.getDimension(R.dimen.activityList_item_margin).toInt(), activityList.lastIndex))
 
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
@@ -81,7 +89,7 @@ class MainFragment : Fragment() {
             val lastVisibleItemPosition =
                (recyclerView.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
 
-            if(lastVisibleItemPosition != -1) {
+            if (lastVisibleItemPosition != -1) {
                contestList[position].bool = false
                position = lastVisibleItemPosition
                contestList[lastVisibleItemPosition].bool = true
@@ -124,3 +132,4 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_activityListFragment)
    }
 }
+
