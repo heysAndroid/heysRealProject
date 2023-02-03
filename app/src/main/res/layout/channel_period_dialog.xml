@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/white"
+                android:visibility="invisible"
                 android:src="@drawable/ic_calendar_back"/>
 
             <View

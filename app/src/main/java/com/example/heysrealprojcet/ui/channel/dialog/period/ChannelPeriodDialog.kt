@@ -26,7 +26,6 @@ class ChannelPeriodDialog : DialogFragment() {
 
    private var currentTime = YearMonth.now()
    private val formatter = DateTimeFormatter.ofPattern("yyyy년 M월")
-   private var calendarPosition = 1
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ChannelPeriodDialogBinding.inflate(inflater, container, false)
@@ -36,6 +35,16 @@ class ChannelPeriodDialog : DialogFragment() {
       dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
       dialog?.setCancelable(false)
+
+      viewModel.calendarPosition.observe(viewLifecycleOwner) {
+         Log.e("태그", it.toString())
+         Log.e("태그", YearMonth.now().month.value.toString())
+         if(currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
+            binding.calendarBack.visibility = View.INVISIBLE
+         } else {
+            binding.calendarBack.visibility = View.VISIBLE
+         }
+      }
 
       binding.cafeteriaCalendar.itemAnimator = null
 
@@ -48,54 +57,55 @@ class ChannelPeriodDialog : DialogFragment() {
 
       binding.calendarBack.setOnClickListener {
          if (currentTime.year > YearMonth.now().year) {
-            if (calendarPosition == 1) {
-               calendarPosition = 12
+            if (viewModel.calendarPosition.value == 1) {
+               viewModel.setPosition(12)
                currentTime = currentTime.minusYears(1)
-               currentTime = currentTime.withMonth(calendarPosition)
+               currentTime = currentTime.withMonth(viewModel.calendarPosition.value!!)
                binding.cafeteriaCalendar.setup(
-                  currentTime.withMonth(calendarPosition),
-                  currentTime.withMonth(calendarPosition),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
                   WeekFields.of(Locale.getDefault()).firstDayOfWeek
                )
             } else {
-               calendarPosition -= 1
+               viewModel.minusPosition()
                binding.cafeteriaCalendar.setup(
-                  currentTime.withMonth(calendarPosition),
-                  currentTime.withMonth(calendarPosition),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
                   WeekFields.of(Locale.getDefault()).firstDayOfWeek
                )
-               currentTime = currentTime.withMonth(calendarPosition)
+               currentTime = currentTime.withMonth(viewModel.calendarPosition.value!!)
             }
          } else {
-            if (currentTime.year == YearMonth.now().year && calendarPosition > YearMonth.now().month.value) {
-               calendarPosition -= 1
+            if (currentTime.year == YearMonth.now().year && viewModel.calendarPosition.value!! > YearMonth.now().month.value) {
+               viewModel.minusPosition()
                binding.cafeteriaCalendar.setup(
-                  currentTime.withMonth(calendarPosition),
-                  currentTime.withMonth(calendarPosition),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
+                  currentTime.withMonth(viewModel.calendarPosition.value!!),
                   WeekFields.of(Locale.getDefault()).firstDayOfWeek
                )
-               currentTime = currentTime.withMonth(calendarPosition)
+               currentTime = currentTime.withMonth(viewModel.calendarPosition.value!!)
             }
          }
          binding.yearMonth.text = currentTime.format(formatter)
       }
 
       binding.calendarForward.setOnClickListener {
-         if (calendarPosition in 1..12) {
-            currentTime = currentTime.withMonth(calendarPosition)
+         if (viewModel.calendarPosition.value in 1..11) {
+            currentTime = currentTime.withMonth(viewModel.calendarPosition.value!!)
+            viewModel.plusPosition()
             binding.cafeteriaCalendar.setup(
-               currentTime.withMonth(calendarPosition),
-               currentTime.withMonth(calendarPosition),
+               currentTime.withMonth(viewModel.calendarPosition.value!!),
+               currentTime.withMonth(viewModel.calendarPosition.value!!),
                WeekFields.of(Locale.getDefault()).firstDayOfWeek
             )
-            calendarPosition += 1
+            currentTime = currentTime.plusMonths(1)
          } else {
-            calendarPosition = 1
+            viewModel.setPosition(1)
             currentTime = currentTime.plusYears(1)
-            currentTime = currentTime.withMonth(calendarPosition)
+            currentTime = currentTime.withMonth(viewModel.calendarPosition.value!!)
             binding.cafeteriaCalendar.setup(
-               currentTime.withMonth(calendarPosition),
-               currentTime.withMonth(calendarPosition),
+               currentTime.withMonth(viewModel.calendarPosition.value!!),
+               currentTime.withMonth(viewModel.calendarPosition.value!!),
                WeekFields.of(Locale.getDefault()).firstDayOfWeek
             )
          }

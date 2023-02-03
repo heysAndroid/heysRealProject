@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.heysrealprojcet.util.ChannelPreference
 import java.time.LocalDate
+import java.time.YearMonth
 
 class ChannelPeriodDialogViewModel : ViewModel() {
    var selectedList = arrayListOf<LocalDate>()
@@ -14,6 +15,9 @@ class ChannelPeriodDialogViewModel : ViewModel() {
 
    private val _isEnabled = MutableLiveData(false)
    val isEnabled: LiveData<Boolean> = _isEnabled
+
+   private val _calendarPosition = MutableLiveData(YearMonth.now().month.value)
+   val calendarPosition: LiveData<Int> = _calendarPosition
 
    fun updateSelectedDate(selectedDate: ArrayList<LocalDate>) {
       _selectedDate.value = selectedDate
@@ -26,5 +30,17 @@ class ChannelPeriodDialogViewModel : ViewModel() {
 
    fun unEnabled() {
       _isEnabled.value = false
+   }
+
+   fun plusPosition() {
+      _calendarPosition.value = _calendarPosition.value!! + 1
+   }
+
+   fun minusPosition() {
+      _calendarPosition.value = _calendarPosition.value!! - 1
+   }
+
+   fun setPosition(value: Int) {
+      _calendarPosition.value = value
    }
 }
