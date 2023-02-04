@@ -11,7 +11,7 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.ViewContainer
 import java.time.LocalDate
 
-class CafeteriaContainer(
+class ChannelPeriodCafeteriaContainer(
     view: View,
     private val calendarView: CalendarView,
     private val viewModel: ChannelPeriodDialogViewModel

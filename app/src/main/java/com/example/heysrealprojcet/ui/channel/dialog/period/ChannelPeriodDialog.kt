@@ -37,8 +37,6 @@ class ChannelPeriodDialog : DialogFragment() {
       dialog?.setCancelable(false)
 
       viewModel.calendarPosition.observe(viewLifecycleOwner) {
-         Log.e("태그", it.toString())
-         Log.e("태그", YearMonth.now().month.value.toString())
          if(currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
             binding.calendarBack.visibility = View.INVISIBLE
          } else {
@@ -112,11 +110,11 @@ class ChannelPeriodDialog : DialogFragment() {
          binding.yearMonth.text = currentTime.format(formatter)
       }
 
-      binding.cafeteriaCalendar.dayBinder = object : DayBinder<CafeteriaContainer> {
-         override fun create(view: View): CafeteriaContainer =
-            CafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
+      binding.cafeteriaCalendar.dayBinder = object : DayBinder<ChannelPeriodCafeteriaContainer> {
+         override fun create(view: View): ChannelPeriodCafeteriaContainer =
+            ChannelPeriodCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
 
-         override fun bind(container: CafeteriaContainer, day: CalendarDay) = container.bind(day)
+         override fun bind(container: ChannelPeriodCafeteriaContainer, day: CalendarDay) = container.bind(day)
       }
 
       viewModel.selectedDate.observe(viewLifecycleOwner) {
