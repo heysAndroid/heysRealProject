@@ -22,6 +22,9 @@ class ContestActivityFilterViewModel : ViewModel() {
    private val _calendarPosition = MutableLiveData(YearMonth.now().month.value)
    val calendarPosition: LiveData<Int> = _calendarPosition
 
+   private val _calendarDate = MutableLiveData<LocalDate>()
+   val calendarDate: LiveData<LocalDate> = _calendarDate
+
    fun plusPosition() {
       _calendarPosition.value = _calendarPosition.value!! + 1
    }
@@ -32,6 +35,10 @@ class ContestActivityFilterViewModel : ViewModel() {
 
    fun setPosition(value: Int) {
       _calendarPosition.value = value
+   }
+
+   fun setCalendarDate() {
+      _calendarDate.value = selectedDate
    }
 
    fun onClickInterest(v: View) {

@@ -1,13 +1,17 @@
 package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestActivityFilterFragmentBinding
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -22,7 +26,8 @@ class ContestActivityFilterFragment : Fragment() {
    private val interestViewModel: InterestViewModel by viewModels()
 
    private var currentTime = YearMonth.now()
-   private val formatter = DateTimeFormatter.ofPattern("yyyy년 M월")
+   private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
+   private val selectedFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일")
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,10 +47,23 @@ class ContestActivityFilterFragment : Fragment() {
       contestActivityViewModel.selectedDate
 
       contestActivityViewModel.calendarPosition.observe(viewLifecycleOwner) {
-         if(currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
+         if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
             binding.calendarBack.visibility = View.INVISIBLE
          } else {
             binding.calendarBack.visibility = View.VISIBLE
+         }
+      }
+
+      contestActivityViewModel.calendarDate.observe(viewLifecycleOwner) {
+         Log.e("태그", contestActivityViewModel.selectedDate.toString())
+         if (contestActivityViewModel.selectedDate != null) {
+            binding.tvDate.text = contestActivityViewModel.calendarDate.value!!.format(selectedFormatter)
+            binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_53c740))
+            binding.tvDate.setTypeface(null, Typeface.BOLD)
+         } else {
+            binding.tvDate.text = "선택해주세요"
+            binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
+            binding.tvDate.setTypeface(null, Typeface.NORMAL)
          }
       }
 
@@ -56,7 +74,7 @@ class ContestActivityFilterFragment : Fragment() {
          YearMonth.now(),
          WeekFields.of(Locale.getDefault()).firstDayOfWeek
       )
-      binding.yearMonth.text = currentTime.format(formatter)
+      binding.yearMonth.text = currentTime.format(calendarFormatter)
 
       binding.calendarBack.setOnClickListener {
          if (currentTime.year > YearMonth.now().year) {
@@ -80,7 +98,8 @@ class ContestActivityFilterFragment : Fragment() {
             }
          } else {
             if (currentTime.year == YearMonth.now().year &&
-               contestActivityViewModel.calendarPosition.value!! > YearMonth.now().month.value) {
+               contestActivityViewModel.calendarPosition.value!! > YearMonth.now().month.value
+            ) {
                contestActivityViewModel.minusPosition()
                binding.cafeteriaCalendar.setup(
                   currentTime.withMonth(contestActivityViewModel.calendarPosition.value!!),
@@ -90,7 +109,7 @@ class ContestActivityFilterFragment : Fragment() {
                currentTime = currentTime.withMonth(contestActivityViewModel.calendarPosition.value!!)
             }
          }
-         binding.yearMonth.text = currentTime.format(formatter)
+         binding.yearMonth.text = currentTime.format(calendarFormatter)
       }
 
       binding.calendarForward.setOnClickListener {
@@ -113,7 +132,7 @@ class ContestActivityFilterFragment : Fragment() {
                WeekFields.of(Locale.getDefault()).firstDayOfWeek
             )
          }
-         binding.yearMonth.text = currentTime.format(formatter)
+         binding.yearMonth.text = currentTime.format(calendarFormatter)
       }
 
       binding.cafeteriaCalendar.dayBinder = object : DayBinder<ContestActivityFilterCafeteriaContainer> {
