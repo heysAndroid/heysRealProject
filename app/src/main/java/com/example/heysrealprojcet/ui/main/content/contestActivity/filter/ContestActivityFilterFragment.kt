@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestActivityFilterFragmentBinding
@@ -20,7 +19,7 @@ import java.util.*
 
 class ContestActivityFilterFragment : Fragment() {
    private lateinit var binding: ContestActivityFilterFragmentBinding
-   private val contestActivityViewModel: ContestActivityFilterViewModel by viewModels()
+   private lateinit var contestActivityViewModel: ContestActivityFilterViewModel
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -30,6 +29,7 @@ class ContestActivityFilterFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = ContestActivityFilterFragmentBinding.inflate(inflater, container, false)
+      contestActivityViewModel = ContestActivityFilterViewModel(binding.cafeteriaCalendar)
       binding.vm = contestActivityViewModel
       return binding.root
    }

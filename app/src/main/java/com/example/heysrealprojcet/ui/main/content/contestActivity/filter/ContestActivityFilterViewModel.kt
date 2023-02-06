@@ -6,11 +6,12 @@ import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kizitonwose.calendarview.CalendarView
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.LocalDate
 import java.time.YearMonth
 
-class ContestActivityFilterViewModel : ViewModel() {
+class ContestActivityFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
 
    private var choiceInterest: View? = null
    private val interestMax = 1
@@ -79,11 +80,14 @@ class ContestActivityFilterViewModel : ViewModel() {
 
    fun onClickInit() {
       if (choiceInterest != null) {
+         choiceInterest!!.isSelected = false
          (choiceInterest as Button).setTypeface(null, Typeface.NORMAL)
       }
       interestTotal.value = 0
       interestArray.clear()
 
-      // TODO 달력, 선택해주세요
+      selectedDate = null
+      _calendarDate.value = selectedDate
+      calendarView.notifyCalendarChanged()
    }
 }
