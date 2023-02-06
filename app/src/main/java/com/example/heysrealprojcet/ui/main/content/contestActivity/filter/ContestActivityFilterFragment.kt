@@ -2,7 +2,6 @@ package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestActivityFilterFragmentBinding
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -23,7 +21,6 @@ import java.util.*
 class ContestActivityFilterFragment : Fragment() {
    private lateinit var binding: ContestActivityFilterFragmentBinding
    private val contestActivityViewModel: ContestActivityFilterViewModel by viewModels()
-   private val interestViewModel: InterestViewModel by viewModels()
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -34,7 +31,6 @@ class ContestActivityFilterFragment : Fragment() {
    ): View? {
       binding = ContestActivityFilterFragmentBinding.inflate(inflater, container, false)
       binding.vm = contestActivityViewModel
-      binding.vm2 = interestViewModel
       return binding.root
    }
 
@@ -55,7 +51,6 @@ class ContestActivityFilterFragment : Fragment() {
       }
 
       contestActivityViewModel.calendarDate.observe(viewLifecycleOwner) {
-         Log.e("태그", contestActivityViewModel.selectedDate.toString())
          if (contestActivityViewModel.selectedDate != null) {
             binding.tvDate.text = contestActivityViewModel.calendarDate.value!!.format(selectedFormatter)
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_53c740))

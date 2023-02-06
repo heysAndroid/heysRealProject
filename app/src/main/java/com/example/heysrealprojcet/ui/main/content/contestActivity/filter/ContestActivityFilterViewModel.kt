@@ -12,8 +12,8 @@ import java.time.YearMonth
 
 class ContestActivityFilterViewModel : ViewModel() {
 
-   private var choiceInterest = mutableListOf<View>()
-   private val interestMax = 3
+   private var choiceInterest: View? = null
+   private val interestMax = 1
    private var interestTotal = MutableStateFlow(0)
    private val interestArray = mutableListOf<String>()
 
@@ -48,13 +48,12 @@ class ContestActivityFilterViewModel : ViewModel() {
 
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
-            choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
          } else {
-            choiceInterest.add(v)
+            choiceInterest = v
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             interestTotal.value += 1
@@ -62,22 +61,28 @@ class ContestActivityFilterViewModel : ViewModel() {
          }
       } else {
          if (v.isSelected) {
-            choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
+         } else {
+            choiceInterest?.isSelected = false
+            (choiceInterest as Button).setTypeface(null, Typeface.NORMAL)
+            interestArray.remove(interestArray[0])
+            v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
+            choiceInterest = v
+            interestArray.add(item)
          }
       }
    }
 
    fun onClickInit() {
-      for (i in choiceInterest.indices) {
-         choiceInterest[i].isSelected = false
-         (choiceInterest[i] as Button).setTypeface(null, Typeface.NORMAL)
+      if (choiceInterest != null) {
+         (choiceInterest as Button).setTypeface(null, Typeface.NORMAL)
       }
       interestTotal.value = 0
-      choiceInterest.clear()
+      interestArray.clear()
 
       // TODO 달력, 선택해주세요
    }
