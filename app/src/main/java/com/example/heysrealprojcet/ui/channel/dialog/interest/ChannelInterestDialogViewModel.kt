@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ChannelInterestDialogViewModel : ViewModel() {
-
    private val _selectedInterest = MutableLiveData<String>()
    val selectedInterest: LiveData<String> = _selectedInterest
 

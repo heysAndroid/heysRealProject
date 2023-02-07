@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.heysrealprojcet.databinding.ChannelInterestDialogBinding
@@ -29,22 +30,18 @@ class ChannelInterestDialog : DialogFragment() {
       dialog?.setCancelable(false)
 
       previousSelectedInterest()
-      binding.selectText.text = "${ChannelPreference.channelInterest.size}/3"
 
       viewModel.selectedInterest.observe(viewLifecycleOwner) {
          when (it) {
             ChannelInterest.Planning.interest -> {
-               if (!binding.btnPlanning.isSelected && ChannelPreference.channelInterest.size != 3) selectPlanningButton()
-               else unselectPlanningButton()
+               if (!binding.btnPlanning.isSelected) selectButton(binding.btnPlanning)
+               else unselectButton(binding.btnPlanning)
             }
             ChannelInterest.Design.interest -> {
                if (!binding.btnDesign.isSelected && ChannelPreference.channelInterest.size != 3) selectDesignButton()
                else unselectDesignButton()
             }
-            ChannelInterest.It.interest -> {
-               if (!binding.btnIt.isSelected && ChannelPreference.channelInterest.size != 3) selectItButton()
-               else unselectItButton()
-            }
+
             ChannelInterest.Economics.interest -> {
                if (!binding.btnEconomics.isSelected && ChannelPreference.channelInterest.size != 3) selectEconomicsButton()
                else unselectEconomicsButton()
@@ -56,10 +53,6 @@ class ChannelInterestDialog : DialogFragment() {
             ChannelInterest.Language.interest -> {
                if (!binding.btnLanguage.isSelected && ChannelPreference.channelInterest.size != 3) selectLanguageButton()
                else unselectLanguageButton()
-            }
-            ChannelInterest.Education.interest -> {
-               if (!binding.btnEducation.isSelected && ChannelPreference.channelInterest.size != 3) selectEducationButton()
-               else unselectEducationButton()
             }
             ChannelInterest.Public.interest -> {
                if (!binding.btnPublic.isSelected && ChannelPreference.channelInterest.size != 3) selectPublicButton()
@@ -81,10 +74,7 @@ class ChannelInterestDialog : DialogFragment() {
                if (!binding.btnMarketing.isSelected && ChannelPreference.channelInterest.size != 3) selectMarketingButton()
                else unselectMarketingButton()
             }
-            ChannelInterest.Etc.interest -> {
-               if (!binding.btnEtc.isSelected && ChannelPreference.channelInterest.size != 3) selectEtcButton()
-               else unselectEtcButton()
-            }
+
             else -> {}
          }
       }
@@ -94,7 +84,6 @@ class ChannelInterestDialog : DialogFragment() {
             true -> ChannelPreference.channelInterest.add(viewModel.selectedInterest.value.toString())
             false -> ChannelPreference.channelInterest.remove(viewModel.selectedInterest.value.toString())
          }
-         binding.selectText.text = "${ChannelPreference.channelInterest.size}/3"
          Log.e("태그", ChannelPreference.channelInterest.toString())
       }
 
@@ -107,8 +96,19 @@ class ChannelInterestDialog : DialogFragment() {
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
-
       return binding.root
+   }
+
+   private fun selectButton(view: View) {
+      val button = view as Button
+      button.isSelected = true
+      button.setTypeface(null, Typeface.BOLD)
+   }
+
+   private fun unselectButton(view: View) {
+      val button = view as Button
+      button.isSelected = false
+      button.setTypeface(null, Typeface.NORMAL)
    }
 
    private fun unselectBusinessButton() {
@@ -119,11 +119,6 @@ class ChannelInterestDialog : DialogFragment() {
    private fun unselectPublicButton() {
       binding.btnPublic.isSelected = false
       binding.btnPublic.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectEducationButton() {
-      binding.btnEducation.isSelected = false
-      binding.btnEducation.setTypeface(null, Typeface.NORMAL)
    }
 
    private fun unselectLanguageButton() {
@@ -151,19 +146,9 @@ class ChannelInterestDialog : DialogFragment() {
       binding.btnMarketing.setTypeface(null, Typeface.NORMAL)
    }
 
-   private fun unselectEtcButton() {
-      binding.btnEtc.isSelected = false
-      binding.btnEtc.setTypeface(null, Typeface.NORMAL)
-   }
-
    private fun unselectEconomicsButton() {
       binding.btnEconomics.isSelected = false
       binding.btnEconomics.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectItButton() {
-      binding.btnIt.isSelected = false
-      binding.btnIt.setTypeface(null, Typeface.NORMAL)
    }
 
    private fun unselectDesignButton() {
@@ -174,11 +159,6 @@ class ChannelInterestDialog : DialogFragment() {
    private fun unselectPlanningButton() {
       binding.btnPlanning.isSelected = false
       binding.btnPlanning.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun selectEtcButton() {
-      binding.btnEtc.isSelected = true
-      binding.btnEtc.setTypeface(null, Typeface.BOLD)
    }
 
    private fun selectMarketingButton() {
@@ -206,11 +186,6 @@ class ChannelInterestDialog : DialogFragment() {
       binding.btnPublic.setTypeface(null, Typeface.BOLD)
    }
 
-   private fun selectEducationButton() {
-      binding.btnEducation.isSelected = true
-      binding.btnEducation.setTypeface(null, Typeface.NORMAL)
-   }
-
    private fun selectLanguageButton() {
       binding.btnLanguage.isSelected = true
       binding.btnLanguage.setTypeface(null, Typeface.NORMAL)
@@ -226,9 +201,9 @@ class ChannelInterestDialog : DialogFragment() {
       binding.btnEconomics.setTypeface(null, Typeface.BOLD)
    }
 
-   private fun selectItButton() {
-      binding.btnIt.isSelected = true
-      binding.btnIt.setTypeface(null, Typeface.BOLD)
+   private fun selectITButton() {
+      binding.btnIT.isSelected = true
+      binding.btnIT.setTypeface(null, Typeface.BOLD)
    }
 
    private fun selectDesignButton() {
@@ -251,17 +226,14 @@ class ChannelInterestDialog : DialogFragment() {
          when (ChannelPreference.channelInterest[i]) {
             ChannelInterest.Planning.interest -> selectPlanningButton()
             ChannelInterest.Design.interest -> selectDesignButton()
-            ChannelInterest.It.interest -> selectItButton()
             ChannelInterest.Economics.interest -> selectEconomicsButton()
             ChannelInterest.Data.interest -> selectDataButton()
             ChannelInterest.Language.interest -> selectLanguageButton()
-            ChannelInterest.Education.interest -> selectEducationButton()
             ChannelInterest.Public.interest -> selectPublicButton()
             ChannelInterest.Business.interest -> selectBusinessButton()
             ChannelInterest.Engineering.interest -> selectEngineeringButton()
             ChannelInterest.MediaContents.interest -> selectMediaContentsButton()
             ChannelInterest.Marketing.interest -> selectMarketingButton()
-            ChannelInterest.Etc.interest -> selectEtcButton()
             else -> {}
          }
       }
