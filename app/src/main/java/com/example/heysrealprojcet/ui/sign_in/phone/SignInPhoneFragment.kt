@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.CustomSnackBar
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPhoneFragmentBinding
 import com.example.heysrealprojcet.model.Phone
@@ -63,14 +64,15 @@ class SignInPhoneFragment : Fragment() {
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
 
       viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if(it) CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
+         if (it) CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
       }
    }
 
    private fun requestCheckPhoneNumber() {
       viewModel.checkPhoneNumber(Phone(UserPreference.phoneNumber))
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      viewModel.response.observe(viewLifecycleOwner, EventObserver { response ->
          val alert = AlertDialog.Builder(requireContext())
+
          when (response) {
             is NetworkResult.Success -> {
                if (response.data?.isUserExisted == true) {
@@ -88,7 +90,7 @@ class SignInPhoneFragment : Fragment() {
                alert.setTitle("로딩 중").setMessage("전화번호 체크가 지연되고 있습니다.").create().show()
             }
          }
-      }
+      })
    }
 
    private fun goToPassword() {
