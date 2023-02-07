@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,22 +36,30 @@ class ChannelPurposeDialog : DialogFragment() {
       binding.lifecycleOwner = this
 
       previousSelectedPurpose()
-      viewModel.selectedPurpose.observe(viewLifecycleOwner) {
+      viewModel.selectedPurpose.observe(viewLifecycleOwner) { array ->
          unselectAllButton()
-         when (it) {
-            ChannelPurpose.Capability.purpose -> selectCapabilityButton()
-            ChannelPurpose.Networking.purpose -> selectNetworkingButton()
-            ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
-            ChannelPurpose.Skill.purpose -> selectSkillButton()
-            ChannelPurpose.Experience.purpose -> selectExperienceButton()
-            else -> selectPortfolioButton()
+         array.forEach {
+            when (it) {
+               ChannelPurpose.Capability.purpose -> selectCapabilityButton()
+               ChannelPurpose.Networking.purpose -> selectNetworkingButton()
+               ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
+               ChannelPurpose.Skill.purpose -> selectSkillButton()
+               ChannelPurpose.Experience.purpose -> selectExperienceButton()
+               else -> selectPortfolioButton()
+            }
          }
       }
 
       binding.btnSave.setOnClickListener {
-         ChannelPreference.channelPurpose = viewModel.selectedPurpose.value.toString()
+         viewModel.selectedPurpose.value?.forEach {
+            ChannelPreference.channelPurpose += it
+         }
          // 채널 정보 fragment 로 선택값 전달
-         listener.onClick("${ChannelPreference.channelPurpose}")
+         if (viewModel.selectedNum.value == 1) {
+            listener.onClick("${ChannelPreference.channelPurpose}")
+         } else {
+            listener.onClick("${viewModel.selectedPurpose.value?.first()} 외 1개")
+         }
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
@@ -109,6 +118,7 @@ class ChannelPurposeDialog : DialogFragment() {
    }
 
    private fun previousSelectedPurpose() {
+      Log.w("previous: ", ChannelPreference.channelPurpose)
       when (ChannelPreference.channelPurpose) {
          ChannelPurpose.Skill.purpose -> selectSkillButton()
          ChannelPurpose.Networking.purpose -> selectNetworkingButton()

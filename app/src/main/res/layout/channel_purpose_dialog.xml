@@ -50,6 +50,14 @@
             android:text="같은 목적을 Hey들과 함께 목표를 \n이루어 보세요."
             android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{String.valueOf(vm.selectedNum) + `/2`}"
+            android:textColor="@color/color_53c740"
+            android:textSize="16sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
