@@ -20,6 +20,11 @@ object ChannelPreference : KotprefModel() {
    var channelPurpose by stringPref()
 
    /*
+   채널목적 배열
+    */
+   var channelPurposeArray by gsonPref(arrayListOf<String>())
+
+   /*
    활동 형태
     */
    var channelForm by stringPref()

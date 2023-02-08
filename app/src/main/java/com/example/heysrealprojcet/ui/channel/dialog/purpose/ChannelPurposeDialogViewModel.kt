@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.channel.dialog.purpose
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.*
+import com.example.heysrealprojcet.util.ChannelPreference
 import kotlinx.coroutines.launch
 
 class ChannelPurposeDialogViewModel : ViewModel() {
@@ -12,7 +13,7 @@ class ChannelPurposeDialogViewModel : ViewModel() {
    private val _isEnabled = MutableLiveData(false)
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private val _selectedNum = MutableLiveData(0)
+   private val _selectedNum = MutableLiveData(ChannelPreference.channelPurposeArray.size)
    val selectedNum: LiveData<Int> = _selectedNum
 
    init {
@@ -21,6 +22,7 @@ class ChannelPurposeDialogViewModel : ViewModel() {
             isSelected()
          }
       }
+      _selectedPurpose.value = ChannelPreference.channelPurposeArray
    }
 
    private fun isSelected() {
@@ -33,13 +35,13 @@ class ChannelPurposeDialogViewModel : ViewModel() {
 
       if (selectedPurpose.value?.contains(text) == true) {
          _selectedPurpose.value?.remove(text)
-         _selectedPurpose.value = _selectedPurpose.value
-         _selectedNum.value = _selectedNum.value?.minus(1)
+         _selectedPurpose.apply { postValue(value) }
+         _selectedNum.postValue(_selectedNum.value?.minus(1))
       } else {
          if (selectedNum.value!! < 2) {
             _selectedPurpose.value?.add(text)
-            _selectedPurpose.value = _selectedPurpose.value
-            _selectedNum.value = _selectedNum.value?.plus(1)
+            _selectedPurpose.apply { postValue(value) }
+            _selectedNum.postValue(_selectedNum.value?.plus(1))
          }
       }
    }

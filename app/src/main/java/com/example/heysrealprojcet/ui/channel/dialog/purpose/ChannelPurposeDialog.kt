@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,15 +26,12 @@ class ChannelPurposeDialog : DialogFragment() {
       dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
       dialog?.setCancelable(false)
-
       return binding.root
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
-      previousSelectedPurpose()
       viewModel.selectedPurpose.observe(viewLifecycleOwner) { array ->
          unselectAllButton()
          array.forEach {
@@ -51,12 +47,9 @@ class ChannelPurposeDialog : DialogFragment() {
       }
 
       binding.btnSave.setOnClickListener {
-         viewModel.selectedPurpose.value?.forEach {
-            ChannelPreference.channelPurpose += it
-         }
          // 채널 정보 fragment 로 선택값 전달
          if (viewModel.selectedNum.value == 1) {
-            listener.onClick("${ChannelPreference.channelPurpose}")
+            listener.onClick("${viewModel.selectedPurpose.value?.first()}")
          } else {
             listener.onClick("${viewModel.selectedPurpose.value?.first()} 외 1개")
          }
@@ -118,15 +111,16 @@ class ChannelPurposeDialog : DialogFragment() {
    }
 
    private fun previousSelectedPurpose() {
-      Log.w("previous: ", ChannelPreference.channelPurpose)
-      when (ChannelPreference.channelPurpose) {
-         ChannelPurpose.Skill.purpose -> selectSkillButton()
-         ChannelPurpose.Networking.purpose -> selectNetworkingButton()
-         ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
-         ChannelPurpose.Capability.purpose -> selectCapabilityButton()
-         ChannelPurpose.Experience.purpose -> selectExperienceButton()
-         ChannelPurpose.Portfolio.purpose -> selectPortfolioButton()
-         else -> {}
+      ChannelPreference.channelPurposeArray.forEach {
+         when (it) {
+            ChannelPurpose.Skill.purpose -> selectSkillButton()
+            ChannelPurpose.Networking.purpose -> selectNetworkingButton()
+            ChannelPurpose.JobSeeking.purpose -> selectJobSeekingButton()
+            ChannelPurpose.Capability.purpose -> selectCapabilityButton()
+            ChannelPurpose.Experience.purpose -> selectExperienceButton()
+            ChannelPurpose.Portfolio.purpose -> selectPortfolioButton()
+            else -> {}
+         }
       }
    }
 
