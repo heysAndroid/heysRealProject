@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,75 +27,55 @@ class ChannelInterestDialog : DialogFragment() {
       dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
       dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
       dialog?.setCancelable(false)
+      return binding.root
+   }
 
-      previousSelectedInterest()
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+      binding.lifecycleOwner = this
 
-      viewModel.selectedInterest.observe(viewLifecycleOwner) {
-         when (it) {
-            ChannelInterest.Planning.interest -> {
-               if (!binding.btnPlanning.isSelected) selectButton(binding.btnPlanning)
-               else unselectButton(binding.btnPlanning)
+      viewModel.selectedInterest.observe(viewLifecycleOwner) { array ->
+         unselectAllButton()
+         array.forEach {
+            when (it) {
+               ChannelInterest.Planning.interest -> selectButton(binding.btnPlanning)
+               ChannelInterest.Design.interest -> selectButton(binding.btnDesign)
+               ChannelInterest.Programming.interest -> selectButton(binding.btnProgramming)
+               ChannelInterest.IT.interest -> selectButton(binding.btnIT)
+               ChannelInterest.Data.interest -> selectButton(binding.btnData)
+               ChannelInterest.Game.interest -> selectButton(binding.btnGame)
+               ChannelInterest.Marketing.interest -> selectButton(binding.btnMarketing)
+               ChannelInterest.Business.interest -> selectButton(binding.btnBusiness)
+               ChannelInterest.Economics.interest -> selectButton(binding.btnEconomics)
+               ChannelInterest.Engineering.interest -> selectButton(binding.btnEngineering)
+               ChannelInterest.Art.interest -> selectButton(binding.btnArt)
+               ChannelInterest.Novel.interest -> selectButton(binding.btnNovel)
+               ChannelInterest.Lifestyle.interest -> selectButton(binding.btnLifestyle)
+               ChannelInterest.Picture.interest -> selectButton(binding.btnPicture)
+               ChannelInterest.Culture.interest -> selectButton(binding.btnCulture)
+               ChannelInterest.Travel.interest -> selectButton(binding.btnTravel)
+               ChannelInterest.Environment.interest -> selectButton(binding.btnEnvironment)
+               ChannelInterest.Language.interest -> selectButton(binding.btnLanguage)
+               ChannelInterest.MediaContents.interest -> selectButton(binding.btnMediaContents)
+               ChannelInterest.Paper.interest -> selectButton(binding.btnPaper)
+               ChannelInterest.Sports.interest -> selectButton(binding.btnSports)
+               ChannelInterest.Dance.interest -> selectButton(binding.btnDance)
+               ChannelInterest.Public.interest -> selectButton(binding.btnPublic)
+               else -> {}
             }
-            ChannelInterest.Design.interest -> {
-               if (!binding.btnDesign.isSelected && ChannelPreference.channelInterest.size != 3) selectDesignButton()
-               else unselectDesignButton()
-            }
-
-            ChannelInterest.Economics.interest -> {
-               if (!binding.btnEconomics.isSelected && ChannelPreference.channelInterest.size != 3) selectEconomicsButton()
-               else unselectEconomicsButton()
-            }
-            ChannelInterest.Data.interest -> {
-               if (!binding.btnData.isSelected && ChannelPreference.channelInterest.size != 3) selectDataButton()
-               else unselectDataButton()
-            }
-            ChannelInterest.Language.interest -> {
-               if (!binding.btnLanguage.isSelected && ChannelPreference.channelInterest.size != 3) selectLanguageButton()
-               else unselectLanguageButton()
-            }
-            ChannelInterest.Public.interest -> {
-               if (!binding.btnPublic.isSelected && ChannelPreference.channelInterest.size != 3) selectPublicButton()
-               else unselectPublicButton()
-            }
-            ChannelInterest.Business.interest -> {
-               if (!binding.btnBusiness.isSelected && ChannelPreference.channelInterest.size != 3) selectBusinessButton()
-               else unselectBusinessButton()
-            }
-            ChannelInterest.Engineering.interest -> {
-               if (!binding.btnEngineering.isSelected && ChannelPreference.channelInterest.size != 3) selectEngineeringButton()
-               else unselectEngineeringButton()
-            }
-            ChannelInterest.MediaContents.interest -> {
-               if (!binding.btnMediaContents.isSelected && ChannelPreference.channelInterest.size != 3) selectMediaContentsButton()
-               else unselectMediaContentsButton()
-            }
-            ChannelInterest.Marketing.interest -> {
-               if (!binding.btnMarketing.isSelected && ChannelPreference.channelInterest.size != 3) selectMarketingButton()
-               else unselectMarketingButton()
-            }
-
-            else -> {}
          }
-      }
-
-      viewModel.isSelected.observe(viewLifecycleOwner) {
-         when (it) {
-            true -> ChannelPreference.channelInterest.add(viewModel.selectedInterest.value.toString())
-            false -> ChannelPreference.channelInterest.remove(viewModel.selectedInterest.value.toString())
-         }
-         Log.e("태그", ChannelPreference.channelInterest.toString())
       }
 
       binding.btnSave.setOnClickListener {
-         when (ChannelPreference.channelInterest.size) {
-            1 -> listener.onClick("${ChannelPreference.channelInterest[0]}")
-            2 -> listener.onClick("${ChannelPreference.channelInterest[0]} 외 1개")
-            3 -> listener.onClick("${ChannelPreference.channelInterest[0]} 외 2개")
+         val size = ChannelPreference.channelInterestArray.size
+         if (size == 1) {
+            listener.onClick("${ChannelPreference.channelInterestArray[0]}")
+         } else {
+            listener.onClick("${ChannelPreference.channelInterestArray[0]} 외 ${size - 1}개")
          }
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }
-      return binding.root
    }
 
    private fun selectButton(view: View) {
@@ -111,132 +90,30 @@ class ChannelInterestDialog : DialogFragment() {
       button.setTypeface(null, Typeface.NORMAL)
    }
 
-   private fun unselectBusinessButton() {
-      binding.btnBusiness.isSelected = false
-      binding.btnBusiness.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectPublicButton() {
-      binding.btnPublic.isSelected = false
-      binding.btnPublic.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectLanguageButton() {
-      binding.btnLanguage.isSelected = false
-      binding.btnLanguage.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectDataButton() {
-      binding.btnData.isSelected = false
-      binding.btnData.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectEngineeringButton() {
-      binding.btnEngineering.isSelected = false
-      binding.btnEngineering.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectMediaContentsButton() {
-      binding.btnMediaContents.isSelected = false
-      binding.btnMediaContents.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectMarketingButton() {
-      binding.btnMarketing.isSelected = false
-      binding.btnMarketing.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectEconomicsButton() {
-      binding.btnEconomics.isSelected = false
-      binding.btnEconomics.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectDesignButton() {
-      binding.btnDesign.isSelected = false
-      binding.btnDesign.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun unselectPlanningButton() {
-      binding.btnPlanning.isSelected = false
-      binding.btnPlanning.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun selectMarketingButton() {
-      binding.btnMarketing.isSelected = true
-      binding.btnMarketing.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectMediaContentsButton() {
-      binding.btnMediaContents.isSelected = true
-      binding.btnMediaContents.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectEngineeringButton() {
-      binding.btnEngineering.isSelected = true
-      binding.btnEngineering.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectBusinessButton() {
-      binding.btnBusiness.isSelected = true
-      binding.btnBusiness.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectPublicButton() {
-      binding.btnPublic.isSelected = true
-      binding.btnPublic.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectLanguageButton() {
-      binding.btnLanguage.isSelected = true
-      binding.btnLanguage.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun selectDataButton() {
-      binding.btnData.isSelected = true
-      binding.btnData.setTypeface(null, Typeface.NORMAL)
-   }
-
-   private fun selectEconomicsButton() {
-      binding.btnEconomics.isSelected = true
-      binding.btnEconomics.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectITButton() {
-      binding.btnIT.isSelected = true
-      binding.btnIT.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectDesignButton() {
-      binding.btnDesign.isSelected = true
-      binding.btnDesign.setTypeface(null, Typeface.BOLD)
-   }
-
-   private fun selectPlanningButton() {
-      binding.btnPlanning.isSelected = true
-      binding.btnPlanning.setTypeface(null, Typeface.BOLD)
-   }
-
-   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      super.onViewCreated(view, savedInstanceState)
-      binding.lifecycleOwner = this
-   }
-
-   private fun previousSelectedInterest() {
-      for (i in ChannelPreference.channelInterest.indices) {
-         when (ChannelPreference.channelInterest[i]) {
-            ChannelInterest.Planning.interest -> selectPlanningButton()
-            ChannelInterest.Design.interest -> selectDesignButton()
-            ChannelInterest.Economics.interest -> selectEconomicsButton()
-            ChannelInterest.Data.interest -> selectDataButton()
-            ChannelInterest.Language.interest -> selectLanguageButton()
-            ChannelInterest.Public.interest -> selectPublicButton()
-            ChannelInterest.Business.interest -> selectBusinessButton()
-            ChannelInterest.Engineering.interest -> selectEngineeringButton()
-            ChannelInterest.MediaContents.interest -> selectMediaContentsButton()
-            ChannelInterest.Marketing.interest -> selectMarketingButton()
-            else -> {}
-         }
-      }
+   private fun unselectAllButton() {
+      unselectButton(binding.btnPlanning)
+      unselectButton(binding.btnDesign)
+      unselectButton(binding.btnProgramming)
+      unselectButton(binding.btnIT)
+      unselectButton(binding.btnData)
+      unselectButton(binding.btnGame)
+      unselectButton(binding.btnMarketing)
+      unselectButton(binding.btnBusiness)
+      unselectButton(binding.btnEconomics)
+      unselectButton(binding.btnEngineering)
+      unselectButton(binding.btnArt)
+      unselectButton(binding.btnNovel)
+      unselectButton(binding.btnLifestyle)
+      unselectButton(binding.btnPicture)
+      unselectButton(binding.btnCulture)
+      unselectButton(binding.btnTravel)
+      unselectButton(binding.btnEnvironment)
+      unselectButton(binding.btnLanguage)
+      unselectButton(binding.btnMediaContents)
+      unselectButton(binding.btnPaper)
+      unselectButton(binding.btnSports)
+      unselectButton(binding.btnDance)
+      unselectButton(binding.btnPublic)
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {
