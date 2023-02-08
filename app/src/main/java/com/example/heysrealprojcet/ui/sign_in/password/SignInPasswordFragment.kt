@@ -88,7 +88,7 @@ class SignInPasswordFragment : Fragment() {
                alert.setTitle("로그인 성공")
                   .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
                val token = response.headers()["Authorization"]?.split(" ")?.last()
-               Log.w("Header: ", token.toString())
+               //Log.w("Header: ", token.toString())
                token.let { UserPreference.accessToken = it.toString() }
             }
 
