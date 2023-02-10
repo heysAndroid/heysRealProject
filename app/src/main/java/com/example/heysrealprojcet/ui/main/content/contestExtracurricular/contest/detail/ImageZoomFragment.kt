@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,6 +24,6 @@ class ContestDetailLookFragment : Fragment() {
    }
 
    private fun goToDetail() {
-      findNavController().navigate(R.id.action_contestDetailLookFragment_to_contestActivityDetailFragment)
+      findNavController().navigate(R.id.action_contestDetailLookFragment_to_contestExtracurricularDetailFragment)
    }
 }

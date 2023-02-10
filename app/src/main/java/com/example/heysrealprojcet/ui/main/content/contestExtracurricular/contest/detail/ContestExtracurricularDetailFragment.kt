@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ContestActivityDetailFragmentBinding
+import com.example.heysrealprojcet.databinding.ContestExtracurricularDetailFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 
-class ContestActivityDetailFragment : Fragment() {
-   private lateinit var binding: ContestActivityDetailFragmentBinding
-   private val viewModel: ContestActivityDetailViewModel by viewModels()
+class ContestExtracurricularDetailFragment : Fragment() {
+   private lateinit var binding: ContestExtracurricularDetailFragmentBinding
+   private val viewModel: ContestExtracurricularDetailViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class ContestActivityDetailFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = ContestActivityDetailFragmentBinding.inflate(inflater, container, false)
+      binding = ContestExtracurricularDetailFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -56,13 +56,13 @@ class ContestActivityDetailFragment : Fragment() {
 //      }
 
       viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if(it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+         if (it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
       }
 
       viewModel.isSelected.observe(viewLifecycleOwner, Observer {
          binding.bookmarkButton.isSelected = it
 
-         if(viewModel.isSelected.value == true) {
+         if (viewModel.isSelected.value == true) {
             viewModel.showSnackBar()
          }
       })
@@ -76,10 +76,10 @@ class ContestActivityDetailFragment : Fragment() {
    }
 
    private fun goToLook() {
-      findNavController().navigate(R.id.action_contestActivityDetailFragment_to_contestDetailLookFragment)
+      findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_contestDetailLookFragment)
    }
 
    private fun goToHeys() {
-      findNavController().navigate(R.id.action_contestActivityDetailFragment_to_channelListFragment)
+      findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_channelListFragment)
    }
 }

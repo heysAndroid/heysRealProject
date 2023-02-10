@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_f8f9fc"
     android:orientation="vertical"
-    tools:context=".ui.main.content.contestActivity.activity.ActivityListFragment">
+    tools:context=".ui.main.content.contestExtracurricular.extracurricular.ExtracurricularListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

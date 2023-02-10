@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter
 
 import android.graphics.Typeface
 import android.view.View
@@ -11,10 +11,10 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.ViewContainer
 import java.time.LocalDate
 
-class ContestActivityFilterCafeteriaContainer(
+class ContestExtracurricularFilterCafeteriaContainer(
    view: View,
    private val calendarView: CalendarView,
-   private val viewModel: ContestActivityFilterViewModel
+   private val viewModel: ContestExtracurricularFilterViewModel
 ) : ViewContainer(view) {
 
    private val bind = ItemCalendarDayBinding.bind(view)

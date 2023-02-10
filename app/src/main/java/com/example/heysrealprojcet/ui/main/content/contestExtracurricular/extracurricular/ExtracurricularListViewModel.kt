@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.activity
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ActivityListViewModel @Inject constructor(
+class ExtracurricularListViewModel @Inject constructor(
    private val pingRepository: PingRepository) : BaseViewModel() {
 
    private val _response: MutableLiveData<NetworkResult<PingResponse>> = MutableLiveData()

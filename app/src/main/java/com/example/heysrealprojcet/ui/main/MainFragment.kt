@@ -18,15 +18,15 @@ import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
-   private lateinit var activityRecyclerViewAdapter: activityRecyclerViewAdapter
+   private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
    private lateinit var contestList: MutableList<ContestType>
-   private lateinit var activityList: MutableList<ExtracurricularType>
+   private lateinit var extracurricularList: MutableList<ExtracurricularType>
    private var position = 0
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +57,11 @@ class MainFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      makeActivityList()
+      makeExtracurricularList()
       makeContestList()
 
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToContest() }
-      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToActivity() }
+      extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -69,11 +69,11 @@ class MainFragment : Fragment() {
          MarginItemDecoration(
             resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
 
-      binding.activityList.adapter = activityRecyclerViewAdapter
-      binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.activityList.addItemDecoration(
+      binding.extracurricularList.adapter = extracurricularRecyclerViewAdapter
+      binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.extracurricularList.addItemDecoration(
          MarginItemDecoration(
-            resources.getDimension(R.dimen.activityList_item_margin).toInt(), activityList.lastIndex))
+            resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
 
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
@@ -104,8 +104,8 @@ class MainFragment : Fragment() {
       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
    }
 
-   private fun makeActivityList() {
-      activityList = mutableListOf(
+   private fun makeExtracurricularList() {
+      extracurricularList = mutableListOf(
          ExtracurricularType("취향저격", "내 관심분야별", R.drawable.ic_interested),
          ExtracurricularType("서둘러요!", "마감 임박!", R.drawable.ic_hurry),
          ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding),
@@ -129,7 +129,7 @@ class MainFragment : Fragment() {
    }
 
    private fun goToActivity() {
-      findNavController().navigate(R.id.action_mainFragment_to_activityListFragment)
+      findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment)
    }
 }
 

@@ -1,20 +1,20 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heysrealprojcet.databinding.ContestActivityItemViewBinding
+import com.example.heysrealprojcet.databinding.ContestExtracurricularItemViewBinding
 import com.example.heysrealprojcet.model.Contest
 
 class ContestItemRecyclerViewAdapter(
    private val host: MutableList<Contest>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
-   private lateinit var binding: ContestActivityItemViewBinding
+   private lateinit var binding: ContestExtracurricularItemViewBinding
 
-   inner class ViewHolder(private val binding: ContestActivityItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+   inner class ViewHolder(private val binding: ContestExtracurricularItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(type: Contest) {
          binding.startDate.text = "D-${type.startDate}"
          binding.image.setImageResource(type.image)
@@ -41,7 +41,7 @@ class ContestItemRecyclerViewAdapter(
    }
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-      binding = ContestActivityItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      binding = ContestExtracurricularItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       return ViewHolder(binding)
    }
 

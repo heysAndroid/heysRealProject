@@ -1,11 +1,10 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ContestActivityDetailViewModel : ViewModel() {
-
+class ContestExtracurricularDetailViewModel : ViewModel() {
    private var _showSnackBarEvent = MutableLiveData(false)
    val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
 

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
 
 import android.content.ClipData
 import android.content.ClipboardManager

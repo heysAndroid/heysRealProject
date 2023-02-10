@@ -1,6 +1,6 @@
 package com.example.heysrealprojcet.model
 
-data class Activities(
+data class Extracurricular(
    val startDate: Int,
    val image: Int,
    val title: String,

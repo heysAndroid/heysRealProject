@@ -1,21 +1,21 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.activity
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heysrealprojcet.databinding.ContestActivityItemViewBinding
-import com.example.heysrealprojcet.model.Activities
+import com.example.heysrealprojcet.databinding.ContestExtracurricularItemViewBinding
+import com.example.heysrealprojcet.model.Extracurricular
 
-class ActivityItemRecyclerViewAdapter(
-   private val host: MutableList<Activities>,
+class ExtracurricularItemRecyclerViewAdapter(
+   private val host: MutableList<Extracurricular>,
    private val onClickListener: () -> Unit) :
-   RecyclerView.Adapter<ActivityItemRecyclerViewAdapter.ViewHolder>() {
-   private lateinit var binding: ContestActivityItemViewBinding
+   RecyclerView.Adapter<ExtracurricularItemRecyclerViewAdapter.ViewHolder>() {
+   private lateinit var binding: ContestExtracurricularItemViewBinding
 
-   inner class ViewHolder(private val binding: ContestActivityItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: Activities) {
+   inner class ViewHolder(private val binding: ContestExtracurricularItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+      fun bind(type: Extracurricular) {
          binding.startDate.text = "D-${type.startDate}"
          binding.image.setImageResource(type.image)
          binding.title.text = type.title
@@ -41,7 +41,7 @@ class ActivityItemRecyclerViewAdapter(
    }
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-      binding = ContestActivityItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      binding = ContestExtracurricularItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       return ViewHolder(binding)
    }
 

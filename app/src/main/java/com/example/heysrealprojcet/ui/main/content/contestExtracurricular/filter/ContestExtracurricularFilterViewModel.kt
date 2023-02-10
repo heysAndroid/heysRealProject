@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.filter
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter
 
 import android.graphics.Typeface
 import android.view.View
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.LocalDate
 import java.time.YearMonth
 
-class ContestActivityFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
+class ContestExtracurricularFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
 
    private var choiceInterest: View? = null
    private val interestMax = 1

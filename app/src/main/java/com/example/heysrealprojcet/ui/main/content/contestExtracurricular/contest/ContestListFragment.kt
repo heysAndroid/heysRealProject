@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -61,10 +61,10 @@ class ContestListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_contestListFragment_to_contestActivityFilterFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularFilterFragment)
    }
 
    private fun goToDetail() {
-      findNavController().navigate(R.id.action_contestListFragment_to_contestActivityDetailFragment)
+      findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularDetailFragment)
    }
 }

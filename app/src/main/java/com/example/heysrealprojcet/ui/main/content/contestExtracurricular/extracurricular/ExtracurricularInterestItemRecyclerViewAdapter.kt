@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestActivity.contest
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.CategoryItemInterestViewBinding
 import com.example.heysrealprojcet.model.ExtracurricularType
 
-class activityRecyclerViewAdapter(
+class ExtracurricularInterestItemRecyclerViewAdapter(
    private val list: MutableList<ExtracurricularType>,
    private val onclick: (item: String) -> Unit) :
-   RecyclerView.Adapter<activityRecyclerViewAdapter.ViewHolder>() {
+   RecyclerView.Adapter<ExtracurricularInterestItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemInterestViewBinding
 
-   inner class ViewHolder(private val binding: CategoryItemInterestViewBinding):
+   inner class ViewHolder(private val binding: CategoryItemInterestViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
       fun bind(item: ExtracurricularType) {
          binding.type.text = item.description
