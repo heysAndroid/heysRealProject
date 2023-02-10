@@ -60,7 +60,7 @@
             app:destination="@id/channelListFragment" />
         <action
             android:id="@+id/action_contestExtracurricularDetailFragment_to_contestDetailLookFragment"
-            app:destination="@id/contestDetailLookFragment" />
+            app:destination="@id/ImageZoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
@@ -365,12 +365,12 @@
         android:label="ChattingFragment"
         tools:layout="@layout/chatting_fragment" />
     <fragment
-        android:id="@+id/contestDetailLookFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ContestDetailLookFragment"
-        android:label="ContestDetailLookFragment"
-        tools:layout="@layout/contest_detail_look_fragment">
+        android:id="@+id/ImageZoomFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ImageZoomFragment"
+        android:label="ImageZoomFragment"
+        tools:layout="@layout/image_zoom_fragment">
         <action
-            android:id="@+id/action_contestDetailLookFragment_to_contestExtracurricularDetailFragment"
+            android:id="@+id/action_imageZoomFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
 </navigation>
