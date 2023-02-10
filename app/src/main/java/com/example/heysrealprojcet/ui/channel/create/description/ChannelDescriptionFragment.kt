@@ -43,8 +43,14 @@ class ChannelDescriptionFragment : Fragment() {
       binding.channelDescriptionField.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
       binding.btnPreview.setOnClickListener { goToChannelInterest() }
       binding.addLinkView.setOnClickListener {
+         binding.additionalLinkContainer.visibility = View.VISIBLE
          val linkView = ChannelLinkView(requireContext())
          binding.additionalLinkContainer.addView(linkView)
+         binding.addButtonContainer.visibility = View.GONE
+      }
+      binding.additionalLinkContainer.setOnClickListener {
+         binding.additionalLinkContainer.removeAllViews()
+         binding.addButtonContainer.visibility = View.VISIBLE
       }
    }
 
