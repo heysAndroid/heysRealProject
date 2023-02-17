@@ -58,4 +58,14 @@ object ChannelPreference : KotprefModel() {
   관심 분야
    */
    var channelInterestArray by gsonPref(arrayListOf<String>())
+
+   /*
+   링크 1
+    */
+   var link1 by stringPref()
+
+   /*
+   링크 2
+    */
+   var link2 by stringPref()
 }

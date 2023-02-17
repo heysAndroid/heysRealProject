@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet.ui.channel.create.description
 
 import android.os.Bundle
-import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDescriptionFragmentBinding
-import com.example.heysrealprojcet.ui.channel.create.description.view.ChannelLinkView
 import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ChannelDescriptionFragment : Fragment() {
@@ -39,18 +37,23 @@ class ChannelDescriptionFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      //EditText 글자 제한
-      binding.channelDescriptionField.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
       binding.btnPreview.setOnClickListener { goToChannelInterest() }
       binding.addLinkView.setOnClickListener {
-         binding.additionalLinkContainer.visibility = View.VISIBLE
-         val linkView = ChannelLinkView(requireContext())
-         binding.additionalLinkContainer.addView(linkView)
+         binding.additionalLinkView.visibility = View.VISIBLE
          binding.addButtonContainer.visibility = View.GONE
       }
-      binding.additionalLinkContainer.setOnClickListener {
-         binding.additionalLinkContainer.removeAllViews()
+
+      binding.removeButton.setOnClickListener {
          binding.addButtonContainer.visibility = View.VISIBLE
+         binding.additionalLinkView.visibility = View.GONE
+      }
+
+      viewModel.link1.observe(viewLifecycleOwner) {
+         if (it.contains("kakao")) {
+            binding.link1Image.setImageResource(R.drawable.ic_link_kakao)
+         } else {
+            binding.link1Image.setImageResource(R.drawable.ic_link_clip)
+         }
       }
    }
 

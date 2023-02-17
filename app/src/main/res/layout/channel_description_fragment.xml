@@ -160,12 +160,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="0/2"
+                        android:text="@{String.valueOf(vm.linkCount) + `/2`}"
                         android:textColor="@color/color_53c740"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:text="0/2" />
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -175,6 +174,7 @@
 
 
                         <ImageView
+                            android:id="@+id/link1Image"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_gravity="center_vertical"
@@ -182,17 +182,45 @@
                             android:src="@drawable/ic_link_clip" />
 
                         <EditText
-                            android:id="@+id/linkField"
+                            android:id="@+id/linkField1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_channel_edittext"
                             android:gravity="top"
                             android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
                             android:padding="16dp"
-                            android:text="@={vm.link}"
+                            android:text="@={vm.link1}"
                             android:textColor="@color/black"
-                            android:textSize="14sp"
-                            app:addTextChangedListener="@{vm.channelDescriptionTextWatcher}" />
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/additionalLinkView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="32dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/removeButton"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_link_remove" />
+
+                        <EditText
+                            android:id="@+id/linkField2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_channel_edittext"
+                            android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
+                            android:padding="16dp"
+                            android:text="@={vm.link2}"
+                            android:textColor="@color/black"
+                            android:textSize="14dp" />
                     </LinearLayout>
 
 
