@@ -124,8 +124,7 @@ class ChannelPeriodDialog : DialogFragment() {
 
       binding.btnSave.setOnClickListener {
          // 채널 정보 fragment 로 선택값 전달
-         listener.onClick(ChannelPreference.channelRecruitLastDay)
-         Log.w("last date: ", ChannelPreference.channelRecruitLastDay)
+         listener.onClick(ChannelPreference.channelRecruitEndDay)
          dialog?.dismiss()
       }
       binding.closeButton.setOnClickListener { dismiss() }

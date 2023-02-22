@@ -39,23 +39,13 @@
                         android:background="@android:color/transparent"
                         android:padding="7dp"
                         android:src="@drawable/ic_back" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="32dp"
-                        android:gravity="right"
-                        android:text="배경변경"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="176dp"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="8dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/bg_channel_background_example" />
 
@@ -64,16 +54,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="16dp"
-                    android:text="제3회 연구개발특구 AI\n SPARK 챌린지 팀원 모집해요!"
+                    android:text="@{vm.channelName}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="강남/서초 대학생 인공지능 공모전 같이해요!" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="32dp"
                     android:text="채널을 소개해요"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -90,81 +81,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/ic_flag" />
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_flag_34d676" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/channelPurpose"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/channelPurpose"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{vm.channelPurpose}"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="역량강화" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="를 목표로 하는 채널이에요"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                        android:text="@{vm.channelPurpose + ` 목적의 채널이에요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="역량강화 목적의 채널이에요." />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/ic_person" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{vm.channelCapacity}"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="500" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="명 중 1명이 참여중이에요."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/ic_location" />
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_location_34d676" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -175,37 +117,23 @@
                             android:id="@+id/channelForm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.channelForm}"
+                            android:text="@{vm.channelForm + `으로 `}"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             tools:text="오프라인" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="으로 "
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                        <TextView
                             android:id="@+id/channelRegion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.channelRegion}"
+                            android:text="@{vm.channelRegion + `에서`}"
                             android:textColor="@color/black"
                             android:textSize="16sp"
-                            tools:text="전국" />
+                            tools:text="전국에서" />
 
                         <TextView
                             android:id="@+id/channelRegionText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="에서 "
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="활동해요."
                             android:textColor="@color/black"
@@ -217,52 +145,171 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/ic_key" />
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_person_34d676" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.channelCapacity +`명 중에서 1명이 참여중이에요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="10명 중에서 1명이 참여중이에요." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_key_34d676" />
 
                     <TextView
                         android:id="@+id/channelRecruitmentMethod"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="승인이 필요한 채널이에요."
+                        android:text="승인없이 바로 참여가능해요."
                         android:textColor="@color/black"
                         android:textSize="16sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/channelDescription"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="12dp"
-                    android:maxLines="5"
-                    android:text="시인공지능에 대해 스터디하면서 함께 참가할 사람 모집합니다! 관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다. 마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다.더 궁금하신 점은 프로필로 문의해주세요. 5줄 이상이면 자세히 보기로 펼쳐보게됩니다."
-                    android:textSize="16sp" />
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_calendar_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelEndDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.channelRecruitEndDayString + ` ` + vm.channelRecruitEndTimeString + `에 마감해요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="23년 2월 19일 오후 12시 25분에 마감해요." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_heart_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelInterest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.channelInterest + `에 관심있어요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="기획/아이디어, IT/SW, 데이터/인공지능, 경영 비즈니스에 관심있어요." />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/btnDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="19dp"
-                    android:drawableEnd="@drawable/ic_expand"
-                    android:drawablePadding="4dp"
-                    android:text="자세히 보기"
-                    android:textColor="@color/color_828282"
-                    android:textSize="14sp" />
-
-                <View
+                    android:id="@+id/channelDescriptionTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/color_e1e1e1" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="이런 활동을 해요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/channelActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{vm.channelActivity}"
+                    android:textColor="@color/color_262626"
+                    android:textSize="16sp"
+                    tools:text="인공지능에 대해 스터디하면서 함께 대회에 참가할 사람 모집합니다!\n관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다.\n마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다." />
+
+                <TextView
+                    android:id="@+id/channelMemberTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="이런 분을 찾아요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/channelMember"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{vm.channelMember}"
+                    android:textColor="@color/color_262626"
+                    android:textSize="16sp"
+                    tools:text="- 개발(AI/ML) 커리어 쌓는데 고민 있는 분\n- 기초지식을 함게 공유하면서 성장하고 싶으신 분" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="여기로 지원 및 문의해주세요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/link1"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_link_clip" />
+
+                    <ImageView
+                        android:id="@+id/link2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_link_clip"
+                        android:visibility="gone" />
+                </LinearLayout>
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -271,21 +318,21 @@
                     android:layout_marginTop="32dp"
                     android:text="리더를 소개해요"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="36dp"
+                        android:layout_width="34dp"
                         android:layout_height="36dp"
                         android:layout_gravity="center"
-                        android:layout_marginRight="12dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/img_channel_leader_profile_example" />
 
                     <LinearLayout
@@ -296,25 +343,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="이름"
+                            android:text="김이나"
                             android:textColor="@color/color_262626"
                             android:textSize="16dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="한 줄 소개가 보여집니다."
+                            android:text="선한 영향력을 키우고 싶습니다."
                             android:textColor="@color/color_828282"
                             android:textSize="16dp" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnMake"
+                    android:id="@+id/btnNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="46dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginBottom="14dp"
                     android:background="@drawable/bg_ok_button_enabled"
                     android:padding="16dp"
@@ -322,7 +369,6 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

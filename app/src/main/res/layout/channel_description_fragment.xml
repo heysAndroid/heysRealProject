@@ -61,7 +61,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/channelDescriptionField"
+                        android:id="@+id/channelActivityField"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="18dp"
@@ -70,10 +70,10 @@
                         android:hint="최소 30자 이상 아래 예시 항목을 참고해서 채널에 대해 자유롭게 소개해보세요!\n\n- 주제 및 목표\n- 운영방식 및 일정(횟수)\n- 기타\n\n"
                         android:maxLength="1500"
                         android:padding="16dp"
-                        android:text="@={vm.channelDescription}"
+                        android:text="@={vm.channelActivity}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:addTextChangedListener="@{vm.channelDescriptionTextWatcher}" />
+                        app:addTextChangedListener="@{vm.channelActivityTextWatcher}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                             android:id="@+id/channelDescriptionLetterCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.channelDescriptionLetterCount.toString()}"
+                            android:text="@{vm.channelActivityLetterCount.toString()}"
                             android:textColor="@color/color_99828282"
                             android:textSize="12sp" />
 
@@ -109,7 +109,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/memberField"
+                        android:id="@+id/channelMemberField"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="18dp"
@@ -118,10 +118,10 @@
                         android:hint="최소 30자 이상 아래 예시 항목을 참고해서 마음 맞는 팀원을 찾아보세요!\n\n- 모집 인원 및 역할\n- 태도(적극성, 성실함, 책임감 등)\n- 우대 역량\n- 기타"
                         android:maxLength="1500"
                         android:padding="16dp"
-                        android:text="@={vm.memberDescription}"
+                        android:text="@={vm.channelMember}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:addTextChangedListener="@{vm.memberDescriptionTextWatcher}" />
+                        app:addTextChangedListener="@{vm.channelMemberTextWatcher}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -135,7 +135,7 @@
                             android:id="@+id/memberDescriptionLetterCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.memberDescriptionLetterCount.toString()}"
+                            android:text="@{vm.channelMemberLetterCount.toString()}"
                             android:textColor="@color/color_99828282"
                             android:textSize="12sp" />
 

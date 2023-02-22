@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelNameFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.ChannelPreference
 
 class ChannelNameFragment : Fragment() {
    private lateinit var binding: ChannelNameFragmentBinding
@@ -36,7 +37,10 @@ class ChannelNameFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.btnNext.setOnClickListener { goToInform() }
+      binding.btnNext.setOnClickListener {
+         ChannelPreference.channelName = viewModel.name.value.toString()
+         goToInform()
+      }
    }
 
    private fun goToInform() {

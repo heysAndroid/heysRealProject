@@ -6,8 +6,8 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class ChannelDescriptionViewModel : ViewModel() {
-   val channelDescription = MutableLiveData<String>()
-   val memberDescription = MutableLiveData<String>()
+   val channelActivity = MutableLiveData<String>()
+   val channelMember = MutableLiveData<String>()
 
    val link1 = MutableLiveData<String>()
    val link2 = MutableLiveData<String>()
@@ -16,16 +16,16 @@ class ChannelDescriptionViewModel : ViewModel() {
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private val _channelDescriptionLetterCount = MutableLiveData(0)
-   val channelDescriptionLetterCount: LiveData<Int> = _channelDescriptionLetterCount
+   private val _channelActivityLetterCount = MutableLiveData(0)
+   val channelActivityLetterCount: LiveData<Int> = _channelActivityLetterCount
 
-   private val _memberDescriptionLetterCount = MutableLiveData(0)
-   val memberDescriptionLetterCount: LiveData<Int> = _memberDescriptionLetterCount
+   private val _channelMemberLetterCount = MutableLiveData(0)
+   val channelMemberLetterCount: LiveData<Int> = _channelMemberLetterCount
 
    init {
       // collect{} 는 한 viewmodelScope 에 하나씩
-      viewModelScope.launch { channelDescription.asFlow().collect { isAllFilled() } }
-      viewModelScope.launch { memberDescription.asFlow().collect { isAllFilled() } }
+      viewModelScope.launch { channelActivity.asFlow().collect { isAllFilled() } }
+      viewModelScope.launch { channelMember.asFlow().collect { isAllFilled() } }
       viewModelScope.launch {
          link1.asFlow().collect {
             isAllFilled()
@@ -36,10 +36,10 @@ class ChannelDescriptionViewModel : ViewModel() {
    }
 
    private fun isAllFilled() {
-      _isEnabled.value = !channelDescription.value.isNullOrBlank()
-              && channelDescriptionLetterCount.value!! >= 30
-              && !memberDescription.value.isNullOrBlank()
-              && memberDescriptionLetterCount.value!! >= 30
+      _isEnabled.value = !channelActivity.value.isNullOrBlank()
+              && channelActivityLetterCount.value!! >= 30
+              && !channelMember.value.isNullOrBlank()
+              && channelMemberLetterCount.value!! >= 30
               && !link1.value.isNullOrBlank()
    }
 
@@ -61,21 +61,21 @@ class ChannelDescriptionViewModel : ViewModel() {
       }
    }
 
-   val channelDescriptionTextWatcher = object : TextWatcher {
+   val channelActivityTextWatcher = object : TextWatcher {
       override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
       override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-         _channelDescriptionLetterCount.value = p0?.length
+         _channelActivityLetterCount.value = p0?.length
       }
 
       override fun afterTextChanged(p0: Editable?) {}
    }
 
-   val memberDescriptionTextWatcher = object : TextWatcher {
+   val channelMemberTextWatcher = object : TextWatcher {
       override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
       override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-         _memberDescriptionLetterCount.value = p0?.length
+         _channelMemberLetterCount.value = p0?.length
       }
 
       override fun afterTextChanged(p0: Editable?) {}

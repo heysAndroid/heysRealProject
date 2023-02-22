@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDescriptionFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.ChannelPreference
 
 class ChannelDescriptionFragment : Fragment() {
    private lateinit var binding: ChannelDescriptionFragmentBinding
@@ -37,7 +38,15 @@ class ChannelDescriptionFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      binding.btnPreview.setOnClickListener { goToChannelInterest() }
+      binding.btnPreview.setOnClickListener {
+         ChannelPreference.channelActivity = viewModel.channelActivity.value.toString()
+         ChannelPreference.channelMember = viewModel.channelMember.value.toString()
+         ChannelPreference.link1 = viewModel.link1.value.toString()
+         viewModel.link2.observe(viewLifecycleOwner) {
+            it?.let { ChannelPreference.link2 = it }
+         }
+         goToChannelPreview()
+      }
       binding.addLinkView.setOnClickListener {
          binding.additionalLinkView.visibility = View.VISIBLE
          binding.addButtonContainer.visibility = View.GONE
@@ -47,17 +56,9 @@ class ChannelDescriptionFragment : Fragment() {
          binding.addButtonContainer.visibility = View.VISIBLE
          binding.additionalLinkView.visibility = View.GONE
       }
-
-      viewModel.link1.observe(viewLifecycleOwner) {
-         if (it.contains("kakao")) {
-            binding.link1Image.setImageResource(R.drawable.ic_link_kakao)
-         } else {
-            binding.link1Image.setImageResource(R.drawable.ic_link_clip)
-         }
-      }
    }
 
-   private fun goToChannelInterest() {
+   private fun goToChannelPreview() {
       findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelPreviewFragment)
    }
 }

@@ -21,7 +21,7 @@ class ChannelPeriodDialogViewModel : ViewModel() {
 
    fun updateSelectedDate(selectedDate: ArrayList<LocalDate>) {
       _selectedDate.value = selectedDate
-      ChannelPreference.channelRecruitLastDay = selectedDate.last().toString()
+      ChannelPreference.channelRecruitEndDay = selectedDate.last().toString()
    }
 
    fun onEnabled() {

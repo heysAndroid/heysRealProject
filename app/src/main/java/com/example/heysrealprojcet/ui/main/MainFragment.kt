@@ -121,7 +121,7 @@ class MainFragment : Fragment() {
    }
 
    private fun goToStudy() {
-      findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+      findNavController().navigate(R.id.action_mainFragment_to_channelNameFragment)
    }
 
    private fun goToContest() {

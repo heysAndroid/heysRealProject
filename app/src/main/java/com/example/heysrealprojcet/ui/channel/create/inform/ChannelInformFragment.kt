@@ -98,8 +98,8 @@ class ChannelInformFragment : Fragment() {
          recruitmentPeriodDialog.show(childFragmentManager, null)
 
          recruitmentTimeDialog.setOnOKClickListener { content ->
-            Log.w("dueDate: ", ChannelPreference.channelRecruitLastDay)
-            Log.w("dueTime: ", ChannelPreference.channelRecruitLastTime)
+            Log.w("dueDate: ", ChannelPreference.channelRecruitEndDay)
+            Log.w("dueTime: ", ChannelPreference.channelRecruitEndTime)
          }
       }
 

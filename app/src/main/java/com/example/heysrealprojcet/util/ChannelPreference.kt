@@ -5,19 +5,20 @@ import com.chibatching.kotpref.gsonpref.gsonPref
 
 object ChannelPreference : KotprefModel() {
    fun reset() {
-      channelPurpose = ""
       channelForm = ""
       channelRegion = ""
       channelCapacity = 0
       channelRecruitmentMethod = ""
-      channelRecruitLastDay = ""
-      channelRecruitLastTime = ""
+      channelRecruitEndDay = ""
+      channelRecruitEndTime = ""
+      channelActivity = ""
+      channelMember = ""
    }
 
    /*
-   채널목적
-    */
-   var channelPurpose by stringPref()
+  채널목적
+   */
+   var channelName by stringPref()
 
    /*
    채널목적 배열
@@ -47,17 +48,27 @@ object ChannelPreference : KotprefModel() {
    /*
   모집 마감 날짜
    */
-   var channelRecruitLastDay by stringPref()
+   var channelRecruitEndDay by stringPref()
 
    /*
   모집 마감 시간
    */
-   var channelRecruitLastTime by stringPref()
+   var channelRecruitEndTime by stringPref()
 
    /*
   관심 분야
    */
    var channelInterestArray by gsonPref(arrayListOf<String>())
+
+   /*
+   채널 활동
+    */
+   var channelActivity by stringPref()
+
+   /*
+   채널 멤버
+    */
+   var channelMember by stringPref()
 
    /*
    링크 1
