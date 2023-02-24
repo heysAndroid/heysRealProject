@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyPageFragmentBinding
+import com.example.heysrealprojcet.model.MyPage
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,7 +64,7 @@ class MyPageFragment : Fragment() {
 
          when (response) {
             is NetworkResult.Success -> {
-               // TODO 로딩 성공시 처리
+               response.data?.user?.let { setMyPageInfo(it) }
             }
 
             is NetworkResult.Error -> {
@@ -75,5 +76,49 @@ class MyPageFragment : Fragment() {
             }
          }
       }
+   }
+
+   private fun setMyPageInfo(myPage: MyPage) {
+      if (myPage.introduce.isNullOrBlank()) {
+         binding.introduce.text = "아직 소개할 내용이 없어요."
+         binding.introduce.setTextColor(resources.getColor(R.color.color_828282))
+      } else {
+         binding.introduce.text = "\"${myPage.introduce}\""
+         binding.introduce.setTextColor(resources.getColor(R.color.color_262626))
+      }
+
+      binding.name.text = myPage.name
+
+      var interestString = ""
+      myPage.interests.forEach {
+         interestString += "# $it"
+      }
+      binding.interestContent.text = interestString
+
+      if (myPage.job.isNullOrBlank()) {
+         binding.jobTitle.setTextColor(resources.getColor(R.color.color_4d828282))
+         binding.job.text = "아직 소개할 직업이 없어요."
+         binding.job.setTextColor(resources.getColor(R.color.color_4d262626))
+      } else {
+         binding.jobTitle.setTextColor(resources.getColor(R.color.color_828282))
+         binding.job.text = myPage.job
+         binding.job.setTextColor(resources.getColor(R.color.color_262626))
+      }
+
+      if (myPage.capability.isNullOrBlank()) {
+         binding.skillTitle.setTextColor(resources.getColor(R.color.color_4d828282))
+         binding.skill.text = "아직 소개할 스킬이 없어요."
+         binding.skill.setTextColor(resources.getColor(R.color.color_4d262626))
+      } else {
+         binding.skillTitle.setTextColor(resources.getColor(R.color.color_828282))
+         var skillString = ""
+         myPage.capability.forEach {
+            skillString += "# $it"
+         }
+         binding.skill.text = skillString
+         binding.skill.setTextColor(resources.getColor(R.color.color_262626))
+      }
+      binding.joinChannel.text = myPage.joinChannelCount.toString()
+      binding.waitingChannel.text = myPage.waitingChannelCount.toString()
    }
 }
