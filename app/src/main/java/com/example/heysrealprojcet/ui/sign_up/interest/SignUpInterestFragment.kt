@@ -65,7 +65,7 @@ class SignUpInterestFragment : Fragment() {
    private fun requestSignUp() {
       val user = User(
          phone = UserPreference.phoneNumber,
-         username = UserPreference.name,
+         name = UserPreference.name,
          password = UserPreference.password,
          age = UserPreference.age,
          gender = UserPreference.gender,
@@ -79,7 +79,7 @@ class SignUpInterestFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                UserPreference.accessToken = response.data?.token ?: ""
-               alert.setTitle("${user.username}님 회원가입 성공")
+               alert.setTitle("${user.name}님 회원가입 성공")
                   .setMessage("accessToken: ${UserPreference.accessToken}")
                   .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
             }
