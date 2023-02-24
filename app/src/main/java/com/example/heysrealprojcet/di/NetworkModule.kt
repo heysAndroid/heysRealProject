@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.di
 import com.example.heysrealprojcet.api.CommonApi
 import com.example.heysrealprojcet.api.SettingApi
 import com.example.heysrealprojcet.api.SignUpApi
+import com.example.heysrealprojcet.api.UserApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -68,5 +69,11 @@ object NetworkModule {
    @Singleton
    fun provideCommonApiService(retrofit: Retrofit): CommonApi {
       return retrofit.create(CommonApi::class.java)
+   }
+
+   @Provides
+   @Singleton
+   fun provideUserApiService(retrofit: Retrofit): UserApi {
+      return retrofit.create(UserApi::class.java)
    }
 }
