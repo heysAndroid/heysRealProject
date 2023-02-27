@@ -113,7 +113,7 @@ class MyPageFragment : Fragment() {
          binding.skillTitle.setTextColor(resources.getColor(R.color.color_828282))
          var skillString = ""
          myPage.capability.forEach {
-            skillString += "# $it"
+            skillString += "#$it "
          }
          binding.skill.text = skillString
          binding.skill.setTextColor(resources.getColor(R.color.color_262626))
