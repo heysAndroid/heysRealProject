@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.myPage.profile.MbtiViewModel" />
+            type="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,244 +14,262 @@
         android:orientation="vertical">
 
         <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@={vm.radioChecked}"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/istj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ISTJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/isfj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ISFJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/infj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="INFJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/intj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="INTJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checkedButton="@={vm.radioChecked}"
+            android:orientation="horizontal">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/istp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ISTP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/istj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ISTJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/isfj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ISFJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/infj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="INFJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/intj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="INTJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/isfp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ISFP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/istp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ISTP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/isfp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ISFP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/infp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="INFP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/intp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="INTP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/infp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="INFP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/estp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ESTP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/esfp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ESFP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/enfp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ENFP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/entp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ENTP"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/intp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="INTP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+        </RadioGroup>
 
-                <Button
-                    android:id="@+id/estj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ESTJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
+        <RadioGroup
+            android:id="@+id/radioGroup3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checkedButton="@={vm.radioChecked}"
+            android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/esfj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ESFJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/estp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ESTP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/enfj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ENFJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/esfp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ESFP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/entj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_interest_button"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:onClick="@{(v) -> vm.onClickMbti(v)}"
-                    android:text="ENTJ"
-                    android:textColor="@drawable/interest_text"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            <RadioButton
+                android:id="@+id/enfp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ENFP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/entp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ENTP"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checkedButton="@={vm.radioChecked}"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/estj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ESTJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/esfj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ESFJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/enfj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ENFJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/entj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_mbti_button"
+                android:button="@null"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="ENTJ"
+                android:textColor="@drawable/mbti_text"
+                android:textSize="16sp" />
         </RadioGroup>
     </LinearLayout>
 </layout>

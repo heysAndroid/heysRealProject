@@ -10,12 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ProfileEditFragmentBinding
-import com.example.heysrealprojcet.util.UserPreference
 
 class ProfileEditFragment : Fragment() {
    private lateinit var binding: ProfileEditFragmentBinding
    private val viewModel: ProfileEditViewModel by viewModels()
-   private val mbtiViewModel: MbtiViewModel by viewModels()
    private val interestViewModel: InterestViewModel by viewModels()
 
    override fun onCreateView(
@@ -23,7 +21,6 @@ class ProfileEditFragment : Fragment() {
    ): View? {
       binding = ProfileEditFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
-      binding.vmMbti = mbtiViewModel
       binding.vmInterest = interestViewModel
       return binding.root
    }
@@ -31,8 +28,8 @@ class ProfileEditFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      setMbti()
       binding.okButton.setOnClickListener { gotoMyPage() }
+      setMbti()
    }
 
    private fun gotoMyPage() {
@@ -40,23 +37,33 @@ class ProfileEditFragment : Fragment() {
    }
 
    private fun setMbti() {
-      when (UserPreference.mbti) {
-         "ISTJ" -> binding.mbtiView.istj.isSelected = true
-         "ISFJ" -> binding.mbtiView.isfj.isSelected = true
-         "INFJ" -> binding.mbtiView.infj.isSelected = true
-         "INTJ" -> binding.mbtiView.intj.isSelected = true
-         "ISTP" -> binding.mbtiView.istp.isSelected = true
-         "ISFP" -> binding.mbtiView.isfp.isSelected = true
-         "INFP" -> binding.mbtiView.infp.isSelected = true
-         "INTP" -> binding.mbtiView.intp.isSelected = true
-         "ESTP" -> binding.mbtiView.estp.isSelected = true
-         "ESFP" -> binding.mbtiView.esfp.isSelected = true
-         "ENFP" -> binding.mbtiView.enfp.isSelected = true
-         "ENTP" -> binding.mbtiView.entp.isSelected = true
-         "ESTJ" -> binding.mbtiView.estj.isSelected = true
-         "ESFJ" -> binding.mbtiView.esfj.isSelected = true
-         "ENFJ" -> binding.mbtiView.enfj.isSelected = true
-         "ENTJ" -> binding.mbtiView.entj.isSelected = true
+      viewModel.radioChecked.observe(viewLifecycleOwner) {
+         when (it) {
+            R.id.radioGroup1 -> {
+               // radioGroup 2,3,4는 unselect 처리
+               binding.mbtiView.radioGroup2.clearCheck()
+               binding.mbtiView.radioGroup3.clearCheck()
+               binding.mbtiView.radioGroup4.clearCheck()
+            }
+
+            R.id.radioGroup2 -> {
+               binding.mbtiView.radioGroup1.clearCheck()
+               binding.mbtiView.radioGroup3.clearCheck()
+               binding.mbtiView.radioGroup4.clearCheck()
+            }
+
+            R.id.radioGroup3 -> {
+               binding.mbtiView.radioGroup1.clearCheck()
+               binding.mbtiView.radioGroup2.clearCheck()
+               binding.mbtiView.radioGroup4.clearCheck()
+            }
+
+            R.id.radioGroup4 -> {
+               binding.mbtiView.radioGroup1.clearCheck()
+               binding.mbtiView.radioGroup2.clearCheck()
+               binding.mbtiView.radioGroup3.clearCheck()
+            }
+         }
       }
    }
 }

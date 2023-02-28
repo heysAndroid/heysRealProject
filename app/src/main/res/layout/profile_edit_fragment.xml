@@ -9,10 +9,6 @@
             type="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditViewModel" />
 
         <variable
-            name="vmMbti"
-            type="com.example.heysrealprojcet.ui.user.myPage.profile.MbtiViewModel" />
-
-        <variable
             name="vmInterest"
             type="com.example.heysrealprojcet.InterestViewModel" />
     </data>
@@ -170,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    app:vm="@{vmMbti}" />
+                    app:vm="@{vm}" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -236,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="@{vm.interestString.toString()}"
+                        android:text="@{vmInterest.totalString}"
                         android:textColor="@color/color_53c740"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -254,7 +250,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:orientation="vertical">
 
                     <include
