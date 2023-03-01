@@ -23,5 +23,5 @@ enum class ChannelInterest(val interest: String) {
    Paper("학술/논문"),
    Sports("스포츠/음악"),
    Dance("댄스/무용"),
-   Public("공공/봉사")
+   Service("공공/봉사")
 }
