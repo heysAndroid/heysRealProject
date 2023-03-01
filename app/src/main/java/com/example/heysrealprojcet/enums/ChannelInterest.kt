@@ -13,7 +13,7 @@ enum class ChannelInterest(val interest: String) {
    Engineering("과학/공학"),
    Art("미술/건축"),
    Novel("인문학/소설/웹툰"),
-   Lifestyle("패선/라이프스타일"),
+   Lifestyle("패션/라이프스타일"),
    Picture("사진/영상/UCC"),
    Culture("문화/교육"),
    Travel("해외/관광"),

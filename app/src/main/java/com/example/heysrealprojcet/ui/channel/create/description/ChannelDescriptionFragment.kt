@@ -47,6 +47,7 @@ class ChannelDescriptionFragment : Fragment() {
          }
          goToChannelPreview()
       }
+
       binding.addLinkView.setOnClickListener {
          binding.additionalLinkView.visibility = View.VISIBLE
          binding.addButtonContainer.visibility = View.GONE

@@ -91,7 +91,7 @@ class MyPageFragment : Fragment() {
 
       var interestString = ""
       myPage.interests.forEach {
-         interestString += "# $it"
+         interestString += "#$it "
       }
       binding.interestContent.text = interestString
 
