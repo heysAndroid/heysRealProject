@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
@@ -32,6 +33,10 @@ class ProfileEditFragment : Fragment() {
       binding.okButton.setOnClickListener { gotoMyPage() }
       setMbti()
       setInterest()
+
+      interestViewModel.total.asLiveData().observe(viewLifecycleOwner) {
+         binding.interestCount.text = "$it/3"
+      }
    }
 
    private fun gotoMyPage() {

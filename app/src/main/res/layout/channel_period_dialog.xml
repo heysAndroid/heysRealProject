@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -57,27 +57,27 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/white"
-                android:visibility="invisible"
-                android:src="@drawable/ic_calendar_back"/>
+                android:src="@drawable/ic_calendar_back"
+                android:visibility="invisible" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/year_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_828282"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/color_828282"
-                tools:text="2023년 1월"/>
+                tools:text="2023년 1월" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/calendar_forward"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/white"
-                android:src="@drawable/ic_calendar_forward"/>
+                android:src="@drawable/ic_calendar_forward" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,70 +99,70 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="일"
                 android:textColor="@color/color_e1e1e1"
-                android:text="일"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="월"
                 android:textColor="@color/color_e1e1e1"
-                android:text="월"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="화"
                 android:textColor="@color/color_e1e1e1"
-                android:text="화"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="수"
                 android:textColor="@color/color_e1e1e1"
-                android:text="수"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="목"
                 android:textColor="@color/color_e1e1e1"
-                android:text="목"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="금"
                 android:textColor="@color/color_e1e1e1"
-                android:text="금"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="토"
                 android:textColor="@color/color_e1e1e1"
-                android:text="토"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <com.kizitonwose.calendarview.CalendarView
@@ -171,12 +171,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             app:cv_dayViewResource="@layout/item_calendar_day"
-            app:cv_orientation="vertical"
             app:cv_hasBoundaries="true"
-            app:cv_maxRowCount="6"
             app:cv_inDateStyle="allMonths"
+            app:cv_maxRowCount="6"
+            app:cv_orientation="vertical"
             app:cv_outDateStyle="endOfGrid"
-            app:cv_scrollMode="paged"/>
+            app:cv_scrollMode="paged" />
 
         <Button
             android:id="@+id/btnSave"
@@ -184,8 +184,8 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="14dp"
             android:background="@drawable/bg_ok_button"
-            android:paddingVertical="16dp"
             android:enabled="@{vm.isEnabled}"
+            android:paddingVertical="16dp"
             android:text="다음"
             android:textColor="@color/white"
             android:textSize="16sp"

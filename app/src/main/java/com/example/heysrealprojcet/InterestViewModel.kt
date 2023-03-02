@@ -18,7 +18,7 @@ class InterestViewModel : ViewModel() {
    * 관심 분야
    */
    private val totalMax = 3
-   private var total = MutableStateFlow(0)
+   var total = MutableStateFlow(0)
    val totalString = MutableStateFlow("${total.value}/3")
    var interestList = mutableListOf<String>()
 
@@ -38,6 +38,7 @@ class InterestViewModel : ViewModel() {
 
    fun setInterest(arr: MutableList<String>) {
       interestList = arr
+      total.value = interestList.size
    }
 
    fun onClickInterest(v: View) {
