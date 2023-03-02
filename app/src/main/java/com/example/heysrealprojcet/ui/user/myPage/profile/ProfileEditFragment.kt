@@ -37,6 +37,23 @@ class ProfileEditFragment : Fragment() {
       interestViewModel.total.asLiveData().observe(viewLifecycleOwner) {
          binding.interestCount.text = "$it/3"
       }
+
+      binding.addLink.setOnClickListener {
+         val childCount = binding.additionalLinkContainer.childCount
+         if (childCount < 5) {
+            binding.addButtonContainer.visibility = View.VISIBLE
+            val hint = when (childCount) {
+               0 -> "https://behance.net/gallery-c..."
+               1 -> "https://m.instagram/my"
+               2 -> "https://my.github.com"
+               else -> " https://blog.naver.com/sfsdsf..."
+            }
+            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childCount))
+         } else {
+            binding.addButtonContainer.visibility = View.GONE
+         }
+
+      }
    }
 
    private fun gotoMyPage() {
@@ -104,5 +121,12 @@ class ProfileEditFragment : Fragment() {
          }
       }
       interestViewModel.setInterest(viewModel.interestArray)
+   }
+
+   private fun makeAdditionalLinkView(hint: String, index: Int): AdditionalLinkView {
+      return AdditionalLinkView(requireContext()).apply {
+         setHint(hint)
+         removeButtonClickListener { binding.additionalLinkContainer.removeViews(index, 1) }
+      }
    }
 }

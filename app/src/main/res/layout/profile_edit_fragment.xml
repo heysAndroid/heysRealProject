@@ -304,12 +304,18 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_channel_edittext"
                         android:gravity="top"
-                        android:hint="링크를 알려주세요."
+                        android:hint="https://open.kakao.com/o/sm..."
                         android:padding="16dp"
                         android:text="@={vm.link1}"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/additionalLinkContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
 
                 <LinearLayout
                     android:id="@+id/addButtonContainer"
@@ -320,7 +326,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/addLinkView"
+                        android:id="@+id/addLink"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_gravity="center_vertical"
