@@ -1,9 +1,11 @@
 package com.example.heysrealprojcet.ui.user.myPage.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
@@ -15,6 +17,7 @@ import com.example.heysrealprojcet.enums.ChannelInterest
 
 class ProfileEditFragment : Fragment() {
    private lateinit var binding: ProfileEditFragmentBinding
+   private lateinit var callback: OnBackPressedCallback
    private val viewModel: ProfileEditViewModel by viewModels()
    private val interestViewModel: InterestViewModel by viewModels()
 
@@ -31,7 +34,7 @@ class ProfileEditFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener { gotoMyPage() }
-      setMbti()
+      setMBTI()
       setInterest()
 
       interestViewModel.total.asLiveData().observe(viewLifecycleOwner) {
@@ -52,15 +55,36 @@ class ProfileEditFragment : Fragment() {
          } else {
             binding.addButtonContainer.visibility = View.GONE
          }
-
       }
+   }
+
+   override fun onAttach(context: Context) {
+      super.onAttach(context)
+
+      // back button 이벤트 처리
+      callback = object : OnBackPressedCallback(true) {
+         override fun handleOnBackPressed() {
+            val bottomSheet = ProfileEditCloseBottomSheet { goToBack() }
+            bottomSheet.show(childFragmentManager, bottomSheet.tag)
+         }
+      }
+      requireActivity().onBackPressedDispatcher.addCallback(callback)
+   }
+
+   override fun onDetach() {
+      super.onDetach()
+      callback.remove()
    }
 
    private fun gotoMyPage() {
       findNavController().navigate(R.id.action_profileEditFragment_to_myPageFragment)
    }
 
-   private fun setMbti() {
+   private fun goToBack() {
+      findNavController().navigateUp()
+   }
+
+   private fun setMBTI() {
       viewModel.radioChecked.observe(viewLifecycleOwner) {
          when (it) {
             R.id.radioGroup1 -> {
