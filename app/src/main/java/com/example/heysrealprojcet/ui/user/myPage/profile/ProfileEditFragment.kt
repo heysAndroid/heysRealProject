@@ -14,12 +14,31 @@ import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ProfileEditFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
+import com.example.heysrealprojcet.ui.main.MainActivity
 
 class ProfileEditFragment : Fragment() {
    private lateinit var binding: ProfileEditFragmentBinding
    private lateinit var callback: OnBackPressedCallback
    private val viewModel: ProfileEditViewModel by viewModels()
    private val interestViewModel: InterestViewModel by viewModels()
+
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(false)
+   }
 
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
