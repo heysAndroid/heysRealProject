@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.heysrealprojcet.databinding.ProfileEditCloseBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ProfileEditCloseBottomSheet(val listener: () -> Unit) : BottomSheetDialogFragment() {
+class ProfileEditCloseBottomSheet(private val listener: () -> Unit) : BottomSheetDialogFragment() {
    private lateinit var binding: ProfileEditCloseBottomSheetBinding
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
