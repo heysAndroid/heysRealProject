@@ -64,7 +64,7 @@ class MainFragment : Fragment() {
 
       // 회원가입에서 넘어온 경우 프로필 카드 보여주기
       if (args.isNewUser) {
-         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name)
+         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name) { goToProfileEdit() }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
 
@@ -141,6 +141,10 @@ class MainFragment : Fragment() {
 
    private fun goToActivity() {
       findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment)
+   }
+
+   private fun goToProfileEdit() {
+      findNavController().navigate(R.id.action_mainFragment_to_profileEditFragment)
    }
 }
 
