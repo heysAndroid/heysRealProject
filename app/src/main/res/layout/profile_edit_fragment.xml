@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditViewModel" />
+            type="com.example.heysrealprojcet.ui.user.myPage.edit.ProfileEditViewModel" />
 
         <variable
             name="vmInterest"

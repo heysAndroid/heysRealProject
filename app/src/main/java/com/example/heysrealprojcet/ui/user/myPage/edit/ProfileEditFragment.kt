@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myPage.profile
+package com.example.heysrealprojcet.ui.user.myPage.edit
 
 import android.content.Context
 import android.os.Bundle

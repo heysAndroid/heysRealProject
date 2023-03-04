@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myPage.profile
+package com.example.heysrealprojcet.ui.user.myPage.edit
 
 import android.text.Editable
 import android.text.TextWatcher

@@ -333,7 +333,7 @@
         tools:layout="@layout/waiting_channel_list_fragment" />
     <fragment
         android:id="@+id/profileEditFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.edit.ProfileEditFragment"
         android:label="ProfileEditFragment"
         tools:layout="@layout/profile_edit_fragment">
         <action
