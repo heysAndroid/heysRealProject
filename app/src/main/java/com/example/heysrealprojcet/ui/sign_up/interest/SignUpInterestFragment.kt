@@ -73,13 +73,13 @@ class SignUpInterestFragment : Fragment() {
          interests = interestViewModel.interestList as ArrayList<String>)
 
       signUpInterestViewModel.signUp(user)
-      signUpInterestViewModel.response.observe(viewLifecycleOwner) { response ->
+      signUpInterestViewModel.responseSignUp.observe(viewLifecycleOwner) { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
-               UserPreference.accessToken = response.data?.token ?: ""
+               requestLogin(UserPreference.name, UserPreference.password)
                goToMain()
             }
 
@@ -101,5 +101,24 @@ class SignUpInterestFragment : Fragment() {
       val isValidPassword = BCrypt.checkpw(password, passwordHashed)
       Log.w("암호화 검증: ", isValidPassword.toString())
       return passwordHashed
+   }
+
+   private fun requestLogin(username: String, password: String) {
+      signUpInterestViewModel.login(username, password)
+      signUpInterestViewModel.responseLogin.observe(viewLifecycleOwner) { response ->
+         val alert = AlertDialog.Builder(requireContext())
+
+         when (response.isSuccessful) {
+            true -> {
+               val token = response.headers()["Authorization"]?.split(" ")?.last()
+               token.let { UserPreference.accessToken = it.toString() }
+            }
+
+            false -> {
+               alert.setTitle("로그인 실패").setMessage("로그인에 실패했습니다.").create().show()
+               Log.w("error: ", response.errorBody().toString())
+            }
+         }
+      }
    }
 }
