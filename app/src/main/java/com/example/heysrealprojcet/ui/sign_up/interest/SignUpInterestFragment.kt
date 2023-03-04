@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -59,7 +60,7 @@ class SignUpInterestFragment : Fragment() {
    }
 
    private fun goToMain() {
-      findNavController().navigate(R.id.main_navigation)
+      findNavController().navigate(R.id.main_navigation, bundleOf("isNewUser" to true))
    }
 
    private fun requestSignUp() {
@@ -79,9 +80,7 @@ class SignUpInterestFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                UserPreference.accessToken = response.data?.token ?: ""
-               alert.setTitle("${user.name}님 회원가입 성공")
-                  .setMessage("accessToken: ${UserPreference.accessToken}")
-                  .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
+               goToMain()
             }
 
             is NetworkResult.Error -> {

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.MarginItemDecoration
@@ -19,6 +20,7 @@ import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.sign_up.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
@@ -28,6 +30,8 @@ class MainFragment : Fragment() {
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
    private var position = 0
+
+   val args: MainFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -57,6 +61,13 @@ class MainFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
+
+      // 회원가입에서 넘어온 경우 프로필 카드 보여주기
+      if (args.isNewUser) {
+         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name)
+         bottomSheet.show(childFragmentManager, bottomSheet.tag)
+      }
+
       makeExtracurricularList()
       makeContestList()
 
