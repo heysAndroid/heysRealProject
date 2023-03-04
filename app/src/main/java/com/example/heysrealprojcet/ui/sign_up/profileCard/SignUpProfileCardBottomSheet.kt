@@ -10,7 +10,7 @@ import com.example.heysrealprojcet.model.ProfileCardDescription
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class SignUpProfileCardBottomSheet(private val name: String) : BottomSheetDialogFragment() {
+class SignUpProfileCardBottomSheet(private val name: String, private val onClick: () -> Unit) : BottomSheetDialogFragment() {
    private lateinit var binding: SignUpProfileCardBottomSheetBinding
    private lateinit var profileCardPagerAdapter: ProfileCardPagerAdapter
    private lateinit var profileList: MutableList<ProfileCardDescription>
@@ -34,6 +34,7 @@ class SignUpProfileCardBottomSheet(private val name: String) : BottomSheetDialog
       binding.viewpager.adapter = profileCardPagerAdapter
       binding.indicator.setViewPager(binding.viewpager)
       binding.name.text = "$name 님을 어필할 수 있는\n프로필 카드를 만들었어요!"
+      binding.okButton.setOnClickListener { onClick.invoke() }
    }
 
    private fun setProfileList() {
