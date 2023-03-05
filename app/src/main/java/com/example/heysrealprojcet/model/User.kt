@@ -8,7 +8,7 @@ data class User(
    @SerializedName("phone") val phone: String,
    @SerializedName("username") val name: String,
    @SerializedName("password") val password: String,
-   @SerializedName("age") val age: Int,
+   @SerializedName("birthDate") val birthDate: String,
    @SerializedName("gender") val gender: String,
    @SerializedName("interests") val interests: ArrayList<String>
 ) : java.io.Serializable

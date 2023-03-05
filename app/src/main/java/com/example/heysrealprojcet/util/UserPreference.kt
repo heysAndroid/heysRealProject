@@ -19,6 +19,11 @@ object UserPreference : KotprefModel() {
    var age by intPref()
 
    /*
+   * 사용자 생년월일
+    */
+   var birthday by stringPref()
+
+   /*
    * 사용자 성별
     */
    var gender by stringPref()

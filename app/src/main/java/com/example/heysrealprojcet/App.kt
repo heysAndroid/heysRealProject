@@ -6,14 +6,14 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class App : Application() {
-    companion object {
-        private lateinit var application: App
-        fun getInstance(): App = application
-    }
+   companion object {
+      private lateinit var application: App
+      fun getInstance(): App = application
+   }
 
-    override fun onCreate() {
-        super.onCreate()
-        Kotpref.init(applicationContext)
-        application = this
-    }
+   override fun onCreate() {
+      super.onCreate()
+      Kotpref.init(applicationContext)
+      application = this
+   }
 }

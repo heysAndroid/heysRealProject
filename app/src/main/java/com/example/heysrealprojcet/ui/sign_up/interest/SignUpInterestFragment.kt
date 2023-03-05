@@ -68,7 +68,7 @@ class SignUpInterestFragment : Fragment() {
          phone = UserPreference.phoneNumber,
          name = UserPreference.name,
          password = UserPreference.password,
-         age = UserPreference.age,
+         birthDate = UserPreference.birthday,
          gender = UserPreference.gender,
          interests = interestViewModel.interestList as ArrayList<String>)
 
@@ -79,7 +79,7 @@ class SignUpInterestFragment : Fragment() {
          // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
-               requestLogin(UserPreference.name, UserPreference.password)
+               requestLogin(UserPreference.phoneNumber, UserPreference.password)
                goToMain()
             }
 
