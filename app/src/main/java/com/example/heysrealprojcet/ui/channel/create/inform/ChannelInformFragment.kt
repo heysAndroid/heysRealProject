@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet.ui.channel.create.inform
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,8 @@ import com.example.heysrealprojcet.ui.channel.dialog.purpose.ChannelPurposeDialo
 import com.example.heysrealprojcet.ui.channel.dialog.recruitmentMethod.ChannelRecruitmentMethodDialog
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.ChannelPreference
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
@@ -91,15 +92,21 @@ class ChannelInformFragment : Fragment() {
          val recruitmentTimeDialog = ChannelTimeDialog()
 
          recruitmentPeriodDialog.setOnOKClickListener { content ->
-            //binding.recruitmentPeriod.text = content
-            //binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
             recruitmentTimeDialog.show(childFragmentManager, null)
          }
          recruitmentPeriodDialog.show(childFragmentManager, null)
-
          recruitmentTimeDialog.setOnOKClickListener { content ->
-            Log.w("dueDate: ", ChannelPreference.channelRecruitEndDay)
-            Log.w("dueTime: ", ChannelPreference.channelRecruitEndTime)
+            val year = ChannelPreference.channelRecruitEndDay.split("-")[0]
+            val month = ChannelPreference.channelRecruitEndDay.split("-")[1]
+            val day = ChannelPreference.channelRecruitEndDay.split("-")[2]
+            val hour = ChannelPreference.channelRecruitEndTime.split(":")[0]
+            val min = ChannelPreference.channelRecruitEndTime.split(":")[1]
+            val endDateTime = LocalDateTime.of(year.toInt(), month.toInt(), day.toInt(), hour.toInt(), min.toInt())
+            val endTimeString = endDateTime.format(DateTimeFormatter.ofPattern("a hh:mm"))
+
+            binding.recruitmentPeriod.text = "${year.substring(2)}/$month/$day ${endTimeString}까지"
+            binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            ChannelPreference.channelRecruitEndDateTime = endDateTime.toString()
          }
       }
 

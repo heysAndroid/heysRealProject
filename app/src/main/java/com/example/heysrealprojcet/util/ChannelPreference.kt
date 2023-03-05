@@ -56,6 +56,11 @@ object ChannelPreference : KotprefModel() {
    var channelRecruitEndTime by stringPref()
 
    /*
+   * 모집 마감 일시
+    */
+   var channelRecruitEndDateTime by stringPref()
+
+   /*
   관심 분야
    */
    var channelInterestArray by gsonPref(arrayListOf<String>())
