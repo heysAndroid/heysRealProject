@@ -3,7 +3,6 @@ package com.example.heysrealprojcet.ui.main
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,7 @@ import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.sign_up.profileCard.SignUpProfileCardBottomSheet
+import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
@@ -29,13 +28,14 @@ class MainFragment : Fragment() {
    private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
+   private lateinit var mainActivity: MainActivity
    private var position = 0
 
    val args: MainFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      val mainActivity = activity as MainActivity
+      mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(false)
    }
 
@@ -64,7 +64,7 @@ class MainFragment : Fragment() {
 
       // 회원가입에서 넘어온 경우 프로필 카드 보여주기
       if (args.isNewUser) {
-         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name) { goToProfileEdit() }
+         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name) { goToMyPage() }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
 
@@ -91,7 +91,6 @@ class MainFragment : Fragment() {
          activityAllText.setOnClickListener { goToActivity() }
          studyContainer.setOnClickListener { goToStudy() }
       }
-      Log.d("=== accessToken ===", UserPreference.accessToken)
 
       val onScrollListener = object : RecyclerView.OnScrollListener() {
          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -143,8 +142,8 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment)
    }
 
-   private fun goToProfileEdit() {
-      findNavController().navigate(R.id.action_mainFragment_to_profileEditFragment)
+   private fun goToMyPage() {
+      mainActivity.goToMyPage()
    }
 }
 

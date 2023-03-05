@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.profileCard
+package com.example.heysrealprojcet.ui.main.profileCard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -50,4 +50,8 @@ class MainActivity : AppCompatActivity() {
       // 아이콘이 태마색으로 변경되는 것 막음
       binding.bottomNavigation.itemIconTintList = null
    }
+
+   fun goToMyPage() {
+      binding.bottomNavigation.selectedItemId = R.id.myPageFragment
+   }
 }
