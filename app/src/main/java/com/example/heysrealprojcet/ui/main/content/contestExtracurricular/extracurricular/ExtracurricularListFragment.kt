@@ -47,7 +47,6 @@ class ExtracurricularListFragment : Fragment() {
       binding.extracurricularList.adapter = activityItemRecyclerViewAdapter
       binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
       binding.filterButton.setOnClickListener { goToFilter() }
-      binding.pingTest.setOnClickListener { viewModel.ping() }
    }
 
    private fun makeList() {
