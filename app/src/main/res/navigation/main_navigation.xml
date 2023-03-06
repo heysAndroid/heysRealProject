@@ -18,8 +18,15 @@
             android:id="@+id/action_mainFragment_to_contestFragment"
             app:destination="@id/contestListFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_activityListFragment"
-            app:destination="@id/activityListFragment" />
+            android:id="@+id/action_mainFragment_to_extracurricularListFragment"
+            app:destination="@id/extracurricularListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_channelNameFragment"
+            app:destination="@id/channelNameFragment" />
+        <argument
+            android:name="isNewUser"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
@@ -34,33 +41,33 @@
             app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/contestActivityFilterFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.filter.ContestActivityFilterFragment"
+        android:id="@+id/contestExtracurricularFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/contest_activity_filter_fragment"></fragment>
+        tools:layout="@layout/contest_extracurricular_filter_fragment"></fragment>
     <fragment
         android:id="@+id/contestListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.ContestListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContestListFragment"
         android:label="ContestFragment"
         tools:layout="@layout/contest_list_fragment">
         <action
-            android:id="@+id/action_contestListFragment_to_contestActivityFilterFragment"
-            app:destination="@id/contestActivityFilterFragment" />
+            android:id="@+id/action_contestListFragment_to_contestExtracurricularFilterFragment"
+            app:destination="@id/contestExtracurricularFilterFragment" />
         <action
-            android:id="@+id/action_contestListFragment_to_contestActivityDetailFragment"
-            app:destination="@id/contestActivityDetailFragment" />
+            android:id="@+id/action_contestListFragment_to_contestExtracurricularDetailFragment"
+            app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/contestActivityDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail.ContestActivityDetailFragment"
-        android:label="ContestActivityDetailFragment"
-        tools:layout="@layout/contest_activity_detail_fragment">
+        android:id="@+id/contestExtracurricularDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ContestExtracurricularDetailFragment"
+        android:label="ContestExtracurricularDetailFragment"
+        tools:layout="@layout/contest_extracurricular_detail_fragment">
         <action
-            android:id="@+id/action_contestActivityDetailFragment_to_channelListFragment"
+            android:id="@+id/action_contestExtracurricularDetailFragment_to_channelListFragment"
             app:destination="@id/channelListFragment" />
         <action
-            android:id="@+id/action_contestActivityDetailFragment_to_contestDetailLookFragment"
-            app:destination="@id/contestDetailLookFragment" />
+            android:id="@+id/action_contestExtracurricularDetailFragment_to_contestDetailLookFragment"
+            app:destination="@id/ImageZoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
@@ -95,16 +102,16 @@
             app:destination="@id/myChannelFragment" />
     </fragment>
     <fragment
-        android:id="@+id/activityListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.activity.ActivityListFragment"
-        android:label="ActivityListFragment"
-        tools:layout="@layout/activity_list_fragment">
+        android:id="@+id/extracurricularListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularListFragment"
+        android:label="ExtracurricularListFragment"
+        tools:layout="@layout/extracurricular_list_fragment">
         <action
-            android:id="@+id/action_activityListFragment_to_contestActivityFilterFragment"
-            app:destination="@id/contestActivityFilterFragment" />
+            android:id="@+id/action_extracurricularListFragment_to_contestExtracurricularFilterFragment"
+            app:destination="@id/contestExtracurricularFilterFragment" />
         <action
-            android:id="@+id/action_activityListFragment_to_contestActivityDetailFragment"
-            app:destination="@id/contestActivityDetailFragment" />
+            android:id="@+id/action_extracurricularListFragment_to_contestExtracurricularDetailFragment"
+            app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberHeysListFragment"
@@ -323,7 +330,7 @@
         tools:layout="@layout/waiting_channel_list_fragment" />
     <fragment
         android:id="@+id/profileEditFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myPage.profile.ProfileEditFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.edit.ProfileEditFragment"
         android:label="ProfileEditFragment"
         tools:layout="@layout/profile_edit_fragment">
         <action
@@ -365,12 +372,12 @@
         android:label="ChattingFragment"
         tools:layout="@layout/chatting_fragment" />
     <fragment
-        android:id="@+id/contestDetailLookFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestActivity.contest.detail.ContestDetailLookFragment"
-        android:label="ContestDetailLookFragment"
-        tools:layout="@layout/contest_detail_look_fragment">
+        android:id="@+id/ImageZoomFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ImageZoomFragment"
+        android:label="ImageZoomFragment"
+        tools:layout="@layout/image_zoom_fragment">
         <action
-            android:id="@+id/action_contestDetailLookFragment_to_contestActivityDetailFragment"
-            app:destination="@id/contestActivityDetailFragment" />
+            android:id="@+id/action_imageZoomFragment_to_contestExtracurricularDetailFragment"
+            app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
 </navigation>

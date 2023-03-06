@@ -25,7 +25,7 @@ class ChannelTimeDialog : DialogFragment() {
 
       binding.timePicker.setOnTimeChangedListener { _, hour, minute ->
          val dueDateTime = LocalTime.of(hour, minute)
-         ChannelPreference.channelRecruitLastTime = dueDateTime.toString()
+         ChannelPreference.channelRecruitEndTime = dueDateTime.toString()
          enableSaveButton()
       }
 

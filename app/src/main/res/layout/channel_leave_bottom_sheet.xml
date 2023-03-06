@@ -40,7 +40,7 @@
             style="@style/SpinnerStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:divider="@color/color_f7bc26"
+            android:divider="@color/color_34d676"
             android:dividerHeight="2dp"
             android:spinnerMode="dropdown"
             android:theme="@style/SpinnerTheme" />
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_edittext"
         android:paddingHorizontal="16dp"
         android:visibility="invisible" />
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24.25dp"
         android:layout_marginTop="10dp"
-        android:text="채널을 나가면 채널 리스트에서 삭제되고 대화 내용이 모두 삭제되어 복구가 불가능해요. 상대의 기분을 상하게 하는 욕설과 비하발언 등은 신고의 대상이 될 수 있어요."
+        android:text="채널을 나가면 내 채널 목록에서 삭제되고 대화 내용이 모두 삭제되어 복구가 불가능해요. "
         android:textColor="@color/color_828282"
         android:textSize="12sp" />
 

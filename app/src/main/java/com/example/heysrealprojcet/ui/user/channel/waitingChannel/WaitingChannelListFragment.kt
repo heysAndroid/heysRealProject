@@ -28,7 +28,6 @@ class WaitingChannelListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
       makeList()
       engagedChannelItemRecyclerViewAdapter = WaitingChannelItemRecyclerViewAdapter(channel = channelList) {
          val bottomSheet = ChannelCancelBottomSheet(requireContext())
@@ -40,9 +39,9 @@ class WaitingChannelListFragment : Fragment() {
 
    private fun makeList() {
       channelList = mutableListOf(
-         Channel(R.drawable.bg_sample_image_crop, "수도권 팀원 \n모집해요!", 7, ChannelStatus.New, 100, 3),
-         Channel(R.drawable.bg_sample_image_crop, "같이 도전 하실분 구합니다.", 7, ChannelStatus.Normal, 30, 500),
-         Channel(R.drawable.bg_sample_image_crop, "천안 팀원 구해요", 250, ChannelStatus.Closed, 50, 1250),
+         Channel(R.drawable.bg_category_maingreen_crop, "채널1", 7, ChannelStatus.New, 100, 3),
+         Channel(R.drawable.bg_category_yellow_crop, "채널2", 7, ChannelStatus.Normal, 30, 500),
+         Channel(R.drawable.bg_category_purple_crop, "채널3", 250, ChannelStatus.Closed, 50, 1250),
       )
    }
 }

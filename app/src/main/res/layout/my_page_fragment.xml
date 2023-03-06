@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color_f8f9fc"
         android:orientation="vertical">
 
         <LinearLayout
@@ -43,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:orientation="vertical"
-                android:paddingBottom="32dp">
+                android:paddingBottom="64dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card"
@@ -73,7 +74,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/introduction"
+                                    android:id="@+id/introduce"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginVertical="40dp"
@@ -104,6 +105,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/mbti"
                             android:layout_width="55dp"
                             android:layout_height="24dp"
                             android:layout_marginTop="8dp"
@@ -142,7 +144,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/jobContent"
+                            android:id="@+id/job"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.3"
@@ -162,7 +164,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/skillContent"
+                            android:id="@+id/skill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.3"
@@ -297,6 +299,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/joinChannel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"
@@ -326,6 +329,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/waitingChannel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"

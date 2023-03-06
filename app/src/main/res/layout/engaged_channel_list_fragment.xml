@@ -34,16 +34,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/channelNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="2"
-                android:textColor="@color/color_34d676"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"

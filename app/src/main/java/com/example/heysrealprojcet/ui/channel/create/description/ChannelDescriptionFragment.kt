@@ -1,7 +1,6 @@
 package com.example.heysrealprojcet.ui.channel.create.description
 
 import android.os.Bundle
-import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDescriptionFragmentBinding
-import com.example.heysrealprojcet.ui.channel.create.description.view.ChannelLinkView
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.ChannelPreference
 
 class ChannelDescriptionFragment : Fragment() {
    private lateinit var binding: ChannelDescriptionFragmentBinding
@@ -39,16 +38,28 @@ class ChannelDescriptionFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      //EditText 글자 제한
-      binding.channelDescriptionField.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(10))
-      binding.btnPreview.setOnClickListener { goToChannelInterest() }
+      binding.btnPreview.setOnClickListener {
+         ChannelPreference.channelActivity = viewModel.channelActivity.value.toString()
+         ChannelPreference.channelMember = viewModel.channelMember.value.toString()
+         ChannelPreference.link1 = viewModel.link1.value.toString()
+         viewModel.link2.observe(viewLifecycleOwner) {
+            it?.let { ChannelPreference.link2 = it }
+         }
+         goToChannelPreview()
+      }
+
       binding.addLinkView.setOnClickListener {
-         val linkView = ChannelLinkView(requireContext())
-         binding.additionalLinkContainer.addView(linkView)
+         binding.additionalLinkView.visibility = View.VISIBLE
+         binding.addButtonContainer.visibility = View.GONE
+      }
+
+      binding.removeButton.setOnClickListener {
+         binding.addButtonContainer.visibility = View.VISIBLE
+         binding.additionalLinkView.visibility = View.GONE
       }
    }
 
-   private fun goToChannelInterest() {
+   private fun goToChannelPreview() {
       findNavController().navigate(R.id.action_channelDescriptionFragment_to_channelPreviewFragment)
    }
 }

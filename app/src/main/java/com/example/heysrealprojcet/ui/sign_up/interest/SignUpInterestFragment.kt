@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -59,29 +60,27 @@ class SignUpInterestFragment : Fragment() {
    }
 
    private fun goToMain() {
-      findNavController().navigate(R.id.main_navigation)
+      findNavController().navigate(R.id.main_navigation, bundleOf("isNewUser" to true))
    }
 
    private fun requestSignUp() {
       val user = User(
          phone = UserPreference.phoneNumber,
-         username = UserPreference.name,
+         name = UserPreference.name,
          password = UserPreference.password,
-         age = UserPreference.age,
+         birthDate = UserPreference.birthday,
          gender = UserPreference.gender,
          interests = interestViewModel.interestList as ArrayList<String>)
 
       signUpInterestViewModel.signUp(user)
-      signUpInterestViewModel.response.observe(viewLifecycleOwner) { response ->
+      signUpInterestViewModel.responseSignUp.observe(viewLifecycleOwner) { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
-               UserPreference.accessToken = response.data?.token ?: ""
-               alert.setTitle("${user.username}님 회원가입 성공")
-                  .setMessage("accessToken: ${UserPreference.accessToken}")
-                  .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
+               requestLogin(UserPreference.phoneNumber, UserPreference.password)
+               goToMain()
             }
 
             is NetworkResult.Error -> {
@@ -102,5 +101,24 @@ class SignUpInterestFragment : Fragment() {
       val isValidPassword = BCrypt.checkpw(password, passwordHashed)
       Log.w("암호화 검증: ", isValidPassword.toString())
       return passwordHashed
+   }
+
+   private fun requestLogin(username: String, password: String) {
+      signUpInterestViewModel.login(username, password)
+      signUpInterestViewModel.responseLogin.observe(viewLifecycleOwner) { response ->
+         val alert = AlertDialog.Builder(requireContext())
+
+         when (response.isSuccessful) {
+            true -> {
+               val token = response.headers()["Authorization"]?.split(" ")?.last()
+               token.let { UserPreference.accessToken = it.toString() }
+            }
+
+            false -> {
+               alert.setTitle("로그인 실패").setMessage("로그인에 실패했습니다.").create().show()
+               Log.w("error: ", response.errorBody().toString())
+            }
+         }
+      }
    }
 }

@@ -1,8 +1,8 @@
 package com.example.heysrealprojcet.di
 
-import com.example.heysrealprojcet.api.CommonApi
 import com.example.heysrealprojcet.api.SettingApi
 import com.example.heysrealprojcet.api.SignUpApi
+import com.example.heysrealprojcet.api.UserApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-   const val base_url = "http://130.162.132.219:8090/"
+   const val base_url = "http://heys-dev-public-alb-1078245957.ap-northeast-2.elb.amazonaws.com/"
 
    @Provides
    @Singleton
@@ -66,7 +66,7 @@ object NetworkModule {
 
    @Provides
    @Singleton
-   fun provideCommonApiService(retrofit: Retrofit): CommonApi {
-      return retrofit.create(CommonApi::class.java)
+   fun provideUserApiService(retrofit: Retrofit): UserApi {
+      return retrofit.create(UserApi::class.java)
    }
 }

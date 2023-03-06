@@ -16,7 +16,6 @@ import com.example.heysrealprojcet.ui.main.MainActivity
 class ChannelPreviewFragment() : Fragment() {
    private lateinit var binding: ChannelPreviewFragmentBinding
    private val viewModel by viewModels<ChannelPreviewViewModel>()
-   var isExpanded = false
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -43,21 +42,27 @@ class ChannelPreviewFragment() : Fragment() {
       setChannelRegion()
       setChannelRecruitmentMethod()
 
-      binding.btnDetail.setOnClickListener {
-         if (isExpanded) {
-            binding.channelDescription.maxLines = 5
-            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand, 0)
-            isExpanded = false
+      binding.btnNext.setOnClickListener { goToDetail() }
+      binding.btnBack.setOnClickListener { goToBack() }
+
+      viewModel.link1.observe(viewLifecycleOwner) {
+         if (it.contains("kakao")) {
+            binding.link1.setImageResource(R.drawable.ic_link_kakao)
          } else {
-            // TODO
-            // close 리소스 수정
-            binding.channelDescription.maxLines = Int.MAX_VALUE
-            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_dropdown_close, 0)
-            isExpanded = true
+            binding.link1.setImageResource(R.drawable.ic_link_clip)
          }
       }
-      binding.btnMake.setOnClickListener { goToDetail() }
-      binding.btnBack.setOnClickListener { goToBack() }
+
+      viewModel.link2.observe(viewLifecycleOwner) {
+         if (!it.isNullOrBlank()) {
+            binding.link2.visibility = View.VISIBLE
+            if (it.contains("kakao")) {
+               binding.link2.setImageResource(R.drawable.ic_link_kakao)
+            } else {
+               binding.link2.setImageResource(R.drawable.ic_link_clip)
+            }
+         }
+      }
    }
 
    private fun goToBack() {
@@ -75,18 +80,16 @@ class ChannelPreviewFragment() : Fragment() {
       //온라인이면 지역 텍스트 숨기기
       if (viewModel.channelForm.value == ChannelForm.Online.form) {
          binding.channelRegion.visibility = View.GONE
-         binding.channelRegionText.visibility = View.GONE
       } else {
          binding.channelRegion.visibility = View.VISIBLE
-         binding.channelRegionText.visibility = View.VISIBLE
       }
    }
 
    private fun setChannelRecruitmentMethod() {
       binding.channelRecruitmentMethod.text = if (viewModel.channelRecruitmentMethod.value == ChannelRecruitmentMethod.Approval.method) {
-         "승인없이 바로 참여가능한 채널이에요."
+         "승인없이 바로 참여가능해요."
       } else {
-         "승인이 필요한 채널이에요."
+         "승인이 필요해요."
       }
    }
 }

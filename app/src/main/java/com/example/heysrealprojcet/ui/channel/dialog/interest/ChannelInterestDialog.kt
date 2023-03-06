@@ -60,7 +60,7 @@ class ChannelInterestDialog : DialogFragment() {
                ChannelInterest.Paper.interest -> selectButton(binding.btnPaper)
                ChannelInterest.Sports.interest -> selectButton(binding.btnSports)
                ChannelInterest.Dance.interest -> selectButton(binding.btnDance)
-               ChannelInterest.Public.interest -> selectButton(binding.btnPublic)
+               ChannelInterest.Service.interest -> selectButton(binding.btnPublic)
                else -> {}
             }
          }

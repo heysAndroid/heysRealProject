@@ -3,13 +3,13 @@ package com.example.heysrealprojcet.ui.main
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.MarginItemDecoration
@@ -18,20 +18,24 @@ import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
-import com.example.heysrealprojcet.ui.main.content.contestActivity.contest.activityRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
    private lateinit var binding: MainFragmentBinding
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
-   private lateinit var activityRecyclerViewAdapter: activityRecyclerViewAdapter
+   private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
    private lateinit var contestList: MutableList<ContestType>
-   private lateinit var activityList: MutableList<ExtracurricularType>
+   private lateinit var extracurricularList: MutableList<ExtracurricularType>
+   private lateinit var mainActivity: MainActivity
    private var position = 0
+
+   val args: MainFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      val mainActivity = activity as MainActivity
+      mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(false)
    }
 
@@ -57,11 +61,18 @@ class MainFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      makeActivityList()
+
+      // 회원가입에서 넘어온 경우 프로필 카드 보여주기
+      if (args.isNewUser) {
+         val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name) { goToMyPage() }
+         bottomSheet.show(childFragmentManager, bottomSheet.tag)
+      }
+
+      makeExtracurricularList()
       makeContestList()
 
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToContest() }
-      activityRecyclerViewAdapter = activityRecyclerViewAdapter(list = activityList) { goToActivity() }
+      extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
       binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -69,18 +80,17 @@ class MainFragment : Fragment() {
          MarginItemDecoration(
             resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
 
-      binding.activityList.adapter = activityRecyclerViewAdapter
-      binding.activityList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.activityList.addItemDecoration(
+      binding.extracurricularList.adapter = extracurricularRecyclerViewAdapter
+      binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+      binding.extracurricularList.addItemDecoration(
          MarginItemDecoration(
-            resources.getDimension(R.dimen.activityList_item_margin).toInt(), activityList.lastIndex))
+            resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
 
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
          activityAllText.setOnClickListener { goToActivity() }
          studyContainer.setOnClickListener { goToStudy() }
       }
-      Log.d("=== accessToken ===", UserPreference.accessToken)
 
       val onScrollListener = object : RecyclerView.OnScrollListener() {
          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -104,8 +114,8 @@ class MainFragment : Fragment() {
       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
    }
 
-   private fun makeActivityList() {
-      activityList = mutableListOf(
+   private fun makeExtracurricularList() {
+      extracurricularList = mutableListOf(
          ExtracurricularType("취향저격", "내 관심분야별", R.drawable.ic_interested),
          ExtracurricularType("서둘러요!", "마감 임박!", R.drawable.ic_hurry),
          ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding),
@@ -121,7 +131,7 @@ class MainFragment : Fragment() {
    }
 
    private fun goToStudy() {
-      findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+      findNavController().navigate(R.id.action_mainFragment_to_channelNameFragment)
    }
 
    private fun goToContest() {
@@ -129,7 +139,11 @@ class MainFragment : Fragment() {
    }
 
    private fun goToActivity() {
-      findNavController().navigate(R.id.action_mainFragment_to_activityListFragment)
+      findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment)
+   }
+
+   private fun goToMyPage() {
+      mainActivity.goToMyPage()
    }
 }
 

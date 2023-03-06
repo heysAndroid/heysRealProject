@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class ChannelCancelBottomSheet(context: Context) : BottomSheetDialogFragment() {
    private lateinit var binding: ChannelCancelBottomSheetBinding
 
+
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ChannelCancelBottomSheetBinding.inflate(inflater, container, false)
       return binding.root

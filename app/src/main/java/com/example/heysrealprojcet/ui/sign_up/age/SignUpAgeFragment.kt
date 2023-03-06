@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.sign_up.age
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class SignUpAgeFragment : Fragment() {
       binding.datePicker.maxDate = Calendar.getInstance().timeInMillis
       binding.datePicker.setOnDateChangedListener { _, year, month, dayOfMonth ->
          enableOkButton()
+         UserPreference.birthday = "$year-${(month + 1).toString().convertSingleToDoubleDigit()}-${dayOfMonth.toString().convertSingleToDoubleDigit()}"
          val birthday = LocalDate.of(year, month + 1, dayOfMonth)
          UserPreference.age = getInternationalAge(birthday)
       }
@@ -69,4 +71,6 @@ class SignUpAgeFragment : Fragment() {
    private fun goToInterest() {
       findNavController().navigate(R.id.action_signUpAgeFragment_to_signUpInterestFragment)
    }
+
+   fun String.convertSingleToDoubleDigit(): String = if (this.length < 2) "0$this" else this
 }

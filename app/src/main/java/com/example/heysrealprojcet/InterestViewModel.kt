@@ -18,9 +18,9 @@ class InterestViewModel : ViewModel() {
    * 관심 분야
    */
    private val totalMax = 3
-   private var total = MutableStateFlow(0)
+   var total = MutableStateFlow(0)
    val totalString = MutableStateFlow("${total.value}/3")
-   val interestList = mutableListOf<String>()
+   var interestList = mutableListOf<String>()
 
    /*
    * 시작하기 버튼
@@ -36,6 +36,11 @@ class InterestViewModel : ViewModel() {
       _isEnabled.value = total.value > 0
    }
 
+   fun setInterest(arr: MutableList<String>) {
+      interestList = arr
+      total.value = interestList.size
+   }
+
    fun onClickInterest(v: View) {
       var button = v as Button
 
@@ -43,22 +48,20 @@ class InterestViewModel : ViewModel() {
          if (v.isSelected) {
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
-            total.value -= 1
             interestList.remove(button.text)
          } else {
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
-            total.value += 1
             interestList.add(button.text.toString())
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
-            total.value -= 1
             interestList.remove(button.text)
          }
       }
+      total.value = interestList.size
       totalString.value = "${total.value}/$totalMax"
       UserPreference.interests = Json.encodeToString(interestList)
    }

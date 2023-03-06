@@ -2,20 +2,23 @@ package com.example.heysrealprojcet.ui.sign_in.password
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.repository.SignupRepository
+import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class SignInPasswordViewModel @Inject constructor(
    private val signupRepository: SignupRepository
-) : ViewModel() {
+) : BaseViewModel() {
    val password = MutableStateFlow("")
 
    private val _isPasswordVisible = MutableLiveData(true)
@@ -30,9 +33,6 @@ class SignInPasswordViewModel @Inject constructor(
    private val errorMessage = MutableLiveData<String>()
    private val loading = MutableLiveData<Boolean>()
    var job: Job? = null
-   private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-      onError("Exception handled: ${throwable.localizedMessage}")
-   }
 
    init {
       viewModelScope.launch {
