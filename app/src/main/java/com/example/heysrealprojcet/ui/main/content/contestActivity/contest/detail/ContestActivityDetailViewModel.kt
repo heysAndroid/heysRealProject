@@ -6,17 +6,10 @@ import androidx.lifecycle.ViewModel
 
 class ContestActivityDetailViewModel : ViewModel() {
 
-   private var _showSnackBarEvent = MutableLiveData(false)
-   val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
+   private var _bookmark = MutableLiveData<Boolean>()
+   val bookmark: LiveData<Boolean> = _bookmark
 
-   private val _isSelected = MutableLiveData(false)
-   val isSelected: LiveData<Boolean> = _isSelected
-
-   fun onClickBookmark() {
-      _isSelected.value = _isSelected.value != true
-   }
-
-   fun showSnackBar() {
-      _showSnackBarEvent.value = true
+   fun clickBookmark() {
+      _bookmark.value = _bookmark.value != true
    }
 }

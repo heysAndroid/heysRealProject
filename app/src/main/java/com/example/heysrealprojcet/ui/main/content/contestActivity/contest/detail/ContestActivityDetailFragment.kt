@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
@@ -55,17 +54,15 @@ class ContestActivityDetailFragment : Fragment() {
 //         }
 //      }
 
-      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if(it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
-      }
+      binding.bookmarkButton.isSelected = viewModel.bookmark.value ?: false
 
-      viewModel.isSelected.observe(viewLifecycleOwner, Observer {
-         binding.bookmarkButton.isSelected = it
-
-         if(viewModel.isSelected.value == true) {
-            viewModel.showSnackBar()
+      binding.bookmarkButton.setOnClickListener {
+         viewModel.clickBookmark()
+         viewModel.bookmark.observe(viewLifecycleOwner) {
+            binding.bookmarkButton.isSelected = it
+            if(it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
          }
-      })
+      }
 
       binding.btnShare.setOnClickListener {
          val bottomSheet = ContestShareBottomSheet()
