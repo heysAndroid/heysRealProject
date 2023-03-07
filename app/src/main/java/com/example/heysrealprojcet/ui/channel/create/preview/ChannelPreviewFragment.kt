@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.channel.create.preview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,14 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelPreviewFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
+import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.ChannelPreference
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChannelPreviewFragment() : Fragment() {
    private lateinit var binding: ChannelPreviewFragmentBinding
    private val viewModel by viewModels<ChannelPreviewViewModel>()
@@ -42,7 +49,7 @@ class ChannelPreviewFragment() : Fragment() {
       setChannelRegion()
       setChannelRecruitmentMethod()
 
-      binding.btnNext.setOnClickListener { goToDetail() }
+      binding.btnNext.setOnClickListener { requestCreateStudy() }
       binding.btnBack.setOnClickListener { goToBack() }
 
       viewModel.link1.observe(viewLifecycleOwner) {
@@ -73,7 +80,7 @@ class ChannelPreviewFragment() : Fragment() {
    // 1) detail 프래그먼트로 이동
    // 2) 생성완료 프래그먼트 생성
    private fun goToDetail() {
-      findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment)
+      //findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment)
    }
 
    private fun setChannelRegion() {
@@ -91,5 +98,42 @@ class ChannelPreviewFragment() : Fragment() {
       } else {
          "승인이 필요해요."
       }
+   }
+
+   private fun requestCreateStudy() {
+      viewModel.channelInterest
+      val study = Study(
+         name = ChannelPreference.channelName,
+         purpose = viewModel.channelPurpose.value,
+         online = ChannelPreference.channelFormEng,
+         location = ChannelPreference.channelRegion,
+         limit = ChannelPreference.channelCapacity,
+         recruitEndDate = ChannelPreference.channelRecruitEndDateTime,
+         recruitMethod = ChannelPreference.channelRecruitmentMethodEng,
+         contentText = ChannelPreference.channelActivity,
+         recruitText = ChannelPreference.channelMember,
+         thumbnailUri = "",
+         linkUri = arrayListOf(viewModel.link1.value!!, viewModel.link2.value!!),
+         interests = ChannelPreference.channelInterestArray
+      )
+      val token = UserPreference.accessToken
+      viewModel.createStudy("Bearer $token", study)
+      viewModel.responseCreateStudy.observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.i("createStudy: ", "success")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("createStudy: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("createStudy: ", "loading")
+            }
+         }
+      }
+
+
    }
 }

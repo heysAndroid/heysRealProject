@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelForm
+import com.example.heysrealprojcet.enums.ChannelPurpose
+import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
+import com.example.heysrealprojcet.enums.ChannelRegion
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.ui.main.MainActivity
 
@@ -40,7 +44,7 @@ class StudyListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       makeList()
-      if(studyList.isNotEmpty()) {
+      if (studyList.isNotEmpty()) {
          studyItemRecyclerViewAdapter = StudyItemRecyclerViewAdapter(type = studyList) { goToDetail() }
          binding.studyList.adapter = studyItemRecyclerViewAdapter
          binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -53,10 +57,15 @@ class StudyListFragment : Fragment() {
 
    private fun makeList() {
       studyList = mutableListOf(
-         Study(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
-         Study(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),
-         Study(5, R.drawable.bg_study_list, "2022 이랜드재단 ESG 서포터즈", "이랜드재단", 1000),
-         Study(2, R.drawable.bg_study_list, "제3회 \n연구개발 특구", "과학기술정보통신부, 연구개발...", 2)
+         Study(
+            "스터디 테스트1", ChannelPurpose.Networking.purpose, ChannelForm.Online.form, ChannelRegion.Gangwon.region, 30, "2023-03-07T14:16:40.573Z",
+            ChannelRecruitmentMethod.Approval.method, "소개글", "멤버 모집글", "", arrayListOf("www.kakao.com"), arrayListOf("패션", "IT/SW")),
+         Study(
+            "스터디 테스트2", ChannelPurpose.Capability.purpose, ChannelForm.Offline.form, ChannelRegion.Gyeonggi.region, 7, "2023-03-15T11:39:40.573Z",
+            ChannelRecruitmentMethod.Decide.method, "소개글", "멤버 모집글", "", arrayListOf("www.github.com"), arrayListOf("패션", "IT/SW")),
+         Study(
+            "스터디 테스트3", ChannelPurpose.Experience.purpose, ChannelForm.Both.form, ChannelRegion.Seoul.region, 24, "2023-03-07T14:16:40.573Z",
+            ChannelRecruitmentMethod.Approval.method, "소개글", "멤버 모집글", "", arrayListOf("www.kakao.com"), arrayListOf("패션", "IT/SW")),
       )
    }
 

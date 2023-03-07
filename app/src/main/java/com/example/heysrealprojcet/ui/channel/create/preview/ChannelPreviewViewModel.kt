@@ -1,12 +1,23 @@
 package com.example.heysrealprojcet.ui.channel.create.preview
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
+import com.example.heysrealprojcet.repository.StudyRepository
+import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.ChannelPreference
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
+import javax.inject.Inject
 
-class ChannelPreviewViewModel : ViewModel() {
+@HiltViewModel
+class ChannelPreviewViewModel @Inject constructor(
+   private val studyRepository: StudyRepository) : BaseViewModel() {
    var channelName = MutableLiveData(ChannelPreference.channelName)
    var channelPurpose = MutableLiveData("")
    var channelCapacity = MutableLiveData(ChannelPreference.channelCapacity.toString())
@@ -23,6 +34,9 @@ class ChannelPreviewViewModel : ViewModel() {
 
    var channelRecruitEndDayString = MutableLiveData<String>()
    var channelRecruitEndTimeString = MutableLiveData<String>()
+
+   private val _responseCreateStudy: MutableLiveData<NetworkResult<CreateStudyResponse>> = MutableLiveData()
+   val responseCreateStudy: LiveData<NetworkResult<CreateStudyResponse>> = _responseCreateStudy
 
    init {
       setChannelPurposeString()
@@ -64,5 +78,11 @@ class ChannelPreviewViewModel : ViewModel() {
       var hour = timeParse.hour
       var min = timeParse.minute
       channelRecruitEndTimeString.value = "${hour}시 ${min}분"
+   }
+
+   fun createStudy(token: String, study: Study) = viewModelScope.launch {
+      studyRepository.createStudy(token, study).collect { values ->
+         _responseCreateStudy.value = values
+      }
    }
 }

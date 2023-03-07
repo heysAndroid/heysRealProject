@@ -49,6 +49,10 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
       }
       binding.btnSave.setOnClickListener {
          ChannelPreference.channelRecruitmentMethod = viewModel.selectedRecruitmentMethod.value.toString()
+         when (ChannelPreference.channelRecruitmentMethod) {
+            ChannelRecruitmentMethod.Decide.method -> ChannelPreference.channelRecruitmentMethodEng = ChannelRecruitmentMethod.Decide.methodEng
+            ChannelRecruitmentMethod.Approval.method -> ChannelPreference.channelRecruitmentMethodEng = ChannelRecruitmentMethod.Approval.methodEng
+         }
          listener.onClick(ChannelPreference.channelRecruitmentMethod)
          dialog?.dismiss()
       }

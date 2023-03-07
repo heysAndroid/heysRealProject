@@ -14,6 +14,7 @@ import com.example.heysrealprojcet.databinding.ChannelFormDialogBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRegion
 import com.example.heysrealprojcet.util.ChannelPreference
+import kotlinx.coroutines.channels.Channel
 
 class ChannelFormDialog : DialogFragment() {
    private lateinit var binding: ChannelFormDialogBinding
@@ -73,6 +74,11 @@ class ChannelFormDialog : DialogFragment() {
       binding.btnSave.setOnClickListener {
          if (viewModel.selectedForm.value != null) {
             ChannelPreference.channelForm = viewModel.selectedForm.value.toString()
+            when(ChannelPreference.channelForm){
+               ChannelForm.Online.form -> ChannelPreference.channelFormEng = ChannelForm.Online.engForm
+               ChannelForm.Offline.form -> ChannelPreference.channelFormEng = ChannelForm.Offline.engForm
+               ChannelForm.Both.form -> ChannelPreference.channelFormEng = ChannelForm.Both.engForm
+            }
          }
          if (viewModel.selectedRegion.value != null) {
             ChannelPreference.channelRegion = viewModel.selectedRegion.value.toString()

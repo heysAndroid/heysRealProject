@@ -31,6 +31,11 @@ object ChannelPreference : KotprefModel() {
    var channelForm by stringPref()
 
    /*
+  활동 형태 영어
+   */
+   var channelFormEng by stringPref()
+
+   /*
    활동 지역
     */
    var channelRegion by stringPref()
@@ -44,6 +49,11 @@ object ChannelPreference : KotprefModel() {
    모집 방식
     */
    var channelRecruitmentMethod by stringPref()
+
+   /*
+   모집 방식 영어
+    */
+   var channelRecruitmentMethodEng by stringPref()
 
    /*
   모집 마감 날짜

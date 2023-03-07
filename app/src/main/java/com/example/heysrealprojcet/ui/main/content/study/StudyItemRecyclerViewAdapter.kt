@@ -16,13 +16,14 @@ class StudyItemRecyclerViewAdapter(
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(type: Study) {
-         binding.startDate.text = "D-${type.startDate}"
-         binding.image.setImageResource(type.image)
-         binding.title.text = type.title
-         binding.content.text = type.content
-         binding.see.text = type.see.toString()
+         //binding.startDate.text = "D-${type.startDate}"
+         //binding.image.setImageResource(type.image)
+         binding.title.text = type.name
+         binding.content.text = type.contentText
+         //binding.see.text = type.see.toString()
 
          var bgShape = binding.startDate.background as GradientDrawable
+         /*
          if (type.startDate == 0) {
             binding.startDate.text = "마감"
             bgShape.setColor(Color.parseColor("#828282"))
@@ -35,6 +36,7 @@ class StudyItemRecyclerViewAdapter(
          if (type.startDate in 6..10) {
             bgShape.setColor(Color.parseColor("#F7BC26"))
          }
+          */
 
          binding.root.setOnClickListener { onClickListener.invoke() }
       }

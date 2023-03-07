@@ -1,9 +1,21 @@
 package com.example.heysrealprojcet.model
 
+import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Study(
-   val startDate: Int,
-   val image: Int,
-   val title: String,
-   val content: String,
-   val see: Int
-)
+   @SerializedName("name") val name: String?,
+   @SerialName("purpose") val purpose: String?,
+   @SerialName("online") val online: String?,
+   @SerialName("location") val location: String?,
+   @SerializedName("limitPeople") val limit: Int?,
+   @SerializedName("lastRecruitDate") val recruitEndDate: String?,
+   @SerialName("recruitMethod") val recruitMethod: String?,
+   @SerialName("contentText") val contentText: String?,
+   @SerialName("recruitText") val recruitText: String?,
+   @SerialName("thumbnailUri") val thumbnailUri: String? = "",
+   @SerialName("linkUri") val linkUri: ArrayList<String>?,
+   @SerialName("interests") val interests: ArrayList<String>?
+) : java.io.Serializable
