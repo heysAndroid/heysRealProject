@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPasswordFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
@@ -80,7 +81,7 @@ class SignInPasswordFragment : Fragment() {
 
    private fun requestLogin(username: String, password: String) {
       viewModel.login(username, password)
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      viewModel.response.observe(viewLifecycleOwner, EventObserver { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          when (response.isSuccessful) {
@@ -96,7 +97,7 @@ class SignInPasswordFragment : Fragment() {
                Log.w("error: ", response.errorBody().toString())
             }
          }
-      }
+      })
    }
 
    private fun goToMain() {
