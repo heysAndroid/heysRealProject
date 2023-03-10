@@ -19,7 +19,7 @@
 
     <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
         <item name="android:divider">@drawable/bg_spinner_dropdown_divider</item>
-        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:dividerHeight">1dp</item>
     </style>
 
     <style name="SpinnerTheme" parent="Theme.HeysRealProjcet">
@@ -29,7 +29,7 @@
     <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/bg_spinner</item>
         <item name="android:popupBackground">@drawable/bg_spinner_dropdown</item>
-        <item name="android:dropDownVerticalOffset">4dp</item>
+        <item name="android:dropDownVerticalOffset">20dp</item>
         <item name="android:overlapAnchor">false</item>
     </style>
 
