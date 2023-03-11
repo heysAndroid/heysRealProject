@@ -23,12 +23,16 @@ import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSh
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
+   private lateinit var mainActivity: MainActivity
    private lateinit var binding: MainFragmentBinding
+
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
    private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
+
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
-   private lateinit var mainActivity: MainActivity
+   private lateinit var myInterestList: MutableList<String>
+
    private var position = 0
 
    val args: MainFragmentArgs by navArgs()
@@ -71,7 +75,10 @@ class MainFragment : Fragment() {
       makeExtracurricularList()
       makeContestList()
 
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToContest() }
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
+         list = contestList,
+         myInterestList = myInterestList
+      ) { goToContest() }
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
       binding.contestList.adapter = categoryRecyclerViewAdapter
@@ -123,11 +130,13 @@ class MainFragment : Fragment() {
    }
 
    private fun makeContestList() {
+      myInterestList = mutableListOf("기획/아이디어", "개발")
+
       contestList = mutableListOf(
-         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_drawing_board1, true),
-         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2, false),
-         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3, false),
-         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4, false))
+         ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true),
+         ContestType("마감 \n임박!", R.drawable.ic_drawing_board2, false),
+         ContestType("너도나도 \n많이 찾는", R.drawable.ic_drawing_board3, false),
+         ContestType("어디보자 \n새로 열린", R.drawable.ic_drawing_board4, false))
    }
 
    private fun goToStudy() {
