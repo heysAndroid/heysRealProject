@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularFilterFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.ui.DayBinder
 import java.time.YearMonth
@@ -20,6 +21,8 @@ import java.util.*
 class ContestExtracurricularFilterFragment : Fragment() {
    private lateinit var binding: ContestExtracurricularFilterFragmentBinding
    private lateinit var viewmodel: ContestExtracurricularFilterViewModel
+
+   private lateinit var myInterestList: ArrayList<String>
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -37,6 +40,8 @@ class ContestExtracurricularFilterFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
+      initStartView()
 
       binding.btnApply.setOnClickListener { findNavController().navigateUp() }
 
@@ -131,6 +136,41 @@ class ContestExtracurricularFilterFragment : Fragment() {
             ContestExtracurricularFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewmodel)
 
          override fun bind(container: ContestExtracurricularFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
+      }
+   }
+
+   private fun initStartView() {
+      myInterestList = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
+
+      for (i in myInterestList.indices) {
+         val btnInterest = when (myInterestList[i]) {
+            "기획/아이디어" -> binding.planning
+            "디자인" -> binding.design
+            "개발" -> binding.develop
+            "IT/SW" -> binding.sw
+            "데이터/인공지능" -> binding.data
+            "게임" -> binding.game
+            "광고/마케팅" -> binding.marketing
+            "경영/비즈니스" -> binding.business
+            "금융/경제" -> binding.economics
+            "과학/공학" -> binding.science
+            "미술/건축" -> binding.art
+            "인문학/소설/웹툰" -> binding.novel
+            "패션/라이프스타일" -> binding.lifestyle
+            "사진/영상/UCC" -> binding.photo
+            "문화/교육" -> binding.culture
+            "해외/관광" -> binding.tour
+            "환경/식품" -> binding.food
+            "외국/언어" -> binding.language
+            "미디어 콘텐츠/전시" -> binding.media
+            "학술/논문" -> binding.scholarship
+            "스포츠/음악" -> binding.sports
+            "댄스/무용" -> binding.dance
+            "공공/봉사" -> binding.service
+            else -> null
+         }
+         btnInterest?.isSelected = true
+         btnInterest?.setTypeface(null, Typeface.BOLD)
       }
    }
 }

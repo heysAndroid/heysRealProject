@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,11 +32,15 @@ class MainFragment : Fragment() {
 
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
-   private lateinit var myInterestList: MutableList<String>
+   private lateinit var myInterestList: ArrayList<String>
 
    private var position = 0
 
    val args: MainFragmentArgs by navArgs()
+
+   companion object {
+      const val MY_INTEREST_LIST = "myInterestList"
+   }
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -130,7 +135,7 @@ class MainFragment : Fragment() {
    }
 
    private fun makeContestList() {
-      myInterestList = mutableListOf("기획/아이디어", "개발")
+      myInterestList = arrayListOf("기획/아이디어", "개발")
 
       contestList = mutableListOf(
          ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true),
@@ -144,7 +149,9 @@ class MainFragment : Fragment() {
    }
 
    private fun goToContest() {
-      findNavController().navigate(R.id.action_mainFragment_to_contestFragment)
+      findNavController().navigate(
+         R.id.action_mainFragment_to_contestFragment,
+         bundleOf(MY_INTEREST_LIST to myInterestList))
    }
 
    private fun goToActivity() {
