@@ -13,10 +13,10 @@ import java.time.YearMonth
 
 class ContestExtracurricularFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
 
-   private var choiceInterest: View? = null
-   private val interestMax = 1
-   private var interestTotal = MutableStateFlow(0)
-   private val interestArray = mutableListOf<String>()
+   var choiceInterest = mutableListOf<View>()
+   private val interestMax = 3
+   var interestTotal = MutableStateFlow(0)
+   var interestArray = mutableListOf<String>()
 
    var selectedDate: LocalDate? = null
 
@@ -49,12 +49,13 @@ class ContestExtracurricularFilterViewModel(private val calendarView: CalendarVi
 
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
+            choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
          } else {
-            choiceInterest = v
+            choiceInterest.add(v)
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             interestTotal.value += 1
@@ -62,29 +63,22 @@ class ContestExtracurricularFilterViewModel(private val calendarView: CalendarVi
          }
       } else {
          if (v.isSelected) {
+            choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestTotal.value -= 1
             interestArray.remove(item)
-         } else {
-            choiceInterest?.isSelected = false
-            (choiceInterest as Button).setTypeface(null, Typeface.NORMAL)
-            interestArray.remove(interestArray[0])
-            v.isSelected = true
-            button.setTypeface(null, Typeface.BOLD)
-            choiceInterest = v
-            interestArray.add(item)
          }
       }
    }
 
    fun onClickInit() {
-      if (choiceInterest != null) {
-         choiceInterest!!.isSelected = false
-         (choiceInterest as Button).setTypeface(null, Typeface.NORMAL)
+      for (i in choiceInterest.indices) {
+         choiceInterest[i].isSelected = false
+         (choiceInterest[i] as Button).setTypeface(null, Typeface.NORMAL)
       }
       interestTotal.value = 0
-      interestArray.clear()
+      choiceInterest.clear()
 
       selectedDate = null
       _calendarDate.value = selectedDate
