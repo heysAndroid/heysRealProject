@@ -3,6 +3,12 @@ package com.example.heysrealprojcet.util
 import com.chibatching.kotpref.KotprefModel
 
 object UserPreference : KotprefModel() {
+
+   /*
+   * 자동 로그인 여부
+    */
+   var isAutoLogin by booleanPref(false)
+
    /*
    * 사용자 이름
     */

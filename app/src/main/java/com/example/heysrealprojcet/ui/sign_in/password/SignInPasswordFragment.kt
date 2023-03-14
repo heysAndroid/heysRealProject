@@ -1,10 +1,8 @@
 package com.example.heysrealprojcet.ui.sign_in.password
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPasswordFragmentBinding
@@ -53,6 +52,13 @@ class SignInPasswordFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
+      // 화면 들어오자마자 키보드 보이기
+      val inputMethodManager =
+         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      binding.password.requestFocus()
+      inputMethodManager.showSoftInput(binding.password, 0)
+
       binding.passwordToggle.setOnClickListener {
          viewModel.togglePasswordVisible()
          changeInputType()
@@ -62,11 +68,9 @@ class SignInPasswordFragment : Fragment() {
          requestLogin(UserPreference.phoneNumber, UserPreference.password)
       }
 
-      // 화면 들어오자마자 키보드 보이기
-      val inputMethodManager =
-         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-      binding.password.requestFocus()
-      inputMethodManager.showSoftInput(binding.password, 0)
+      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
+         if (it) CustomSnackBar(binding.root, "비밀번호가 일치하지 않아요!", binding.okButton).show()
+      }
    }
 
    private fun changeInputType() {
@@ -82,19 +86,16 @@ class SignInPasswordFragment : Fragment() {
    private fun requestLogin(username: String, password: String) {
       viewModel.login(username, password)
       viewModel.response.observe(viewLifecycleOwner, EventObserver { response ->
-         val alert = AlertDialog.Builder(requireContext())
-
          when (response.isSuccessful) {
             true -> {
-               alert.setTitle("로그인 성공")
-                  .setPositiveButton("확인") { _, _ -> goToMain() }.create().show()
                val token = response.headers()["Authorization"]?.split(" ")?.last()
                token.let { UserPreference.accessToken = it.toString() }
-            }
 
+               UserPreference.isAutoLogin = true
+               goToMain()
+            }
             false -> {
-               alert.setTitle("로그인 실패").setMessage("로그인에 실패했습니다.").create().show()
-               Log.w("error: ", response.errorBody().toString())
+               viewModel.showSnackBar()
             }
          }
       })

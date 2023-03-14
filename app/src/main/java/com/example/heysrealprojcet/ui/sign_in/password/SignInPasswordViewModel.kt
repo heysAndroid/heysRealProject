@@ -35,6 +35,9 @@ class SignInPasswordViewModel @Inject constructor(
    private val loading = MutableLiveData<Boolean>()
    var job: Job? = null
 
+   private var _showSnackBarEvent = MutableLiveData(false)
+   val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
+
    init {
       viewModelScope.launch {
          password.collect {
@@ -63,6 +66,10 @@ class SignInPasswordViewModel @Inject constructor(
       _isPasswordVisible.value?.let {
          _isPasswordVisible.value = !it
       }
+   }
+
+   fun showSnackBar() {
+      _showSnackBarEvent.value = true
    }
 
    fun login(username: String, password: String) {

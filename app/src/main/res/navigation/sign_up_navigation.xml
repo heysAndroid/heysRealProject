@@ -5,7 +5,9 @@
     android:id="@+id/sign_up_navigation"
     app:startDestination="@id/signUpPhoneFragment">
 
-    <include app:graph="@navigation/main_navigation" />
+    <include
+        android:id="@+id/main_navigation"
+        app:graph="@navigation/main_navigation" />
     <fragment
         android:id="@+id/signUpPhoneFragment"
         android:name="com.example.heysrealprojcet.ui.sign_up.phone.SignUpPhoneFragment"
