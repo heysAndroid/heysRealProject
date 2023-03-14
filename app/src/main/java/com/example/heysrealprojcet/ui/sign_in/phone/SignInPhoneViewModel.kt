@@ -38,8 +38,8 @@ class SignInPhoneViewModel @Inject constructor(
          phoneNumber.asFlow().collect {
             if (phoneNumber.value?.contains('-') == true) {
                UserPreference.phoneNumber = phoneNumber.value?.replace("-", "").toString()
+               isElevenDigit()
             }
-            isElevenDigit()
          }
       }
    }

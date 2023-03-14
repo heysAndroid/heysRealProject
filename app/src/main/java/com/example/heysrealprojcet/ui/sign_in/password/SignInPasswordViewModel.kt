@@ -22,7 +22,7 @@ class SignInPasswordViewModel @Inject constructor(
 ) : BaseViewModel() {
    val password = MutableStateFlow("")
 
-   private val _isPasswordVisible = MutableLiveData(true)
+   private val _isPasswordVisible = MutableLiveData(false)
    val isPasswordVisible: LiveData<Boolean> = _isPasswordVisible
 
    private val _isEnabled = MutableLiveData<Boolean>()
@@ -56,7 +56,7 @@ class SignInPasswordViewModel @Inject constructor(
 
 
    private fun isCorrect() {
-      _isEnabled.value = password.value?.length!! >= 8
+      _isEnabled.value = password.value.length >= 8
    }
 
    fun togglePasswordVisible() {
