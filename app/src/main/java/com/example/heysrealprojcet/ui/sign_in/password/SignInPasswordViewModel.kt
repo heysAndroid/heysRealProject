@@ -22,7 +22,7 @@ class SignInPasswordViewModel @Inject constructor(
 ) : BaseViewModel() {
    val password = MutableStateFlow("")
 
-   private val _isPasswordVisible = MutableLiveData(true)
+   private val _isPasswordVisible = MutableLiveData(false)
    val isPasswordVisible: LiveData<Boolean> = _isPasswordVisible
 
    private val _isEnabled = MutableLiveData<Boolean>()
@@ -34,6 +34,9 @@ class SignInPasswordViewModel @Inject constructor(
    private val errorMessage = MutableLiveData<String>()
    private val loading = MutableLiveData<Boolean>()
    var job: Job? = null
+
+   private var _showSnackBarEvent = MutableLiveData(false)
+   val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
 
    init {
       viewModelScope.launch {
@@ -56,13 +59,17 @@ class SignInPasswordViewModel @Inject constructor(
 
 
    private fun isCorrect() {
-      _isEnabled.value = password.value?.length!! >= 8
+      _isEnabled.value = password.value.length >= 8
    }
 
    fun togglePasswordVisible() {
       _isPasswordVisible.value?.let {
          _isPasswordVisible.value = !it
       }
+   }
+
+   fun showSnackBar() {
+      _showSnackBarEvent.value = true
    }
 
    fun login(username: String, password: String) {

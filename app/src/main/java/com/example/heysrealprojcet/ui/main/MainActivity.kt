@@ -36,10 +36,16 @@ class MainActivity : AppCompatActivity() {
       val navController = navHostFragment.navController
       val navGraph = navController.navInflater.inflate(R.navigation.sign_up_navigation)
 
-      if (intent == "login") {
-         navGraph.startDestination = R.id.signInPhoneFragment
-      } else {
-         navGraph.startDestination = R.id.signUpPhoneFragment
+      when (intent) {
+         "login" -> {
+            navGraph.startDestination = R.id.signInPhoneFragment
+         }
+         "signUp" -> {
+            navGraph.startDestination = R.id.signUpPhoneFragment
+         }
+         else -> {
+            navGraph.startDestination = R.id.main_navigation
+         }
       }
       navHostFragment.navController.graph = navGraph
       initNavigation()
