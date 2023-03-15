@@ -1,11 +1,13 @@
 package com.example.heysrealprojcet.ui.intro
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
@@ -24,6 +26,7 @@ class LogoFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
+      // fragment statusBar 숨기기
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
          activity?.window?.insetsController?.hide(WindowInsets.Type.statusBars())
       } else {
@@ -39,14 +42,24 @@ class LogoFragment : Fragment() {
    override fun onDestroyView() {
       super.onDestroyView()
 
+      // fragment statusBar 보이기
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
          activity?.window?.insetsController?.show(WindowInsets.Type.statusBars())
       } else {
          activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
       }
+
+      // 상태바 및 아이콘 색상 변경
+      requireActivity().window.apply {
+         //상태바
+         statusBarColor = Color.WHITE
+         //상태바 아이콘(true: 검정 / false: 흰색)
+         WindowInsetsControllerCompat(this, this.decorView).isAppearanceLightStatusBars = true
+      }
    }
 
    private fun moveToNext() {
+      // 자동 로그인 기능
       if (UserPreference.isAutoLogin) {
          val intent = Intent(requireContext(), MainActivity::class.java).apply {
             putExtra(Intent.EXTRA_TEXT, "mainHome")
