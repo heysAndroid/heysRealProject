@@ -72,7 +72,7 @@ class ChannelCancelBottomSheet(context: Context) : BottomSheetDialogFragment() {
       binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
          override fun onItemSelected(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
 
-            Log.e("태그", adapterView?.selectedView.toString())
+            //Log.e("태그", adapterView?.selectedView.toString())
 
 //            val selectedView = adapterView?.selectedView as TextView
 //            if (selectedView.text == "작성하기") {
