@@ -29,7 +29,6 @@ class ChannelLeaveBottomSheet : BottomSheetDialogFragment() {
       behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
       binding.spinnerContainer.setOnClickListener {
-         // TODO
          binding.spinnerArrow.setImageResource(R.drawable.ic_dropdown_close)
       }
       binding.closeButton.setOnClickListener { dismiss() }
