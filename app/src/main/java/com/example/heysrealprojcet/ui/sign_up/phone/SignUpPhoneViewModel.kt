@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.Event
 import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
@@ -26,8 +27,8 @@ class SignUpPhoneViewModel @Inject constructor(
    /*
    * 네트워크 호출
     */
-   private val _response: MutableLiveData<NetworkResult<CheckPhoneNumberResponse>> = MutableLiveData()
-   val response: LiveData<NetworkResult<CheckPhoneNumberResponse>> = _response
+   private val _response: MutableLiveData<Event<NetworkResult<CheckPhoneNumberResponse>>> = MutableLiveData()
+   val response: LiveData<Event<NetworkResult<CheckPhoneNumberResponse>>> = _response
 
    init {
       viewModelScope.launch {
@@ -46,7 +47,7 @@ class SignUpPhoneViewModel @Inject constructor(
 
    fun checkPhoneNumber(phoneNumber: Phone) = viewModelScope.launch {
       signupRepository.checkPhoneNumber(phoneNumber).collect { values ->
-         _response.value = values
+         _response.value = Event(values)
       }
    }
 }
