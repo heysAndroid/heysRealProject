@@ -1,31 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spinnerText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingVertical="14dp"
-    android:paddingStart="17dp"
-    android:paddingEnd="15dp">
-
-    <TextView
-        android:id="@+id/spinnerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="요청 실수"
-        android:textColor="@color/color_828282"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/spinnerCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ch_cancel_check_box"
-        android:button="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:checkMark="@drawable/ch_cancel_check_box"
+    android:gravity="center_vertical"
+    android:paddingVertical="15dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="15dp"
+    android:text="요청 실수"
+    android:textColor="@color/color_828282"
+    android:textSize="14sp" />
