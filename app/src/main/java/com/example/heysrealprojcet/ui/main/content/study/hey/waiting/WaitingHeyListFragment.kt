@@ -43,7 +43,7 @@ class WaitingHeyListFragment : Fragment() {
       makeList()
       waitingHeyItemRecyclerViewAdapter = WaitingHeyItemRecyclerViewAdapter(userProfile = userList) {
          // 클릭 리스너 전달
-         val bottomSheet = ChannelCancelBottomSheet(requireContext())
+         val bottomSheet = ChannelCancelBottomSheet()
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
       binding.waitingHeysList.adapter = waitingHeyItemRecyclerViewAdapter
