@@ -12,6 +12,10 @@ class ExtracurricularInterestItemRecyclerViewAdapter(
    RecyclerView.Adapter<ExtracurricularInterestItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: CategoryItemInterestViewBinding
 
+   init {
+      setHasStableIds(true)
+   }
+
    inner class ViewHolder(private val binding: CategoryItemInterestViewBinding) :
       RecyclerView.ViewHolder(binding.root) {
       fun bind(item: ExtracurricularType) {
@@ -33,5 +37,9 @@ class ExtracurricularInterestItemRecyclerViewAdapter(
 
    override fun getItemCount(): Int {
       return list.size
+   }
+
+   override fun getItemId(position: Int): Long {
+      return position.toLong()
    }
 }

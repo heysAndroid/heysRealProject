@@ -1,12 +1,10 @@
 package com.example.heysrealprojcet.ui.main
 
-import android.graphics.Color
-import android.os.Build
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -49,21 +47,6 @@ class MainFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      val mWindow = requireActivity().window
-      mWindow.apply {
-         var defaultStatusBarColor: Int
-
-         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            defaultStatusBarColor = Color.parseColor("#FFFFFF")
-            decorView.systemUiVisibility += View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-         } else {
-            defaultStatusBarColor = Color.parseColor("#FFFFFF")
-         }
-         statusBarColor = defaultStatusBarColor
-      }
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
@@ -80,23 +63,30 @@ class MainFragment : Fragment() {
       makeExtracurricularList()
       makeContestList()
 
+      // 공모전
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
          list = contestList,
          myInterestList = myInterestList
       ) { goToContest() }
+
+      binding.contestList.apply {
+         adapter = categoryRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
+         setHasFixedSize(true)
+      }
+
+      // 대외활동
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
-      binding.contestList.adapter = categoryRecyclerViewAdapter
-      binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.contestList.addItemDecoration(
-         MarginItemDecoration(
-            resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
-
-      binding.extracurricularList.adapter = extracurricularRecyclerViewAdapter
-      binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.extracurricularList.addItemDecoration(
-         MarginItemDecoration(
-            resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+      binding.extracurricularList.apply {
+         adapter = extracurricularRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(
+            MarginItemDecoration(
+               resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+         setHasFixedSize(true)
+      }
 
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
@@ -104,7 +94,8 @@ class MainFragment : Fragment() {
          studyContainer.setOnClickListener { goToStudy() }
       }
 
-      val onScrollListener = object : RecyclerView.OnScrollListener() {
+      binding.contestList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+         @SuppressLint("NotifyDataSetChanged")
          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
@@ -118,8 +109,7 @@ class MainFragment : Fragment() {
                categoryRecyclerViewAdapter.notifyDataSetChanged()
             }
          }
-      }
-      binding.contestList.setOnScrollListener(onScrollListener)
+      })
    }
 
    private fun changeFragment(fragment: Fragment) {
