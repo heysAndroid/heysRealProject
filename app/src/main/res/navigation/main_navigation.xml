@@ -44,7 +44,7 @@
         android:id="@+id/contestExtracurricularFilterFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/contest_extracurricular_filter_fragment"></fragment>
+        tools:layout="@layout/contest_extracurricular_filter_fragment" />
     <fragment
         android:id="@+id/contestListFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContestListFragment"

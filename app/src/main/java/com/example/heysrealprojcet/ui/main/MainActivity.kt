@@ -1,10 +1,12 @@
 package com.example.heysrealprojcet.ui.main
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -21,6 +23,14 @@ class MainActivity : AppCompatActivity() {
       binding = MainActivityBinding.inflate(layoutInflater)
       setContentView(binding.root)
 
+      // 상태바 및 아이콘 색상 변경
+      window.apply {
+         //상태바
+         statusBarColor = Color.WHITE
+         //상태바 아이콘(true: 검정 / false: 흰색)
+         WindowInsetsControllerCompat(this, this.decorView).isAppearanceLightStatusBars = true
+      }
+
       val intentText = intent.getStringExtra(Intent.EXTRA_TEXT)
       Log.w("intentText, ", intentText.toString())
       intentText?.let { setNavigationGraph(it) }
@@ -36,10 +46,16 @@ class MainActivity : AppCompatActivity() {
       val navController = navHostFragment.navController
       val navGraph = navController.navInflater.inflate(R.navigation.sign_up_navigation)
 
-      if (intent == "login") {
-         navGraph.startDestination = R.id.signInPhoneFragment
-      } else {
-         navGraph.startDestination = R.id.signUpPhoneFragment
+      when (intent) {
+         "login" -> {
+            navGraph.startDestination = R.id.signInPhoneFragment
+         }
+         "signUp" -> {
+            navGraph.startDestination = R.id.signUpPhoneFragment
+         }
+         else -> {
+            navGraph.startDestination = R.id.main_navigation
+         }
       }
       navHostFragment.navController.graph = navGraph
       initNavigation()

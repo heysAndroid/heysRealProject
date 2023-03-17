@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.databinding.SignUpPhoneFragmentBinding
 import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
@@ -65,7 +66,7 @@ class SignUpPhoneFragment : Fragment() {
 
    private fun requestCheckPhoneNumber() {
       viewModel.checkPhoneNumber(Phone(UserPreference.phoneNumber))
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      viewModel.response.observe(viewLifecycleOwner, EventObserver { response ->
          val alert = AlertDialog.Builder(requireContext())
          when (response) {
             is NetworkResult.Success -> {
@@ -84,7 +85,7 @@ class SignUpPhoneFragment : Fragment() {
                alert.setTitle("로딩 중").setMessage("전화번호 체크가 지연되고 있습니다.").create().show()
             }
          }
-      }
+      })
    }
 
 

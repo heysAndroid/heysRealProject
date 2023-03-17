@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
@@ -105,7 +106,7 @@ class SignUpInterestFragment : Fragment() {
 
    private fun requestLogin(username: String, password: String) {
       signUpInterestViewModel.login(username, password)
-      signUpInterestViewModel.responseLogin.observe(viewLifecycleOwner) { response ->
+      signUpInterestViewModel.responseLogin.observe(viewLifecycleOwner, EventObserver { response ->
          val alert = AlertDialog.Builder(requireContext())
 
          when (response.isSuccessful) {
@@ -119,6 +120,6 @@ class SignUpInterestFragment : Fragment() {
                Log.w("error: ", response.errorBody().toString())
             }
          }
-      }
+      })
    }
 }

@@ -1,12 +1,11 @@
 package com.example.heysrealprojcet.ui.main
 
-import android.graphics.Color
-import android.os.Build
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -23,15 +22,23 @@ import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSh
 import com.example.heysrealprojcet.util.UserPreference
 
 class MainFragment : Fragment() {
+   private lateinit var mainActivity: MainActivity
    private lateinit var binding: MainFragmentBinding
+
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
    private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
+
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
-   private lateinit var mainActivity: MainActivity
+   private lateinit var myInterestList: ArrayList<String>
+
    private var position = 0
 
    val args: MainFragmentArgs by navArgs()
+
+   companion object {
+      const val MY_INTEREST_LIST = "myInterestList"
+   }
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -40,21 +47,6 @@ class MainFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      val mWindow = requireActivity().window
-      mWindow.apply {
-         var defaultStatusBarColor: Int
-
-         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            defaultStatusBarColor = Color.parseColor("#FFFFFF")
-            decorView.systemUiVisibility += View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-         } else {
-            defaultStatusBarColor = Color.parseColor("#FFFFFF")
-         }
-         statusBarColor = defaultStatusBarColor
-      }
       binding = MainFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
@@ -71,20 +63,30 @@ class MainFragment : Fragment() {
       makeExtracurricularList()
       makeContestList()
 
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(list = contestList) { goToContest() }
+      // 공모전
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
+         list = contestList,
+         myInterestList = myInterestList
+      ) { goToContest() }
+
+      binding.contestList.apply {
+         adapter = categoryRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
+         setHasFixedSize(true)
+      }
+
+      // 대외활동
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
-      binding.contestList.adapter = categoryRecyclerViewAdapter
-      binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.contestList.addItemDecoration(
-         MarginItemDecoration(
-            resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
-
-      binding.extracurricularList.adapter = extracurricularRecyclerViewAdapter
-      binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-      binding.extracurricularList.addItemDecoration(
-         MarginItemDecoration(
-            resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+      binding.extracurricularList.apply {
+         adapter = extracurricularRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(
+            MarginItemDecoration(
+               resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+         setHasFixedSize(true)
+      }
 
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
@@ -92,7 +94,8 @@ class MainFragment : Fragment() {
          studyContainer.setOnClickListener { goToStudy() }
       }
 
-      val onScrollListener = object : RecyclerView.OnScrollListener() {
+      binding.contestList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+         @SuppressLint("NotifyDataSetChanged")
          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
@@ -106,8 +109,7 @@ class MainFragment : Fragment() {
                categoryRecyclerViewAdapter.notifyDataSetChanged()
             }
          }
-      }
-      binding.contestList.setOnScrollListener(onScrollListener)
+      })
    }
 
    private fun changeFragment(fragment: Fragment) {
@@ -123,11 +125,13 @@ class MainFragment : Fragment() {
    }
 
    private fun makeContestList() {
+      myInterestList = arrayListOf("기획/아이디어", "개발")
+
       contestList = mutableListOf(
-         ContestType("관심 \n분야별", "관심분야 #개발과 \n관련있는 공모전이에요!", R.drawable.ic_drawing_board1, true),
-         ContestType("마감 \n임박!", "서두르세요! \n곧 마감하는 공모전이에요!", R.drawable.ic_drawing_board2, false),
-         ContestType("너도나도 \n많이 찾는", "와글와글 \n많이찾는 공모전들이에요!", R.drawable.ic_drawing_board3, false),
-         ContestType("어디보자 \n새로 열린", "새로운게 뭐가있나~ \n새로열린 공모전들이에요!", R.drawable.ic_drawing_board4, false))
+         ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true),
+         ContestType("마감 \n임박!", R.drawable.ic_drawing_board2, false),
+         ContestType("너도나도 \n많이 찾는", R.drawable.ic_drawing_board3, false),
+         ContestType("어디보자 \n새로 열린", R.drawable.ic_drawing_board4, false))
    }
 
    private fun goToStudy() {
@@ -135,7 +139,9 @@ class MainFragment : Fragment() {
    }
 
    private fun goToContest() {
-      findNavController().navigate(R.id.action_mainFragment_to_contestFragment)
+      findNavController().navigate(
+         R.id.action_mainFragment_to_contestFragment,
+         bundleOf(MY_INTEREST_LIST to myInterestList))
    }
 
    private fun goToActivity() {

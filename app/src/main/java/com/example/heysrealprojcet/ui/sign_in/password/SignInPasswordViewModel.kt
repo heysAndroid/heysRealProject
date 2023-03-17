@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.sign_in.password
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.heysrealprojcet.Event
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.UserPreference
@@ -21,18 +22,21 @@ class SignInPasswordViewModel @Inject constructor(
 ) : BaseViewModel() {
    val password = MutableStateFlow("")
 
-   private val _isPasswordVisible = MutableLiveData(true)
+   private val _isPasswordVisible = MutableLiveData(false)
    val isPasswordVisible: LiveData<Boolean> = _isPasswordVisible
 
    private val _isEnabled = MutableLiveData<Boolean>()
    val isEnabled: LiveData<Boolean> = _isEnabled
 
-   private val _response: MutableLiveData<Response<Void>> = MutableLiveData()
-   val response: LiveData<Response<Void>> = _response
+   private val _response: MutableLiveData<Event<Response<Void>>> = MutableLiveData()
+   val response: LiveData<Event<Response<Void>>> = _response
 
    private val errorMessage = MutableLiveData<String>()
    private val loading = MutableLiveData<Boolean>()
    var job: Job? = null
+
+   private var _showSnackBarEvent = MutableLiveData(false)
+   val showSnackBarEvent: LiveData<Boolean> = _showSnackBarEvent
 
    init {
       viewModelScope.launch {
@@ -55,7 +59,7 @@ class SignInPasswordViewModel @Inject constructor(
 
 
    private fun isCorrect() {
-      _isEnabled.value = password.value?.length!! >= 8
+      _isEnabled.value = password.value.length >= 8
    }
 
    fun togglePasswordVisible() {
@@ -64,9 +68,13 @@ class SignInPasswordViewModel @Inject constructor(
       }
    }
 
+   fun showSnackBar() {
+      _showSnackBarEvent.value = true
+   }
+
    fun login(username: String, password: String) {
       job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-         _response.postValue(signupRepository.loginApi(username, password))
+         _response.postValue(Event(signupRepository.loginApi(username, password)))
          /*
          withContext(Dispatchers.Main) {
             if (response.isSuccessful) {
