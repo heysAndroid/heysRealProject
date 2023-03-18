@@ -88,7 +88,7 @@
         tools:layout="@layout/study_filter_fragment" />
     <fragment
         android:id="@+id/channelDetailFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.list.ChannelDetailFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.list.detail.ChannelDetailFragment"
         android:label="ChannelDetailFragment"
         tools:layout="@layout/channel_detail_fragment">
         <action

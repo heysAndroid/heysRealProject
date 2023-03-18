@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list
+package com.example.heysrealprojcet.ui.channel.list.detail
 
 import android.os.Bundle
 import android.util.Log
@@ -84,8 +84,7 @@ class ChannelDetailFragment : Fragment() {
    }
 
    private fun getChannelDetail(id: Int) {
-      viewModel.getChannelDetail("Bearer ${UserPreference.accessToken}", id)
-      viewModel.response.observe(viewLifecycleOwner) { response ->
+      viewModel.getChannelDetail("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                Log.i("getDetail: ", "success")

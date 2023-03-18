@@ -1,14 +1,13 @@
-package com.example.heysrealprojcet.ui.channel.list
+package com.example.heysrealprojcet.ui.channel.list.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.repository.ChannelRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,9 +16,5 @@ class ChannelDetailViewModel @Inject constructor(
    private val _response: MutableLiveData<NetworkResult<ChannelDetailResponse>> = MutableLiveData()
    val response: LiveData<NetworkResult<ChannelDetailResponse>> = _response
 
-   fun getChannelDetail(token: String, id: Int) = viewModelScope.launch {
-      channelRepository.getChannelDetail(token, id).collect { values ->
-         _response.value = values
-      }
-   }
+   fun getChannelDetail(token: String, id: Int) = channelRepository.getChannelDetail(token, id).asLiveData()
 }

@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ChannelRepository @Inject constructor(
    private val channelApi: ChannelApi
 ) : BaseApiResponse() {
-   suspend fun getChannelDetail(token: String, id: Int): Flow<NetworkResult<ChannelDetailResponse>> {
+   fun getChannelDetail(token: String, id: Int): Flow<NetworkResult<ChannelDetailResponse>> {
       return flow {
          emit(safeApiCall { channelApi.getChannelDetail(token, id) })
       }.flowOn(Dispatchers.IO)
