@@ -1,9 +1,6 @@
 package com.example.heysrealprojcet.di
 
-import com.example.heysrealprojcet.api.SettingApi
-import com.example.heysrealprojcet.api.SignUpApi
-import com.example.heysrealprojcet.api.StudyApi
-import com.example.heysrealprojcet.api.UserApi
+import com.example.heysrealprojcet.api.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -75,5 +72,11 @@ object NetworkModule {
    @Singleton
    fun provideStudyApiService(retrofit: Retrofit): StudyApi {
       return retrofit.create(StudyApi::class.java)
+   }
+
+   @Provides
+   @Singleton
+   fun provideChannelApiService(retrofit: Retrofit): ChannelApi {
+      return retrofit.create(ChannelApi::class.java)
    }
 }

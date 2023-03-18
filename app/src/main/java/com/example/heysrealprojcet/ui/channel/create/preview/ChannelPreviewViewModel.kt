@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.repository.StudyRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel

@@ -1,18 +1,27 @@
 package com.example.heysrealprojcet.ui.channel.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChannelDetailFragment : Fragment() {
    private lateinit var binding: ChannelDetailFragmentBinding
+   private val viewModel by viewModels<ChannelDetailViewModel>()
    var isExpanded = false
+   val args: ChannelDetailFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -43,6 +52,7 @@ class ChannelDetailFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      getChannelDetail(args.channelId)
       binding.heysAll.setOnClickListener { goToMemberList() }
       binding.btnDetail.setOnClickListener {
          if (isExpanded) {
@@ -71,5 +81,24 @@ class ChannelDetailFragment : Fragment() {
 
    private fun goToMyChannel() {
       findNavController().navigate(R.id.action_channelDetailFragment_to_myChannelFragment)
+   }
+
+   private fun getChannelDetail(id: Int) {
+      viewModel.getChannelDetail("Bearer ${UserPreference.accessToken}", id)
+      viewModel.response.observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.i("getDetail: ", "success")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getDetail: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("getDetail: ", "loading")
+            }
+         }
+      }
    }
 }
