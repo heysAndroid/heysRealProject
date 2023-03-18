@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -76,11 +77,8 @@ class ChannelPreviewFragment() : Fragment() {
       findNavController().navigate(R.id.action_channelPreviewFragment_to_backButtonPopupFragment)
    }
 
-   // TODO
-   // 1) detail 프래그먼트로 이동
-   // 2) 생성완료 프래그먼트 생성
-   private fun goToDetail() {
-      //findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment)
+   private fun goToDetail(channelId: Int) {
+      findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment, bundleOf("channelId" to channelId))
    }
 
    private fun setChannelRegion() {
@@ -122,6 +120,7 @@ class ChannelPreviewFragment() : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.i("createStudy: ", "success")
+               response.data?.id?.let { goToDetail(it) }
             }
 
             is NetworkResult.Error -> {
@@ -133,7 +132,5 @@ class ChannelPreviewFragment() : Fragment() {
             }
          }
       }
-
-
    }
 }
