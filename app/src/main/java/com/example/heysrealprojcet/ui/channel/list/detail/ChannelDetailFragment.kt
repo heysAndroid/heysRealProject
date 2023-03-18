@@ -51,6 +51,7 @@ class ChannelDetailFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.vm = viewModel
 
       getChannelDetail(args.channelId)
       binding.heysAll.setOnClickListener { goToMemberList() }
@@ -88,6 +89,7 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.i("getDetail: ", "success")
+               viewModel.receiveChannelDetail(response.data?.channelDetail)
             }
 
             is NetworkResult.Error -> {
