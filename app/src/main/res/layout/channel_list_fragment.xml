@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_f8f9fc"
@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="헤이즈 채널"
+                    android:text="공모전 채널"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -53,26 +53,28 @@
         <LinearLayout
             android:id="@+id/makeChannel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginVertical="16dp"
-            android:background="@drawable/bg_white_radius_16"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_channel_make_shadow"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="10dp">
+            android:paddingHorizontal="16dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="14dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="6dp"
                 android:background="@color/white"
                 android:src="@drawable/ic_add_channel" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="헤이즈 채널 만들기"
+                android:text="채널 만들기"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -81,6 +83,6 @@
             android:id="@+id/heysList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="32dp" />
+            android:layout_marginHorizontal="28dp" />
     </LinearLayout>
 </layout>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
@@ -40,6 +39,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
       binding.goToHeys.setOnClickListener { goToHeys() }
 
 //      if(binding.introduce.lineCount > 5) {
@@ -55,21 +55,17 @@ class ContestExtracurricularDetailFragment : Fragment() {
 //         }
 //      }
 
-      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if (it) CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
-      }
-
-      viewModel.isSelected.observe(viewLifecycleOwner, Observer {
-         binding.bookmarkButton.isSelected = it
-
-         if (viewModel.isSelected.value == true) {
-            viewModel.showSnackBar()
-         }
-      })
-
       binding.btnShare.setOnClickListener {
          val bottomSheet = ContestShareBottomSheet()
          bottomSheet.show(childFragmentManager, null)
+      }
+
+      binding.bookmarkButton.setOnClickListener {
+         it.isSelected = it.isSelected != true
+
+         if (it.isSelected) {
+            CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+         }
       }
 
       binding.lookButton.setOnClickListener { goToLook() }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="154dp"
-    android:layout_marginBottom="16dp"
-    android:background="@drawable/bg_white_radius_16"
+    android:layout_height="166dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card_shadow_small"
     android:orientation="horizontal"
-    android:paddingHorizontal="16dp"
-    android:paddingBottom="16dp">
+    android:paddingStart="20dp">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -17,32 +16,36 @@
             android:id="@+id/image"
             android:layout_width="122dp"
             android:layout_height="122dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/bg_study_list" />
 
         <TextView
             android:id="@+id/start_Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:background="@drawable/bg_study_closed"
             android:gravity="center"
             android:text="마감"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="27dp"
             android:text="제 3회 방구석 아이디어톤 모집"
+            android:textColor="@color/color_262626"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -64,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -86,11 +90,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="19dp"
                 android:background="@drawable/bg_77d671_radius_12"
                 android:gravity="center"
                 android:text="15팀 빌딩"
