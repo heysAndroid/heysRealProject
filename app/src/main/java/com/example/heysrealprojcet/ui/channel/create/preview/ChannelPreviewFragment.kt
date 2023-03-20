@@ -77,8 +77,8 @@ class ChannelPreviewFragment() : Fragment() {
       findNavController().navigate(R.id.action_channelPreviewFragment_to_backButtonPopupFragment)
    }
 
-   private fun goToDetail(channelId: Int) {
-      findNavController().navigate(R.id.action_channelPreviewFragment_to_channelDetailFragment, bundleOf("channelId" to channelId))
+   private fun goToComplete(channelId: Int) {
+      findNavController().navigate(R.id.action_channelPreviewFragment_to_channelCreateCompleteFragment, bundleOf("channelId" to channelId))
    }
 
    private fun setChannelRegion() {
@@ -120,7 +120,7 @@ class ChannelPreviewFragment() : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.i("createStudy: ", "success")
-               response.data?.id?.let { goToDetail(it) }
+               response.data?.id?.let { goToComplete(it) }
             }
 
             is NetworkResult.Error -> {

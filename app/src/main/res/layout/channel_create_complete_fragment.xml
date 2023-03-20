@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.heysrealprojcet.ui.channel.create.complete.ChannelCreateCompleteViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="7dp"
+                        android:src="@drawable/ic_back" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:gravity="right"
+                        android:text="수정"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_channel_background_example" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{vm.title}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="제3회 연구개발특구 AI\n SPARK 챌린지 팀원 모집해요!" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="채널을 소개해요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_flag_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelPurpose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.purposeString + ` 목적의 채널이에요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="역량강화 목적의 채널이에요." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_location_34d676" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/channelForm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="오프라인으로"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            tools:text="오프라인" />
+
+                        <TextView
+                            android:id="@+id/channelRegion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.location + `에서`}"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            tools:text="전국에서" />
+
+                        <TextView
+                            android:id="@+id/channelRegionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="활동해요."
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_person_34d676" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(vm.capacity) +`명 중에서 1명이 참여중이에요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="10명 중에서 1명이 참여중이에요." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_key_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelRecruitmentMethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="승인없이 바로 참여가능해요."
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_calendar_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelEndDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.recruitEndDate + ` ` + vm.recruitEndTime + `에 마감해요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="23년 2월 19일 오후 12시 25분에 마감해요." />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_heart_34d676" />
+
+                    <TextView
+                        android:id="@+id/channelInterest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.interestString + `에 관심있어요.`}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="기획/아이디어, IT/SW, 데이터/인공지능, 경영 비즈니스에 관심있어요." />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/channelDescriptionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="이런 활동을 해요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/channelActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{vm.contentText}"
+                    android:textColor="@color/color_262626"
+                    android:textSize="16sp"
+                    tools:text="인공지능에 대해 스터디하면서 함께 대회에 참가할 사람 모집합니다!\n관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다.\n마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다." />
+
+                <TextView
+                    android:id="@+id/channelMemberTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="이런 분을 찾아요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/channelMember"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{vm.recruitText}"
+                    android:textColor="@color/color_262626"
+                    android:textSize="16sp"
+                    tools:text="- 개발(AI/ML) 커리어 쌓는데 고민 있는 분\n- 기초지식을 함게 공유하면서 성장하고 싶으신 분" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="여기로 지원 및 문의해주세요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/link1"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_link_clip" />
+
+                    <ImageView
+                        android:id="@+id/link2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_link_clip"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="리더를 소개해요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/img_channel_leader_profile_example" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.leader.name}"
+                            android:textColor="@color/color_262626"
+                            android:textSize="16dp"
+                            tools:text="김이나" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.leader.introduceText}"
+                            android:textColor="@color/color_828282"
+                            android:textSize="16dp"
+                            tools:text="선한 영향력을 키우고 싶습니다." />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="34dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="함께 성장하고 있어요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/allMember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableEnd="@drawable/ic_all"
+                        android:text="전체보기"
+                        android:textColor="@color/color_828282"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_f8f9fc_radius_16"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16dp"
+                        android:text="아직 참여중인 Hey가 없어요"
+                        android:textColor="@color/color_828282"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2dp"
+                        android:text="0"
+                        android:textColor="@color/color_34d676"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="명이 승인 대기중이에요"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/waitingHeysList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_f8f9fc_radius_16"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16dp"
+                        android:text="가장 먼저 참여를 요청해보세요!"
+                        android:textColor="@color/color_828282"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/goToMyChannel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_ok_button_enabled"
+                    android:text="내 채널에서 만든 채널 확인하기"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

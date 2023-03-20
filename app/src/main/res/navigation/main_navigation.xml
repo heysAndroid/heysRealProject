@@ -194,11 +194,11 @@
         android:label="ChannelPreviewFragment"
         tools:layout="@layout/channel_preview_fragment">
         <action
-            android:id="@+id/action_channelPreviewFragment_to_channelDetailFragment"
-            app:destination="@id/channelDetailFragment" />
-        <action
             android:id="@+id/action_channelPreviewFragment_to_backButtonPopupFragment"
             app:destination="@id/backButtonPopupFragment" />
+        <action
+            android:id="@+id/action_channelPreviewFragment_to_channelCreateCompleteFragment"
+            app:destination="@id/channelCreateCompleteFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelChatFragment"
@@ -382,5 +382,14 @@
         <action
             android:id="@+id/action_imageZoomFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelCreateCompleteFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.create.complete.ChannelCreateCompleteFragment"
+        android:label="ChannelCreateCompleteFragment"
+        tools:layout="@layout/channel_create_complete_fragment" >
+        <argument
+            android:name="channelId"
+            app:argType="integer" />
     </fragment>
 </navigation>
