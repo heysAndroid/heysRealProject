@@ -54,20 +54,7 @@ class ChannelDetailFragment : Fragment() {
       binding.vm = viewModel
 
       getChannelDetail(args.channelId)
-      binding.heysAll.setOnClickListener { goToMemberList() }
-      binding.btnDetail.setOnClickListener {
-         if (isExpanded) {
-            binding.channelDescription.maxLines = 5
-            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand, 0)
-            isExpanded = false
-         } else {
-            // TODO
-            // close 리소스 수정
-            binding.channelDescription.maxLines = Int.MAX_VALUE
-            binding.btnDetail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_dropdown_close, 0)
-            isExpanded = true
-         }
-      }
+      binding.allMember.setOnClickListener { goToMemberList() }
       binding.waitingHeysList.setOnClickListener { goToWaitingHeysList() }
       binding.btnJoin.setOnClickListener { goToMyChannel() }
    }

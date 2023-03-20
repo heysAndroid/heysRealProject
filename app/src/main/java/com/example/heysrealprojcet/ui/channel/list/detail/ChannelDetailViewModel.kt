@@ -30,8 +30,8 @@ class ChannelDetailViewModel @Inject constructor(
    private val _recruitMethod = MutableLiveData<String>()
    val recruitMethod: LiveData<String> = _recruitMethod
 
-   private val _recruitEndDate = MutableLiveData<String>()
-   val recruitEndDate: LiveData<String> = _recruitEndDate
+   private val _recruitEndDateTime = MutableLiveData<String>()
+   val recruitEndDateTime: LiveData<String> = _recruitEndDateTime
 
    private val _interests = MutableLiveData<ArrayList<String>>()
    val interests: LiveData<ArrayList<String>> = _interests
@@ -45,8 +45,8 @@ class ChannelDetailViewModel @Inject constructor(
    private val _leader = MutableLiveData<Leader>()
    val leader: LiveData<Leader> = _leader
 
-   private val _purposes = MutableLiveData<ArrayList<ChannelPurpose>>()
-   val purposes: LiveData<ArrayList<ChannelPurpose>> = _purposes
+   private val _channelPurposes = MutableLiveData<ArrayList<ChannelPurpose>>()
+   val channelPurposes: LiveData<ArrayList<ChannelPurpose>> = _channelPurposes
 
    private val _links = MutableLiveData<ArrayList<ChannelLink>>()
    val links: LiveData<ArrayList<ChannelLink>> = _links
@@ -66,6 +66,15 @@ class ChannelDetailViewModel @Inject constructor(
    private val _waitingUserList = MutableLiveData<ArrayList<WaitingUserList>>()
    val waitingUserList: LiveData<ArrayList<WaitingUserList>> = _waitingUserList
 
+   private val _recruitEndDate = MutableLiveData<String>()
+   val recruitEndDate: LiveData<String> = _recruitEndDate
+
+   private val _recruitEndTime = MutableLiveData<String>()
+   val recruitEndTime: LiveData<String> = _recruitEndTime
+
+   private val _channelInterest = MutableLiveData<String>()
+   val channelInterest: LiveData<String> = _channelInterest
+
    fun getChannelDetail(token: String, id: Int) = channelRepository.getChannelDetail(token, id).asLiveData()
 
    fun receiveChannelDetail(channelDetail: ChannelDetail?) {
@@ -80,7 +89,7 @@ class ChannelDetailViewModel @Inject constructor(
          _interests.value = it.interests
          _contentText.value = it.contentText
          _leader.value = it.leader
-         _purposes.value = it.purposes
+         _channelPurposes.value = it.purposes
          _links.value = it.links
          _contentData.value = it.contentData
          _relationshipWithMe.value = it.relationshipWithMe
