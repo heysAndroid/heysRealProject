@@ -13,9 +13,12 @@ import java.time.YearMonth
 
 class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
 
-   var choiceInterest = mutableListOf<View>()
+   private val _selectedForm = MutableLiveData<String>()
+   val selectedForm: LiveData<String> = _selectedForm
+
+   private var choiceInterest = mutableListOf<View>()
    private var choiceActivity: View? = null
-   private var choiceRegion: View? = null
+   var choiceRegion = mutableListOf<View>()
    private var choicePurpose: View? = null
 
    private val interestMax = 3
@@ -23,16 +26,17 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
    private val regionMax = 1
    private val purposeMax = 1
 
-   var interestTotal = MutableStateFlow(0)
+   private var interestTotal = MutableStateFlow(0)
    private var activityTotal = MutableStateFlow(0)
-   private var regionTotal = MutableStateFlow(0)
+   var regionTotal = MutableStateFlow(0)
    private var purposeTotal = MutableStateFlow(0)
 
-   var interestArray = mutableListOf<String>()
+   private val interestArray = mutableListOf<String>()
    private val activityArray = mutableListOf<String>()
-   private val regionArray = mutableListOf<String>()
+   val regionArray = mutableListOf<String>()
    private val purposeArray = mutableListOf<String>()
 
+   // 달력
    var selectedDate: LocalDate? = null
 
    private val _calendarPosition = MutableLiveData(YearMonth.now().month.value)
@@ -60,7 +64,7 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
 
-      var button = v as Button
+      val button = v as Button
 
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
@@ -91,6 +95,7 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
       val item = v.tag.toString()
 
       val button = v as Button
+      _selectedForm.value = button.text.toString()
 
       if (activityTotal.value < activityMax) {
          if (v.isSelected) {
@@ -111,15 +116,6 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             button.setTypeface(null, Typeface.NORMAL)
             activityTotal.value -= 1
             activityArray.remove(item)
-
-            // 대면·비대면, 대면 클릭 해제시 지역 클릭 해제
-            if (choiceRegion != null) {
-               choiceRegion!!.isSelected = false
-               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
-               regionTotal.value -= 1
-               regionArray.remove(regionArray[0])
-               choiceRegion = null
-            }
          } else {
             choiceActivity?.isSelected = false
             (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
@@ -128,33 +124,33 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             button.setTypeface(null, Typeface.BOLD)
             choiceActivity = v
             activityArray.add(item)
-
-            if (choiceRegion != null) {
-               choiceRegion!!.isSelected = false
-               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
-               regionTotal.value -= 1
-               regionArray.remove(regionArray[0])
-               choiceRegion = null
-            }
          }
+
+//         if (choiceRegion.isNotEmpty()) {
+//            choiceRegion[0].isSelected = false
+//            (choiceRegion[0] as Button).setTypeface(null, Typeface.NORMAL)
+//            choiceRegion.remove(choiceRegion[0])
+//            regionTotal.value -= 1
+//            regionArray.remove(regionArray[0])
+//         }
       }
    }
 
    fun onClickRegion(v: View) {
       val item = v.tag.toString()
 
-      var button = v as Button
+      val button = v as Button
 
-      if (activityArray.isNotEmpty() && activityArray[0].contains("online")) {
+      if (activityArray.isNotEmpty() && activityArray[0].contains("offline")) {
          if (regionTotal.value < regionMax) {
             if (v.isSelected) {
-               choiceRegion = null
+               choiceRegion.remove(choiceRegion[0])
                v.isSelected = false
                button.setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
                regionArray.remove(item)
             } else {
-               choiceRegion = v
+               choiceRegion.add(v)
                v.isSelected = true
                button.setTypeface(null, Typeface.BOLD)
                regionTotal.value += 1
@@ -162,18 +158,19 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             }
          } else {
             if (v.isSelected) {
-               choiceRegion = null
+               choiceRegion.remove(choiceRegion[0])
                v.isSelected = false
                button.setTypeface(null, Typeface.NORMAL)
                regionTotal.value -= 1
                regionArray.remove(item)
             } else {
-               choiceRegion?.isSelected = false
-               (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+               choiceRegion[0].isSelected = false
+               (choiceRegion[0] as Button).setTypeface(null, Typeface.NORMAL)
+               choiceRegion.remove(choiceRegion[0])
                regionArray.remove(regionArray[0])
                v.isSelected = true
                button.setTypeface(null, Typeface.BOLD)
-               choiceRegion = v
+               choiceRegion.add(v)
                regionArray.add(item)
             }
          }
@@ -231,12 +228,12 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
       activityTotal.value = 0
       activityArray.clear()
 
-      choiceRegion?.isSelected = false
-      if (choiceRegion != null) {
-         (choiceRegion as Button).setTypeface(null, Typeface.NORMAL)
+      choiceRegion[0].isSelected = false
+      if (choiceRegion.isNotEmpty()) {
+         (choiceRegion[0] as Button).setTypeface(null, Typeface.NORMAL)
+         choiceRegion.remove(choiceRegion[0])
       }
       regionTotal.value = 0
-      choiceRegion = null
       regionArray.clear()
 
       choicePurpose?.isSelected = false

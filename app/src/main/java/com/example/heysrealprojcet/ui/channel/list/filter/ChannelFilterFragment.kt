@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelFilterFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelForm
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.ui.DayBinder
 import java.time.YearMonth
@@ -38,17 +39,35 @@ class ChannelFilterFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      viewModel.selectedForm.observe(viewLifecycleOwner) {
+         when (it) {
+            ChannelForm.Offline.form -> {
+               binding.regionContainer.visibility = View.VISIBLE
+            }
+            ChannelForm.Online.form -> {
+               binding.regionContainer.visibility = View.GONE
+            }
+            else -> {
+               binding.regionContainer.visibility = View.GONE
+            }
+         }
+      }
+
       binding.btnApply.setOnClickListener { findNavController().navigateUp() }
 
+      // 달력
       viewModel.selectedDate
-      viewModel.calendarPosition.observe(viewLifecycleOwner) {
+      viewModel.calendarPosition.observe(viewLifecycleOwner)
+      {
          if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
             binding.calendarBack.visibility = View.INVISIBLE
          } else {
             binding.calendarBack.visibility = View.VISIBLE
          }
       }
-      viewModel.calendarDate.observe(viewLifecycleOwner) {
+
+      viewModel.calendarDate.observe(viewLifecycleOwner)
+      {
          if (viewModel.selectedDate != null) {
             binding.tvDate.text = viewModel.calendarDate.value!!.format(selectedFormatter)
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_53c740))
@@ -66,6 +85,7 @@ class ChannelFilterFragment : Fragment() {
          YearMonth.now(),
          WeekFields.of(Locale.getDefault()).firstDayOfWeek
       )
+
       binding.yearMonth.text = currentTime.format(calendarFormatter)
       binding.calendarBack.setOnClickListener {
          if (currentTime.year > YearMonth.now().year) {
@@ -126,11 +146,12 @@ class ChannelFilterFragment : Fragment() {
          binding.yearMonth.text = currentTime.format(calendarFormatter)
       }
 
-      binding.cafeteriaCalendar.dayBinder = object : DayBinder<ChannelFilterCafeteriaContainer> {
-         override fun create(view: View): ChannelFilterCafeteriaContainer =
-            ChannelFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
+      binding.cafeteriaCalendar.dayBinder =
+         object : DayBinder<ChannelFilterCafeteriaContainer> {
+            override fun create(view: View): ChannelFilterCafeteriaContainer =
+               ChannelFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
 
-         override fun bind(container: ChannelFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
-      }
+            override fun bind(container: ChannelFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
+         }
    }
 }

@@ -89,8 +89,8 @@ class ChannelFormDialog : DialogFragment() {
 
    private fun unselectAllFormButton() {
       with(binding) {
-         btnOffine.isSelected = false
-         btnOffine.setTypeface(null, Typeface.NORMAL)
+         btnOffline.isSelected = false
+         btnOffline.setTypeface(null, Typeface.NORMAL)
 
          btnOnline.isSelected = false
          btnOnline.setTypeface(null, Typeface.NORMAL)
@@ -132,8 +132,8 @@ class ChannelFormDialog : DialogFragment() {
    }
 
    private fun selectOfflineButton() {
-      binding.btnOffine.isSelected = true
-      binding.btnOffine.setTypeface(null, Typeface.BOLD)
+      binding.btnOffline.isSelected = true
+      binding.btnOffline.setTypeface(null, Typeface.BOLD)
    }
 
    private fun selectOnlineButton() {

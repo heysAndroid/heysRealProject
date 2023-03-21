@@ -141,39 +141,41 @@ class ContestExtracurricularFilterFragment : Fragment() {
    private fun initStartView() {
       viewModel.interestArray = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
 
-      viewModel.interestArray.forEach {
-         val btnInterest = when (it) {
-            ChannelInterest.Planning.interest -> binding.planning
-            ChannelInterest.Design.interest -> binding.design
-            ChannelInterest.Programming.interest -> binding.programming
-            ChannelInterest.IT.interest -> binding.it
-            ChannelInterest.Data.interest -> binding.data
-            ChannelInterest.Game.interest -> binding.game
-            ChannelInterest.Marketing.interest -> binding.marketing
-            ChannelInterest.Business.interest -> binding.business
-            ChannelInterest.Economics.interest -> binding.economics
-            ChannelInterest.Engineering.interest -> binding.engineering
-            ChannelInterest.Art.interest -> binding.art
-            ChannelInterest.Novel.interest -> binding.novel
-            ChannelInterest.Lifestyle.interest -> binding.lifestyle
-            ChannelInterest.Picture.interest -> binding.picture
-            ChannelInterest.Culture.interest -> binding.culture
-            ChannelInterest.Travel.interest -> binding.travel
-            ChannelInterest.Environment.interest -> binding.environment
-            ChannelInterest.Language.interest -> binding.language
-            ChannelInterest.MediaContents.interest -> binding.mediaContents
-            ChannelInterest.Paper.interest -> binding.paper
-            ChannelInterest.Sports.interest -> binding.sports
-            ChannelInterest.Dance.interest -> binding.dance
-            ChannelInterest.Service.interest -> binding.service
-            else -> null
-         }
-         btnInterest?.isSelected = true
-         btnInterest?.setTypeface(null, Typeface.BOLD)
+      if (viewModel.interestArray.isNotEmpty()) {
+         viewModel.interestArray.forEach {
+            val btnInterest = when (it) {
+               ChannelInterest.Planning.interest -> binding.planning
+               ChannelInterest.Design.interest -> binding.design
+               ChannelInterest.Programming.interest -> binding.programming
+               ChannelInterest.IT.interest -> binding.it
+               ChannelInterest.Data.interest -> binding.data
+               ChannelInterest.Game.interest -> binding.game
+               ChannelInterest.Marketing.interest -> binding.marketing
+               ChannelInterest.Business.interest -> binding.business
+               ChannelInterest.Economics.interest -> binding.economics
+               ChannelInterest.Engineering.interest -> binding.engineering
+               ChannelInterest.Art.interest -> binding.art
+               ChannelInterest.Novel.interest -> binding.novel
+               ChannelInterest.Lifestyle.interest -> binding.lifestyle
+               ChannelInterest.Picture.interest -> binding.picture
+               ChannelInterest.Culture.interest -> binding.culture
+               ChannelInterest.Travel.interest -> binding.travel
+               ChannelInterest.Environment.interest -> binding.environment
+               ChannelInterest.Language.interest -> binding.language
+               ChannelInterest.MediaContents.interest -> binding.mediaContents
+               ChannelInterest.Paper.interest -> binding.paper
+               ChannelInterest.Sports.interest -> binding.sports
+               ChannelInterest.Dance.interest -> binding.dance
+               ChannelInterest.Service.interest -> binding.service
+               else -> null
+            }
+            btnInterest?.isSelected = true
+            btnInterest?.setTypeface(null, Typeface.BOLD)
 
-         if (btnInterest != null) {
-            viewModel.choiceInterest.add(btnInterest)
-            viewModel.interestTotal.value += 1
+            if (btnInterest != null) {
+               viewModel.choiceInterest.add(btnInterest)
+               viewModel.interestTotal.value += 1
+            }
          }
       }
    }

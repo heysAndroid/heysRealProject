@@ -1,13 +1,13 @@
 package com.example.heysrealprojcet.enums
 
-enum class ChannelRegion(val region: String) {
-   Whole("전국"),
-   Seoul("서울시"),
-   Gyeonggi("경기도"),
-   Incheon("인천시"),
-   Gangwon("강원도"),
-   Chungcheong("충청도"),
-   Jeolla("전라도"),
-   Gyeongsang("경상도"),
-   Jeju("제주도")
+enum class ChannelRegion(val enRegion: String, val region: String) {
+   Whole("whole", "전국"),
+   Seoul("seoul", "서울시"),
+   Gyeonggi("gyeonggi", "경기도"),
+   Incheon("incheon", "인천시"),
+   Gangwon("gangwon", "강원도"),
+   Chungcheong("chungcheong", "충청도"),
+   Jeolla("jeolla", "전라도"),
+   Gyeongsang("gyeongsang", "경상도"),
+   Jeju("jeju", "제주도")
 }
