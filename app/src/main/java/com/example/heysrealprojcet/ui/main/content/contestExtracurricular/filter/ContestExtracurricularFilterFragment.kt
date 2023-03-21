@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularFilterFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelInterest
 import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -140,31 +141,31 @@ class ContestExtracurricularFilterFragment : Fragment() {
    private fun initStartView() {
       viewModel.interestArray = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
 
-      for (i in viewModel.interestArray.indices) {
-         val btnInterest = when (viewModel.interestArray[i]) {
-            "기획/아이디어" -> binding.planning
-            "디자인" -> binding.design
-            "개발" -> binding.develop
-            "IT/SW" -> binding.sw
-            "데이터/인공지능" -> binding.data
-            "게임" -> binding.game
-            "광고/마케팅" -> binding.marketing
-            "경영/비즈니스" -> binding.business
-            "금융/경제" -> binding.economics
-            "과학/공학" -> binding.science
-            "미술/건축" -> binding.art
-            "인문학/소설/웹툰" -> binding.novel
-            "패션/라이프스타일" -> binding.lifestyle
-            "사진/영상/UCC" -> binding.photo
-            "문화/교육" -> binding.culture
-            "해외/관광" -> binding.tour
-            "환경/식품" -> binding.food
-            "외국/언어" -> binding.language
-            "미디어 콘텐츠/전시" -> binding.media
-            "학술/논문" -> binding.scholarship
-            "스포츠/음악" -> binding.sports
-            "댄스/무용" -> binding.dance
-            "공공/봉사" -> binding.service
+      viewModel.interestArray.forEach {
+         val btnInterest = when (it) {
+            ChannelInterest.Planning.interest -> binding.planning
+            ChannelInterest.Design.interest -> binding.design
+            ChannelInterest.Programming.interest -> binding.programming
+            ChannelInterest.IT.interest -> binding.it
+            ChannelInterest.Data.interest -> binding.data
+            ChannelInterest.Game.interest -> binding.game
+            ChannelInterest.Marketing.interest -> binding.marketing
+            ChannelInterest.Business.interest -> binding.business
+            ChannelInterest.Economics.interest -> binding.economics
+            ChannelInterest.Engineering.interest -> binding.engineering
+            ChannelInterest.Art.interest -> binding.art
+            ChannelInterest.Novel.interest -> binding.novel
+            ChannelInterest.Lifestyle.interest -> binding.lifestyle
+            ChannelInterest.Picture.interest -> binding.picture
+            ChannelInterest.Culture.interest -> binding.culture
+            ChannelInterest.Travel.interest -> binding.travel
+            ChannelInterest.Environment.interest -> binding.environment
+            ChannelInterest.Language.interest -> binding.language
+            ChannelInterest.MediaContents.interest -> binding.mediaContents
+            ChannelInterest.Paper.interest -> binding.paper
+            ChannelInterest.Sports.interest -> binding.sports
+            ChannelInterest.Dance.interest -> binding.dance
+            ChannelInterest.Service.interest -> binding.service
             else -> null
          }
          btnInterest?.isSelected = true

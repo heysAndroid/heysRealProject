@@ -118,7 +118,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/develop"
+                            android:id="@+id/programming"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_interest_button"
@@ -141,7 +141,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/sw"
+                            android:id="@+id/it"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -252,7 +252,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/science"
+                            android:id="@+id/engineering"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -330,7 +330,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/photo"
+                            android:id="@+id/picture"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -369,7 +369,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/tour"
+                            android:id="@+id/travel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -385,7 +385,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/food"
+                            android:id="@+id/environment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -424,7 +424,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/media"
+                            android:id="@+id/mediaContents"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -440,7 +440,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/scholarship"
+                            android:id="@+id/paper"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
