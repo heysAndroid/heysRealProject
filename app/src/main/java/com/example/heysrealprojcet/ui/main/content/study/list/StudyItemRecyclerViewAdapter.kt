@@ -1,25 +1,23 @@
-package com.example.heysrealprojcet.ui.main.content.study
+package com.example.heysrealprojcet.ui.main.content.study.list
 
-import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
-import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.StudyList
 
 class StudyItemRecyclerViewAdapter(
-   private val type: MutableList<Study>,
+   private val study: MutableList<StudyList>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: StudyItemViewBinding
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: Study) {
+      fun bind(study: StudyList) {
          //binding.startDate.text = "D-${type.startDate}"
          //binding.image.setImageResource(type.image)
-         binding.title.text = type.name
-         binding.content.text = type.contentText
+         binding.title.text = study.name
          //binding.see.text = type.see.toString()
 
          var bgShape = binding.startDate.background as GradientDrawable
@@ -48,10 +46,10 @@ class StudyItemRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(type[position])
+      holder.bind(study[position])
    }
 
    override fun getItemCount(): Int {
-      return type.size
+      return study.size
    }
 }
