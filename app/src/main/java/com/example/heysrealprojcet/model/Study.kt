@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Study(
    @SerializedName("name") val name: String?,
-   @SerialName("purpose") val purpose: String?,
+   @SerialName("purposes") val purposes: ArrayList<String>,
    @SerialName("online") val online: String?,
    @SerialName("location") val location: String?,
    @SerializedName("limitPeople") val limit: Int?,
