@@ -398,23 +398,31 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/approvedUserListEmpty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bg_f8f9fc_radius_16"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="16dp"
-                        android:text="아직 참여중인 Hey가 없어요"
+                        android:text="아직 참여중인 Hey가 없어요!"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/approvedUserList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="32dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

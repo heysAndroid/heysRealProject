@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelCreateCompleteFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.ApprovedUserImageListRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +26,7 @@ class ChannelCreateCompleteFragment() : Fragment() {
    private lateinit var binding: ChannelCreateCompleteFragmentBinding
    private val viewModel by viewModels<ChannelCreateCompleteViewModel>()
    private val args: ChannelCreateCompleteFragmentArgs by navArgs()
+   private lateinit var adpater: ApprovedUserImageListRecyclerViewAdapter
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -57,6 +61,7 @@ class ChannelCreateCompleteFragment() : Fragment() {
                setChannelRecruitmentMethod()
                viewModel.channelForm.value?.let { setChannelForm(it) }
                setLeaderImage()
+               setApprovedUserList()
             }
 
             is NetworkResult.Error -> {
@@ -128,5 +133,28 @@ class ChannelCreateCompleteFragment() : Fragment() {
             }
          }
       }
+   }
+
+   private fun setApprovedUserList() {
+      viewModel.approvedUserList.value?.let {
+         if (it.size == 0) {
+            setApprovedUserListInvisible()
+         } else {
+            setApprovedUserListVisible()
+            adpater = ApprovedUserImageListRecyclerViewAdapter(it)
+            binding.approvedUserList.adapter = adpater
+            binding.approvedUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         }
+      }
+   }
+
+   private fun setApprovedUserListVisible() {
+      binding.approvedUserListEmpty.visibility = View.GONE
+      binding.approvedUserList.visibility = View.VISIBLE
+   }
+
+   private fun setApprovedUserListInvisible() {
+      binding.approvedUserListEmpty.visibility = View.VISIBLE
+      binding.approvedUserList.visibility = View.GONE
    }
 }
