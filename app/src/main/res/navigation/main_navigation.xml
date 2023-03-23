@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.study.StudyListFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.study.list.StudyListFragment"
         android:label="study_fragment"
         tools:layout="@layout/study_list_fragment">
         <action

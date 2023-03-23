@@ -202,6 +202,7 @@
                         app:cardUseCompatPadding="true">
 
                         <LinearLayout
+                            android:id="@+id/studyList"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_white_radius_16"
@@ -262,7 +263,7 @@
                         app:cardUseCompatPadding="true">
 
                         <LinearLayout
-                            android:id="@+id/studyContainer"
+                            android:id="@+id/studyCreate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_white_radius_16"
