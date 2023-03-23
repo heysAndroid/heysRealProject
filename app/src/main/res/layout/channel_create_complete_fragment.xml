@@ -336,11 +336,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="34dp"
+                        android:id="@+id/leaderImage"
+                        android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/img_channel_leader_profile_example" />
+                        android:src="@drawable/ic_male_0" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -348,6 +348,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/leaderName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{vm.leader.name}"
@@ -356,6 +357,7 @@
                             tools:text="김이나" />
 
                         <TextView
+                            android:id="@+id/leaderIntroduceText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{vm.leader.introduceText}"
@@ -469,7 +471,8 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/bg_ok_button_enabled"
                     android:text="내 채널에서 만든 채널 확인하기"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

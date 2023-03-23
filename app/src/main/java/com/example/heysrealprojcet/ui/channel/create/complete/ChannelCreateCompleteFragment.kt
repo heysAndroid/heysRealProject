@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelCreateCompleteFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
+import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
@@ -50,11 +52,11 @@ class ChannelCreateCompleteFragment() : Fragment() {
       viewModel.getChannelDetail("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
-               Log.i("getDetail: ", "success")
                viewModel.receiveChannelDetail(response.data?.channelDetail)
                setChannelRegion()
                setChannelRecruitmentMethod()
                viewModel.channelForm.value?.let { setChannelForm(it) }
+               setLeaderImage()
             }
 
             is NetworkResult.Error -> {
@@ -95,6 +97,35 @@ class ChannelCreateCompleteFragment() : Fragment() {
          }
          else -> {
             binding.channelForm.text = ChannelForm.Online.form + "으로"
+         }
+      }
+   }
+
+   // 프로필 퍼센트에 따른 이미지 설정
+   private fun setLeaderImage() {
+      viewModel.leader.observe(viewLifecycleOwner) { leader ->
+         when (leader.percentage) {
+            in 0..49 -> {
+               when (UserPreference.gender) {
+                  Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_0)
+                  Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_0)
+                  else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
+               }
+            }
+            in 50..99 -> {
+               when (UserPreference.gender) {
+                  Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
+                  Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_50)
+                  else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
+               }
+            }
+            100 -> {
+               when (UserPreference.gender) {
+                  Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)
+                  Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_100)
+                  else -> binding.leaderImage.setImageResource(R.drawable.ic_none_100)
+               }
+            }
          }
       }
    }
