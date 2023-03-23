@@ -88,7 +88,7 @@
                         android:id="@+id/channelPurpose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{vm.channelPurpose + ` 목적의 채널이에요.`}"
+                        android:text="@{vm.channelPurposeString + ` 목적의 채널이에요.`}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="역량강화 목적의 채널이에요." />

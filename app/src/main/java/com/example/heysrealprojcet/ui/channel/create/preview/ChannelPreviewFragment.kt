@@ -102,7 +102,7 @@ class ChannelPreviewFragment() : Fragment() {
       viewModel.channelInterest
       val study = Study(
          name = ChannelPreference.channelName,
-         purpose = viewModel.channelPurpose.value,
+         purposes = ChannelPreference.channelPurposeArray,
          online = ChannelPreference.channelFormEng,
          location = ChannelPreference.channelRegion,
          limit = ChannelPreference.channelCapacity,

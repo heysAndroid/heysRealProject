@@ -58,13 +58,13 @@ class StudyListFragment : Fragment() {
    private fun makeList() {
       studyList = mutableListOf(
          Study(
-            "스터디 테스트1", ChannelPurpose.Networking.purpose, ChannelForm.Online.form, ChannelRegion.Gangwon.region, 30, "2023-03-07T14:16:40.573Z",
+            "스터디 테스트1", arrayListOf(ChannelPurpose.Networking.purpose), ChannelForm.Online.form, ChannelRegion.Gangwon.region, 30, "2023-03-07T14:16:40.573Z",
             ChannelRecruitmentMethod.Approval.method, "소개글", "멤버 모집글", "", arrayListOf("www.kakao.com"), arrayListOf("패션", "IT/SW")),
          Study(
-            "스터디 테스트2", ChannelPurpose.Capability.purpose, ChannelForm.Offline.form, ChannelRegion.Gyeonggi.region, 7, "2023-03-15T11:39:40.573Z",
+            "스터디 테스트2", arrayListOf(ChannelPurpose.Capability.purpose), ChannelForm.Offline.form, ChannelRegion.Gyeonggi.region, 7, "2023-03-15T11:39:40.573Z",
             ChannelRecruitmentMethod.Decide.method, "소개글", "멤버 모집글", "", arrayListOf("www.github.com"), arrayListOf("패션", "IT/SW")),
          Study(
-            "스터디 테스트3", ChannelPurpose.Experience.purpose, ChannelForm.Both.form, ChannelRegion.Seoul.region, 24, "2023-03-07T14:16:40.573Z",
+            "스터디 테스트3", arrayListOf(ChannelPurpose.Experience.purpose), ChannelForm.Both.form, ChannelRegion.Seoul.region, 24, "2023-03-07T14:16:40.573Z",
             ChannelRecruitmentMethod.Approval.method, "소개글", "멤버 모집글", "", arrayListOf("www.kakao.com"), arrayListOf("패션", "IT/SW")),
       )
    }

@@ -20,7 +20,7 @@ import javax.inject.Inject
 class ChannelPreviewViewModel @Inject constructor(
    private val studyRepository: StudyRepository) : BaseViewModel() {
    var channelName = MutableLiveData(ChannelPreference.channelName)
-   var channelPurpose = MutableLiveData("")
+   var channelPurposeString = MutableLiveData("")
    var channelCapacity = MutableLiveData(ChannelPreference.channelCapacity.toString())
    var channelForm = MutableLiveData(ChannelPreference.channelForm)
    var channelRegion = MutableLiveData(ChannelPreference.channelRegion)
@@ -48,10 +48,10 @@ class ChannelPreviewViewModel @Inject constructor(
 
    private fun setChannelPurposeString() {
       when (ChannelPreference.channelPurposeArray.size) {
-         1 -> channelPurpose.value = ChannelPreference.channelPurposeArray.first()
+         1 -> channelPurposeString.value = ChannelPreference.channelPurposeArray.first()
          else -> {
-            ChannelPreference.channelPurposeArray.forEach { channelPurpose.value += "$it, " }
-            channelPurpose.value = channelPurpose.value?.dropLast(2)
+            ChannelPreference.channelPurposeArray.forEach { channelPurposeString.value += "$it, " }
+            channelPurposeString.value = channelPurposeString.value?.dropLast(2)
          }
       }
    }

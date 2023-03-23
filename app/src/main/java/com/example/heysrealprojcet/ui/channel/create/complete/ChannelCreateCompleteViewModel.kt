@@ -73,10 +73,10 @@ class ChannelCreateCompleteViewModel @Inject constructor(
    private val _recruitEndTime = MutableLiveData<String>()
    val recruitEndTime: LiveData<String> = _recruitEndTime
 
-   private val _interestString = MutableLiveData<String>()
+   private val _interestString by lazy { MutableLiveData<String>("") }
    val interestString: LiveData<String> = _interestString
 
-   private val _purposeString = MutableLiveData<String>()
+   private val _purposeString = MutableLiveData("")
    val purposeString: LiveData<String> = _purposeString
 
    fun getChannelDetail(token: String, id: Int) = channelRepository.getChannelDetail(token, id).asLiveData()
@@ -119,22 +119,12 @@ class ChannelCreateCompleteViewModel @Inject constructor(
    }
 
    private fun setPurposeString() {
-      when (purposes.value?.size) {
-         1 -> _purposeString.value = purposes.value!!.first().purpose
-         else -> {
-            purposes.value?.forEach { _purposeString.value += "${it.purpose}, " }
-            _purposeString.value = _purposeString.value?.dropLast(2)
-         }
-      }
+      purposes.value?.forEach { _purposeString.value += "${it.purpose}, " }
+      _purposeString.value = _purposeString.value?.dropLast(2)
    }
 
    private fun setInterestString() {
-      when (interests.value?.size) {
-         1 -> _interestString.value = interests.value!!.first()
-         else -> {
-            interests.value?.forEach { _interestString.value += "${it}, " }
-            _interestString.value = _interestString.value?.dropLast(2)
-         }
-      }
+      interests.value?.forEach { _interestString.value += "${it}, " }
+      _interestString.value = _interestString.value?.dropLast(2)
    }
 }
