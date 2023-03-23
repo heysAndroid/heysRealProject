@@ -47,6 +47,10 @@ class ChannelListFragment : Fragment() {
       binding.heysList.adapter = channelItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
+      binding.filterButton.setOnClickListener {
+         goToFilter()
+      }
+
       binding.makeChannel.setOnClickListener {
          goToChannelList()
       }
@@ -58,6 +62,10 @@ class ChannelListFragment : Fragment() {
          Channel(R.drawable.bg_sample_image_crop, "같이 도전 하실분 구합니다.", 7, ChannelStatus.Normal, 30, 500),
          Channel(R.drawable.bg_sample_image_crop, "천안 팀원 구해요", 250, ChannelStatus.Closed, 50, 1250),
       )
+   }
+
+   private fun goToFilter() {
+      findNavController().navigate(R.id.action_channelListFragment_to_channelFilterFragment)
    }
 
    private fun goToChannelList() {

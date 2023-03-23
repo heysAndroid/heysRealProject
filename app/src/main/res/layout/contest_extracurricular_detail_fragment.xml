@@ -167,7 +167,7 @@
                         android:background="@drawable/bg_f7bc26_radius_8"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingHorizontal="12dp"
+                        android:paddingHorizontal="17dp"
                         android:paddingVertical="10dp"
                         android:text="채널 보기"
                         android:textColor="@color/white"

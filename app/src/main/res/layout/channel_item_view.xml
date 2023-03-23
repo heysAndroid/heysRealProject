@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="166dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_white_radius_16"
+    android:background="@drawable/bg_card_shadow_small"
     android:orientation="horizontal"
-    android:paddingHorizontal="16dp"
-    android:paddingBottom="16dp">
+    android:paddingStart="20dp">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -17,7 +16,7 @@
             android:id="@+id/image"
             android:layout_width="122dp"
             android:layout_height="122dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/bg_sample_image_crop" />
 
         <TextView
@@ -28,23 +27,22 @@
             android:gravity="center"
             android:text="마감"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="12sp" />
-
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="27dp"
             android:text="수도권 팀원\n모집해요!"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -54,20 +52,38 @@
             android:id="@+id/period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
             android:text="개설한지 7일"
             android:textColor="@color/color_828282"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:drawableLeft="@drawable/ic_eye"
-            android:drawablePadding="4dp"
-            android:gravity="center_vertical"
-            android:text="3"
-            android:textSize="12sp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_eye" />
+
+            <TextView
+                android:id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="3"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_channelListFragment_to_channelNameFragment"
             app:destination="@id/channelNameFragment" />
+        <action
+            android:id="@+id/action_channelListFragment_to_channelFilterFragment"
+            app:destination="@id/channelFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/studyFilterFragment"
@@ -387,9 +390,14 @@
         android:id="@+id/channelCreateCompleteFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.complete.ChannelCreateCompleteFragment"
         android:label="ChannelCreateCompleteFragment"
-        tools:layout="@layout/channel_create_complete_fragment" >
+        tools:layout="@layout/channel_create_complete_fragment">
         <argument
             android:name="channelId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/channelFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterFragment"
+        android:label="ChannelFilterFragment"
+        tools:layout="@layout/channel_filter_fragment" />
 </navigation>

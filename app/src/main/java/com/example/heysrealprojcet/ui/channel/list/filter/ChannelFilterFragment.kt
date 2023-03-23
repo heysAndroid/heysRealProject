@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter
+package com.example.heysrealprojcet.ui.channel.list.filter
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -9,9 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ContestExtracurricularFilterFragmentBinding
-import com.example.heysrealprojcet.enums.ChannelInterest
-import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
+import com.example.heysrealprojcet.databinding.ChannelFilterFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelForm
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.ui.DayBinder
 import java.time.YearMonth
@@ -19,9 +18,9 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
 
-class ContestExtracurricularFilterFragment : Fragment() {
-   private lateinit var binding: ContestExtracurricularFilterFragmentBinding
-   private lateinit var viewModel: ContestExtracurricularFilterViewModel
+class ChannelFilterFragment : Fragment() {
+   private lateinit var binding: ChannelFilterFragmentBinding
+   private lateinit var viewModel: ChannelFilterViewModel
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -30,8 +29,8 @@ class ContestExtracurricularFilterFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = ContestExtracurricularFilterFragmentBinding.inflate(inflater, container, false)
-      viewModel = ContestExtracurricularFilterViewModel(binding.cafeteriaCalendar)
+      binding = ChannelFilterFragmentBinding.inflate(inflater, container, false)
+      viewModel = ChannelFilterViewModel(binding.cafeteriaCalendar)
       binding.vm = viewModel
       return binding.root
    }
@@ -40,19 +39,35 @@ class ContestExtracurricularFilterFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      initStartView()
+      viewModel.selectedForm.observe(viewLifecycleOwner) {
+         when (it) {
+            ChannelForm.Offline.form -> {
+               binding.regionContainer.visibility = View.VISIBLE
+            }
+            ChannelForm.Online.form -> {
+               binding.regionContainer.visibility = View.GONE
+            }
+            else -> {
+               binding.regionContainer.visibility = View.GONE
+            }
+         }
+      }
 
       binding.btnApply.setOnClickListener { findNavController().navigateUp() }
 
+      // 달력
       viewModel.selectedDate
-      viewModel.calendarPosition.observe(viewLifecycleOwner) {
+      viewModel.calendarPosition.observe(viewLifecycleOwner)
+      {
          if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
             binding.calendarBack.visibility = View.INVISIBLE
          } else {
             binding.calendarBack.visibility = View.VISIBLE
          }
       }
-      viewModel.calendarDate.observe(viewLifecycleOwner) {
+
+      viewModel.calendarDate.observe(viewLifecycleOwner)
+      {
          if (viewModel.selectedDate != null) {
             binding.tvDate.text = viewModel.calendarDate.value!!.format(selectedFormatter)
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_53c740))
@@ -70,6 +85,7 @@ class ContestExtracurricularFilterFragment : Fragment() {
          YearMonth.now(),
          WeekFields.of(Locale.getDefault()).firstDayOfWeek
       )
+
       binding.yearMonth.text = currentTime.format(calendarFormatter)
       binding.calendarBack.setOnClickListener {
          if (currentTime.year > YearMonth.now().year) {
@@ -130,53 +146,12 @@ class ContestExtracurricularFilterFragment : Fragment() {
          binding.yearMonth.text = currentTime.format(calendarFormatter)
       }
 
-      binding.cafeteriaCalendar.dayBinder = object : DayBinder<ContestExtracurricularFilterCafeteriaContainer> {
-         override fun create(view: View): ContestExtracurricularFilterCafeteriaContainer =
-            ContestExtracurricularFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
+      binding.cafeteriaCalendar.dayBinder =
+         object : DayBinder<ChannelFilterCafeteriaContainer> {
+            override fun create(view: View): ChannelFilterCafeteriaContainer =
+               ChannelFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
 
-         override fun bind(container: ContestExtracurricularFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
-      }
-   }
-
-   private fun initStartView() {
-      viewModel.interestArray = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
-
-      if (viewModel.interestArray.isNotEmpty()) {
-         viewModel.interestArray.forEach {
-            val btnInterest = when (it) {
-               ChannelInterest.Planning.interest -> binding.planning
-               ChannelInterest.Design.interest -> binding.design
-               ChannelInterest.Programming.interest -> binding.programming
-               ChannelInterest.IT.interest -> binding.it
-               ChannelInterest.Data.interest -> binding.data
-               ChannelInterest.Game.interest -> binding.game
-               ChannelInterest.Marketing.interest -> binding.marketing
-               ChannelInterest.Business.interest -> binding.business
-               ChannelInterest.Economics.interest -> binding.economics
-               ChannelInterest.Engineering.interest -> binding.engineering
-               ChannelInterest.Art.interest -> binding.art
-               ChannelInterest.Novel.interest -> binding.novel
-               ChannelInterest.Lifestyle.interest -> binding.lifestyle
-               ChannelInterest.Picture.interest -> binding.picture
-               ChannelInterest.Culture.interest -> binding.culture
-               ChannelInterest.Travel.interest -> binding.travel
-               ChannelInterest.Environment.interest -> binding.environment
-               ChannelInterest.Language.interest -> binding.language
-               ChannelInterest.MediaContents.interest -> binding.mediaContents
-               ChannelInterest.Paper.interest -> binding.paper
-               ChannelInterest.Sports.interest -> binding.sports
-               ChannelInterest.Dance.interest -> binding.dance
-               ChannelInterest.Service.interest -> binding.service
-               else -> null
-            }
-            btnInterest?.isSelected = true
-            btnInterest?.setTypeface(null, Typeface.BOLD)
-
-            if (btnInterest != null) {
-               viewModel.choiceInterest.add(btnInterest)
-               viewModel.interestTotal.value += 1
-            }
+            override fun bind(container: ChannelFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
          }
-      }
    }
 }

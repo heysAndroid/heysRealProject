@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterViewModel" />
     </data>
 
     <LinearLayout
@@ -118,7 +118,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/programming"
+                            android:id="@+id/develop"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_interest_button"
@@ -141,7 +141,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/it"
+                            android:id="@+id/sw"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -252,7 +252,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/engineering"
+                            android:id="@+id/science"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -330,7 +330,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/picture"
+                            android:id="@+id/photo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -369,7 +369,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/travel"
+                            android:id="@+id/tour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -385,7 +385,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/environment"
+                            android:id="@+id/food"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -424,7 +424,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/mediaContents"
+                            android:id="@+id/media"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -440,7 +440,7 @@
                             android:textSize="16sp" />
 
                         <Button
-                            android:id="@+id/paper"
+                            android:id="@+id/scholarship"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -672,9 +672,329 @@
                     app:cv_outDateStyle="endOfGrid"
                     app:cv_scrollMode="paged" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="32dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="22dp"
+                    android:text="활동 형태"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnOnOffline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_filter_activity_button"
+                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:paddingVertical="18dp"
+                    android:tag="online/offline"
+                    android:text="온·오프라인"
+                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnOffline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_filter_activity_button"
+                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:paddingVertical="18dp"
+                    android:tag="offline"
+                    android:text="오프라인"
+                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnOnline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_filter_activity_button"
+                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:paddingVertical="18dp"
+                    android:tag="online"
+                    android:text="온라인"
+                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/regionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnWhole"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_filter_region_button"
+                        android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="whole"
+                        android:text="전국"
+                        android:textColor="@drawable/bg_filter_region_button"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnSeoul"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="9dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="seoul"
+                            android:text="서울시"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnGyeonggi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="gyeonggi"
+                            android:text="경기도"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnIncheon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="9dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="incheon"
+                            android:text="인천시"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnGangwon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="gangwon"
+                            android:text="강원도"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnChungcheong"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="9dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="chungcheong"
+                            android:text="충청도"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnJeolla"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="jeolla"
+                            android:text="전라도"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnGyeongsang"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="9dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="gyeongsang"
+                            android:text="경상도"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnJeju"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_filter_region_button"
+                            android:onClick="@{(v) -> vm.onClickRegion(v)}"
+                            android:paddingVertical="18dp"
+                            android:tag="jeju"
+                            android:text="제주시"
+                            android:textColor="@drawable/bg_filter_region_button"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="활동 목적"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="capability"
+                        android:text="역량강화"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="skill"
+                        android:text="실력향상"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="employment"
+                        android:text="취업 준비"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="ability"
+                        android:text="학습능력향상"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="46dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="experience"
+                        android:text="창업/협업 경험"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_studyfilter_purpose_button"
+                        android:onClick="@{(v) -> vm.onClickPurpose(v)}"
+                        android:paddingVertical="18dp"
+                        android:tag="portfolio"
+                        android:text="포트폴리오"
+                        android:textColor="@drawable/bg_studyfilter_purpose_button"
+                        android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
