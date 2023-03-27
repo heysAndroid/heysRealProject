@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,6 +14,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,6 +36,15 @@ class MainActivity : AppCompatActivity() {
       val intentText = intent.getStringExtra(Intent.EXTRA_TEXT)
       Log.w("intentText, ", intentText.toString())
       intentText?.let { setNavigationGraph(it) }
+   }
+
+   override fun onBackPressed() {
+      super.onBackPressed()
+      val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
+      if (navHostFragment.childFragmentManager.primaryNavigationFragment is MainFragment) {
+         ActivityCompat.finishAffinity(this)
+         exitProcess(0)
+      }
    }
 
    fun hideBottomNavigation(state: Boolean) {
