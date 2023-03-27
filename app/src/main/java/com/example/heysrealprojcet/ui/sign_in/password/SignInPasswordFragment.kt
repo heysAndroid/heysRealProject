@@ -64,6 +64,8 @@ class SignInPasswordFragment : Fragment() {
          changeInputType()
       }
 
+      binding.btnForget.setOnClickListener { goToPasswordChange() }
+
       binding.okButton.setOnClickListener {
          requestLogin(UserPreference.phoneNumber, UserPreference.password)
       }
@@ -99,6 +101,10 @@ class SignInPasswordFragment : Fragment() {
             }
          }
       })
+   }
+
+   private fun goToPasswordChange() {
+      findNavController().navigate(R.id.action_signInPasswordFragment_to_settingPasswordForgetFragment2)
    }
 
    private fun goToMain() {

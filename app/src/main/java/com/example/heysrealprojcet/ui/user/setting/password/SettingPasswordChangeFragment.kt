@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPasswordChangeFragmentBinding
+import com.example.heysrealprojcet.util.UserPreference
 
 class SettingPasswordChangeFragment : Fragment() {
    private lateinit var binding: SettingPasswordChangeFragmentBinding
@@ -25,11 +26,22 @@ class SettingPasswordChangeFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.okButton.setOnClickListener { goToSetting() }
+
+      binding.okButton.setOnClickListener {
+         if (UserPreference.isAutoLogin) {
+            goToSetting()
+         } else {
+            goToLogin()
+         }
+      }
 
       val inputMethodManager =
          requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
       inputMethodManager.showSoftInput(binding.password, 0)
+   }
+
+   private fun goToLogin() {
+      findNavController().navigate(R.id.action_settingPasswordChangeFragment2_to_signInPhoneFragment)
    }
 
    private fun goToSetting() {
