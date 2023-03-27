@@ -58,7 +58,7 @@ class LogoFragment : Fragment() {
          startActivity(intent)
          requireActivity().finish()
       } else {
-         findNavController().navigate(R.id.action_logoFragment_to_introFragment)
+         findNavController().navigate(R.id.action_logoFragment_to_permissionFragment)
       }
    }
 }
