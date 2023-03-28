@@ -24,15 +24,19 @@ class ChannelItemRecyclerViewAdapter(
          binding.view.text = channel.view.toString()
          binding.root.setOnClickListener { onClickListener.invoke() }
 
-         var bgShape = binding.status.background as GradientDrawable
+         val bgShape = binding.status.background as GradientDrawable
          when (channel.status) {
-            ChannelStatus.New -> bgShape.setColor(Color.parseColor("#53C740"))
+            ChannelStatus.New -> bgShape.setColor(Color.parseColor("#34D676"))
             ChannelStatus.Closed -> bgShape.setColor(Color.parseColor("#828282"))
             else -> {
-               bgShape.setColor(Color.parseColor("#7B61FF"))
+               bgShape.setColor(Color.parseColor("#FD4158"))
                // 지금은 전체 인원으로 표기
                // TODO (전체 인원) - (신청 인원) 으로 수정 필요
-               binding.status.text = "${channel.capacity}명 ${channel.status.status}"
+               binding.status.text = if (channel.capacity != 0) {
+                  "${channel.capacity}명 ${channel.status.status}"
+               } else {
+                  "마감"
+               }
                binding.status.setPadding(6, 0, 6, 0)
             }
          }

@@ -22,18 +22,20 @@ class ContestItemRecyclerViewAdapter(
          binding.content.text = type.content
          binding.see.text = type.see.toString()
 
-         var bgShape = binding.startDate.background as GradientDrawable
+         val bgShape = binding.startDate.background as GradientDrawable
          if (type.startDate == 0) {
             binding.startDate.text = "마감"
             bgShape.setColor(Color.parseColor("#828282"))
          }
 
-         if (type.startDate in 2..5) {
-            bgShape.setColor(Color.parseColor("#53C740"))
+         else if (type.startDate < 7) {
+            binding.startDate.text = "D-${type.startDate}"
+            bgShape.setColor(Color.parseColor("#FD4158"))
          }
 
-         if (type.startDate in 6..10) {
-            bgShape.setColor(Color.parseColor("#FD4158"))
+         else {
+            binding.startDate.text = "D-${type.startDate}"
+            bgShape.setColor(Color.parseColor("#34D676"))
          }
 
          binding.root.setOnClickListener { onClickListener.invoke() }
