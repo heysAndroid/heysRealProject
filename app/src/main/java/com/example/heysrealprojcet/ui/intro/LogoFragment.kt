@@ -1,11 +1,14 @@
 package com.example.heysrealprojcet.ui.intro
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
@@ -15,6 +18,8 @@ import com.example.heysrealprojcet.util.UserPreference
 
 class LogoFragment : Fragment() {
    private lateinit var binding: LogoFragmentBinding
+   private lateinit var permissions: Array<String>
+   private lateinit var permissionList: ArrayList<String>
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = LogoFragmentBinding.inflate(inflater, container, false)
@@ -34,6 +39,14 @@ class LogoFragment : Fragment() {
          )
       }
 
+      permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+         arrayOf(Manifest.permission.POST_NOTIFICATIONS, Manifest.permission.CALL_PHONE)
+      } else {
+         arrayOf(Manifest.permission.CALL_PHONE)
+      }
+
+      checkPermission()
+
       Handler(Looper.getMainLooper()).postDelayed({ moveToNext() }, 3000)
    }
 
@@ -50,7 +63,7 @@ class LogoFragment : Fragment() {
 
    private fun moveToNext() {
       // 자동 로그인 기능
-      if (UserPreference.isAutoLogin) {
+      if (UserPreference.isAutoLogin && permissionList.isEmpty()) {
          val intent = Intent(requireContext(), MainActivity::class.java).apply {
             putExtra(Intent.EXTRA_TEXT, "mainHome")
             type = "text/plain"
@@ -60,5 +73,15 @@ class LogoFragment : Fragment() {
       } else {
          findNavController().navigate(R.id.action_logoFragment_to_permissionFragment)
       }
+   }
+
+   private fun checkPermission(): Boolean {
+      permissionList = arrayListOf()
+      for (pm in permissions) {
+         if (ContextCompat.checkSelfPermission(requireContext(), pm) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(pm)
+         }
+      }
+      return permissionList.isEmpty()
    }
 }

@@ -19,6 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.PermissionFragmentBinding
+import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
 
 class PermissionFragment : Fragment() {
    private lateinit var binding: PermissionFragmentBinding
@@ -114,6 +116,15 @@ class PermissionFragment : Fragment() {
    }
 
    private fun goToIntro() {
-      findNavController().navigate(R.id.action_permissionFragment_to_introFragment)
+      if (UserPreference.isAutoLogin) {
+         val intent = Intent(requireContext(), MainActivity::class.java).apply {
+            putExtra(Intent.EXTRA_TEXT, "mainHome")
+            type = "text/plain"
+         }
+         startActivity(intent)
+         requireActivity().finish()
+      } else {
+         findNavController().navigate(R.id.action_permissionFragment_to_introFragment)
+      }
    }
 }
