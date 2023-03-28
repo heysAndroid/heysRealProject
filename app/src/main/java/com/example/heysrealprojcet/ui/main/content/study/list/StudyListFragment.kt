@@ -50,7 +50,7 @@ class StudyListFragment : Fragment() {
 
    private fun getStudyList() {
       val token = UserPreference.accessToken
-      viewModel.getStudyList("Bearer $token", arrayListOf(""), "", arrayListOf("취업준비")).observe(viewLifecycleOwner) { response ->
+      viewModel.getStudyList("Bearer $token", arrayListOf(""), "", arrayListOf("")).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setStudyList(response.data?.data)

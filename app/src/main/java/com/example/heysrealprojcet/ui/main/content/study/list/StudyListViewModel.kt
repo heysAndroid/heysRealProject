@@ -23,7 +23,6 @@ class StudyListViewModel @Inject constructor(
    private val _response: MutableLiveData<NetworkResult<StudyListResponse>> = MutableLiveData()
    val response: LiveData<NetworkResult<StudyListResponse>> = _response
 
-   //fun getStudyList(token: String, filter: StudyFilter) = studyRepository.getStudyList(token, filter).asLiveData()
    fun setStudyList(list: List<StudyList>?) {
       _studyList.value = list ?: listOf()
    }

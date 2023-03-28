@@ -15,10 +15,10 @@ class StudyItemRecyclerViewAdapter(
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(study: StudyList) {
-         //binding.startDate.text = "D-${type.startDate}"
          //binding.image.setImageResource(type.image)
          binding.title.text = study.name
-         //binding.see.text = type.see.toString()
+         binding.pastDay.text = "개설한지 ${study.pastDay}일"
+         binding.viewCount.text = study.viewCount.toString()
 
          var bgShape = binding.startDate.background as GradientDrawable
          /*
