@@ -79,6 +79,9 @@ class ChannelCreateCompleteViewModel @Inject constructor(
    private val _purposeString = MutableLiveData("")
    val purposeString: LiveData<String> = _purposeString
 
+   private val _waitingUserNum = MutableLiveData<Int>()
+   val waitingUserNum: LiveData<Int> = _waitingUserNum
+
    fun getChannelDetail(token: String, id: Int) = channelRepository.getChannelDetail(token, id).asLiveData()
 
    fun receiveChannelDetail(channelDetail: ChannelDetail?) {
@@ -101,6 +104,7 @@ class ChannelCreateCompleteViewModel @Inject constructor(
          _isBookMarked.value = it.isBookMarked
          _approvedUserList.value = it.approvedUserList
          _waitingUserList.value = it.waitingUserList
+         _waitingUserNum.value = it.waitingUserList.size
       }
       setEndDateTimeString()
       setPurposeString()
