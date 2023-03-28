@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ApprovedUserImageItemViewBinding
+import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.model.ApprovedUserList
 
 class ApprovedUserImageListRecyclerViewAdapter(
@@ -16,13 +17,26 @@ class ApprovedUserImageListRecyclerViewAdapter(
       fun bind(user: ApprovedUserList) {
          when (user.percentage) {
             in 0..49 -> {
-               binding.profile.setImageResource(R.drawable.ic_male_0)
+               when (user.gender) {
+                  Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_0)
+                  Gender.Female.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_female_0)
+                  else -> binding.profile.setImageResource(R.drawable.ic_none_0)
+               }
+
             }
             in 50..99 -> {
-               binding.profile.setImageResource(R.drawable.ic_male_50)
+               when (user.gender) {
+                  Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_50)
+                  Gender.Female.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_female_50)
+                  else -> binding.profile.setImageResource(R.drawable.ic_none_50)
+               }
             }
             100 -> {
-               binding.profile.setImageResource(R.drawable.ic_male_100)
+               when (user.gender) {
+                  Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_100)
+                  Gender.Female.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_female_100)
+                  else -> binding.profile.setImageResource(R.drawable.ic_none_100)
+               }
             }
          }
       }

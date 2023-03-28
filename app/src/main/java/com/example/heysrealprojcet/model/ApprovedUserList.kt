@@ -7,4 +7,5 @@ import kotlinx.serialization.Serializable
 data class ApprovedUserList(
    @SerialName("id") val id: Int,
    @SerialName("percentage") val percentage: Int,
+   @SerialName("gender") val gender: String
 ) : java.io.Serializable
