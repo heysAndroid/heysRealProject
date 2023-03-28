@@ -60,7 +60,7 @@ class ChannelCreateCompleteFragment() : Fragment() {
    private fun goToApprovedUserList() {
       viewModel.approvedUserList.observe(viewLifecycleOwner) {
          it?.let {
-            findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_approvedUserListFragment, bundleOf("approvedUser" to it))
+            findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_approvedUserListFragment, bundleOf("approvedUser" to it.toTypedArray()))
          }
       }
    }
