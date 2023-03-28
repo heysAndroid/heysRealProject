@@ -394,10 +394,22 @@
         <argument
             android:name="channelId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_channelCreateCompleteFragment_to_approvedUserListFragment"
+            app:destination="@id/approvedUserListFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelFilterFragment"
         android:name="com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterFragment"
         android:label="ChannelFilterFragment"
         tools:layout="@layout/channel_filter_fragment" />
+    <fragment
+        android:id="@+id/approvedUserListFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.list.ApprovedUserListFragment"
+        android:label="ApprovedUserListFragment"
+        tools:layout="@layout/approved_user_list_fragment" >
+        <argument
+            android:name="approvedUser"
+            app:argType="com.example.heysrealprojcet.model.ApprovedUserList[]" />
+    </fragment>
 </navigation>
