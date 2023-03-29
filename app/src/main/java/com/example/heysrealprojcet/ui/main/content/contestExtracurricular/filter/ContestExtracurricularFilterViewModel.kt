@@ -6,12 +6,12 @@ import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kizitonwose.calendarview.CalendarView
+import com.example.heysrealprojcet.Event
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.LocalDate
 import java.time.YearMonth
 
-class ContestExtracurricularFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
+class ContestExtracurricularFilterViewModel : ViewModel() {
 
    var choiceInterest = mutableListOf<View>()
    private val interestMax = 3
@@ -25,6 +25,9 @@ class ContestExtracurricularFilterViewModel(private val calendarView: CalendarVi
 
    private val _calendarDate = MutableLiveData<LocalDate>()
    val calendarDate: LiveData<LocalDate> = _calendarDate
+
+   private val _isCalendarInit = MutableLiveData<Event<Boolean>>()
+   val isCalendarInit: LiveData<Event<Boolean>> = _isCalendarInit
 
    fun plusPosition() {
       _calendarPosition.value = _calendarPosition.value!! + 1
@@ -45,7 +48,7 @@ class ContestExtracurricularFilterViewModel(private val calendarView: CalendarVi
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
 
-      var button = v as Button
+      val button = v as Button
 
       if (interestTotal.value < interestMax) {
          if (v.isSelected) {
@@ -82,6 +85,6 @@ class ContestExtracurricularFilterViewModel(private val calendarView: CalendarVi
 
       selectedDate = null
       _calendarDate.value = selectedDate
-      calendarView.notifyCalendarChanged()
+      _isCalendarInit.value = Event(true)
    }
 }
