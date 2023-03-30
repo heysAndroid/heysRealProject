@@ -21,6 +21,7 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.PermissionFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
+import kotlin.system.exitProcess
 
 class PermissionFragment : Fragment() {
    private lateinit var binding: PermissionFragmentBinding
@@ -103,7 +104,9 @@ class PermissionFragment : Fragment() {
    private fun permissionDialog() {
       AlertDialog.Builder(requireContext()).apply {
          setMessage("권한을 모두 허용해야만 서비스를 이용할 수 있어요.")
-         setNegativeButton("닫기", null)
+         setNegativeButton("닫기") { _, _ ->
+            exitProcess(0)
+         }
          setPositiveButton("확인") { _, _ ->
             startActivity(
                Intent(
