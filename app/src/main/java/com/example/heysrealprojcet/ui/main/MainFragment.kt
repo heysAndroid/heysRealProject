@@ -1,12 +1,16 @@
 package com.example.heysrealprojcet.ui.main
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +24,7 @@ import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
+import kotlin.system.exitProcess
 
 class MainFragment : Fragment() {
    private lateinit var mainActivity: MainActivity
@@ -31,6 +36,8 @@ class MainFragment : Fragment() {
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
    private lateinit var myInterestList: ArrayList<String>
+
+   private lateinit var callback: OnBackPressedCallback
 
    private var position = 0
 
@@ -44,6 +51,25 @@ class MainFragment : Fragment() {
       super.onCreate(savedInstanceState)
       mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(false)
+   }
+
+   override fun onAttach(context: Context) {
+      super.onAttach(context)
+      callback = object : OnBackPressedCallback(true) {
+         override fun handleOnBackPressed() {
+            val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
+            if (navHostFragment.childFragmentManager.primaryNavigationFragment is MainFragment) {
+               ActivityCompat.finishAffinity(requireActivity())
+               exitProcess(0)
+            }
+         }
+      }
+      requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+   }
+
+   override fun onDetach() {
+      super.onDetach()
+      callback.remove()
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

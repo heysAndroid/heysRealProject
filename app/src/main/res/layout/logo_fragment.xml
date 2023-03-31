@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_f8f9fc"
     android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="함께하는 스펙업"
         android:textColor="@color/color_262626"
-        android:textSize="14sp"
-        android:text="함께하는 스펙업" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,6 +22,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo" />
     </LinearLayout>
 </LinearLayout>

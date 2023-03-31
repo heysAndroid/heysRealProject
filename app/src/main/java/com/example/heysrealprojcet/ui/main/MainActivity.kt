@@ -5,9 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,12 +13,10 @@ import androidx.navigation.ui.NavigationUI
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
    private lateinit var binding: MainActivityBinding
-   private lateinit var callback: OnBackPressedCallback
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -38,18 +34,6 @@ class MainActivity : AppCompatActivity() {
       val intentText = intent.getStringExtra(Intent.EXTRA_TEXT)
       Log.w("intentText, ", intentText.toString())
       intentText?.let { setNavigationGraph(it) }
-
-      callback = object : OnBackPressedCallback(true) {
-         override fun handleOnBackPressed() {
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
-            if (navHostFragment.childFragmentManager.primaryNavigationFragment is MainFragment) {
-               ActivityCompat.finishAffinity(this@MainActivity)
-               exitProcess(0)
-            }
-         }
-      }
-
-      onBackPressedDispatcher.addCallback(this, callback)
    }
 
    fun hideBottomNavigation(state: Boolean) {
