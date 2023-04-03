@@ -161,6 +161,10 @@ class ChannelPreviewFragment : Fragment() {
    }
 
    private fun setLeaderProfile(user: MyPage) {
+      binding.leaderName.text = user.name
+      user.introduce?.let { binding.introText.text = it }
+
+      // 퍼센트에 따른 프로필 이미지 설정
       when (user.percentage) {
          in 0..49 -> {
             when (user.gender) {
@@ -184,9 +188,5 @@ class ChannelPreviewFragment : Fragment() {
             }
          }
       }
-      binding.leaderName.text = user.name
-      user.introduce?.let { binding.introText.text = it }
-      // 퍼센트에 따른 프로필 이미지 설정
-
    }
 }

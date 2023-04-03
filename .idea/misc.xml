@@ -322,6 +322,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/intent_button.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/join_button.xml" value="0.13385416666666666" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable-v24/orange_radius.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_000000_10_radius_12.xml" value="0.17" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_0d828282_radius_16.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_1a000000_radius_12.xml" value="0.1055" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/drawable/bg_1a53c740_radius_16.xml" value="0.1" />
@@ -528,7 +529,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/approval_cancel_bottom_sheet.xml" value="0.12395833333333334" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/approved_user_image_item_view.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/approved_user_item_view.xml" value="0.1" />
-        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/approved_user_list_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/approved_user_list_fragment.xml" value="0.22" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_detail_item_view.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_interest_view.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/category_item_view.xml" value="0.175" />
@@ -620,6 +621,7 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/profile_edit_fragment.xml" value="0.13157894736842105" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/profile_popup_dialog.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_password_forget_fragment.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_password_verification_fragment.xml" value="0.1" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/setting_phone_verification_fragment.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/sex_fragment.xml" value="0.175" />
@@ -644,6 +646,9 @@
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_channel_item_view.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_channel_list_fragment.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_hey_item_view.xml" value="0.1" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_hey_list_fragment.xml" value="0.15677083333333333" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_user_item_view.xml" value="0.22" />
+        <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/layout/waiting_user_list_fragment.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.175" />
         <entry key="..\:/Users/senta/AndroidStudioProjects/heysRealProject/app/src/main/res/xml/network_security_config.xml" value="0.10885416666666667" />
       </map>
