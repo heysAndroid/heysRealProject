@@ -91,7 +91,8 @@ class MainFragment : Fragment() {
       with(binding) {
          contestAllText.setOnClickListener { goToContest() }
          activityAllText.setOnClickListener { goToActivity() }
-         studyContainer.setOnClickListener { goToStudy() }
+         studyCreate.setOnClickListener { goToStudyCreate() }
+         studyList.setOnClickListener { goToStudyList() }
       }
 
       binding.contestList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -134,7 +135,7 @@ class MainFragment : Fragment() {
          ContestType("어디보자 \n새로 열린", R.drawable.ic_drawing_board4, false))
    }
 
-   private fun goToStudy() {
+   private fun goToStudyCreate() {
       findNavController().navigate(R.id.action_mainFragment_to_channelNameFragment)
    }
 
@@ -150,6 +151,10 @@ class MainFragment : Fragment() {
 
    private fun goToMyPage() {
       mainActivity.goToMyPage()
+   }
+
+   private fun goToStudyList() {
+      findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
    }
 }
 
