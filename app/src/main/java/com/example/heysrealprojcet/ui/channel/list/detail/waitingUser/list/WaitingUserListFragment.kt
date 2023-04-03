@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list.detail.waitingUser
+package com.example.heysrealprojcet.ui.channel.list.detail.waitingUser.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.example.heysrealprojcet.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WaitingUserListFragment() : Fragment() {
+class WaitingUserListFragment : Fragment() {
    private lateinit var binding: WaitingUserListFragmentBinding
    private lateinit var adpater: WaitingUserListRecyclerViewAdapter
    private val args: WaitingUserListFragmentArgs by navArgs()

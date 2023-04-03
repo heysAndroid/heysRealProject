@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.WaitingHeyListFragmentBinding
+import com.example.heysrealprojcet.databinding.WaitingUserListFragmentBinding
 import com.example.heysrealprojcet.model.UserProfile
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.user.channel.waitingChannel.ChannelCancelBottomSheet
 
 class WaitingHeyListFragment : Fragment() {
-   private lateinit var binding: WaitingHeyListFragmentBinding
+   private lateinit var binding: WaitingUserListFragmentBinding
    private lateinit var waitingHeyItemRecyclerViewAdapter: WaitingHeyItemRecyclerViewAdapter
    private lateinit var userList: MutableList<UserProfile>
 
@@ -33,7 +33,7 @@ class WaitingHeyListFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = WaitingHeyListFragmentBinding.inflate(inflater, container, false)
+      binding = WaitingUserListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -46,8 +46,8 @@ class WaitingHeyListFragment : Fragment() {
          val bottomSheet = ChannelCancelBottomSheet(requireContext())
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
-      binding.waitingHeysList.adapter = waitingHeyItemRecyclerViewAdapter
-      binding.waitingHeysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.waitingUserList.adapter = waitingHeyItemRecyclerViewAdapter
+      binding.waitingUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
    }
 
    private fun makeList() {
