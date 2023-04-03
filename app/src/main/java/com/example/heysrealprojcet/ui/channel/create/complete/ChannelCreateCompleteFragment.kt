@@ -19,6 +19,7 @@ import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.ApprovedUserImageListRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.channel.list.detail.waitingUser.WaitingUserImageListRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,8 @@ class ChannelCreateCompleteFragment : Fragment() {
    private lateinit var binding: ChannelCreateCompleteFragmentBinding
    private val viewModel by viewModels<ChannelCreateCompleteViewModel>()
    private val args: ChannelCreateCompleteFragmentArgs by navArgs()
-   private lateinit var adpater: ApprovedUserImageListRecyclerViewAdapter
+   private lateinit var approvedUserAdapter: ApprovedUserImageListRecyclerViewAdapter
+   private lateinit var waitingUserAdapter: WaitingUserImageListRecyclerViewAdapter
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -52,15 +54,23 @@ class ChannelCreateCompleteFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       getChannelDetail(args.channelId)
-      binding.allMember.setOnClickListener {
-         goToApprovedUserList()
-      }
+
+      binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
+      binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
    }
 
    private fun goToApprovedUserList() {
       viewModel.approvedUserList.observe(viewLifecycleOwner) {
          it?.let {
             findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_approvedUserListFragment, bundleOf("approvedUser" to it.toTypedArray()))
+         }
+      }
+   }
+
+   private fun goToWaitingUserList() {
+      viewModel.waitingUserList.observe(viewLifecycleOwner) {
+         it?.let {
+            findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_waitingUserListFragment, bundleOf("waitingUser" to it.toTypedArray()))
          }
       }
    }
@@ -75,6 +85,14 @@ class ChannelCreateCompleteFragment : Fragment() {
                viewModel.channelForm.value?.let { setChannelForm(it) }
                setLeaderImage()
                setApprovedUserList()
+
+               // 승인 결정
+               if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Decide.methodEng) {
+                  setWaitingUserList()
+               } else {
+                  binding.waitingUserCount.visibility = View.GONE
+                  binding.waitingUserList.visibility = View.GONE
+               }
             }
 
             is NetworkResult.Error -> {
@@ -154,8 +172,8 @@ class ChannelCreateCompleteFragment : Fragment() {
             setApprovedUserListInvisible()
          } else {
             setApprovedUserListVisible()
-            adpater = ApprovedUserImageListRecyclerViewAdapter(it)
-            binding.approvedUserList.adapter = adpater
+            approvedUserAdapter = ApprovedUserImageListRecyclerViewAdapter(it)
+            binding.approvedUserList.adapter = approvedUserAdapter
             binding.approvedUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
          }
       }
@@ -169,5 +187,27 @@ class ChannelCreateCompleteFragment : Fragment() {
    private fun setApprovedUserListInvisible() {
       binding.approvedUserListEmpty.visibility = View.VISIBLE
       binding.approvedUserList.visibility = View.GONE
+   }
+
+   private fun setWaitingUserList() {
+      viewModel.waitingUserList.value?.let {
+         if (it.size == 0) {
+            setWaitingUserListInvisible()
+         } else {
+            setWaitingUserListVisible()
+            binding.waitingUserList.adapter = waitingUserAdapter
+            binding.waitingUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         }
+      }
+   }
+
+   private fun setWaitingUserListVisible() {
+      binding.waitingUserListEmpty.visibility = View.GONE
+      binding.waitingUserList.visibility = View.VISIBLE
+   }
+
+   private fun setWaitingUserListInvisible() {
+      binding.waitingUserListEmpty.visibility = View.VISIBLE
+      binding.waitingUserList.visibility = View.GONE
    }
 }

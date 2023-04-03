@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list.detail.approvedUser
+package com.example.heysrealprojcet.ui.channel.list.detail.waitingUser
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ApprovedUserImageItemViewBinding
 import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.ApprovedUserList
+import com.example.heysrealprojcet.model.WaitingUserList
 
-class ApprovedUserImageListRecyclerViewAdapter(
-   private val user: MutableList<ApprovedUserList>?
-) : RecyclerView.Adapter<ApprovedUserImageListRecyclerViewAdapter.ViewHolder>() {
+class WaitingUserImageListRecyclerViewAdapter(
+   private val user: MutableList<WaitingUserList>?
+) : RecyclerView.Adapter<WaitingUserImageListRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ApprovedUserImageItemViewBinding
 
    inner class ViewHolder(private val binding: ApprovedUserImageItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(user: ApprovedUserList) {
+      fun bind(user: WaitingUserList) {
          when (user.percentage) {
             in 0..49 -> {
                when (user.gender) {

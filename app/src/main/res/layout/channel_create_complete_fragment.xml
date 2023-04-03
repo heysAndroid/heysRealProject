@@ -388,7 +388,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/allMember"
+                        android:id="@+id/allApprovedUser"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawableEnd="@drawable/ic_all"
@@ -425,6 +425,7 @@
                     android:layout_marginHorizontal="32dp" />
 
                 <LinearLayout
+                    android:id="@+id/waitingUserCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
@@ -442,15 +443,29 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="명이 승인 대기중이에요"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/allWaitingUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableEnd="@drawable/ic_all"
+                        android:text="전체보기"
+                        android:textColor="@color/color_828282"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/waitingHeysListEmpty"
+                    android:id="@+id/waitingUserListEmpty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
@@ -472,7 +487,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/waitingHeysList"
+                    android:id="@+id/waitingUserList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="32dp" />
