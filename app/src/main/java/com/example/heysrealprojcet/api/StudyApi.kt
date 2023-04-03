@@ -13,9 +13,9 @@ interface StudyApi {
    @GET("channel/study")
    suspend fun getStudyList(
       @Header("Authorization") token: String,
-      @Query("interests") interests: ArrayList<String>,
-      @Query("lastRecruitDate") lastRecruitDate: String,
-      @Query("purposes") purposes: ArrayList<String>,
+      @Query("interests") interests: ArrayList<String>?,
+      @Query("lastRecruitDate") lastRecruitDate: String?,
+      @Query("purposes") purposes: ArrayList<String>?,
       @Query("online") online: String?,
       @Query("location") location: String?,
       @Query("includeClosed") includeClosed: Boolean?,

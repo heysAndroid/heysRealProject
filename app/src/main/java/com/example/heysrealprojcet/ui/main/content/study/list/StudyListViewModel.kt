@@ -29,14 +29,14 @@ class StudyListViewModel @Inject constructor(
 
    fun getStudyList(
       token: String,
-      interest: ArrayList<String>,
-      lastRecruitDate: String,
-      purposes: ArrayList<String>,
-      online: String? = ChannelForm.Both.engForm,
-      location: String? = ChannelRegion.Seoul.region,
+      interest: ArrayList<String>?,
+      lastRecruitDate: String?,
+      purposes: ArrayList<String>?,
+      online: String?,
+      location: String?,
       includeClosed: Boolean? = true,
       page: Int? = 1,
-      limit: Int? = 1) = studyRepository.getStudyList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
+      limit: Int? = 20) = studyRepository.getStudyList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
 
    /*= viewModelScope.launch {
       studyRepository.getStudyList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).collect { values ->

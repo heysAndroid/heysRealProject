@@ -22,9 +22,9 @@ class StudyRepository @Inject constructor(
 
    fun getStudyList(
       token: String,
-      interest: ArrayList<String>,
-      lastRecruitDate: String,
-      purposes: ArrayList<String>,
+      interest: ArrayList<String>?,
+      lastRecruitDate: String?,
+      purposes: ArrayList<String>?,
       online: String?,
       location: String?,
       includeClosed: Boolean?,
