@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/bg_filter_time_button_selected"
-        android:state_selected="true"
-        android:color="@color/color_53c740"/>
-    <item android:drawable="@drawable/bg_filter_time_button_normal"
-        android:state_selected="false"
-        android:color="@color/color_828282"/>
+    <item android:color="@color/color_53c740" android:drawable="@drawable/bg_filter_time_button_selected" android:state_selected="true" />
+    <item android:color="@color/color_828282" android:drawable="@drawable/bg_filter_time_button_normal" android:state_selected="false" />
 </selector>
