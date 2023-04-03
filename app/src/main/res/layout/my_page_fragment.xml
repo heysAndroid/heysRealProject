@@ -109,10 +109,10 @@
                             android:layout_width="55dp"
                             android:layout_height="24dp"
                             android:layout_marginTop="8dp"
-                            android:background="@drawable/bg_1a000000_radius_12"
+                            android:background="@drawable/bg_mypage_mbti"
                             android:gravity="center"
-                            android:text="\???"
-                            android:textColor="@color/color_828282" />
+                            android:text="\????"
+                            android:textColor="@drawable/text_mypage_mbti" />
 
                         <TextView
                             android:id="@+id/interestTitle"
@@ -238,6 +238,7 @@
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/editText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
