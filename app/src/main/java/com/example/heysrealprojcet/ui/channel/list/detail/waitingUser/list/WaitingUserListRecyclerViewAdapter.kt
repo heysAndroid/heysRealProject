@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list.detail.waitingUser
+package com.example.heysrealprojcet.ui.channel.list.detail.waitingUser.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
