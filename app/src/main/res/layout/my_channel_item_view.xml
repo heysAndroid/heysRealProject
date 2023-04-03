@@ -4,20 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="281dp"
     android:background="@drawable/bg_channel_contest_card"
-    android:paddingHorizontal="16dp"
-    android:paddingTop="21dp"
-    android:paddingBottom="36dp">
+    android:paddingTop="21dp">
 
     <ImageView
-        android:id="@+id/crown"
+        android:id="@+id/ivCrown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/ic_crown"
+        android:layout_marginStart="28dp"
+        android:src="@drawable/ic_crown_contest"
+        app:layout_constraintBottom_toBottomOf="@+id/channelType"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/channelType" />
 
     <TextView
         android:id="@+id/channelType"
@@ -31,71 +30,49 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/crown"
+        app:layout_constraintStart_toEndOf="@id/ivCrown"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/channelTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="96dp"
-        android:text="제3회 연구개발특구 AI SPARK 챌린지 팀원 모집해요!"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="18dp"
+        android:text="강남/서초 대학생, 사회초년생 시각 디자인 대외활동 같이해요!"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crown" />
+        app:layout_constraintTop_toBottomOf="@+id/channelType" />
 
     <LinearLayout
         android:id="@+id/goToChat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="74dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_f8f9fc_radius_30"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_channel_shadow"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="14dp"
-        android:paddingVertical="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/channelTitle">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="6dp"
-            android:src="@drawable/ic_chat" />
+        android:paddingHorizontal="30dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="남주혁"
-            android:textColor="@color/color_262626"
-            android:textSize="14sp"
+            android:layout_width="44dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_34d676_radius_4"
+            android:gravity="center"
+            android:text="D-180"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이 "
-            android:textColor="@color/color_262626"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/lastChatTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="방금"
-            android:textColor="@color/color_262626"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 대화했어요."
+            android:text="참여중인 활동 자세히 보기"
             android:textColor="@color/color_262626"
             android:textSize="14sp" />
 
@@ -107,8 +84,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:src="@drawable/ic_next_26" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,6 @@ class MyChannelFragment : Fragment() {
       binding.myChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.notification.setOnClickListener { gotoNotification() }
-      binding.mail.setOnClickListener { goToMailbox() }
    }
 
    private fun goToChat() {
@@ -53,15 +52,11 @@ class MyChannelFragment : Fragment() {
       findNavController().navigate(R.id.action_myChannelFragment_to_myChannelNotificationFragment)
    }
 
-   private fun goToMailbox() {
-      findNavController().navigate(R.id.action_myChannelFragment_to_myChannelPrivateNotificationFragment)
-   }
-
    private fun makeList() {
       myChannelList = mutableListOf(
-         Channel(R.drawable.bg_channel_contest_card, "제3회 연구개발특구 AI SPARK 챌린지 팀원 모집해요!", 7, ChannelStatus.New, 100, 3, ChannelType.Contest),
-         Channel(R.drawable.bg_channel_activity_card, "마켓팅 대외활동 팀원을 찾습니다!", 7, ChannelStatus.Normal, 30, 500, ChannelType.Activity),
-         Channel(R.drawable.bg_channel_study_card, "금융/IT 취업 준비 같이해요!", 250, ChannelStatus.Closed, 50, 1250, ChannelType.Study),
+         Channel(R.drawable.bg_channel_activity_card, "강남/서초 대학생, 사회초년생 시각 디자인 대외활동 같이해요!", 7, ChannelStatus.New, 100, 3, ChannelType.Activity),
+         Channel(R.drawable.bg_channel_contest_card, "강남/서초 에서시각 디자인 공모전 같이해요!", 7, ChannelStatus.Normal, 30, 500, ChannelType.Contest),
+         Channel(R.drawable.bg_channel_study_card, "대학생 인공지능 스터디 모임 같이해요!", 250, ChannelStatus.Closed, 50, 1250, ChannelType.Study),
       )
    }
 }

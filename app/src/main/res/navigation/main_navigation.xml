@@ -137,9 +137,6 @@
             android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
             app:destination="@id/myChannelNotificationFragment" />
         <action
-            android:id="@+id/action_myChannelFragment_to_myChannelPrivateNotificationFragment"
-            app:destination="@id/myChannelPrivateNotificationFragment" />
-        <action
             android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
             app:destination="@id/myChannelCattingReader" />
         <action
