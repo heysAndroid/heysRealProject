@@ -24,7 +24,7 @@ import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChannelCreateCompleteFragment() : Fragment() {
+class ChannelCreateCompleteFragment : Fragment() {
    private lateinit var binding: ChannelCreateCompleteFragmentBinding
    private val viewModel by viewModels<ChannelCreateCompleteViewModel>()
    private val args: ChannelCreateCompleteFragmentArgs by navArgs()

@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
-import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
+import com.example.heysrealprojcet.model.network.response.MyPageResponse
+import com.example.heysrealprojcet.repository.MyPageRepository
 import com.example.heysrealprojcet.repository.StudyRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.ChannelPreference
@@ -18,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChannelPreviewViewModel @Inject constructor(
-   private val studyRepository: StudyRepository) : BaseViewModel() {
+   private val studyRepository: StudyRepository, private val myPageRepository: MyPageRepository) : BaseViewModel() {
    var channelName = MutableLiveData(ChannelPreference.channelName)
    var channelPurposeString = MutableLiveData("")
    var channelCapacity = MutableLiveData(ChannelPreference.channelCapacity.toString())
@@ -38,6 +39,9 @@ class ChannelPreviewViewModel @Inject constructor(
 
    private val _responseCreateStudy: MutableLiveData<NetworkResult<CreateStudyResponse>> = MutableLiveData()
    val responseCreateStudy: LiveData<NetworkResult<CreateStudyResponse>> = _responseCreateStudy
+
+   private val _responseMyPage: MutableLiveData<NetworkResult<MyPageResponse>> = MutableLiveData()
+   val responseMyPage: LiveData<NetworkResult<MyPageResponse>> = _responseMyPage
 
    init {
       setChannelPurposeString()
@@ -84,6 +88,12 @@ class ChannelPreviewViewModel @Inject constructor(
    fun createStudy(token: String, study: Study) = viewModelScope.launch {
       studyRepository.createStudy(token, study).collect { values ->
          _responseCreateStudy.value = values
+      }
+   }
+
+   fun getMyInfo(token: String) = viewModelScope.launch {
+      myPageRepository.getMyInfo(token).collect { values ->
+         _responseMyPage.value = values
       }
    }
 }
