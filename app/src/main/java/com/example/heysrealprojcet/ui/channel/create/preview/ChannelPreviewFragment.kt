@@ -24,7 +24,7 @@ import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChannelPreviewFragment() : Fragment() {
+class ChannelPreviewFragment : Fragment() {
    private lateinit var binding: ChannelPreviewFragmentBinding
    private val viewModel by viewModels<ChannelPreviewViewModel>()
 
@@ -160,29 +160,30 @@ class ChannelPreviewFragment() : Fragment() {
       }
    }
 
-   private fun setLeaderProfile(user: MyPage) {when (user.percentage) {
-      in 0..49 -> {
-         when (user.gender) {
-            Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_0)
-            Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_0)
-            else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
+   private fun setLeaderProfile(user: MyPage) {
+      when (user.percentage) {
+         in 0..49 -> {
+            when (user.gender) {
+               Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_0)
+               Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_0)
+               else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
+            }
+         }
+         in 50..99 -> {
+            when (user.gender) {
+               Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
+               Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_50)
+               else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
+            }
+         }
+         100 -> {
+            when (user.gender) {
+               Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)
+               Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_100)
+               else -> binding.leaderImage.setImageResource(R.drawable.ic_none_100)
+            }
          }
       }
-      in 50..99 -> {
-         when (user.gender) {
-            Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
-            Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_50)
-            else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
-         }
-      }
-      100 -> {
-         when (user.gender) {
-            Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)
-            Gender.Female.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_female_100)
-            else -> binding.leaderImage.setImageResource(R.drawable.ic_none_100)
-         }
-      }
-   }
       binding.leaderName.text = user.name
       user.introduce?.let { binding.introText.text = it }
       // 퍼센트에 따른 프로필 이미지 설정
