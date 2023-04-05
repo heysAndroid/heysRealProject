@@ -130,18 +130,15 @@
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.HeysChannelFragment"
         android:label="MyChannelFragment"
-        tools:layout="@layout/my_channel_fragment">
+        tools:layout="@layout/heys_channel_fragment">
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
             app:destination="@id/myChannelNotificationFragment" />
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
             app:destination="@id/myChannelCattingReader" />
-        <action
-            android:id="@+id/action_myChannelFragment_to_chattingFragment"
-            app:destination="@id/chattingFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -369,11 +366,6 @@
             app:destination="@id/channelDetailFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/chattingFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingFragment"
-        android:label="ChattingFragment"
-        tools:layout="@layout/chatting_fragment" />
     <fragment
         android:id="@+id/ImageZoomFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ImageZoomFragment"
