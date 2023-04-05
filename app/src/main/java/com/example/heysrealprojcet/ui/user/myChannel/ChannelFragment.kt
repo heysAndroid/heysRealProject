@@ -29,8 +29,8 @@ class ChannelFragment : Fragment() {
       makeList()
 
       channelItemRecyclerViewAdapter = ChannelItemRecyclerViewAdapter(channelList) { }
-      binding.myChannelList.adapter = channelItemRecyclerViewAdapter
-      binding.myChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.channelList.adapter = channelItemRecyclerViewAdapter
+      binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
    }
 
    private fun makeList() {
