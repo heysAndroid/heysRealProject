@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.BookmarkCollectionFragmentBinding
 import com.example.heysrealprojcet.model.Contest
@@ -23,6 +24,16 @@ class BookmarkCollectionFragment : Fragment() {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
+
+      if (arguments?.getBoolean("isSuccess") == true) {
+         CustomSnackBar(binding.root, "내 관심에서 삭제했어요!", null).show()
+         arguments?.remove("isSuccess")
+         // TODO 리스트 API 재호출
+      }
    }
 
    override fun onDestroy() {

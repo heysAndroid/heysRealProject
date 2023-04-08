@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -53,6 +54,16 @@ class BookmarkEditFragment : Fragment() {
       viewModel.selectedBookmarkList.observe(viewLifecycleOwner) {
          viewModel.isEnabled.value = it.isNotEmpty()
       }
+
+      binding.okButton.setOnClickListener {
+         goToBookmarkCollection()
+      }
+   }
+
+   private fun goToBookmarkCollection() {
+      findNavController().navigate(
+         R.id.action_bookmarkEditFragment_to_bookmarkCollectionFragment,
+         bundleOf("isSuccess" to true))
    }
 
    private fun makeList() {

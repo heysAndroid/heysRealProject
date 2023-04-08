@@ -405,5 +405,11 @@
         android:id="@+id/bookmarkEditFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkEditFragment"
         android:label="BookmarkEditFragment"
-        tools:layout="@layout/bookmark_edit_fragment"/>
+        tools:layout="@layout/bookmark_edit_fragment">
+        <action
+            android:id="@+id/action_bookmarkEditFragment_to_bookmarkCollectionFragment"
+            app:destination="@id/bookmarkCollectionFragment"
+            app:popUpTo="@id/bookmarkCollectionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
