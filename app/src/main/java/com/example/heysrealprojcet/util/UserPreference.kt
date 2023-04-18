@@ -3,6 +3,21 @@ package com.example.heysrealprojcet.util
 import com.chibatching.kotpref.KotprefModel
 
 object UserPreference : KotprefModel() {
+   fun init() {
+      isAutoLogin = false
+      name = ""
+      phoneNumber = ""
+      age = 0
+      birthday = ""
+      gender = ""
+      phoneNumber = ""
+      interests = ""
+      accessToken = ""
+      mbti = ""
+      job = ""
+      skill = ""
+      introduce = ""
+   }
 
    /*
    * 자동 로그인 여부
