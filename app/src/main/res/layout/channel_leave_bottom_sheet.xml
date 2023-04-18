@@ -65,7 +65,6 @@
         android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -75,7 +74,6 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/text3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24.25dp"
