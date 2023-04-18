@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.repository
 import com.example.heysrealprojcet.api.ChannelApi
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
+import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,6 +16,12 @@ class ChannelRepository @Inject constructor(
    fun getChannelDetail(token: String, id: Int): Flow<NetworkResult<ChannelDetailResponse>> {
       return flow {
          emit(safeApiCall { channelApi.getChannelDetail(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun getMyChannelList(token: String): Flow<NetworkResult<MyChannelListResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.getMyChannelList(token) })
       }.flowOn(Dispatchers.IO)
    }
 }

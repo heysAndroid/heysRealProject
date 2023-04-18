@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myChannel
+package com.example.heysrealprojcet.ui.user.myChannel.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

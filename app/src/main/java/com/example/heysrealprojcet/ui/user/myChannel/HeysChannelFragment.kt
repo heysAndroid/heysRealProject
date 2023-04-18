@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.user.myChannel.list.MyChannelFragment
 
 class HeysChannelFragment : Fragment() {
    private lateinit var binding: HeysChannelFragmentBinding
