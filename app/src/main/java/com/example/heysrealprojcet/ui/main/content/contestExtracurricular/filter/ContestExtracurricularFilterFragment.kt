@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularFilterFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
@@ -21,7 +23,7 @@ import java.util.*
 
 class ContestExtracurricularFilterFragment : Fragment() {
    private lateinit var binding: ContestExtracurricularFilterFragmentBinding
-   private lateinit var viewModel: ContestExtracurricularFilterViewModel
+   private val viewModel: ContestExtracurricularFilterViewModel by viewModels()
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -31,7 +33,6 @@ class ContestExtracurricularFilterFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = ContestExtracurricularFilterFragmentBinding.inflate(inflater, container, false)
-      viewModel = ContestExtracurricularFilterViewModel(binding.cafeteriaCalendar)
       binding.vm = viewModel
       return binding.root
    }
@@ -42,9 +43,11 @@ class ContestExtracurricularFilterFragment : Fragment() {
 
       initStartView()
 
+      binding.cafeteriaCalendar.stopScroll()
+      binding.cafeteriaCalendar.isNestedScrollingEnabled = false
+
       binding.btnApply.setOnClickListener { findNavController().navigateUp() }
 
-      viewModel.selectedDate
       viewModel.calendarPosition.observe(viewLifecycleOwner) {
          if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
             binding.calendarBack.visibility = View.INVISIBLE
@@ -52,6 +55,7 @@ class ContestExtracurricularFilterFragment : Fragment() {
             binding.calendarBack.visibility = View.VISIBLE
          }
       }
+
       viewModel.calendarDate.observe(viewLifecycleOwner) {
          if (viewModel.selectedDate != null) {
             binding.tvDate.text = viewModel.calendarDate.value!!.format(selectedFormatter)
@@ -136,6 +140,10 @@ class ContestExtracurricularFilterFragment : Fragment() {
 
          override fun bind(container: ContestExtracurricularFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
       }
+
+      viewModel.isCalendarInit.observe(viewLifecycleOwner, EventObserver {
+         if (it) binding.cafeteriaCalendar.notifyCalendarChanged()
+      })
    }
 
    private fun initStartView() {

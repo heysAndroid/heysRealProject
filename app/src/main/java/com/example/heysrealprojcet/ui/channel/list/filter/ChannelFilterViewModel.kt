@@ -6,20 +6,23 @@ import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kizitonwose.calendarview.CalendarView
+import com.example.heysrealprojcet.Event
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.LocalDate
 import java.time.YearMonth
 
-class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel() {
+class ChannelFilterViewModel : ViewModel() {
 
    private val _selectedForm = MutableLiveData<String>()
    val selectedForm: LiveData<String> = _selectedForm
 
+   private val _isCalendarInit = MutableLiveData<Event<Boolean>>()
+   val isCalendarInit: LiveData<Event<Boolean>> = _isCalendarInit
+
    private var choiceInterest = mutableListOf<View>()
-   private var choiceActivity: View? = null
-   var choiceRegion = mutableListOf<View>()
-   private var choicePurpose: View? = null
+   private var choiceActivity = mutableListOf<View>()
+   private var choiceRegion = mutableListOf<View>()
+   private var choicePurpose = mutableListOf<View>()
 
    private val interestMax = 3
    private val activityMax = 1
@@ -28,12 +31,12 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
 
    private var interestTotal = MutableStateFlow(0)
    private var activityTotal = MutableStateFlow(0)
-   var regionTotal = MutableStateFlow(0)
+   private var regionTotal = MutableStateFlow(0)
    private var purposeTotal = MutableStateFlow(0)
 
    private val interestArray = mutableListOf<String>()
    private val activityArray = mutableListOf<String>()
-   val regionArray = mutableListOf<String>()
+   private val regionArray = mutableListOf<String>()
    private val purposeArray = mutableListOf<String>()
 
    // 달력
@@ -104,7 +107,7 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             activityTotal.value -= 1
             activityArray.remove(item)
          } else {
-            choiceActivity = v
+            choiceActivity.add(v)
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             activityTotal.value += 1
@@ -117,12 +120,13 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             activityTotal.value -= 1
             activityArray.remove(item)
          } else {
-            choiceActivity?.isSelected = false
-            (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
+            choiceActivity[0].isSelected = false
+            (choiceActivity[0] as Button).setTypeface(null, Typeface.NORMAL)
+            choiceActivity.remove(choiceActivity[0])
             activityArray.remove(activityArray[0])
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
-            choiceActivity = v
+            choiceActivity.add(v)
             activityArray.add(item)
          }
 
@@ -180,7 +184,7 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
    fun onClickPurpose(v: View) {
       val item = v.tag.toString()
 
-      var button = v as Button
+      val button = v as Button
 
       if (purposeTotal.value < purposeMax) {
          if (v.isSelected) {
@@ -189,7 +193,7 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             purposeTotal.value -= 1
             purposeArray.remove(item)
          } else {
-            choicePurpose = v
+            choicePurpose.add(v)
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             purposeTotal.value += 1
@@ -202,12 +206,13 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
             purposeTotal.value -= 1
             purposeArray.remove(item)
          } else {
-            choicePurpose?.isSelected = false
-            (choicePurpose as Button).setTypeface(null, Typeface.NORMAL)
+            choicePurpose[0].isSelected = false
+            (choicePurpose[0] as Button).setTypeface(null, Typeface.NORMAL)
+            choicePurpose.remove(choicePurpose[0])
             purposeArray.remove(purposeArray[0])
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
-            choicePurpose = v
+            choicePurpose.add(v)
             purposeArray.add(item)
          }
       }
@@ -221,11 +226,12 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
       interestTotal.value = 0
       choiceInterest.clear()
 
-      choiceActivity?.isSelected = false
-      if (choiceActivity != null) {
-         (choiceActivity as Button).setTypeface(null, Typeface.NORMAL)
+      choiceActivity[0].isSelected = false
+      if (choiceActivity.isNotEmpty()) {
+         (choiceActivity[0] as Button).setTypeface(null, Typeface.NORMAL)
       }
       activityTotal.value = 0
+      choiceActivity.clear()
       activityArray.clear()
 
       choiceRegion[0].isSelected = false
@@ -234,17 +240,19 @@ class ChannelFilterViewModel(private val calendarView: CalendarView) : ViewModel
          choiceRegion.remove(choiceRegion[0])
       }
       regionTotal.value = 0
+      choiceRegion.clear()
       regionArray.clear()
 
-      choicePurpose?.isSelected = false
-      if (choicePurpose != null) {
-         (choicePurpose as Button).setTypeface(null, Typeface.NORMAL)
+      choicePurpose[0].isSelected = false
+      if (choicePurpose.isNotEmpty()) {
+         (choicePurpose[0] as Button).setTypeface(null, Typeface.NORMAL)
       }
       purposeTotal.value = 0
+      choicePurpose.clear()
       purposeArray.clear()
 
       selectedDate = null
       _calendarDate.value = selectedDate
-      calendarView.notifyCalendarChanged()
+      _isCalendarInit.value = Event(true)
    }
 }

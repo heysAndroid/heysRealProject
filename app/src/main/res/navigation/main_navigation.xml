@@ -130,21 +130,15 @@
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.MyChannelFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.HeysChannelFragment"
         android:label="MyChannelFragment"
-        tools:layout="@layout/my_channel_fragment">
+        tools:layout="@layout/heys_channel_fragment">
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
             app:destination="@id/myChannelNotificationFragment" />
         <action
-            android:id="@+id/action_myChannelFragment_to_myChannelPrivateNotificationFragment"
-            app:destination="@id/myChannelPrivateNotificationFragment" />
-        <action
             android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
             app:destination="@id/myChannelCattingReader" />
-        <action
-            android:id="@+id/action_myChannelFragment_to_chattingFragment"
-            app:destination="@id/chattingFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -163,6 +157,9 @@
         <action
             android:id="@+id/action_myPageFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_bookmarkCollectionFragment"
+            app:destination="@id/bookmarkCollectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelNameFragment"
@@ -373,11 +370,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/chattingFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingFragment"
-        android:label="ChattingFragment"
-        tools:layout="@layout/chatting_fragment" />
-    <fragment
         android:id="@+id/ImageZoomFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ImageZoomFragment"
         android:label="ImageZoomFragment"
@@ -423,5 +415,26 @@
         <argument
             android:name="waitingUser"
             app:argType="com.example.heysrealprojcet.model.WaitingUserList[]" />
+        <action
+            android:id="@+id/action_bookmarkCollectionFragment_to_bookmarkEditFragment"
+            app:destination="@id/bookmarkEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookmarkCollectionFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkCollectionFragment"
+        android:label="BookmarkCollectionFragment"
+        tools:layout="@layout/bookmark_collection_fragment"></fragment>
+
+    <fragment
+        android:id="@+id/bookmarkEditFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkEditFragment"
+        android:label="BookmarkEditFragment"
+        tools:layout="@layout/bookmark_edit_fragment">
+        <action
+            android:id="@+id/action_bookmarkEditFragment_to_bookmarkCollectionFragment"
+            app:destination="@id/bookmarkCollectionFragment"
+            app:popUpTo="@id/bookmarkCollectionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

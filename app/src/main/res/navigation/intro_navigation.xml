@@ -11,12 +11,21 @@
         android:label="LogoFragment"
         tools:layout="@layout/logo_fragment">
         <action
-            android:id="@+id/action_logoFragment_to_introFragment"
-            app:destination="@id/introFragment" />
+            android:id="@+id/action_logoFragment_to_permissionFragment"
+            app:destination="@id/permissionFragment" />
     </fragment>
     <fragment
         android:id="@+id/introFragment"
         android:name="com.example.heysrealprojcet.ui.intro.IntroFragment"
         android:label="IntroFragment"
         tools:layout="@layout/intro_fragment" />
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="com.example.heysrealprojcet.ui.intro.permission.PermissionFragment"
+        android:label="PermissionFragment"
+        tools:layout="@layout/permission_fragment">
+        <action
+            android:id="@+id/action_permissionFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
 </navigation>

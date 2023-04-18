@@ -38,6 +38,7 @@ class MyPageFragment : Fragment() {
          editProfile.setOnClickListener { goToProfileEdit() }
          engagedChannelContainer.setOnClickListener { goToEngagedChannel() }
          waitingChannelContainer.setOnClickListener { goToWaitingChannel() }
+         bookmarkChannel.setOnClickListener { goToBookmarkCollection() }
       }
    }
 
@@ -55,6 +56,10 @@ class MyPageFragment : Fragment() {
 
    private fun goToProfileEdit() {
       findNavController().navigate(R.id.action_myPageFragment_to_profileEditFragment)
+   }
+
+   private fun goToBookmarkCollection() {
+      findNavController().navigate(R.id.action_myPageFragment_to_bookmarkCollectionFragment)
    }
 
    private fun getMyInfo() {

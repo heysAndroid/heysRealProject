@@ -19,10 +19,36 @@ class MyChannelItemRecyclerViewAdapter(private val type: MutableList<Channel>, p
          binding.channelType.text = channel.type.type
 
          when (channel.type) {
-            ChannelType.Contest -> binding.channelType.setBackgroundResource(R.drawable.bg_7b61ff_radius_30)
-            ChannelType.Activity -> binding.channelType.setBackgroundResource(R.drawable.bg_fd494a_radius_30)
-            else -> binding.channelType.setBackgroundResource(R.drawable.bg_262626_radius_30)
+            ChannelType.Contest -> {
+               binding.channelType.setBackgroundResource(R.drawable.bg_7b61ff_radius_30)
+
+               // TODO 활성화 처리
+               binding.ivCrown.setImageResource(R.drawable.ic_crown_contest)
+            }
+            ChannelType.Activity -> {
+               binding.channelType.setBackgroundResource(R.drawable.bg_fd494a_radius_30)
+               binding.ivCrown.setImageResource(R.drawable.ic_crown_activity)
+            }
+            else -> {
+               binding.channelType.setBackgroundResource(R.drawable.bg_34d676_radius_30)
+               binding.ivCrown.setImageResource(R.drawable.ic_crown_study)
+            }
          }
+
+//         val bgShape = binding.startDate.background as GradientDrawable
+//         if (type.startDate == 0) {
+//            binding.startDate.text = "마감"
+//            bgShape.setColor(Color.parseColor("#828282"))
+//         }
+//
+//         if (type.startDate in 2..5) {
+//            bgShape.setColor(Color.parseColor("#53C740"))
+//         }
+//
+//         if (type.startDate in 6..10) {
+//            bgShape.setColor(Color.parseColor("#F7BC26"))
+//         }
+
          binding.goToChat.setOnClickListener { onClickListener.invoke() }
       }
    }

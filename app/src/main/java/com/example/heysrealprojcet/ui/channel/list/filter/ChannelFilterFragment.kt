@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelFilterFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
@@ -20,7 +22,7 @@ import java.util.*
 
 class ChannelFilterFragment : Fragment() {
    private lateinit var binding: ChannelFilterFragmentBinding
-   private lateinit var viewModel: ChannelFilterViewModel
+   private val viewModel: ChannelFilterViewModel by viewModels()
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -30,7 +32,6 @@ class ChannelFilterFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = ChannelFilterFragmentBinding.inflate(inflater, container, false)
-      viewModel = ChannelFilterViewModel(binding.cafeteriaCalendar)
       binding.vm = viewModel
       return binding.root
    }
@@ -38,6 +39,11 @@ class ChannelFilterFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
+      binding.cafeteriaCalendar.stopScroll()
+      binding.cafeteriaCalendar.isNestedScrollingEnabled = false
+
+      binding.btnApply.setOnClickListener { findNavController().navigateUp() }
 
       viewModel.selectedForm.observe(viewLifecycleOwner) {
          when (it) {
@@ -53,10 +59,7 @@ class ChannelFilterFragment : Fragment() {
          }
       }
 
-      binding.btnApply.setOnClickListener { findNavController().navigateUp() }
-
       // 달력
-      viewModel.selectedDate
       viewModel.calendarPosition.observe(viewLifecycleOwner)
       {
          if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
@@ -146,12 +149,15 @@ class ChannelFilterFragment : Fragment() {
          binding.yearMonth.text = currentTime.format(calendarFormatter)
       }
 
-      binding.cafeteriaCalendar.dayBinder =
-         object : DayBinder<ChannelFilterCafeteriaContainer> {
-            override fun create(view: View): ChannelFilterCafeteriaContainer =
-               ChannelFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
+      binding.cafeteriaCalendar.dayBinder = object : DayBinder<ChannelFilterCafeteriaContainer> {
+         override fun create(view: View): ChannelFilterCafeteriaContainer =
+            ChannelFilterCafeteriaContainer(view, binding.cafeteriaCalendar, viewModel)
 
-            override fun bind(container: ChannelFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
-         }
+         override fun bind(container: ChannelFilterCafeteriaContainer, day: CalendarDay) = container.bind(day)
+      }
+
+      viewModel.isCalendarInit.observe(viewLifecycleOwner, EventObserver {
+         if (it) binding.cafeteriaCalendar.notifyCalendarChanged()
+      })
    }
 }

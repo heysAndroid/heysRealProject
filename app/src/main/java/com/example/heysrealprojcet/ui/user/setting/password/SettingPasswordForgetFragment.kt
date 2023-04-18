@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingPasswordForgetFragmentBinding
+import com.example.heysrealprojcet.util.UserPreference
 
 class SettingPasswordForgetFragment : Fragment() {
    private lateinit var binding: SettingPasswordForgetFragmentBinding
@@ -26,7 +27,17 @@ class SettingPasswordForgetFragment : Fragment() {
 
       viewModel.timerStart()
 
-      binding.btnNext.setOnClickListener { goToPasswordChange() }
+      binding.btnNext.setOnClickListener {
+         if (UserPreference.isAutoLogin) {
+            goToPasswordChange()
+         } else {
+            goToLoginPasswordChange()
+         }
+      }
+   }
+
+   private fun goToLoginPasswordChange() {
+      findNavController().navigate(R.id.action_settingPasswordForgetFragment2_to_settingPasswordChangeFragment2)
    }
 
    private fun goToPasswordChange() {
