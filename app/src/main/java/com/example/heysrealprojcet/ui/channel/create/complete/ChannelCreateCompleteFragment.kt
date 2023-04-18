@@ -26,6 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChannelCreateCompleteFragment : Fragment() {
+   private lateinit var mainActivity: MainActivity
    private lateinit var binding: ChannelCreateCompleteFragmentBinding
    private val viewModel by viewModels<ChannelCreateCompleteViewModel>()
    private val args: ChannelCreateCompleteFragmentArgs by navArgs()
@@ -34,14 +35,20 @@ class ChannelCreateCompleteFragment : Fragment() {
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      val mainActivity = activity as MainActivity
+      mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
    }
 
    override fun onDestroy() {
       super.onDestroy()
-      val mainActivity = activity as MainActivity
+      mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(false)
+   }
+
+   override fun onResume() {
+      super.onResume()
+      mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -57,6 +64,11 @@ class ChannelCreateCompleteFragment : Fragment() {
 
       binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
+      binding.goToMyChannel.setOnClickListener { goToMyChannel() }
+   }
+
+   private fun goToMyChannel() {
+      mainActivity.goToMyChannel()
    }
 
    private fun goToApprovedUserList() {

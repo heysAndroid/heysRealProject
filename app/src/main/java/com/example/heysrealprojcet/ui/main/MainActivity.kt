@@ -70,4 +70,8 @@ class MainActivity : AppCompatActivity() {
    fun goToMyPage() {
       binding.bottomNavigation.selectedItemId = R.id.myPageFragment
    }
+
+   fun goToMyChannel() {
+      binding.bottomNavigation.selectedItemId = R.id.myChannelFragment
+   }
 }
