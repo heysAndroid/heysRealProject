@@ -48,13 +48,13 @@ class MainActivity : AppCompatActivity() {
 
       when (intent) {
          "login" -> {
-            navGraph.startDestination = R.id.signInPhoneFragment
+            navGraph.setStartDestination(R.id.signInPhoneFragment)
          }
          "signUp" -> {
-            navGraph.startDestination = R.id.signUpPhoneFragment
+            navGraph.setStartDestination(R.id.signUpPhoneFragment)
          }
          else -> {
-            navGraph.startDestination = R.id.main_navigation
+            navGraph.setStartDestination(R.id.main_navigation)
          }
       }
       navHostFragment.navController.graph = navGraph
