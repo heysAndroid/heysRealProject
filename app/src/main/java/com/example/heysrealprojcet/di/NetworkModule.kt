@@ -9,8 +9,13 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 /*
  * 네트워크 설정 파일
@@ -21,10 +26,31 @@ import javax.inject.Singleton
 object NetworkModule {
    const val base_url = "https://heys-dev-public-alb-1078245957.ap-northeast-2.elb.amazonaws.com/"
 
+   private val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+      override fun checkClientTrusted(p0: Array<out X509Certificate>?, p1: String?) {
+
+      }
+
+      override fun checkServerTrusted(p0: Array<out X509Certificate>?, p1: String?) {
+
+      }
+
+      override fun getAcceptedIssuers(): Array<X509Certificate> {
+         return arrayOf()
+      }
+   })
+
+   val sslContext = SSLContext.getInstance("SSL").let { sslContext ->
+      sslContext.init(null, trustAllCerts, SecureRandom())
+      sslContext.socketFactory
+   }
+
    @Provides
    @Singleton
    fun provideHttpClient(): OkHttpClient {
       return OkHttpClient.Builder()
+         .sslSocketFactory(sslSocketFactory = sslContext, trustAllCerts[0] as X509TrustManager)
+         .hostnameVerifier { hostname, session -> true }
          .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
          .readTimeout(15, TimeUnit.SECONDS)
          .connectTimeout(15, TimeUnit.SECONDS)
@@ -41,7 +67,8 @@ object NetworkModule {
          .baseUrl(base_url)
          .client(okHttpClient)
          .client(provideHttpClient())
-         .addConverterFactory(gsonConverterFactory).build()
+         .addConverterFactory(gsonConverterFactory)
+         .build()
    }
 
    @Provides
