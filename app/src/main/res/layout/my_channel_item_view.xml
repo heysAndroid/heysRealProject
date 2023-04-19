@@ -4,16 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="281dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg_channel_contest_card"
-    android:paddingTop="21dp">
+    android:paddingTop="20dp"
+    android:paddingBottom="40dp">
 
     <ImageView
-        android:id="@+id/ivCrown"
+        android:id="@+id/isLeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:src="@drawable/ic_crown_contest"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/channelType"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/channelType" />
@@ -24,13 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="@drawable/bg_7b61ff_radius_30"
-        android:paddingHorizontal="15dp"
+        android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:text="공모전"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/ivCrown"
+        app:layout_constraintStart_toEndOf="@id/isLeader"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -40,30 +42,34 @@
         android:layout_marginHorizontal="28dp"
         android:layout_marginTop="18dp"
         android:text="강남/서초 대학생, 사회초년생 시각 디자인 대외활동 같이해요!"
-        android:textColor="@color/black"
+        android:textColor="@color/color_262626"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/channelType" />
 
     <LinearLayout
-        android:id="@+id/goToChat"
+        android:id="@+id/goToDetail"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/bg_channel_shadow"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/bg_mychannel_gotodetail"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="30dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/channelTitle">
 
         <TextView
-            android:layout_width="44dp"
-            android:layout_height="22dp"
+            android:id="@+id/dday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_34d676_radius_4"
             android:gravity="center"
+            android:paddingHorizontal="11dp"
+            android:paddingVertical="3dp"
             android:text="D-180"
             android:textColor="@color/white"
             android:textSize="12sp"
@@ -82,8 +88,8 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_next_26" />
+            android:layout_width="16dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_next_mychannel" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
