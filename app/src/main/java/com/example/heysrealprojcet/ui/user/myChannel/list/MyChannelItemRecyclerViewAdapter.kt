@@ -9,12 +9,14 @@ import com.example.heysrealprojcet.databinding.MyChannelItemViewBinding
 import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.MyChannel
 
-class MyChannelItemRecyclerViewAdapter(private val type: MutableList<MyChannel>, private val onClickListener: () -> Unit) :
+class MyChannelItemRecyclerViewAdapter(private val type: MutableList<MyChannel>, private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<MyChannelItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: MyChannelItemViewBinding
 
    inner class ViewHolder(private val binding: MyChannelItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(channel: MyChannel) {
+         binding.root.setOnClickListener { onClickListener.invoke(channel.id) }
+
          binding.channelType.text = ChannelType.valueOf(channel.type).type
          binding.channelTitle.text = channel.name
          // 마감/남은 일수 표시

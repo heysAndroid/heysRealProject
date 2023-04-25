@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyChannelFragmentBinding
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
@@ -34,8 +37,10 @@ class MyChannelFragment : Fragment() {
       viewModel.getMyChannelList("Bearer ${UserPreference.accessToken}").observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
-               response.data?.myChannel?.toMutableList()?.let {
-                  myChannelItemRecyclerViewAdapter = MyChannelItemRecyclerViewAdapter(it) {}
+               response.data?.myChannel?.toMutableList()?.let { it ->
+                  myChannelItemRecyclerViewAdapter = MyChannelItemRecyclerViewAdapter(it) { channelId ->
+                     goToDetail(channelId)
+                  }
                }
                binding.myChannelList.adapter = myChannelItemRecyclerViewAdapter
                binding.myChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -51,4 +56,9 @@ class MyChannelFragment : Fragment() {
          }
       }
    }
+
+   private fun goToDetail(channelId: Int) {
+      findNavController().navigate(R.id.action_myChannelFragment_to_channelDetailFragment, bundleOf("channelId" to channelId))
+   }
+
 }
