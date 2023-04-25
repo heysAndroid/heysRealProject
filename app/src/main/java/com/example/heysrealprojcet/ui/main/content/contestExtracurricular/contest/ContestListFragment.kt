@@ -1,25 +1,32 @@
 package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
-import com.example.heysrealprojcet.model.Contest
+import com.example.heysrealprojcet.enums.ChannelType
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContestListFragment : Fragment() {
    private lateinit var binding: ContestListFragmentBinding
    private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
-   private lateinit var hostList: MutableList<Contest>
+   val viewModel by viewModels<ContestListViewModel>()
+
    private lateinit var myInterestList: ArrayList<String>
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,26 +50,9 @@ class ContestListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       myInterestList = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
-
-      makeList()
-      if (hostList.isNotEmpty()) {
-         contestItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(host = hostList) { goToDetail() }
-         binding.contestList.adapter = contestItemRecyclerViewAdapter
-         binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-      } else {
-         binding.noListImage.isVisible = true
-      }
-
+      getContestList()
+      viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }
-   }
-
-   private fun makeList() {
-      hostList = mutableListOf(
-         Contest(3, R.drawable.bg_study_list, "제 3회 방구석 아이디어톤 모집", "므모 MMO\n", 3),
-         Contest(10, R.drawable.bg_study_list, "2022 Q4 MPED 국제 아트앤디자..", "MPED / emdash, MyProject", 500),
-         Contest(5, R.drawable.bg_study_list, "아산관광 숏폼 공모전 (찰나의 아산)", "아산시", 1000),
-         Contest(2, R.drawable.bg_study_list, "2022년 K-이노스 창업아이디어경진..", "건국대학교 캠퍼스타운 사업단", 2)
-      )
    }
 
    private fun goToFilter() {
@@ -73,5 +63,27 @@ class ContestListFragment : Fragment() {
 
    private fun goToDetail() {
       findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularDetailFragment)
+   }
+
+   private fun getContestList() {
+      val token = UserPreference.accessToken
+      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, myInterestList, null, true).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               viewModel.setContestList(response.data?.data)
+               contestItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let { ContestItemRecyclerViewAdapter(it) { goToDetail() } }!!
+               binding.contestList.adapter = contestItemRecyclerViewAdapter
+               binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("getContestList: ", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getContestList: ", response.message.toString())
+            }
+         }
+      }
    }
 }

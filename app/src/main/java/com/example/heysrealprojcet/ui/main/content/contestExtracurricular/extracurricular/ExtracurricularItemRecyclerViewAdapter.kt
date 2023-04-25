@@ -16,15 +16,15 @@ class ExtracurricularItemRecyclerViewAdapter(
 
    inner class ViewHolder(private val binding: ContestExtracurricularItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(type: Extracurricular) {
-         binding.startDate.text = "D-${type.startDate}"
+         binding.dday.text = "D-${type.startDate}"
          binding.image.setImageResource(type.image)
          binding.title.text = type.title
-         binding.content.text = type.content
-         binding.see.text = type.see.toString()
 
-         var bgShape = binding.startDate.background as GradientDrawable
+         binding.viewCount.text = type.see.toString()
+
+         var bgShape = binding.dday.background as GradientDrawable
          if (type.startDate == 0) {
-            binding.startDate.text = "마감"
+            binding.dday.text = "마감"
             bgShape.setColor(Color.parseColor("#828282"))
          }
 

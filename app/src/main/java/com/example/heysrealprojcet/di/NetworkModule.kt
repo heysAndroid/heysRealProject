@@ -106,4 +106,10 @@ object NetworkModule {
    fun provideChannelApiService(retrofit: Retrofit): ChannelApi {
       return retrofit.create(ChannelApi::class.java)
    }
+
+   @Provides
+   @Singleton
+   fun provideContentsApiService(retrofit: Retrofit): ContentApi {
+      return retrofit.create(ContentApi::class.java)
+   }
 }

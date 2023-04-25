@@ -52,9 +52,9 @@ class BookmarkCollectionFragment : Fragment() {
 
       makeList()
 
-      bookmarkItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(bookmarkList) { }
-      binding.bookmarkList.adapter = bookmarkItemRecyclerViewAdapter
-      binding.bookmarkList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+//      bookmarkItemRecyclerViewAdapter = ContestItemRecyclerViewAdapter(bookmarkList) { }
+//      binding.bookmarkList.adapter = bookmarkItemRecyclerViewAdapter
+//      binding.bookmarkList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.ivBack.setOnClickListener { findNavController().popBackStack() }
 
