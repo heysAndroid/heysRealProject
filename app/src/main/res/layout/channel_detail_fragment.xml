@@ -28,25 +28,46 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="25dp"
                     android:paddingTop="12dp">
 
                     <ImageButton
                         android:id="@+id/btnBack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
                         android:background="@android:color/transparent"
                         android:paddingTop="7dp"
                         android:src="@drawable/ic_back" />
 
-                    <TextView
-                        android:layout_width="match_parent"
+                    <View
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="32dp"
-                        android:gravity="right"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
                         android:text="수정"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnShare"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_share" />
+
+                    <ImageButton
+                        android:id="@+id/btnBookmark"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_bookmark" />
                 </LinearLayout>
 
                 <ImageView
@@ -96,7 +117,7 @@
                         android:id="@+id/channelPurpose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{vm.channelPurposes + ` 목적의 채널이에요.`}"
+                        android:text="@{vm.purposeString + ` 목적의 채널이에요.`}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="역량강화 목적의 채널이에요." />
@@ -125,7 +146,7 @@
                             android:id="@+id/channelForm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.channelForm + `으로 `}"
+                            android:text="오프라인으로"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             tools:text="오프라인" />
@@ -166,7 +187,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{vm.capacity +`명 중에서 1명이 참여중이에요.`}"
+                        android:text="@{String.valueOf(vm.capacity) +`명 중에서 1명이 참여중이에요.`}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="10명 중에서 1명이 참여중이에요." />
@@ -237,7 +258,7 @@
                         android:id="@+id/channelInterest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{vm.channelInterest + `에 관심있어요.`}"
+                        android:text="@{vm.interestString + `에 관심있어요.`}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="기획/아이디어, IT/SW, 데이터/인공지능, 경영 비즈니스에 관심있어요." />
@@ -336,11 +357,12 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="34dp"
+                        android:id="@+id/leaderImage"
+                        android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/img_channel_leader_profile_example" />
+                        android:src="@drawable/ic_male_0" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -348,18 +370,22 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/leaderName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="김이나"
+                            android:text="@{vm.leader.name}"
                             android:textColor="@color/color_262626"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            tools:text="김이나" />
 
                         <TextView
+                            android:id="@+id/leaderIntroduceText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="선한 영향력을 키우고 싶습니다."
+                            android:text="@{vm.leader.introduceText}"
                             android:textColor="@color/color_828282"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            tools:text="선한 영향력을 키우고 싶습니다." />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -373,7 +399,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="리더를 소개해요"
+                        android:text="함께 성장하고 있어요"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -384,7 +410,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/allMember"
+                        android:id="@+id/allApprovedUser"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawableEnd="@drawable/ic_all"
@@ -394,25 +420,34 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/approvedUserListEmpty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bg_f8f9fc_radius_16"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="16dp"
-                        android:text="아직 참여중인 Hey가 없어요"
+                        android:text="아직 참여중인 Hey가 없어요!"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/approvedUserList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="32dp" />
+
                 <LinearLayout
+                    android:id="@+id/waitingUserCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
@@ -421,76 +456,76 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="2dp"
-                        android:text="0"
+                        android:text="@{String.valueOf(vm.waitingUserNum)}"
                         android:textColor="@color/color_34d676"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="명이 승인 대기중이에요"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/allWaitingUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableEnd="@drawable/ic_all"
+                        android:text="전체보기"
+                        android:textColor="@color/color_828282"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/waitingHeysList"
+                    android:id="@+id/waitingUserListEmpty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bg_f8f9fc_radius_16"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="16dp"
+                        android:background="@drawable/bg_f8f9fc_radius_16"
                         android:text="가장 먼저 참여를 요청해보세요!"
                         android:textColor="@color/color_828282"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
-                <FrameLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/waitingUserList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="32dp" />
+
+                <Button
                     android:id="@+id/btnJoin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="46dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/bg_ok_button_enabled">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="채널 참여"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="490자리 남았어요"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </FrameLayout>
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_ok_button_enabled"
+                    android:text="채널 참여"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
