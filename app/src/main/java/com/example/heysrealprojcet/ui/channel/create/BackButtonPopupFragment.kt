@@ -21,11 +21,7 @@ class BackButtonPopupFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.btnHome.setOnClickListener { goToMain() }
-      binding.btnMake.setOnClickListener { goToDetail() }
-   }
-
-   private fun goToDetail() {
-      findNavController().navigate(R.id.action_backButtonPopupFragment_to_channelDetailFragment)
+//      binding.btnMake.setOnClickListener { goToDetail() }
    }
 
    private fun goToMain() {

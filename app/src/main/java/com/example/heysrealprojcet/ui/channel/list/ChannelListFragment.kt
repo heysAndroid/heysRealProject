@@ -47,13 +47,8 @@ class ChannelListFragment : Fragment() {
       binding.heysList.adapter = channelItemRecyclerViewAdapter
       binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
-      binding.filterButton.setOnClickListener {
-         goToFilter()
-      }
-
-      binding.makeChannel.setOnClickListener {
-         goToChannelList()
-      }
+      binding.filterButton.setOnClickListener { goToFilter() }
+      binding.makeChannel.setOnClickListener { goToChannelList() }
    }
 
    private fun makeList() {

@@ -55,7 +55,7 @@ class ChannelPreviewFragment : Fragment() {
       getMyInfo()
 
       binding.btnNext.setOnClickListener { requestCreateStudy() }
-      binding.btnBack.setOnClickListener { goToBack() }
+//      binding.btnBack.setOnClickListener { goToBack() }
 
       viewModel.link1.observe(viewLifecycleOwner) {
          if (it.contains("kakao")) {
@@ -75,10 +75,6 @@ class ChannelPreviewFragment : Fragment() {
             }
          }
       }
-   }
-
-   private fun goToBack() {
-      findNavController().navigate(R.id.action_channelPreviewFragment_to_backButtonPopupFragment)
    }
 
    private fun goToComplete(channelId: Int) {
