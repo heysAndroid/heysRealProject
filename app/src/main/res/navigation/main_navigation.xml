@@ -95,15 +95,14 @@
         android:label="ChannelDetailFragment"
         tools:layout="@layout/channel_detail_fragment">
 
-
         <argument
             android:name="channelId"
             app:argType="integer" />
         <action
-            android:id="@+id/action_channelDetailFragment_to_waitingUserListFragment2"
+            android:id="@+id/action_channelDetailFragment_to_waitingUserListFragment"
             app:destination="@id/waitingUserListFragment" />
         <action
-            android:id="@+id/action_channelDetailFragment_to_approvedUserListFragment2"
+            android:id="@+id/action_channelDetailFragment_to_approvedUserListFragment"
             app:destination="@id/approvedUserListFragment" />
     </fragment>
     <fragment

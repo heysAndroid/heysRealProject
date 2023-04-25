@@ -68,13 +68,13 @@ class ChannelDetailFragment : Fragment() {
       binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
 
-      binding.btnJoin.setOnClickListener {  }
+      binding.btnJoin.setOnClickListener { }
    }
 
    private fun goToApprovedUserList() {
       viewModel.approvedUserList.observe(viewLifecycleOwner) {
          it?.let {
-            findNavController().navigate(R.id.action_channelDetailFragment_to_approvedUserListFragment2, bundleOf("approvedUser" to it.toTypedArray()))
+            findNavController().navigate(R.id.action_channelDetailFragment_to_approvedUserListFragment, bundleOf("approvedUser" to it.toTypedArray()))
          }
       }
    }
@@ -82,7 +82,7 @@ class ChannelDetailFragment : Fragment() {
    private fun goToWaitingUserList() {
       viewModel.waitingUserList.observe(viewLifecycleOwner) {
          it?.let {
-            findNavController().navigate(R.id.action_channelDetailFragment_to_waitingHeyListFragment, bundleOf("waitingUser" to it.toTypedArray()))
+            findNavController().navigate(R.id.action_channelDetailFragment_to_waitingUserListFragment, bundleOf("waitingUser" to it.toTypedArray()))
          }
       }
    }
