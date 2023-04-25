@@ -100,12 +100,16 @@
         <action
             android:id="@+id/action_channelDetailFragment_to_waitingHeyListFragment"
             app:destination="@id/waitingHeyListFragment" />
-        <action
-            android:id="@+id/action_channelDetailFragment_to_myChannelFragment"
-            app:destination="@id/myChannelFragment" />
+
         <argument
             android:name="channelId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_waitingUserListFragment2"
+            app:destination="@id/waitingUserListFragment" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_approvedUserListFragment2"
+            app:destination="@id/approvedUserListFragment" />
     </fragment>
     <fragment
         android:id="@+id/extracurricularListFragment"
@@ -139,6 +143,9 @@
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
             app:destination="@id/myChannelCattingReader" />
+        <action
+            android:id="@+id/action_myChannelFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -193,9 +200,7 @@
         android:name="com.example.heysrealprojcet.ui.channel.create.preview.ChannelPreviewFragment"
         android:label="ChannelPreviewFragment"
         tools:layout="@layout/channel_preview_fragment">
-        <action
-            android:id="@+id/action_channelPreviewFragment_to_backButtonPopupFragment"
-            app:destination="@id/backButtonPopupFragment" />
+
         <action
             android:id="@+id/action_channelPreviewFragment_to_channelCreateCompleteFragment"
             app:destination="@id/channelCreateCompleteFragment" />
@@ -364,9 +369,7 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_backButtonPopupFragment_to_channelDetailFragment"
-            app:destination="@id/channelDetailFragment" />
+
     </fragment>
 
     <fragment
@@ -415,16 +418,17 @@
         <argument
             android:name="waitingUser"
             app:argType="com.example.heysrealprojcet.model.WaitingUserList[]" />
-        <action
-            android:id="@+id/action_bookmarkCollectionFragment_to_bookmarkEditFragment"
-            app:destination="@id/bookmarkEditFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/bookmarkCollectionFragment"
         android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkCollectionFragment"
         android:label="BookmarkCollectionFragment"
-        tools:layout="@layout/bookmark_collection_fragment"></fragment>
+        tools:layout="@layout/bookmark_collection_fragment">
+        <action
+            android:id="@+id/action_bookmarkCollectionFragment_to_bookmarkEditFragment"
+            app:destination="@id/bookmarkEditFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/bookmarkEditFragment"
