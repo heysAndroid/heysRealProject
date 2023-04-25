@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myPage.collection
+package com.example.heysrealprojcet.ui.user.myPage.bookMark
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

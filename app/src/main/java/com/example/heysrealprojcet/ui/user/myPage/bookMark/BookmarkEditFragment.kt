@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myPage.collection
+package com.example.heysrealprojcet.ui.user.myPage.bookMark
 
 import android.os.Bundle
 import android.view.LayoutInflater

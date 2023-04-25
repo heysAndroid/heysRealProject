@@ -94,12 +94,7 @@
         android:name="com.example.heysrealprojcet.ui.channel.list.detail.ChannelDetailFragment"
         android:label="ChannelDetailFragment"
         tools:layout="@layout/channel_detail_fragment">
-        <action
-            android:id="@+id/action_channelDetailFragment_to_memberHeysListFragment"
-            app:destination="@id/memberHeysListFragment" />
-        <action
-            android:id="@+id/action_channelDetailFragment_to_waitingHeyListFragment"
-            app:destination="@id/waitingHeyListFragment" />
+
 
         <argument
             android:name="channelId"
@@ -124,15 +119,6 @@
             app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/memberHeysListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.study.hey.participating.MemberHeysListFragment"
-        android:label="MemberHeysListFragment"
-        tools:layout="@layout/member_heys_list_fragment">
-        <action
-            android:id="@+id/action_memberHeysListFragment_to_channelChatFragment"
-            app:destination="@id/channelChatFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/myChannelFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.HeysChannelFragment"
         android:label="MyChannelFragment"
@@ -140,9 +126,6 @@
         <action
             android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
             app:destination="@id/myChannelNotificationFragment" />
-        <action
-            android:id="@+id/action_myChannelFragment_to_myChannelCattingReader"
-            app:destination="@id/myChannelCattingReader" />
         <action
             android:id="@+id/action_myChannelFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
@@ -205,16 +188,7 @@
             android:id="@+id/action_channelPreviewFragment_to_channelCreateCompleteFragment"
             app:destination="@id/channelCreateCompleteFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/channelChatFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.chat.HeysChannelChatFragment"
-        android:label="ChannelChatFragment"
-        tools:layout="@layout/heys_channel_chat_fragment" />
-    <fragment
-        android:id="@+id/waitingHeyListFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.study.hey.waiting.WaitingHeyListFragment"
-        android:label="WaitingHeyListFragment"
-        tools:layout="@layout/waiting_user_list_fragment" />
+
     <fragment
         android:id="@+id/myChannelNotificationFragment"
         android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.MyChannelNotificationFragment"
@@ -225,44 +199,8 @@
         android:name="com.example.heysrealprojcet.ui.user.myChannel.privateNotification.MyChannelPrivateNotificationFragment"
         android:label="MyChannelPrivateNotificationFragment"
         tools:layout="@layout/my_channel_private_notification_fragment" />
-    <fragment
-        android:id="@+id/myChannelCattingReader"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.MyChannelChattingReader"
-        android:label="MyChannelCattingReader"
-        tools:layout="@layout/my_channel_chatting_reader">
-        <action
-            android:id="@+id/action_myChannelCattingReader_to_chattingReaderNotice"
-            app:destination="@id/chattingReaderNotice" />
-        <action
-            android:id="@+id/action_myChannelCattingReader_to_myChannelManageFragment"
-            app:destination="@id/myChannelManageFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/chattingReaderNotice"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNoticeFragment"
-        android:label="ChattingReaderNotice"
-        tools:layout="@layout/chatting_reader_notice">
-        <action
-            android:id="@+id/action_chattingReaderNotice_to_chattingReaderNoticePost"
-            app:destination="@id/chattingReaderNoticePost" />
-    </fragment>
-    <fragment
-        android:id="@+id/chattingReaderNoticePost"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.chat.ChattingReaderNoticePost"
-        android:label="ChattingReaderNoticePost"
-        tools:layout="@layout/chatting_reader_notice_post" />
-    <fragment
-        android:id="@+id/myChannelManageFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.manage.MyChannelManageFragment"
-        android:label="MyChannelManageFragment"
-        tools:layout="@layout/my_channel_manage">
-        <action
-            android:id="@+id/action_myChannelManageFragment_to_waitingHeyListFragment"
-            app:destination="@id/waitingHeyListFragment" />
-        <action
-            android:id="@+id/action_myChannelManageFragment_to_memberHeysListFragment"
-            app:destination="@id/memberHeysListFragment" />
-    </fragment>
+
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.heysrealprojcet.ui.user.setting.SettingFragment"
@@ -422,7 +360,7 @@
 
     <fragment
         android:id="@+id/bookmarkCollectionFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkCollectionFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.bookMark.BookmarkCollectionFragment"
         android:label="BookmarkCollectionFragment"
         tools:layout="@layout/bookmark_collection_fragment">
         <action
@@ -432,7 +370,7 @@
 
     <fragment
         android:id="@+id/bookmarkEditFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkEditFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.bookMark.BookmarkEditFragment"
         android:label="BookmarkEditFragment"
         tools:layout="@layout/bookmark_edit_fragment">
         <action

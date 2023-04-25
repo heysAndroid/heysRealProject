@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.myPage.edit
+package com.example.heysrealprojcet.ui.user.myPage
 
 import android.graphics.Typeface
 import android.view.View

@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.myPage.collection.BookmarkEditViewModel" />
+            type="com.example.heysrealprojcet.ui.user.myPage.bookMark.BookmarkEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
