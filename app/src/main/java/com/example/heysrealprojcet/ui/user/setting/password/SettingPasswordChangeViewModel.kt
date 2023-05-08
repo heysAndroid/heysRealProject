@@ -25,7 +25,7 @@ class SettingPasswordChangeViewModel : ViewModel() {
    }
 
    private fun isCorrect() {
-      _isEnabled.value = password.value?.length >= 8
+      _isEnabled.value = password.value?.length!! >= 8
    }
 
    fun togglePasswordVisible() {
