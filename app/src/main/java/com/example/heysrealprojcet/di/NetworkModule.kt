@@ -1,6 +1,8 @@
 package com.example.heysrealprojcet.di
 
 import com.example.heysrealprojcet.api.*
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
@@ -62,19 +65,28 @@ object NetworkModule {
    @Provides
    fun provideRetrofitInstance(
       okHttpClient: OkHttpClient,
-      gsonConverterFactory: GsonConverterFactory): Retrofit {
+      gsonConverterFactory: GsonConverterFactory,
+      scalarsConverterFactory: ScalarsConverterFactory): Retrofit {
       return Retrofit.Builder()
          .baseUrl(base_url)
          .client(okHttpClient)
          .client(provideHttpClient())
          .addConverterFactory(gsonConverterFactory)
+         .addConverterFactory(scalarsConverterFactory)
          .build()
    }
 
    @Provides
    @Singleton
-   fun provideConverterFactory(): GsonConverterFactory {
-      return GsonConverterFactory.create()
+   fun provideGsonConverterFactory(): GsonConverterFactory {
+      val gson: Gson = GsonBuilder().setLenient().create()
+      return GsonConverterFactory.create(gson)
+   }
+
+   @Provides
+   @Singleton
+   fun provideScalarsConverterFactory(): ScalarsConverterFactory {
+      return ScalarsConverterFactory.create()
    }
 
    @Provides

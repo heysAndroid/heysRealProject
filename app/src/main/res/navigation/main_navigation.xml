@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_contestExtracurricularDetailFragment_to_contestDetailLookFragment"
             app:destination="@id/ImageZoomFragment" />
+        <argument
+            android:name="contentID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"

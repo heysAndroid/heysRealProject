@@ -11,7 +11,7 @@ import com.example.heysrealprojcet.model.network.Content
 
 class ContestItemRecyclerViewAdapter(
    private val contest: MutableList<Content>,
-   private val onClickListener: () -> Unit) :
+   private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestExtracurricularItemViewBinding
 
@@ -41,7 +41,7 @@ class ContestItemRecyclerViewAdapter(
                binding.dday.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
             }
          }
-         binding.root.setOnClickListener { onClickListener.invoke() }
+         binding.root.setOnClickListener { onClickListener.invoke(contest.id) }
       }
    }
 

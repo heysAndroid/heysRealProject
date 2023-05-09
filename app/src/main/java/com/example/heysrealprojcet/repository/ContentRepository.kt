@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.ContentApi
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.response.ContentDetailResponse
 import com.example.heysrealprojcet.model.network.response.ContentListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +27,18 @@ class ContentRepository @Inject constructor(
             contentApi.getContentList(
                token, type, interest, lastRecruitDate, includeClosed, page, limit)
          })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun getContentDetail(token: String, id: Int): Flow<NetworkResult<ContentDetailResponse>> {
+      return flow {
+         emit(safeApiCall { contentApi.getContentDetail(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun contentViewCountUp(token: String, id: Int): Flow<NetworkResult<String>> {
+      return flow {
+         emit(safeApiCall { contentApi.contentViewCountUp(token, id) })
       }.flowOn(Dispatchers.IO)
    }
 }

@@ -1,21 +1,28 @@
 package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularDetailFragmentBinding
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContestExtracurricularDetailFragment : Fragment() {
    private lateinit var binding: ContestExtracurricularDetailFragmentBinding
    private val viewModel: ContestExtracurricularDetailViewModel by viewModels()
-
+   val args: ContestExtracurricularDetailFragmentArgs by navArgs()
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -40,26 +47,13 @@ class ContestExtracurricularDetailFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      contentViewCountUp(args.contentID)
+      getContentDetail(args.contentID)
       binding.goToHeys.setOnClickListener { goToHeys() }
-
-//      if(binding.introduce.lineCount > 5) {
-//         binding.layoutExpand.visibility = View.VISIBLE
-//         binding.detail.visibility = View.GONE
-//      }
-//
-//      binding.detail.setOnClickListener {
-//         if (binding.layoutExpand.visibility == View.VISIBLE) {
-//            binding.layoutExpand.visibility = View.GONE
-//         } else {
-//            binding.layoutExpand.visibility = View.VISIBLE
-//         }
-//      }
-
       binding.btnShare.setOnClickListener {
          val bottomSheet = ContestShareBottomSheet()
          bottomSheet.show(childFragmentManager, null)
       }
-
       binding.bookmarkButton.setOnClickListener {
          it.isSelected = it.isSelected != true
 
@@ -67,15 +61,69 @@ class ContestExtracurricularDetailFragment : Fragment() {
             CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
          }
       }
-
-      binding.lookButton.setOnClickListener { goToLook() }
+      binding.zoomButton.setOnClickListener { goToZoom() }
    }
 
-   private fun goToLook() {
+   private fun goToZoom() {
       findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_contestDetailLookFragment)
    }
 
    private fun goToHeys() {
       findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_channelListFragment)
+   }
+
+   private fun getContentDetail(id: Int) {
+      viewModel.getContentDetail("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               viewModel.receiveContentDetail(response.data?.contentDetail)
+               Glide.with(requireContext()).load(viewModel.thumbnailUri.value).into(binding.thumbnail)
+               viewModel.dday.value?.let { setDday(it) }
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getContentDetail: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("getContentDetail: ", "loading")
+            }
+         }
+      }
+   }
+
+   private fun contentViewCountUp(id: Int) {
+      viewModel.contentViewCountUp("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("contentViewCountUp: ", "success")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("contentViewCountUp: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("contentViewCountUp: ", "loading")
+            }
+         }
+      }
+   }
+
+   private fun setDday(dday: Int) {
+      when {
+         dday < 0 -> {
+            binding.dday.text = "마감"
+            binding.dday.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+         }
+         dday in 1..6 -> {
+            binding.dday.text = "D-${dday}"
+            binding.dday.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
+         }
+         else -> {
+            binding.dday.text = "D-${dday}"
+            binding.dday.setBackgroundResource(R.drawable.bg_34d676_radius_4)
+         }
+      }
    }
 }

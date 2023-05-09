@@ -61,8 +61,8 @@ class ContestListFragment : Fragment() {
          bundleOf(MY_INTEREST_LIST to myInterestList))
    }
 
-   private fun goToDetail() {
-      findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularDetailFragment)
+   private fun goToDetail(contentId: Int) {
+      findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularDetailFragment, bundleOf("contentID" to contentId))
    }
 
    private fun getContestList() {
@@ -71,7 +71,11 @@ class ContestListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContestList(response.data?.data)
-               contestItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let { ContestItemRecyclerViewAdapter(it) { goToDetail() } }!!
+               contestItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
+                  ContestItemRecyclerViewAdapter(it) { contentID ->
+                     goToDetail(contentID)
+                  }
+               }!!
                binding.contestList.adapter = contestItemRecyclerViewAdapter
                binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             }

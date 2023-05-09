@@ -60,5 +60,4 @@ class MyChannelFragment : Fragment() {
    private fun goToDetail(channelId: Int) {
       findNavController().navigate(R.id.action_myChannelFragment_to_channelDetailFragment, bundleOf("channelId" to channelId))
    }
-
 }
