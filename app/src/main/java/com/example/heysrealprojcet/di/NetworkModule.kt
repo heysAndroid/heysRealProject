@@ -24,7 +24,7 @@ import javax.net.ssl.X509TrustManager
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-   const val base_url = "https://heys-dev-public-alb-1078245957.ap-northeast-2.elb.amazonaws.com/"
+   const val base_url = "https://api-dev.teamheys.com/"
 
    private val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
       override fun checkClientTrusted(p0: Array<out X509Certificate>?, p1: String?) {
