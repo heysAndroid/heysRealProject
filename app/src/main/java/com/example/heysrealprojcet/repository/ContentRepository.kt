@@ -4,6 +4,7 @@ import com.example.heysrealprojcet.api.ContentApi
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.ContentDetailResponse
 import com.example.heysrealprojcet.model.network.response.ContentListResponse
+import com.example.heysrealprojcet.model.network.response.SimpleResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -36,7 +37,7 @@ class ContentRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   fun contentViewCountUp(token: String, id: Int): Flow<NetworkResult<String>> {
+   fun contentViewCountUp(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
       return flow {
          emit(safeApiCall { contentApi.contentViewCountUp(token, id) })
       }.flowOn(Dispatchers.IO)

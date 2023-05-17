@@ -96,7 +96,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
       viewModel.contentViewCountUp("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
-               Log.d("contentViewCountUp: ", "success")
+               Log.d("contentViewCountUp: ", response.message.toString())
             }
 
             is NetworkResult.Error -> {
@@ -116,10 +116,12 @@ class ContestExtracurricularDetailFragment : Fragment() {
             binding.dday.text = "마감"
             binding.dday.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
          }
+
          dday in 1..6 -> {
             binding.dday.text = "D-${dday}"
             binding.dday.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
          }
+
          else -> {
             binding.dday.text = "D-${dday}"
             binding.dday.setBackgroundResource(R.drawable.bg_34d676_radius_4)
