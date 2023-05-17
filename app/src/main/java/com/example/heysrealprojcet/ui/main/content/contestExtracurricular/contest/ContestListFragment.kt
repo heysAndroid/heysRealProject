@@ -28,7 +28,6 @@ class ContestListFragment : Fragment() {
    val viewModel by viewModels<ContestListViewModel>()
 
    private lateinit var myInterestList: ArrayList<String>
-
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -50,6 +49,8 @@ class ContestListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
 
       myInterestList = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
+      binding.filterCount.text = "${myInterestList.size}"
+
       getContestList()
       viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }
