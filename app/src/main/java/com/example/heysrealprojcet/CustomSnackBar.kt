@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.heysrealprojcet.databinding.CustomSnackbarBinding
 import com.google.android.material.snackbar.Snackbar
 
-open class Snack (open val view: View, open val message: String, open val anchorView: View?)
+open class Snack(open val view: View, open val message: String, open val anchorView: View?)
 
 class CustomSnackBar(
    override val view: View,
@@ -22,7 +22,6 @@ class CustomSnackBar(
    private val context = view.context
    private val snackBar = Snackbar.make(view, "", 5000)
    private val snackBarLayout = snackBar.view as Snackbar.SnackbarLayout
-
    private val inflater = LayoutInflater.from(context)
    private val snackBarBinding: CustomSnackbarBinding =
       DataBindingUtil.inflate(inflater, R.layout.custom_snackbar, null, false)

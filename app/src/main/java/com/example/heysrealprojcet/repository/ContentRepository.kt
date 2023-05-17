@@ -42,4 +42,16 @@ class ContentRepository @Inject constructor(
          emit(safeApiCall { contentApi.contentViewCountUp(token, id) })
       }.flowOn(Dispatchers.IO)
    }
+
+   fun contentAddBookmark(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { contentApi.contentAddBookmark(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun contentRemoveBookmark(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { contentApi.contentRemoveBookmark(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
 }

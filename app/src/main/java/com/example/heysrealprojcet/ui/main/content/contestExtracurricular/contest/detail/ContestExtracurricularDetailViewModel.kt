@@ -56,13 +56,17 @@ class ContestExtracurricularDetailViewModel @Inject constructor(
    private val _interestString by lazy { MutableLiveData("") }
    val interestString: LiveData<String> = _interestString
 
-   private val _isBookMarked = MutableLiveData<Boolean>()
+   private val _isBookMarked = MutableLiveData(false)
    val isBookMarked: LiveData<Boolean> = _isBookMarked
 
    private val _dday = MutableLiveData<Int>()
    val dday: LiveData<Int> = _dday
    fun getContentDetail(token: String, id: Int) = contentRepository.getContentDetail(token, id).asLiveData()
    fun contentViewCountUp(token: String, id: Int) = contentRepository.contentViewCountUp(token, id).asLiveData()
+
+   fun contentAddBookmark(token: String, id: Int) = contentRepository.contentAddBookmark(token, id).asLiveData()
+
+   fun contentRemoveBookmark(token: String, id: Int) = contentRepository.contentRemoveBookmark(token, id).asLiveData()
    fun receiveContentDetail(contentDetail: ContentDetail?) {
       contentDetail?.let {
          _title.value = it.title

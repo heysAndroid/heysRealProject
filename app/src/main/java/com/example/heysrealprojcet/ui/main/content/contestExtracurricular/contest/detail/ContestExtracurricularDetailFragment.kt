@@ -54,11 +54,13 @@ class ContestExtracurricularDetailFragment : Fragment() {
          val bottomSheet = ContestShareBottomSheet()
          bottomSheet.show(childFragmentManager, null)
       }
+
       binding.bookmarkButton.setOnClickListener {
          it.isSelected = it.isSelected != true
-
          if (it.isSelected) {
-            CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+            contentAddBookmark(args.contentID)
+         } else {
+            contentRemoveBookmark(args.contentID)
          }
       }
       binding.zoomButton.setOnClickListener { goToZoom() }
@@ -79,6 +81,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
                viewModel.receiveContentDetail(response.data?.contentDetail)
                Glide.with(requireContext()).load(viewModel.thumbnailUri.value).into(binding.thumbnail)
                viewModel.dday.value?.let { setDday(it) }
+               setBookmark()
             }
 
             is NetworkResult.Error -> {
@@ -110,6 +113,48 @@ class ContestExtracurricularDetailFragment : Fragment() {
       }
    }
 
+   private fun contentAddBookmark(id: Int) {
+      viewModel.contentAddBookmark("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("contentAddBookmark: ", response.data?.message.toString())
+               CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("contentAddBookmark: ", "error ${response.message}")
+               CustomSnackBar(binding.root, "내 관심에 추가하기를 실패했어요.", null, true).show()
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("contentAddBookmark: ", "loading")
+               CustomSnackBar(binding.root, "내 관심에 추가하기가 지연되고 있어요.", null, true).show()
+            }
+         }
+      }
+   }
+
+   private fun contentRemoveBookmark(id: Int) {
+      viewModel.contentRemoveBookmark("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("contentRemoveBookmark: ", response.data?.message.toString())
+               CustomSnackBar(binding.root, "내 관심에서 제거했어요!", null, true).show()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("contentRemoveBookmark: ", "error ${response.message}")
+               CustomSnackBar(binding.root, "내 관심에서 제거하기를 실패했어요.", null, true).show()
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("contentRemoveBookmark: ", "loading")
+               CustomSnackBar(binding.root, "내 관심에서 제거하기가 지연되고 있어요.", null, true).show()
+            }
+         }
+      }
+   }
+
    private fun setDday(dday: Int) {
       when {
          dday < 0 -> {
@@ -126,6 +171,12 @@ class ContestExtracurricularDetailFragment : Fragment() {
             binding.dday.text = "D-${dday}"
             binding.dday.setBackgroundResource(R.drawable.bg_34d676_radius_4)
          }
+      }
+   }
+
+   private fun setBookmark() {
+      viewModel.isBookMarked.observe(viewLifecycleOwner) {
+         binding.bookmarkButton.isSelected = it
       }
    }
 }

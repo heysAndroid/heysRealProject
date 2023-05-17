@@ -23,4 +23,10 @@ interface ContentApi {
 
    @PUT("content/view-count-up/{contentId}")
    suspend fun contentViewCountUp(@Header("Authorization") token: String, @Path(value = "contentId") id: Int): Response<SimpleResponse>
+
+   @PUT("content/add-bookmark/{contentId}")
+   suspend fun contentAddBookmark(@Header("Authorization") token: String, @Path(value = "contentId") id: Int): Response<SimpleResponse>
+
+   @PUT("content/remove-bookmark/{contentId}")
+   suspend fun contentRemoveBookmark(@Header("Authorization") token: String, @Path(value = "contentId") id: Int): Response<SimpleResponse>
 }
