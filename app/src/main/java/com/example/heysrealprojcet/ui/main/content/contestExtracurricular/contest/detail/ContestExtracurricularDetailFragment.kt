@@ -118,7 +118,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("contentAddBookmark: ", response.data?.message.toString())
-               CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true, subMessage = "보러가기").show()
             }
 
             is NetworkResult.Error -> {

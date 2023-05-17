@@ -15,8 +15,9 @@ class CustomSnackBar(
    override val message: String,
    override val anchorView: View?) : Snack(view, message, anchorView) {
 
-   constructor(view: View, message: String, anchorView: View?, move: Boolean) : this(view, message, anchorView) {
-      snackBarBinding.move.isVisible = move
+   constructor(view: View, message: String, anchorView: View?, move: Boolean, subMessage: String = "") : this(view, message, anchorView) {
+      snackBarBinding.goToNext.isVisible = move
+      snackBarBinding.goToNext.text = subMessage
    }
 
    private val context = view.context
@@ -42,7 +43,7 @@ class CustomSnackBar(
 
    private fun initData() {
       snackBarBinding.message.text = message
-      snackBarBinding.move.isVisible = false
+      snackBarBinding.goToNext.isVisible = false
    }
 
    fun show() {
