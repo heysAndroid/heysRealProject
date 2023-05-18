@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,8 +83,10 @@ class SignInPhoneFragment : Fragment() {
                   binding.okButton.isEnabled = false
                }
             }
+
             is NetworkResult.Error -> {
                alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
+               Log.w("checkMember error", response.message.toString())
             }
 
             is NetworkResult.Loading -> {

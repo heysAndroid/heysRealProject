@@ -17,6 +17,9 @@ object UserPreference : KotprefModel() {
       job = ""
       skill = ""
       introduce = ""
+      percentage = 0
+      waitingChannelCount = 0
+      joinChannelCount = 0
    }
 
    /*
@@ -83,4 +86,19 @@ object UserPreference : KotprefModel() {
    * 한줄소개
     */
    var introduce by stringPref()
+
+   /*
+   * 퍼센트
+    */
+   var percentage by intPref()
+
+   /*
+   * 퍼센트
+    */
+   var joinChannelCount by intPref()
+
+   /*
+   * 퍼센트
+    */
+   var waitingChannelCount by intPref()
 }

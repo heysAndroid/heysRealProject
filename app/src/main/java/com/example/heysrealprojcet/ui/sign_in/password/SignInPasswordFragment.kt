@@ -22,7 +22,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignInPasswordFragment : Fragment() {
    private lateinit var binding: SignInPasswordFragmentBinding
    private val viewModel: SignInPasswordViewModel by viewModels()
-
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -92,10 +91,10 @@ class SignInPasswordFragment : Fragment() {
             true -> {
                val token = response.headers()["Authorization"]?.split(" ")?.last()
                token.let { UserPreference.accessToken = it.toString() }
-
                UserPreference.isAutoLogin = true
                goToMain()
             }
+
             false -> {
                viewModel.showSnackBar()
             }
@@ -111,3 +110,4 @@ class SignInPasswordFragment : Fragment() {
       findNavController().navigate(R.id.action_signInPasswordFragment_to_mainNavigation)
    }
 }
+

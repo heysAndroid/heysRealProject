@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,30 +22,33 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
+import com.example.heysrealprojcet.model.MyPage
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.system.exitProcess
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
    private lateinit var mainActivity: MainActivity
    private lateinit var binding: MainFragmentBinding
+   val viewModel by viewModels<MainViewModel>()
+   val args: MainFragmentArgs by navArgs()
 
    private lateinit var categoryRecyclerViewAdapter: CategoryRecyclerViewAdapter
    private lateinit var extracurricularRecyclerViewAdapter: ExtracurricularInterestItemRecyclerViewAdapter
 
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
-   private lateinit var myInterestList: ArrayList<String>
-
+   private lateinit var interestList: MutableList<String>
    private lateinit var callback: OnBackPressedCallback
 
    private var position = 0
-
-   val args: MainFragmentArgs by navArgs()
 
    companion object {
       const val MY_INTEREST_LIST = "myInterestList"
@@ -82,21 +86,20 @@ class MainFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-
       // 회원가입에서 넘어온 경우 프로필 카드 보여주기
       if (args.isNewUser) {
          val bottomSheet = SignUpProfileCardBottomSheet(UserPreference.name) { goToMyPage() }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
-
-      makeExtracurricularList()
+      getMyInfo()
       makeContestList()
+      makeExtracurricularList()
 
-      // 공모전
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
          list = contestList,
-         myInterestList = myInterestList
-      ) { goToContest() }
+         myInterestList = UserPreference.interests.split(",").toMutableList()
+
+      ) { goToContest(type = "interest") }
 
       binding.contestList.apply {
          adapter = categoryRecyclerViewAdapter
@@ -104,7 +107,6 @@ class MainFragment : Fragment() {
          addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
          setHasFixedSize(true)
       }
-
       // 대외활동
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
 
@@ -118,7 +120,7 @@ class MainFragment : Fragment() {
       }
 
       with(binding) {
-         contestAllText.setOnClickListener { goToContest() }
+         contestAllText.setOnClickListener { goToContest(type = "default") }
          activityAllText.setOnClickListener { goToActivity() }
          studyCreate.setOnClickListener { goToStudyCreate() }
          studyList.setOnClickListener { goToStudyList() }
@@ -165,8 +167,6 @@ class MainFragment : Fragment() {
    }
 
    private fun makeContestList() {
-      myInterestList = arrayListOf("기획/아이디어", "개발")
-
       contestList = mutableListOf(
          ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true),
          ContestType("마감 \n임박!", R.drawable.ic_drawing_board2, false),
@@ -178,10 +178,8 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_channelNameFragment)
    }
 
-   private fun goToContest() {
-      findNavController().navigate(
-         R.id.action_mainFragment_to_contestFragment,
-         bundleOf(MY_INTEREST_LIST to myInterestList))
+   private fun goToContest(type: String = "default") {
+      findNavController().navigate(R.id.action_mainFragment_to_contestFragment, bundleOf("type" to type))
    }
 
    private fun goToActivity() {
@@ -194,6 +192,42 @@ class MainFragment : Fragment() {
 
    private fun goToStudyList() {
       findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+   }
+
+   private fun getMyInfo() {
+      val token = UserPreference.accessToken
+      viewModel.getMyInfo("Bearer $token").observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.w("getMyInfo: ", "success")
+               response.data?.user?.let { setUserPreference(it) }
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("getMyInfo: ", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getMyInfo: ", response.message.toString())
+            }
+         }
+
+      }
+   }
+
+   private fun setUserPreference(user: MyPage) {
+      UserPreference.interests = user.interests.joinToString(separator = ",")
+      UserPreference.name = user.name
+      UserPreference.phoneNumber = user.phone
+      UserPreference.gender = user.gender
+      UserPreference.birthday = user.birthDate
+      UserPreference.job = user.job
+      UserPreference.introduce = user.introduce
+      UserPreference.skill = user.capability
+      UserPreference.mbti = user.userPersonality ?: ""
+      UserPreference.percentage = user.percentage
+      UserPreference.joinChannelCount = user.joinChannelCount
+      UserPreference.waitingChannelCount = user.waitingChannelCount
    }
 }
 

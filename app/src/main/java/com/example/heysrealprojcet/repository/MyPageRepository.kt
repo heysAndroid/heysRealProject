@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class MyPageRepository @Inject constructor(
    private val userApi: UserApi) : BaseApiResponse() {
-   suspend fun getMyInfo(token: String): Flow<NetworkResult<MyPageResponse>> {
+   fun getMyInfo(token: String): Flow<NetworkResult<MyPageResponse>> {
       return flow {
          emit(safeApiCall { userApi.getMyInfo(token) })
       }.flowOn(Dispatchers.IO)
