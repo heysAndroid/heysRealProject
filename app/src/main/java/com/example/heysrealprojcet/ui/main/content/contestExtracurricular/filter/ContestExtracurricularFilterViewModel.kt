@@ -12,7 +12,6 @@ import java.time.LocalDate
 import java.time.YearMonth
 
 class ContestExtracurricularFilterViewModel : ViewModel() {
-
    var choiceInterest = mutableListOf<View>()
    private val interestMax = 3
    var interestTotal = MutableStateFlow(0)

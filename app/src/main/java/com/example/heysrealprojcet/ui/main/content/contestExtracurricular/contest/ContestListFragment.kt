@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
@@ -28,6 +29,7 @@ class ContestListFragment : Fragment() {
    val viewModel by viewModels<ContestListViewModel>()
 
    private lateinit var myInterestList: ArrayList<String>
+   val args: ContestListFragmentArgs by navArgs()
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -48,9 +50,20 @@ class ContestListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-      myInterestList = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
-      binding.filterCount.text = "${myInterestList.size}"
+      when (args.type) {
+         "default" -> {
+            myInterestList = arrayListOf()
+         }
 
+         "interest" -> {
+            myInterestList = arrayListOf()
+            UserPreference.interests.split(",").forEach {
+               myInterestList.add(it)
+            }
+         }
+      }
+
+      binding.filterCount.text = "${myInterestList.size}"
       getContestList()
       viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }

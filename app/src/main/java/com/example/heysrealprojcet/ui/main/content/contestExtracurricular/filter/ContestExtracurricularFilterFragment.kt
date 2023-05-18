@@ -148,7 +148,6 @@ class ContestExtracurricularFilterFragment : Fragment() {
 
    private fun initStartView() {
       viewModel.interestArray = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
-
       if (viewModel.interestArray.isNotEmpty()) {
          viewModel.interestArray.forEach {
             val btnInterest = when (it) {

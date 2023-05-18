@@ -56,6 +56,10 @@
         <action
             android:id="@+id/action_contestListFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
+        <argument
+            android:name="type"
+            android:defaultValue="default"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/contestExtracurricularDetailFragment"
