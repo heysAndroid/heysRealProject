@@ -25,7 +25,7 @@ class ContestListViewModel @Inject constructor(
       _contestList.value = list ?: listOf()
    }
 
-   fun getContestList(
+    fun getContestList(
       token: String,
       type: String,
       interest: ArrayList<String>?,
