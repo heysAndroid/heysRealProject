@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
@@ -19,11 +19,11 @@ import com.kizitonwose.calendarview.ui.DayBinder
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
-import java.util.*
+import java.util.Locale
 
 class ContestExtracurricularFilterFragment : Fragment() {
    private lateinit var binding: ContestExtracurricularFilterFragmentBinding
-   private val viewModel: ContestExtracurricularFilterViewModel by viewModels()
+   lateinit var viewModel: ContestExtracurricularFilterViewModel
 
    private var currentTime = YearMonth.now()
    private val calendarFormatter = DateTimeFormatter.ofPattern("yyyy년 M월")
@@ -33,6 +33,7 @@ class ContestExtracurricularFilterFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
       binding = ContestExtracurricularFilterFragmentBinding.inflate(inflater, container, false)
+      viewModel = ViewModelProvider(requireActivity())[ContestExtracurricularFilterViewModel::class.java]
       binding.vm = viewModel
       return binding.root
    }
@@ -45,8 +46,16 @@ class ContestExtracurricularFilterFragment : Fragment() {
 
       binding.cafeteriaCalendar.stopScroll()
       binding.cafeteriaCalendar.isNestedScrollingEnabled = false
-
-      binding.btnApply.setOnClickListener { findNavController().navigateUp() }
+      binding.btnApply.setOnClickListener {
+         val previousFragment = findNavController().previousBackStackEntry?.destination?.displayName
+         if (previousFragment?.contains("contest") == true) {
+            val action = ContestExtracurricularFilterFragmentDirections.backToContestList("default")
+            findNavController().navigate(action)
+         } else {
+            val action = ContestExtracurricularFilterFragmentDirections.backToExtracurricularList("default")
+            findNavController().navigate(action)
+         }
+      }
 
       viewModel.calendarPosition.observe(viewLifecycleOwner) {
          if (currentTime.year == YearMonth.now().year && it == YearMonth.now().month.value) {
@@ -144,10 +153,15 @@ class ContestExtracurricularFilterFragment : Fragment() {
       viewModel.isCalendarInit.observe(viewLifecycleOwner, EventObserver {
          if (it) binding.cafeteriaCalendar.notifyCalendarChanged()
       })
+
+
    }
 
    private fun initStartView() {
-      viewModel.interestArray = arguments?.getStringArrayList(MY_INTEREST_LIST) as ArrayList<String>
+      arguments?.getStringArrayList(MY_INTEREST_LIST)?.let {
+         viewModel.interestArray = it
+      }
+
       if (viewModel.interestArray.isNotEmpty()) {
          viewModel.interestArray.forEach {
             val btnInterest = when (it) {

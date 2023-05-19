@@ -44,7 +44,20 @@
         android:id="@+id/contestExtracurricularFilterFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/contest_extracurricular_filter_fragment" />
+        tools:layout="@layout/contest_extracurricular_filter_fragment">
+
+        <action
+            android:id="@+id/backToExtracurricularList"
+            app:destination="@+id/extracurricularListFragment"
+            app:popUpTo="@id/extracurricularListFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/backToContestList"
+            app:destination="@+id/contestListFragment"
+            app:popUpTo="@id/contestListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/contestListFragment"
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContestListFragment"
@@ -123,6 +136,10 @@
         <action
             android:id="@+id/action_extracurricularListFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"

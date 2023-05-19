@@ -120,7 +120,7 @@ class MainFragment : Fragment() {
       }
 
       with(binding) {
-         contestAllText.setOnClickListener { goToContest(type = "default") }
+         contestAllText.setOnClickListener { goToContest(type = "all") }
          activityAllText.setOnClickListener { goToActivity() }
          studyCreate.setOnClickListener { goToStudyCreate() }
          studyList.setOnClickListener { goToStudyList() }
