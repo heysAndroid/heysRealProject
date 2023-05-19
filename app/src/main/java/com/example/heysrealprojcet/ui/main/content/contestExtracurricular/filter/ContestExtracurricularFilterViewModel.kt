@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter
 
 import android.graphics.Typeface
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.LiveData
@@ -45,32 +46,37 @@ class ContestExtracurricularFilterViewModel : ViewModel() {
    }
 
    fun onClickInterest(v: View) {
-      val item = v.tag.toString()
-
       val button = v as Button
+      val item = button.text.toString()
 
       if (interestTotal.value < interestMax) {
+         // 이미 선택된 경우
          if (v.isSelected) {
             choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
-            interestTotal.value -= 1
             interestArray.remove(item)
          } else {
+            // 선택되지 않은 경우
             choiceInterest.add(v)
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
-            interestTotal.value += 1
             interestArray.add(item)
          }
+         interestTotal.value = interestArray.size
+
       } else {
          if (v.isSelected) {
             choiceInterest.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
-            interestTotal.value -= 1
             interestArray.remove(item)
+            interestTotal.value = interestArray.size
          }
+      }
+
+      interestArray.forEach {
+         Log.w("clicked interest: ", it)
       }
    }
 
@@ -80,6 +86,7 @@ class ContestExtracurricularFilterViewModel : ViewModel() {
          (choiceInterest[i] as Button).setTypeface(null, Typeface.NORMAL)
       }
       interestTotal.value = 0
+      interestArray.clear()
       choiceInterest.clear()
 
       selectedDate = null
