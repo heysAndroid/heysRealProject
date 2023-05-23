@@ -138,8 +138,8 @@
             app:destination="@id/contestExtracurricularDetailFragment" />
         <argument
             android:name="type"
-            app:argType="string"
-            android:defaultValue="default" />
+            android:defaultValue="default"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
@@ -335,12 +335,15 @@
 
     <fragment
         android:id="@+id/ImageZoomFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail.ImageZoomFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.ImageZoomFragment"
         android:label="ImageZoomFragment"
         tools:layout="@layout/image_zoom_fragment">
         <action
             android:id="@+id/action_imageZoomFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
+        <argument
+            android:name="imageUri"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/channelCreateCompleteFragment"

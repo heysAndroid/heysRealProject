@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.detail
+package com.example.heysrealprojcet.ui.main.content.contestExtracurricular
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.R
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.heysrealprojcet.databinding.ImageZoomFragmentBinding
 
 class ImageZoomFragment : Fragment() {
    private lateinit var binding: ImageZoomFragmentBinding
+   val args: ImageZoomFragmentArgs by navArgs()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ImageZoomFragmentBinding.inflate(inflater, container, false)
@@ -19,11 +21,7 @@ class ImageZoomFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-
-      binding.closeButton.setOnClickListener { goToDetail() }
-   }
-
-   private fun goToDetail() {
-      findNavController().navigate(R.id.action_imageZoomFragment_to_contestExtracurricularDetailFragment)
+      Glide.with(requireContext()).load(args.imageUri).into(binding.image)
+      binding.closeButton.setOnClickListener { findNavController().navigateUp() }
    }
 }

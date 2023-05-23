@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -49,25 +50,30 @@ class ContestExtracurricularDetailFragment : Fragment() {
 
       contentViewCountUp(args.contentID)
       getContentDetail(args.contentID)
-      binding.goToHeys.setOnClickListener { goToHeys() }
-      binding.btnShare.setOnClickListener {
-         val bottomSheet = ContestShareBottomSheet()
-         bottomSheet.show(childFragmentManager, null)
-      }
 
-      binding.bookmarkButton.setOnClickListener {
-         it.isSelected = it.isSelected != true
-         if (it.isSelected) {
-            contentAddBookmark(args.contentID)
-         } else {
-            contentRemoveBookmark(args.contentID)
+      with(binding) {
+         goToHeys.setOnClickListener { goToHeys() }
+         btnShare.setOnClickListener {
+            val bottomSheet = ContestShareBottomSheet()
+            bottomSheet.show(childFragmentManager, null)
          }
+
+         bookmarkButton.setOnClickListener {
+            it.isSelected = it.isSelected != true
+            if (it.isSelected) {
+               contentAddBookmark(args.contentID)
+            } else {
+               contentRemoveBookmark(args.contentID)
+            }
+         }
+         zoomButton.setOnClickListener { viewModel.thumbnailUri.value?.let { goToZoom(it) } }
       }
-      binding.zoomButton.setOnClickListener { goToZoom() }
    }
 
-   private fun goToZoom() {
-      findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_contestDetailLookFragment)
+   private fun goToZoom(imageUri: String) {
+      findNavController().navigate(
+         R.id.action_contestExtracurricularDetailFragment_to_contestDetailLookFragment,
+         bundleOf("imageUri" to imageUri))
    }
 
    private fun goToHeys() {
