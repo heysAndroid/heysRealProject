@@ -4,7 +4,7 @@ import com.example.heysrealprojcet.api.StudyApi
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
-import com.example.heysrealprojcet.model.network.response.StudyListResponse
+import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -30,7 +30,7 @@ class StudyRepository @Inject constructor(
       includeClosed: Boolean?,
       page: Int?,
       limit: Int?
-   ): Flow<NetworkResult<StudyListResponse>> {
+   ): Flow<NetworkResult<ChannelListResponse>> {
       return flow {
          emit(safeApiCall {
             studyApi.getStudyList(

@@ -44,7 +44,7 @@ class StudyListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       getStudyList()
-      viewModel.studyList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
+      viewModel.channelList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }
    }
 
@@ -54,7 +54,7 @@ class StudyListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setStudyList(response.data?.data)
-               studyItemRecyclerViewAdapter = viewModel.studyList.value?.toMutableList()?.let { StudyItemRecyclerViewAdapter(it) { goToDetail() } }!!
+               studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let { StudyItemRecyclerViewAdapter(it) { goToDetail() } }!!
                binding.studyList.adapter = studyItemRecyclerViewAdapter
                binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             }

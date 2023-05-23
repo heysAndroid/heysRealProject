@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
-import com.example.heysrealprojcet.model.network.StudyList
+import com.example.heysrealprojcet.model.network.ChannelList
 
 class StudyItemRecyclerViewAdapter(
-   private val study: MutableList<StudyList>,
+   private val study: MutableList<ChannelList>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: StudyItemViewBinding
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(study: StudyList) {
+      fun bind(study: ChannelList) {
          //binding.image.setImageResource(type.image)
          binding.title.text = study.name
          binding.pastDay.text = "개설한지 ${study.pastDay}일"

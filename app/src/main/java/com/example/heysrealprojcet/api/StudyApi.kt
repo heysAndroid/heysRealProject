@@ -1,8 +1,8 @@
 package com.example.heysrealprojcet.api
 
 import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
-import com.example.heysrealprojcet.model.network.response.StudyListResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -21,5 +21,5 @@ interface StudyApi {
       @Query("includeClosed") includeClosed: Boolean?,
       @Query("page") page: Int?,
       @Query("limit") limit: Int?,
-   ): Response<StudyListResponse>
+   ): Response<ChannelListResponse>
 }
