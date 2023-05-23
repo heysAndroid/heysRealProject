@@ -110,6 +110,7 @@ class ContestExtracurricularDetailViewModel @Inject constructor(
    }
 
    private fun setInterestString() {
+      _interestString.value = ""
       interests.value?.forEach { _interestString.value += "#${it} " }
       _interestString.value = _interestString.value?.dropLast(1)
    }
