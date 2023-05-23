@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,6 +31,12 @@ class ChannelListFragment : Fragment() {
       mainActivity.hideBottomNavigation(true)
    }
 
+   override fun onPause() {
+      super.onPause()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onDestroy() {
       super.onDestroy()
       val mainActivity = activity as MainActivity
@@ -49,23 +54,21 @@ class ChannelListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.btnFilter.setOnClickListener { goToFilter() }
-      binding.btnCreateChannel.setOnClickListener {
-         Log.i("btnCreate: ", "clicked")
-         goToCreateChannel()
-      }
-      binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
       getContentChannelList()
 
       viewModel.channelList.observe(viewLifecycleOwner) {
          if (it.isEmpty()) {
-            binding.noListImage.isVisible = true
-            binding.flCreateChnnel.visibility = View.GONE
-
+            binding.nsCreateChnnel.visibility = View.GONE
+            binding.noListImage.visibility = View.VISIBLE
+            binding.btnChannel.setOnClickListener { goToCreateChannel() }
          } else {
-            binding.noListImage.isVisible = false
-            binding.flCreateChnnel.visibility = View.VISIBLE
+            binding.noListImage.visibility = View.GONE
+            binding.nsCreateChnnel.visibility = View.VISIBLE
+            binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
          }
       }
+
+
    }
 
 
