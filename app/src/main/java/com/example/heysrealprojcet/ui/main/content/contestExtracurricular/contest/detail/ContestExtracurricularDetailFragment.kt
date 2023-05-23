@@ -67,6 +67,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
             }
          }
          zoomButton.setOnClickListener { viewModel.thumbnailUri.value?.let { goToZoom(it) } }
+         linkUrl.setOnClickListener { viewModel.linkUrl.value?.let { goToWebView(it) } }
       }
    }
 
@@ -78,6 +79,12 @@ class ContestExtracurricularDetailFragment : Fragment() {
 
    private fun goToHeys() {
       findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_channelListFragment)
+   }
+
+   private fun goToWebView(url: String) {
+      findNavController().navigate(
+         R.id.action_contestExtracurricularDetailFragment_to_webViewFragment,
+         bundleOf("url" to url))
    }
 
    private fun getContentDetail(id: Int) {

@@ -88,6 +88,9 @@
         <argument
             android:name="contentID"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_contestExtracurricularDetailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
@@ -338,9 +341,6 @@
         android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.ImageZoomFragment"
         android:label="ImageZoomFragment"
         tools:layout="@layout/image_zoom_fragment">
-        <action
-            android:id="@+id/action_imageZoomFragment_to_contestExtracurricularDetailFragment"
-            app:destination="@id/contestExtracurricularDetailFragment" />
         <argument
             android:name="imageUri"
             app:argType="string" />
@@ -404,5 +404,14 @@
             app:destination="@id/bookmarkCollectionFragment"
             app:popUpTo="@id/bookmarkCollectionFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/webview_fragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
     </fragment>
 </navigation>
