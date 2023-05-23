@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,15 +55,19 @@ class ContestListFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
+      binding.vm = viewModel
 
       filterViewModel.interestArray.forEach {
          Log.w("filters: ", it)
       }
-
       setInterestList()
       binding.filterCount.text = "${myInterestList.size}"
       viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }
+
+      viewModel.isCheked.asLiveData().observe(viewLifecycleOwner) {
+         getContestList(myInterestList, !it)
+      }
    }
 
    private fun goToFilter() {
@@ -106,15 +111,15 @@ class ContestListFragment : Fragment() {
             }
          }
       }
-      getContestList(myInterestList)
+      getContestList(myInterestList, !viewModel.isCheked.value)
    }
 
-   private fun getContestList(interests: ArrayList<String>) {
+   private fun getContestList(interests: ArrayList<String>, includeClosed: Boolean) {
       val token = UserPreference.accessToken
       interests.forEach {
          Log.i("interests: ", it)
       }
-      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, interests, null, true).observe(viewLifecycleOwner) { response ->
+      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, interests, null, includeClosed).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContestList(response.data?.data)
