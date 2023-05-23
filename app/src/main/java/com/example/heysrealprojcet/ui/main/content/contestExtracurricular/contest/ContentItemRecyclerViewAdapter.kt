@@ -9,30 +9,30 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularItemViewBinding
 import com.example.heysrealprojcet.model.network.Content
 
-class ContestItemRecyclerViewAdapter(
-   private val contest: MutableList<Content>,
+class ContentItemRecyclerViewAdapter(
+   private val content: MutableList<Content>,
    private val onClickListener: (Int) -> Unit) :
-   RecyclerView.Adapter<ContestItemRecyclerViewAdapter.ViewHolder>() {
+   RecyclerView.Adapter<ContentItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestExtracurricularItemViewBinding
 
    inner class ViewHolder(private val binding: ContestExtracurricularItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(contest: Content) {
+      fun bind(content: Content) {
          binding.apply {
-            title.text = contest.title
-            company.text = contest.company
-            viewCount.text = contest.viewCount.toString()
-            channelCount.text = "${contest.channelCount}팀 빌딩"
-            Glide.with(App.getInstance().applicationContext).load(contest.previewImgUri).into(binding.image)
+            title.text = content.title
+            company.text = content.company
+            viewCount.text = content.viewCount.toString()
+            channelCount.text = "${content.channelCount}팀 빌딩"
+            Glide.with(App.getInstance().applicationContext).load(content.previewImgUri).into(binding.image)
          }
 
          when {
-            contest.dday >= 7 -> {
-               binding.dday.text = "D-${contest.dday}"
+            content.dday >= 7 -> {
+               binding.dday.text = "D-${content.dday}"
                binding.dday.setBackgroundResource(R.drawable.bg_34d676_radius_4)
             }
 
-            1 <= contest.dday -> {
-               binding.dday.text = "D-${contest.dday}"
+            1 <= content.dday -> {
+               binding.dday.text = "D-${content.dday}"
                binding.dday.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
             }
 
@@ -41,7 +41,7 @@ class ContestItemRecyclerViewAdapter(
                binding.dday.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
             }
          }
-         binding.root.setOnClickListener { onClickListener.invoke(contest.id) }
+         binding.root.setOnClickListener { onClickListener.invoke(content.id) }
       }
    }
 
@@ -51,10 +51,10 @@ class ContestItemRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(contest[position])
+      holder.bind(content[position])
    }
 
    override fun getItemCount(): Int {
-      return contest.size
+      return content.size
    }
 }

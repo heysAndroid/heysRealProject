@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.BookmarkCollectionFragmentBinding
+import com.example.heysrealprojcet.databinding.BookmarkListFragmentBinding
 import com.example.heysrealprojcet.model.Contest
 import com.example.heysrealprojcet.ui.main.MainActivity
-import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContestItemRecyclerViewAdapter
+import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContentItemRecyclerViewAdapter
 
-class BookmarkCollectionFragment : Fragment() {
-   private lateinit var binding: BookmarkCollectionFragmentBinding
-   private lateinit var bookmarkItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
+class BookmarkListFragment : Fragment() {
+   private lateinit var binding: BookmarkListFragmentBinding
+   private lateinit var bookmarkItemRecyclerViewAdapter: ContentItemRecyclerViewAdapter
    private lateinit var bookmarkList: MutableList<Contest>
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +41,7 @@ class BookmarkCollectionFragment : Fragment() {
    }
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      binding = BookmarkCollectionFragmentBinding.inflate(inflater, container, false)
+      binding = BookmarkListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
@@ -57,12 +55,11 @@ class BookmarkCollectionFragment : Fragment() {
 //      binding.bookmarkList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
       binding.ivBack.setOnClickListener { findNavController().popBackStack() }
-
       binding.tvEdit.setOnClickListener { goToBookmarkEdit() }
    }
 
    private fun goToBookmarkEdit() {
-      findNavController().navigate(R.id.action_bookmarkCollectionFragment_to_bookmarkEditFragment)
+      findNavController().navigate(R.id.action_bookmarkListFragment_to_bookmarkEditFragment)
    }
 
    private fun makeList() {

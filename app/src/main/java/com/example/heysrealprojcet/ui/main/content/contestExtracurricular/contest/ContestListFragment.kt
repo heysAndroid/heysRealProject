@@ -29,7 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ContestListFragment : Fragment() {
    private lateinit var binding: ContestListFragmentBinding
 
-   private lateinit var contestItemRecyclerViewAdapter: ContestItemRecyclerViewAdapter
+   private lateinit var contentItemRecyclerViewAdapter: ContentItemRecyclerViewAdapter
    val viewModel by viewModels<ContestListViewModel>()
    lateinit var filterViewModel: ContestExtracurricularFilterViewModel
 
@@ -123,12 +123,12 @@ class ContestListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContestList(response.data?.data)
-               contestItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
-                  ContestItemRecyclerViewAdapter(it) { contentID ->
+               contentItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
+                  ContentItemRecyclerViewAdapter(it) { contentID ->
                      goToDetail(contentID)
                   }
                }!!
-               binding.contestList.adapter = contestItemRecyclerViewAdapter
+               binding.contestList.adapter = contentItemRecyclerViewAdapter
                binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             }
 

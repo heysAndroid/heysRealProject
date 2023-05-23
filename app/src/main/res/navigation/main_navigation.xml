@@ -174,8 +174,8 @@
             android:id="@+id/action_myPageFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment" />
         <action
-            android:id="@+id/action_myPageFragment_to_bookmarkCollectionFragment"
-            app:destination="@id/bookmarkCollectionFragment" />
+            android:id="@+id/action_myPageFragment_to_bookmarkListFragment"
+            app:destination="@id/bookmarkListFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelNameFragment"
@@ -385,12 +385,12 @@
     </fragment>
 
     <fragment
-        android:id="@+id/bookmarkCollectionFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myPage.bookMark.BookmarkCollectionFragment"
-        android:label="BookmarkCollectionFragment"
-        tools:layout="@layout/bookmark_collection_fragment">
+        android:id="@+id/bookmarkListFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myPage.bookMark.BookmarkListFragment"
+        android:label="BookmarkListFragment"
+        tools:layout="@layout/bookmark_list_fragment">
         <action
-            android:id="@+id/action_bookmarkCollectionFragment_to_bookmarkEditFragment"
+            android:id="@+id/action_bookmarkListFragment_to_bookmarkEditFragment"
             app:destination="@id/bookmarkEditFragment" />
     </fragment>
 
@@ -400,9 +400,9 @@
         android:label="BookmarkEditFragment"
         tools:layout="@layout/bookmark_edit_fragment">
         <action
-            android:id="@+id/action_bookmarkEditFragment_to_bookmarkCollectionFragment"
-            app:destination="@id/bookmarkCollectionFragment"
-            app:popUpTo="@id/bookmarkCollectionFragment"
+            android:id="@+id/action_bookmarkEditFragment_to_bookmarkListFragment"
+            app:destination="@id/bookmarkListFragment"
+            app:popUpTo="@id/bookmarkListFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

@@ -62,7 +62,7 @@ class BookmarkEditFragment : Fragment() {
 
    private fun goToBookmarkCollection() {
       findNavController().navigate(
-         R.id.action_bookmarkEditFragment_to_bookmarkCollectionFragment,
+         R.id.action_bookmarkEditFragment_to_bookmarkListFragment,
          bundleOf("isSuccess" to true))
    }
 

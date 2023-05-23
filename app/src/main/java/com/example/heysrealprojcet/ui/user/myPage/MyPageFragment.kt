@@ -59,7 +59,7 @@ class MyPageFragment : Fragment() {
    }
 
    private fun goToBookmarkCollection() {
-      findNavController().navigate(R.id.action_myPageFragment_to_bookmarkCollectionFragment)
+      findNavController().navigate(R.id.action_myPageFragment_to_bookmarkListFragment)
    }
 
    private fun getMyInfo() {
@@ -108,9 +108,7 @@ class MyPageFragment : Fragment() {
 
       // 관심분야/직무
       var interestString = ""
-      myPage.interests.forEach {
-         interestString += "#$it "
-      }
+      myPage.interests.forEach { interestString += "#$it " }
       binding.interestContent.text = interestString
 
       // 직업
@@ -166,6 +164,7 @@ class MyPageFragment : Fragment() {
                else -> binding.profileImage.setImageResource(R.drawable.ic_none_50)
             }
          }
+
          100 -> {
             binding.editText.text = "완성된 프로필 카드를 만들었어요."
             when (gender) {
