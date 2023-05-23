@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="166dp"
-    android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_card_shadow_small"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="24dp"
+    android:background="@drawable/bg_white_radius_16"
     android:orientation="horizontal"
-    android:paddingStart="20dp">
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="16dp">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -13,23 +14,21 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/img_thumbnail"
             android:layout_width="122dp"
             android:layout_height="122dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/bg_sample_image_crop" />
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/tv_status"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_height="25dp"
             android:background="@drawable/bg_study_closed"
             android:gravity="center"
             android:text="마감"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
     </FrameLayout>
 
     <LinearLayout
@@ -40,35 +39,27 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="27dp"
-            android:text="수도권 팀원\n모집해요!"
+            android:text="수도권 팀원 모집해요!"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/period"
+            android:id="@+id/tv_pastDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:text="개설한지 7일"
+            android:layout_marginTop="20dp"
+            android:text="개설한지 30일"
             android:textColor="@color/color_828282"
             android:textSize="12sp" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -79,7 +70,7 @@
                 android:src="@drawable/ic_eye" />
 
             <TextView
-                android:id="@+id/view"
+                android:id="@+id/tv_view_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

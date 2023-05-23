@@ -6,8 +6,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class StudyListResponse(
+data class ChannelListResponse(
    @SerializedName("data") val data: ArrayList<ChannelList>,
-   @SerialName("totalPage") val totlaPage: Int,
-   @SerialName("totalPage") val totlaPage: Int,
+   @SerialName("totalPage") val totalPage: Int,
+   @SerialName("message") val message: String,
 ) : java.io.Serializable

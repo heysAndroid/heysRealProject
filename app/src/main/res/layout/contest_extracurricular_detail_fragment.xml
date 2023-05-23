@@ -53,7 +53,7 @@
                         android:background="@drawable/ic_unshare" />
 
                     <ImageButton
-                        android:id="@+id/bookmark_button"
+                        android:id="@+id/btn_bookmark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -89,7 +89,7 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/zoomButton"
+                        android:id="@+id/btn_zoom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -169,7 +169,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/goToHeys"
+                        android:id="@+id/btn_channel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -325,7 +325,7 @@
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:id="@+id/linkUrl"
+                        android:id="@+id/img_url"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginTop="12dp"

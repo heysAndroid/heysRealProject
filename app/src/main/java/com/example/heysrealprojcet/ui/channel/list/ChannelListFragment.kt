@@ -1,23 +1,30 @@
 package com.example.heysrealprojcet.ui.channel.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelListFragmentBinding
-import com.example.heysrealprojcet.enums.ChannelStatus
-import com.example.heysrealprojcet.model.Channel
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChannelListFragment : Fragment() {
    private lateinit var binding: ChannelListFragmentBinding
    private lateinit var channelItemRecyclerViewAdapter: ChannelItemRecyclerViewAdapter
-   private lateinit var channelList: MutableList<Channel>
+   val viewModel by viewModels<ChannelListViewModel>()
+   val args: ChannelListFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -41,33 +48,58 @@ class ChannelListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.btnFilter.setOnClickListener { goToFilter() }
+      binding.btnCreateChannel.setOnClickListener {
+         Log.i("btnCreate: ", "clicked")
+         goToCreateChannel()
+      }
+      binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
+      getContentChannelList()
 
-      makeList()
-      channelItemRecyclerViewAdapter = ChannelItemRecyclerViewAdapter(type = channelList) { goToChannelDetail() }
-      binding.heysList.adapter = channelItemRecyclerViewAdapter
-      binding.heysList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      viewModel.channelList.observe(viewLifecycleOwner) {
+         if (it.isEmpty()) {
+            binding.noListImage.isVisible = true
+            binding.flCreateChnnel.visibility = View.GONE
 
-      binding.filterButton.setOnClickListener { goToFilter() }
-      binding.makeChannel.setOnClickListener { goToChannelList() }
+         } else {
+            binding.noListImage.isVisible = false
+            binding.flCreateChnnel.visibility = View.VISIBLE
+         }
+      }
    }
 
-   private fun makeList() {
-      channelList = mutableListOf(
-         Channel(R.drawable.bg_sample_image_crop, "수도권 팀원 \n모집해요!", 7, ChannelStatus.New, 100, 3),
-         Channel(R.drawable.bg_sample_image_crop, "같이 도전 하실분 구합니다.", 7, ChannelStatus.Normal, 30, 500),
-         Channel(R.drawable.bg_sample_image_crop, "천안 팀원 구해요", 250, ChannelStatus.Closed, 50, 1250),
-      )
-   }
 
    private fun goToFilter() {
       findNavController().navigate(R.id.action_channelListFragment_to_channelFilterFragment)
    }
 
-   private fun goToChannelList() {
+   private fun goToCreateChannel() {
       findNavController().navigate(R.id.action_channelListFragment_to_channelNameFragment)
    }
 
    private fun goToChannelDetail() {
       findNavController().navigate(R.id.action_channelListFragment_to_channelDetailFragment)
+   }
+
+   private fun getContentChannelList() {
+      val token = UserPreference.accessToken
+      viewModel.getContentChannel("Bearer $token", args.contentId, null, null, null, null, null).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               viewModel.setContentChannelList(response.data?.data)
+               channelItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let { ChannelItemRecyclerViewAdapter(it) { goToChannelDetail() } }!!
+               binding.channelList.adapter = channelItemRecyclerViewAdapter
+               binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("getContentChannelList: ", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getContentChannelList: ", response.message.toString())
+            }
+         }
+      }
    }
 }

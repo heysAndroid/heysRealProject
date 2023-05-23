@@ -5,8 +5,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class StudyList(
+data class ChannelList(
    @SerializedName("id") val id: Int,
+   @SerialName("type") val type: String,
    @SerialName("name") val name: String,
    @SerialName("viewCount") val viewCount: Int,
    @SerialName("joinRemainCount") val joinRemainCount: Int,

@@ -52,13 +52,13 @@ class ContestExtracurricularDetailFragment : Fragment() {
       getContentDetail(args.contentID)
 
       with(binding) {
-         goToHeys.setOnClickListener { goToHeys() }
+         btnChannel.setOnClickListener { goToChannelList(args.contentID) }
          btnShare.setOnClickListener {
             val bottomSheet = ContestShareBottomSheet()
             bottomSheet.show(childFragmentManager, null)
          }
 
-         bookmarkButton.setOnClickListener {
+         btnBookmark.setOnClickListener {
             it.isSelected = it.isSelected != true
             if (it.isSelected) {
                contentAddBookmark(args.contentID)
@@ -66,8 +66,8 @@ class ContestExtracurricularDetailFragment : Fragment() {
                contentRemoveBookmark(args.contentID)
             }
          }
-         zoomButton.setOnClickListener { viewModel.thumbnailUri.value?.let { goToZoom(it) } }
-         linkUrl.setOnClickListener { viewModel.linkUrl.value?.let { goToWebView(it) } }
+         btnZoom.setOnClickListener { viewModel.thumbnailUri.value?.let { goToZoom(it) } }
+         imgUrl.setOnClickListener { viewModel.linkUrl.value?.let { goToWebView(it) } }
       }
    }
 
@@ -77,8 +77,10 @@ class ContestExtracurricularDetailFragment : Fragment() {
          bundleOf("imageUri" to imageUri))
    }
 
-   private fun goToHeys() {
-      findNavController().navigate(R.id.action_contestExtracurricularDetailFragment_to_channelListFragment)
+   private fun goToChannelList(contentId: Int) {
+      findNavController().navigate(
+         R.id.action_contestExtracurricularDetailFragment_to_channelListFragment,
+         bundleOf("contentId" to contentId))
    }
 
    private fun goToWebView(url: String) {
@@ -189,7 +191,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
 
    private fun setBookmark() {
       viewModel.isBookMarked.observe(viewLifecycleOwner) {
-         binding.bookmarkButton.isSelected = it
+         binding.btnBookmark.isSelected = it
       }
    }
 }

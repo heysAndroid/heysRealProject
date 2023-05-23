@@ -1,45 +1,54 @@
 package com.example.heysrealprojcet.ui.channel.list
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelItemViewBinding
-import com.example.heysrealprojcet.enums.ChannelStatus
-import com.example.heysrealprojcet.model.Channel
+import com.example.heysrealprojcet.model.network.ChannelList
 
 class ChannelItemRecyclerViewAdapter(
-   private val type: MutableList<Channel>,
+   private val type: MutableList<ChannelList>,
    private val onClickListener: () -> Unit) :
    RecyclerView.Adapter<ChannelItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ChannelItemViewBinding
 
    inner class ViewHolder(private val binding: ChannelItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(channel: Channel) {
-         binding.status.text = channel.status.status
-         binding.image.setImageResource(channel.resId)
-         binding.title.text = channel.title
-         binding.period.text = "개설한지 ${channel.period}일"
-         binding.view.text = channel.view.toString()
-         binding.root.setOnClickListener { onClickListener.invoke() }
-
-         val bgShape = binding.status.background as GradientDrawable
-         when (channel.status) {
-            ChannelStatus.New -> bgShape.setColor(Color.parseColor("#34D676"))
-            ChannelStatus.Closed -> bgShape.setColor(Color.parseColor("#828282"))
-            else -> {
-               bgShape.setColor(Color.parseColor("#FD4158"))
-               // 지금은 전체 인원으로 표기
-               // TODO (전체 인원) - (신청 인원) 으로 수정 필요
-               binding.status.text = if (channel.capacity != 0) {
-                  "${channel.capacity}명 ${channel.status.status}"
-               } else {
-                  "마감"
-               }
-               binding.status.setPadding(6, 0, 6, 0)
-            }
+      fun bind(channel: ChannelList) {
+         binding.apply {
+            tvTitle.text = channel.name
+            tvPastDay.text = "개설한지 ${channel.dday}일"
+            tvViewCount.text = "${channel.viewCount}"
+            Glide.with(App.getInstance().applicationContext).load(channel.thumbnailUri).into(imgThumbnail)
+            root.setOnClickListener { onClickListener.invoke() }
          }
+
+         // 모집 마감일 지나지 않음
+         if (channel.dday > 0) {
+            when {
+               // 최대 참여정원 4명 이상
+               4 <= channel.joinRemainCount -> {
+                  binding.tvStatus.text = "참여가능"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_34d676_radius_4)
+               }
+
+               1 <= channel.joinRemainCount -> {
+                  binding.tvStatus.text = "${channel.joinRemainCount}명 참여가능"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
+               }
+
+               else -> {
+                  binding.tvStatus.text = "마감"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+               }
+            }
+         } else {
+            binding.tvStatus.text = "마감"
+            binding.tvStatus.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+         }
+
       }
    }
 

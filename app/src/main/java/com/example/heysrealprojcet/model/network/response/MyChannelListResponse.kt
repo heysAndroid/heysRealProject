@@ -7,5 +7,5 @@ import kotlinx.serialization.SerialName
 @kotlinx.serialization.Serializable
 data class MyChannelListResponse(
    @SerializedName("data") val myChannel: ArrayList<MyChannel>,
-   @SerialName("message") val message: String
+   @SerialName("message") val message: String,
 ) : java.io.Serializable
