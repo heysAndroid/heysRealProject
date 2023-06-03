@@ -53,6 +53,24 @@ class ChannelListFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
+      when (args.channelType) {
+         "contest" -> {
+            binding.tvTitle.text = "공모전 채널"
+            binding.layoutFilter.visibility = View.GONE
+         }
+
+         "extra" -> {
+            binding.tvTitle.text = "대외활동 채널"
+            binding.layoutFilter.visibility = View.GONE
+         }
+
+         else -> {
+            binding.tvTitle.text = "스터디 채널"
+            binding.layoutFilter.visibility = View.VISIBLE
+         }
+      }
+
       binding.btnFilter.setOnClickListener { goToFilter() }
       getContentChannelList()
 
@@ -67,10 +85,7 @@ class ChannelListFragment : Fragment() {
             binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
          }
       }
-
-
    }
-
 
    private fun goToFilter() {
       findNavController().navigate(R.id.action_channelListFragment_to_channelFilterFragment)

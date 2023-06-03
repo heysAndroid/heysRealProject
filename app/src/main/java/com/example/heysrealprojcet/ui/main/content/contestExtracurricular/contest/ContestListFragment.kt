@@ -84,11 +84,12 @@ class ContestListFragment : Fragment() {
                bundleOf(MY_INTEREST_LIST to null))
          }
       }
-
    }
 
    private fun goToDetail(contentId: Int) {
-      findNavController().navigate(R.id.action_contestListFragment_to_contestExtracurricularDetailFragment, bundleOf("contentID" to contentId))
+      findNavController().navigate(
+         R.id.action_contestListFragment_to_contestExtracurricularDetailFragment,
+         bundleOf("channelType" to "contest", "contentId" to contentId))
    }
 
    private fun setInterestList() {
