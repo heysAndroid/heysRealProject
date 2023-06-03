@@ -95,21 +95,8 @@ class MainFragment : Fragment() {
       makeContestList()
       makeExtracurricularList()
 
-      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
-         list = contestList,
-         myInterestList = UserPreference.interests.split(",").toMutableList()
-
-      ) { goToContest(type = "interest") }
-
-      binding.contestList.apply {
-         adapter = categoryRecyclerViewAdapter
-         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-         addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
-         setHasFixedSize(true)
-      }
       // 대외활동
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
-
       binding.extracurricularList.apply {
          adapter = extracurricularRecyclerViewAdapter
          layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -194,6 +181,20 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
    }
 
+   private fun setInterestRecyclerView() {
+      categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
+         list = contestList,
+         myInterestList = UserPreference.interests.split(",").toMutableList()
+      ) { goToContest(type = "interest") }
+
+      binding.contestList.apply {
+         adapter = categoryRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
+         setHasFixedSize(true)
+      }
+   }
+
    private fun getMyInfo() {
       val token = UserPreference.accessToken
       viewModel.getMyInfo("Bearer $token").observe(viewLifecycleOwner) { response ->
@@ -201,6 +202,7 @@ class MainFragment : Fragment() {
             is NetworkResult.Success -> {
                Log.w("getMyInfo: ", "success")
                response.data?.user?.let { setUserPreference(it) }
+               setInterestRecyclerView()
             }
 
             is NetworkResult.Loading -> {

@@ -43,7 +43,7 @@ class CategoryRecyclerViewAdapter(
             }
             else -> {
                when (myInterestList.size) {
-                  0 -> "관심분야 #${myInterestList}과\n 관련있는 공모전이에요!"
+                  1 -> "관심분야 #${myInterestList}과\n 관련있는 공모전이에요!"
                   else -> "관심분야 #${myInterestList[0]} 외 ${myInterestList.size - 1}개와 관련있는 공모전이에요!"
                }
             }
