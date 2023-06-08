@@ -62,9 +62,9 @@ class ContestListFragment : Fragment() {
       }
       setInterestList()
       binding.filterCount.text = "${myInterestList.size}"
-      viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       binding.filterButton.setOnClickListener { goToFilter() }
 
+      viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       viewModel.isCheked.asLiveData().observe(viewLifecycleOwner) {
          getContestList(myInterestList, !it)
       }
@@ -89,7 +89,7 @@ class ContestListFragment : Fragment() {
    private fun goToDetail(contentId: Int) {
       findNavController().navigate(
          R.id.action_contestListFragment_to_contestExtracurricularDetailFragment,
-         bundleOf("channelType" to "contest", "contentId" to contentId))
+         bundleOf("channelType" to ChannelType.Contest.typeEng, "contentId" to contentId))
    }
 
    private fun setInterestList() {

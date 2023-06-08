@@ -34,6 +34,8 @@ class ChannelPurposeDialog : DialogFragment() {
       binding.lifecycleOwner = this
 
       viewModel.selectedPurpose.observe(viewLifecycleOwner) { array ->
+         ChannelPreference.channelPurposeArray = array
+
          unselectAllButton()
          array.forEach {
             when (it) {

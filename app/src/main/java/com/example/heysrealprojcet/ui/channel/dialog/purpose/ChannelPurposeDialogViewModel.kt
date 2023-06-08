@@ -2,7 +2,11 @@ package com.example.heysrealprojcet.ui.channel.dialog.purpose
 
 import android.view.View
 import android.widget.Button
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.util.ChannelPreference
 import kotlinx.coroutines.launch
 
@@ -36,13 +40,12 @@ class ChannelPurposeDialogViewModel : ViewModel() {
       if (selectedPurpose.value?.contains(text) == true) {
          _selectedPurpose.value?.remove(text)
          _selectedPurpose.apply { postValue(value) }
-         _selectedNum.postValue(_selectedNum.value?.minus(1))
       } else {
          if (selectedNum.value!! < 2) {
             _selectedPurpose.value?.add(text)
             _selectedPurpose.apply { postValue(value) }
-            _selectedNum.postValue(_selectedNum.value?.plus(1))
          }
       }
+      _selectedNum.postValue(_selectedPurpose.value?.size)
    }
 }

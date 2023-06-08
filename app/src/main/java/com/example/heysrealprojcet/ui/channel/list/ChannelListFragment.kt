@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelListFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
@@ -55,12 +57,12 @@ class ChannelListFragment : Fragment() {
       binding.lifecycleOwner = this
 
       when (args.channelType) {
-         "contest" -> {
+         ChannelType.Contest.typeEng -> {
             binding.tvTitle.text = "공모전 채널"
             binding.layoutFilter.visibility = View.GONE
          }
 
-         "extra" -> {
+         ChannelType.Extracurricular.typeEng -> {
             binding.tvTitle.text = "대외활동 채널"
             binding.layoutFilter.visibility = View.GONE
          }
@@ -71,9 +73,7 @@ class ChannelListFragment : Fragment() {
          }
       }
 
-      binding.btnFilter.setOnClickListener { goToFilter() }
       getContentChannelList()
-
       viewModel.channelList.observe(viewLifecycleOwner) {
          if (it.isEmpty()) {
             binding.nsCreateChnnel.visibility = View.GONE
@@ -87,12 +87,10 @@ class ChannelListFragment : Fragment() {
       }
    }
 
-   private fun goToFilter() {
-      findNavController().navigate(R.id.action_channelListFragment_to_channelFilterFragment)
-   }
-
    private fun goToCreateChannel() {
-      findNavController().navigate(R.id.action_channelListFragment_to_channelNameFragment)
+      findNavController().navigate(
+         R.id.action_channelListFragment_to_channelNameFragment,
+         bundleOf("channelType" to args.channelType, "contentId" to args.contentId))
    }
 
    private fun goToChannelDetail() {

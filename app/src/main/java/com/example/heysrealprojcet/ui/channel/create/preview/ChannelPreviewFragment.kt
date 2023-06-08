@@ -54,7 +54,13 @@ class ChannelPreviewFragment : Fragment() {
       setChannelRecruitmentMethod()
       getMyInfo()
 
-      binding.btnNext.setOnClickListener { requestCreateStudy() }
+      binding.btnNext.setOnClickListener {
+         if (ChannelPreference.contentId < 0) {
+            requestCreateStudy()
+         } else {
+            requestCreateChannel()
+         }
+      }
 //      binding.btnBack.setOnClickListener { goToBack() }
 
       viewModel.link1.observe(viewLifecycleOwner) {
@@ -135,6 +141,42 @@ class ChannelPreviewFragment : Fragment() {
       }
    }
 
+   private fun requestCreateChannel() {
+      viewModel.channelInterest
+      val channel = Study(
+         name = ChannelPreference.channelName,
+         purposes = ChannelPreference.channelPurposeArray,
+         online = ChannelPreference.channelFormEng,
+         location = ChannelPreference.channelRegion,
+         limit = ChannelPreference.channelCapacity,
+         recruitEndDate = ChannelPreference.channelRecruitEndDateTime,
+         recruitMethod = ChannelPreference.channelRecruitmentMethodEng,
+         contentText = ChannelPreference.channelActivity,
+         recruitText = ChannelPreference.channelMember,
+         thumbnailUri = "",
+         linkUri = arrayListOf(viewModel.link1.value!!, viewModel.link2.value!!),
+         interests = ChannelPreference.channelInterestArray
+      )
+
+      val token = UserPreference.accessToken
+      viewModel.createContentChannel("Bearer $token", ChannelPreference.contentId, channel).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.i("createChannel: ", "success")
+               response.data?.id?.let { goToComplete(it) }
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("createChannel: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("createChannel: ", "loading")
+            }
+         }
+      }
+   }
+
    private fun getMyInfo() {
       viewModel.getMyInfo("Bearer ${UserPreference.accessToken}")
       viewModel.responseMyPage.observe(viewLifecycleOwner) { response ->
@@ -169,6 +211,7 @@ class ChannelPreviewFragment : Fragment() {
                else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
             }
          }
+
          in 50..99 -> {
             when (user.gender) {
                Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
@@ -176,6 +219,7 @@ class ChannelPreviewFragment : Fragment() {
                else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
             }
          }
+
          100 -> {
             when (user.gender) {
                Gender.Male.genderEnglish -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)

@@ -2,11 +2,13 @@ package com.example.heysrealprojcet.ui.channel.create.preview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
+import com.example.heysrealprojcet.repository.ChannelRepository
 import com.example.heysrealprojcet.repository.MyPageRepository
 import com.example.heysrealprojcet.repository.StudyRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
@@ -19,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChannelPreviewViewModel @Inject constructor(
-   private val studyRepository: StudyRepository, private val myPageRepository: MyPageRepository) : BaseViewModel() {
+   private val studyRepository: StudyRepository, private val channelRepository: ChannelRepository, private val myPageRepository: MyPageRepository) : BaseViewModel() {
    var channelName = MutableLiveData(ChannelPreference.channelName)
    var channelPurposeString = MutableLiveData("")
    var channelCapacity = MutableLiveData(ChannelPreference.channelCapacity.toString())
@@ -90,6 +92,8 @@ class ChannelPreviewViewModel @Inject constructor(
          _responseCreateStudy.value = values
       }
    }
+
+   fun createContentChannel(token: String, contentId: Int, channel: Study) = channelRepository.createContentChannel(token, contentId, channel).asLiveData()
 
    fun getMyInfo(token: String) = viewModelScope.launch {
       myPageRepository.getMyInfo(token).collect { values ->

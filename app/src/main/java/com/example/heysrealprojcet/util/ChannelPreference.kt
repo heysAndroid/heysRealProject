@@ -2,19 +2,35 @@ package com.example.heysrealprojcet.util
 
 import com.chibatching.kotpref.KotprefModel
 import com.chibatching.kotpref.gsonpref.gsonPref
-import com.example.heysrealprojcet.enums.ChannelType
 
 object ChannelPreference : KotprefModel() {
    fun reset() {
+      channelName = ""
+      channelType = ""
+      channelPurposeArray = arrayListOf()
+
       channelForm = ""
-      channelType = ChannelType.Extra.typeEng
+      channelFormEng = ""
+
       channelRegion = ""
       channelCapacity = 0
+
       channelRecruitmentMethod = ""
+      channelRecruitmentMethodEng = ""
+
       channelRecruitEndDay = ""
       channelRecruitEndTime = ""
+      channelRecruitEndDateTime = ""
+
+      channelInterestArray = arrayListOf()
+
       channelActivity = ""
       channelMember = ""
+
+      link1 = ""
+      link2 = ""
+
+      contentId = -1
    }
 
    /*
@@ -98,4 +114,9 @@ object ChannelPreference : KotprefModel() {
    링크 2
     */
    var link2 by stringPref()
+
+   /*
+   콘텐츠 Id
+    */
+   var contentId by intPref()
 }

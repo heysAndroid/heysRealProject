@@ -35,6 +35,8 @@ class ChannelInterestDialog : DialogFragment() {
       binding.lifecycleOwner = this
 
       viewModel.selectedInterest.observe(viewLifecycleOwner) { array ->
+         ChannelPreference.channelInterestArray = array
+
          unselectAllButton()
          array.forEach {
             when (it) {

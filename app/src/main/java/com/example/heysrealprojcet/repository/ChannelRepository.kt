@@ -1,9 +1,11 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.ChannelApi
+import com.example.heysrealprojcet.model.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
+import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -40,6 +42,12 @@ class ChannelRepository @Inject constructor(
    ): Flow<NetworkResult<ChannelListResponse>> {
       return flow {
          emit(safeApiCall { channelApi.getContentChannelList(token, id, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun createContentChannel(token: String, contentId: Int, channel: Study): Flow<NetworkResult<CreateStudyResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.createContentChannel(token, contentId, channel) })
       }.flowOn(Dispatchers.IO)
    }
 }
