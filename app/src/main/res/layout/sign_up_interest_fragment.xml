@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.sign_up.interest.SignUpInterestViewModel" />
+            type="com.example.heysrealprojcet.ui.login.sign_up.interest.SignUpInterestViewModel" />
 
         <variable
             name="vm2"

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.password
+package com.example.heysrealprojcet.ui.login.sign_up.password
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

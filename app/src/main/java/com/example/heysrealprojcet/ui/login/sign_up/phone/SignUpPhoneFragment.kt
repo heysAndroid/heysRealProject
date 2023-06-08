@@ -1,31 +1,30 @@
-package com.example.heysrealprojcet.ui.sign_in.phone
+package com.example.heysrealprojcet.ui.login.sign_up.phone
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.EventObserver
-import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.SignInPhoneFragmentBinding
+import com.example.heysrealprojcet.databinding.SignUpPhoneFragmentBinding
 import com.example.heysrealprojcet.model.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
-class SignInPhoneFragment : Fragment() {
-   private lateinit var binding: SignInPhoneFragmentBinding
-   private val viewModel: SignInPhoneViewModel by viewModels()
+class SignUpPhoneFragment : Fragment() {
+   private lateinit var binding: SignUpPhoneFragmentBinding
+   private val viewModel: SignUpPhoneViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -48,7 +47,7 @@ class SignInPhoneFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = SignInPhoneFragmentBinding.inflate(inflater, container, false)
+      binding = SignUpPhoneFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       return binding.root
    }
@@ -63,30 +62,23 @@ class SignInPhoneFragment : Fragment() {
       val inputMethodManager =
          requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
-
-      viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if (it) CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
-      }
    }
 
    private fun requestCheckPhoneNumber() {
       viewModel.checkPhoneNumber(Phone(UserPreference.phoneNumber))
       viewModel.response.observe(viewLifecycleOwner, EventObserver { response ->
          val alert = AlertDialog.Builder(requireContext())
-
          when (response) {
             is NetworkResult.Success -> {
                if (response.data?.isUserExisted == true) {
-                  goToPassword()
+                  val bottomSheet = ExistingUserBottomSheet()
+                  bottomSheet.show(childFragmentManager, bottomSheet.tag)
                } else {
-                  viewModel.showSnackBar()
-                  binding.okButton.isEnabled = false
+                  goToPhoneVerification()
                }
             }
-
             is NetworkResult.Error -> {
                alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
-               Log.w("checkMember error", response.message.toString())
             }
 
             is NetworkResult.Loading -> {
@@ -96,9 +88,10 @@ class SignInPhoneFragment : Fragment() {
       })
    }
 
-   private fun goToPassword() {
-      if (findNavController().currentDestination?.id == R.id.signInPhoneFragment) {
-         findNavController().navigate(R.id.action_signInPhoneFragment_to_signInPasswordFragment)
-      }
+
+   private fun goToPhoneVerification() {
+      findNavController().navigate(
+         com.example.heysrealprojcet.R.id.action_signUpPhoneFragment_to_signUpVerificationFragment,
+         bundleOf("phoneNumber" to viewModel.phoneNumber.value))
    }
 }

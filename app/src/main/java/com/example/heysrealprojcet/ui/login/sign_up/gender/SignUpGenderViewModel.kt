@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.gender
+package com.example.heysrealprojcet.ui.login.sign_up.gender
 
 import android.view.View
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.age
+package com.example.heysrealprojcet.ui.login.sign_up.age
 
 import android.os.Bundle
 import android.util.Log

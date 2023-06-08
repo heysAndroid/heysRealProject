@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up
+package com.example.heysrealprojcet.ui.login.sign_up
 
 import android.graphics.Color
 import android.os.Bundle

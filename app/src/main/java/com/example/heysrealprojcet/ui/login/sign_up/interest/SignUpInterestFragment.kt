@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_up.interest
+package com.example.heysrealprojcet.ui.login.sign_up.interest
 
 import android.app.AlertDialog
 import android.os.Bundle

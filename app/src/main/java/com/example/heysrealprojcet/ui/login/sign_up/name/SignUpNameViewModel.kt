@@ -1,7 +1,11 @@
-package com.example.heysrealprojcet.ui.sign_up.name
+package com.example.heysrealprojcet.ui.login.sign_up.name
 
 import android.view.View
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.util.UserPreference
 import kotlinx.coroutines.launch
 

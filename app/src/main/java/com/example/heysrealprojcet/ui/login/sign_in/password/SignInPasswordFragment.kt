@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.sign_in.password
+package com.example.heysrealprojcet.ui.login.sign_in.password
 
 import android.content.Context
 import android.os.Bundle

@@ -29,7 +29,7 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.sign_up.SignUpActivity"
+            android:name=".ui.login.sign_up.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
 
