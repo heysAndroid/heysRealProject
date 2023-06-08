@@ -49,13 +49,11 @@ class ChannelInformFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      ChannelPreference.reset()
-
       binding.purposeContainer.setOnClickListener {
          val purposeDialog = ChannelPurposeDialog()
          purposeDialog.setOnOKClickListener { content ->
             binding.purpose.text = content
-            binding.purpose.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.purpose.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
          }
          purposeDialog.show(childFragmentManager, null)
       }
@@ -64,7 +62,7 @@ class ChannelInformFragment : Fragment() {
          val formDialog = ChannelFormDialog()
          formDialog.setOnOKClickListener { content ->
             binding.form.text = content
-            binding.form.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.form.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
          }
          formDialog.show(childFragmentManager, null)
       }
@@ -73,7 +71,7 @@ class ChannelInformFragment : Fragment() {
          val capacityDialog = ChannelCapacityDialog()
          capacityDialog.setOnOKClickListener { content ->
             binding.capacity.text = "최대 ${content}명"
-            binding.capacity.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.capacity.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
          }
          capacityDialog.show(childFragmentManager, null)
       }
@@ -82,7 +80,7 @@ class ChannelInformFragment : Fragment() {
          val recruitmentMethodDialog = ChannelRecruitmentMethodDialog()
          recruitmentMethodDialog.setOnOKClickListener { content ->
             binding.recruitmentMethod.text = content
-            binding.recruitmentMethod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.recruitmentMethod.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
          }
          recruitmentMethodDialog.show(childFragmentManager, null)
       }
@@ -105,7 +103,7 @@ class ChannelInformFragment : Fragment() {
             val endTimeString = endDateTime.format(DateTimeFormatter.ofPattern("a hh:mm"))
 
             binding.recruitmentPeriod.text = "${year.substring(2)}/$month/$day ${endTimeString}까지"
-            binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.recruitmentPeriod.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
             ChannelPreference.channelRecruitEndDateTime = endDateTime.toString()
          }
       }
@@ -114,7 +112,7 @@ class ChannelInformFragment : Fragment() {
          val interestDialog = ChannelInterestDialog()
          interestDialog.setOnOKClickListener { content ->
             binding.interest.text = content
-            binding.interest.setTextColor(ContextCompat.getColor(context!!, R.color.color_34d676))
+            binding.interest.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_34d676))
          }
          interestDialog.show(childFragmentManager, null)
       }
