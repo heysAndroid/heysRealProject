@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -210,11 +211,20 @@ class MainFragment : Fragment() {
             }
 
             is NetworkResult.Error -> {
-               Log.w("getMyInfo: ", response.message.toString())
+               Log.w("getMyInfo error: ", response.message.toString())
+               goToLogin()
             }
          }
-
       }
+   }
+
+   private fun goToLogin() {
+      val intent = Intent(requireContext(), MainActivity::class.java).apply {
+         putExtra(Intent.EXTRA_TEXT, "login")
+         type = "text/plain"
+      }
+      startActivity(intent)
+      requireActivity().finish()
    }
 
    private fun setUserPreference(user: MyPage) {
