@@ -22,10 +22,11 @@
 
         <TextView
             android:id="@+id/tv_status"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="@drawable/bg_study_closed"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_closed"
             android:gravity="center"
+            android:paddingVertical="4dp"
             android:text="마감"
             android:textColor="@color/white"
             android:textSize="12sp" />

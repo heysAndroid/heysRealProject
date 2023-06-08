@@ -21,7 +21,9 @@ class ChannelItemRecyclerViewAdapter(
             tvTitle.text = channel.name
             tvPastDay.text = "개설한지 ${channel.dday}일"
             tvViewCount.text = "${channel.viewCount}"
-            Glide.with(App.getInstance().applicationContext).load(channel.thumbnailUri).into(imgThumbnail)
+            Glide.with(App.getInstance().applicationContext)
+               .load(channel.thumbnailUri)
+               .error(R.drawable.bg_category_yellow_crop).into(imgThumbnail)
             root.setOnClickListener { onClickListener.invoke() }
          }
 
@@ -31,24 +33,23 @@ class ChannelItemRecyclerViewAdapter(
                // 최대 참여정원 4명 이상
                4 <= channel.joinRemainCount -> {
                   binding.tvStatus.text = "참여가능"
-                  binding.tvStatus.setBackgroundResource(R.drawable.bg_34d676_radius_4)
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_available)
                }
 
                1 <= channel.joinRemainCount -> {
                   binding.tvStatus.text = "${channel.joinRemainCount}명 참여가능"
-                  binding.tvStatus.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_almost_closed)
                }
 
                else -> {
                   binding.tvStatus.text = "마감"
-                  binding.tvStatus.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_closed)
                }
             }
          } else {
             binding.tvStatus.text = "마감"
-            binding.tvStatus.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+            binding.tvStatus.setBackgroundResource(R.drawable.bg_status_closed)
          }
-
       }
    }
 

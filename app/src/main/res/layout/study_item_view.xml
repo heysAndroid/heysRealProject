@@ -24,7 +24,7 @@
             android:id="@+id/start_Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_study_closed"
+            android:background="@drawable/bg_status_closed"
             android:gravity="center"
             android:text="마감"
             android:textColor="@color/white"

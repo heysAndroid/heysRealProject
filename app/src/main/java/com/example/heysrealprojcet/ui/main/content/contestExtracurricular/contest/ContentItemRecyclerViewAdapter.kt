@@ -28,17 +28,17 @@ class ContentItemRecyclerViewAdapter(
          when {
             content.dday >= 7 -> {
                binding.dday.text = "D-${content.dday}"
-               binding.dday.setBackgroundResource(R.drawable.bg_34d676_radius_4)
+               binding.dday.setBackgroundResource(R.drawable.bg_status_available)
             }
 
             1 <= content.dday -> {
                binding.dday.text = "D-${content.dday}"
-               binding.dday.setBackgroundResource(R.drawable.bg_fd494a_radius_4)
+               binding.dday.setBackgroundResource(R.drawable.bg_status_almost_closed)
             }
 
             else -> {
                binding.dday.text = "마감"
-               binding.dday.setBackgroundResource(R.drawable.bg_e1e1e1_radius_4)
+               binding.dday.setBackgroundResource(R.drawable.bg_status_closed)
             }
          }
          binding.root.setOnClickListener { onClickListener.invoke(content.id) }

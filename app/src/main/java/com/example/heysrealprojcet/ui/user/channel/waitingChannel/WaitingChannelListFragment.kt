@@ -17,7 +17,6 @@ class WaitingChannelListFragment : Fragment() {
    private lateinit var engagedChannelItemRecyclerViewAdapter: WaitingChannelItemRecyclerViewAdapter
    private lateinit var channelList: MutableList<Channel>
 
-
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
