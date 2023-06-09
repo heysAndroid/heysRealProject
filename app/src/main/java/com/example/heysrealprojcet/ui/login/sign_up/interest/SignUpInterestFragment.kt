@@ -14,7 +14,7 @@ import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpInterestFragmentBinding
-import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference

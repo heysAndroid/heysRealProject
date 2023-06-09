@@ -3,7 +3,7 @@ package com.example.heysrealprojcet.ui.channel.list.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
-import com.example.heysrealprojcet.model.ChannelDetail
+import com.example.heysrealprojcet.model.network.ChannelDetail
 import com.example.heysrealprojcet.repository.ChannelRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,10 +1,9 @@
 package com.example.heysrealprojcet.api
 
-import com.example.heysrealprojcet.model.Phone
-import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.Phone
+import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.model.network.response.SignUpResponse
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 

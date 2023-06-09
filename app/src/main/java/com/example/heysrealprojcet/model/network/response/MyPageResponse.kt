@@ -1,6 +1,6 @@
 package com.example.heysrealprojcet.model.network.response
 
-import com.example.heysrealprojcet.model.MyPage
+import com.example.heysrealprojcet.model.network.MyPage
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

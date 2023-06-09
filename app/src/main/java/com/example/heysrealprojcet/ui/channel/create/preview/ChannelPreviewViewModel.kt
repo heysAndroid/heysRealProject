@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.Event
-import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.SignUpResponse
 import com.example.heysrealprojcet.repository.SignupRepository

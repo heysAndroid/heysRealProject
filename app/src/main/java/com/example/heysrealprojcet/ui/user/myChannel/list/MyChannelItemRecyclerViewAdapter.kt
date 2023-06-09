@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyChannelItemViewBinding
-import com.example.heysrealprojcet.model.MyChannel
+import com.example.heysrealprojcet.model.network.MyChannel
 
 class MyChannelItemRecyclerViewAdapter(private val type: MutableList<MyChannel>, private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<MyChannelItemRecyclerViewAdapter.ViewHolder>() {

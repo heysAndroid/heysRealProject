@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ApprovedUserItemViewBinding
 import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.ApprovedUserList
+import com.example.heysrealprojcet.model.network.ApprovedUserList
 
 class ApprovedUserListRecyclerViewAdapter(
    private val user: MutableList<ApprovedUserList>?

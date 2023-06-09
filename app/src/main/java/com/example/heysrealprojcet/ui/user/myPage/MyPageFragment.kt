@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MyPageFragmentBinding
 import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.MyPage
+import com.example.heysrealprojcet.model.network.MyPage
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
