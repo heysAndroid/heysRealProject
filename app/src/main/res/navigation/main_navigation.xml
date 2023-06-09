@@ -75,8 +75,8 @@
             app:argType="string" />
         <argument
             android:name="contentId"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/contestExtracurricularDetailFragment"
@@ -97,8 +97,8 @@
             app:destination="@id/webViewFragment" />
         <argument
             android:name="contentId"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
 
     </fragment>
     <fragment
@@ -146,6 +146,9 @@
         <action
             android:id="@+id/action_channelDetailFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_channelEditFragment"
+            app:destination="@id/channelEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/extracurricularListFragment"
@@ -209,8 +212,8 @@
             app:argType="string" />
         <argument
             android:name="contentId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/channelInformFragment"
@@ -246,12 +249,6 @@
         android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.MyChannelNotificationFragment"
         android:label="MyChannelNotificationFragment"
         tools:layout="@layout/my_channel_notification_fragment" />
-    <fragment
-        android:id="@+id/myChannelPrivateNotificationFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.privateNotification.MyChannelPrivateNotificationFragment"
-        android:label="MyChannelPrivateNotificationFragment"
-        tools:layout="@layout/my_channel_private_notification_fragment" />
-
 
     <fragment
         android:id="@+id/settingFragment"
@@ -438,6 +435,27 @@
         tools:layout="@layout/webview_fragment">
         <argument
             android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelEditFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.list.edit.ChannelEditFragment"
+        android:label="ChannelEditFragment"
+        tools:layout="@layout/channel_edit_fragment">
+        <argument
+            android:name="channelDetail"
+            app:argType="com.example.heysrealprojcet.model.network.ChannelDetail" />
+        <argument
+            android:name="interestString"
+            app:argType="string" />
+        <argument
+            android:name="purposeString"
+            app:argType="string" />
+        <argument
+            android:name="recruitEndDate"
+            app:argType="string" />
+        <argument
+            android:name="recruitEndTime"
             app:argType="string" />
     </fragment>
 </navigation>

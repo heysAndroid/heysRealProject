@@ -18,6 +18,7 @@ import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.enums.Gender
+import com.example.heysrealprojcet.enums.RelationshipWithMe
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.ApprovedUserImageListRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.channel.list.detail.waitingUser.WaitingUserImageListRecyclerViewAdapter
@@ -66,6 +67,8 @@ class ChannelDetailFragment : Fragment() {
 
       getChannelDetail(args.channelId)
       channelViewCountUp(args.channelId)
+      setRelationshipWithMe()
+
       with(binding) {
          btnBookmark.setOnClickListener {
             it.isSelected = it.isSelected != true
@@ -78,6 +81,7 @@ class ChannelDetailFragment : Fragment() {
          allApprovedUser.setOnClickListener { goToApprovedUserList() }
          allWaitingUser.setOnClickListener { goToWaitingUserList() }
          btnJoin.setOnClickListener { }
+         tvEdit.setOnClickListener { goToChannelEdit() }
       }
    }
 
@@ -99,6 +103,18 @@ class ChannelDetailFragment : Fragment() {
                bundleOf("waitingUser" to waitingUserList.toTypedArray()))
          }
       }
+   }
+
+   private fun goToChannelEdit() {
+      findNavController().navigate(
+         R.id.action_channelDetailFragment_to_channelEditFragment,
+         bundleOf(
+            "channelDetail" to viewModel.channelDetail.value,
+            "interestString" to viewModel.interestString.value,
+            "purposeString" to viewModel.purposeString.value,
+            "recruitEndDate" to viewModel.recruitEndDate.value,
+            "recruitEndTime" to viewModel.recruitEndTime.value)
+      )
    }
 
    private fun getChannelDetail(id: Int) {
@@ -331,6 +347,47 @@ class ChannelDetailFragment : Fragment() {
             binding.link2.visibility = View.VISIBLE
             binding.link1.setOnClickListener { goToWebView(channelDetail.links[0].link) }
             binding.link2.setOnClickListener { goToWebView(channelDetail.links[1].link) }
+         }
+      }
+   }
+
+   private fun setRelationshipWithMe() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         when (it.relationshipWithMe) {
+            // 리더
+            RelationshipWithMe.Leader.relationship -> {
+               binding.btnJoin.apply {
+                  text = "이미 참여중이에요"
+                  isEnabled = false
+               }
+               binding.tvEdit.visibility = View.VISIBLE
+            }
+
+            // 방문자
+            RelationshipWithMe.Visiter.relationship -> {
+               binding.btnJoin.apply {
+                  text = "채널 참여하기"
+                  isEnabled = true
+               }
+               binding.tvEdit.visibility = View.GONE
+            }
+
+            RelationshipWithMe.Member.relationship -> {
+               binding.btnJoin.apply {
+                  text = "이미 참여중이에요"
+                  isEnabled = false
+               }
+               binding.tvEdit.visibility = View.GONE
+            }
+
+
+            else -> {
+               binding.btnJoin.apply {
+                  text = "승인 대기중이에요"
+                  isEnabled = false
+               }
+               binding.tvEdit.visibility = View.GONE
+            }
          }
       }
    }

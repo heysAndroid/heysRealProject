@@ -17,4 +17,5 @@
         <item>작성하기</item>
         <item>채널을 나가는 이유를 알려주세요.</item>
     </string-array>
+    <string name="edit_underline"><u>수정</u></string>
 </resources>

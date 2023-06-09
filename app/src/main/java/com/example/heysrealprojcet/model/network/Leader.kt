@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 data class Leader(
    @SerialName("id") val id: Int,
    @SerializedName("username") val name: String,
+   @SerialName("phone") val phone: String,
    @SerialName("introduceText") val introduceText: String,
    @SerialName("percentage") val percentage: Int,
 ) : java.io.Serializable

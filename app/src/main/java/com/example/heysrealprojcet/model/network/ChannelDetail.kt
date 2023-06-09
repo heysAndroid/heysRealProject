@@ -1,9 +1,12 @@
 package com.example.heysrealprojcet.model.network
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Parcelize
 @Serializable
 data class ChannelDetail(
    @SerialName("id") val id: Int,
@@ -25,4 +28,4 @@ data class ChannelDetail(
    @SerialName("isBookMarked") val isBookMarked: Boolean,
    @SerialName("approvedUserList") val approvedUserList: ArrayList<ApprovedUserList>,
    @SerialName("waitingUserList") val waitingUserList: ArrayList<WaitingUserList>,
-) : java.io.Serializable
+) : java.io.Serializable, Parcelable
