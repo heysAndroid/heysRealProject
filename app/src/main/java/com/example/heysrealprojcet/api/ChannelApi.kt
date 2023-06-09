@@ -1,6 +1,6 @@
 package com.example.heysrealprojcet.api
 
-import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse

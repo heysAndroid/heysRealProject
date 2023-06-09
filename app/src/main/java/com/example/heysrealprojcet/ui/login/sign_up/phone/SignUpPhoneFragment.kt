@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.databinding.SignUpPhoneFragmentBinding
-import com.example.heysrealprojcet.model.Phone
+import com.example.heysrealprojcet.model.network.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference

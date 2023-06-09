@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.model
+package com.example.heysrealprojcet.model.network
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

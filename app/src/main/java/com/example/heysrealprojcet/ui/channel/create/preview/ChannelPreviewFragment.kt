@@ -15,8 +15,8 @@ import com.example.heysrealprojcet.databinding.ChannelPreviewFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.MyPage
-import com.example.heysrealprojcet.model.Study
+import com.example.heysrealprojcet.model.network.MyPage
+import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.ChannelPreference

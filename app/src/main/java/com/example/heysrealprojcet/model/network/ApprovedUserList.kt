@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.model
+package com.example.heysrealprojcet.model.network
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 @Serializable
-data class WaitingUserList(
+data class ApprovedUserList(
    @SerialName("id") val id: Int,
    @SerialName("percentage") val percentage: Int,
    @SerialName("gender") val gender: String

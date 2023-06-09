@@ -1,8 +1,8 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.SignUpApi
-import com.example.heysrealprojcet.model.Phone
-import com.example.heysrealprojcet.model.User
+import com.example.heysrealprojcet.model.network.Phone
+import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.model.network.response.SignUpResponse

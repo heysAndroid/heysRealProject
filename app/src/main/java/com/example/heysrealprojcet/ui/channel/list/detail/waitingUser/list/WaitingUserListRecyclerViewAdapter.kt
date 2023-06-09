@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.WaitingUserItemViewBinding
 import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.WaitingUserList
+import com.example.heysrealprojcet.model.network.WaitingUserList
 
 class WaitingUserListRecyclerViewAdapter(
    private val user: MutableList<WaitingUserList>?

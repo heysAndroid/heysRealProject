@@ -16,7 +16,7 @@ import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPhoneFragmentBinding
-import com.example.heysrealprojcet.model.Phone
+import com.example.heysrealprojcet.model.network.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference

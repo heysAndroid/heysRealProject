@@ -3,7 +3,13 @@ package com.example.heysrealprojcet.ui.channel.create.complete
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
-import com.example.heysrealprojcet.model.*
+import com.example.heysrealprojcet.model.network.ApprovedUserList
+import com.example.heysrealprojcet.model.network.ChannelDetail
+import com.example.heysrealprojcet.model.network.ChannelLink
+import com.example.heysrealprojcet.model.network.ChannelPurpose
+import com.example.heysrealprojcet.model.network.ContentData
+import com.example.heysrealprojcet.model.network.Leader
+import com.example.heysrealprojcet.model.network.WaitingUserList
 import com.example.heysrealprojcet.repository.ChannelRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

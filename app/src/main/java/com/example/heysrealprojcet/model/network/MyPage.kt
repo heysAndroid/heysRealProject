@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.model
+package com.example.heysrealprojcet.model.network
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
