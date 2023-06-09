@@ -93,8 +93,10 @@ class ChannelListFragment : Fragment() {
          bundleOf("channelType" to args.channelType, "contentId" to args.contentId))
    }
 
-   private fun goToChannelDetail() {
-      findNavController().navigate(R.id.action_channelListFragment_to_channelDetailFragment)
+   private fun goToChannelDetail(channelId: Int) {
+      findNavController().navigate(
+         R.id.action_channelListFragment_to_channelDetailFragment,
+         bundleOf("channelId" to channelId))
    }
 
    private fun getContentChannelList() {
@@ -103,7 +105,11 @@ class ChannelListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContentChannelList(response.data?.data)
-               channelItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let { ChannelItemRecyclerViewAdapter(it) { goToChannelDetail() } }!!
+               channelItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
+                  ChannelItemRecyclerViewAdapter(it) { channelId ->
+                     goToChannelDetail(channelId)
+                  }
+               }!!
                binding.channelList.adapter = channelItemRecyclerViewAdapter
                binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             }

@@ -11,7 +11,7 @@ import com.example.heysrealprojcet.model.network.ChannelList
 
 class ChannelItemRecyclerViewAdapter(
    private val type: MutableList<ChannelList>,
-   private val onClickListener: () -> Unit) :
+   private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<ChannelItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ChannelItemViewBinding
 
@@ -24,7 +24,7 @@ class ChannelItemRecyclerViewAdapter(
             Glide.with(App.getInstance().applicationContext)
                .load(channel.thumbnailUri)
                .error(R.drawable.bg_category_yellow_crop).into(imgThumbnail)
-            root.setOnClickListener { onClickListener.invoke() }
+            root.setOnClickListener { onClickListener.invoke(channel.id) }
          }
 
          // 모집 마감일 지나지 않음
