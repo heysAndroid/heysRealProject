@@ -1,12 +1,13 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.ChannelApi
-import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
+import com.example.heysrealprojcet.model.network.response.SimpleResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -48,6 +49,24 @@ class ChannelRepository @Inject constructor(
    fun createContentChannel(token: String, contentId: Int, channel: Study): Flow<NetworkResult<CreateStudyResponse>> {
       return flow {
          emit(safeApiCall { channelApi.createContentChannel(token, contentId, channel) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun channelViewCountUp(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.channelViewCountUp(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun channelAddBookmark(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.channelAddBookmark(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun channelRemoveBookmark(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.channelRemoveBookmark(token, id) })
       }.flowOn(Dispatchers.IO)
    }
 }

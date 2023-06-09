@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
@@ -64,10 +65,20 @@ class ChannelDetailFragment : Fragment() {
       binding.lifecycleOwner = this
 
       getChannelDetail(args.channelId)
-
-      binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
-      binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
-      binding.btnJoin.setOnClickListener { }
+      channelViewCountUp(args.channelId)
+      with(binding) {
+         btnBookmark.setOnClickListener {
+            it.isSelected = it.isSelected != true
+            if (it.isSelected) {
+               channelAddBookmark(args.channelId)
+            } else {
+               channelRemoveBookmark(args.channelId)
+            }
+         }
+         allApprovedUser.setOnClickListener { goToApprovedUserList() }
+         allWaitingUser.setOnClickListener { goToWaitingUserList() }
+         btnJoin.setOnClickListener { }
+      }
    }
 
    private fun goToApprovedUserList() {
@@ -118,6 +129,66 @@ class ChannelDetailFragment : Fragment() {
 
             is NetworkResult.Loading -> {
                Log.i("getDetail: ", "loading")
+            }
+         }
+      }
+   }
+
+   private fun channelViewCountUp(id: Int) {
+      viewModel.channelViewCountUp("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("channelViewCountUp: ", response.data?.message!!)
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("channelViewCountUp: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("channelViewCountUp: ", "loading")
+            }
+         }
+      }
+   }
+
+   private fun channelAddBookmark(id: Int) {
+      viewModel.channelAddBookmark("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("channelAddBookmark: ", response.data?.message.toString())
+               CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true, subMessage = "보러가기").show()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("channelAddBookmark: ", "error ${response.message}")
+               CustomSnackBar(binding.root, "내 관심에 추가하기를 실패했어요.", null, true).show()
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("channelAddBookmark: ", "loading")
+               CustomSnackBar(binding.root, "내 관심에 추가하기가 지연되고 있어요.", null, true).show()
+            }
+         }
+      }
+   }
+
+   private fun channelRemoveBookmark(id: Int) {
+      viewModel.channelRemoveBookmark("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("channelRemoveBookmark: ", response.data?.message.toString())
+               CustomSnackBar(binding.root, "내 관심에서 제거했어요!", null, true).show()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("channelRemoveBookmark: ", "error ${response.message}")
+               CustomSnackBar(binding.root, "내 관심에서 제거하기를 실패했어요.", null, true).show()
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("channelRemoveBookmark: ", "loading")
+               CustomSnackBar(binding.root, "내 관심에서 제거하기가 지연되고 있어요.", null, true).show()
             }
          }
       }

@@ -398,7 +398,7 @@
         tools:layout="@layout/approved_user_list_fragment">
         <argument
             android:name="approvedUser"
-            app:argType="com.example.heysrealprojcet.model.ApprovedUserList[]" />
+            app:argType="com.example.heysrealprojcet.model.network.ApprovedUserList[]" />
     </fragment>
     <fragment
         android:id="@+id/waitingUserListFragment"
@@ -407,7 +407,7 @@
         tools:layout="@layout/waiting_user_list_fragment">
         <argument
             android:name="waitingUser"
-            app:argType="com.example.heysrealprojcet.model.WaitingUserList[]" />
+            app:argType="com.example.heysrealprojcet.model.network.WaitingUserList[]" />
     </fragment>
 
     <fragment

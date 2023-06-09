@@ -34,6 +34,11 @@ class ChannelDetailViewModel @Inject constructor(
 
    fun getChannelDetail(token: String, id: Int) = channelRepository.getChannelDetail(token, id).asLiveData()
 
+   fun channelViewCountUp(token: String, id: Int) = channelRepository.channelViewCountUp(token, id).asLiveData()
+
+   fun channelAddBookmark(token: String, id: Int) = channelRepository.channelAddBookmark(token, id).asLiveData()
+
+   fun channelRemoveBookmark(token: String, id: Int) = channelRepository.channelRemoveBookmark(token, id).asLiveData()
    fun receiveChannelDetail(channelDetail: ChannelDetail?) {
       channelDetail?.let {
          _channelDetail.value = it

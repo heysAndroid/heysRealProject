@@ -5,11 +5,13 @@ import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
+import com.example.heysrealprojcet.model.network.response.SimpleResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -40,4 +42,13 @@ interface ChannelApi {
       @Path(value = "contentId") contentId: Int,
       @Body channel: Study
    ): Response<CreateStudyResponse>
+
+   @PUT("channel/view-count-up/{channelId}")
+   suspend fun channelViewCountUp(@Header("Authorization") token: String, @Path(value = "channelId") id: Int): Response<SimpleResponse>
+
+   @PUT("channel/add-bookmark/{channelId}")
+   suspend fun channelAddBookmark(@Header("Authorization") token: String, @Path(value = "channelId") id: Int): Response<SimpleResponse>
+
+   @PUT("channel/remove-bookmark/{channelId}")
+   suspend fun channelRemoveBookmark(@Header("Authorization") token: String, @Path(value = "channelId") id: Int): Response<SimpleResponse>
 }
