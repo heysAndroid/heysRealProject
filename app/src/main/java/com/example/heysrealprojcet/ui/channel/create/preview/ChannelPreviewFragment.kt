@@ -97,11 +97,12 @@ class ChannelPreviewFragment : Fragment() {
    }
 
    private fun setChannelRecruitmentMethod() {
-      binding.channelRecruitmentMethod.text = if (viewModel.channelRecruitmentMethod.value == ChannelRecruitmentMethod.Approval.method) {
-         "승인없이 바로 참여가능해요."
-      } else {
-         "승인이 필요해요."
-      }
+      binding.channelRecruitmentMethod.text =
+         if (viewModel.channelRecruitmentMethod.value == ChannelRecruitmentMethod.Immediately.method) {
+            "승인없이 바로 참여가능해요."
+         } else {
+            "승인이 필요해요."
+         }
    }
 
    private fun requestCreateStudy() {

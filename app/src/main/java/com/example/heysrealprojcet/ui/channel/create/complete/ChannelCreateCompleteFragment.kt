@@ -99,7 +99,7 @@ class ChannelCreateCompleteFragment : Fragment() {
                setApprovedUserList()
 
                // 승인 결정
-               if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Decide.methodEng) {
+               if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Approval.methodEng) {
                   setWaitingUserList()
                } else {
                   binding.waitingUserCount.visibility = View.GONE
@@ -128,11 +128,12 @@ class ChannelCreateCompleteFragment : Fragment() {
    }
 
    private fun setChannelRecruitmentMethod() {
-      binding.channelRecruitmentMethod.text = if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Approval.method) {
-         "승인없이 바로 참여가능해요."
-      } else {
-         "승인이 필요해요."
-      }
+      binding.channelRecruitmentMethod.text =
+         if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Immediately.method) {
+            "승인없이 바로 참여가능해요."
+         } else {
+            "승인이 필요해요."
+         }
    }
 
    private fun setChannelForm(form: String) {
@@ -140,9 +141,11 @@ class ChannelCreateCompleteFragment : Fragment() {
          ChannelForm.Both.form -> {
             binding.channelForm.text = ChannelForm.Both.form + "으로"
          }
+
          ChannelForm.Offline.form -> {
             binding.channelForm.text = ChannelForm.Offline.form + "으로"
          }
+
          else -> {
             binding.channelForm.text = ChannelForm.Online.form + "으로"
          }
@@ -160,6 +163,7 @@ class ChannelCreateCompleteFragment : Fragment() {
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
                }
             }
+
             in 50..99 -> {
                when (UserPreference.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
@@ -167,6 +171,7 @@ class ChannelCreateCompleteFragment : Fragment() {
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
                }
             }
+
             100 -> {
                when (UserPreference.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)

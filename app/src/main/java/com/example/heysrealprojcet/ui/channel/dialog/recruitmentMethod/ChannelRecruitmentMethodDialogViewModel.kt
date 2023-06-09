@@ -28,10 +28,10 @@ class ChannelRecruitmentMethodDialogViewModel : ViewModel() {
    fun onClickMethod(v: View) {
       val button = v as Button
       val buttonText = button.text.toString()
-      if (buttonText.contains(ChannelRecruitmentMethod.Decide.method)) {
-         _selectedRecruitmentMethod.value = ChannelRecruitmentMethod.Decide.method
-      } else {
+      if (buttonText.contains(ChannelRecruitmentMethod.Approval.method)) {
          _selectedRecruitmentMethod.value = ChannelRecruitmentMethod.Approval.method
+      } else {
+         _selectedRecruitmentMethod.value = ChannelRecruitmentMethod.Immediately.method
       }
    }
 }

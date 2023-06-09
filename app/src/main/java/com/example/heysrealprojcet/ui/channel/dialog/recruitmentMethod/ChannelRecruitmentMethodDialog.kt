@@ -43,15 +43,15 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
       viewModel.selectedRecruitmentMethod.observe(viewLifecycleOwner) {
          unselectAllRecruitMethodButton()
          when (it) {
-            ChannelRecruitmentMethod.Decide.method -> selectDecideButton()
+            ChannelRecruitmentMethod.Approval.method -> selectDecideButton()
             else -> selectApprovalButton()
          }
       }
       binding.btnSave.setOnClickListener {
          ChannelPreference.channelRecruitmentMethod = viewModel.selectedRecruitmentMethod.value.toString()
          when (ChannelPreference.channelRecruitmentMethod) {
-            ChannelRecruitmentMethod.Decide.method -> ChannelPreference.channelRecruitmentMethodEng = ChannelRecruitmentMethod.Decide.methodEng
             ChannelRecruitmentMethod.Approval.method -> ChannelPreference.channelRecruitmentMethodEng = ChannelRecruitmentMethod.Approval.methodEng
+            ChannelRecruitmentMethod.Immediately.method -> ChannelPreference.channelRecruitmentMethodEng = ChannelRecruitmentMethod.Immediately.methodEng
          }
          listener.onClick(ChannelPreference.channelRecruitmentMethod)
          dialog?.dismiss()
@@ -107,8 +107,8 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
 
    private fun previousSelectedMethod() {
       when (ChannelPreference.channelRecruitmentMethod) {
-         ChannelRecruitmentMethod.Decide.method -> selectDecideButton()
-         ChannelRecruitmentMethod.Approval.method -> selectApprovalButton()
+         ChannelRecruitmentMethod.Approval.method -> selectDecideButton()
+         ChannelRecruitmentMethod.Immediately.method -> selectApprovalButton()
       }
    }
 
