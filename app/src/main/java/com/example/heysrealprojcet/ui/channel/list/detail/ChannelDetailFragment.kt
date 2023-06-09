@@ -26,7 +26,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChannelDetailFragment : Fragment() {
-   private lateinit var mainActivity: MainActivity
    private lateinit var binding: ChannelDetailFragmentBinding
    private val viewModel by viewModels<ChannelDetailViewModel>()
    val args: ChannelDetailFragmentArgs by navArgs()
@@ -65,24 +64,28 @@ class ChannelDetailFragment : Fragment() {
       binding.lifecycleOwner = this
 
       getChannelDetail(args.channelId)
+
       binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
-
       binding.btnJoin.setOnClickListener { }
    }
 
    private fun goToApprovedUserList() {
-      viewModel.approvedUserList.observe(viewLifecycleOwner) {
-         it?.let {
-            findNavController().navigate(R.id.action_channelDetailFragment_to_approvedUserListFragment, bundleOf("approvedUser" to it.toTypedArray()))
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         it.approvedUserList?.let { approvedUserList ->
+            findNavController().navigate(
+               R.id.action_channelDetailFragment_to_approvedUserListFragment,
+               bundleOf("approvedUser" to approvedUserList.toTypedArray()))
          }
       }
    }
 
    private fun goToWaitingUserList() {
-      viewModel.waitingUserList.observe(viewLifecycleOwner) {
-         it?.let {
-            findNavController().navigate(R.id.action_channelDetailFragment_to_waitingUserListFragment, bundleOf("waitingUser" to it.toTypedArray()))
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         it.waitingUserList?.let { waitingUserList ->
+            findNavController().navigate(
+               R.id.action_channelDetailFragment_to_waitingUserListFragment,
+               bundleOf("waitingUser" to waitingUserList.toTypedArray()))
          }
       }
    }
@@ -94,12 +97,14 @@ class ChannelDetailFragment : Fragment() {
                viewModel.receiveChannelDetail(response.data?.channelDetail)
                setChannelRegion()
                setChannelRecruitmentMethod()
-               viewModel.channelForm.value?.let { setChannelForm(it) }
+               viewModel.channelDetail.value?.online?.let { setChannelForm(it) }
                setLeaderImage()
                setApprovedUserList()
+               initBookmark()
+               setLinks()
 
                // 승인 결정
-               if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Decide.methodEng) {
+               if (viewModel.channelDetail.value?.recruitMethod == ChannelRecruitmentMethod.Approval.methodEng) {
                   setWaitingUserList()
                } else {
                   binding.waitingUserCount.visibility = View.GONE
@@ -120,7 +125,7 @@ class ChannelDetailFragment : Fragment() {
 
    private fun setChannelRegion() {
       //온라인이면 지역 텍스트 숨기기
-      if (viewModel.channelForm.value == ChannelForm.Online.engForm) {
+      if (viewModel.channelDetail.value?.online == ChannelForm.Online.engForm) {
          binding.channelRegion.visibility = View.GONE
       } else {
          binding.channelRegion.visibility = View.VISIBLE
@@ -128,11 +133,12 @@ class ChannelDetailFragment : Fragment() {
    }
 
    private fun setChannelRecruitmentMethod() {
-      binding.channelRecruitmentMethod.text = if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Approval.method) {
-         "승인없이 바로 참여가능해요."
-      } else {
-         "승인이 필요해요."
-      }
+      binding.channelRecruitmentMethod.text =
+         if (viewModel.channelDetail.value?.recruitMethod == ChannelRecruitmentMethod.Immediately.method) {
+            "승인없이 바로 참여가능해요."
+         } else {
+            "승인이 필요해요."
+         }
    }
 
    private fun setChannelForm(form: String) {
@@ -140,9 +146,11 @@ class ChannelDetailFragment : Fragment() {
          ChannelForm.Both.form -> {
             binding.channelForm.text = ChannelForm.Both.form + "으로"
          }
+
          ChannelForm.Offline.form -> {
             binding.channelForm.text = ChannelForm.Offline.form + "으로"
          }
+
          else -> {
             binding.channelForm.text = ChannelForm.Online.form + "으로"
          }
@@ -151,8 +159,8 @@ class ChannelDetailFragment : Fragment() {
 
    // 프로필 퍼센트에 따른 이미지 설정
    private fun setLeaderImage() {
-      viewModel.leader.observe(viewLifecycleOwner) { leader ->
-         when (leader.percentage) {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         when (it.leader.percentage) {
             in 0..49 -> {
                when (UserPreference.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_0)
@@ -160,6 +168,7 @@ class ChannelDetailFragment : Fragment() {
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
                }
             }
+
             in 50..99 -> {
                when (UserPreference.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
@@ -167,6 +176,7 @@ class ChannelDetailFragment : Fragment() {
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
                }
             }
+
             100 -> {
                when (UserPreference.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)
@@ -179,7 +189,7 @@ class ChannelDetailFragment : Fragment() {
    }
 
    private fun setApprovedUserList() {
-      viewModel.approvedUserList.value?.let {
+      viewModel.channelDetail.value?.approvedUserList?.let {
          if (it.size == 0) {
             setApprovedUserListInvisible()
          } else {
@@ -202,7 +212,7 @@ class ChannelDetailFragment : Fragment() {
    }
 
    private fun setWaitingUserList() {
-      viewModel.waitingUserList.value?.let {
+      viewModel.channelDetail.value?.waitingUserList?.let {
          if (it.size == 0) {
             setWaitingUserListInvisible()
          } else {
@@ -221,5 +231,36 @@ class ChannelDetailFragment : Fragment() {
    private fun setWaitingUserListInvisible() {
       binding.waitingUserListEmpty.visibility = View.VISIBLE
       binding.waitingUserList.visibility = View.GONE
+   }
+
+   private fun initBookmark() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         binding.btnBookmark.isSelected = it.isBookMarked
+      }
+   }
+
+   private fun goToWebView(url: String) {
+      findNavController().navigate(
+         R.id.action_channelDetailFragment_to_webViewFragment,
+         bundleOf("url" to url))
+   }
+
+   private fun setLinks() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) { channelDetail ->
+         if (channelDetail.links[0].link.isNullOrEmpty() or channelDetail.links[1].link.isNullOrEmpty()) {
+            binding.link2.visibility = View.GONE
+
+            if (channelDetail.links[0].link.isNullOrEmpty()) {
+               binding.link1.setOnClickListener { goToWebView(channelDetail.links[1].link) }
+            }
+            if (channelDetail.links[1].link.isNullOrEmpty()) {
+               binding.link1.setOnClickListener { goToWebView(channelDetail.links[0].link) }
+            }
+         } else {
+            binding.link2.visibility = View.VISIBLE
+            binding.link1.setOnClickListener { goToWebView(channelDetail.links[0].link) }
+            binding.link2.setOnClickListener { goToWebView(channelDetail.links[1].link) }
+         }
+      }
    }
 }

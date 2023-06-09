@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="16dp"
-                    android:text="@{vm.title}"
+                    android:text="@{vm.channelDetail.title}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -155,7 +155,7 @@
                             android:id="@+id/channelRegion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.location + `에서`}"
+                            android:text="@{vm.channelDetail.location + `에서`}"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             tools:text="전국에서" />
@@ -187,7 +187,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(vm.capacity) +`명 중에서 1명이 참여중이에요.`}"
+                        android:text="@{String.valueOf(vm.channelDetail.limit) +`명 중에서 1명이 참여중이에요.`}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="10명 중에서 1명이 참여중이에요." />
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
-                    android:text="@{vm.contentText}"
+                    android:text="@{vm.channelDetail.contentText}"
                     android:textColor="@color/color_262626"
                     android:textSize="16sp"
                     tools:text="인공지능에 대해 스터디하면서 함께 대회에 참가할 사람 모집합니다!\n관련 기초 지식이 있으시면 좋을 것 같습니다. 전 재학생이구요 졸업생 분들도 상관없습니다.\n마음맞는 분들과 열심히해서 좋은 성과 거뒀으면 좋겠습니다." />
@@ -303,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
-                    android:text="@{vm.recruitText}"
+                    android:text="@{vm.channelDetail.recruitText}"
                     android:textColor="@color/color_262626"
                     android:textSize="16sp"
                     tools:text="- 개발(AI/ML) 커리어 쌓는데 고민 있는 분\n- 기초지식을 함게 공유하면서 성장하고 싶으신 분" />
@@ -335,8 +335,7 @@
                         android:id="@+id/link2"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_link_clip"
-                        android:visibility="gone" />
+                        android:src="@drawable/ic_link_clip" />
                 </LinearLayout>
 
                 <TextView
@@ -373,7 +372,7 @@
                             android:id="@+id/leaderName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.leader.name}"
+                            android:text="@{vm.channelDetail.leader.name}"
                             android:textColor="@color/color_262626"
                             android:textSize="16dp"
                             tools:text="김이나" />
@@ -382,7 +381,7 @@
                             android:id="@+id/leaderIntroduceText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{vm.leader.introduceText}"
+                            android:text="@{vm.channelDetail.leader.introduceText}"
                             android:textColor="@color/color_828282"
                             android:textSize="16dp"
                             tools:text="선한 영향력을 키우고 싶습니다." />

@@ -143,6 +143,9 @@
         <action
             android:id="@+id/action_channelDetailFragment_to_approvedUserListFragment"
             app:destination="@id/approvedUserListFragment" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/extracurricularListFragment"
