@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -85,63 +86,76 @@ class MyPageFragment : Fragment() {
    }
 
    private fun setMyPageInfo(myPage: MyPage) {
-      // 자기소개
-      if (myPage.introduce.isNullOrBlank()) {
-         binding.introduce.text = "아직 소개할 내용이 없어요."
-         binding.introduce.setTextColor(resources.getColor(R.color.color_828282))
-      } else {
-         binding.introduce.text = "\"${myPage.introduce}\""
-         binding.introduce.setTextColor(resources.getColor(R.color.color_262626))
-      }
-
-      // 이름
-      binding.name.text = myPage.name
-
-      // mbti
-      if (myPage.userPersonality.isNullOrBlank()) {
-         binding.mbti.text = "????"
-         binding.mbti.isEnabled = false
-      } else {
-         binding.mbti.text = myPage.userPersonality
-         binding.mbti.isEnabled = true
-      }
-
-      // 관심분야/직무
-      var interestString = ""
-      myPage.interests.forEach { interestString += "#$it " }
-      binding.interestContent.text = interestString
-
-      // 직업
-      if (myPage.job.isNullOrBlank()) {
-         binding.jobTitle.setTextColor(resources.getColor(R.color.color_4d828282))
-         binding.job.text = "아직 소개할 직업이 없어요."
-         binding.job.setTextColor(resources.getColor(R.color.color_4d262626))
-      } else {
-         binding.jobTitle.setTextColor(resources.getColor(R.color.color_828282))
-         binding.job.text = myPage.job
-         binding.job.setTextColor(resources.getColor(R.color.color_262626))
-      }
-
-      // 사용가능한 스킬
-      if (myPage.capability.isNullOrBlank()) {
-         binding.skillTitle.setTextColor(resources.getColor(R.color.color_4d828282))
-         binding.skill.text = "아직 소개할 스킬이 없어요."
-         binding.skill.setTextColor(resources.getColor(R.color.color_4d262626))
-      } else {
-         binding.skillTitle.setTextColor(resources.getColor(R.color.color_828282))
-         var skillString = ""
-         myPage.capability.forEach {
-            skillString += "#$it "
+      with(binding) {
+         // 자기소개
+         if (myPage.introduce.isNullOrBlank()) {
+            introduce.text = "아직 소개할 내용이 없어요."
+            introduce.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
+         } else {
+            introduce.text = "\"${myPage.introduce}\""
+            introduce.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))
          }
-         binding.skill.text = skillString
-         binding.skill.setTextColor(resources.getColor(R.color.color_262626))
-      }
-      setByPercent(myPage.percentage, myPage.gender)
 
-      // 참여중인 채널 수
-      binding.joinChannel.text = myPage.joinChannelCount.toString()
-      // 승인대기 채널 수
-      binding.waitingChannel.text = myPage.waitingChannelCount.toString()
+         // 이름
+         name.text = myPage.name
+
+         // mbti
+         if (myPage.userPersonality.isNullOrBlank()) {
+            mbti.text = "????"
+            mbti.isEnabled = false
+         } else {
+            mbti.text = myPage.userPersonality
+            mbti.isEnabled = true
+         }
+
+         // 관심분야/직무
+         var interestString = ""
+         myPage.interests.forEach { interestString += "#$it " }
+         interestContent.text = interestString
+
+         // 직업
+         if (myPage.job.isNullOrBlank()) {
+
+            jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d828282))
+            job.apply {
+               text = "아직 소개할 직업이 없어요."
+               setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d262626))
+            }
+
+         } else {
+
+            jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
+            job.apply {
+               text = myPage.job
+               setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))
+            }
+
+         }
+
+         // 사용가능한 스킬
+         if (myPage.capability.isNullOrBlank()) {
+            skillTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d828282))
+            skill.apply {
+               text = "아직 소개할 스킬이 없어요."
+               setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d262626))
+            }
+
+         } else {
+            skillTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
+            var skillString = ""
+            myPage.capability.forEach {
+               skillString += "#$it "
+            }
+            skill.apply {
+               text = skillString
+               setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))
+            }
+         }
+         setByPercent(myPage.percentage, myPage.gender)
+
+         joinChannel.text = "${myPage.joinChannelCount}"
+         waitingChannel.text = "${myPage.waitingChannelCount}"
+      }
    }
 
    private fun setByPercent(percentage: Int, gender: String) {
