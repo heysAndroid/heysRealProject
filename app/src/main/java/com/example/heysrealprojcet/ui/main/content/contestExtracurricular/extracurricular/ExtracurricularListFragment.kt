@@ -1,30 +1,48 @@
 package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ExtracurricularListFragmentBinding
-import com.example.heysrealprojcet.model.Extracurricular
+import com.example.heysrealprojcet.enums.ChannelType
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.main.MainFragment
+import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterViewModel
+import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ExtracurricularListFragment : Fragment() {
    private lateinit var binding: ExtracurricularListFragmentBinding
    private val viewModel: ExtracurricularListViewModel by viewModels()
+   private lateinit var extraCurricularItemRecyclerViewAdapter: ExtracurricularItemRecyclerViewAdapter
 
-   private lateinit var activityItemRecyclerViewAdapter: ExtracurricularItemRecyclerViewAdapter
-   private lateinit var hostList: MutableList<Extracurricular>
+   lateinit var filterViewModel: ContestExtracurricularFilterViewModel
+   private lateinit var myInterestList: ArrayList<String>
+   private val args: ExtracurricularListFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onResume() {
+      super.onResume()
       val mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
    }
@@ -37,32 +55,96 @@ class ExtracurricularListFragment : Fragment() {
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ExtracurricularListFragmentBinding.inflate(inflater, container, false)
+      filterViewModel = ViewModelProvider(requireActivity())[ContestExtracurricularFilterViewModel::class.java]
       return binding.root
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      makeList()
-      activityItemRecyclerViewAdapter = ExtracurricularItemRecyclerViewAdapter(host = hostList) { goToDetail() }
-      binding.extracurricularList.adapter = activityItemRecyclerViewAdapter
-      binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.vm = viewModel
+
+      filterViewModel.interestArray.forEach {
+         Log.w("filters: ", it)
+      }
+      setInterestList()
+      binding.filterCount.text = "${myInterestList.size}"
       binding.filterButton.setOnClickListener { goToFilter() }
+
+      viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
+      viewModel.isChecked.asLiveData().observe(viewLifecycleOwner) {
+         getExtraCurricularList(myInterestList, !it)
+      }
    }
 
-   private fun makeList() {
-      hostList = mutableListOf(
-         Extracurricular(3, R.drawable.bg_study_list, "수도권 팀원 \n모집해요!", "개설한지 7일", 3),
-         Extracurricular(10, R.drawable.bg_study_list, "칠팔구십일이삼사오...", "일이삼사오육칠팔구이...", 500),
-         Extracurricular(5, R.drawable.bg_study_list, "2022 이랜드재단 ESG 서포터즈", "이랜드재단", 1000),
-         Extracurricular(2, R.drawable.bg_study_list, "제3회 \n연구개발 특구", "과학기술정보통신부, 연구개발...", 2)
-      )
+   private fun setInterestList() {
+      myInterestList = arrayListOf()
+      when (args.type) {
+         "all" -> {
+            // do nothing
+         }
+
+         "default" -> {
+            filterViewModel.interestArray.forEach {
+               myInterestList.add(it)
+            }
+         }
+
+         "interest" -> {
+            UserPreference.interests.split(",").forEach {
+               myInterestList.add(it)
+            }
+         }
+      }
+      getExtraCurricularList(myInterestList, !viewModel.isChecked.value)
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_extracurricularListFragment_to_contestExtracurricularFilterFragment)
+      when (args.type) {
+         "interest" -> {
+            findNavController().navigate(
+               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               bundleOf(MainFragment.MY_INTEREST_LIST to myInterestList))
+         }
+
+         else -> {
+            findNavController().navigate(
+               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               bundleOf(MainFragment.MY_INTEREST_LIST to null))
+         }
+      }
    }
 
-   private fun goToDetail() {
-      findNavController().navigate(R.id.action_extracurricularListFragment_to_contestExtracurricularDetailFragment)
+   private fun goToDetail(contentId: Int) {
+      findNavController().navigate(
+         R.id.action_contestListFragment_to_contestExtracurricularDetailFragment,
+         bundleOf("channelType" to ChannelType.Extracurricular.typeEng, "contentId" to contentId))
+   }
+
+   private fun getExtraCurricularList(interests: ArrayList<String>, includeClosed: Boolean) {
+      interests.forEach { Log.i("interests: ", it) }
+
+      val token = UserPreference.accessToken
+      viewModel.getExtraCurricularList("Bearer $token", ChannelType.Extracurricular.typeEng, interests, null, includeClosed).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               viewModel.setContestList(response.data?.data)
+               extraCurricularItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
+                  ExtracurricularItemRecyclerViewAdapter(it) { contentID ->
+                     goToDetail(contentID)
+                  }
+               }!!
+               binding.extracurricularList.adapter = extraCurricularItemRecyclerViewAdapter
+               binding.extracurricularList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("getExtraList: ", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("getExtraList: ", response.message.toString())
+            }
+         }
+      }
    }
 }

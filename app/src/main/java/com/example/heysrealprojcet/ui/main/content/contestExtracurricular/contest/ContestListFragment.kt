@@ -28,11 +28,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ContestListFragment : Fragment() {
    private lateinit var binding: ContestListFragmentBinding
-
-   private lateinit var contentItemRecyclerViewAdapter: ContentItemRecyclerViewAdapter
    val viewModel by viewModels<ContestListViewModel>()
-   lateinit var filterViewModel: ContestExtracurricularFilterViewModel
+   private lateinit var contentItemRecyclerViewAdapter: ContentItemRecyclerViewAdapter
 
+   lateinit var filterViewModel: ContestExtracurricularFilterViewModel
    private lateinit var myInterestList: ArrayList<String>
    val args: ContestListFragmentArgs by navArgs()
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,6 +147,5 @@ class ContestListFragment : Fragment() {
             }
          }
       }
-
    }
 }

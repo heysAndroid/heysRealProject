@@ -1,42 +1,47 @@
 package com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestExtracurricularItemViewBinding
-import com.example.heysrealprojcet.model.Extracurricular
+import com.example.heysrealprojcet.model.network.Content
 
 class ExtracurricularItemRecyclerViewAdapter(
-   private val host: MutableList<Extracurricular>,
-   private val onClickListener: () -> Unit) :
+   private val content: MutableList<Content>,
+   private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<ExtracurricularItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: ContestExtracurricularItemViewBinding
 
    inner class ViewHolder(private val binding: ContestExtracurricularItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(type: Extracurricular) {
-         binding.dday.text = "D-${type.startDate}"
-         binding.image.setImageResource(type.image)
-         binding.title.text = type.title
-
-         binding.viewCount.text = type.see.toString()
-
-         var bgShape = binding.dday.background as GradientDrawable
-         if (type.startDate == 0) {
-            binding.dday.text = "마감"
-            bgShape.setColor(Color.parseColor("#828282"))
+      fun bind(content: Content) {
+         binding.apply {
+            title.text = content.title
+            company.text = content.company
+            viewCount.text = content.viewCount.toString()
+            channelCount.text = "${content.channelCount}팀 빌딩"
+            Glide.with(App.getInstance().applicationContext).load(content.previewImgUri).into(binding.image)
          }
 
-         if (type.startDate in 2..5) {
-            bgShape.setColor(Color.parseColor("#53C740"))
-         }
+         when {
+            content.dday >= 7 -> {
+               binding.dday.text = "D-${content.dday}"
+               binding.dday.setBackgroundResource(R.drawable.bg_status_available)
+            }
 
-         if (type.startDate in 6..10) {
-            bgShape.setColor(Color.parseColor("#F7BC26"))
-         }
+            1 <= content.dday -> {
+               binding.dday.text = "D-${content.dday}"
+               binding.dday.setBackgroundResource(R.drawable.bg_status_almost_closed)
+            }
 
-         binding.root.setOnClickListener { onClickListener.invoke() }
+            else -> {
+               binding.dday.text = "마감"
+               binding.dday.setBackgroundResource(R.drawable.bg_status_closed)
+            }
+         }
+         binding.root.setOnClickListener { onClickListener.invoke(content.id) }
       }
    }
 
@@ -46,10 +51,10 @@ class ExtracurricularItemRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(host[position])
+      holder.bind(content[position])
    }
 
    override fun getItemCount(): Int {
-      return host.size
+      return content.size
    }
 }

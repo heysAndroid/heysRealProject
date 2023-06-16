@@ -95,23 +95,13 @@ class MainFragment : Fragment() {
       getMyInfo()
       makeContestList()
       makeExtracurricularList()
-
-      // 대외활동
-      extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(list = extracurricularList) { goToActivity() }
-      binding.extracurricularList.apply {
-         adapter = extracurricularRecyclerViewAdapter
-         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-         addItemDecoration(
-            MarginItemDecoration(
-               resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
-         setHasFixedSize(true)
-      }
+      setExtraCurricular()
 
       with(binding) {
-         contestAllText.setOnClickListener { goToContest(type = "all") }
-         activityAllText.setOnClickListener { goToActivity() }
-         studyCreate.setOnClickListener { goToStudyCreate() }
-         studyList.setOnClickListener { goToStudyList() }
+         tvContestAll.setOnClickListener { goToContest(type = "all") }
+         tvExtracurricularAll.setOnClickListener { goToExtraCurricular(type = "all") }
+         btnCreateStudy.setOnClickListener { goToStudyCreate() }
+         btnStudyList.setOnClickListener { goToStudyList() }
       }
 
       binding.contestList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -170,8 +160,8 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_contestFragment, bundleOf("type" to type))
    }
 
-   private fun goToActivity() {
-      findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment)
+   private fun goToExtraCurricular(type: String = "default") {
+      findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment, bundleOf("type" to type))
    }
 
    private fun goToMyPage() {
@@ -182,7 +172,7 @@ class MainFragment : Fragment() {
       findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
    }
 
-   private fun setInterestRecyclerView() {
+   private fun setContest() {
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
          list = contestList,
          myInterestList = UserPreference.interests.split(",").toMutableList()
@@ -196,6 +186,22 @@ class MainFragment : Fragment() {
       }
    }
 
+   private fun setExtraCurricular() {
+      // 대외활동
+      extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(
+         list = extracurricularList
+      ) { goToExtraCurricular(type = "interest") }
+
+      binding.extracurricularList.apply {
+         adapter = extracurricularRecyclerViewAdapter
+         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+         addItemDecoration(
+            MarginItemDecoration(
+               resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+         setHasFixedSize(true)
+      }
+   }
+
    private fun getMyInfo() {
       val token = UserPreference.accessToken
       viewModel.getMyInfo("Bearer $token").observe(viewLifecycleOwner) { response ->
@@ -203,7 +209,7 @@ class MainFragment : Fragment() {
             is NetworkResult.Success -> {
                Log.w("getMyInfo: ", "success")
                response.data?.user?.let { setUserPreference(it) }
-               setInterestRecyclerView()
+               setContest()
             }
 
             is NetworkResult.Loading -> {
