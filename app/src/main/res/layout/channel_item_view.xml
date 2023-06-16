@@ -5,8 +5,8 @@
     android:layout_marginBottom="24dp"
     android:background="@drawable/bg_white_radius_16"
     android:orientation="horizontal"
-    android:paddingHorizontal="16dp"
-    android:paddingBottom="16dp">
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="24dp">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -17,12 +17,13 @@
             android:id="@+id/img_thumbnail"
             android:layout_width="122dp"
             android:layout_height="122dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/bg_sample_image_crop" />
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_channel_background_example" />
 
         <TextView
             android:id="@+id/tv_status"
-            android:layout_width="70dp"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_status_closed"
             android:gravity="center"

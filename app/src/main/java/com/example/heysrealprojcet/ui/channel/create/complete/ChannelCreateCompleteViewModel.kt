@@ -79,7 +79,7 @@ class ChannelCreateCompleteViewModel @Inject constructor(
    private val _recruitEndTime = MutableLiveData<String>()
    val recruitEndTime: LiveData<String> = _recruitEndTime
 
-   private val _interestString by lazy { MutableLiveData<String>("") }
+   private val _interestString by lazy { MutableLiveData("") }
    val interestString: LiveData<String> = _interestString
 
    private val _purposeString = MutableLiveData("")

@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.heysrealprojcet.databinding.ChannelInterestDialogBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
+import com.example.heysrealprojcet.enums.ChannelThumbnailUrl
 import com.example.heysrealprojcet.util.ChannelPreference
 
 class ChannelInterestDialog : DialogFragment() {
@@ -36,6 +37,10 @@ class ChannelInterestDialog : DialogFragment() {
 
       viewModel.selectedInterest.observe(viewLifecycleOwner) { array ->
          ChannelPreference.channelInterestArray = array
+
+         if (array.isNotEmpty()) {
+            setThumbnailUrl(array.first())
+         }
 
          unselectAllButton()
          array.forEach {
@@ -116,6 +121,39 @@ class ChannelInterestDialog : DialogFragment() {
       unselectButton(binding.btnSports)
       unselectButton(binding.btnDance)
       unselectButton(binding.btnPublic)
+   }
+
+   private fun setThumbnailUrl(interest: String) {
+      when (interest) {
+         ChannelInterest.Service.interest,
+         ChannelInterest.Planning.interest,
+         ChannelInterest.Novel.interest,
+         ChannelInterest.Paper.interest,
+         ChannelInterest.Culture.interest,
+         ChannelInterest.Engineering.interest,
+         ChannelInterest.Environment.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.MainGreen.url
+
+         ChannelInterest.MediaContents.interest,
+         ChannelInterest.Programming.interest,
+         ChannelInterest.Design.interest,
+         ChannelInterest.Art.interest,
+         ChannelInterest.Picture.interest,
+         ChannelInterest.Game.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.MainYellow.url
+
+         ChannelInterest.Language.interest,
+         ChannelInterest.Lifestyle.interest,
+         ChannelInterest.Travel.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.MainBlue.url
+
+         ChannelInterest.Marketing.interest,
+         ChannelInterest.Data.interest,
+         ChannelInterest.IT.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.SubGreen.url
+
+         ChannelInterest.Economics.interest,
+         ChannelInterest.Business.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.MainPurple.url
+
+         ChannelInterest.Sports.interest,
+         ChannelInterest.Dance.interest -> ChannelPreference.channelThumbnailUrl = ChannelThumbnailUrl.MainRed.url
+      }
    }
 
    fun setOnOKClickListener(listener: (String) -> Unit) {

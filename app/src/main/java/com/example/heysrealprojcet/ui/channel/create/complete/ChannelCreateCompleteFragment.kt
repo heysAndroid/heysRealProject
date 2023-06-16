@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelCreateCompleteFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
@@ -97,6 +99,7 @@ class ChannelCreateCompleteFragment : Fragment() {
                viewModel.channelForm.value?.let { setChannelForm(it) }
                setLeaderImage()
                setApprovedUserList()
+               setThumbnailImage()
 
                // 승인 결정
                if (viewModel.recruitMethod.value == ChannelRecruitmentMethod.Approval.methodEng) {
@@ -215,6 +218,14 @@ class ChannelCreateCompleteFragment : Fragment() {
             binding.waitingUserList.adapter = waitingUserAdapter
             binding.waitingUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
          }
+      }
+   }
+
+   private fun setThumbnailImage() {
+      viewModel.thumbnailUri.observe(viewLifecycleOwner) {
+         Glide.with(App.getInstance().applicationContext)
+            .load(it)
+            .error(R.drawable.bg_category_yellow_crop).into(binding.imgThumbnail)
       }
    }
 

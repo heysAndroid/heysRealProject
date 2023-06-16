@@ -10,14 +10,16 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelPreviewFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelForm
 import com.example.heysrealprojcet.enums.ChannelRecruitmentMethod
 import com.example.heysrealprojcet.enums.Gender
 import com.example.heysrealprojcet.model.network.MyPage
-import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.ChannelPreference
 import com.example.heysrealprojcet.util.UserPreference
@@ -50,6 +52,7 @@ class ChannelPreviewFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      setThumbnailImage(ChannelPreference.channelThumbnailUrl)
       setChannelRegion()
       setChannelRecruitmentMethod()
       getMyInfo()
@@ -154,7 +157,7 @@ class ChannelPreviewFragment : Fragment() {
          recruitMethod = ChannelPreference.channelRecruitmentMethodEng,
          contentText = ChannelPreference.channelActivity,
          recruitText = ChannelPreference.channelMember,
-         thumbnailUri = "",
+         thumbnailUri = ChannelPreference.channelThumbnailUrl,
          linkUri = arrayListOf(viewModel.link1.value!!, viewModel.link2.value!!),
          interests = ChannelPreference.channelInterestArray
       )
@@ -229,5 +232,12 @@ class ChannelPreviewFragment : Fragment() {
             }
          }
       }
+   }
+
+   private fun setThumbnailImage(thumbnailUrl: String) {
+      Glide.with(App.getInstance().applicationContext)
+         .load(thumbnailUrl)
+         .error(R.drawable.bg_category_yellow_crop).into(binding.imgThumbnail)
+
    }
 }

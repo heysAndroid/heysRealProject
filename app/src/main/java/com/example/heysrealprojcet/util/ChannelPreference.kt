@@ -23,6 +23,7 @@ object ChannelPreference : KotprefModel() {
       channelRecruitEndDateTime = ""
 
       channelInterestArray = arrayListOf()
+      channelThumbnailUrl = ""
 
       channelActivity = ""
       channelMember = ""
@@ -94,6 +95,11 @@ object ChannelPreference : KotprefModel() {
   관심 분야
    */
    var channelInterestArray by gsonPref(arrayListOf<String>())
+
+   /*
+  관심 분야 이미지 링크
+   */
+   var channelThumbnailUrl by stringPref()
 
    /*
    채널 활동

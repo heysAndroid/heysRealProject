@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
@@ -124,6 +126,7 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.receiveChannelDetail(response.data?.channelDetail)
+               setThumbnailImage()
                setChannelRegion()
                setChannelRecruitmentMethod()
                viewModel.channelDetail.value?.online?.let { setChannelForm(it) }
@@ -416,6 +419,14 @@ class ChannelDetailFragment : Fragment() {
                binding.btnJoinApplicant.visibility = View.VISIBLE
             }
          }
+      }
+   }
+
+   private fun setThumbnailImage() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         Glide.with(App.getInstance().applicationContext)
+            .load(it.thumbnailUri)
+            .error(R.drawable.bg_category_yellow_crop).into(binding.imgThumbnail)
       }
    }
 }
