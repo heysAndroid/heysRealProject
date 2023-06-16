@@ -53,7 +53,8 @@
                         android:text="수정"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:visibility="gone" />
 
                     <ImageButton
                         android:id="@+id/btnShare"
@@ -515,17 +516,47 @@
                     android:layout_marginHorizontal="32dp" />
 
                 <Button
-                    android:id="@+id/btnJoin"
+                    android:id="@+id/btn_join_member"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_ok_button_disabled"
+                    android:enabled="false"
+                    android:text="이미 참여중이에요"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_join_visitor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/bg_ok_button"
-                    android:text="채널 참여"
+                    android:text="채널 참여하기"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_join_applicant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_ok_button_disabled"
+                    android:enabled="false"
+                    android:text="승인 대기중이에요"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list.edit
+package com.example.heysrealprojcet.ui.channel.edit
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -36,11 +36,17 @@ class ChannelEditViewModel @Inject constructor(
    val link2 = MutableLiveData(channelDetail.value?.links?.get(1)?.link ?: "")
    val linkCount = MutableLiveData(0)
 
+   private val _channelTitleLetterCount = MutableLiveData<Int>()
+   val channelTitleLetterCount: LiveData<Int> = _channelTitleLetterCount
+
    private val _channelContentLetterCount = MutableLiveData<Int>()
    val channelContentLetterCount: LiveData<Int> = _channelContentLetterCount
 
    private val _channelRecruitLetterCount = MutableLiveData<Int>()
    val channelRecruitLetterCount: LiveData<Int> = _channelRecruitLetterCount
+
+   private val _purposeArray = MutableLiveData<List<String>>()
+   val purposeArray: LiveData<List<String>> = _purposeArray
 
    fun setTitle(value: String) {
       title.value = value
@@ -70,6 +76,10 @@ class ChannelEditViewModel @Inject constructor(
       _purposeString.value = purpose
    }
 
+   fun setPurposeArray(purpose: List<String>) {
+      _purposeArray.value = purpose
+   }
+
    fun setChannelDetail(channelDetail: ChannelDetail) {
       _channelDetail.value = channelDetail
    }
@@ -80,6 +90,16 @@ class ChannelEditViewModel @Inject constructor(
 
    fun setRecruitTextCount(channelRecruitLetterCount: Int) {
       _channelRecruitLetterCount.value = channelRecruitLetterCount
+   }
+
+   val channelTitleTextWatcher = object : TextWatcher {
+      override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+      override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+         _channelTitleLetterCount.value = p0?.length
+      }
+
+      override fun afterTextChanged(p0: Editable?) {}
    }
 
    val channelContentTextWatcher = object : TextWatcher {

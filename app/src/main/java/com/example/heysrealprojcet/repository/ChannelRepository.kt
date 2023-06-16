@@ -69,4 +69,10 @@ class ChannelRepository @Inject constructor(
          emit(safeApiCall { channelApi.channelRemoveBookmark(token, id) })
       }.flowOn(Dispatchers.IO)
    }
+
+   fun joinChannel(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.joinChannel(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
 }

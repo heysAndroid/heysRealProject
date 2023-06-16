@@ -41,6 +41,12 @@ class ContestListFragment : Fragment() {
       mainActivity.hideBottomNavigation(true)
    }
 
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onDestroy() {
       super.onDestroy()
       val mainActivity = activity as MainActivity

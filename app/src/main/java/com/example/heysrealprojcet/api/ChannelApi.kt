@@ -51,4 +51,10 @@ interface ChannelApi {
 
    @PUT("channel/remove-bookmark/{channelId}")
    suspend fun channelRemoveBookmark(@Header("Authorization") token: String, @Path(value = "channelId") id: Int): Response<SimpleResponse>
+
+   @POST("channel/join/{channelId}")
+   suspend fun joinChannel(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") id: Int
+   ): Response<SimpleResponse>
 }

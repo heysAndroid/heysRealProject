@@ -39,6 +39,9 @@ class ChannelDetailViewModel @Inject constructor(
    fun channelAddBookmark(token: String, id: Int) = channelRepository.channelAddBookmark(token, id).asLiveData()
 
    fun channelRemoveBookmark(token: String, id: Int) = channelRepository.channelRemoveBookmark(token, id).asLiveData()
+
+   fun joinChannel(token: String, id: Int) = channelRepository.joinChannel(token, id).asLiveData()
+
    fun receiveChannelDetail(channelDetail: ChannelDetail?) {
       channelDetail?.let {
          _channelDetail.value = it

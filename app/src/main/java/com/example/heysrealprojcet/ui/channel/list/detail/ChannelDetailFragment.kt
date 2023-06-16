@@ -80,8 +80,10 @@ class ChannelDetailFragment : Fragment() {
          }
          allApprovedUser.setOnClickListener { goToApprovedUserList() }
          allWaitingUser.setOnClickListener { goToWaitingUserList() }
-         btnJoin.setOnClickListener { }
-         tvEdit.setOnClickListener { goToChannelEdit() }
+         btnJoinVisitor.setOnClickListener { joinChannel(args.channelId) }
+
+         // 채널 수정 우선 주석 처리
+//         tvEdit.setOnClickListener { goToChannelEdit() }
       }
    }
 
@@ -210,6 +212,39 @@ class ChannelDetailFragment : Fragment() {
       }
    }
 
+   private fun joinChannel(id: Int) {
+      viewModel.joinChannel("Bearer ${UserPreference.accessToken}", id).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("joinChannel: ", response.data?.message.toString())
+               CustomSnackBar(binding.root, "채널 신청이 완료되었어요!", null, true).show()
+
+               viewModel.channelDetail.observe(viewLifecycleOwner) {
+                  // 바로 승인
+                  if (it.recruitMethod == ChannelRecruitmentMethod.Immediately.methodEng) {
+                     binding.btnJoinVisitor.visibility = View.GONE
+                     binding.btnJoinMember.visibility = View.VISIBLE
+                  } else {
+                     // 승인 결정
+                     binding.btnJoinVisitor.visibility = View.GONE
+                     binding.btnJoinApplicant.visibility = View.VISIBLE
+                  }
+               }
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("joinChannel: ", "error ${response.message}")
+               CustomSnackBar(binding.root, "채널 신청을 실패했어요.", null, true).show()
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("joinChannel: ", "loading")
+               CustomSnackBar(binding.root, "채널 신청이 지연되고 있어요.", null, true).show()
+            }
+         }
+      }
+   }
+
    private fun setChannelRegion() {
       //온라인이면 지역 텍스트 숨기기
       if (viewModel.channelDetail.value?.online == ChannelForm.Online.engForm) {
@@ -221,7 +256,7 @@ class ChannelDetailFragment : Fragment() {
 
    private fun setChannelRecruitmentMethod() {
       binding.channelRecruitmentMethod.text =
-         if (viewModel.channelDetail.value?.recruitMethod == ChannelRecruitmentMethod.Immediately.method) {
+         if (viewModel.channelDetail.value?.recruitMethod == ChannelRecruitmentMethod.Immediately.methodEng) {
             "승인없이 바로 참여가능해요."
          } else {
             "승인이 필요해요."
@@ -356,37 +391,29 @@ class ChannelDetailFragment : Fragment() {
          when (it.relationshipWithMe) {
             // 리더
             RelationshipWithMe.Leader.relationship -> {
-               binding.btnJoin.apply {
-                  text = "이미 참여중이에요"
-                  isEnabled = false
-               }
-               binding.tvEdit.visibility = View.VISIBLE
+               binding.btnJoinMember.visibility = View.VISIBLE
+               binding.btnJoinVisitor.visibility = View.GONE
+               binding.btnJoinApplicant.visibility = View.GONE
+            }
+
+            RelationshipWithMe.Member.relationship -> {
+               binding.btnJoinMember.visibility = View.VISIBLE
+               binding.btnJoinVisitor.visibility = View.GONE
+               binding.btnJoinApplicant.visibility = View.GONE
             }
 
             // 방문자
             RelationshipWithMe.Visiter.relationship -> {
-               binding.btnJoin.apply {
-                  text = "채널 참여하기"
-                  isEnabled = true
-               }
-               binding.tvEdit.visibility = View.GONE
+               binding.btnJoinMember.visibility = View.GONE
+               binding.btnJoinVisitor.visibility = View.VISIBLE
+               binding.btnJoinApplicant.visibility = View.GONE
             }
 
-            RelationshipWithMe.Member.relationship -> {
-               binding.btnJoin.apply {
-                  text = "이미 참여중이에요"
-                  isEnabled = false
-               }
-               binding.tvEdit.visibility = View.GONE
-            }
-
-
+            // 승인 대기자
             else -> {
-               binding.btnJoin.apply {
-                  text = "승인 대기중이에요"
-                  isEnabled = false
-               }
-               binding.tvEdit.visibility = View.GONE
+               binding.btnJoinMember.visibility = View.GONE
+               binding.btnJoinVisitor.visibility = View.GONE
+               binding.btnJoinApplicant.visibility = View.VISIBLE
             }
          }
       }

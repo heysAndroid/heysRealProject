@@ -439,7 +439,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelEditFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.list.edit.ChannelEditFragment"
+        android:name="com.example.heysrealprojcet.ui.channel.edit.ChannelEditFragment"
         android:label="ChannelEditFragment"
         tools:layout="@layout/channel_edit_fragment">
         <argument

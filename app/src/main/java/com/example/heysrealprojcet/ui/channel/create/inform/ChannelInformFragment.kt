@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelInformFragmentBinding
 import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialog
-import com.example.heysrealprojcet.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel
 import com.example.heysrealprojcet.ui.channel.dialog.form.ChannelFormDialog
 import com.example.heysrealprojcet.ui.channel.dialog.interest.ChannelInterestDialog
 import com.example.heysrealprojcet.ui.channel.dialog.period.ChannelPeriodDialog
@@ -26,7 +25,6 @@ import java.time.format.DateTimeFormatter
 class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
    private val viewModel: ChannelInformViewModel by viewModels()
-   private val capacityDialogViewModel: ChannelCapacityDialogViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)

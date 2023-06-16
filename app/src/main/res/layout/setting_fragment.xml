@@ -342,6 +342,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
                     android:text="로그아웃하기"
+                    android:id="@+id/tv_logout"
                     android:textColor="@color/color_949494"
                     android:textSize="14sp"
                     android:textStyle="bold" />

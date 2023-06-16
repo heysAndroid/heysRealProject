@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.channel.list.edit
+package com.example.heysrealprojcet.ui.channel.edit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.heysrealprojcet.databinding.ChannelEditFragmentBinding
+import com.example.heysrealprojcet.ui.channel.edit.editDialog.EditChannelPurposeDialog
 import com.example.heysrealprojcet.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,6 +48,14 @@ class ChannelEditFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       initView()
+
+      binding.tvEditPurpose.setOnClickListener {
+         val editPurposeDialog = EditChannelPurposeDialog()
+         editPurposeDialog?.setOnOKClickListener { content ->
+            binding.channelPurpose.text = content
+         }
+         editPurposeDialog?.show(childFragmentManager, null)
+      }
    }
 
    private fun initView() {
