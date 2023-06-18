@@ -43,9 +43,10 @@ class ContentsFilterFragment : Fragment() {
       binding.lifecycleOwner = this
 
       initStartView()
-
+      binding.btnClose.setOnClickListener { findNavController().navigateUp() }
       binding.cafeteriaCalendar.stopScroll()
       binding.cafeteriaCalendar.isNestedScrollingEnabled = false
+
       binding.btnApply.setOnClickListener {
          val previousFragment = findNavController().previousBackStackEntry?.destination?.displayName
          if (previousFragment?.contains("contest") == true) {

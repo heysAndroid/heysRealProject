@@ -33,6 +33,7 @@ class ContestListFragment : Fragment() {
 
    lateinit var filterViewModel: ContestExtracurricularFilterViewModel
    private lateinit var myInterestList: ArrayList<String>
+
    val args: ContestListFragmentArgs by navArgs()
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -122,30 +123,34 @@ class ContestListFragment : Fragment() {
 
    private fun getContestList(interests: ArrayList<String>, includeClosed: Boolean) {
       val token = UserPreference.accessToken
-      interests.forEach {
-         Log.i("interests: ", it)
+      var lastRecruitDate: String? = null
+      if (filterViewModel.selectedDate != null) {
+         lastRecruitDate = filterViewModel.calendarDate.value.toString() + "T23:59:59"
       }
-      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, interests, null, includeClosed).observe(viewLifecycleOwner) { response ->
-         when (response) {
-            is NetworkResult.Success -> {
-               viewModel.setContestList(response.data?.data)
-               contentItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
-                  ContentItemRecyclerViewAdapter(it) { contentID ->
-                     goToDetail(contentID)
-                  }
-               }!!
-               binding.contestList.adapter = contentItemRecyclerViewAdapter
-               binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            }
+      interests.forEach { Log.i("interests: ", it) }
 
-            is NetworkResult.Loading -> {
-               Log.w("getContestList: ", "loading")
-            }
+      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, interests, lastRecruitDate, includeClosed)
+         .observe(viewLifecycleOwner) { response ->
+            when (response) {
+               is NetworkResult.Success -> {
+                  viewModel.setContestList(response.data?.data)
+                  contentItemRecyclerViewAdapter = viewModel.contestList.value?.toMutableList()?.let {
+                     ContentItemRecyclerViewAdapter(it) { contentID ->
+                        goToDetail(contentID)
+                     }
+                  }!!
+                  binding.contestList.adapter = contentItemRecyclerViewAdapter
+                  binding.contestList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+               }
 
-            is NetworkResult.Error -> {
-               Log.w("getContestList: ", response.message.toString())
+               is NetworkResult.Loading -> {
+                  Log.w("getContestList: ", "loading")
+               }
+
+               is NetworkResult.Error -> {
+                  Log.w("getContestList: ", response.message.toString())
+               }
             }
          }
-      }
    }
 }

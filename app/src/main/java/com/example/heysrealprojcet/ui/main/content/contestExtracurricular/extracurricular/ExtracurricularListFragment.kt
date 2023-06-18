@@ -67,6 +67,7 @@ class ExtracurricularListFragment : Fragment() {
          Log.w("filters: ", it)
       }
       setInterestList()
+      binding.btnClose.setOnClickListener { findNavController().navigateUp() }
       binding.filterCount.text = "${myInterestList.size}"
       binding.filterButton.setOnClickListener { goToFilter() }
 
@@ -121,10 +122,14 @@ class ExtracurricularListFragment : Fragment() {
    }
 
    private fun getExtraCurricularList(interests: ArrayList<String>, includeClosed: Boolean) {
+      val token = UserPreference.accessToken
+      var lastRecruitDate: String? = null
+      if (filterViewModel.selectedDate != null) {
+         lastRecruitDate = filterViewModel.calendarDate.value.toString() + "T23:59:59"
+      }
       interests.forEach { Log.i("interests: ", it) }
 
-      val token = UserPreference.accessToken
-      viewModel.getExtraCurricularList("Bearer $token", ChannelType.Extracurricular.typeEng, interests, null, includeClosed).observe(viewLifecycleOwner) { response ->
+      viewModel.getExtraCurricularList("Bearer $token", ChannelType.Extracurricular.typeEng, interests, lastRecruitDate, includeClosed).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContestList(response.data?.data)
