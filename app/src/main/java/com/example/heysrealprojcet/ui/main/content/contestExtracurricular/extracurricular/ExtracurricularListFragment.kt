@@ -67,7 +67,7 @@ class ExtracurricularListFragment : Fragment() {
          Log.w("filters: ", it)
       }
       setInterestList()
-      binding.btnClose.setOnClickListener { findNavController().navigateUp() }
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterCount.text = "${myInterestList.size}"
       binding.filterButton.setOnClickListener { goToFilter() }
 
