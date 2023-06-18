@@ -17,6 +17,7 @@
             android:layout_width="122dp"
             android:layout_height="122dp"
             android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/bg_study_list" />
 
         <TextView

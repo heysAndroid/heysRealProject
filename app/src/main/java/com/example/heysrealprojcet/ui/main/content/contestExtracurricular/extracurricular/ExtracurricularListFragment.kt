@@ -102,13 +102,13 @@ class ExtracurricularListFragment : Fragment() {
       when (args.type) {
          "interest" -> {
             findNavController().navigate(
-               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               R.id.action_extracurricularListFragment_to_contentsFilterFragment,
                bundleOf(MainFragment.MY_INTEREST_LIST to myInterestList))
          }
 
          else -> {
             findNavController().navigate(
-               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               R.id.action_extracurricularListFragment_to_contentsFilterFragment,
                bundleOf(MainFragment.MY_INTEREST_LIST to null))
          }
       }
@@ -116,7 +116,7 @@ class ExtracurricularListFragment : Fragment() {
 
    private fun goToDetail(contentId: Int) {
       findNavController().navigate(
-         R.id.action_contestListFragment_to_contestExtracurricularDetailFragment,
+         R.id.action_extracurricularListFragment_to_contestExtracurricularDetailFragment,
          bundleOf("channelType" to ChannelType.Extracurricular.typeEng, "contentId" to contentId))
    }
 

@@ -41,10 +41,10 @@
             app:destination="@id/channelDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/contestExtracurricularFilterFragment"
-        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterFragment"
+        android:id="@+id/contentsFilterFragment"
+        android:name="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContentsFilterFragment"
         android:label="FilterFragment"
-        tools:layout="@layout/contest_extracurricular_filter_fragment">
+        tools:layout="@layout/contents_filter_fragment">
 
         <action
             android:id="@+id/backToExtracurricularList"
@@ -64,8 +64,8 @@
         android:label="ContestFragment"
         tools:layout="@layout/contest_list_fragment">
         <action
-            android:id="@+id/action_contestListFragment_to_contestExtracurricularFilterFragment"
-            app:destination="@id/contestExtracurricularFilterFragment" />
+            android:id="@+id/action_contestListFragment_to_contentsFilterFragment"
+            app:destination="@id/contentsFilterFragment" />
         <action
             android:id="@+id/action_contestListFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />
@@ -156,8 +156,8 @@
         android:label="ExtracurricularListFragment"
         tools:layout="@layout/extracurricular_list_fragment">
         <action
-            android:id="@+id/action_extracurricularListFragment_to_contestExtracurricularFilterFragment"
-            app:destination="@id/contestExtracurricularFilterFragment" />
+            android:id="@+id/action_extracurricularListFragment_to_contentsFilterFragment"
+            app:destination="@id/contentsFilterFragment" />
         <action
             android:id="@+id/action_extracurricularListFragment_to_contestExtracurricularDetailFragment"
             app:destination="@id/contestExtracurricularDetailFragment" />

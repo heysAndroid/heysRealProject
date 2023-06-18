@@ -30,5 +30,5 @@ class ExtracurricularListViewModel @Inject constructor(
       lastRecruitDate: String?,
       includeClosed: Boolean? = false,
       page: Int? = 1,
-      limit: Int? = 20) = contentRepository.getContentList(token, type, interest, lastRecruitDate, includeClosed, page, limit).asLiveData()
+      limit: Int? = 30) = contentRepository.getContentList(token, type, interest, lastRecruitDate, includeClosed, page, limit).asLiveData()
 }

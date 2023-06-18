@@ -79,13 +79,13 @@ class ContestListFragment : Fragment() {
       when (args.type) {
          "interest" -> {
             findNavController().navigate(
-               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               R.id.action_contestListFragment_to_contentsFilterFragment,
                bundleOf(MY_INTEREST_LIST to myInterestList))
          }
 
          else -> {
             findNavController().navigate(
-               R.id.action_contestListFragment_to_contestExtracurricularFilterFragment,
+               R.id.action_contestListFragment_to_contentsFilterFragment,
                bundleOf(MY_INTEREST_LIST to null))
          }
       }

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
-import com.example.heysrealprojcet.databinding.ContestExtracurricularFilterFragmentBinding
+import com.example.heysrealprojcet.databinding.ContentsFilterFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
 import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -21,8 +21,8 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.Locale
 
-class ContestExtracurricularFilterFragment : Fragment() {
-   private lateinit var binding: ContestExtracurricularFilterFragmentBinding
+class ContentsFilterFragment : Fragment() {
+   private lateinit var binding: ContentsFilterFragmentBinding
    lateinit var viewModel: ContestExtracurricularFilterViewModel
 
    private var currentTime = YearMonth.now()
@@ -32,7 +32,7 @@ class ContestExtracurricularFilterFragment : Fragment() {
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = ContestExtracurricularFilterFragmentBinding.inflate(inflater, container, false)
+      binding = ContentsFilterFragmentBinding.inflate(inflater, container, false)
       viewModel = ViewModelProvider(requireActivity())[ContestExtracurricularFilterViewModel::class.java]
       binding.vm = viewModel
       return binding.root
@@ -49,10 +49,10 @@ class ContestExtracurricularFilterFragment : Fragment() {
       binding.btnApply.setOnClickListener {
          val previousFragment = findNavController().previousBackStackEntry?.destination?.displayName
          if (previousFragment?.contains("contest") == true) {
-            val action = ContestExtracurricularFilterFragmentDirections.backToContestList("default")
+            val action = ContentsFilterFragmentDirections.backToContestList("default")
             findNavController().navigate(action)
          } else {
-            val action = ContestExtracurricularFilterFragmentDirections.backToExtracurricularList("default")
+            val action = ContentsFilterFragmentDirections.backToExtracurricularList("default")
             findNavController().navigate(action)
          }
       }
