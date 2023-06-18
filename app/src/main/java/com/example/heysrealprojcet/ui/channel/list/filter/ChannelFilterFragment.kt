@@ -18,7 +18,7 @@ import com.kizitonwose.calendarview.ui.DayBinder
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
-import java.util.*
+import java.util.Locale
 
 class ChannelFilterFragment : Fragment() {
    private lateinit var binding: ChannelFilterFragmentBinding
@@ -50,9 +50,11 @@ class ChannelFilterFragment : Fragment() {
             ChannelForm.Offline.form -> {
                binding.regionContainer.visibility = View.VISIBLE
             }
+
             ChannelForm.Online.form -> {
                binding.regionContainer.visibility = View.GONE
             }
+
             else -> {
                binding.regionContainer.visibility = View.GONE
             }
