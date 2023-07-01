@@ -154,8 +154,6 @@ class ContentsFilterFragment : Fragment() {
       viewModel.isCalendarInit.observe(viewLifecycleOwner, EventObserver {
          if (it) binding.cafeteriaCalendar.notifyCalendarChanged()
       })
-
-
    }
 
    private fun initStartView() {
@@ -195,8 +193,7 @@ class ContentsFilterFragment : Fragment() {
             btnInterest?.setTypeface(null, Typeface.BOLD)
 
             if (btnInterest != null) {
-               viewModel.choiceInterest.add(btnInterest)
-               viewModel.interestTotal.value += 1
+               viewModel.selectedView.add(btnInterest)
             }
          }
       }

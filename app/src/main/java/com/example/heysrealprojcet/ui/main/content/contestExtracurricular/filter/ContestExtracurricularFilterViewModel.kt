@@ -8,16 +8,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.heysrealprojcet.Event
-import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.LocalDate
 import java.time.YearMonth
 
 class ContestExtracurricularFilterViewModel : ViewModel() {
-   var choiceInterest = mutableListOf<View>()
    private val interestMax = 3
-   var interestTotal = MutableStateFlow(0)
+   var selectedView = mutableListOf<View>()
    var interestArray = mutableListOf<String>()
-
    var selectedDate: LocalDate? = null
 
    private val _calendarPosition = MutableLiveData(YearMonth.now().month.value)
@@ -49,29 +46,26 @@ class ContestExtracurricularFilterViewModel : ViewModel() {
       val button = v as Button
       val item = button.text.toString()
 
-      if (interestTotal.value < interestMax) {
+      if (interestArray.size < interestMax) {
          // 이미 선택된 경우
          if (v.isSelected) {
-            choiceInterest.remove(v)
+            selectedView.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestArray.remove(item)
          } else {
             // 선택되지 않은 경우
-            choiceInterest.add(v)
+            selectedView.add(v)
             v.isSelected = true
             button.setTypeface(null, Typeface.BOLD)
             interestArray.add(item)
          }
-         interestTotal.value = interestArray.size
-
       } else {
          if (v.isSelected) {
-            choiceInterest.remove(v)
+            selectedView.remove(v)
             v.isSelected = false
             button.setTypeface(null, Typeface.NORMAL)
             interestArray.remove(item)
-            interestTotal.value = interestArray.size
          }
       }
 
@@ -81,13 +75,12 @@ class ContestExtracurricularFilterViewModel : ViewModel() {
    }
 
    fun onClickInit() {
-      for (i in choiceInterest.indices) {
-         choiceInterest[i].isSelected = false
-         (choiceInterest[i] as Button).setTypeface(null, Typeface.NORMAL)
+      for (i in selectedView.indices) {
+         selectedView[i].isSelected = false
+         (selectedView[i] as Button).setTypeface(null, Typeface.NORMAL)
       }
-      interestTotal.value = 0
       interestArray.clear()
-      choiceInterest.clear()
+      selectedView.clear()
 
       selectedDate = null
       _calendarDate.value = selectedDate

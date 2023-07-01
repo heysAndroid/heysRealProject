@@ -1,5 +1,6 @@
 package com.example.heysrealprojcet.ui.channel.dialog.interest
 
+import android.graphics.Typeface
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.LiveData
@@ -38,14 +39,17 @@ class ChannelInterestDialogViewModel : ViewModel() {
       if (selectedInterest.value?.size!! < interestMax) {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             _selectedInterest.value?.remove(text)
          } else {
             v.isSelected = true
+            button.setTypeface(null, Typeface.BOLD)
             _selectedInterest.value?.add(text)
          }
       } else {
          if (v.isSelected) {
             v.isSelected = false
+            button.setTypeface(null, Typeface.NORMAL)
             _selectedInterest.value?.remove(text)
          }
       }
