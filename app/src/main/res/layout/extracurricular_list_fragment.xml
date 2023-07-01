@@ -60,7 +60,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="4dp"
-                    android:background="@null"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/ic_bi_filter_left" />
 
                 <TextView
