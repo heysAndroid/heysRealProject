@@ -11,6 +11,7 @@ import com.example.heysrealprojcet.util.ChannelPreference
 import kotlinx.coroutines.launch
 
 class ChannelInterestDialogViewModel : ViewModel() {
+   val interestMax = 3
    private val _selectedInterest = MutableLiveData<ArrayList<String>>()
    val selectedInterest: LiveData<ArrayList<String>> = _selectedInterest
 
@@ -34,12 +35,20 @@ class ChannelInterestDialogViewModel : ViewModel() {
       val button = v as Button
       val text = button.text.toString()
 
-      if (selectedInterest.value?.contains(text) == true) {
-         _selectedInterest.value?.remove(text)
-         _selectedInterest.apply { postValue(value) }
+      if (selectedInterest.value?.size!! < interestMax) {
+         if (v.isSelected) {
+            v.isSelected = false
+            _selectedInterest.value?.remove(text)
+         } else {
+            v.isSelected = true
+            _selectedInterest.value?.add(text)
+         }
       } else {
-         _selectedInterest.value?.add(text)
-         _selectedInterest.apply { postValue(value) }
+         if (v.isSelected) {
+            v.isSelected = false
+            _selectedInterest.value?.remove(text)
+         }
       }
+      _selectedInterest.apply { postValue(value) }
    }
 }
