@@ -2,19 +2,20 @@ package com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ApprovedUserItemViewBinding
-import com.example.heysrealprojcet.enums.Gender
-import com.example.heysrealprojcet.model.network.ApprovedUserList
+import com.example.heysrealprojcet.model.network.ChannelFollower
 
 class ApprovedUserListRecyclerViewAdapter(
-   private val user: MutableList<ApprovedUserList>?
-) : RecyclerView.Adapter<ApprovedUserListRecyclerViewAdapter.ViewHolder>() {
+   private val onClick: (Int) -> Unit
+) : ListAdapter<ChannelFollower, ApprovedUserListRecyclerViewAdapter.ViewHolder>(DiffCallback) {
    private lateinit var binding: ApprovedUserItemViewBinding
 
    inner class ViewHolder(private val binding: ApprovedUserItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-      fun bind(user: ApprovedUserList) {
+      fun bind(user: ChannelFollower) {
+         /*
          when (user.percentage) {
             in 0..49 -> {
                when (user.gender) {
@@ -24,6 +25,7 @@ class ApprovedUserListRecyclerViewAdapter(
                }
 
             }
+
             in 50..99 -> {
                when (user.gender) {
                   Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_50)
@@ -31,6 +33,7 @@ class ApprovedUserListRecyclerViewAdapter(
                   else -> binding.profile.setImageResource(R.drawable.ic_none_50)
                }
             }
+
             100 -> {
                when (user.gender) {
                   Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_100)
@@ -39,10 +42,9 @@ class ApprovedUserListRecyclerViewAdapter(
                }
             }
          }
-
-         // TODO
-         // 유저 이름 표시
-         binding.name.text = user.id.toString()
+*/
+         binding.name.text = user.username
+         binding.goToProfile.setOnClickListener { onClick.invoke(user.id) }
       }
    }
 
@@ -52,10 +54,16 @@ class ApprovedUserListRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      user?.get(position)?.let { holder.bind(it) }
+      holder.bind(getItem(position))
    }
 
-   override fun getItemCount(): Int {
-      return user?.size ?: 0
+   private object DiffCallback : DiffUtil.ItemCallback<ChannelFollower>() {
+      override fun areItemsTheSame(oldItem: ChannelFollower, newItem: ChannelFollower): Boolean {
+         return oldItem.id == newItem.id
+      }
+
+      override fun areContentsTheSame(oldItem: ChannelFollower, newItem: ChannelFollower): Boolean {
+         return oldItem == newItem
+      }
    }
 }

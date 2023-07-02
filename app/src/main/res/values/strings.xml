@@ -18,4 +18,11 @@
         <item>채널을 나가는 이유를 알려주세요.</item>
     </string-array>
     <string name="edit_underline"><u>수정</u></string>
+
+    <string-array name="spinner_channel_reject">
+        <item>추가 인원 모집 의사가 없어요</item>
+        <item>프로필 정보가 부족해요</item>
+        <item>작성하기</item>
+        <item>승인 요청을 취소하는 이유를 알려주세요.</item>
+    </string-array>
 </resources>

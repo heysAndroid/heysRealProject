@@ -42,6 +42,12 @@ class ChannelPreviewFragment : Fragment() {
       mainActivity.hideBottomNavigation(false)
    }
 
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ChannelPreviewFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
@@ -157,7 +163,7 @@ class ChannelPreviewFragment : Fragment() {
          recruitMethod = ChannelPreference.channelRecruitmentMethodEng,
          contentText = ChannelPreference.channelActivity,
          recruitText = ChannelPreference.channelMember,
-         thumbnailUri = ChannelPreference.channelThumbnailUrl,
+         thumbnailUri = "",
          linkUri = arrayListOf(viewModel.link1.value!!, viewModel.link2.value!!),
          interests = ChannelPreference.channelInterestArray
       )
@@ -237,7 +243,6 @@ class ChannelPreviewFragment : Fragment() {
    private fun setThumbnailImage(thumbnailUrl: String) {
       Glide.with(App.getInstance().applicationContext)
          .load(thumbnailUrl)
-         .error(R.drawable.bg_category_yellow_crop).into(binding.imgThumbnail)
-
+         .error(R.drawable.bg_thumbnail_default).into(binding.imgThumbnail)
    }
 }

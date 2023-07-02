@@ -13,7 +13,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.heysrealprojcet.App
 import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ChannelDetailFragmentBinding
@@ -91,21 +90,18 @@ class ChannelDetailFragment : Fragment() {
 
    private fun goToApprovedUserList() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
-         it.approvedUserList?.let { approvedUserList ->
-            findNavController().navigate(
-               R.id.action_channelDetailFragment_to_approvedUserListFragment,
-               bundleOf("approvedUser" to approvedUserList.toTypedArray()))
-         }
+         findNavController().navigate(
+            R.id.action_channelDetailFragment_to_approvedUserListFragment,
+            bundleOf("channelId" to it.id))
       }
    }
 
    private fun goToWaitingUserList() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
-         it.waitingUserList?.let { waitingUserList ->
-            findNavController().navigate(
-               R.id.action_channelDetailFragment_to_waitingUserListFragment,
-               bundleOf("waitingUser" to waitingUserList.toTypedArray()))
-         }
+         val isLeader = it.relationshipWithMe == RelationshipWithMe.Leader.relationship
+         findNavController().navigate(
+            R.id.action_channelDetailFragment_to_waitingUserListFragment,
+            bundleOf("channelId" to it.id, "isLeader" to isLeader))
       }
    }
 
@@ -342,6 +338,7 @@ class ChannelDetailFragment : Fragment() {
             setWaitingUserListInvisible()
          } else {
             setWaitingUserListVisible()
+            waitingUserAdapter = WaitingUserImageListRecyclerViewAdapter(it)
             binding.waitingUserList.adapter = waitingUserAdapter
             binding.waitingUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
          }
@@ -424,9 +421,8 @@ class ChannelDetailFragment : Fragment() {
 
    private fun setThumbnailImage() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
-         Glide.with(App.getInstance().applicationContext)
-            .load(it.thumbnailUri)
-            .error(R.drawable.bg_thumbnail_default).into(binding.imgThumbnail)
+         Glide.with(requireContext()).load(it.thumbnailUri).error(R.drawable.bg_thumbnail_default)
+            .into(binding.imgThumbnail)
       }
    }
 }

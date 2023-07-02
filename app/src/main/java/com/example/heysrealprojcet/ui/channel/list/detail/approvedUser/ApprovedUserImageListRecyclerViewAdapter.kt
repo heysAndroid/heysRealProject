@@ -22,8 +22,8 @@ class ApprovedUserImageListRecyclerViewAdapter(
                   Gender.Female.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_female_0)
                   else -> binding.profile.setImageResource(R.drawable.ic_none_0)
                }
-
             }
+
             in 50..99 -> {
                when (user.gender) {
                   Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_50)
@@ -31,6 +31,7 @@ class ApprovedUserImageListRecyclerViewAdapter(
                   else -> binding.profile.setImageResource(R.drawable.ic_none_50)
                }
             }
+
             100 -> {
                when (user.gender) {
                   Gender.Male.genderEnglish -> binding.profile.setImageResource(R.drawable.ic_male_100)

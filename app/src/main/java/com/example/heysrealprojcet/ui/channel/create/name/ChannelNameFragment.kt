@@ -30,6 +30,12 @@ class ChannelNameFragment : Fragment() {
       mainActivity.hideBottomNavigation(false)
    }
 
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = ChannelNameFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel

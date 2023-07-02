@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/profile"
+            android:id="@+id/img_profile"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginRight="12dp"
@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이름"
@@ -35,7 +35,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/introduction"
+                android:id="@+id/tv_request_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="요청한지 1일"
@@ -44,13 +44,42 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/goToProfile"
+            android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:text="프로필 보기"
             android:textColor="@color/color_34d676"
             android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_reject_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_reject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_34d676_stroke_radius_8"
+            android:text="거절"
+            android:textColor="@color/color_34d676"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_34d676_radius_8"
+            android:text="승인"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <View

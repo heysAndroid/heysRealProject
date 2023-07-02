@@ -21,9 +21,10 @@ class ChannelItemRecyclerViewAdapter(
             tvTitle.text = channel.name
             tvPastDay.text = "개설한지 ${channel.dday}일"
             tvViewCount.text = "${channel.viewCount}"
+
             Glide.with(App.getInstance().applicationContext)
                .load(channel.thumbnailUri)
-               .error(R.drawable.bg_category_yellow_crop).into(imgThumbnail)
+               .error(R.drawable.bg_thumbnail_default).into(imgThumbnail)
             root.setOnClickListener { onClickListener.invoke(channel.id) }
          }
 

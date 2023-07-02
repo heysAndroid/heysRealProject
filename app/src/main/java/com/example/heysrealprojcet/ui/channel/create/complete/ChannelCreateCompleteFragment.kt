@@ -225,7 +225,7 @@ class ChannelCreateCompleteFragment : Fragment() {
       viewModel.thumbnailUri.observe(viewLifecycleOwner) {
          Glide.with(App.getInstance().applicationContext)
             .load(it)
-            .error(R.drawable.bg_category_yellow_crop).into(binding.imgThumbnail)
+            .error(R.drawable.bg_thumbnail_default).into(binding.imgThumbnail)
       }
    }
 

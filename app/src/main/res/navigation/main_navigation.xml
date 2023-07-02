@@ -393,18 +393,23 @@
         android:name="com.example.heysrealprojcet.ui.channel.list.detail.approvedUser.list.ApprovedUserListFragment"
         android:label="ApprovedUserListFragment"
         tools:layout="@layout/approved_user_list_fragment">
+
         <argument
-            android:name="approvedUser"
-            app:argType="com.example.heysrealprojcet.model.network.ApprovedUserList[]" />
+            android:name="channelId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/waitingUserListFragment"
         android:name="com.example.heysrealprojcet.ui.channel.list.detail.waitingUser.list.WaitingUserListFragment"
         android:label="WaitingUserListFragment"
         tools:layout="@layout/waiting_user_list_fragment">
+
         <argument
-            android:name="waitingUser"
-            app:argType="com.example.heysrealprojcet.model.network.WaitingUserList[]" />
+            android:name="channelId"
+            app:argType="integer" />
+        <argument
+            android:name="isLeader"
+            app:argType="boolean" />
     </fragment>
 
     <fragment

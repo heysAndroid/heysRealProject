@@ -22,7 +22,7 @@ class ExtracurricularItemRecyclerViewAdapter(
             company.text = content.company
             viewCount.text = content.viewCount.toString()
             channelCount.text = "${content.channelCount}팀 빌딩"
-            Glide.with(App.getInstance().applicationContext).load(content.previewImgUri).into(binding.image)
+            Glide.with(App.getInstance().applicationContext).load(content.previewImgUri).error(R.drawable.bg_thumbnail_default).into(binding.image)
          }
 
          when {

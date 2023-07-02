@@ -4,6 +4,7 @@ import com.example.heysrealprojcet.api.ChannelApi
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
+import com.example.heysrealprojcet.model.network.response.ChannelFollowerListResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
@@ -73,6 +74,24 @@ class ChannelRepository @Inject constructor(
    fun joinChannel(token: String, id: Int): Flow<NetworkResult<SimpleResponse>> {
       return flow {
          emit(safeApiCall { channelApi.joinChannel(token, id) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun getChannelFollower(token: String, channelId: Int, status: String): Flow<NetworkResult<ChannelFollowerListResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.getChannelFollower(token, channelId, status) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun putRequestReject(token: String, channelId: Int, followerId: Int, message: SimpleResponse): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.putRequestReject(token, channelId, followerId, message) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun putRequestAllow(token: String, channelId: Int, followerId: Int, message: SimpleResponse): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.putRequestAllow(token, channelId, followerId, message) })
       }.flowOn(Dispatchers.IO)
    }
 }

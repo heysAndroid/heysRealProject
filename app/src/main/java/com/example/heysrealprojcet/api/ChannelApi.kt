@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.api
 
 import com.example.heysrealprojcet.model.network.Study
 import com.example.heysrealprojcet.model.network.response.ChannelDetailResponse
+import com.example.heysrealprojcet.model.network.response.ChannelFollowerListResponse
 import com.example.heysrealprojcet.model.network.response.ChannelListResponse
 import com.example.heysrealprojcet.model.network.response.CreateStudyResponse
 import com.example.heysrealprojcet.model.network.response.MyChannelListResponse
@@ -22,10 +23,10 @@ interface ChannelApi {
    @GET("channel/my")
    suspend fun getMyChannelList(@Header("Authorization") token: String): Response<MyChannelListResponse>
 
-   @GET("channel/extra/{channelId}")
+   @GET("channel/extra/{contentId}")
    suspend fun getContentChannelList(
       @Header("Authorization") token: String,
-      @Path(value = "channelId") channelId: Int,
+      @Path(value = "contentId") contentId: Int,
       @Query("interests") interests: ArrayList<String>?,
       @Query("lastRecruitDate") lastRecruitDate: String?,
       @Query("purposes") purposes: ArrayList<String>?,
@@ -56,5 +57,27 @@ interface ChannelApi {
    suspend fun joinChannel(
       @Header("Authorization") token: String,
       @Path(value = "channelId") id: Int
+   ): Response<SimpleResponse>
+
+   @GET("channel/follow/{channelId}/{status}")
+   suspend fun getChannelFollower(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") id: Int,
+      @Path(value = "status") status: String): Response<ChannelFollowerListResponse>
+
+   @PUT("channel/request-reject/{channelId}/{followerId}")
+   suspend fun putRequestReject(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") channelId: Int,
+      @Path(value = "followerId") followerId: Int,
+      @Body message: SimpleResponse
+   ): Response<SimpleResponse>
+
+   @PUT("channel/request-allow/{channelId}/{followerId}")
+   suspend fun putRequestAllow(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") channelId: Int,
+      @Path(value = "followerId") followerId: Int,
+      @Body message: SimpleResponse
    ): Response<SimpleResponse>
 }

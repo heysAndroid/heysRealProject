@@ -36,6 +36,12 @@ class ContestExtracurricularDetailFragment : Fragment() {
       mainActivity.hideBottomNavigation(false)
    }
 
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
@@ -97,7 +103,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.receiveContentDetail(response.data?.contentDetail)
-               Glide.with(requireContext()).load(viewModel.thumbnailUri.value).into(binding.thumbnail)
+               Glide.with(requireContext()).load(viewModel.thumbnailUri.value).error(R.drawable.bg_thumbnail_default).into(binding.thumbnail)
                viewModel.dday.value?.let { setDday(it) }
                setBookmark()
             }
