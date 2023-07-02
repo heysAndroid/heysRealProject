@@ -18,6 +18,8 @@ import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 import org.mindrot.jbcrypt.BCrypt
 
@@ -57,6 +59,7 @@ class SignUpInterestFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      setDeviceToken()
       binding.okButton.setOnClickListener { requestSignUp() }
    }
 
@@ -81,7 +84,6 @@ class SignUpInterestFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                requestLogin(UserPreference.phoneNumber, UserPreference.password)
-               goToMain()
             }
 
             is NetworkResult.Error -> {
@@ -113,6 +115,9 @@ class SignUpInterestFragment : Fragment() {
             true -> {
                val token = response.headers()["Authorization"]?.split(" ")?.last()
                token.let { UserPreference.accessToken = it.toString() }
+
+               // device token 등록
+               postDeviceToken()
             }
 
             false -> {
@@ -121,5 +126,36 @@ class SignUpInterestFragment : Fragment() {
             }
          }
       })
+   }
+
+   private fun setDeviceToken() {
+      FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+         if (!task.isSuccessful) {
+            Log.w("FCM registration failed", task.exception)
+            return@OnCompleteListener
+         }
+
+         UserPreference.deviceToken = task.result
+         Log.d("FCM test", UserPreference.deviceToken)
+      })
+   }
+
+   private fun postDeviceToken() {
+      signUpInterestViewModel.postDeviceToken("Bearer ${UserPreference.accessToken}", UserPreference.deviceToken).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("postDeviceToken: ", response.data?.message.toString())
+               goToMain()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("postDeviceToken: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("postDeviceToken: ", "loading")
+            }
+         }
+      }
    }
 }
