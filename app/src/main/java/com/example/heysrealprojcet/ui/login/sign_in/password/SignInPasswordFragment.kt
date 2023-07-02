@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.login.sign_in.password
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,11 @@ import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPasswordFragmentBinding
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +55,7 @@ class SignInPasswordFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      setDeviceToken()
 
       // 화면 들어오자마자 키보드 보이기
       val inputMethodManager =
@@ -62,9 +67,7 @@ class SignInPasswordFragment : Fragment() {
          viewModel.togglePasswordVisible()
          changeInputType()
       }
-
       binding.btnForget.setOnClickListener { goToPasswordChange() }
-
       binding.okButton.setOnClickListener {
          requestLogin(UserPreference.phoneNumber, UserPreference.password)
       }
@@ -92,6 +95,7 @@ class SignInPasswordFragment : Fragment() {
                val token = response.headers()["Authorization"]?.split(" ")?.last()
                token.let { UserPreference.accessToken = it.toString() }
                UserPreference.isAutoLogin = true
+               postDeviceToken()
                goToMain()
             }
 
@@ -100,6 +104,36 @@ class SignInPasswordFragment : Fragment() {
             }
          }
       })
+   }
+
+   private fun setDeviceToken() {
+      FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+         if (!task.isSuccessful) {
+            Log.w("FCM registration failed", task.exception)
+            return@OnCompleteListener
+         }
+
+         UserPreference.deviceToken = task.result
+         Log.d("FCM test", UserPreference.deviceToken)
+      })
+   }
+
+   private fun postDeviceToken() {
+      viewModel.postDeviceToken("Bearer ${UserPreference.accessToken}", UserPreference.deviceToken).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("postDeviceToken: ", response.data?.message.toString())
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("postDeviceToken: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("postDeviceToken: ", "loading")
+            }
+         }
+      }
    }
 
    private fun goToPasswordChange() {

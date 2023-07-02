@@ -2,8 +2,10 @@ package com.example.heysrealprojcet.ui.login.sign_in.password
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.Event
+import com.example.heysrealprojcet.repository.MyPageRepository
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.UserPreference
@@ -18,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInPasswordViewModel @Inject constructor(
-   private val signupRepository: SignupRepository
+   private val signupRepository: SignupRepository,
+   private val myPageRepository: MyPageRepository
 ) : BaseViewModel() {
    val password = MutableStateFlow("")
 
@@ -87,13 +90,6 @@ class SignInPasswordViewModel @Inject constructor(
       }
    }
 
-   /*
-   fun login(username: String, password: String) = viewModelScope.launch {
-      signupRepository.loginApi(username, password).collect { values ->
-         _response.value = values
-         Log.w("response message: ", values.message.toString())
-         Log.w("response data: ", values.data.toString())
-      }
-   }
-    */
+   fun postDeviceToken(token: String, deviceToken: String) =
+      myPageRepository.postDeviceToken(token, deviceToken).asLiveData()
 }

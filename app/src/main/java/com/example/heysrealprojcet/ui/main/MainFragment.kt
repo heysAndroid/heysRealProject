@@ -29,8 +29,6 @@ import com.example.heysrealprojcet.ui.main.category.CategoryRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularInterestItemRecyclerViewAdapter
 import com.example.heysrealprojcet.ui.main.profileCard.SignUpProfileCardBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.system.exitProcess
 
@@ -119,16 +117,6 @@ class MainFragment : Fragment() {
                categoryRecyclerViewAdapter.notifyDataSetChanged()
             }
          }
-      })
-
-      FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-         if (!task.isSuccessful) {
-            Log.w("FCM registration failed", task.exception)
-            return@OnCompleteListener
-         }
-
-         val token = task.result
-         Log.d("FCM test", token)
       })
    }
 
