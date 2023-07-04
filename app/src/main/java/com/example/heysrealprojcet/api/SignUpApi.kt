@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.api
 import com.example.heysrealprojcet.model.network.Phone
 import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
+import com.example.heysrealprojcet.model.network.response.PhoneResponse
 import com.example.heysrealprojcet.model.network.response.SignUpResponse
 import retrofit2.Response
 import retrofit2.http.*
@@ -22,4 +23,7 @@ interface SignUpApi {
 
    @PUT("user/check-member")
    suspend fun checkPhoneNumber(@Body phone: Phone): Response<CheckPhoneNumberResponse>
+
+   @POST("app/code")
+   suspend fun postPhoneVerification(@Body phone: Phone): Response<PhoneResponse>
 }
