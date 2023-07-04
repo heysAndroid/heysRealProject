@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.channel.waitingChannel
+package com.example.heysrealprojcet.ui.user.channel.approvedChannel
 
 import android.os.Bundle
 import android.util.Log
@@ -10,40 +10,39 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heysrealprojcet.databinding.WaitingChannelListFragmentBinding
+import com.example.heysrealprojcet.databinding.ApprovedChannelListFragmentBinding
 import com.example.heysrealprojcet.model.network.NetworkResult
-import com.example.heysrealprojcet.ui.user.channel.waitingChannel.cancel.ChannelCancelBottomSheet
+import com.example.heysrealprojcet.ui.user.channel.approvedChannel.leave.ChannelLeaveBottomSheet
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WaitingChannelListFragment : Fragment() {
-   private lateinit var binding: WaitingChannelListFragmentBinding
-   private lateinit var adapter: WaitingChannelItemRecyclerViewAdapter
-   private val viewModel: WaitingChannelListViewModel by viewModels()
-
+class ApprovedChannelListFragment : Fragment() {
+   private lateinit var binding: ApprovedChannelListFragmentBinding
+   private lateinit var adapter: ApprovedChannelItemRecyclerViewAdapter
+   private val viewModel: ApprovedChannelListViewModel by viewModels()
    override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
    ): View? {
-      binding = WaitingChannelListFragmentBinding.inflate(inflater, container, false)
+      binding = ApprovedChannelListFragmentBinding.inflate(inflater, container, false)
       return binding.root
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      getMyChannel("Waiting")
+      getMyChannel("Approved")
 
-      adapter = WaitingChannelItemRecyclerViewAdapter {
-         val bottomSheet = ChannelCancelBottomSheet(it)
+      adapter = ApprovedChannelItemRecyclerViewAdapter {
+         val bottomSheet = ChannelLeaveBottomSheet(it)
          bottomSheet.isCancelable = false
-         bottomSheet.setOnOKClickListener { getMyChannel("Waiting") }
+         bottomSheet.setOnOKClickListener { getMyChannel("Approved") }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
-      binding.rvWaitingChannelList.adapter = adapter
-      binding.rvWaitingChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.rvApprovedChannelList.adapter = adapter
+      binding.rvApprovedChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
-      viewModel.waitingChannelList.observe(viewLifecycleOwner) {
+      viewModel.approvedChannelList.observe(viewLifecycleOwner) {
          binding.noListImage.isVisible = it.isEmpty()
          adapter.submitList(it)
       }
@@ -54,7 +53,7 @@ class WaitingChannelListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("getMyChannel: ", response.data?.message.toString())
-               response.data?.myChannel?.let { viewModel.setWaitingChannel(it) }
+               response.data?.myChannel?.let { viewModel.setApprovedChannel(it) }
             }
 
             is NetworkResult.Error -> {

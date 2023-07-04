@@ -40,8 +40,30 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/no_list_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_loudspeaker" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="앗! 참여중인 채널이 없어요!"
+                android:textColor="@color/color_828282"
+                android:textSize="16sp" />
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/channelList"
+            android:id="@+id/rv_approvedChannelList"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

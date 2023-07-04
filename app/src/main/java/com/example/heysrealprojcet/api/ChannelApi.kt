@@ -80,4 +80,25 @@ interface ChannelApi {
       @Path(value = "followerId") followerId: Int,
       @Body message: SimpleResponse
    ): Response<SimpleResponse>
+
+   @GET("channel/my/{status}")
+   suspend fun getMyChannel(
+      @Header("Authorization") token: String,
+      @Path(value = "status") status: String): Response<MyChannelListResponse>
+
+   // 채널 탈퇴
+   @PUT("channel/member-exit-channel/{channelId}")
+   suspend fun putExitChannel(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") channelId: Int,
+      @Body message: SimpleResponse
+   ): Response<SimpleResponse>
+
+   // 채널 가입 요청 취소
+   @PUT("channel/member-abort-request/{channelId}")
+   suspend fun putMemberAbort(
+      @Header("Authorization") token: String,
+      @Path(value = "channelId") channelId: Int,
+      @Body message: SimpleResponse
+   ): Response<SimpleResponse>
 }

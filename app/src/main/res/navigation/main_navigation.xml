@@ -267,9 +267,9 @@
     </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
-        android:name="com.example.heysrealprojcet.ui.user.channel.engagedChannel.EngagedChannelListFragment"
+        android:name="com.example.heysrealprojcet.ui.user.channel.approvedChannel.ApprovedChannelListFragment"
         android:label="EngagedChannelListFragment"
-        tools:layout="@layout/engaged_channel_list_fragment" />
+        tools:layout="@layout/approved_channel_list_fragment" />
     <fragment
         android:id="@+id/settingPasswordChangeFragment"
         android:name="com.example.heysrealprojcet.ui.user.setting.password.SettingPasswordChangeFragment"

@@ -94,4 +94,22 @@ class ChannelRepository @Inject constructor(
          emit(safeApiCall { channelApi.putRequestAllow(token, channelId, followerId, message) })
       }.flowOn(Dispatchers.IO)
    }
+
+   fun getMyChannelByStatus(token: String, status: String): Flow<NetworkResult<MyChannelListResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.getMyChannel(token, status) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun putExitChannel(token: String, channelId: Int, message: SimpleResponse): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.putExitChannel(token, channelId, message) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun putMemberAbort(token: String, channelId: Int, message: SimpleResponse): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.putMemberAbort(token, channelId, message) })
+      }.flowOn(Dispatchers.IO)
+   }
 }
