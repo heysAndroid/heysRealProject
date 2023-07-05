@@ -37,7 +37,7 @@ class MyChannelFragment : Fragment() {
       viewModel.getMyChannelList("Bearer ${UserPreference.accessToken}").observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
-               response.data?.myChannel?.toMutableList()?.let { it ->
+               response.data?.myChannel?.toMutableList()?.let {
                   myChannelItemRecyclerViewAdapter = MyChannelItemRecyclerViewAdapter(it) { channelId ->
                      goToDetail(channelId)
                   }

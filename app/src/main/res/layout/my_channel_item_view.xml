@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_channel_contest_card"
+    android:paddingHorizontal="16dp"
     android:paddingTop="20dp"
     android:paddingBottom="40dp">
 
@@ -13,15 +14,15 @@
         android:id="@+id/isLeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_crown_contest"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/channelType"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_type"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/channelType" />
+        app:layout_constraintTop_toTopOf="@+id/tv_type" />
 
     <TextView
-        android:id="@+id/channelType"
+        android:id="@+id/tv_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,33 +37,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/channelTitle"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="28dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="18dp"
         android:text="강남/서초 대학생, 사회초년생 시각 디자인 대외활동 같이해요!"
         android:textColor="@color/color_262626"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/channelType" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_type" />
 
     <LinearLayout
         android:id="@+id/goToDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="28dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="53dp"
         android:layout_marginBottom="18dp"
         android:background="@drawable/bg_mychannel_gotodetail"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="30dp"
-        app:layout_constraintTop_toBottomOf="@id/channelTitle">
+        android:paddingHorizontal="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <TextView
-            android:id="@+id/dday"
+            android:id="@+id/tv_dday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
