@@ -1,9 +1,11 @@
 package com.example.heysrealprojcet.ui.main.content.study.list
 
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.heysrealprojcet.App
+import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyItemViewBinding
 import com.example.heysrealprojcet.model.network.ChannelList
 
@@ -15,26 +17,39 @@ class StudyItemRecyclerViewAdapter(
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
       fun bind(study: ChannelList) {
-         //binding.image.setImageResource(type.image)
-         binding.title.text = study.name
-         binding.pastDay.text = "개설한지 ${study.pastDay}일"
-         binding.viewCount.text = study.viewCount.toString()
+         binding.apply {
+            tvTitle.text = study.name
+            tvPastday.text = "개설한지 ${study.pastDay}일"
+            tvView.text = "${study.viewCount}"
 
-         var bgShape = binding.startDate.background as GradientDrawable
-         /*
-         if (type.startDate == 0) {
-            binding.startDate.text = "마감"
-            bgShape.setColor(Color.parseColor("#828282"))
+            Glide.with(App.getInstance().applicationContext)
+               .load(study.thumbnailUri)
+               .error(R.drawable.bg_thumbnail_default).into(imgThumbnail)
          }
 
-         if (type.startDate in 2..5) {
-            bgShape.setColor(Color.parseColor("#53C740"))
-         }
+         // 모집 마감일 지나지 않음
+         if (study.dday > 0) {
+            when {
+               // 최대 참여정원 4명 이상
+               4 <= study.joinRemainCount -> {
+                  binding.tvStatus.text = "참여가능"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_available)
+               }
 
-         if (type.startDate in 6..10) {
-            bgShape.setColor(Color.parseColor("#F7BC26"))
+               1 <= study.joinRemainCount -> {
+                  binding.tvStatus.text = "${study.joinRemainCount}명 참여가능"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_almost_closed)
+               }
+
+               else -> {
+                  binding.tvStatus.text = "마감"
+                  binding.tvStatus.setBackgroundResource(R.drawable.bg_status_closed)
+               }
+            }
+         } else {
+            binding.tvStatus.text = "마감"
+            binding.tvStatus.setBackgroundResource(R.drawable.bg_status_closed)
          }
-          */
 
          binding.root.setOnClickListener { onClickListener.invoke(study.id) }
       }

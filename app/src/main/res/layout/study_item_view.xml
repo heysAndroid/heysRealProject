@@ -14,14 +14,15 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/img_thumbnail"
             android:layout_width="122dp"
             android:layout_height="122dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/bg_study_list" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_thumbnail_default" />
 
         <TextView
-            android:id="@+id/start_Date"
+            android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_status_closed"
@@ -39,7 +40,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="제 3회 연구 개발 특구"
@@ -48,7 +49,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/pastDay"
+            android:id="@+id/tv_pastday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -70,7 +71,7 @@
                 android:src="@drawable/ic_eye" />
 
             <TextView
-                android:id="@+id/viewCount"
+                android:id="@+id/tv_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

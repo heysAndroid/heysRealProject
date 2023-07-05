@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,12 @@ class StudyListFragment : Fragment() {
       mainActivity.hideBottomNavigation(false)
    }
 
+   override fun onResume() {
+      super.onResume()
+      val mainActivity = activity as MainActivity
+      mainActivity.hideBottomNavigation(true)
+   }
+
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
       return binding.root
@@ -44,20 +51,29 @@ class StudyListFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
-      getStudyList()
-      viewModel.channelList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
+      binding.vm = viewModel
+      binding.lifecycleOwner = this
+
+      viewModel.channelList.observe(viewLifecycleOwner) {
+         binding.noListImage.isVisible = it.isEmpty()
+         binding.flCreateStudy.isVisible = it.isNotEmpty()
+      }
+      viewModel.isChecked.asLiveData().observe(viewLifecycleOwner) {
+         getStudyList(!it)
+      }
+
       binding.filterButton.setOnClickListener { goToFilter() }
    }
 
-   private fun getStudyList() {
+   private fun getStudyList(includeClosed: Boolean) {
       val token = UserPreference.accessToken
-      viewModel.getStudyList("Bearer $token", null, null, null, null, null).observe(viewLifecycleOwner) { response ->
+      viewModel.getStudyList("Bearer $token", null, null, null, null, null, includeClosed = includeClosed).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setStudyList(response.data?.data)
                studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
-                  StudyItemRecyclerViewAdapter(it) {
-                     goToDetail(it)
+                  StudyItemRecyclerViewAdapter(it) { id ->
+                     goToDetail(id)
                   }
                }!!
                binding.studyList.adapter = studyItemRecyclerViewAdapter
