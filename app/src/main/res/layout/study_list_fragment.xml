@@ -165,6 +165,7 @@
                         android:paddingVertical="10dp">
 
                         <LinearLayout
+                            android:id="@+id/ll_create_study"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">

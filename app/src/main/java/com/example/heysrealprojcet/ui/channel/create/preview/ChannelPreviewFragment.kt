@@ -93,7 +93,9 @@ class ChannelPreviewFragment : Fragment() {
    }
 
    private fun goToComplete(channelId: Int) {
-      findNavController().navigate(R.id.action_channelPreviewFragment_to_channelCreateCompleteFragment, bundleOf("channelId" to channelId))
+      findNavController().navigate(
+         R.id.action_channelPreviewFragment_to_channelCreateCompleteFragment,
+         bundleOf("channelId" to channelId))
    }
 
    private fun setChannelRegion() {

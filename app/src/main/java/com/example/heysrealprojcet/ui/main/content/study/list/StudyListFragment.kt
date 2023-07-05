@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
@@ -63,6 +64,7 @@ class StudyListFragment : Fragment() {
       }
 
       binding.filterButton.setOnClickListener { goToFilter() }
+      binding.llCreateStudy.setOnClickListener { goToCreateStudy() }
    }
 
    private fun getStudyList(includeClosed: Boolean) {
@@ -97,7 +99,14 @@ class StudyListFragment : Fragment() {
 
    private fun goToDetail(channelId: Int) {
       findNavController().navigate(
-         R.id.action_studyFragment_to_heysChannelDetailFragment,
+         R.id.action_studyFragment_to_channelDetailFragment,
          bundleOf("channelId" to channelId))
+   }
+
+   private fun goToCreateStudy() {
+      findNavController().navigate(
+         R.id.action_studyFragment_to_channelNameFragment,
+         bundleOf("channelType" to ChannelType.Study.typeEng)
+      )
    }
 }

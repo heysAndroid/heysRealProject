@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.MarginItemDecoration
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
+import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.model.network.MyPage
@@ -153,7 +154,9 @@ class MainFragment : Fragment() {
    }
 
    private fun goToStudyCreate() {
-      findNavController().navigate(R.id.action_mainFragment_to_channelNameFragment)
+      findNavController().navigate(
+         R.id.action_mainFragment_to_channelNameFragment,
+         bundleOf("channelType" to ChannelType.Study.typeEng))
    }
 
    private fun goToContest(type: String = "default") {

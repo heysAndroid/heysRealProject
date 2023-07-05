@@ -37,8 +37,11 @@
             android:id="@+id/action_studyFragment_to_studyFilterFragment"
             app:destination="@id/studyFilterFragment" />
         <action
-            android:id="@+id/action_studyFragment_to_heysChannelDetailFragment"
+            android:id="@+id/action_studyFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
+        <action
+            android:id="@+id/action_studyFragment_to_channelNameFragment"
+            app:destination="@id/channelNameFragment" />
     </fragment>
     <fragment
         android:id="@+id/contentsFilterFragment"
