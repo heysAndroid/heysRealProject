@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -54,7 +55,11 @@ class StudyListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setStudyList(response.data?.data)
-               studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let { StudyItemRecyclerViewAdapter(it) { goToDetail() } }!!
+               studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
+                  StudyItemRecyclerViewAdapter(it) {
+                     goToDetail(it)
+                  }
+               }!!
                binding.studyList.adapter = studyItemRecyclerViewAdapter
                binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             }
@@ -74,7 +79,9 @@ class StudyListFragment : Fragment() {
       findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
    }
 
-   private fun goToDetail() {
-      findNavController().navigate(R.id.action_studyFragment_to_heysChannelDetailFragment)
+   private fun goToDetail(channelId: Int) {
+      findNavController().navigate(
+         R.id.action_studyFragment_to_heysChannelDetailFragment,
+         bundleOf("channelId" to channelId))
    }
 }

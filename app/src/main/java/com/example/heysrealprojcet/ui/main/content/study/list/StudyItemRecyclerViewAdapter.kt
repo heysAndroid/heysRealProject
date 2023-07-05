@@ -9,7 +9,7 @@ import com.example.heysrealprojcet.model.network.ChannelList
 
 class StudyItemRecyclerViewAdapter(
    private val study: MutableList<ChannelList>,
-   private val onClickListener: () -> Unit) :
+   private val onClickListener: (Int) -> Unit) :
    RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
    private lateinit var binding: StudyItemViewBinding
 
@@ -36,7 +36,7 @@ class StudyItemRecyclerViewAdapter(
          }
           */
 
-         binding.root.setOnClickListener { onClickListener.invoke() }
+         binding.root.setOnClickListener { onClickListener.invoke(study.id) }
       }
    }
 
