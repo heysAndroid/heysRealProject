@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
@@ -21,6 +22,7 @@ class ProfileEditFragment : Fragment() {
    private lateinit var callback: OnBackPressedCallback
    private val viewModel: ProfileEditViewModel by viewModels()
    private val interestViewModel: InterestViewModel by viewModels()
+   private var childNum = MutableLiveData(0)
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -60,19 +62,25 @@ class ProfileEditFragment : Fragment() {
          binding.interestCount.text = "$it/3"
       }
 
-      binding.addLink.setOnClickListener {
-         val childCount = binding.additionalLinkContainer.childCount
-         if (childCount < 5) {
+      childNum.observe(viewLifecycleOwner) {
+         if (it < 4) {
             binding.addButtonContainer.visibility = View.VISIBLE
-            val hint = when (childCount) {
+         } else if (it == 4) {
+            binding.addButtonContainer.visibility = View.GONE
+         }
+      }
+
+
+      binding.addLink.setOnClickListener {
+         if (childNum.value!! < 4) {
+            val hint = when (childNum.value) {
                0 -> "https://behance.net/gallery-c..."
                1 -> "https://m.instagram/my"
                2 -> "https://my.github.com"
                else -> " https://blog.naver.com/sfsdsf..."
             }
-            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childCount))
-         } else {
-            binding.addButtonContainer.visibility = View.GONE
+            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childNum.value!!))
+            childNum.postValue(binding.additionalLinkContainer.childCount)
          }
       }
    }
@@ -111,6 +119,8 @@ class ProfileEditFragment : Fragment() {
                binding.mbtiView.radioGroup2.clearCheck()
                binding.mbtiView.radioGroup3.clearCheck()
                binding.mbtiView.radioGroup4.clearCheck()
+
+
             }
 
             R.id.radioGroup2 -> {
@@ -169,7 +179,10 @@ class ProfileEditFragment : Fragment() {
    private fun makeAdditionalLinkView(hint: String, index: Int): AdditionalLinkView {
       return AdditionalLinkView(requireContext()).apply {
          setHint(hint)
-         removeButtonClickListener { binding.additionalLinkContainer.removeViews(index, 1) }
+         removeButtonClickListener {
+            binding.additionalLinkContainer.removeViews(index, 1)
+            childNum.postValue(binding.additionalLinkContainer.childCount)
+         }
       }
    }
 }

@@ -322,7 +322,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:layout_marginBottom="32dp"
                     android:orientation="horizontal">
 
                     <ImageButton
@@ -344,6 +343,10 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
             <Button
                 android:id="@+id/okButton"
