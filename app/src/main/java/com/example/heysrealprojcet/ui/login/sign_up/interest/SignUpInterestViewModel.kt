@@ -2,11 +2,13 @@ package com.example.heysrealprojcet.ui.login.sign_up.interest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.Event
-import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.response.SignUpResponse
+import com.example.heysrealprojcet.repository.MyPageRepository
 import com.example.heysrealprojcet.repository.SignupRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +22,7 @@ import javax.inject.Inject
 // Hilt 로 생성자에 repository 전달
 @HiltViewModel
 class SignUpInterestViewModel @Inject constructor(
-   private val signupRepository: SignupRepository) : BaseViewModel() {
+   private val signupRepository: SignupRepository, private val myPageRepository: MyPageRepository) : BaseViewModel() {
 
    private val errorMessage = MutableLiveData<String>()
    private val loading = MutableLiveData<Boolean>()
@@ -57,4 +59,8 @@ class SignUpInterestViewModel @Inject constructor(
          _responseLogin.postValue(Event(signupRepository.loginApi(username, password)))
       }
    }
+
+   fun postDeviceToken(token: String, deviceToken: String) =
+      myPageRepository.postDeviceToken(token, deviceToken).asLiveData()
+
 }

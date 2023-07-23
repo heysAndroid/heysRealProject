@@ -13,6 +13,7 @@ object UserPreference : KotprefModel() {
       phoneNumber = ""
       interests = ""
       accessToken = ""
+      deviceToken = ""
       mbti = ""
       job = ""
       skill = ""
@@ -66,6 +67,11 @@ object UserPreference : KotprefModel() {
    * 로그인 / 회원가입 시 accessToken 에 값 저장
     */
    var accessToken by stringPref()
+
+   /*
+   * device token
+    */
+   var deviceToken by stringPref()
 
    /*
    * mbti
