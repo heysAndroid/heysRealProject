@@ -67,7 +67,7 @@ class SignUpVerificationFragment : Fragment() {
          phone?.let { postPhoneVerification(phone) }
 
          viewModel.code.asLiveData().observe(viewLifecycleOwner) { code ->
-            binding.btnOk.setOnClickListener { code?.let { deletePhoneVerification(phone, code) } }
+            binding.btnOk.setOnClickListener { code?.let { deletePhoneVerification(code, phone) } }
          }
       }
 
@@ -111,8 +111,8 @@ class SignUpVerificationFragment : Fragment() {
       }
    }
 
-   private fun deletePhoneVerification(phoneNumber: String, code: String) {
-      val phoneVerification = PhoneVerification(phoneNumber.replace("-", ""), code)
+   private fun deletePhoneVerification(code: String, phoneNumber: String) {
+      val phoneVerification = PhoneVerification(code, phoneNumber.replace("-", ""))
 
       viewModel.deletePhoneVerification(phoneVerification).observe(viewLifecycleOwner) { response ->
          when (response) {
