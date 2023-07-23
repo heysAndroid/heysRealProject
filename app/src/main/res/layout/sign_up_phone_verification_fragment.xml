@@ -15,10 +15,10 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginVertical="12dp"
+            android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_back" />
 
@@ -26,11 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/phoneNumber"
+                android:id="@+id/tv_phoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{vm.phoneNumber}"
@@ -40,7 +40,6 @@
                 tools:text="010-1234-5678" />
 
             <TextView
-                android:id="@+id/description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -54,7 +53,7 @@
                 android:layout_marginTop="24dp">
 
                 <EditText
-                    android:id="@+id/phoneInput"
+                    android:id="@+id/et_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext"
@@ -62,8 +61,8 @@
                     android:hint="인증번호(6자리)"
                     android:inputType="number"
                     android:maxLength="6"
-                    android:paddingStart="16dp"
-                    android:text="@={vm.verificationNumber}"
+                    android:paddingHorizontal="16dp"
+                    android:text="@={vm.code}"
                     android:textColorHint="@color/color_828282"
                     android:textSize="16sp" />
 
@@ -75,10 +74,9 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/resendButton"
+                        android:id="@+id/btn_resned"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="@{() -> vm.setResendEnabled()}"
                         android:text="재요청"
                         android:textColor="@color/color_34d676"
                         android:textSize="16sp" />
@@ -106,14 +104,38 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/timeText"
+                    android:id="@+id/tv_minute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.timeText}"
+                    android:text="3"
                     android:textColor="@color/color_828282"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="3분 00초" />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="초"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -130,13 +152,13 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/btn_ok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="14dp"
             android:background="@drawable/bg_ok_button"
-            android:enabled="false"
+            android:enabled="@{vm.isEnabled}"
             android:paddingVertical="16dp"
             android:stateListAnimator="@null"
             android:text="인증하기"
