@@ -10,11 +10,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
+import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignUpPhoneVerificationFragmentBinding
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.Phone
+import com.example.heysrealprojcet.model.network.PhoneVerification
 import com.example.heysrealprojcet.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -60,9 +63,15 @@ class SignUpVerificationFragment : Fragment() {
       countDownTimer = startTimer(3 * 60 * 1000L)
       countDownTimer?.start()
 
-      viewModel.phoneNumber.observe(viewLifecycleOwner) { it?.let { postPhoneVerification(it) } }
+      viewModel.phoneNumber.observe(viewLifecycleOwner) { phone ->
+         phone?.let { postPhoneVerification(phone) }
 
-      binding.btnOk.setOnClickListener { goToJoinPassword() }
+         viewModel.code.asLiveData().observe(viewLifecycleOwner) { code ->
+            binding.btnOk.setOnClickListener { code?.let { deletePhoneVerification(phone, code) } }
+         }
+      }
+
+
       binding.btnResned.setOnClickListener {
          countDownTimer?.cancel()
          countDownTimer = startTimer(3 * 60 * 1000L)
@@ -89,7 +98,6 @@ class SignUpVerificationFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("postPhoneVerification: ", response.data?.message.toString())
-
             }
 
             is NetworkResult.Error -> {
@@ -98,6 +106,31 @@ class SignUpVerificationFragment : Fragment() {
 
             is NetworkResult.Loading -> {
                Log.i("postPhoneVerification: ", "loading")
+            }
+         }
+      }
+   }
+
+   private fun deletePhoneVerification(phoneNumber: String, code: String) {
+      val phoneVerification = PhoneVerification(phoneNumber.replace("-", ""), code)
+
+      viewModel.deletePhoneVerification(phoneVerification).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("deletePhoneVeri: ", response.data?.message.toString())
+               if (response.data?.data?.isVerification == true) {
+                  goToJoinPassword()
+               } else {
+                  CustomSnackBar(binding.root, "인증번호가 일치하지 않아요! \n SMS 문자를 확인해주세요.", binding.btnOk).show()
+               }
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("deletePhoneVeri: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("deletePhoneVeri: ", "loading")
             }
          }
       }

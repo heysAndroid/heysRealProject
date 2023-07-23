@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.network.Phone
+import com.example.heysrealprojcet.model.network.PhoneVerification
 import com.example.heysrealprojcet.repository.SignupRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,4 +35,6 @@ class SignUpVerificationViewModel @Inject constructor(
    }
 
    fun postPhoneVerification(phone: Phone) = signupRepository.postPhoneVerification(phone).asLiveData()
+
+   fun deletePhoneVerification(phoneVerification: PhoneVerification) = signupRepository.deletePhoneVerification(phoneVerification).asLiveData()
 }

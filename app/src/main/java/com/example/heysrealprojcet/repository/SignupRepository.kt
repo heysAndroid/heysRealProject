@@ -3,9 +3,11 @@ package com.example.heysrealprojcet.repository
 import com.example.heysrealprojcet.api.SignUpApi
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.Phone
+import com.example.heysrealprojcet.model.network.PhoneVerification
 import com.example.heysrealprojcet.model.network.User
 import com.example.heysrealprojcet.model.network.response.CheckPhoneNumberResponse
 import com.example.heysrealprojcet.model.network.response.PhoneResponse
+import com.example.heysrealprojcet.model.network.response.PhoneVerificationResponse
 import com.example.heysrealprojcet.model.network.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -48,4 +50,9 @@ class SignupRepository @Inject constructor(
          emit(safeApiCall { signUpApi.postPhoneVerification(phone) })
       }.flowOn(Dispatchers.IO)
    }
+
+   fun deletePhoneVerification(phoneVerification:PhoneVerification):Flow<NetworkResult<PhoneVerificationResponse>>{
+      return flow{
+         emit(safeApiCall { signUpApi.deletePhoneVerification(phoneVerification) })
+      }.flowOn(Dispatchers.IO)}
 }
