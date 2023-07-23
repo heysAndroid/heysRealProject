@@ -72,11 +72,6 @@ class ChannelListFragment : Fragment() {
             binding.tvTitle.text = "대외활동 채널"
             binding.layoutFilter.visibility = View.GONE
          }
-
-         else -> {
-            binding.tvTitle.text = "스터디 채널"
-            binding.layoutFilter.visibility = View.VISIBLE
-         }
       }
 
       getContentChannelList()
