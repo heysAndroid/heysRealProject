@@ -30,5 +30,5 @@ class ChannelListViewModel @Inject constructor(
       location: String?,
       includeClosed: Boolean? = true,
       page: Int? = 1,
-      limit: Int? = 20) = repository.getContentChannelList(token, id, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
+      limit: Int? = 30) = repository.getContentChannelList(token, id, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
 }

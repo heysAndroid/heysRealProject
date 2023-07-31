@@ -37,5 +37,5 @@ class StudyListViewModel @Inject constructor(
       location: String?,
       includeClosed: Boolean? = true,
       page: Int? = 1,
-      limit: Int? = 20) = studyRepository.getStudyList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
+      limit: Int? = 30) = studyRepository.getStudyList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit).asLiveData()
 }

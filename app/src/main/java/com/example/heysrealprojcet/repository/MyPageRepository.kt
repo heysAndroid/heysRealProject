@@ -4,6 +4,7 @@ import com.example.heysrealprojcet.api.UserApi
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.DeviceTokenResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
+import com.example.heysrealprojcet.model.network.response.NotificationResponse
 import com.example.heysrealprojcet.model.network.response.UsersResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -34,6 +35,12 @@ class MyPageRepository @Inject constructor(
    fun deleteDeviceToken(token: String, deviceToken: String): Flow<NetworkResult<DeviceTokenResponse>> {
       return flow {
          emit(safeApiCall { userApi.deleteDeviceToken(token, deviceToken) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun getNotifications(token: String): Flow<NetworkResult<NotificationResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.getNotifications(token) })
       }.flowOn(Dispatchers.IO)
    }
 }
