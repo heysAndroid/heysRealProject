@@ -19,8 +19,11 @@ class ProfileEditViewModel : ViewModel() {
    private val _abilityLetterCount = MutableLiveData(0)
    val abilityLetterCount = _abilityLetterCount
 
-   var radioChecked = MutableLiveData<Int>()
    val link1 = MutableLiveData<String>()
+   val link2 = MutableLiveData<String>()
+   val link3 = MutableLiveData<String>()
+   val link4 = MutableLiveData<String>()
+   val link5 = MutableLiveData<String>()
 
    var introduce = MutableLiveData(UserPreference.introduce)
    var name = MutableLiveData(UserPreference.name)
