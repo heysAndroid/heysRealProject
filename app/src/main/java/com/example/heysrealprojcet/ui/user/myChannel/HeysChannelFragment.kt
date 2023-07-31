@@ -49,7 +49,7 @@ class HeysChannelFragment : Fragment() {
    }
 
    private fun gotoNotification() {
-      findNavController().navigate(R.id.action_myChannelFragment_to_myChannelNotificationFragment)
+      findNavController().navigate(R.id.action_myChannelFragment_to_notificationFragment)
    }
 
    private fun getMyChannel() {

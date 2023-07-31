@@ -175,8 +175,8 @@
         android:label="MyChannelFragment"
         tools:layout="@layout/heys_channel_fragment">
         <action
-            android:id="@+id/action_myChannelFragment_to_myChannelNotificationFragment"
-            app:destination="@id/myChannelNotificationFragment" />
+            android:id="@+id/action_myChannelFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
         <action
             android:id="@+id/action_myChannelFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
@@ -248,10 +248,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/myChannelNotificationFragment"
-        android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.MyChannelNotificationFragment"
-        android:label="MyChannelNotificationFragment"
-        tools:layout="@layout/my_channel_notification_fragment" />
+        android:id="@+id/notificationFragment"
+        android:name="com.example.heysrealprojcet.ui.user.myChannel.notification.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/notification_fragment" />
 
     <fragment
         android:id="@+id/settingFragment"

@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.api
 
 import com.example.heysrealprojcet.model.network.response.DeviceTokenResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
+import com.example.heysrealprojcet.model.network.response.NotificationResponse
 import com.example.heysrealprojcet.model.network.response.UsersResponse
 import retrofit2.Response
 import retrofit2.http.DELETE
@@ -22,4 +23,7 @@ interface UserApi {
 
    @DELETE("/app/device/{token}")
    suspend fun deleteDeviceToken(@Header("Authorization") token: String, @Path(value = "token") deviceToken: String): Response<DeviceTokenResponse>
+
+   @GET("/app/notifications")
+   suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
 }
