@@ -12,6 +12,10 @@
         <variable
             name="vmInterest"
             type="com.example.heysrealprojcet.InterestViewModel" />
+
+        <variable
+            name="vmMbti"
+            type="com.example.heysrealprojcet.ui.user.myPage.MbtiViewModel" />
     </data>
 
     <ScrollView
@@ -169,7 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    app:vm="@{vm}" />
+                    app:vm="@{vmMbti}" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -322,7 +326,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:layout_marginBottom="32dp"
                     android:orientation="horizontal">
 
                     <ImageButton
@@ -344,6 +347,10 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
             <Button
                 android:id="@+id/okButton"

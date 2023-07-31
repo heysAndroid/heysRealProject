@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
@@ -15,12 +16,16 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ProfileEditFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.user.myPage.MbtiViewModel
+import com.example.heysrealprojcet.util.UserPreference
 
 class ProfileEditFragment : Fragment() {
    private lateinit var binding: ProfileEditFragmentBinding
    private lateinit var callback: OnBackPressedCallback
    private val viewModel: ProfileEditViewModel by viewModels()
    private val interestViewModel: InterestViewModel by viewModels()
+   private var childNum = MutableLiveData(0)
+   private val mbtiViewModel: MbtiViewModel by viewModels()
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -46,6 +51,7 @@ class ProfileEditFragment : Fragment() {
       binding = ProfileEditFragmentBinding.inflate(inflater, container, false)
       binding.vm = viewModel
       binding.vmInterest = interestViewModel
+      binding.vmMbti = mbtiViewModel
       return binding.root
    }
 
@@ -53,6 +59,7 @@ class ProfileEditFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener { gotoMyPage() }
+
       setMBTI()
       setInterest()
 
@@ -60,19 +67,57 @@ class ProfileEditFragment : Fragment() {
          binding.interestCount.text = "$it/3"
       }
 
+      mbtiViewModel.mbti.asLiveData().observe(viewLifecycleOwner) {
+         setAllMbtiUnselect()
+         when (it) {
+            "ISTJ" -> binding.mbtiView.istj.isSelected = true
+            "ISFJ" -> binding.mbtiView.isfj.isSelected = true
+            "INFJ" -> binding.mbtiView.infj.isSelected = true
+            "INTJ" -> binding.mbtiView.intj.isSelected = true
+
+            "ISTP" -> binding.mbtiView.istp.isSelected = true
+            "ISFP" -> binding.mbtiView.isfp.isSelected = true
+            "INFP" -> binding.mbtiView.infp.isSelected = true
+            "INTP" -> binding.mbtiView.intp.isSelected = true
+
+            "ESTP" -> binding.mbtiView.estp.isSelected = true
+            "ESFP" -> binding.mbtiView.esfp.isSelected = true
+            "ENFP" -> binding.mbtiView.enfp.isSelected = true
+            "ENTP" -> binding.mbtiView.entp.isSelected = true
+
+            "ESTJ" -> binding.mbtiView.estj.isSelected = true
+            "ESFJ" -> binding.mbtiView.esfj.isSelected = true
+            "ENFJ" -> binding.mbtiView.enfj.isSelected = true
+            "ENTJ" -> binding.mbtiView.entj.isSelected = true
+         }
+         // preference 에 저장
+         UserPreference.mbti = it
+      }
+
       binding.addLink.setOnClickListener {
          val childCount = binding.additionalLinkContainer.childCount
          if (childCount < 5) {
-            binding.addButtonContainer.visibility = View.VISIBLE
-            val hint = when (childCount) {
+            childNum.observe(viewLifecycleOwner) {
+               if (it < 4) {
+                  binding.addButtonContainer.visibility = View.VISIBLE
+               } else if (it == 4) {
+                  binding.addButtonContainer.visibility = View.GONE
+               }
+            }
+         }
+      }
+
+
+      binding.addLink.setOnClickListener {
+         if (childNum.value!! < 4) {
+            val hint = when (childNum.value) {
                0 -> "https://behance.net/gallery-c..."
                1 -> "https://m.instagram/my"
                2 -> "https://my.github.com"
                else -> " https://blog.naver.com/sfsdsf..."
             }
-            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childCount))
-         } else {
-            binding.addButtonContainer.visibility = View.GONE
+            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childNum.value!!))
+            childNum.postValue(binding.additionalLinkContainer.childCount)
          }
       }
    }
@@ -104,33 +149,54 @@ class ProfileEditFragment : Fragment() {
    }
 
    private fun setMBTI() {
-      viewModel.radioChecked.observe(viewLifecycleOwner) {
+      viewModel.mbti.observe(viewLifecycleOwner) {
          when (it) {
-            R.id.radioGroup1 -> {
-               // radioGroup 2,3,4는 unselect 처리
-               binding.mbtiView.radioGroup2.clearCheck()
-               binding.mbtiView.radioGroup3.clearCheck()
-               binding.mbtiView.radioGroup4.clearCheck()
-            }
+            "ISTJ" -> binding.mbtiView.istj.isSelected = true
+            "ISFJ" -> binding.mbtiView.isfj.isSelected = true
+            "INFJ" -> binding.mbtiView.infj.isSelected = true
+            "INTJ" -> binding.mbtiView.intj.isSelected = true
 
-            R.id.radioGroup2 -> {
-               binding.mbtiView.radioGroup1.clearCheck()
-               binding.mbtiView.radioGroup3.clearCheck()
-               binding.mbtiView.radioGroup4.clearCheck()
-            }
+            "ISTP" -> binding.mbtiView.istp.isSelected = true
+            "ISFP" -> binding.mbtiView.isfp.isSelected = true
+            "INFP" -> binding.mbtiView.infp.isSelected = true
+            "INTP" -> binding.mbtiView.intp.isSelected = true
 
-            R.id.radioGroup3 -> {
-               binding.mbtiView.radioGroup1.clearCheck()
-               binding.mbtiView.radioGroup2.clearCheck()
-               binding.mbtiView.radioGroup4.clearCheck()
-            }
+            "ESTP" -> binding.mbtiView.estp.isSelected = true
+            "ESFP" -> binding.mbtiView.esfp.isSelected = true
+            "ENFP" -> binding.mbtiView.enfp.isSelected = true
+            "ENTP" -> binding.mbtiView.entp.isSelected = true
 
-            R.id.radioGroup4 -> {
-               binding.mbtiView.radioGroup1.clearCheck()
-               binding.mbtiView.radioGroup2.clearCheck()
-               binding.mbtiView.radioGroup3.clearCheck()
-            }
+            "ESTJ" -> binding.mbtiView.estj.isSelected = true
+            "ESFJ" -> binding.mbtiView.esfj.isSelected = true
+            "ENFJ" -> binding.mbtiView.enfj.isSelected = true
+            "ENTJ" -> binding.mbtiView.entj.isSelected = true
+            else -> {}
          }
+         mbtiViewModel.setMbti(it)
+      }
+   }
+
+   private fun setAllMbtiUnselect() {
+      with(binding.mbtiView) {
+         istj.isSelected = false
+         isfj.isSelected = false
+         infj.isSelected = false
+         intj.isSelected = false
+
+         istp.isSelected = false
+         isfp.isSelected = false
+         infp.isSelected = false
+         intp.isSelected = false
+
+         estp.isSelected = false
+         esfp.isSelected = false
+         enfp.isSelected = false
+         entp.isSelected = false
+
+         estj.isSelected = false
+         esfj.isSelected = false
+         enfj.isSelected = false
+         entj.isSelected = false
       }
    }
 
@@ -169,7 +235,10 @@ class ProfileEditFragment : Fragment() {
    private fun makeAdditionalLinkView(hint: String, index: Int): AdditionalLinkView {
       return AdditionalLinkView(requireContext()).apply {
          setHint(hint)
-         removeButtonClickListener { binding.additionalLinkContainer.removeViews(index, 1) }
+         removeButtonClickListener {
+            binding.additionalLinkContainer.removeViews(index, 1)
+            childNum.postValue(binding.additionalLinkContainer.childCount)
+         }
       }
    }
 }

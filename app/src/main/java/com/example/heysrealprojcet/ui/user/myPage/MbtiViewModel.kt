@@ -1,16 +1,19 @@
 package com.example.heysrealprojcet.ui.user.myPage
 
-import android.graphics.Typeface
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.ViewModel
-import com.example.heysrealprojcet.util.UserPreference
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class MbtiViewModel : ViewModel() {
+   var mbti = MutableStateFlow("")
+
+   fun setMbti(value: String) {
+      mbti.value = value
+   }
+
    fun onClickMbti(v: View) {
       var button = v as Button
-      button.isSelected = true
-      button.setTypeface(null, Typeface.BOLD)
-      UserPreference.mbti = button.text.toString()
+      mbti.value = button.text.toString()
    }
 }
