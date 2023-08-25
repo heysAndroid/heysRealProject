@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.login.sign_up.phone
 import android.content.Context
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,6 +75,7 @@ class SignUpPhoneFragment : Fragment() {
                   val bottomSheet = ExistingUserBottomSheet()
                   bottomSheet.show(childFragmentManager, bottomSheet.tag)
                } else {
+                  postPhoneVerification(UserPreference.phoneNumber)
                   goToPhoneVerification()
                }
             }
@@ -88,6 +90,23 @@ class SignUpPhoneFragment : Fragment() {
       })
    }
 
+   private fun postPhoneVerification(phoneNumber: String) {
+      viewModel.postPhoneVerification(Phone(phone = phoneNumber.replace("-", ""))).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.d("postPhoneVerification: ", response.data?.message.toString())
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("postPhoneVerification: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("postPhoneVerification: ", "loading")
+            }
+         }
+      }
+   }
 
    private fun goToPhoneVerification() {
       findNavController().navigate(

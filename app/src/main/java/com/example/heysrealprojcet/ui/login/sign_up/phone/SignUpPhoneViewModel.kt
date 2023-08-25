@@ -3,6 +3,7 @@ package com.example.heysrealprojcet.ui.login.sign_up.phone
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.Event
 import com.example.heysrealprojcet.model.network.Phone
@@ -50,4 +51,6 @@ class SignUpPhoneViewModel @Inject constructor(
          _response.value = Event(values)
       }
    }
+
+   fun postPhoneVerification(phone: Phone) = signupRepository.postPhoneVerification(phone).asLiveData()
 }

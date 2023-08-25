@@ -64,8 +64,6 @@ class SignUpVerificationFragment : Fragment() {
       countDownTimer?.start()
 
       viewModel.phoneNumber.observe(viewLifecycleOwner) { phone ->
-         phone?.let { postPhoneVerification(phone) }
-
          viewModel.code.asLiveData().observe(viewLifecycleOwner) { code ->
             binding.btnOk.setOnClickListener { code?.let { deletePhoneVerification(code, phone) } }
          }
