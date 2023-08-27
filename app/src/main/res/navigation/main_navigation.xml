@@ -337,18 +337,18 @@
     </fragment>
     <fragment
         android:id="@+id/settingDeleteAccountFragment"
-        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteAccountFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingWithdrawalFragment"
         android:label="SettingDeleteAccountFragment"
-        tools:layout="@layout/setting_delete_account_fragment">
+        tools:layout="@layout/setting_withdrawal_fragment">
         <action
             android:id="@+id/action_settingDeleteAccountFragment_to_settingDeleteDecideFragment"
             app:destination="@id/settingDeleteDecideFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingDeleteDecideFragment"
-        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingDeleteDecideFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingWithdrawalCheckFragment"
         android:label="SettingDeleteDecideFragment"
-        tools:layout="@layout/setting_delete_decide_fragment" />
+        tools:layout="@layout/setting_withdrawal_check_fragment" />
     <fragment
         android:id="@+id/backButtonPopupFragment"
         android:name="com.example.heysrealprojcet.ui.channel.create.BackButtonPopupFragment"
