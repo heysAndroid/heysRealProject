@@ -3,12 +3,14 @@ package com.example.heysrealprojcet.api
 import com.example.heysrealprojcet.model.network.response.DeviceTokenResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
 import com.example.heysrealprojcet.model.network.response.NotificationResponse
+import com.example.heysrealprojcet.model.network.response.SimpleResponse
 import com.example.heysrealprojcet.model.network.response.UsersResponse
 import retrofit2.Response
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface UserApi {
@@ -26,4 +28,7 @@ interface UserApi {
 
    @GET("/app/notifications")
    suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
+
+   @PUT("/user/withDrawal/{id}/{role}")
+   suspend fun withdrawal(@Header("Authorization") token: String, @Path(value = "id") id: Int, @Path(value = "role") role: String): Response<SimpleResponse>
 }

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class SettingDeleteAccountViewModel : ViewModel() {
+class SettingWithdrawalViewModel : ViewModel() {
    private var choiceInterest = mutableListOf<View>()
    private val reasonMax = 3
    private var reasonTotal = MutableStateFlow(0)

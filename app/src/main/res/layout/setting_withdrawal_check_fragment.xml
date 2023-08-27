@@ -90,6 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/btn_ok"
                 android:background="@drawable/bg_white_radius_8"
                 android:paddingVertical="16dp"
                 android:layout_marginRight="12dp"

@@ -5,6 +5,7 @@ import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.DeviceTokenResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
 import com.example.heysrealprojcet.model.network.response.NotificationResponse
+import com.example.heysrealprojcet.model.network.response.SimpleResponse
 import com.example.heysrealprojcet.model.network.response.UsersResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -41,6 +42,12 @@ class MyPageRepository @Inject constructor(
    fun getNotifications(token: String): Flow<NetworkResult<NotificationResponse>> {
       return flow {
          emit(safeApiCall { userApi.getNotifications(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun withdrawal(token: String, id: Int, role: String): Flow<NetworkResult<SimpleResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.withdrawal(token, id, role) })
       }.flowOn(Dispatchers.IO)
    }
 }

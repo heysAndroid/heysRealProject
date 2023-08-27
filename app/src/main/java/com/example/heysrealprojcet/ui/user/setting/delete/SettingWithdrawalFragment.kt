@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SettingDeleteAccountFragmentBinding
 
-class SettingDeleteAccountFragment : Fragment() {
+class SettingWithdrawalFragment : Fragment() {
    private lateinit var binding : SettingDeleteAccountFragmentBinding
-   private val viewModel: SettingDeleteAccountViewModel by viewModels()
+   private val viewModel: SettingWithdrawalViewModel by viewModels()
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = SettingDeleteAccountFragmentBinding.inflate(inflater, container, false)
