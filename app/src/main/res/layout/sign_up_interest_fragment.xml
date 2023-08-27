@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="최근 관심뷴야의 정보, 스터디, 프로젝트를\n쉽게 찾아보세요!"
+                android:text="최근 관심분야의 정보, 스터디, 프로젝트를\n쉽게 찾아보세요!"
                 android:textColor="@color/color_949494"
                 android:textSize="16sp" />
 
