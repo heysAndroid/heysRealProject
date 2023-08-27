@@ -27,8 +27,7 @@ class IntroSignUpBottomSheet(
       }
 
       binding.tvServiceTerm.setOnClickListener {
-         // TODO 서비스 이용 약관 연결
-         // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("")))
+         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://caring-fig-dc9.notion.site/e92a574c9a0345589f3d652c55c84349?pvs=4")))
       }
 
       binding.nextButton.setOnClickListener {
