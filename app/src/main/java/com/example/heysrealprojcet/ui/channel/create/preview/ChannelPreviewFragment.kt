@@ -70,7 +70,7 @@ class ChannelPreviewFragment : Fragment() {
             requestCreateChannel()
          }
       }
-//      binding.btnBack.setOnClickListener { goToBack() }
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
 
       viewModel.link1.observe(viewLifecycleOwner) {
          if (it.contains("kakao")) {
