@@ -283,7 +283,7 @@ class ChannelDetailFragment : Fragment() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
          when (it.leader.percentage) {
             in 0..49 -> {
-               when (UserPreference.gender) {
+               when (it.leader.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_0)
                   Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_0)
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_0)
@@ -291,7 +291,7 @@ class ChannelDetailFragment : Fragment() {
             }
 
             in 50..99 -> {
-               when (UserPreference.gender) {
+               when (it.leader.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_50)
                   Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_50)
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_50)
@@ -299,7 +299,7 @@ class ChannelDetailFragment : Fragment() {
             }
 
             100 -> {
-               when (UserPreference.gender) {
+               when (it.leader.gender) {
                   Gender.Male.gender -> binding.leaderImage.setImageResource(R.drawable.ic_male_100)
                   Gender.Female.gender -> binding.leaderImage.setImageResource(R.drawable.ic_female_100)
                   else -> binding.leaderImage.setImageResource(R.drawable.ic_none_100)
