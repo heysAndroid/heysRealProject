@@ -385,6 +385,11 @@
         <action
             android:id="@+id/action_channelCreateCompleteFragment_to_waitingUserListFragment"
             app:destination="@id/waitingUserListFragment" />
+        <action
+            android:id="@+id/action_channelCreateCompleteFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@layout/main_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/channelFilterFragment"

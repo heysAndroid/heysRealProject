@@ -1,10 +1,12 @@
 package com.example.heysrealprojcet.ui.channel.create.complete
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -32,6 +34,7 @@ class ChannelCreateCompleteFragment : Fragment() {
    private lateinit var binding: ChannelCreateCompleteFragmentBinding
    private val viewModel by viewModels<ChannelCreateCompleteViewModel>()
    private val args: ChannelCreateCompleteFragmentArgs by navArgs()
+
    private lateinit var approvedUserAdapter: ApprovedUserImageListRecyclerViewAdapter
    private lateinit var waitingUserAdapter: WaitingUserImageListRecyclerViewAdapter
 
@@ -39,6 +42,13 @@ class ChannelCreateCompleteFragment : Fragment() {
       super.onCreate(savedInstanceState)
       mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
+   }
+
+   override fun onAttach(context: Context) {
+      super.onAttach(context)
+      requireActivity().onBackPressedDispatcher.addCallback(this) {
+
+      }
    }
 
    override fun onDestroy() {
@@ -67,6 +77,7 @@ class ChannelCreateCompleteFragment : Fragment() {
       binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
       binding.goToMyChannel.setOnClickListener { goToMyChannel() }
+      binding.btnBack.setOnClickListener { goToMain() }
    }
 
    private fun goToMyChannel() {
@@ -87,6 +98,10 @@ class ChannelCreateCompleteFragment : Fragment() {
             findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_waitingUserListFragment, bundleOf("waitingUser" to it.toTypedArray()))
          }
       }
+   }
+
+   private fun goToMain() {
+      findNavController().navigate(R.id.action_channelCreateCompleteFragment_to_mainFragment)
    }
 
    private fun getChannelDetail(id: Int) {
