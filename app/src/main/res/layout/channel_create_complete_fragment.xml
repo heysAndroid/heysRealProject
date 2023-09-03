@@ -18,14 +18,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
+            android:layout_marginHorizontal="25dp"
             android:paddingVertical="12dp">
 
             <ImageButton
                 android:id="@+id/btnBack"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:paddingTop="7dp"
                 android:src="@drawable/ic_back" />
 
             <TextView
