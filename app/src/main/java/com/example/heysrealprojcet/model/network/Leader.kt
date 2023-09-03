@@ -11,4 +11,5 @@ data class Leader(
    @SerialName("phone") val phone: String,
    @SerialName("introduceText") val introduceText: String,
    @SerialName("percentage") val percentage: Int,
+   @SerialName("gender") val gender: String,
 ) : java.io.Serializable
