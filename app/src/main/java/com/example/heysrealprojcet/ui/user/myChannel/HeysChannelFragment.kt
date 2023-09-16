@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.HeysChannelFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
+import com.example.heysrealprojcet.ui.user.myChannel.allChannel.AllChannelFragment
 import com.example.heysrealprojcet.ui.user.myChannel.list.MyChannelFragment
 
 class HeysChannelFragment : Fragment() {
@@ -60,7 +61,7 @@ class HeysChannelFragment : Fragment() {
 
    private fun getChannel() {
       requireActivity().supportFragmentManager.beginTransaction()
-         .replace(R.id.heys_channel_frame_layout, ChannelFragment())
+         .replace(R.id.heys_channel_frame_layout, AllChannelFragment())
          .commitAllowingStateLoss()
    }
 }
