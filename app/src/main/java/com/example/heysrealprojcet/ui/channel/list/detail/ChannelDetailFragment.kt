@@ -82,7 +82,7 @@ class ChannelDetailFragment : Fragment() {
          allApprovedUser.setOnClickListener { goToApprovedUserList() }
          allWaitingUser.setOnClickListener { goToWaitingUserList() }
          btnJoinVisitor.setOnClickListener { joinChannel(args.channelId) }
-
+         llContent.setOnClickListener { goToContentDetail() }
          // 채널 수정 우선 주석 처리
 //         tvEdit.setOnClickListener { goToChannelEdit() }
       }
@@ -130,6 +130,7 @@ class ChannelDetailFragment : Fragment() {
                setApprovedUserList()
                initBookmark()
                setLinks()
+               setContent()
 
                // 승인 결정
                if (viewModel.channelDetail.value?.recruitMethod == ChannelRecruitmentMethod.Approval.methodEng) {
@@ -424,5 +425,23 @@ class ChannelDetailFragment : Fragment() {
          Glide.with(requireContext()).load(it.thumbnailUri).error(R.drawable.bg_thumbnail_default)
             .into(binding.imgThumbnail)
       }
+   }
+
+   private fun setContent() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         it.contentData.run {
+            Glide.with(requireContext()).load(this.previewImgUrl).error(R.drawable.bg_thumbnail_default).into(binding.imgContentThumbnail)
+            binding.tvContentTitle.text = this.title
+            binding.tvContentCompany.text = this.company
+         }
+      }
+   }
+
+   private fun goToContentDetail() {
+      val contentData = viewModel.channelDetail.value?.contentData!!
+      findNavController().navigate(
+         R.id.action_channelDetailFragment_to_contestExtracurricularDetailFragment, bundleOf(
+            "channelType" to contentData.type, "contentId" to contentData.id
+         ))
    }
 }
