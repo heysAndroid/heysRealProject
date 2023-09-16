@@ -112,4 +112,20 @@ class ChannelRepository @Inject constructor(
          emit(safeApiCall { channelApi.putMemberAbort(token, channelId, message) })
       }.flowOn(Dispatchers.IO)
    }
+
+   fun getAllChannelList(
+      token: String,
+      interest: ArrayList<String>?,
+      lastRecruitDate: String?,
+      purposes: ArrayList<String>?,
+      online: String?,
+      location: String?,
+      includeClosed: Boolean?,
+      page: Int?,
+      limit: Int?
+   ): Flow<NetworkResult<ChannelListResponse>> {
+      return flow {
+         emit(safeApiCall { channelApi.getAllChannelList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit) })
+      }.flowOn(Dispatchers.IO)
+   }
 }
