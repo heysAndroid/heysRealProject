@@ -60,6 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="므모 MMO"
             android:textSize="12sp" />
 
