@@ -135,57 +135,50 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/ns_create_chnnel"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/fl_create_channel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_white_radius_16"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp">
 
-                    <FrameLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="32dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/bg_white_radius_16"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="10dp">
+                        android:orientation="horizontal">
 
-                        <LinearLayout
+                        <ImageView
+                            android:id="@+id/img_create_channel"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/ic_add_channel" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_gravity="center_vertical"
+                            android:text="채널 만들기"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </FrameLayout>
 
-                            <ImageView
-                                android:id="@+id/img_create_channel"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:layout_marginEnd="6dp"
-                                android:src="@drawable/ic_add_channel" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:text="채널 만들기"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </FrameLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/channelList"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="32dp"
-                        android:layout_marginTop="16dp" />
-                </LinearLayout>
-
-            </androidx.core.widget.NestedScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/channelList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
         </FrameLayout>
     </LinearLayout>
 </layout>

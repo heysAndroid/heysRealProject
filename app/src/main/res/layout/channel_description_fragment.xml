@@ -10,269 +10,276 @@
             type="com.example.heysrealprojcet.ui.channel.create.description.ChannelDescriptionViewModel" />
     </data>
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="25dp"
+            android:paddingVertical="12dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="7dp"
+                android:src="@drawable/ic_back" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
-                <ImageButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="27dp"
-                    android:background="@color/white"
-                    android:paddingVertical="12dp"
-                    android:src="@drawable/ic_back" />
+                    android:text="채널을 소개해주세요."
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="이런 활동을 해요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/channelActivityField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_channel_edittext"
+                    android:gravity="top"
+                    android:hint="최소 30자 이상 아래 예시 항목을 참고해서 채널에 대해 자유롭게 소개해보세요!\n\n- 주제 및 목표\n- 운영방식 및 일정(횟수)\n- 기타\n\n"
+                    android:maxLength="1500"
+                    android:padding="16dp"
+                    android:text="@={vm.channelActivity}"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:addTextChangedListener="@{vm.channelActivityTextWatcher}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/channelDescriptionLetterCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.channelActivityLetterCount.toString()}"
+                        android:textColor="@color/color_99828282"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="채널을 소개해주세요."
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:text="/1500"
+                        android:textColor="@color/color_99828282"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="이런 분을 찾아요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/channelMemberField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_channel_edittext"
+                    android:gravity="top"
+                    android:hint="최소 30자 이상 아래 예시 항목을 참고해서 마음 맞는 팀원을 찾아보세요!\n\n- 모집 인원 및 역할\n- 태도(적극성, 성실함, 책임감 등)\n- 우대 역량\n- 기타"
+                    android:maxLength="1500"
+                    android:padding="16dp"
+                    android:text="@={vm.channelMember}"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:addTextChangedListener="@{vm.channelMemberTextWatcher}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/memberDescriptionLetterCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.channelMemberLetterCount.toString()}"
+                        android:textColor="@color/color_99828282"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="이런 활동을 해요"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:text="/1500"
+                        android:textColor="@color/color_99828282"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="여기로 지원 및 문의해주세요"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(vm.linkCount) + `/2`}"
+                    android:textColor="@color/color_53c740"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="0/2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/link1Image"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_link_clip" />
 
                     <EditText
-                        android:id="@+id/channelActivityField"
+                        android:id="@+id/linkField1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="18dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/bg_channel_edittext"
                         android:gravity="top"
-                        android:hint="최소 30자 이상 아래 예시 항목을 참고해서 채널에 대해 자유롭게 소개해보세요!\n\n- 주제 및 목표\n- 운영방식 및 일정(횟수)\n- 기타\n\n"
-                        android:maxLength="1500"
+                        android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
                         android:padding="16dp"
-                        android:text="@={vm.channelActivity}"
+                        android:text="@={vm.link1}"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        app:addTextChangedListener="@{vm.channelActivityTextWatcher}" />
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/additionalLinkView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/channelDescriptionLetterCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{vm.channelActivityLetterCount.toString()}"
-                            android:textColor="@color/color_99828282"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="/1500"
-                            android:textColor="@color/color_99828282"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="이런 분을 찾아요"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/removeButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_link_remove" />
 
                     <EditText
-                        android:id="@+id/channelMemberField"
+                        android:id="@+id/linkField2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="18dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/bg_channel_edittext"
-                        android:gravity="top"
-                        android:hint="최소 30자 이상 아래 예시 항목을 참고해서 마음 맞는 팀원을 찾아보세요!\n\n- 모집 인원 및 역할\n- 태도(적극성, 성실함, 책임감 등)\n- 우대 역량\n- 기타"
-                        android:maxLength="1500"
+                        android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
                         android:padding="16dp"
-                        android:text="@={vm.channelMember}"
+                        android:text="@={vm.link2}"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        app:addTextChangedListener="@{vm.channelMemberTextWatcher}" />
+                        android:textSize="14dp" />
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/additionalLinkContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:layout_height="50dp" />
 
-                        <TextView
-                            android:id="@+id/memberDescriptionLetterCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{vm.channelMemberLetterCount.toString()}"
-                            android:textColor="@color/color_99828282"
-                            android:textSize="12sp" />
+                <LinearLayout
+                    android:id="@+id/addButtonContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="/1500"
-                            android:textColor="@color/color_99828282"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/addLinkView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_add_link" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="여기로 지원 및 문의해주세요"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@{String.valueOf(vm.linkCount) + `/2`}"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:text="링크 추가하기"
                         android:textColor="@color/color_53c740"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        tools:text="0/2" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/link1Image"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_link_clip" />
-
-                        <EditText
-                            android:id="@+id/linkField1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_channel_edittext"
-                            android:gravity="top"
-                            android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
-                            android:padding="16dp"
-                            android:text="@={vm.link1}"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/additionalLinkView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <ImageView
-                            android:id="@+id/removeButton"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_link_remove" />
-
-                        <EditText
-                            android:id="@+id/linkField2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_channel_edittext"
-                            android:hint="이메일, 오픈채팅방, 구글폼 링크 등"
-                            android:padding="16dp"
-                            android:text="@={vm.link2}"
-                            android:textColor="@color/black"
-                            android:textSize="14dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/additionalLinkContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        tools:layout_height="50dp" />
-
-                    <LinearLayout
-                        android:id="@+id/addButtonContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginBottom="32dp"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/addLinkView"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@color/white"
-                            android:src="@drawable/ic_add_link" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="8dp"
-                            android:text="링크 추가하기"
-                            android:textColor="@color/color_53c740"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="14dp"
+            android:orientation="horizontal">
+
 
             <Button
                 android:id="@+id/btnPreview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="14dp"
                 android:background="@drawable/bg_ok_button"
                 android:enabled="@{vm.isEnabled}"
+                android:padding="16dp"
                 android:paddingVertical="16dp"
                 android:text="미리보기"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
+    </LinearLayout>
 </layout>
