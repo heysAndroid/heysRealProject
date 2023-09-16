@@ -152,6 +152,9 @@
         <action
             android:id="@+id/action_channelDetailFragment_to_channelEditFragment"
             app:destination="@id/channelEditFragment" />
+        <action
+            android:id="@+id/action_channelDetailFragment_to_contestExtracurricularDetailFragment"
+            app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/extracurricularListFragment"
