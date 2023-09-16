@@ -77,12 +77,12 @@ class ChannelListFragment : Fragment() {
       getContentChannelList()
       viewModel.channelList.observe(viewLifecycleOwner) {
          if (it.isEmpty()) {
-            binding.nsCreateChnnel.visibility = View.GONE
+            binding.flCreateChannel.visibility = View.GONE
             binding.noListImage.visibility = View.VISIBLE
             binding.btnChannel.setOnClickListener { goToCreateChannel() }
          } else {
             binding.noListImage.visibility = View.GONE
-            binding.nsCreateChnnel.visibility = View.VISIBLE
+            binding.flCreateChannel.visibility = View.VISIBLE
             binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
          }
       }
