@@ -58,6 +58,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
       getContentDetail(args.contentId)
 
       with(binding) {
+         btnBack.setOnClickListener { findNavController().navigateUp() }
          btnChannel.setOnClickListener { goToChannelList(args.contentId) }
          btnShare.setOnClickListener {
             val bottomSheet = ContestShareBottomSheet()
