@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.ApprovedChannelListFragmentBinding
@@ -39,6 +40,8 @@ class ApprovedChannelListFragment : Fragment() {
          bottomSheet.setOnOKClickListener { getMyChannel("Approved") }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
+
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.rvApprovedChannelList.adapter = adapter
       binding.rvApprovedChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 

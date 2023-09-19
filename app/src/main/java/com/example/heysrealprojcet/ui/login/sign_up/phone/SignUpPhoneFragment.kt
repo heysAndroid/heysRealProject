@@ -56,6 +56,7 @@ class SignUpPhoneFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
       binding.lifecycleOwner = this
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener { requestCheckPhoneNumber() }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 

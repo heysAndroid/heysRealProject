@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -59,6 +60,8 @@ class ApprovedUserListFragment : Fragment() {
          adpater.submitList(it)
          binding.tvUserNum.text = "${it.size}"
       }
+
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.rvApprovedUserList.adapter = adpater
       binding.rvApprovedUserList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
    }

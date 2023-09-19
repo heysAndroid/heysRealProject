@@ -43,7 +43,7 @@ class ChannelDescriptionFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnPreview.setOnClickListener {
          ChannelPreference.channelActivity = viewModel.channelActivity.value.toString()
          ChannelPreference.channelMember = viewModel.channelMember.value.toString()

@@ -16,8 +16,8 @@ import com.example.heysrealprojcet.CustomSnackBar
 import com.example.heysrealprojcet.EventObserver
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.SignInPhoneFragmentBinding
-import com.example.heysrealprojcet.model.network.Phone
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.Phone
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,6 +56,7 @@ class SignInPhoneFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
       binding.lifecycleOwner = this
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener { requestCheckPhoneNumber() }
       binding.phoneInput.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 
