@@ -70,18 +70,21 @@ class ChannelDetailFragment : Fragment() {
       channelViewCountUp(args.channelId)
       setRelationshipWithMe()
 
-      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
-      binding.btnBookmark.setOnClickListener {
-         it.isSelected = it.isSelected != true
-         if (it.isSelected) {
-            channelAddBookmark(args.channelId)
-         } else {
-            channelRemoveBookmark(args.channelId)
+      with(binding) {
+         btnBack.setOnClickListener { findNavController().navigateUp() }
+         btnBookmark.setOnClickListener {
+            it.isSelected = it.isSelected != true
+            if (it.isSelected) {
+               channelAddBookmark(args.channelId)
+            } else {
+               channelRemoveBookmark(args.channelId)
+            }
          }
          allApprovedUser.setOnClickListener { goToApprovedUserList() }
          allWaitingUser.setOnClickListener { goToWaitingUserList() }
          btnJoinVisitor.setOnClickListener { joinChannel(args.channelId) }
          llContent.setOnClickListener { goToContentDetail() }
+
          // 채널 수정 우선 주석 처리
 //         tvEdit.setOnClickListener { goToChannelEdit() }
       }
