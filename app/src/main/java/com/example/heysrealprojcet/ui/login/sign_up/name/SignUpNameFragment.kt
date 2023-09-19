@@ -48,6 +48,7 @@ class SignUpNameFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener { goToGender() }
       binding.name.filters = arrayOf(InputFilter { src, _, _, _, _, _ ->
          val ps = Pattern.compile("^[a-zA-Zㄱ-ㅣ가-힣]+$")

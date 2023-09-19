@@ -60,6 +60,7 @@ class SignUpInterestFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       setDeviceToken()
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener { requestSignUp() }
    }
 

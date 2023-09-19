@@ -74,6 +74,7 @@ class ChannelCreateCompleteFragment : Fragment() {
       binding.lifecycleOwner = this
       getChannelDetail(args.channelId)
 
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.allApprovedUser.setOnClickListener { goToApprovedUserList() }
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
       binding.goToMyChannel.setOnClickListener { goToMyChannel() }

@@ -50,6 +50,7 @@ class ChannelNameFragment : Fragment() {
       ChannelPreference.contentId = args.contentId
       ChannelPreference.channelType = args.channelType
 
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnNext.setOnClickListener {
          ChannelPreference.channelName = viewModel.name.value.toString()
          goToInform()

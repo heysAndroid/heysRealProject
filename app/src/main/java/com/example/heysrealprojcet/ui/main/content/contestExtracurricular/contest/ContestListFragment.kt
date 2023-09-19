@@ -67,6 +67,7 @@ class ContestListFragment : Fragment() {
          Log.w("filters: ", it)
       }
       setInterestList()
+
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterCount.text = "${myInterestList.size}"
       binding.filterButton.setOnClickListener { goToFilter() }
