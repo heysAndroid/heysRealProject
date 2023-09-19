@@ -53,6 +53,7 @@ class ChannelInformFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.purposeContainer.setOnClickListener {
          val purposeDialog = ChannelPurposeDialog()
          purposeDialog.setOnOKClickListener { content ->

@@ -67,6 +67,7 @@ class SignInPasswordFragment : Fragment() {
          viewModel.togglePasswordVisible()
          changeInputType()
       }
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnForget.setOnClickListener { goToPasswordChange() }
       binding.okButton.setOnClickListener {
          requestLogin(UserPreference.phoneNumber, UserPreference.password)

@@ -63,6 +63,7 @@ class ChannelPreviewFragment : Fragment() {
       setChannelRecruitmentMethod()
       getMyInfo()
 
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnNext.setOnClickListener {
          if (ChannelPreference.contentId < 0) {
             requestCreateStudy()

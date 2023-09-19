@@ -62,15 +62,14 @@ class ChannelListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       when (args.channelType) {
          ChannelType.Contest.typeEng -> {
             binding.tvTitle.text = "공모전 채널"
-            binding.layoutFilter.visibility = View.GONE
          }
 
          ChannelType.Extracurricular.typeEng -> {
             binding.tvTitle.text = "대외활동 채널"
-            binding.layoutFilter.visibility = View.GONE
          }
       }
 

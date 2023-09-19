@@ -43,6 +43,7 @@ class SignUpGenderFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_signUpGenderFragment_to_signUpAgeFragment)
       }

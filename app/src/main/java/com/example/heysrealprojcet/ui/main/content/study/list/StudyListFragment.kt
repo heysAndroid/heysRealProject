@@ -63,6 +63,7 @@ class StudyListFragment : Fragment() {
          getStudyList(!it)
       }
 
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterButton.setOnClickListener { goToFilter() }
       binding.llCreateStudy.setOnClickListener { goToCreateStudy() }
    }

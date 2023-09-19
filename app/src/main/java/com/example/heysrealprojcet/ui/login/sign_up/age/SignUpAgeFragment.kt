@@ -1,10 +1,11 @@
 package com.example.heysrealprojcet.ui.login.sign_up.age
 
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.R
@@ -12,7 +13,7 @@ import com.example.heysrealprojcet.databinding.SignUpAgeFragmentBinding
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import java.time.LocalDate
-import java.util.*
+import java.util.Calendar
 
 class SignUpAgeFragment : Fragment() {
    private lateinit var binding: SignUpAgeFragmentBinding
@@ -41,9 +42,11 @@ class SignUpAgeFragment : Fragment() {
       mainActivity.hideBottomNavigation(false)
    }
 
+   @RequiresApi(Build.VERSION_CODES.O)
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener { goToInterest() }
       binding.datePicker.maxDate = Calendar.getInstance().timeInMillis
       binding.datePicker.setOnDateChangedListener { _, year, month, dayOfMonth ->

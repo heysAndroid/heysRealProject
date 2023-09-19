@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.databinding.WaitingChannelListFragmentBinding
@@ -40,6 +41,8 @@ class WaitingChannelListFragment : Fragment() {
          bottomSheet.setOnOKClickListener { getMyChannel("Waiting") }
          bottomSheet.show(childFragmentManager, bottomSheet.tag)
       }
+
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.rvWaitingChannelList.adapter = adapter
       binding.rvWaitingChannelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
