@@ -11,6 +11,7 @@ interface ContentApi {
    suspend fun getContentList(
       @Header("Authorization") token: String,
       @Query("type") type: String,
+      @Query("order") order: String?,
       @Query("interests") interests: ArrayList<String>?,
       @Query("lastRecruitDate") lastRecruitDate: String?,
       @Query("includeClosed") includeClosed: Boolean?,

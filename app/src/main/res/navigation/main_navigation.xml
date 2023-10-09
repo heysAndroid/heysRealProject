@@ -74,7 +74,7 @@
             app:destination="@id/contestExtracurricularDetailFragment" />
         <argument
             android:name="type"
-            android:defaultValue="default"
+            android:defaultValue="Default"
             app:argType="string" />
         <argument
             android:name="contentId"
@@ -169,7 +169,7 @@
             app:destination="@id/contestExtracurricularDetailFragment" />
         <argument
             android:name="type"
-            android:defaultValue="default"
+            android:defaultValue="Default"
             app:argType="string" />
     </fragment>
     <fragment

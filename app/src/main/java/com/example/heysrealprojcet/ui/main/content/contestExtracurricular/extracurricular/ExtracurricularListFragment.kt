@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ExtracurricularListFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelType
+import com.example.heysrealprojcet.enums.ContentOrder
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.MainFragment
@@ -33,6 +34,7 @@ class ExtracurricularListFragment : Fragment() {
 
    lateinit var filterViewModel: ContestExtracurricularFilterViewModel
    private lateinit var myInterestList: ArrayList<String>
+   private var orderType = "Default"
    private val args: ExtracurricularListFragmentArgs by navArgs()
 
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +68,7 @@ class ExtracurricularListFragment : Fragment() {
       filterViewModel.interestArray.forEach {
          Log.w("filters: ", it)
       }
-      setInterestList()
+      setInterestAndType()
 
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterCount.text = "${myInterestList.size}"
@@ -74,30 +76,28 @@ class ExtracurricularListFragment : Fragment() {
 
       viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       viewModel.isChecked.asLiveData().observe(viewLifecycleOwner) {
-         getExtraCurricularList(myInterestList, !it)
+         getExtraCurricularList(orderType, myInterestList, !it)
       }
    }
 
-   private fun setInterestList() {
+   private fun setInterestAndType() {
       myInterestList = arrayListOf()
       when (args.type) {
-         "all" -> {
-            // do nothing
-         }
-
-         "default" -> {
-            filterViewModel.interestArray.forEach {
-               myInterestList.add(it)
-            }
-         }
-
          "interest" -> {
             UserPreference.interests.split(",").forEach {
                myInterestList.add(it)
             }
+            orderType = ContentOrder.Default.order
+         }
+
+         else -> {
+            filterViewModel.interestArray.forEach {
+               myInterestList.add(it)
+            }
+            orderType = args.type
          }
       }
-      getExtraCurricularList(myInterestList, !viewModel.isChecked.value)
+      getExtraCurricularList(orderType, interests = myInterestList, includeClosed = !viewModel.isChecked.value)
    }
 
    private fun goToFilter() {
@@ -122,7 +122,7 @@ class ExtracurricularListFragment : Fragment() {
          bundleOf("channelType" to ChannelType.Extracurricular.typeEng, "contentId" to contentId))
    }
 
-   private fun getExtraCurricularList(interests: ArrayList<String>, includeClosed: Boolean) {
+   private fun getExtraCurricularList(order: String? = ContentOrder.Default.order, interests: ArrayList<String>, includeClosed: Boolean) {
       val token = UserPreference.accessToken
       var lastRecruitDate: String? = null
       if (filterViewModel.selectedDate != null) {
@@ -130,7 +130,7 @@ class ExtracurricularListFragment : Fragment() {
       }
       interests.forEach { Log.i("interests: ", it) }
 
-      viewModel.getExtraCurricularList("Bearer $token", ChannelType.Extracurricular.typeEng, interests, lastRecruitDate, includeClosed).observe(viewLifecycleOwner) { response ->
+      viewModel.getExtraCurricularList("Bearer $token", ChannelType.Extracurricular.typeEng, order, interests, lastRecruitDate, includeClosed).observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
                viewModel.setContestList(response.data?.data)

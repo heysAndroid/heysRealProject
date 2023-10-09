@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ContestListFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelType
+import com.example.heysrealprojcet.enums.ContentOrder
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.main.MainFragment.Companion.MY_INTEREST_LIST
@@ -33,6 +34,7 @@ class ContestListFragment : Fragment() {
 
    lateinit var filterViewModel: ContestExtracurricularFilterViewModel
    private lateinit var myInterestList: ArrayList<String>
+   private var orderType = "Default"
 
    val args: ContestListFragmentArgs by navArgs()
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,7 +76,7 @@ class ContestListFragment : Fragment() {
 
       viewModel.contestList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
       viewModel.isCheked.asLiveData().observe(viewLifecycleOwner) {
-         getContestList(myInterestList, !it)
+         getContestList(orderType, myInterestList, !it)
       }
    }
 
@@ -103,27 +105,25 @@ class ContestListFragment : Fragment() {
    private fun setInterestList() {
       myInterestList = arrayListOf()
       Log.i("type: ", args.type)
-      when (args.type) {
-         "all" -> {
-            // do nothing
-         }
-
-         "default" -> {
-            filterViewModel.interestArray.forEach {
-               myInterestList.add(it)
-            }
-         }
-
+      orderType = when (args.type) {
          "interest" -> {
             UserPreference.interests.split(",").forEach {
                myInterestList.add(it)
             }
+            ContentOrder.Default.order
+         }
+
+         else -> {
+            filterViewModel.interestArray.forEach {
+               myInterestList.add(it)
+            }
+            args.type
          }
       }
-      getContestList(myInterestList, !viewModel.isCheked.value)
+      getContestList(orderType, myInterestList, !viewModel.isCheked.value)
    }
 
-   private fun getContestList(interests: ArrayList<String>, includeClosed: Boolean) {
+   private fun getContestList(order: String?, interests: ArrayList<String>, includeClosed: Boolean) {
       val token = UserPreference.accessToken
       var lastRecruitDate: String? = null
       if (filterViewModel.selectedDate != null) {
@@ -131,7 +131,7 @@ class ContestListFragment : Fragment() {
       }
       interests.forEach { Log.i("interests: ", it) }
 
-      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, interests, lastRecruitDate, includeClosed)
+      viewModel.getContestList("Bearer $token", ChannelType.Contest.typeEng, order, interests, lastRecruitDate, includeClosed)
          .observe(viewLifecycleOwner) { response ->
             when (response) {
                is NetworkResult.Success -> {
