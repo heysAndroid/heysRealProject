@@ -22,18 +22,22 @@ class ExtracurricularItemRecyclerViewAdapter(
             company.text = content.company
             viewCount.text = content.viewCount.toString()
             channelCount.text = "${content.channelCount}팀 빌딩"
+            dday.text = "D-${content.dday}"
             Glide.with(App.getInstance().applicationContext).load(content.previewImgUri).error(R.drawable.bg_thumbnail_default).into(binding.image)
          }
 
          when {
             content.dday >= 7 -> {
-               binding.dday.text = "D-${content.dday}"
                binding.dday.setBackgroundResource(R.drawable.bg_status_available)
             }
 
             1 <= content.dday -> {
-               binding.dday.text = "D-${content.dday}"
                binding.dday.setBackgroundResource(R.drawable.bg_status_almost_closed)
+            }
+
+            // 마감 당일
+            0 == content.dday -> {
+               binding.dday.setBackgroundResource(R.drawable.bg_status_closed)
             }
 
             else -> {
