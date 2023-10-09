@@ -22,6 +22,7 @@ import com.example.heysrealprojcet.MarginItemDecoration
 import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.MainFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelType
+import com.example.heysrealprojcet.enums.ContentOrder
 import com.example.heysrealprojcet.model.ContestType
 import com.example.heysrealprojcet.model.ExtracurricularType
 import com.example.heysrealprojcet.model.network.MyPage
@@ -45,7 +46,6 @@ class MainFragment : Fragment() {
 
    private lateinit var contestList: MutableList<ContestType>
    private lateinit var extracurricularList: MutableList<ExtracurricularType>
-   private lateinit var interestList: MutableList<String>
    private lateinit var callback: OnBackPressedCallback
 
    private var position = 0
@@ -97,8 +97,8 @@ class MainFragment : Fragment() {
       setExtraCurricular()
 
       with(binding) {
-         tvContestAll.setOnClickListener { goToContest(type = "all") }
-         tvExtracurricularAll.setOnClickListener { goToExtraCurricular(type = "all") }
+         tvContestAll.setOnClickListener { goToContest() }
+         tvExtracurricularAll.setOnClickListener { goToExtraCurricular() }
          btnCreateStudy.setOnClickListener { goToStudyCreate() }
          btnStudyList.setOnClickListener { goToStudyList() }
       }
@@ -121,23 +121,19 @@ class MainFragment : Fragment() {
       })
    }
 
-   private fun changeFragment(fragment: Fragment) {
-      requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
-   }
-
    private fun makeExtracurricularList() {
       extracurricularList = mutableListOf(
-         ExtracurricularType("취향저격", "내 관심분야별", R.drawable.ic_interested),
-         ExtracurricularType("서둘러요!", "마감 임박!", R.drawable.ic_hurry),
-         ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding),
+         ExtracurricularType("취향저격", "내 관심분야별", R.drawable.ic_interested, ContentOrder.Interest.order),
+         ExtracurricularType("서둘러요!", "마감 임박!", R.drawable.ic_hurry, ContentOrder.Dday.order),
+         ExtracurricularType("너도나도", "많이 찾는", R.drawable.ic_finding, ContentOrder.Popular.order),
          ExtracurricularType("어디보자", "새로 열린", R.drawable.ic_new))
    }
 
    private fun makeContestList() {
       contestList = mutableListOf(
-         ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true),
-         ContestType("마감 \n임박!", R.drawable.ic_drawing_board2, false),
-         ContestType("너도나도 \n많이 찾는", R.drawable.ic_drawing_board3, false),
+         ContestType("관심 \n분야별", R.drawable.ic_drawing_board1, true, ContentOrder.Interest.order),
+         ContestType("마감 \n임박!", R.drawable.ic_drawing_board2, false, ContentOrder.Dday.order),
+         ContestType("너도나도 \n많이 찾는", R.drawable.ic_drawing_board3, false, ContentOrder.Popular.order),
          ContestType("어디보자 \n새로 열린", R.drawable.ic_drawing_board4, false))
    }
 
@@ -147,11 +143,11 @@ class MainFragment : Fragment() {
          bundleOf("channelType" to ChannelType.Study.typeEng))
    }
 
-   private fun goToContest(type: String = "default") {
+   private fun goToContest(type: String = "Default") {
       findNavController().navigate(R.id.action_mainFragment_to_contestFragment, bundleOf("type" to type))
    }
 
-   private fun goToExtraCurricular(type: String = "default") {
+   private fun goToExtraCurricular(type: String = "Default") {
       findNavController().navigate(R.id.action_mainFragment_to_extracurricularListFragment, bundleOf("type" to type))
    }
 
@@ -167,7 +163,7 @@ class MainFragment : Fragment() {
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
          list = contestList,
          myInterestList = UserPreference.interests.split(",").toMutableList()
-      ) { goToContest(type = "interest") }
+      ) { goToContest(type = it) }
 
       binding.contestList.apply {
          adapter = categoryRecyclerViewAdapter
@@ -181,7 +177,7 @@ class MainFragment : Fragment() {
       // 대외활동
       extracurricularRecyclerViewAdapter = ExtracurricularInterestItemRecyclerViewAdapter(
          list = extracurricularList
-      ) { goToExtraCurricular(type = "interest") }
+      ) { goToExtraCurricular(type = it) }
 
       binding.extracurricularList.apply {
          adapter = extracurricularRecyclerViewAdapter

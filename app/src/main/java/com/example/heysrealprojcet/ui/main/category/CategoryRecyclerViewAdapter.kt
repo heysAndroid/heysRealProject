@@ -29,18 +29,21 @@ class CategoryRecyclerViewAdapter(
       fun bind(item: ContestType) {
          binding.type.text = item.type
          binding.image.setImageResource(item.resId)
-         binding.root.setOnClickListener { onclick.invoke(item.type) }
+         binding.root.setOnClickListener { onclick.invoke(item.order) }
 
          val content = when (layoutPosition) {
             1 -> {
                "서두르세요!\n곧 마감하는 공모전이에요!"
             }
+
             2 -> {
                "와글와글\n많이찾는 공모전들이에요!"
             }
+
             3 -> {
                "새로운게 뭐가있나~\n새로열린 공모전들이에요!"
             }
+
             else -> {
                when (myInterestList.size) {
                   1 -> "관심분야 #${myInterestList}과\n 관련있는 공모전이에요!"
