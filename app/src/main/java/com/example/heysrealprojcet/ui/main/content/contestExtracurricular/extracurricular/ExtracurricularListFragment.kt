@@ -68,7 +68,7 @@ class ExtracurricularListFragment : Fragment() {
       filterViewModel.interestArray.forEach {
          Log.w("filters: ", it)
       }
-      setInterestList()
+      setInterestAndType()
 
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterCount.text = "${myInterestList.size}"
