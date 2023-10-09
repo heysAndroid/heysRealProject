@@ -28,7 +28,7 @@ class StudyItemRecyclerViewAdapter(
          }
 
          // 모집 마감일 지나지 않음
-         if (study.dday > 0) {
+         if (study.dday >= 0) {
             when {
                // 최대 참여정원 4명 이상
                4 <= study.joinRemainCount -> {
