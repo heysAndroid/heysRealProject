@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -31,12 +32,14 @@ class MyChannelFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       getMyChannelList()
+      viewModel.myChannelList.observe(viewLifecycleOwner) { binding.noListImage.isVisible = it.isEmpty() }
    }
 
    private fun getMyChannelList() {
       viewModel.getMyChannelList("Bearer ${UserPreference.accessToken}").observe(viewLifecycleOwner) { response ->
          when (response) {
             is NetworkResult.Success -> {
+               viewModel.setMyChannelList(response.data?.myChannel)
                response.data?.myChannel?.toMutableList()?.let {
                   myChannelItemRecyclerViewAdapter = MyChannelItemRecyclerViewAdapter(it) { channelId ->
                      goToDetail(channelId)
