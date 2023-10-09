@@ -22,7 +22,7 @@ class ExtracurricularInterestItemRecyclerViewAdapter(
          binding.type.text = item.description
          binding.typeText2.text = item.type
          binding.image.setImageResource(item.resId)
-         binding.root.setOnClickListener { onclick.invoke(item.description) }
+         binding.root.setOnClickListener { onclick.invoke(item.order) }
       }
    }
 

@@ -17,6 +17,7 @@ class ContentRepository @Inject constructor(
    fun getContentList(
       token: String,
       type: String,
+      order:String?,
       interest: ArrayList<String>?,
       lastRecruitDate: String?,
       includeClosed: Boolean?,
@@ -26,7 +27,7 @@ class ContentRepository @Inject constructor(
       return flow {
          emit(safeApiCall {
             contentApi.getContentList(
-               token, type, interest, lastRecruitDate, includeClosed, page, limit)
+               token, type, order, interest, lastRecruitDate, includeClosed, page, limit)
          })
       }.flowOn(Dispatchers.IO)
    }
