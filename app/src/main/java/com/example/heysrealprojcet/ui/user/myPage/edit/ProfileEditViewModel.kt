@@ -3,10 +3,18 @@ package com.example.heysrealprojcet.ui.user.myPage.edit
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.example.heysrealprojcet.model.network.MyPageEdit
+import com.example.heysrealprojcet.repository.MyPageRepository
+import com.example.heysrealprojcet.ui.base.BaseViewModel
 import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProfileEditViewModel : ViewModel() {
+@HiltViewModel
+class ProfileEditViewModel @Inject constructor(
+   private val myPageRepository: MyPageRepository
+) : BaseViewModel() {
    private val _introduceLetterCount = MutableLiveData(0)
    val introduceLetterCount = _introduceLetterCount
 
@@ -19,19 +27,21 @@ class ProfileEditViewModel : ViewModel() {
    private val _abilityLetterCount = MutableLiveData(0)
    val abilityLetterCount = _abilityLetterCount
 
-   val link1 = MutableLiveData<String>()
-   val link2 = MutableLiveData<String>()
-   val link3 = MutableLiveData<String>()
-   val link4 = MutableLiveData<String>()
-   val link5 = MutableLiveData<String>()
-
    var introduce = MutableLiveData(UserPreference.introduce)
    var name = MutableLiveData(UserPreference.name)
    var mbti = MutableLiveData(UserPreference.mbti)
    var interestString = MutableLiveData(UserPreference.interests)
    var job = MutableLiveData(UserPreference.job)
-   var skill = MutableLiveData(UserPreference.skill)
+   var capability = MutableLiveData(UserPreference.capability)
    var interestArray = mutableListOf<String>()
+
+   val link1 = MutableLiveData("")
+   val link2 = MutableLiveData("")
+   val link3 = MutableLiveData("")
+   val link4 = MutableLiveData("")
+   val link5 = MutableLiveData("")
+
+   fun editMyInfo(token: String, myPageEdit: MyPageEdit) = myPageRepository.editMyInfo(token, myPageEdit).asLiveData()
 
    init {
       interestString.value = interestString.value?.replace("\"", "")?.replace("[", "")?.replace("]", "")

@@ -7,11 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.heysrealprojcet.util.UserPreference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 class InterestViewModel : ViewModel() {
    /*
@@ -63,6 +60,5 @@ class InterestViewModel : ViewModel() {
       }
       total.value = interestList.size
       totalString.value = "${total.value}/$totalMax"
-      UserPreference.interests = Json.encodeToString(interestList)
    }
 }

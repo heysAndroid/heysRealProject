@@ -3,11 +3,15 @@ package com.example.heysrealprojcet.ui.main.content.study.filter
 import android.graphics.Typeface
 import android.view.View
 import android.widget.Button
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.heysrealprojcet.Event
 import kotlinx.coroutines.flow.MutableStateFlow
+import java.time.LocalDate
+import java.time.YearMonth
 
 class StudyFilterViewModel : ViewModel() {
-
    private var choiceInterest = mutableListOf<View>()
    private var choiceActivity: View? = null
    private var choiceRegion: View? = null
@@ -27,6 +31,18 @@ class StudyFilterViewModel : ViewModel() {
    private val activityArray = mutableListOf<String>()
    private val regionArray = mutableListOf<String>()
    private val purposeArray = mutableListOf<String>()
+
+   // 달력
+   var selectedDate: LocalDate? = null
+
+   private val _calendarPosition = MutableLiveData(YearMonth.now().month.value)
+   val calendarPosition: LiveData<Int> = _calendarPosition
+
+   private val _calendarDate = MutableLiveData<LocalDate>()
+   val calendarDate: LiveData<LocalDate> = _calendarDate
+
+   private val _isCalendarInit = MutableLiveData<Event<Boolean>>()
+   val isCalendarInit: LiveData<Event<Boolean>> = _isCalendarInit
 
    fun onClickInterest(v: View) {
       val item = v.tag.toString()
@@ -216,5 +232,25 @@ class StudyFilterViewModel : ViewModel() {
       }
       purposeTotal.value = 0
       purposeArray.clear()
+
+      selectedDate = null
+      _calendarDate.value = selectedDate
+      _isCalendarInit.value = Event(true)
+   }
+
+   fun plusPosition() {
+      _calendarPosition.value = _calendarPosition.value!! + 1
+   }
+
+   fun minusPosition() {
+      _calendarPosition.value = _calendarPosition.value!! - 1
+   }
+
+   fun setPosition(value: Int) {
+      _calendarPosition.value = value
+   }
+
+   fun setCalendarDate() {
+      _calendarDate.value = selectedDate
    }
 }

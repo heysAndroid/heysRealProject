@@ -228,7 +228,7 @@ class MainFragment : Fragment() {
       UserPreference.birthday = user.birthDate
       UserPreference.job = user.job
       UserPreference.introduce = user.introduce
-      UserPreference.skill = user.capability
+      UserPreference.capability = user.capability
       UserPreference.mbti = user.userPersonality ?: ""
       UserPreference.percentage = user.percentage
       UserPreference.joinChannelCount = user.joinChannelCount

@@ -57,7 +57,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="@{(v) -> vm.onClickInit()}"
                         android:text="재설정"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -689,9 +688,9 @@
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="24dp"
                     android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
                     android:paddingVertical="18dp"
-                    android:tag="online/offline"
+                    android:tag="OnOffline"
                     android:text="온·오프라인"
                     android:textColor="@drawable/bg_filter_activity_button"
                     android:textSize="16sp" />
@@ -703,24 +702,10 @@
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
                     android:paddingVertical="18dp"
-                    android:tag="offline"
+                    android:tag="Offline"
                     android:text="오프라인"
-                    android:textColor="@drawable/bg_filter_activity_button"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/btnOnline"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
-                    android:paddingVertical="18dp"
-                    android:tag="online"
-                    android:text="온라인"
                     android:textColor="@drawable/bg_filter_activity_button"
                     android:textSize="16sp" />
 
@@ -728,8 +713,8 @@
                     android:id="@+id/regionContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btnWhole"
@@ -885,6 +870,20 @@
                             android:textSize="16sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnOnline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_filter_activity_button"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
+                    android:paddingVertical="18dp"
+                    android:tag="Online"
+                    android:text="온라인"
+                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"

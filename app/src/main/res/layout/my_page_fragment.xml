@@ -19,11 +19,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/pretendard_bold"
                 android:text="마이페이지"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/goToSetting"
@@ -78,11 +78,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginVertical="40dp"
+                                    android:fontFamily="@font/pretendard_bold"
                                     android:text="아직 소개할 내용이 없어요."
                                     android:textAlignment="center"
                                     android:textColor="@color/color_828282"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
 
                             <ImageView
@@ -99,10 +99,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:fontFamily="@font/pretendard_medium"
                             android:text="박보영"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/mbti"
@@ -110,6 +110,7 @@
                             android:layout_height="24dp"
                             android:layout_marginTop="8dp"
                             android:background="@drawable/bg_mypage_mbti"
+                            android:fontFamily="@font/pretendard_regular"
                             android:gravity="center"
                             android:text="\????"
                             android:textColor="@drawable/text_mypage_mbti" />
@@ -119,6 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="22dp"
+                            android:fontFamily="@font/pretendard_regular"
                             android:text="관심분야/ 직무"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -128,10 +130,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
+                            android:fontFamily="@font/pretendard_medium"
                             android:text="#기획 #데이터/인공지능 #UX,IT"
                             android:textColor="@color/color_262626"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/jobTitle"
@@ -139,6 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:alpha="0.3"
+                            android:fontFamily="@font/pretendard_regular"
                             android:text="직업"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -147,11 +150,10 @@
                             android:id="@+id/job"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:alpha="0.3"
+                            android:fontFamily="@font/pretendard_medium"
                             android:text="아직 소개할 직업이 없어요."
                             android:textColor="@color/color_262626"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/skillTitle"
@@ -159,6 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:alpha="0.3"
+                            android:fontFamily="@font/pretendard_regular"
                             android:text="사용가능한 스킬"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -167,11 +170,10 @@
                             android:id="@+id/skill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:alpha="0.3"
+                            android:fontFamily="@font/pretendard_medium"
                             android:text="아직 소개할 직업이 없어요."
                             android:textColor="@color/color_262626"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -242,6 +244,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
+                                    android:fontFamily="@font/pretendard_regular"
                                     android:text="프로필이 채워지지 않았어요."
                                     android:textColor="@color/color_828282"
                                     android:textSize="12sp" />
@@ -263,6 +266,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
+                                    android:fontFamily="@font/pretendard_regular"
                                     android:text="공유"
                                     android:textColor="@color/color_828282"
                                     android:textSize="12sp" />
@@ -276,6 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
+                    android:fontFamily="@font/pretendard_regular"
                     android:text="나의 채널 관리"
                     android:textColor="@color/color_828282"
                     android:textSize="14sp" />
@@ -294,10 +299,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/pretendard_bold"
                         android:text="참여중인 채널"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/joinChannel"
@@ -305,10 +310,10 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/pretendard_bold"
                         android:text="3"
                         android:textColor="@color/color_53c740"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -324,10 +329,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/pretendard_bold"
                         android:text="승인대기 채널"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waitingChannel"
@@ -335,10 +340,10 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/pretendard_bold"
                         android:text="1"
                         android:textColor="@color/color_53c740"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <TextView

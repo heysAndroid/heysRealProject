@@ -266,16 +266,16 @@ class ChannelDetailFragment : Fragment() {
 
    private fun setChannelForm(form: String) {
       when (form) {
-         ChannelForm.Both.form -> {
-            binding.channelForm.text = ChannelForm.Both.form + "으로"
+         ChannelForm.Offline.engForm -> {
+            binding.channelForm.text = ChannelForm.Offline.form + "으로 "
          }
 
-         ChannelForm.Offline.form -> {
-            binding.channelForm.text = ChannelForm.Offline.form + "으로"
+         ChannelForm.Online.engForm -> {
+            binding.channelForm.text = ChannelForm.Online.form + "으로 "
          }
 
-         else -> {
-            binding.channelForm.text = ChannelForm.Online.form + "으로"
+         ChannelForm.Both.engForm -> {
+            binding.channelForm.text = ChannelForm.Both.form + "으로 "
          }
       }
    }
@@ -430,10 +430,15 @@ class ChannelDetailFragment : Fragment() {
 
    private fun setContent() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
-         it.contentData.run {
-            Glide.with(requireContext()).load(this.previewImgUrl).error(R.drawable.bg_thumbnail_default).into(binding.imgContentThumbnail)
-            binding.tvContentTitle.text = this.title
-            binding.tvContentCompany.text = this.company
+         if (it.contentData != null) {
+            binding.llContent.visibility = View.VISIBLE
+            it.contentData.run {
+               Glide.with(requireContext()).load(this.previewImgUrl).error(R.drawable.bg_thumbnail_default).into(binding.imgContentThumbnail)
+               binding.tvContentTitle.text = this.title
+               binding.tvContentCompany.text = this.company
+            }
+         } else {
+            binding.llContent.visibility = View.GONE
          }
       }
    }

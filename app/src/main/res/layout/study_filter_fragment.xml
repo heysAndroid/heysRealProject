@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.main.content.study.filter.StudyFilterViewModel" />
+            type="com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterViewModel" />
     </data>
 
     <LinearLayout
@@ -14,52 +16,53 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="18dp">
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_close" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_weight="1"
+                android:text="맞춤 필터"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btn_init"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="재설정"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="23dp"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/btn_close"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/white"
-                        android:src="@drawable/ic_close" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:layout_weight="1"
-                        android:text="맞춤 필터"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="9dp"
-                        android:onClick="@{(v) -> vm.onClickInit()}"
-                        android:text="재설정"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,7 +84,6 @@
                         android:layout_height="wrap_content"
                         android:text="최대 3개까지 선택이 가능해요."
                         android:textSize="14sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -92,7 +94,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/planning"
+                        android:id="@+id/btnPlanning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -102,13 +104,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="planning"
                         android:text="기획/아이디어"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/design"
+                        android:id="@+id/btnDesign"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -118,13 +119,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="design"
                         android:text="디자인"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/programming"
+                        android:id="@+id/btnProgramming"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -133,7 +133,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="develop"
                         android:text="개발"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -147,7 +146,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/it"
+                        android:id="@+id/btnIT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -157,13 +156,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="sw"
                         android:text="IT/SW"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/data"
+                        android:id="@+id/btnData"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -173,13 +171,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="data"
                         android:text="데이터/인공지능"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/game"
+                        android:id="@+id/btnGame"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -188,7 +185,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="game"
                         android:text="게임"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -202,7 +198,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/marketing"
+                        android:id="@+id/btnMarketing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -212,13 +208,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="marketing"
                         android:text="광고/마케팅"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/business"
+                        android:id="@+id/btnBusiness"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -228,7 +223,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="business"
                         android:text="경영/비즈니스"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -242,7 +236,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/economics"
+                        android:id="@+id/btnEconomics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -252,13 +246,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="economics"
                         android:text="금융/경제"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/engineering"
+                        android:id="@+id/btnEngineering"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -268,13 +261,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="science"
                         android:text="과학/공학"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/art"
+                        android:id="@+id/btnArt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -283,7 +275,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="art"
                         android:text="미술/건축"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -298,7 +289,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/novel"
+                        android:id="@+id/btnNovel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -308,13 +299,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="novel"
                         android:text="인문학/소설/웹툰"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/lifestyle"
+                        android:id="@+id/btnLifestyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -323,7 +313,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="lifestyle"
                         android:text="패션/라이프스타일"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -338,7 +327,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/picture"
+                        android:id="@+id/btnPicture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -348,13 +337,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="photo"
                         android:text="사진/영상/UCC"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/culture"
+                        android:id="@+id/btnCulture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -363,7 +351,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="culture"
                         android:text="문화/교육"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -378,7 +365,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/travel"
+                        android:id="@+id/btnTravel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -388,13 +375,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="tour"
                         android:text="해외/관광"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/environment"
+                        android:id="@+id/btnEnvironment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -404,13 +390,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="food"
                         android:text="환경/식품"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/language"
+                        android:id="@+id/btnLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -419,7 +404,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="language"
                         android:text="외국/언어"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -434,7 +418,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/mediaContents"
+                        android:id="@+id/btnMediaContents"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -444,13 +428,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="media"
                         android:text="미디어 콘텐츠/전시"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/paper"
+                        android:id="@+id/btnPaper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -460,7 +443,6 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="scholarship"
                         android:text="학술/논문"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
@@ -475,7 +457,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/sports"
+                        android:id="@+id/btnSports"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -485,13 +467,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="sports"
                         android:text="스포츠/음악"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/dance"
+                        android:id="@+id/btnDance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -501,13 +482,12 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="dance"
                         android:text="댄스/무용"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/service"
+                        android:id="@+id/btnPublic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_filter_interest_button"
@@ -516,11 +496,172 @@
                         android:onClick="@{(v) -> vm.onClickInterest(v)}"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="6dp"
-                        android:tag="service"
                         android:text="공공/봉사"
                         android:textColor="@drawable/interest_text"
                         android:textSize="16sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="28dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="활동 마감일"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="선택해주세요"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="42dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/calendar_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_calendar_back"
+                        android:visibility="invisible" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/year_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/color_828282"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="2023년 1월" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:id="@+id/calendar_forward"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_calendar_forward" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="23dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="일"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="월"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="화"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="수"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="목"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="금"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="토"
+                        android:textColor="@color/color_e1e1e1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.kizitonwose.calendarview.CalendarView
+                    android:id="@+id/cafeteria_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="22dp"
+                    app:cv_dayViewResource="@layout/item_calendar_day"
+                    app:cv_hasBoundaries="true"
+                    app:cv_inDateStyle="allMonths"
+                    app:cv_maxRowCount="6"
+                    app:cv_outDateStyle="endOfGrid"
+                    app:cv_scrollMode="paged" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -533,29 +674,31 @@
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/btn_onoffline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="24dp"
-                    android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
                     android:paddingVertical="18dp"
-                    android:tag="online/offline"
+                    android:tag="OnOffLine"
                     android:text="온·오프라인"
-                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textColor="@drawable/interest_text"
                     android:textSize="16sp" />
 
                 <Button
+                    android:id="@+id/btn_offline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
                     android:paddingVertical="18dp"
-                    android:tag="offline"
+                    android:tag="Offline"
                     android:text="오프라인"
-                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textColor="@drawable/interest_text"
                     android:textSize="16sp" />
 
                 <RadioGroup
@@ -565,13 +708,14 @@
                     android:visibility="gone">
 
                     <RadioButton
+                        android:id="@+id/btnWhole"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="32dp"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/bg_filter_region_button"
-
                         android:button="@null"
+                        android:checked="true"
                         android:onClick="@{(v) -> vm.onClickRegion(v)}"
                         android:paddingVertical="18dp"
                         android:tag="whole"
@@ -588,6 +732,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/btnSeoul"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="9dp"
@@ -603,6 +748,7 @@
                             android:textSize="16sp" />
 
                         <RadioButton
+                            android:id="@+id/btnGyeonggi"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -625,6 +771,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/btnIncheon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="9dp"
@@ -640,6 +787,7 @@
                             android:textSize="16sp" />
 
                         <RadioButton
+                            android:id="@+id/btnGangwon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -662,6 +810,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/btnChungcheong"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="9dp"
@@ -677,7 +826,7 @@
                             android:textSize="16sp" />
 
                         <RadioButton
-                            android:id="@+id/btnBoth"
+                            android:id="@+id/btnJeolla"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -700,6 +849,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/btnGyeongsang"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="9dp"
@@ -715,6 +865,7 @@
                             android:textSize="16sp" />
 
                         <RadioButton
+                            android:id="@+id/btnJeju"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -722,7 +873,7 @@
                             android:button="@null"
                             android:onClick="@{(v) -> vm.onClickRegion(v)}"
                             android:paddingVertical="18dp"
-                            android:tag="Jeju"
+                            android:tag="jeju"
                             android:text="제주시"
                             android:textAlignment="center"
                             android:textColor="@drawable/bg_filter_region_button"
@@ -731,16 +882,17 @@
                 </RadioGroup>
 
                 <Button
+                    android:id="@+id/btn_online"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_filter_activity_button"
-                    android:onClick="@{(v) -> vm.onClickActivity(v)}"
+                    android:background="@drawable/bg_filter_interest_button"
+                    android:onClick="@{(v) -> vm.onClickForm(v)}"
                     android:paddingVertical="18dp"
-                    android:tag="online"
+                    android:tag="Online"
                     android:text="온라인"
-                    android:textColor="@drawable/bg_filter_activity_button"
+                    android:textColor="@drawable/interest_text"
                     android:textSize="16sp" />
 
                 <TextView

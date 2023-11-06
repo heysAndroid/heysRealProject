@@ -2,6 +2,7 @@ package com.example.heysrealprojcet.ui.user.myPage.edit
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +13,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
-import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.ProfileEditFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
+import com.example.heysrealprojcet.model.network.MyPageEdit
+import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.ui.user.myPage.MbtiViewModel
 import com.example.heysrealprojcet.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileEditFragment : Fragment() {
    private lateinit var binding: ProfileEditFragmentBinding
    private lateinit var callback: OnBackPressedCallback
@@ -58,7 +62,7 @@ class ProfileEditFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
-      binding.okButton.setOnClickListener { gotoMyPage() }
+      binding.okButton.setOnClickListener { editMyPage() }
 
       setMBTI()
       setInterest()
@@ -90,34 +94,49 @@ class ProfileEditFragment : Fragment() {
             "ENFJ" -> binding.mbtiView.enfj.isSelected = true
             "ENTJ" -> binding.mbtiView.entj.isSelected = true
          }
-         // preference 에 저장
-         UserPreference.mbti = it
       }
-
-      binding.addLink.setOnClickListener {
-         val childCount = binding.additionalLinkContainer.childCount
-         if (childCount < 5) {
-            childNum.observe(viewLifecycleOwner) {
-               if (it < 4) {
-                  binding.addButtonContainer.visibility = View.VISIBLE
-               } else if (it == 4) {
-                  binding.addButtonContainer.visibility = View.GONE
-               }
-            }
-         }
-      }
-
 
       binding.addLink.setOnClickListener {
          if (childNum.value!! < 4) {
-            val hint = when (childNum.value) {
-               0 -> "https://behance.net/gallery-c..."
-               1 -> "https://m.instagram/my"
-               2 -> "https://my.github.com"
-               else -> " https://blog.naver.com/sfsdsf..."
+            when (childNum.value) {
+               0 -> binding.llBehance.visibility = View.VISIBLE
+               1 -> binding.llInstagram.visibility = View.VISIBLE
+               2 -> binding.llGithub.visibility = View.VISIBLE
+               else -> {
+                  binding.llNaver.visibility = View.VISIBLE
+                  binding.addButtonContainer.visibility = View.GONE
+               }
             }
-            binding.additionalLinkContainer.addView(makeAdditionalLinkView(hint, childNum.value!!))
-            childNum.postValue(binding.additionalLinkContainer.childCount)
+            childNum.value = childNum.value!! + 1
+         }
+      }
+
+      binding.imgLink2.setOnClickListener {
+         if (childNum.value == 1) {
+            binding.llBehance.visibility = View.GONE
+            childNum.value = childNum.value!! - 1
+         }
+      }
+
+      binding.imgLink3.setOnClickListener {
+         if (childNum.value == 2) {
+            binding.llInstagram.visibility = View.GONE
+            childNum.value = childNum.value!! - 1
+         }
+      }
+
+      binding.imgLink4.setOnClickListener {
+         if (childNum.value == 3) {
+            binding.llGithub.visibility = View.GONE
+            childNum.value = childNum.value!! - 1
+         }
+      }
+
+      binding.imgLink5.setOnClickListener {
+         if (childNum.value == 4) {
+            binding.llNaver.visibility = View.GONE
+            binding.addButtonContainer.visibility = View.VISIBLE
+            childNum.value = childNum.value!! - 1
          }
       }
    }
@@ -138,10 +157,6 @@ class ProfileEditFragment : Fragment() {
    override fun onDetach() {
       super.onDetach()
       callback.remove()
-   }
-
-   private fun gotoMyPage() {
-      findNavController().navigate(R.id.action_profileEditFragment_to_myPageFragment)
    }
 
    private fun goToBack() {
@@ -172,7 +187,6 @@ class ProfileEditFragment : Fragment() {
             "ENTJ" -> binding.mbtiView.entj.isSelected = true
             else -> {}
          }
-         mbtiViewModel.setMbti(it)
       }
    }
 
@@ -232,12 +246,34 @@ class ProfileEditFragment : Fragment() {
       interestViewModel.setInterest(viewModel.interestArray)
    }
 
-   private fun makeAdditionalLinkView(hint: String, index: Int): AdditionalLinkView {
-      return AdditionalLinkView(requireContext()).apply {
-         setHint(hint)
-         removeButtonClickListener {
-            binding.additionalLinkContainer.removeViews(index, 1)
-            childNum.postValue(binding.additionalLinkContainer.childCount)
+   private fun editMyPage() {
+      val token = UserPreference.accessToken
+      val myPageEdit = MyPageEdit(
+         phone = UserPreference.phoneNumber,
+         gender = UserPreference.gender,
+         name = viewModel.name.value,
+         job = viewModel.job.value,
+         capability = viewModel.capability.value,
+         introduce = viewModel.introduce.value,
+         userPersonality = mbtiViewModel.mbti.value,
+         interests = interestViewModel.interestList.toTypedArray(),
+         profileLinks = arrayOf(viewModel.link1.value!!, viewModel.link2.value!!, viewModel.link3.value!!, viewModel.link4.value!!, viewModel.link5.value!!)
+      )
+
+      viewModel.editMyInfo("Bearer $token", myPageEdit).observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.i("editMyInfo: ", "success")
+               findNavController().navigateUp()
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("editMyInfo: ", "error ${response.message}")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.i("editMyInfo: ", "loading")
+            }
          }
       }
    }

@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,16 +17,19 @@ import com.example.heysrealprojcet.R
 import com.example.heysrealprojcet.databinding.StudyListFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelType
 import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterViewModel
 import com.example.heysrealprojcet.ui.main.MainActivity
 import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    val viewModel by viewModels<StudyListViewModel>()
-
+   lateinit var filterViewModel: ChannelFilterViewModel
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -47,6 +50,7 @@ class StudyListFragment : Fragment() {
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = StudyListFragmentBinding.inflate(inflater, container, false)
+      filterViewModel = ViewModelProvider(requireActivity())[ChannelFilterViewModel::class.java]
       return binding.root
    }
 
@@ -56,42 +60,74 @@ class StudyListFragment : Fragment() {
       binding.lifecycleOwner = this
 
       viewModel.channelList.observe(viewLifecycleOwner) {
-         binding.noListImage.isVisible = it.isEmpty()
-         binding.flCreateStudy.isVisible = it.isNotEmpty()
+         // 리스트 비어있을 때
+         if (it.isEmpty()) {
+            binding.noListImage.visibility = View.VISIBLE
+            binding.flCreateStudy.visibility = View.GONE
+
+         } else {
+            binding.noListImage.visibility = View.GONE
+            binding.flCreateStudy.visibility = View.VISIBLE
+         }
       }
+
       viewModel.isChecked.asLiveData().observe(viewLifecycleOwner) {
          getStudyList(!it)
+      }
+
+      filterViewModel.selectedInterest.observe(viewLifecycleOwner) {
+         if (it.isNullOrEmpty()) {
+            binding.tvFilterCount.text = "0"
+         } else {
+            binding.tvFilterCount.text = "${it.size}"
+         }
       }
 
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.filterButton.setOnClickListener { goToFilter() }
       binding.llCreateStudy.setOnClickListener { goToCreateStudy() }
+      binding.btnCreateStudy.setOnClickListener { goToCreateStudy() }
    }
 
    private fun getStudyList(includeClosed: Boolean) {
       val token = UserPreference.accessToken
-      viewModel.getStudyList("Bearer $token", null, null, null, null, null, includeClosed = includeClosed).observe(viewLifecycleOwner) { response ->
-         when (response) {
-            is NetworkResult.Success -> {
-               viewModel.setStudyList(response.data?.data)
-               studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
-                  StudyItemRecyclerViewAdapter(it) { id ->
-                     goToDetail(id)
-                  }
-               }!!
-               binding.studyList.adapter = studyItemRecyclerViewAdapter
-               binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            }
+      var lastRecruitDate: String? = null
+      filterViewModel.selectedDate?.let {
+         val selectedDateTime = LocalDateTime.of(it.year, it.month, it.dayOfMonth, 23, 59, 59)
+         val st = selectedDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+         lastRecruitDate = st
+      }
 
-            is NetworkResult.Loading -> {
-               Log.w("getStudyList: ", "loading")
-            }
+      viewModel.getStudyList(
+         "Bearer $token",
+         interest = filterViewModel.selectedInterest.value ?: null,
+         lastRecruitDate,
+         purposes = filterViewModel.selectedPurpose.value ?: null,
+         online = filterViewModel.selectedForm.value ?: null,
+         location = filterViewModel.selectedRegion.value ?: null,
+         includeClosed = includeClosed)
+         .observe(viewLifecycleOwner) { response ->
+            when (response) {
+               is NetworkResult.Success -> {
+                  viewModel.setStudyList(response.data?.data)
+                  studyItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
+                     StudyItemRecyclerViewAdapter(it) { id ->
+                        goToDetail(id)
+                     }
+                  }!!
+                  binding.studyList.adapter = studyItemRecyclerViewAdapter
+                  binding.studyList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+               }
 
-            is NetworkResult.Error -> {
-               Log.w("getStudyList: ", response.message.toString())
+               is NetworkResult.Loading -> {
+                  Log.w("getStudyList: ", "loading")
+               }
+
+               is NetworkResult.Error -> {
+                  Log.w("getStudyList: ", response.message.toString())
+               }
             }
          }
-      }
    }
 
    private fun goToFilter() {

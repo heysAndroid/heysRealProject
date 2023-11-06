@@ -21,6 +21,8 @@ import com.example.heysrealprojcet.util.UserPreference
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.mindrot.jbcrypt.BCrypt
 
 @AndroidEntryPoint
@@ -84,6 +86,7 @@ class SignUpInterestFragment : Fragment() {
          // api 응답 별로 처리
          when (response) {
             is NetworkResult.Success -> {
+               UserPreference.interests = Json.encodeToString(interestViewModel.interestList)
                requestLogin(UserPreference.phoneNumber, UserPreference.password)
             }
 

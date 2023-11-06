@@ -23,7 +23,7 @@ data class ChannelDetail(
    @SerialName("leader") val leader: Leader,
    @SerialName("purposes") val purposes: ArrayList<ChannelPurpose>,
    @SerialName("links") val links: ArrayList<ChannelLink>,
-   @SerialName("contentData") val contentData: ContentData,
+   @SerialName("contentData") val contentData: ContentData?,
    @SerialName("relationshipWithMe") val relationshipWithMe: String,
    @SerialName("isBookMarked") val isBookMarked: Boolean,
    @SerialName("approvedUserList") val approvedUserList: ArrayList<ApprovedUserList>,
