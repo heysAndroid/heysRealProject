@@ -59,8 +59,8 @@
                     android:id="@+id/filterButton"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginRight="4dp"
                     android:background="@android:color/transparent"
+                    android:padding="12dp"
                     android:src="@drawable/ic_bi_filter_left" />
 
                 <TextView
@@ -72,12 +72,12 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/filterCount"
+                    android:id="@+id/tv_filterCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="4dp"
-                    android:text="3"
+                    android:text="0"
                     android:textColor="@color/color_f7bc26"
                     android:textSize="16sp" />
 
@@ -102,10 +102,6 @@
                     app:track="@drawable/switch_track_selector" />
             </LinearLayout>
         </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/no_list_image"
@@ -195,6 +191,5 @@
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
-        </FrameLayout>
     </LinearLayout>
 </layout>

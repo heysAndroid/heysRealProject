@@ -1,6 +1,7 @@
 package com.example.heysrealprojcet.repository
 
 import com.example.heysrealprojcet.api.UserApi
+import com.example.heysrealprojcet.model.network.MyPageEdit
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.model.network.response.DeviceTokenResponse
 import com.example.heysrealprojcet.model.network.response.MyPageResponse
@@ -17,6 +18,12 @@ class MyPageRepository @Inject constructor(
    fun getMyInfo(token: String): Flow<NetworkResult<MyPageResponse>> {
       return flow {
          emit(safeApiCall { userApi.getMyInfo(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun editMyInfo(token: String, myPageEdit: MyPageEdit): Flow<NetworkResult<MyPageResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.editMyInfo(token, myPageEdit) })
       }.flowOn(Dispatchers.IO)
    }
 

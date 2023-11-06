@@ -115,7 +115,6 @@ class MyPageFragment : Fragment() {
 
          // 직업
          if (myPage.job.isNullOrBlank()) {
-
             jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d828282))
             job.apply {
                text = "아직 소개할 직업이 없어요."
@@ -123,13 +122,11 @@ class MyPageFragment : Fragment() {
             }
 
          } else {
-
             jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
             job.apply {
                text = myPage.job
                setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))
             }
-
          }
 
          // 사용가능한 스킬
@@ -143,7 +140,7 @@ class MyPageFragment : Fragment() {
          } else {
             skillTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
             var skillString = ""
-            myPage.capability.forEach {
+            myPage.capability.split("#").forEach {
                skillString += "#$it "
             }
             skill.apply {

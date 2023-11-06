@@ -16,7 +16,7 @@ object UserPreference : KotprefModel() {
       deviceToken = ""
       mbti = ""
       job = ""
-      skill = ""
+      capability = ""
       introduce = ""
       percentage = 0
       waitingChannelCount = 0
@@ -86,7 +86,7 @@ object UserPreference : KotprefModel() {
    /*
    * skill
     */
-   var skill by stringPref()
+   var capability by stringPref()
 
    /*
    * 한줄소개
