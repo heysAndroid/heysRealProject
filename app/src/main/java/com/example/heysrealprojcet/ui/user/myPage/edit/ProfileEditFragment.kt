@@ -116,6 +116,7 @@ class ProfileEditFragment : Fragment() {
          if (childNum.value == 1) {
             binding.llBehance.visibility = View.GONE
             childNum.value = childNum.value!! - 1
+            viewModel.link2.value = ""
          }
       }
 
@@ -123,6 +124,7 @@ class ProfileEditFragment : Fragment() {
          if (childNum.value == 2) {
             binding.llInstagram.visibility = View.GONE
             childNum.value = childNum.value!! - 1
+            viewModel.link3.value = ""
          }
       }
 
@@ -130,6 +132,7 @@ class ProfileEditFragment : Fragment() {
          if (childNum.value == 3) {
             binding.llGithub.visibility = View.GONE
             childNum.value = childNum.value!! - 1
+            viewModel.link4.value = ""
          }
       }
 
@@ -138,6 +141,7 @@ class ProfileEditFragment : Fragment() {
             binding.llNaver.visibility = View.GONE
             binding.addButtonContainer.visibility = View.VISIBLE
             childNum.value = childNum.value!! - 1
+            viewModel.link5.value = ""
          }
       }
    }
@@ -189,30 +193,6 @@ class ProfileEditFragment : Fragment() {
             else -> {}
          }
          mbtiViewModel.setMbti(it)
-      }
-   }
-
-   private fun setAllMbtiUnselect() {
-      with(binding.mbtiView) {
-         istj.isSelected = false
-         isfj.isSelected = false
-         infj.isSelected = false
-         intj.isSelected = false
-
-         istp.isSelected = false
-         isfp.isSelected = false
-         infp.isSelected = false
-         intp.isSelected = false
-
-         estp.isSelected = false
-         esfp.isSelected = false
-         enfp.isSelected = false
-         entp.isSelected = false
-
-         estj.isSelected = false
-         esfj.isSelected = false
-         enfj.isSelected = false
-         entj.isSelected = false
       }
    }
 
