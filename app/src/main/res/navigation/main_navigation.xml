@@ -204,6 +204,9 @@
         <action
             android:id="@+id/action_myPageFragment_to_bookmarkListFragment"
             app:destination="@id/bookmarkListFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/channelNameFragment"

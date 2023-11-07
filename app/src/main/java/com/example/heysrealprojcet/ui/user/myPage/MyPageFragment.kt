@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -115,14 +116,11 @@ class MyPageFragment : Fragment() {
 
          // 직업
          if (myPage.job.isNullOrBlank()) {
-            jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d828282))
             job.apply {
                text = "아직 소개할 직업이 없어요."
                setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d262626))
             }
-
          } else {
-            jobTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
             job.apply {
                text = myPage.job
                setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))
@@ -131,16 +129,14 @@ class MyPageFragment : Fragment() {
 
          // 사용가능한 스킬
          if (myPage.capability.isNullOrBlank()) {
-            skillTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d828282))
             skill.apply {
                text = "아직 소개할 스킬이 없어요."
                setTextColor(ContextCompat.getColor(requireContext(), R.color.color_4d262626))
             }
 
          } else {
-            skillTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_828282))
             var skillString = ""
-            myPage.capability.split("#").forEach {
+            myPage.capability.split(",").forEach {
                skillString += "#$it "
             }
             skill.apply {
@@ -149,9 +145,43 @@ class MyPageFragment : Fragment() {
             }
          }
          setByPercent(myPage.percentage, myPage.gender)
+         setProfileLink(myPage.profileLinks)
 
          joinChannel.text = "${myPage.joinChannelCount}"
          waitingChannel.text = "${myPage.waitingChannelCount}"
+      }
+   }
+
+   private fun setProfileLink(links: Array<String>) {
+      links.forEach { link ->
+         if (link.contains("kakao")) {
+            binding.imgKakao.apply {
+               setImageResource(R.drawable.ic_kakao_checked)
+               setOnClickListener { goToWebView(link) }
+            }
+         } else if (link.contains("behance")) {
+            binding.imgBehance.apply {
+               setImageResource(R.drawable.ic_behance_checked)
+               setOnClickListener { goToWebView(link) }
+            }
+         } else if (link.contains("insta")) {
+            binding.imgInstagram.apply {
+               setImageResource(R.drawable.ic_instagram_checked)
+               setOnClickListener { goToWebView(link) }
+            }
+         } else if (link.contains("github")) {
+            binding.imgGithub.apply {
+               setImageResource(R.drawable.ic_github_checked)
+               setOnClickListener { goToWebView(link) }
+            }
+         } else {
+            if (!link.isNullOrBlank()) {
+               binding.imgDefault.apply {
+                  setImageResource(R.drawable.ic_clip_checked)
+                  setOnClickListener { goToWebView(link) }
+               }
+            }
+         }
       }
    }
 
@@ -185,5 +215,11 @@ class MyPageFragment : Fragment() {
             }
          }
       }
+   }
+
+   private fun goToWebView(url: String) {
+      findNavController().navigate(
+         R.id.action_myPageFragment_to_webViewFragment,
+         bundleOf("url" to url))
    }
 }

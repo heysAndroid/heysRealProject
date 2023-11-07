@@ -1,5 +1,6 @@
 package com.example.heysrealprojcet.ui.user.myPage.edit
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.heysrealprojcet.InterestViewModel
 import com.example.heysrealprojcet.databinding.ProfileEditFragmentBinding
 import com.example.heysrealprojcet.enums.ChannelInterest
+import com.example.heysrealprojcet.model.network.MyPage
 import com.example.heysrealprojcet.model.network.MyPageEdit
 import com.example.heysrealprojcet.model.network.NetworkResult
 import com.example.heysrealprojcet.ui.main.MainActivity
@@ -64,8 +66,7 @@ class ProfileEditFragment : Fragment() {
       binding.lifecycleOwner = this
       binding.okButton.setOnClickListener { editMyPage() }
 
-      setMBTI()
-      setInterest()
+      getMyPage()
 
       interestViewModel.total.asLiveData().observe(viewLifecycleOwner) {
          binding.interestCount.text = "$it/3"
@@ -187,6 +188,31 @@ class ProfileEditFragment : Fragment() {
             "ENTJ" -> binding.mbtiView.entj.isSelected = true
             else -> {}
          }
+         mbtiViewModel.setMbti(it)
+      }
+   }
+
+   private fun setAllMbtiUnselect() {
+      with(binding.mbtiView) {
+         istj.isSelected = false
+         isfj.isSelected = false
+         infj.isSelected = false
+         intj.isSelected = false
+
+         istp.isSelected = false
+         isfp.isSelected = false
+         infp.isSelected = false
+         intp.isSelected = false
+
+         estp.isSelected = false
+         esfp.isSelected = false
+         enfp.isSelected = false
+         entp.isSelected = false
+
+         estj.isSelected = false
+         esfj.isSelected = false
+         enfj.isSelected = false
+         entj.isSelected = false
       }
    }
 
@@ -244,6 +270,52 @@ class ProfileEditFragment : Fragment() {
          }
       }
       interestViewModel.setInterest(viewModel.interestArray)
+
+      interestViewModel.interestList.forEach {
+         Log.d("interest:", it)
+      }
+   }
+
+   private fun getMyPage() {
+      val token = UserPreference.accessToken
+      viewModel.getMyInfo("Bearer $token")
+      viewModel.response.observe(viewLifecycleOwner) { response ->
+         val alert = AlertDialog.Builder(requireContext())
+
+         when (response) {
+            is NetworkResult.Success -> {
+               response.data?.user?.let { setMyPageInfo(it) }
+            }
+
+            is NetworkResult.Error -> {
+               alert.setTitle("마이페이지 로딩 실패").setMessage("마이페이지 로딩에 실패했습니다.").create().show()
+            }
+
+            is NetworkResult.Loading -> {
+               alert.setTitle("마이페이지 로딩 중").setMessage("마이페이지 로딩이 지연되고 있습니다.").create().show()
+            }
+         }
+      }
+   }
+
+   private fun setMyPageInfo(myPage: MyPage) {
+      viewModel.introduce.value = myPage.introduce
+      viewModel.name.value = myPage.name
+      viewModel.mbti.value = myPage.userPersonality
+      viewModel.job.value = myPage.job
+      viewModel.capability.value = myPage.capability
+      viewModel.interestArray = myPage.interests.toMutableList()
+      myPage.profileLinks.forEachIndexed { index, s ->
+         when (index) {
+            0 -> if (!s.isNullOrBlank()) viewModel.link1.value = s
+            1 -> if (!s.isNullOrBlank()) viewModel.link2.value = s
+            2 -> if (!s.isNullOrBlank()) viewModel.link3.value = s
+            3 -> if (!s.isNullOrBlank()) viewModel.link4.value = s
+            4 -> if (!s.isNullOrBlank()) viewModel.link5.value = s
+         }
+      }
+      setMBTI()
+      setInterest()
    }
 
    private fun editMyPage() {
