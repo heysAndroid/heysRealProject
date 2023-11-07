@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/pretendard_bold"
+                android:fontFamily="@font/pretendard_700"
                 android:text="마이페이지"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -78,7 +78,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginVertical="40dp"
-                                    android:fontFamily="@font/pretendard_bold"
+                                    android:fontFamily="@font/pretendard_700"
                                     android:text="아직 소개할 내용이 없어요."
                                     android:textAlignment="center"
                                     android:textColor="@color/color_828282"
@@ -99,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:fontFamily="@font/pretendard_medium"
+                            android:fontFamily="@font/pretendard_500"
                             android:text="박보영"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -110,7 +110,7 @@
                             android:layout_height="24dp"
                             android:layout_marginTop="8dp"
                             android:background="@drawable/bg_mypage_mbti"
-                            android:fontFamily="@font/pretendard_regular"
+                            android:fontFamily="@font/pretendard_400"
                             android:gravity="center"
                             android:text="\????"
                             android:textColor="@drawable/text_mypage_mbti" />
@@ -120,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="22dp"
-                            android:fontFamily="@font/pretendard_regular"
+                            android:fontFamily="@font/pretendard_400"
                             android:text="관심분야/ 직무"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -130,7 +130,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:fontFamily="@font/pretendard_medium"
+                            android:fontFamily="@font/pretendard_500"
                             android:text="#기획 #데이터/인공지능 #UX,IT"
                             android:textColor="@color/color_262626"
                             android:textSize="16sp" />
@@ -140,8 +140,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:alpha="0.3"
-                            android:fontFamily="@font/pretendard_regular"
+                            android:fontFamily="@font/pretendard_400"
                             android:text="직업"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -150,7 +149,7 @@
                             android:id="@+id/job"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendard_medium"
+                            android:fontFamily="@font/pretendard_500"
                             android:text="아직 소개할 직업이 없어요."
                             android:textColor="@color/color_262626"
                             android:textSize="16sp" />
@@ -160,8 +159,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:alpha="0.3"
-                            android:fontFamily="@font/pretendard_regular"
+                            android:fontFamily="@font/pretendard_400"
                             android:text="사용가능한 스킬"
                             android:textColor="@color/color_828282"
                             android:textSize="14sp" />
@@ -170,7 +168,7 @@
                             android:id="@+id/skill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendard_medium"
+                            android:fontFamily="@font/pretendard_500"
                             android:text="아직 소개할 직업이 없어요."
                             android:textColor="@color/color_262626"
                             android:textSize="16sp" />
@@ -183,30 +181,35 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/img_kakao"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_marginEnd="20dp"
                                 android:src="@drawable/ic_kakao_unchecked" />
 
                             <ImageView
+                                android:id="@+id/img_behance"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_marginEnd="20dp"
                                 android:src="@drawable/ic_behance_unchecked" />
 
                             <ImageView
+                                android:id="@+id/img_instagram"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_marginEnd="20dp"
                                 android:src="@drawable/ic_instagram_unchecked" />
 
                             <ImageView
+                                android:id="@+id/img_github"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_marginEnd="20dp"
                                 android:src="@drawable/ic_github_unchecked" />
 
                             <ImageView
+                                android:id="@+id/img_default"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/ic_clip_unchecked" />
@@ -244,7 +247,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:fontFamily="@font/pretendard_regular"
+                                    android:fontFamily="@font/pretendard_400"
                                     android:text="프로필이 채워지지 않았어요."
                                     android:textColor="@color/color_828282"
                                     android:textSize="12sp" />
@@ -266,7 +269,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:fontFamily="@font/pretendard_regular"
+                                    android:fontFamily="@font/pretendard_400"
                                     android:text="공유"
                                     android:textColor="@color/color_828282"
                                     android:textSize="12sp" />
@@ -280,7 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
-                    android:fontFamily="@font/pretendard_regular"
+                    android:fontFamily="@font/pretendard_400"
                     android:text="나의 채널 관리"
                     android:textColor="@color/color_828282"
                     android:textSize="14sp" />
@@ -299,7 +302,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/pretendard_bold"
+                        android:fontFamily="@font/pretendard_700"
                         android:text="참여중인 채널"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -310,7 +313,7 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"
                         android:drawablePadding="8dp"
-                        android:fontFamily="@font/pretendard_bold"
+                        android:fontFamily="@font/pretendard_700"
                         android:text="3"
                         android:textColor="@color/color_53c740"
                         android:textSize="16sp" />
@@ -329,7 +332,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/pretendard_bold"
+                        android:fontFamily="@font/pretendard_700"
                         android:text="승인대기 채널"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -340,7 +343,7 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_all"
                         android:drawablePadding="8dp"
-                        android:fontFamily="@font/pretendard_bold"
+                        android:fontFamily="@font/pretendard_700"
                         android:text="1"
                         android:textColor="@color/color_53c740"
                         android:textSize="16sp" />

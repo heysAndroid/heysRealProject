@@ -2,13 +2,17 @@ package com.example.heysrealprojcet.ui.user.myPage.edit
 
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.heysrealprojcet.model.network.MyPageEdit
+import com.example.heysrealprojcet.model.network.NetworkResult
+import com.example.heysrealprojcet.model.network.response.MyPageResponse
 import com.example.heysrealprojcet.repository.MyPageRepository
 import com.example.heysrealprojcet.ui.base.BaseViewModel
-import com.example.heysrealprojcet.util.UserPreference
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,18 +25,17 @@ class ProfileEditViewModel @Inject constructor(
    private val _nameLetterCount = MutableLiveData(0)
    val nameLetterCount = _nameLetterCount
 
-   private val _jobLetterCount = MutableLiveData(0)
-   val jobLetterCount = _jobLetterCount
-
    private val _abilityLetterCount = MutableLiveData(0)
    val abilityLetterCount = _abilityLetterCount
 
-   var introduce = MutableLiveData(UserPreference.introduce)
-   var name = MutableLiveData(UserPreference.name)
-   var mbti = MutableLiveData(UserPreference.mbti)
-   var interestString = MutableLiveData(UserPreference.interests)
-   var job = MutableLiveData(UserPreference.job)
-   var capability = MutableLiveData(UserPreference.capability)
+   private val _response: MutableLiveData<NetworkResult<MyPageResponse>> = MutableLiveData()
+   val response: LiveData<NetworkResult<MyPageResponse>> = _response
+
+   var introduce = MutableLiveData("")
+   var name = MutableLiveData("")
+   var mbti = MutableLiveData("")
+   var job = MutableLiveData("")
+   var capability = MutableLiveData("")
    var interestArray = mutableListOf<String>()
 
    val link1 = MutableLiveData("")
@@ -43,9 +46,10 @@ class ProfileEditViewModel @Inject constructor(
 
    fun editMyInfo(token: String, myPageEdit: MyPageEdit) = myPageRepository.editMyInfo(token, myPageEdit).asLiveData()
 
-   init {
-      interestString.value = interestString.value?.replace("\"", "")?.replace("[", "")?.replace("]", "")
-      interestString.value?.split(",")?.toMutableList()?.let { interestArray = it }
+   fun getMyInfo(token: String) = viewModelScope.launch {
+      myPageRepository.getMyInfo(token).collect { values ->
+         _response.value = values
+      }
    }
 
    val introduceWatcher = object : TextWatcher {

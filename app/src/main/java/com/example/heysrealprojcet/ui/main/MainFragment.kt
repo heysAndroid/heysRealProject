@@ -160,9 +160,14 @@ class MainFragment : Fragment() {
    }
 
    private fun setContest() {
+      var myList = mutableListOf("")
+      if (!UserPreference.interests.isNullOrBlank()) {
+         myList = UserPreference.interests.split(",").toMutableList()
+      }
+
       categoryRecyclerViewAdapter = CategoryRecyclerViewAdapter(
          list = contestList,
-         myInterestList = UserPreference.interests.split(",").toMutableList()
+         myInterestList = myList
       ) { goToContest(type = it) }
 
       binding.contestList.apply {
@@ -221,7 +226,7 @@ class MainFragment : Fragment() {
    }
 
    private fun setUserPreference(user: MyPage) {
-      UserPreference.interests = user.interests.joinToString(separator = ",")
+      UserPreference.interests = user.interests.joinToString(separator = ",") ?: ""
       UserPreference.name = user.name
       UserPreference.phoneNumber = user.phone
       UserPreference.gender = user.gender
@@ -235,4 +240,3 @@ class MainFragment : Fragment() {
       UserPreference.waitingChannelCount = user.waitingChannelCount
    }
 }
-

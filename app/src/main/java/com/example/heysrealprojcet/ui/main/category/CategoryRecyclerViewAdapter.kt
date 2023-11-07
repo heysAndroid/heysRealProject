@@ -67,11 +67,15 @@ class CategoryRecyclerViewAdapter(
             start + word[layoutPosition].length
          }
 
-         val builder = SpannableStringBuilder(content)
-         builder.setSpan(
-            ForegroundColorSpan(
-               ContextCompat.getColor(binding.root.context, R.color.color_34d676)), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-         binding.description.text = builder
+         if (myInterestList[0] == "") {
+            binding.description.text = "관심분야를 설정해주세요"
+         } else {
+            val builder = SpannableStringBuilder(content)
+            builder.setSpan(
+               ForegroundColorSpan(
+                  ContextCompat.getColor(binding.root.context, R.color.color_34d676)), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            binding.description.text = builder
+         }
 
          // 투명도 설정
          if (item.bool) {
