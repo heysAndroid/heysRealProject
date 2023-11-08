@@ -272,7 +272,7 @@
             app:destination="@id/settingPasswordVerificationFragment" />
         <action
             android:id="@+id/action_settingFragment_to_settingDeleteAccountFragment"
-            app:destination="@id/settingDeleteAccountFragment" />
+            app:destination="@id/settingWithdrawalReasonFragment" />
     </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
@@ -342,22 +342,30 @@
             app:destination="@id/myPageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingDeleteAccountFragment"
-        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingWithdrawalFragment"
-        android:label="SettingDeleteAccountFragment"
-        tools:layout="@layout/setting_withdrawal_fragment">
+        android:id="@+id/settingWithdrawalReasonFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.withdrawal.WithdrawalReasonFragment"
+        android:label="WithdrawalReasonFragment"
+        tools:layout="@layout/withdrawal_reason_fragment">
         <action
-            android:id="@+id/action_settingDeleteAccountFragment_to_settingDeleteDecideFragment"
-            app:destination="@id/settingDeleteDecideFragment" />
+            android:id="@+id/action_withdrawalReasonFragment_to_withdrawalConfirmFragment"
+            app:destination="@id/withdrawalConfirmFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingDeleteDecideFragment"
-        android:name="com.example.heysrealprojcet.ui.user.setting.delete.SettingWithdrawalCheckFragment"
-        android:label="SettingDeleteDecideFragment"
-        tools:layout="@layout/setting_withdrawal_check_fragment" />
+        android:id="@+id/withdrawalConfirmFragment"
+        android:name="com.example.heysrealprojcet.ui.user.setting.withdrawal.WithdrawalConfirmFragment"
+        android:label="WithdrawalConfirmFragment"
+        tools:layout="@layout/withdrawal_confirm_fragment">
+        <argument
+            android:name="reason"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_withdrawalConfirmFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/backButtonPopupFragment"
-        android:name="com.example.heysrealprojcet.ui.channel.create.BackButtonPopupFragment"
+        android:name="com.example.heysrealprojcet.ui.channelW.create.BackButtonPopupFragment"
         android:label="BackButtonPopupFragment"
         tools:layout="@layout/back_button_popup_fragment">
         <action

@@ -34,6 +34,6 @@ interface UserApi {
    @GET("/app/notifications")
    suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
 
-   @PUT("/user/withDrawal/{id}/{role}")
-   suspend fun withdrawal(@Header("Authorization") token: String, @Path(value = "id") id: Int, @Path(value = "role") role: String): Response<SimpleResponse>
+   @PUT("/user/withDrawal")
+   suspend fun withdrawal(@Header("Authorization") token: String, @Body reason: String): Response<SimpleResponse>
 }

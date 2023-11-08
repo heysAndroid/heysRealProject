@@ -52,9 +52,9 @@ class MyPageRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   fun withdrawal(token: String, id: Int, role: String): Flow<NetworkResult<SimpleResponse>> {
+   fun withdrawal(token: String, reason: String): Flow<NetworkResult<SimpleResponse>> {
       return flow {
-         emit(safeApiCall { userApi.withdrawal(token, id, role) })
+         emit(safeApiCall { userApi.withdrawal(token, reason) })
       }.flowOn(Dispatchers.IO)
    }
 }

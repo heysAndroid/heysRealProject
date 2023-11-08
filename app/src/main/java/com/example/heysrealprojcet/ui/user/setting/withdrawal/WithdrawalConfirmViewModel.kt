@@ -1,4 +1,4 @@
-package com.example.heysrealprojcet.ui.user.setting.delete
+package com.example.heysrealprojcet.ui.user.setting.withdrawal
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -7,8 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingWithdrawalCheckViewModel @Inject constructor(
+class WithdrawalConfirmViewModel @Inject constructor(
    private val myPageRepository: MyPageRepository
 ) : ViewModel() {
-   fun withdrawal(token: String, id: Int, role: String) = myPageRepository.withdrawal(token, id, role).asLiveData()
+   fun withdrawal(token: String, reason: String) = myPageRepository.withdrawal(token, reason).asLiveData()
 }
