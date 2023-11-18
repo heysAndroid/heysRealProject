@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.InterestViewModel" />
+            type="com.example.heys.InterestViewModel" />
     </data>
 
     <LinearLayout

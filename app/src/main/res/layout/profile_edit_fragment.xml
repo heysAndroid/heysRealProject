@@ -7,15 +7,15 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.myPage.edit.ProfileEditViewModel" />
+            type="com.example.heys.ui.user.myPage.edit.ProfileEditViewModel" />
 
         <variable
             name="vmInterest"
-            type="com.example.heysrealprojcet.InterestViewModel" />
+            type="com.example.heys.InterestViewModel" />
 
         <variable
             name="vmMbti"
-            type="com.example.heysrealprojcet.ui.user.myPage.MbtiViewModel" />
+            type="com.example.heys.ui.user.myPage.MbtiViewModel" />
     </data>
 
     <ScrollView

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HeysRealProjcet</string>
+    <string name="app_name">heys</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="spinner_approval_cancel">
         <item>요청 실수</item>
@@ -25,4 +25,8 @@
         <item>작성하기</item>
         <item>승인 요청을 취소하는 이유를 알려주세요.</item>
     </string-array>
+
+    <string name="kakao_app_key">e3272c840a39367b069f82f71f4a4814</string>
+    <string name="kakao_scheme">kakao3272c840a39367b069f82f71f4a4814</string>
+    <string name="kakaolink_host">kakaolink</string>
 </resources>

@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterViewModel" />
+            type="com.example.heys.ui.main.content.contestExtracurricular.filter.ContestExtracurricularFilterViewModel" />
     </data>
 
     <LinearLayout

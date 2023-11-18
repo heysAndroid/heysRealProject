@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.main.content.contestExtracurricular.contest.ContestListViewModel" />
+            type="com.example.heys.ui.main.content.contestExtracurricular.contest.ContestListViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

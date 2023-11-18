@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.list.filter.ChannelFilterViewModel" />
+            type="com.example.heys.ui.channel.list.filter.ChannelFilterViewModel" />
     </data>
 
     <LinearLayout

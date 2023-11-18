@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.heysrealprojcet">
+    package="com.example.heys">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".App"
+        android:name="com.example.heys.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/img_heys_logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,26 +21,45 @@
         android:theme="@style/Theme.HeysRealProjcet"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.intro.IntroActivity"
+            android:name="com.example.heys.ui.intro.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="heys.page.link"
+                    android:path="/profile"
+                    android:scheme="https" />
+
+                <data
+                    android:host="heys.page.link"
+                    android:path="/profile"
+                    android:scheme="http" />
+
+                <data
+                    android:host="@string/kakaolink_host"
+                    android:scheme="@string/kakao_scheme"></data>
+            </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.example.heys.ui.main.MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
 
         <activity
-            android:name=".ui.login.sign_up.SignUpActivity"
+            android:name="com.example.heys.ui.login.sign_up.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
 
         <service
-            android:name=".FCMService"
+            android:name="com.example.heys.FCMService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -47,4 +70,8 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="noti_channel" />
     </application>
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+    </queries>
 </manifest>

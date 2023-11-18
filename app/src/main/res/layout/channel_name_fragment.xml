@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.create.name.ChannelNameViewModel" />
+            type="com.example.heys.ui.channel.create.name.ChannelNameViewModel" />
     </data>
 
     <LinearLayout

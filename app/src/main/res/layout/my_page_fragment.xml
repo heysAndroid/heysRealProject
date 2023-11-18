@@ -257,7 +257,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/shareProfile"
+                                android:id="@+id/btn_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"

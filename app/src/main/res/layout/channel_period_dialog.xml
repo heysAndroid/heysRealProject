@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.channel.dialog.period.ChannelPeriodDialogViewModel" />
+            type="com.example.heys.ui.channel.dialog.period.ChannelPeriodDialogViewModel" />
     </data>
 
     <LinearLayout

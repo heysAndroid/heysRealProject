@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.myChannel.HeysChannelViewModel" />
+            type="com.example.heys.ui.user.myChannel.HeysChannelViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heysrealprojcet.ui.user.setting.withdrawal.WithdrawalReasonViewModel" />
+            type="com.example.heys.ui.user.setting.withdrawal.WithdrawalReasonViewModel" />
     </data>
 
     <LinearLayout
