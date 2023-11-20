@@ -139,30 +139,35 @@
                     android:paddingBottom="40dp">
 
                     <ImageView
+                        android:id="@+id/img_kakao"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginEnd="20dp"
                         android:src="@drawable/ic_kakao_unchecked" />
 
                     <ImageView
+                        android:id="@+id/img_behance"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginEnd="20dp"
                         android:src="@drawable/ic_behance_unchecked" />
 
                     <ImageView
+                        android:id="@+id/img_instagram"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginEnd="20dp"
                         android:src="@drawable/ic_instagram_unchecked" />
 
                     <ImageView
+                        android:id="@+id/img_github"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginEnd="20dp"
                         android:src="@drawable/ic_github_unchecked" />
 
                     <ImageView
+                        android:id="@+id/img_default"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@drawable/ic_clip_unchecked" />

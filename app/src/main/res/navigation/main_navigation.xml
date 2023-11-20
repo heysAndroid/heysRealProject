@@ -29,8 +29,11 @@
             app:argType="boolean" />
         <argument
             android:name="profileId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_mainFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
@@ -423,6 +426,9 @@
         <argument
             android:name="channelId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_approvedUserListFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/waitingUserListFragment"
@@ -436,6 +442,9 @@
         <argument
             android:name="isLeader"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_waitingUserListFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
 
     <fragment

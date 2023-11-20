@@ -233,6 +233,11 @@ class MainFragment : Fragment() {
             is NetworkResult.Success -> {
                Log.d("showUserProfile: ", response.data?.message.toString())
                val userProfileDialog = response.data?.user?.let { UserProfileDialog(requireContext(), it) }
+               userProfileDialog?.onClickListener {
+                  findNavController().navigate(
+                     R.id.action_mainFragment_to_webViewFragment,
+                     bundleOf("url" to it))
+               }
                userProfileDialog?.show(childFragmentManager, null)
             }
 

@@ -11,7 +11,7 @@ data class OtherUser(
    @SerializedName("introduce") val introduce: String,
    @SerializedName("capability") val capability: String,
    @SerializedName("userPersonality") val userPersonality: String,
-   @SerializedName("interests") val interests: ArrayList<String>,
-   @SerializedName("profileLinks") val profileLinks: ArrayList<String>,
+   @SerializedName("interests") val interests: Array<String>,
+   @SerializedName("profileLinks") val profileLinks: Array<String>,
    @SerializedName("percentage") val percentage: Int
 ) : java.io.Serializable

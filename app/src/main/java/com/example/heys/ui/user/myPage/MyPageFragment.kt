@@ -159,10 +159,9 @@ class MyPageFragment : Fragment() {
 
          } else {
             var skillString = ""
-            myPage.capability.split(",")
-               .forEach {
-                  skillString += "#$it "
-               }
+            myPage.capability.split(",").forEach {
+               skillString += "#$it "
+            }
             skill.apply {
                text = skillString
                setTextColor(ContextCompat.getColor(requireContext(), R.color.color_262626))

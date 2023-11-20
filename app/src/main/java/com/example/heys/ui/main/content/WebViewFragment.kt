@@ -46,5 +46,4 @@ class WebViewFragment : Fragment() {
       // 뒤로가기 처리
       requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
    }
-
 }

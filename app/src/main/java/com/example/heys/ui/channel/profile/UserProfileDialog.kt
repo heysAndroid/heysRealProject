@@ -20,6 +20,7 @@ import com.example.heys.model.OtherUser
 
 class UserProfileDialog(private val context: Context, private val user: OtherUser) : DialogFragment() {
    private lateinit var binding: UserProfileDialogBinding
+   private lateinit var listener: DialogOnClickListener
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
       binding = UserProfileDialogBinding.inflate(layoutInflater)
@@ -77,33 +78,27 @@ class UserProfileDialog(private val context: Context, private val user: OtherUse
 
          // 직업
          if (user.job.isNullOrBlank()) {
-            tvJobTitle.setTextColor(ContextCompat.getColor(context, R.color.color_4d828282))
             tvJobContent.apply {
                text = "아직 소개할 직업이 없어요."
                setTextColor(ContextCompat.getColor(context, R.color.color_4d262626))
             }
          } else {
-            tvJobTitle.setTextColor(ContextCompat.getColor(context, R.color.color_828282))
             tvJobContent.apply {
                text = user.job
                setTextColor(ContextCompat.getColor(context, R.color.color_262626))
             }
          }
 
-
          // 사용가능한 스킬
          if (user.capability.isNullOrBlank()) {
-            tvSkillTitle.setTextColor(ContextCompat.getColor(context, R.color.color_4d828282))
             tvSkillContent.apply {
                text = "아직 소개할 스킬이 없어요."
                setTextColor(ContextCompat.getColor(context, R.color.color_4d262626))
             }
 
          } else {
-            tvSkillTitle.setTextColor(ContextCompat.getColor(context, R.color.color_828282))
-
             var skillString = ""
-            user.capability.forEach {
+            user.capability.split(",").forEach {
                skillString += "#$it "
             }
             tvSkillContent.apply {
@@ -112,9 +107,7 @@ class UserProfileDialog(private val context: Context, private val user: OtherUse
             }
          }
          setByPercent(user.percentage, user.gender)
-
-         // TODO
-         // 링크설정
+         setProfileLink(user.profileLinks)
       }
    }
 
@@ -145,5 +138,50 @@ class UserProfileDialog(private val context: Context, private val user: OtherUse
             }
          }
       }
+   }
+
+   private fun setProfileLink(links: Array<String>) {
+      links.forEach { link ->
+         if (link.contains("kakao")) {
+            binding.imgKakao.apply {
+               setImageResource(R.drawable.ic_kakao_checked)
+               setOnClickListener { listener.onClick(link) }
+            }
+         } else if (link.contains("behance")) {
+            binding.imgBehance.apply {
+               setImageResource(R.drawable.ic_behance_checked)
+               setOnClickListener { listener.onClick(link) }
+            }
+         } else if (link.contains("insta")) {
+            binding.imgInstagram.apply {
+               setImageResource(R.drawable.ic_instagram_checked)
+               setOnClickListener { listener.onClick(link) }
+            }
+         } else if (link.contains("github")) {
+            binding.imgGithub.apply {
+               setImageResource(R.drawable.ic_github_checked)
+               setOnClickListener { listener.onClick(link) }
+            }
+         } else {
+            if (!link.isNullOrBlank()) {
+               binding.imgDefault.apply {
+                  setImageResource(R.drawable.ic_clip_checked)
+                  setOnClickListener { listener.onClick(link) }
+               }
+            }
+         }
+      }
+   }
+
+   fun onClickListener(listener: (String) -> Unit) {
+      this.listener = object : DialogOnClickListener {
+         override fun onClick(url: String) {
+            listener(url)
+         }
+      }
+   }
+
+   interface DialogOnClickListener {
+      fun onClick(url: String)
    }
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heys.R
 import com.example.heys.databinding.ApprovedUserListFragmentBinding
 import com.example.heys.model.network.NetworkResult
 import com.example.heys.ui.channel.profile.UserProfileDialog
@@ -91,6 +93,11 @@ class ApprovedUserListFragment : Fragment() {
             is NetworkResult.Success -> {
                Log.d("getChannelFollower: ", response.data?.message.toString())
                val userProfileDialog = response.data?.user?.let { UserProfileDialog(requireContext(), it) }
+               userProfileDialog?.onClickListener {
+                  findNavController().navigate(
+                     R.id.action_approvedUserListFragment_to_webViewFragment,
+                     bundleOf("url" to it))
+               }
                userProfileDialog?.show(childFragmentManager, null)
             }
 
