@@ -21,6 +21,7 @@ object UserPreference : KotprefModel() {
       percentage = 0
       waitingChannelCount = 0
       joinChannelCount = 0
+      links = ""
    }
 
    /*
@@ -99,12 +100,17 @@ object UserPreference : KotprefModel() {
    var percentage by intPref()
 
    /*
-   * 퍼센트
+   * 참여중인 채널
     */
    var joinChannelCount by intPref()
 
    /*
-   * 퍼센트
+   * 대기중인 채널
     */
    var waitingChannelCount by intPref()
+
+   /*
+   * 프로필 링크
+    */
+   var links by stringPref()
 }

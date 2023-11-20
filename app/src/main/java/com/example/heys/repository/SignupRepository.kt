@@ -29,7 +29,7 @@ class SignupRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   suspend fun checkPhoneNumber(phoneNumber: Phone): Flow<NetworkResult<CheckPhoneNumberResponse>> {
+   fun checkPhoneNumber(phoneNumber: Phone): Flow<NetworkResult<CheckPhoneNumberResponse>> {
       return flow {
          emit(safeApiCall { signUpApi.checkPhoneNumber(phoneNumber) })
       }.flowOn(Dispatchers.IO)
@@ -51,8 +51,9 @@ class SignupRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   fun deletePhoneVerification(phoneVerification:PhoneVerification):Flow<NetworkResult<PhoneVerificationResponse>>{
-      return flow{
+   fun deletePhoneVerification(phoneVerification: PhoneVerification): Flow<NetworkResult<PhoneVerificationResponse>> {
+      return flow {
          emit(safeApiCall { signUpApi.deletePhoneVerification(phoneVerification) })
-      }.flowOn(Dispatchers.IO)}
+      }.flowOn(Dispatchers.IO)
+   }
 }

@@ -1,10 +1,12 @@
 package com.example.heys.api
 
 import com.example.heys.model.network.MyPageEdit
+import com.example.heys.model.network.UserEdit
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
 import com.example.heys.model.network.response.NotificationResponse
 import com.example.heys.model.network.response.SimpleResponse
+import com.example.heys.model.network.response.UserEditResponse
 import com.example.heys.model.network.response.UsersResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -36,4 +38,7 @@ interface UserApi {
 
    @PUT("/user/withDrawal")
    suspend fun withdrawal(@Header("Authorization") token: String, @Body reason: String): Response<SimpleResponse>
+
+   @PUT("app/me/phone")
+   suspend fun changePhoneNumber(@Header("Authorization") token: String, @Body user: UserEdit): Response<UserEditResponse>
 }

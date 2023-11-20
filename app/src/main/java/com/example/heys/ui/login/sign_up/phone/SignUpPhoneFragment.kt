@@ -80,6 +80,7 @@ class SignUpPhoneFragment : Fragment() {
                   goToPhoneVerification()
                }
             }
+
             is NetworkResult.Error -> {
                alert.setTitle("전화번호 체크 실패").setMessage("전화번호 체크에 실패했습니다.").create().show()
             }

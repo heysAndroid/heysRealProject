@@ -3,10 +3,12 @@ package com.example.heys.repository
 import com.example.heys.api.UserApi
 import com.example.heys.model.network.MyPageEdit
 import com.example.heys.model.network.NetworkResult
+import com.example.heys.model.network.UserEdit
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
 import com.example.heys.model.network.response.NotificationResponse
 import com.example.heys.model.network.response.SimpleResponse
+import com.example.heys.model.network.response.UserEditResponse
 import com.example.heys.model.network.response.UsersResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -49,6 +51,12 @@ class MyPageRepository @Inject constructor(
    fun getNotifications(token: String): Flow<NetworkResult<NotificationResponse>> {
       return flow {
          emit(safeApiCall { userApi.getNotifications(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun changePhoneNumber(token: String, user: UserEdit): Flow<NetworkResult<UserEditResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.changePhoneNumber(token, user) })
       }.flowOn(Dispatchers.IO)
    }
 

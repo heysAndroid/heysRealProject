@@ -40,7 +40,6 @@
                 tools:text="010-1234-5678" />
 
             <TextView
-                android:id="@+id/description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -61,7 +60,7 @@
                     android:inputType="number"
                     android:maxLength="6"
                     android:paddingLeft="16dp"
-                    android:text="@={vm.verificationNumber}"
+                    android:text="@={vm.code}"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -72,10 +71,9 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/resendButton"
+                        android:id="@+id/btn_resend"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="@{() -> vm.setResendEnabled()}"
                         android:text="재요청"
                         android:textColor="@color/color_34d676"
                         android:textSize="16sp" />
@@ -91,7 +89,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
@@ -103,14 +101,38 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/timeText"
+                    android:id="@+id/tv_minute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.timeText}"
+                    android:text="3"
                     android:textColor="@color/color_828282"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="3분 00초" />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="초"
+                    android:textColor="@color/color_828282"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,7 +149,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/btn_ok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
