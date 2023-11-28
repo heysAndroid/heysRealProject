@@ -294,7 +294,7 @@ class MyPageFragment : Fragment() {
 
    private fun createFeed(): FeedTemplate {
       val dynamicLink = Firebase.dynamicLinks.dynamicLink {
-         link = Uri.parse("https://heys.page.link/profile?id=5")
+         link = Uri.parse("https://heys.page.link/profile?id=${viewModel.response.value?.data?.user?.userId}")
          domainUriPrefix = "https://heys.page.link"
          androidParameters {
             DynamicLink.AndroidParameters.Builder()

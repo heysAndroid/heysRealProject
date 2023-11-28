@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MyPage(
+   @SerializedName("userId") val userId: Int,
    @SerializedName("userName") val name: String,
    @SerialName("phone") val phone: String,
    @SerialName("gender") val gender: String,

@@ -16,3 +16,4 @@ local.properties
 *.jks
 app/release/output-metadata.json
 app/google-services.json
+*.apk
