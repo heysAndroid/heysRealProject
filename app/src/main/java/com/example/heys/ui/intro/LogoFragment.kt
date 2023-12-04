@@ -85,7 +85,7 @@ class LogoFragment : Fragment() {
                      Handler(Looper.getMainLooper()).postDelayed({ moveToNext() }, 3000)
                   } else {
                      // 로그인
-                     goToMain(id.toInt())
+                     deepLink.lastPathSegment?.let { goToMain(it, id.toInt()) }
                   }
                }
             } else {
@@ -98,9 +98,9 @@ class LogoFragment : Fragment() {
          }
    }
 
-   private fun goToMain(profileId: Int) {
+   private fun goToMain(path: String, id: Int) {
       val intent = Intent(requireContext(), MainActivity::class.java).apply {
-         putExtra(Intent.EXTRA_TEXT, "profile$profileId")
+         putExtra(Intent.EXTRA_TEXT, "$path$id")
          type = "text/plain"
       }
       startActivity(intent)

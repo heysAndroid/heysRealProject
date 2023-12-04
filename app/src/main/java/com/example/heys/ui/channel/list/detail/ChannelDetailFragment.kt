@@ -1,5 +1,6 @@
 package com.example.heys.ui.channel.list.detail
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,6 +26,18 @@ import com.example.heys.ui.channel.list.detail.approvedUser.ApprovedUserImageLis
 import com.example.heys.ui.channel.list.detail.waitingUser.WaitingUserImageListRecyclerViewAdapter
 import com.example.heys.ui.main.MainActivity
 import com.example.heys.util.UserPreference
+import com.google.firebase.dynamiclinks.DynamicLink
+import com.google.firebase.dynamiclinks.ktx.androidParameters
+import com.google.firebase.dynamiclinks.ktx.dynamicLink
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.ktx.Firebase
+import com.kakao.sdk.common.util.KakaoCustomTabsClient
+import com.kakao.sdk.share.ShareClient
+import com.kakao.sdk.share.WebSharerClient
+import com.kakao.sdk.template.model.Button
+import com.kakao.sdk.template.model.Content
+import com.kakao.sdk.template.model.FeedTemplate
+import com.kakao.sdk.template.model.Link
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -83,7 +96,7 @@ class ChannelDetailFragment : Fragment() {
       binding.allWaitingUser.setOnClickListener { goToWaitingUserList() }
       binding.btnJoinVisitor.setOnClickListener { joinChannel(args.channelId) }
       binding.llContent.setOnClickListener { goToContentDetail() }
-
+      binding.btnShare.setOnClickListener { kakaoShare() }
       // 채널 수정 우선 주석 처리
 //      binding.tvEdit.setOnClickListener { goToChannelEdit() }
    }
@@ -449,5 +462,56 @@ class ChannelDetailFragment : Fragment() {
          R.id.action_channelDetailFragment_to_contestExtracurricularDetailFragment, bundleOf(
             "channelType" to contentData.type, "contentId" to contentData.id
          ))
+   }
+
+   private fun kakaoShare() {
+      val feed = createFeed()
+
+      if (ShareClient.instance.isKakaoTalkSharingAvailable(requireContext())) {
+         ShareClient.instance.shareDefault(requireContext(), feed) { sharingResult, error ->
+            if (error != null) {
+               Log.e("kakaoShare", "카카오톡 공유 실패", error)
+            } else if (sharingResult != null) {
+               Log.d("kakaoShare", "카카오톡 공유 성공 ${sharingResult.intent}")
+               startActivity(sharingResult.intent)
+
+               Log.w("kakaoShare", "Warning Msg: ${sharingResult.warningMsg}")
+               Log.w("kakaoShare", "Argument Msg: ${sharingResult.argumentMsg}")
+            }
+         }
+      } else {
+         val sharerUrl = WebSharerClient.instance.makeDefaultUrl(feed)
+         try {
+            KakaoCustomTabsClient.openWithDefault(requireContext(), sharerUrl)
+         } catch (e: UnsupportedOperationException) {
+            Log.e("sharerUrl", "카카오톡 공유 실패", e.cause)
+         }
+      }
+   }
+
+   private fun createFeed(): FeedTemplate {
+      val dynamicLink = Firebase.dynamicLinks.dynamicLink {
+         link = Uri.parse("https://heys.page.link/channel?id=${viewModel.channelDetail.value?.id}")
+         domainUriPrefix = "https://heys.page.link"
+         androidParameters {
+            DynamicLink.AndroidParameters.Builder()
+               .build()
+         }
+      }
+
+      return FeedTemplate(
+         content = Content(
+            title = "함께 성장하는 청춘을 만들어가요!",
+            description = "모바일 앱에서 확인해보세요.",
+            imageUrl = "https://i.ibb.co/HxMF3Dx/img-heys-logo.png",
+            link = Link(
+               mobileWebUrl = dynamicLink.uri.toString())),
+
+         buttons = listOf(
+            Button(
+               "앱으로 이동",
+               Link(
+                  mobileWebUrl = dynamicLink.uri.toString())
+            )))
    }
 }

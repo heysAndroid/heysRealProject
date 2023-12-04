@@ -99,6 +99,19 @@ class MainFragment : Fragment() {
          profileId?.let { showUserProfile(it) }
       }
 
+      if (intent?.contains("channel") == true) {
+         val channelId = intent?.replace("channel", "")?.toInt()
+         channelId?.let { goToChannel(channelId) }
+         requireActivity().intent.putExtra(Intent.EXTRA_TEXT, "")
+      }
+
+      if (intent?.contains("content") == true) {
+         val contentId = intent?.replace("content", "")?.toInt()
+         contentId?.let { goToContent(contentId) }
+         // 뒤로가기 했을 때 intent clear
+         requireActivity().intent.putExtra(Intent.EXTRA_TEXT, "")
+      }
+
       getMyInfo()
       makeContestList()
       makeExtracurricularList()
@@ -165,6 +178,16 @@ class MainFragment : Fragment() {
 
    private fun goToStudyList() {
       findNavController().navigate(R.id.action_mainFragment_to_studyFragment)
+   }
+
+   private fun goToChannel(id: Int) {
+      findNavController().navigate(R.id.action_mainFragment_to_channelDetailFragment, bundleOf("channelId" to id))
+   }
+
+   private fun goToContent(id: Int) {
+      findNavController().navigate(
+         R.id.action_mainFragment_to_contestExtracurricularDetailFragment,
+         bundleOf("channelType" to ChannelType.Contest.typeEng, "contentId" to id))
    }
 
    private fun setContest() {

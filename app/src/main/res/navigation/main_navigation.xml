@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_mainFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contestExtracurricularDetailFragment"
+            app:destination="@id/contestExtracurricularDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
@@ -101,6 +107,7 @@
             app:destination="@id/ImageZoomFragment" />
         <argument
             android:name="channelType"
+            android:defaultValue="Contest"
             app:argType="string" />
         <action
             android:id="@+id/action_contestExtracurricularDetailFragment_to_webViewFragment"
@@ -109,7 +116,6 @@
             android:name="contentId"
             android:defaultValue="0"
             app:argType="integer" />
-
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
