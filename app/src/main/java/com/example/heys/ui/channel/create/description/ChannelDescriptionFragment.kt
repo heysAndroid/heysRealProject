@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,7 @@ class ChannelDescriptionFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnPreview.setOnClickListener {
          ChannelPreference.channelActivity = viewModel.channelActivity.value.toString()
@@ -62,6 +64,25 @@ class ChannelDescriptionFragment : Fragment() {
       binding.removeButton.setOnClickListener {
          binding.addButtonContainer.visibility = View.VISIBLE
          binding.additionalLinkView.visibility = View.GONE
+      }
+
+      viewModel.channelActivityLetterCount.observe(viewLifecycleOwner) {
+         binding.channelActivityField.background =
+            if (it < 30) {
+               ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
+            } else {
+               ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext)
+            }
+      }
+
+
+      viewModel.channelMemberLetterCount.observe(viewLifecycleOwner) {
+         binding.channelMemberField.background =
+            if (it < 30) {
+               ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext_disabled)
+            } else {
+               ContextCompat.getDrawable(requireContext(), R.drawable.bg_edittext)
+            }
       }
    }
 

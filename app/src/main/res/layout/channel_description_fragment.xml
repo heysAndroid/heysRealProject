@@ -115,7 +115,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="18dp"
-                    android:background="@drawable/bg_channel_edittext"
                     android:gravity="top"
                     android:hint="최소 30자 이상 아래 예시 항목을 참고해서 마음 맞는 팀원을 찾아보세요!\n\n- 모집 인원 및 역할\n- 태도(적극성, 성실함, 책임감 등)\n- 우대 역량\n- 기타"
                     android:maxLength="1500"
