@@ -2,17 +2,22 @@ package com.example.heys.ui.user.myChannel.allChannel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.heys.model.network.ChannelList
 import com.example.heys.repository.ChannelRepository
+import com.example.heys.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class AllChannelViewModel @Inject constructor(private val repository: ChannelRepository) : ViewModel() {
+class AllChannelViewModel @Inject constructor(
+   private val repository: ChannelRepository
+) : BaseViewModel() {
    private val _channelList = MutableLiveData<List<ChannelList>>()
    val channelList: LiveData<List<ChannelList>> = _channelList
+
+   val isChecked = MutableStateFlow(false)
 
    fun setContentChannelList(list: List<ChannelList>?) {
       _channelList.value = list ?: listOf()

@@ -125,7 +125,10 @@ class ChannelRepository @Inject constructor(
       limit: Int?
    ): Flow<NetworkResult<ChannelListResponse>> {
       return flow {
-         emit(safeApiCall { channelApi.getAllChannelList(token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit) })
+         emit(safeApiCall {
+            channelApi.getAllChannelList(
+               token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit)
+         })
       }.flowOn(Dispatchers.IO)
    }
 }

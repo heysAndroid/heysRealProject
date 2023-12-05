@@ -29,7 +29,7 @@ class StudyListFragment : Fragment() {
    private lateinit var binding: StudyListFragmentBinding
    private lateinit var studyItemRecyclerViewAdapter: StudyItemRecyclerViewAdapter
    val viewModel by viewModels<StudyListViewModel>()
-   lateinit var filterViewModel: ChannelFilterViewModel
+   private lateinit var filterViewModel: ChannelFilterViewModel
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
@@ -131,7 +131,7 @@ class StudyListFragment : Fragment() {
    }
 
    private fun goToFilter() {
-      findNavController().navigate(R.id.action_studyFragment_to_studyFilterFragment)
+      findNavController().navigate(R.id.action_studyFragment_to_channelFilterFragment)
    }
 
    private fun goToDetail(channelId: Int) {

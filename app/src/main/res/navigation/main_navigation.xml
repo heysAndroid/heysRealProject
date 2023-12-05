@@ -47,8 +47,8 @@
         android:label="study_fragment"
         tools:layout="@layout/study_list_fragment">
         <action
-            android:id="@+id/action_studyFragment_to_studyFilterFragment"
-            app:destination="@id/studyFilterFragment" />
+            android:id="@+id/action_studyFragment_to_channelFilterFragment"
+            app:destination="@id/channelFilterFragment" />
         <action
             android:id="@+id/action_studyFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
@@ -123,27 +123,25 @@
         android:label="ChannelListFragment"
         tools:layout="@layout/channel_list_fragment">
         <action
-            android:id="@+id/action_channelListFragment_to_channelDetailFragment"
-            app:destination="@id/channelDetailFragment" />
-        <action
             android:id="@+id/action_channelListFragment_to_channelNameFragment"
             app:destination="@id/channelNameFragment" />
-        <action
-            android:id="@+id/action_channelListFragment_to_channelFilterFragment"
-            app:destination="@id/channelFilterFragment" />
         <argument
             android:name="channelType"
             app:argType="string" />
         <argument
             android:name="contentId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_channelListFragment_to_channelDetailFragment"
+            app:destination="@id/channelDetailFragment" />
+
 
     </fragment>
     <fragment
-        android:id="@+id/studyFilterFragment"
-        android:name="com.example.heys.ui.main.content.study.filter.StudyFilterFragment"
-        android:label="StudyFilterFragment"
-        tools:layout="@layout/study_filter_fragment" />
+        android:id="@+id/channelFilterFragment"
+        android:name="com.example.heys.ui.channel.list.filter.ChannelFilterFragment"
+        android:label="ChannelFilterFragment"
+        tools:layout="@layout/channel_filter_fragment" />
     <fragment
         android:id="@+id/channelDetailFragment"
         android:name="com.example.heys.ui.channel.list.detail.ChannelDetailFragment"
@@ -196,6 +194,9 @@
         <action
             android:id="@+id/action_myChannelFragment_to_channelDetailFragment"
             app:destination="@id/channelDetailFragment" />
+        <action
+            android:id="@+id/action_myChannelFragment_to_channelFilterFragment"
+            app:destination="@id/channelFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -418,11 +419,6 @@
             app:popUpTo="@layout/main_fragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/channelFilterFragment"
-        android:name="com.example.heys.ui.channel.list.filter.ChannelFilterFragment"
-        android:label="ChannelFilterFragment"
-        tools:layout="@layout/channel_filter_fragment" />
     <fragment
         android:id="@+id/approvedUserListFragment"
         android:name="com.example.heys.ui.channel.list.detail.approvedUser.list.ApprovedUserListFragment"
