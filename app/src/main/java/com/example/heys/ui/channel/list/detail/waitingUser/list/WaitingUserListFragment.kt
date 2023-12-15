@@ -132,6 +132,7 @@ class WaitingUserListFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("allowUser: ", response.data?.message.toString())
+               getWaitingUserList(args.channelId)
             }
 
             is NetworkResult.Error -> {
