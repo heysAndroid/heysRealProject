@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.heys.R
 import com.example.heys.databinding.NotificationFragmentBinding
 import com.example.heys.model.network.NetworkResult
+import com.example.heys.model.network.Notification
 import com.example.heys.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +32,19 @@ class NotificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-      adapter = context?.let { NotificationViewAdapter(it) }!!
+      adapter = context?.let {
+         NotificationViewAdapter(it, object : NotificationViewAdapter.onClickListener {
+            override fun onClick(noti: Notification) {
+               val notificationDialog = NotificationDialog(requireContext(), noti)
+               notificationDialog?.onClickListener { channelId ->
+                  findNavController().navigate(
+                     R.id.action_notificationFragment_to_channelDetailFragment, bundleOf("channelId" to channelId))
+               }
+               notificationDialog?.show(childFragmentManager, null)
+            }
+
+         })
+      }!!
       binding.notificationList.adapter = adapter
       binding.notificationList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
       getNotificationList()
@@ -39,7 +55,7 @@ class NotificationFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                response.data?.data?.let {
-                  adapter.submitList(it)
+                  adapter.submitList(it.reversed())
                }
             }
 

@@ -11,7 +11,9 @@ import com.example.heys.R
 import com.example.heys.databinding.NotificationItemViewBinding
 import com.example.heys.model.network.Notification
 
-class NotificationViewAdapter(private val context: Context) : ListAdapter<Notification, NotificationViewAdapter.ViewHolder>(DiffCallback) {
+class NotificationViewAdapter(
+   private val context: Context,
+   private val listener: onClickListener) : ListAdapter<Notification, NotificationViewAdapter.ViewHolder>(DiffCallback) {
    private lateinit var binding: NotificationItemViewBinding
 
    inner class ViewHolder(private val binding: NotificationItemViewBinding) :
@@ -20,6 +22,7 @@ class NotificationViewAdapter(private val context: Context) : ListAdapter<Notifi
          binding.tvTitle.text = notification.title
          binding.tvContent.text = notification.content.replace("[", "").replace("]", "")
          binding.tvTime.text = notification.createdAt
+         binding.root.setOnClickListener { listener.onClick(notification) }
 
          // 읽음 여부에 따라 background color 설정
          if (notification.isRead) {
@@ -47,5 +50,9 @@ class NotificationViewAdapter(private val context: Context) : ListAdapter<Notifi
       override fun areContentsTheSame(oldItem: Notification, newItem: Notification): Boolean {
          return oldItem.channelId == newItem.channelId
       }
+   }
+
+   interface onClickListener {
+      fun onClick(noti: Notification)
    }
 }
