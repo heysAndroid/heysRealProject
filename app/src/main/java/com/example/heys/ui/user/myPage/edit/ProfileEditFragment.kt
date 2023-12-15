@@ -192,7 +192,7 @@ class ProfileEditFragment : Fragment() {
             "ENTJ" -> binding.mbtiView.entj.isSelected = true
             else -> {}
          }
-         mbtiViewModel.setMbti(it)
+         it?.let { mbtiViewModel.setMbti(it) }
       }
    }
 

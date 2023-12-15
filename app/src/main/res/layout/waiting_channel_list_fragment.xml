@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="-16dp"
+                android:layout_marginLeft="-32dp"
                 android:gravity="center"
                 android:text="승인대기 채널"
                 android:textColor="@color/black"

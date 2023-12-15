@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-16dp"
+                android:layout_marginLeft="-32dp"
                 android:text="참여중인 채널"
                 android:textAlignment="center"
                 android:textColor="@color/black"

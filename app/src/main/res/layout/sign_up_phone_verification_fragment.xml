@@ -62,7 +62,7 @@
                     android:hint="인증번호(6자리)"
                     android:inputType="number"
                     android:maxLength="6"
-                    android:paddingHorizontal="16dp"
+                    android:padding="16dp"
                     android:text="@={vm.code}"
                     android:textColorHint="@color/color_828282"
                     android:textSize="16sp" />

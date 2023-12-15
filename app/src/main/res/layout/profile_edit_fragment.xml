@@ -76,7 +76,7 @@
                     android:hint="나를 소개해주세요."
                     android:inputType="text"
                     android:maxLength="50"
-                    android:paddingHorizontal="16dp"
+                    android:padding="16dp"
                     android:text="@={vm.introduce}"
                     android:textSize="16sp"
                     app:addTextChangedListener="@{vm.introduceWatcher}" />
@@ -135,7 +135,7 @@
                     android:hint="이름을 알려주세요"
                     android:inputType="text"
                     android:maxLength="8"
-                    android:paddingHorizontal="16dp"
+                    android:padding="16dp"
                     android:text="@={vm.name}"
                     android:textSize="16sp"
                     app:addTextChangedListener="@{vm.nameWatcher}" />
@@ -228,7 +228,7 @@
                     android:fontFamily="@font/pretendard_500"
                     android:hint="대학생 4학년, 예비 개발자, 1년차 개발자"
                     android:inputType="text"
-                    android:paddingHorizontal="16dp"
+                    android:padding="16dp"
                     android:text="@={vm.job}"
                     android:textSize="16sp" />
 
@@ -251,7 +251,7 @@
                     android:hint="강점이나 잘 다룰 수 있는 툴을 알려주세요."
                     android:inputType="text"
                     android:maxLength="50"
-                    android:paddingHorizontal="16dp"
+                    android:padding="16dp"
                     android:text="@={vm.capability}"
                     android:textSize="16sp"
                     app:addTextChangedListener="@{vm.abilityWatcher}" />
