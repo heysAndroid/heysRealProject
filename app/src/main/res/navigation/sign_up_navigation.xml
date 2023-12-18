@@ -95,6 +95,8 @@
         <action
             android:id="@+id/action_signInPasswordFragment_to_settingPasswordForgetFragment2"
             app:destination="@id/settingPasswordForgetFragment2" />
+
+
     </fragment>
     <fragment
         android:id="@+id/settingPasswordForgetFragment2"
@@ -104,14 +106,19 @@
         <action
             android:id="@+id/action_settingPasswordForgetFragment2_to_settingPasswordChangeFragment2"
             app:destination="@id/settingPasswordChangeFragment2" />
+        <argument
+            android:name="isFromLogin"
+            android:defaultValue="true"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/settingPasswordChangeFragment2"
         android:name="com.example.heys.ui.user.setting.password.SettingPasswordChangeFragment"
         android:label="SettingPasswordChangeFragment"
         tools:layout="@layout/setting_password_change_fragment">
-        <action
-            android:id="@+id/action_settingPasswordChangeFragment2_to_signInPhoneFragment"
-            app:destination="@id/signInPhoneFragment" />
+        <argument
+            android:name="isFromLogin"
+            android:defaultValue="true"
+            app:argType="boolean" />
     </fragment>
 </navigation>

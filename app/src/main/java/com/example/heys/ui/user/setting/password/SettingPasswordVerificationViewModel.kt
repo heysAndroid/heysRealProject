@@ -2,12 +2,12 @@ package com.example.heys.ui.user.setting.password
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.heys.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class SettingPasswordVerificationViewModel : ViewModel() {
+class SettingPasswordVerificationViewModel : BaseViewModel() {
    val password = MutableStateFlow("")
 
    private val _isPasswordVisible = MutableLiveData(true)

@@ -68,13 +68,13 @@ class SignInPasswordFragment : Fragment() {
          changeInputType()
       }
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
-      binding.btnForget.setOnClickListener { goToPasswordChange() }
-      binding.okButton.setOnClickListener {
+      binding.btnForget.setOnClickListener { goToPasswordForget() }
+      binding.btnOk.setOnClickListener {
          requestLogin(UserPreference.phoneNumber, UserPreference.password)
       }
 
       viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if (it) CustomSnackBar(binding.root, "비밀번호가 일치하지 않아요!", binding.okButton).show()
+         if (it) CustomSnackBar(binding.root, "비밀번호가 일치하지 않아요!", binding.btnOk).show()
       }
    }
 
@@ -137,12 +137,12 @@ class SignInPasswordFragment : Fragment() {
       }
    }
 
-   private fun goToPasswordChange() {
-      findNavController().navigate(R.id.action_signInPasswordFragment_to_settingPasswordForgetFragment2)
-   }
-
    private fun goToMain() {
       findNavController().navigate(R.id.action_signInPasswordFragment_to_mainNavigation)
+   }
+
+   private fun goToPasswordForget() {
+      findNavController().navigate(R.id.action_signInPasswordFragment_to_settingPasswordForgetFragment2)
    }
 }
 

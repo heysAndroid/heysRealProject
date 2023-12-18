@@ -3,6 +3,7 @@ package com.example.heys.repository
 import com.example.heys.api.UserApi
 import com.example.heys.model.network.MyPageEdit
 import com.example.heys.model.network.NetworkResult
+import com.example.heys.model.network.Password
 import com.example.heys.model.network.UserEdit
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
@@ -63,6 +64,12 @@ class MyPageRepository @Inject constructor(
    fun withdrawal(token: String, reason: String): Flow<NetworkResult<SimpleResponse>> {
       return flow {
          emit(safeApiCall { userApi.withdrawal(token, reason) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun changePassword(token: String, password: Password): Flow<NetworkResult<UsersResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.changePassword(token, password) })
       }.flowOn(Dispatchers.IO)
    }
 }

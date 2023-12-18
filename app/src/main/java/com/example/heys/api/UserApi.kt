@@ -1,6 +1,7 @@
 package com.example.heys.api
 
 import com.example.heys.model.network.MyPageEdit
+import com.example.heys.model.network.Password
 import com.example.heys.model.network.UserEdit
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
@@ -41,4 +42,7 @@ interface UserApi {
 
    @PUT("app/me/phone")
    suspend fun changePhoneNumber(@Header("Authorization") token: String, @Body user: UserEdit): Response<UserEditResponse>
+
+   @PUT("user/password")
+   suspend fun changePassword(@Header("Authorization") token: String, @Body password: Password): Response<UsersResponse>
 }

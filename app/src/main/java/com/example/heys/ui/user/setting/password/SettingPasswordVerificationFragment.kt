@@ -5,12 +5,17 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.heys.CustomSnackBar
 import com.example.heys.R
 import com.example.heys.databinding.SettingPasswordVerificationFragmentBinding
+import com.example.heys.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingPasswordVerificationFragment : Fragment() {
    private lateinit var binding: SettingPasswordVerificationFragmentBinding
    private val viewModel: SettingPasswordVerificationViewModel by viewModels()
@@ -24,12 +29,14 @@ class SettingPasswordVerificationFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+
       binding.passwordToggle.setOnClickListener {
          viewModel.togglePasswordVisible()
          changeInputType()
       }
-      binding.passwordForget.setOnClickListener { goToPasswordForget() }
-      binding.btnNext.setOnClickListener { goToPasswordChange() }
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+      binding.btnPasswordForgot.setOnClickListener { goToPasswordForget() }
+      binding.btnOk.setOnClickListener { checkPassword(viewModel.password.value) }
    }
 
    private fun changeInputType() {
@@ -42,11 +49,19 @@ class SettingPasswordVerificationFragment : Fragment() {
       }
    }
 
+   private fun checkPassword(password: String) {
+      if (UserPreference.password == password) {
+         goToPasswordChange()
+      } else {
+         CustomSnackBar(binding.root, "비밀번호가 일치하지 않아요!", binding.btnOk).show()
+      }
+   }
+
    private fun goToPasswordForget() {
       findNavController().navigate(R.id.action_settingPasswordVerificationFragment_to_settingPasswordForgetFragment)
    }
 
    private fun goToPasswordChange() {
-      findNavController().navigate(R.id.action_settingPasswordVerificationFragment_to_settingPasswordChangeFragment)
+      findNavController().navigate(R.id.action_settingPasswordVerificationFragment_to_settingPasswordChangeFragment, bundleOf("isFromLogin" to false))
    }
 }

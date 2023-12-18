@@ -52,7 +52,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="22dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -69,9 +69,11 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/phoneChange"
+                        android:id="@+id/btn_phone_chane"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="-8dp"
+                        android:padding="8dp"
                         android:text="변경"
                         android:textColor="@color/color_34d676"
                         android:textSize="14sp"
@@ -81,7 +83,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -98,9 +100,11 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/passwordChange"
+                        android:id="@+id/btn_password_change"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="-8dp"
+                        android:padding="8dp"
                         android:text="변경"
                         android:textColor="@color/color_34d676"
                         android:textSize="14sp"
@@ -257,7 +261,7 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/deleteAccount"
+                    android:id="@+id/btn_delete_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"

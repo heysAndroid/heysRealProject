@@ -50,9 +50,9 @@ class SettingFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      binding.phoneChange.setOnClickListener { gotoPhoneChange() }
-      binding.passwordChange.setOnClickListener { gotoPasswordVerification() }
-      binding.deleteAccount.setOnClickListener { gotoDeleteAccount() }
+      binding.btnPhoneChane.setOnClickListener { gotoPhoneChange() }
+      binding.btnPasswordChange.setOnClickListener { gotoPasswordVerification() }
+      binding.btnDeleteAccount.setOnClickListener { gotoDeleteAccount() }
       binding.tvLogout.setOnClickListener { logout() }
    }
 
