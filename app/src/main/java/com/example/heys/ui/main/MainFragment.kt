@@ -205,8 +205,7 @@ class MainFragment : Fragment() {
          adapter = categoryRecyclerViewAdapter
          layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
          addItemDecoration(
-            MarginItemDecoration(
-               resources.getDimension(R.dimen.contestList_item_margin).toInt(), contestList.lastIndex))
+            MarginItemDecoration(4, contestList.lastIndex))
          setHasFixedSize(true)
       }
    }
@@ -221,8 +220,7 @@ class MainFragment : Fragment() {
          adapter = extracurricularRecyclerViewAdapter
          layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
          addItemDecoration(
-            MarginItemDecoration(
-               resources.getDimension(R.dimen.activityList_item_margin).toInt(), extracurricularList.lastIndex))
+            MarginItemDecoration(4, extracurricularList.lastIndex))
          setHasFixedSize(true)
       }
    }

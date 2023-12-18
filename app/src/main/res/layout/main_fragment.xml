@@ -79,11 +79,11 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/contestList"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="142dp"
+                    android:layout_marginTop="140dp"
                     android:clipToPadding="false"
-                    android:paddingHorizontal="28dp" />
+                    android:paddingHorizontal="32dp" />
             </FrameLayout>
 
             <LinearLayout
@@ -129,7 +129,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/extracurricularList"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:clipToPadding="false"
