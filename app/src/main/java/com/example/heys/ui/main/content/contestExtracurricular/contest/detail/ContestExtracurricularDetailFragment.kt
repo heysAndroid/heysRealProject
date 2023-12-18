@@ -113,7 +113,7 @@ class ContestExtracurricularDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                viewModel.receiveContentDetail(response.data?.contentDetail)
-               Glide.with(requireContext()).load(viewModel.thumbnailUri.value).error(R.drawable.bg_thumbnail_default).into(binding.thumbnail)
+               Glide.with(requireContext()).load(viewModel.thumbnailUri.value).error(R.drawable.bg_thumbnail_default).into(binding.imgThumbnail)
                viewModel.dday.value?.let { setDday(it) }
                setBookmark()
             }

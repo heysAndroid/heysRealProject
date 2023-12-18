@@ -68,19 +68,13 @@
                     android:layout_marginHorizontal="32dp"
                     android:layout_marginTop="12dp">
 
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_thumbnail"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-                        app:cardCornerRadius="16dp">
-
-                        <ImageView
-                            android:id="@+id/thumbnail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/bg_extracuricular_sample" />
-                    </androidx.cardview.widget.CardView>
-
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bg_extracuricular_sample"
+                        app:shapeAppearanceOverlay="@drawable/bg_white_radius_16" />
 
                     <TextView
                         android:id="@+id/dday"
