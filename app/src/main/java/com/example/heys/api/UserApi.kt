@@ -3,10 +3,10 @@ package com.example.heys.api
 import com.example.heys.model.network.MyPageEdit
 import com.example.heys.model.network.Password
 import com.example.heys.model.network.UserEdit
+import com.example.heys.model.network.WithdrawalReason
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
 import com.example.heys.model.network.response.NotificationResponse
-import com.example.heys.model.network.response.SimpleResponse
 import com.example.heys.model.network.response.UserEditResponse
 import com.example.heys.model.network.response.UsersResponse
 import retrofit2.Response
@@ -38,7 +38,7 @@ interface UserApi {
    suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
 
    @PUT("/user/withDrawal")
-   suspend fun withdrawal(@Header("Authorization") token: String, @Body reason: String): Response<SimpleResponse>
+   suspend fun withdrawal(@Header("Authorization") token: String, @Body reason: WithdrawalReason): Response<Void>
 
    @PUT("app/me/phone")
    suspend fun changePhoneNumber(@Header("Authorization") token: String, @Body user: UserEdit): Response<UserEditResponse>

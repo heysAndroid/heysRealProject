@@ -5,10 +5,10 @@ import com.example.heys.model.network.MyPageEdit
 import com.example.heys.model.network.NetworkResult
 import com.example.heys.model.network.Password
 import com.example.heys.model.network.UserEdit
+import com.example.heys.model.network.WithdrawalReason
 import com.example.heys.model.network.response.DeviceTokenResponse
 import com.example.heys.model.network.response.MyPageResponse
 import com.example.heys.model.network.response.NotificationResponse
-import com.example.heys.model.network.response.SimpleResponse
 import com.example.heys.model.network.response.UserEditResponse
 import com.example.heys.model.network.response.UsersResponse
 import kotlinx.coroutines.Dispatchers
@@ -61,11 +61,7 @@ class MyPageRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   fun withdrawal(token: String, reason: String): Flow<NetworkResult<SimpleResponse>> {
-      return flow {
-         emit(safeApiCall { userApi.withdrawal(token, reason) })
-      }.flowOn(Dispatchers.IO)
-   }
+   suspend fun withdrawal(token: String, reason: WithdrawalReason) = userApi.withdrawal(token, reason)
 
    fun changePassword(token: String, password: Password): Flow<NetworkResult<UsersResponse>> {
       return flow {
