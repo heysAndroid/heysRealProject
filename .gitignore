@@ -17,3 +17,5 @@ local.properties
 app/release/output-metadata.json
 app/google-services.json
 *.apk
+*.der
+*.aab

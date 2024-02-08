@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.user.setting.phone.SettingPhoneVerificationViewModel" />
+            type="com.hey.heys.ui.user.setting.phone.SettingPhoneVerificationViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.user.channel.waitingChannel.cancel.ChannelCancelViewModel" />
+            type="com.hey.heys.ui.user.channel.waitingChannel.cancel.ChannelCancelViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

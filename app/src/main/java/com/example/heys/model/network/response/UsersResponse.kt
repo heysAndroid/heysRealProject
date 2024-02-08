@@ -1,7 +1,7 @@
 package com.example.heys.model.network.response
 
-import com.example.heys.model.OtherUser
 import com.google.gson.annotations.SerializedName
+import com.hey.heys.model.OtherUser
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

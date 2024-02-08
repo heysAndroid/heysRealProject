@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.channel.dialog.interest.ChannelInterestDialogViewModel" />
+            type="com.hey.heys.ui.channel.dialog.interest.ChannelInterestDialogViewModel" />
     </data>
 
     <LinearLayout

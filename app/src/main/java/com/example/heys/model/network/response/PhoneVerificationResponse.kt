@@ -1,7 +1,7 @@
 package com.example.heys.model.network.response
 
-import com.example.heys.model.network.PhoneVerificationData
 import com.google.gson.annotations.SerializedName
+import com.hey.heys.model.network.PhoneVerificationData
 import kotlinx.serialization.Serializable
 
 @Serializable

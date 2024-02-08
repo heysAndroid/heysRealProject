@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.heys.ui.main.MainFragment"
+        android:name="com.hey.heys.ui.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/main_fragment">
 
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/studyFragment"
-        android:name="com.example.heys.ui.main.content.study.list.StudyListFragment"
+        android:name="com.hey.heys.ui.main.content.study.list.StudyListFragment"
         android:label="study_fragment"
         tools:layout="@layout/study_list_fragment">
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/contentsFilterFragment"
-        android:name="com.example.heys.ui.main.content.contestExtracurricular.filter.ContentsFilterFragment"
+        android:name="com.hey.heys.ui.main.content.contestExtracurricular.filter.ContentsFilterFragment"
         android:label="FilterFragment"
         tools:layout="@layout/contents_filter_fragment">
 
@@ -66,6 +66,7 @@
             android:id="@+id/backToExtracurricularList"
             app:destination="@+id/extracurricularListFragment"
             app:popUpTo="@id/extracurricularListFragment"
+
             app:popUpToInclusive="true" />
 
         <action
@@ -73,10 +74,11 @@
             app:destination="@+id/contestListFragment"
             app:popUpTo="@id/contestListFragment"
             app:popUpToInclusive="true" />
+        
     </fragment>
     <fragment
         android:id="@+id/contestListFragment"
-        android:name="com.example.heys.ui.main.content.contestExtracurricular.contest.ContestListFragment"
+        android:name="com.hey.heys.ui.main.content.contestExtracurricular.contest.ContestListFragment"
         android:label="ContestFragment"
         tools:layout="@layout/contest_list_fragment">
         <action
@@ -96,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/contestExtracurricularDetailFragment"
-        android:name="com.example.heys.ui.main.content.contestExtracurricular.contest.detail.ContestExtracurricularDetailFragment"
+        android:name="com.hey.heys.ui.main.content.contestExtracurricular.contest.detail.ContestExtracurricularDetailFragment"
         android:label="ContestExtracurricularDetailFragment"
         tools:layout="@layout/contest_extracurricular_detail_fragment">
         <action
@@ -119,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelListFragment"
-        android:name="com.example.heys.ui.channel.list.ChannelListFragment"
+        android:name="com.hey.heys.ui.channel.list.ChannelListFragment"
         android:label="ChannelListFragment"
         tools:layout="@layout/channel_list_fragment">
         <action
@@ -139,12 +141,12 @@
     </fragment>
     <fragment
         android:id="@+id/channelFilterFragment"
-        android:name="com.example.heys.ui.channel.list.filter.ChannelFilterFragment"
+        android:name="com.hey.heys.ui.channel.list.filter.ChannelFilterFragment"
         android:label="ChannelFilterFragment"
         tools:layout="@layout/channel_filter_fragment" />
     <fragment
         android:id="@+id/channelDetailFragment"
-        android:name="com.example.heys.ui.channel.list.detail.ChannelDetailFragment"
+        android:name="com.hey.heys.ui.channel.list.detail.ChannelDetailFragment"
         android:label="ChannelDetailFragment"
         tools:layout="@layout/channel_detail_fragment">
 
@@ -169,7 +171,7 @@
     </fragment>
     <fragment
         android:id="@+id/extracurricularListFragment"
-        android:name="com.example.heys.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularListFragment"
+        android:name="com.hey.heys.ui.main.content.contestExtracurricular.extracurricular.ExtracurricularListFragment"
         android:label="ExtracurricularListFragment"
         tools:layout="@layout/extracurricular_list_fragment">
         <action
@@ -185,7 +187,7 @@
     </fragment>
     <fragment
         android:id="@+id/myChannelFragment"
-        android:name="com.example.heys.ui.user.myChannel.HeysChannelFragment"
+        android:name="com.hey.heys.ui.user.myChannel.HeysChannelFragment"
         android:label="MyChannelFragment"
         tools:layout="@layout/heys_channel_fragment">
         <action
@@ -200,7 +202,7 @@
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.example.heys.ui.user.myPage.MyPageFragment"
+        android:name="com.hey.heys.ui.user.myPage.MyPageFragment"
         android:label="MyPageFragment"
         tools:layout="@layout/my_page_fragment">
         <action
@@ -224,7 +226,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelNameFragment"
-        android:name="com.example.heys.ui.channel.create.name.ChannelNameFragment"
+        android:name="com.hey.heys.ui.channel.create.name.ChannelNameFragment"
         android:label="ChannelNameFragment"
         tools:layout="@layout/channel_name_fragment">
         <action
@@ -240,7 +242,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelInformFragment"
-        android:name="com.example.heys.ui.channel.create.inform.ChannelInformFragment"
+        android:name="com.hey.heys.ui.channel.create.inform.ChannelInformFragment"
         android:label="ChannelInformFragment"
         tools:layout="@layout/channel_inform_fragment">
         <action
@@ -249,7 +251,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelDescriptionFragment"
-        android:name="com.example.heys.ui.channel.create.description.ChannelDescriptionFragment"
+        android:name="com.hey.heys.ui.channel.create.description.ChannelDescriptionFragment"
         android:label="ChannelDescriptionFragment"
         tools:layout="@layout/channel_description_fragment">
         <action
@@ -258,7 +260,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelPreviewFragment"
-        android:name="com.example.heys.ui.channel.create.preview.ChannelPreviewFragment"
+        android:name="com.hey.heys.ui.channel.create.preview.ChannelPreviewFragment"
         android:label="ChannelPreviewFragment"
         tools:layout="@layout/channel_preview_fragment">
 
@@ -269,7 +271,7 @@
 
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.example.heys.ui.user.myChannel.notification.NotificationFragment"
+        android:name="com.hey.heys.ui.user.myChannel.notification.NotificationFragment"
         android:label="NotificationFragment"
         tools:layout="@layout/notification_fragment">
         <action
@@ -279,7 +281,7 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.heys.ui.user.setting.SettingFragment"
+        android:name="com.hey.heys.ui.user.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/setting_fragment">
         <action
@@ -294,12 +296,12 @@
     </fragment>
     <fragment
         android:id="@+id/engagedChannelListFragment"
-        android:name="com.example.heys.ui.user.channel.approvedChannel.ApprovedChannelListFragment"
+        android:name="com.hey.heys.ui.user.channel.approvedChannel.ApprovedChannelListFragment"
         android:label="EngagedChannelListFragment"
         tools:layout="@layout/approved_channel_list_fragment" />
     <fragment
         android:id="@+id/settingPasswordChangeFragment"
-        android:name="com.example.heys.ui.user.setting.password.SettingPasswordChangeFragment"
+        android:name="com.hey.heys.ui.user.setting.password.SettingPasswordChangeFragment"
         android:label="SettingPasswordChangeFragment"
         tools:layout="@layout/setting_password_change_fragment">
         <action
@@ -317,7 +319,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingPasswordForgetFragment"
-        android:name="com.example.heys.ui.user.setting.password.SettingPasswordForgetFragment"
+        android:name="com.hey.heys.ui.user.setting.password.SettingPasswordForgetFragment"
         android:label="SettingPasswordForgetFragment"
         tools:layout="@layout/setting_password_forget_fragment">
         <action
@@ -326,7 +328,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingPasswordVerificationFragment"
-        android:name="com.example.heys.ui.user.setting.password.SettingPasswordVerificationFragment"
+        android:name="com.hey.heys.ui.user.setting.password.SettingPasswordVerificationFragment"
         android:label="SettingPasswordVerificationFragment"
         tools:layout="@layout/setting_password_verification_fragment">
         <action
@@ -338,7 +340,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingPhoneChangeFragment"
-        android:name="com.example.heys.ui.user.setting.phone.SettingPhoneChangeFragment"
+        android:name="com.hey.heys.ui.user.setting.phone.SettingPhoneChangeFragment"
         android:label="SettingPhoneChangeFragment"
         tools:layout="@layout/setting_phone_change_fragment">
         <action
@@ -347,7 +349,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingPhoneVerificationFragment"
-        android:name="com.example.heys.ui.user.setting.phone.SettingPhoneVerificationFragment"
+        android:name="com.hey.heys.ui.user.setting.phone.SettingPhoneVerificationFragment"
         android:label="SettingPhoneVerificationFragment"
         tools:layout="@layout/setting_phone_verification_fragment">
         <action
@@ -356,12 +358,12 @@
     </fragment>
     <fragment
         android:id="@+id/waitingChannelListFragment"
-        android:name="com.example.heys.ui.user.channel.waitingChannel.WaitingChannelListFragment"
+        android:name="com.hey.heys.ui.user.channel.waitingChannel.WaitingChannelListFragment"
         android:label="WaitingChannelListFragment"
         tools:layout="@layout/waiting_channel_list_fragment" />
     <fragment
         android:id="@+id/profileEditFragment"
-        android:name="com.example.heys.ui.user.myPage.edit.ProfileEditFragment"
+        android:name="com.hey.heys.ui.user.myPage.edit.ProfileEditFragment"
         android:label="ProfileEditFragment"
         tools:layout="@layout/profile_edit_fragment">
         <action
@@ -370,7 +372,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingWithdrawalReasonFragment"
-        android:name="com.example.heys.ui.user.setting.withdrawal.WithdrawalReasonFragment"
+        android:name="com.hey.heys.ui.user.setting.withdrawal.WithdrawalReasonFragment"
         android:label="WithdrawalReasonFragment"
         tools:layout="@layout/withdrawal_reason_fragment">
         <action
@@ -379,7 +381,7 @@
     </fragment>
     <fragment
         android:id="@+id/withdrawalConfirmFragment"
-        android:name="com.example.heys.ui.user.setting.withdrawal.WithdrawalConfirmFragment"
+        android:name="com.hey.heys.ui.user.setting.withdrawal.WithdrawalConfirmFragment"
         android:label="WithdrawalConfirmFragment"
         tools:layout="@layout/withdrawal_confirm_fragment">
         <argument
@@ -392,7 +394,7 @@
     </fragment>
     <fragment
         android:id="@+id/backButtonPopupFragment"
-        android:name="com.example.heys.ui.channelW.create.BackButtonPopupFragment"
+        android:name="com.hey.heys.ui.channelW.create.BackButtonPopupFragment"
         android:label="BackButtonPopupFragment"
         tools:layout="@layout/back_button_popup_fragment">
         <action
@@ -405,7 +407,7 @@
 
     <fragment
         android:id="@+id/ImageZoomFragment"
-        android:name="com.example.heys.ui.main.content.contestExtracurricular.ImageZoomFragment"
+        android:name="com.hey.heys.ui.main.content.contestExtracurricular.ImageZoomFragment"
         android:label="ImageZoomFragment"
         tools:layout="@layout/image_zoom_fragment">
         <argument
@@ -414,7 +416,7 @@
     </fragment>
     <fragment
         android:id="@+id/channelCreateCompleteFragment"
-        android:name="com.example.heys.ui.channel.create.complete.ChannelCreateCompleteFragment"
+        android:name="com.hey.heys.ui.channel.create.complete.ChannelCreateCompleteFragment"
         android:label="ChannelCreateCompleteFragment"
         tools:layout="@layout/channel_create_complete_fragment">
         <argument
@@ -434,7 +436,7 @@
     </fragment>
     <fragment
         android:id="@+id/approvedUserListFragment"
-        android:name="com.example.heys.ui.channel.list.detail.approvedUser.list.ApprovedUserListFragment"
+        android:name="com.hey.heys.ui.channel.list.detail.approvedUser.list.ApprovedUserListFragment"
         android:label="ApprovedUserListFragment"
         tools:layout="@layout/approved_user_list_fragment">
 
@@ -447,7 +449,7 @@
     </fragment>
     <fragment
         android:id="@+id/waitingUserListFragment"
-        android:name="com.example.heys.ui.channel.list.detail.waitingUser.list.WaitingUserListFragment"
+        android:name="com.hey.heys.ui.channel.list.detail.waitingUser.list.WaitingUserListFragment"
         android:label="WaitingUserListFragment"
         tools:layout="@layout/waiting_user_list_fragment">
 
@@ -464,7 +466,7 @@
 
     <fragment
         android:id="@+id/bookmarkListFragment"
-        android:name="com.example.heys.ui.user.myPage.bookMark.BookmarkListFragment"
+        android:name="com.hey.heys.ui.user.myPage.bookMark.BookmarkListFragment"
         android:label="BookmarkListFragment"
         tools:layout="@layout/bookmark_list_fragment">
         <action
@@ -474,7 +476,7 @@
 
     <fragment
         android:id="@+id/bookmarkEditFragment"
-        android:name="com.example.heys.ui.user.myPage.bookMark.BookmarkEditFragment"
+        android:name="com.hey.heys.ui.user.myPage.bookMark.BookmarkEditFragment"
         android:label="BookmarkEditFragment"
         tools:layout="@layout/bookmark_edit_fragment">
         <action
@@ -485,7 +487,7 @@
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.example.heys.ui.main.content.WebViewFragment"
+        android:name="com.hey.heys.ui.main.content.WebViewFragment"
         android:label="WebViewFragment"
         tools:layout="@layout/webview_fragment">
         <argument
@@ -494,12 +496,12 @@
     </fragment>
     <fragment
         android:id="@+id/channelEditFragment"
-        android:name="com.example.heys.ui.channel.edit.ChannelEditFragment"
+        android:name="com.hey.heys.ui.channel.edit.ChannelEditFragment"
         android:label="ChannelEditFragment"
         tools:layout="@layout/channel_edit_fragment">
         <argument
             android:name="channelDetail"
-            app:argType="com.example.heys.model.network.ChannelDetail" />
+            app:argType="com.hey.heys.model.network.ChannelDetail" />
         <argument
             android:name="interestString"
             app:argType="string" />

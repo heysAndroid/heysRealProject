@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.login.sign_up.phone.SignUpPhoneViewModel" />
+            type="com.hey.heys.ui.login.sign_up.phone.SignUpPhoneViewModel" />
     </data>
 
     <LinearLayout

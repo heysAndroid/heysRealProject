@@ -1,7 +1,7 @@
 package com.example.heys.model.network.response
 
-import com.example.heys.model.network.Notification
 import com.google.gson.annotations.SerializedName
+import com.hey.heys.model.network.Notification
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.login.sign_up.name.SignUpNameViewModel" />
+            type="com.hey.heys.ui.login.sign_up.name.SignUpNameViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel" />
+            type="com.hey.heys.ui.channel.dialog.capacity.ChannelCapacityDialogViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

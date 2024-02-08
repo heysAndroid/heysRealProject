@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.channel.create.description.ChannelDescriptionViewModel" />
+            type="com.hey.heys.ui.channel.create.description.ChannelDescriptionViewModel" />
     </data>
 
     <LinearLayout

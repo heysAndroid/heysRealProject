@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.example.heys.ui.login.sign_up.interest.SignUpInterestViewModel" />
+            type="com.hey.heys.ui.login.sign_up.interest.SignUpInterestViewModel" />
 
         <variable
             name="vm2"
-            type="com.example.heys.InterestViewModel" />
+            type="com.hey.heys.InterestViewModel" />
     </data>
 
     <LinearLayout
