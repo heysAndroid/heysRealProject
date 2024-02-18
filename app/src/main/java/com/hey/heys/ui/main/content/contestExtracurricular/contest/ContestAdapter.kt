@@ -11,7 +11,7 @@ import com.hey.heys.R
 import com.hey.heys.databinding.ContestExtracurricularItemViewBinding
 import com.hey.heys.model.network.Content
 
-class ContestAdapter() : PagingDataAdapter<Content, ContestAdapter.ViewHolder>(diffUtil) {
+class ContestAdapter : PagingDataAdapter<Content, ContestAdapter.ViewHolder>(diffUtil) {
    var onClickListener: ((Int) -> Unit)? = null
    private lateinit var binding: ContestExtracurricularItemViewBinding
 

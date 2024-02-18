@@ -1,9 +1,9 @@
 package com.hey.heys.api
 
-import com.example.heys.model.network.response.DeviceTokenResponse
-import com.example.heys.model.network.response.NotificationResponse
-import com.example.heys.model.network.response.UserEditResponse
-import com.example.heys.model.network.response.UsersResponse
+import com.hey.heys.model.network.response.DeviceTokenResponse
+import com.hey.heys.model.network.response.NotificationResponse
+import com.hey.heys.model.network.response.UserEditResponse
+import com.hey.heys.model.network.response.UsersResponse
 import com.hey.heys.model.network.MyPageEdit
 import com.hey.heys.model.network.Password
 import com.hey.heys.model.network.UserEdit

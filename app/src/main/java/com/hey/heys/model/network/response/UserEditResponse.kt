@@ -1,13 +1,12 @@
-package com.example.heys.model.network.response
+package com.hey.heys.model.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.hey.heys.model.OtherUser
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UsersResponse(
+data class UserEditResponse(
    @SerialName("message") val message: String,
    @SerialName("isSuccess") val isSuccess: Boolean,
-   @SerializedName("data") val user: OtherUser,
+   @SerializedName("data") val data: String,
 ) : java.io.Serializable

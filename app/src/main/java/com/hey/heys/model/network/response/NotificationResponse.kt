@@ -1,4 +1,4 @@
-package com.example.heys.model.network.response
+package com.hey.heys.model.network.response
 
 import com.google.gson.annotations.SerializedName
 import com.hey.heys.model.network.Notification

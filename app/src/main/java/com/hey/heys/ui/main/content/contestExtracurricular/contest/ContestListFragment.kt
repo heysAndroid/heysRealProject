@@ -162,7 +162,6 @@ class ContestListFragment : Fragment() {
             lastRecruitDate = lastRecruitDate ?: null,
             includeClosed = includedClosed).collect { pagingData ->
             adapter.submitData(pagingData)
-//            binding.noListImage.isVisible = adapter.snapshot().items.isEmpty()
          }
       }
    }

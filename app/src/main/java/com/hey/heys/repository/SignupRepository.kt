@@ -1,7 +1,7 @@
 package com.hey.heys.repository
 
-import com.example.heys.model.network.response.PhoneResponse
-import com.example.heys.model.network.response.PhoneVerificationResponse
+import com.hey.heys.model.network.response.PhoneResponse
+import com.hey.heys.model.network.response.PhoneVerificationResponse
 import com.hey.heys.api.SignUpApi
 import com.hey.heys.model.network.NetworkResult
 import com.hey.heys.model.network.Phone
