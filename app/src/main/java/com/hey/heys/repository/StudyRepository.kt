@@ -1,9 +1,13 @@
 package com.hey.heys.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.hey.heys.api.StudyApi
+import com.hey.heys.model.network.ChannelList
 import com.hey.heys.model.network.NetworkResult
 import com.hey.heys.model.network.Study
-import com.hey.heys.model.network.response.ChannelListResponse
+import com.hey.heys.model.network.StudyPagingSource
 import com.hey.heys.model.network.response.CreateStudyResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -27,15 +31,11 @@ class StudyRepository @Inject constructor(
       purposes: ArrayList<String>?,
       online: String?,
       location: String?,
-      includeClosed: Boolean?,
-      page: Int?,
-      limit: Int?
-   ): Flow<NetworkResult<ChannelListResponse>> {
-      return flow {
-         emit(safeApiCall {
-            studyApi.getStudyList(
-               token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit)
-         })
-      }.flowOn(Dispatchers.IO)
+      includeClosed: Boolean?
+   ): Flow<PagingData<ChannelList>> {
+      return Pager(
+         config = PagingConfig(pageSize = 30),
+         pagingSourceFactory = { StudyPagingSource(studyApi, token, interest, lastRecruitDate, purposes, online, location, includeClosed) }
+      ).flow
    }
 }

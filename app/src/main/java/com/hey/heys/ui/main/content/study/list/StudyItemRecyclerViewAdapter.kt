@@ -2,17 +2,20 @@ package com.hey.heys.ui.main.content.study.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hey.heys.App
 import com.hey.heys.R
 import com.hey.heys.databinding.StudyItemViewBinding
 import com.hey.heys.model.network.ChannelList
+import com.hey.heys.model.network.Content
+import com.hey.heys.model.network.Study
 
-class StudyItemRecyclerViewAdapter(
-   private val study: MutableList<ChannelList>,
-   private val onClickListener: (Int) -> Unit) :
-   RecyclerView.Adapter<StudyItemRecyclerViewAdapter.ViewHolder>() {
+class StudyItemRecyclerViewAdapter :
+   PagingDataAdapter<ChannelList, StudyItemRecyclerViewAdapter.ViewHolder>(diffUtil) {
+   var onClickListener: ((Int) -> Unit)? = null
    private lateinit var binding: StudyItemViewBinding
 
    inner class ViewHolder(private val binding: StudyItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -21,8 +24,7 @@ class StudyItemRecyclerViewAdapter(
             tvTitle.text = study.name
             tvPastday.text = "개설한지 ${study.pastDay}일"
             tvView.text = "${study.viewCount}"
-
-            Glide.with(com.hey.heys.App.getInstance().applicationContext)
+            Glide.with(App.getInstance().applicationContext)
                .load(study.thumbnailUri)
                .error(R.drawable.bg_thumbnail_default).into(imgThumbnail)
          }
@@ -51,7 +53,7 @@ class StudyItemRecyclerViewAdapter(
             binding.tvStatus.setBackgroundResource(R.drawable.bg_status_closed)
          }
 
-         binding.root.setOnClickListener { onClickListener.invoke(study.id) }
+         binding.root.setOnClickListener { onClickListener?.invoke(study.id) }
       }
    }
 
@@ -61,10 +63,19 @@ class StudyItemRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(study[position])
+      val currentItem = getItem(position)
+      currentItem?.let { holder.bind(it) }
    }
 
-   override fun getItemCount(): Int {
-      return study.size
+   companion object {
+      val diffUtil = object : DiffUtil.ItemCallback<ChannelList>() {
+         override fun areItemsTheSame(oldItem: ChannelList, newItem: ChannelList): Boolean {
+            return oldItem.id == newItem.id
+         }
+
+         override fun areContentsTheSame(oldItem: ChannelList, newItem: ChannelList): Boolean {
+            return oldItem == newItem
+         }
+      }
    }
 }
