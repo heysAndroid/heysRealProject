@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +21,14 @@ import com.hey.heys.model.network.NetworkResult
 import com.hey.heys.ui.main.MainActivity
 import com.hey.heys.util.UserPreference
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ChannelListFragment : Fragment() {
    private lateinit var binding: ChannelListFragmentBinding
-   private lateinit var channelItemRecyclerViewAdapter: ChannelItemRecyclerViewAdapter
+   private lateinit var adapter: ChannelItemRecyclerViewAdapter
    val viewModel by viewModels<ChannelListViewModel>()
    val args: ChannelListFragmentArgs by navArgs()
 
@@ -62,7 +67,15 @@ class ChannelListFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
+      adapter = ChannelItemRecyclerViewAdapter()
+      binding.channelList.adapter = adapter
+      binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      adapter.onClickListener = { goToChannelDetail(it) }
+
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+      binding.btnChannel.setOnClickListener { goToCreateChannel() }
+      binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
+
       when (args.channelType) {
          ChannelType.Contest.typeEng -> {
             binding.tvTitle.text = "공모전 채널"
@@ -74,15 +87,13 @@ class ChannelListFragment : Fragment() {
       }
 
       getContentChannelList()
-      viewModel.channelList.observe(viewLifecycleOwner) {
-         if (it.isEmpty()) {
-            binding.flCreateChannel.visibility = View.GONE
-            binding.noListImage.visibility = View.VISIBLE
-            binding.btnChannel.setOnClickListener { goToCreateChannel() }
-         } else {
-            binding.noListImage.visibility = View.GONE
-            binding.flCreateChannel.visibility = View.VISIBLE
-            binding.imgCreateChannel.setOnClickListener { goToCreateChannel() }
+
+      lifecycleScope.launch {
+         adapter.loadStateFlow.distinctUntilChangedBy {
+            it.refresh
+         }.collectLatest {
+            binding.noListImage.isVisible = adapter.snapshot().items.isNullOrEmpty()
+            binding.flCreateChannel.isVisible = !adapter.snapshot().items.isNullOrEmpty()
          }
       }
    }
@@ -100,27 +111,10 @@ class ChannelListFragment : Fragment() {
    }
 
    private fun getContentChannelList() {
-      val token = UserPreference.accessToken
-      viewModel.getContentChannel("Bearer $token", args.contentId, null, null, null, null, null).observe(viewLifecycleOwner) { response ->
-         when (response) {
-            is NetworkResult.Success -> {
-               viewModel.setContentChannelList(response.data?.data)
-               channelItemRecyclerViewAdapter = viewModel.channelList.value?.toMutableList()?.let {
-                  ChannelItemRecyclerViewAdapter(it) { channelId ->
-                     goToChannelDetail(channelId)
-                  }
-               }!!
-               binding.channelList.adapter = channelItemRecyclerViewAdapter
-               binding.channelList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            }
-
-            is NetworkResult.Loading -> {
-               Log.w("getContentChannelList: ", "loading")
-            }
-
-            is NetworkResult.Error -> {
-               Log.w("getContentChannelList: ", response.message.toString())
-            }
+      lifecycleScope.launch {
+         val token = UserPreference.accessToken
+         viewModel.getChannel("Bearer $token", args.contentId, null, null, null, null, null).collect { pagingData ->
+            adapter.submitData(pagingData)
          }
       }
    }

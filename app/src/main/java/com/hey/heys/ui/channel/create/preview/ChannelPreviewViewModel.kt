@@ -93,7 +93,7 @@ class ChannelPreviewViewModel @Inject constructor(
       }
    }
 
-   fun createContentChannel(token: String, contentId: Int, channel: Study) = channelRepository.createContentChannel(token, contentId, channel).asLiveData()
+   fun createContentChannel(token: String, contentId: Int, channel: Study) = channelRepository.createChannel(token, contentId, channel).asLiveData()
 
    fun getMyInfo(token: String) = viewModelScope.launch {
       myPageRepository.getMyInfo(token).collect { values ->

@@ -27,8 +27,8 @@ interface ChannelApi {
    suspend fun getContentChannelList(
       @Header("Authorization") token: String,
       @Path(value = "contentId") contentId: Int,
-      @Query("interests") interests: ArrayList<String>?,
-      @Query("lastRecruitDate") lastRecruitDate: String?,
+      @Query("interests", encoded = true) interests: ArrayList<String>?,
+      @Query("lastRecruitDate", encoded = true) lastRecruitDate: String?,
       @Query("purposes") purposes: ArrayList<String>?,
       @Query("online") online: String?,
       @Query("location") location: String?,

@@ -2,6 +2,8 @@ package com.hey.heys.ui.channel.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hey.heys.App
@@ -9,10 +11,9 @@ import com.hey.heys.R
 import com.hey.heys.databinding.ChannelItemViewBinding
 import com.hey.heys.model.network.ChannelList
 
-class ChannelItemRecyclerViewAdapter(
-   private val type: MutableList<ChannelList>,
-   private val onClickListener: (Int) -> Unit) :
-   RecyclerView.Adapter<ChannelItemRecyclerViewAdapter.ViewHolder>() {
+class ChannelItemRecyclerViewAdapter :
+   PagingDataAdapter<ChannelList, ChannelItemRecyclerViewAdapter.ViewHolder>(diffUtil) {
+   var onClickListener: ((Int) -> Unit)? = null
    private lateinit var binding: ChannelItemViewBinding
 
    inner class ViewHolder(private val binding: ChannelItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -22,10 +23,10 @@ class ChannelItemRecyclerViewAdapter(
             tvPastDay.text = "개설한지 ${channel.dday}일"
             tvViewCount.text = "${channel.viewCount}"
 
-            Glide.with(com.hey.heys.App.getInstance().applicationContext)
+            Glide.with(App.getInstance().applicationContext)
                .load(channel.thumbnailUri)
                .error(R.drawable.bg_thumbnail_default).into(imgThumbnail)
-            root.setOnClickListener { onClickListener.invoke(channel.id) }
+            root.setOnClickListener { onClickListener?.invoke(channel.id) }
          }
 
          // 모집 마감일 지나지 않음
@@ -60,10 +61,19 @@ class ChannelItemRecyclerViewAdapter(
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      holder.bind(type[position])
+      val currentItem = getItem(position)
+      currentItem?.let { holder.bind(it) }
    }
 
-   override fun getItemCount(): Int {
-      return type.size
+   companion object {
+      val diffUtil = object : DiffUtil.ItemCallback<ChannelList>() {
+         override fun areItemsTheSame(oldItem: ChannelList, newItem: ChannelList): Boolean {
+            return oldItem.id == newItem.id
+         }
+
+         override fun areContentsTheSame(oldItem: ChannelList, newItem: ChannelList): Boolean {
+            return oldItem == newItem
+         }
+      }
    }
 }

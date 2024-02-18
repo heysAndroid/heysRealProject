@@ -14,6 +14,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.dynamiclinks.DynamicLink
+import com.google.firebase.dynamiclinks.ktx.androidParameters
+import com.google.firebase.dynamiclinks.ktx.dynamicLink
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.ktx.Firebase
 import com.hey.heys.CustomSnackBar
 import com.hey.heys.R
 import com.hey.heys.databinding.ChannelDetailFragmentBinding
@@ -26,11 +31,6 @@ import com.hey.heys.ui.channel.list.detail.approvedUser.ApprovedUserImageListRec
 import com.hey.heys.ui.channel.list.detail.waitingUser.WaitingUserImageListRecyclerViewAdapter
 import com.hey.heys.ui.main.MainActivity
 import com.hey.heys.util.UserPreference
-import com.google.firebase.dynamiclinks.DynamicLink
-import com.google.firebase.dynamiclinks.ktx.androidParameters
-import com.google.firebase.dynamiclinks.ktx.dynamicLink
-import com.google.firebase.dynamiclinks.ktx.dynamicLinks
-import com.google.firebase.ktx.Firebase
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.share.ShareClient
 import com.kakao.sdk.share.WebSharerClient
@@ -189,17 +189,17 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("channelAddBookmark: ", response.data?.message.toString())
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true, subMessage = "보러가기").show()
+               CustomSnackBar(binding.root, "내 관심에 추가했어요!", null, true, subMessage = "보러가기").show()
             }
 
             is NetworkResult.Error -> {
                Log.w("channelAddBookmark: ", "error ${response.message}")
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에 추가하기를 실패했어요.", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에 추가하기를 실패했어요.", null, true).show()
             }
 
             is NetworkResult.Loading -> {
                Log.i("channelAddBookmark: ", "loading")
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에 추가하기가 지연되고 있어요.", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에 추가하기가 지연되고 있어요.", null, true).show()
             }
          }
       }
@@ -210,17 +210,17 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("channelRemoveBookmark: ", response.data?.message.toString())
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에서 제거했어요!", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에서 제거했어요!", null, true).show()
             }
 
             is NetworkResult.Error -> {
                Log.w("channelRemoveBookmark: ", "error ${response.message}")
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에서 제거하기를 실패했어요.", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에서 제거하기를 실패했어요.", null, true).show()
             }
 
             is NetworkResult.Loading -> {
                Log.i("channelRemoveBookmark: ", "loading")
-               com.hey.heys.CustomSnackBar(binding.root, "내 관심에서 제거하기가 지연되고 있어요.", null, true).show()
+               CustomSnackBar(binding.root, "내 관심에서 제거하기가 지연되고 있어요.", null, true).show()
             }
          }
       }
@@ -248,12 +248,12 @@ class ChannelDetailFragment : Fragment() {
 
             is NetworkResult.Error -> {
                Log.w("joinChannel: ", "error ${response.message}")
-               com.hey.heys.CustomSnackBar(binding.root, "채널 신청을 실패했어요.", null, true).show()
+               CustomSnackBar(binding.root, "채널 신청을 실패했어요.", null, true).show()
             }
 
             is NetworkResult.Loading -> {
                Log.i("joinChannel: ", "loading")
-               com.hey.heys.CustomSnackBar(binding.root, "채널 신청이 지연되고 있어요.", null, true).show()
+               CustomSnackBar(binding.root, "채널 신청이 지연되고 있어요.", null, true).show()
             }
          }
       }
@@ -451,6 +451,7 @@ class ChannelDetailFragment : Fragment() {
                binding.tvContentCompany.text = this.company
             }
          } else {
+            binding.tvContent.visibility = View.GONE
             binding.llContent.visibility = View.GONE
          }
       }

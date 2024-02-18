@@ -1,6 +1,11 @@
 package com.hey.heys.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.hey.heys.api.ChannelApi
+import com.hey.heys.model.network.ChannelList
+import com.hey.heys.model.network.ChannelPagingSource
 import com.hey.heys.model.network.NetworkResult
 import com.hey.heys.model.network.Study
 import com.hey.heys.model.network.response.ChannelDetailResponse
@@ -30,7 +35,7 @@ class ChannelRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
-   fun getContentChannelList(
+   fun getChannelList(
       token: String,
       id: Int,
       interest: ArrayList<String>?,
@@ -39,15 +44,14 @@ class ChannelRepository @Inject constructor(
       online: String?,
       location: String?,
       includeClosed: Boolean?,
-      page: Int?,
-      limit: Int?
-   ): Flow<NetworkResult<ChannelListResponse>> {
-      return flow {
-         emit(safeApiCall { channelApi.getContentChannelList(token, id, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit) })
-      }.flowOn(Dispatchers.IO)
+   ): Flow<PagingData<ChannelList>> {
+      return Pager(
+         config = PagingConfig(pageSize = 30),
+         pagingSourceFactory = { ChannelPagingSource(channelApi, token, id, interest, lastRecruitDate, purposes, online, location, includeClosed) }
+      ).flow
    }
 
-   fun createContentChannel(token: String, contentId: Int, channel: Study): Flow<NetworkResult<CreateStudyResponse>> {
+   fun createChannel(token: String, contentId: Int, channel: Study): Flow<NetworkResult<CreateStudyResponse>> {
       return flow {
          emit(safeApiCall { channelApi.createContentChannel(token, contentId, channel) })
       }.flowOn(Dispatchers.IO)
@@ -121,14 +125,10 @@ class ChannelRepository @Inject constructor(
       online: String?,
       location: String?,
       includeClosed: Boolean?,
-      page: Int?,
-      limit: Int?
-   ): Flow<NetworkResult<ChannelListResponse>> {
-      return flow {
-         emit(safeApiCall {
-            channelApi.getAllChannelList(
-               token, interest, lastRecruitDate, purposes, online, location, includeClosed, page, limit)
-         })
-      }.flowOn(Dispatchers.IO)
+   ): Flow<PagingData<ChannelList>> {
+      return Pager(
+         config = PagingConfig(pageSize = 30),
+         pagingSourceFactory = { ChannelPagingSource(channelApi, token, null, interest, lastRecruitDate, purposes, online, location, includeClosed) }
+      ).flow
    }
 }
