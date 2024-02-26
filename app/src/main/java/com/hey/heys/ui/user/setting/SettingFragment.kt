@@ -1,6 +1,7 @@
 package com.hey.heys.ui.user.setting
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.hey.heys.BuildConfig
 import com.hey.heys.R
 import com.hey.heys.databinding.SettingFragmentBinding
 import com.hey.heys.model.network.NetworkResult
@@ -50,10 +52,14 @@ class SettingFragment : Fragment() {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
 
-      binding.btnPhoneChane.setOnClickListener { gotoPhoneChange() }
+      binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+      binding.btnPhoneChange.setOnClickListener { gotoPhoneChange() }
       binding.btnPasswordChange.setOnClickListener { gotoPasswordVerification() }
+      binding.llPrivacy.setOnClickListener { goToPrivacyPolicy() }
+      binding.llServiceTerm.setOnClickListener { goToServiceTerm() }
       binding.btnDeleteAccount.setOnClickListener { gotoDeleteAccount() }
       binding.tvLogout.setOnClickListener { logout() }
+      binding.tvVersion.text = "현재 ${BuildConfig.VERSION_NAME}"
    }
 
    private fun gotoDeleteAccount() {
@@ -93,5 +99,13 @@ class SettingFragment : Fragment() {
             }
          }
       }
+   }
+
+   private fun goToPrivacyPolicy(){
+      startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://caring-fig-dc9.notion.site/715dc699691e4a80994c32e04261e38b")))
+   }
+
+   private fun goToServiceTerm(){
+      startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://caring-fig-dc9.notion.site/e92a574c9a0345589f3d652c55c84349?pvs=4")))
    }
 }

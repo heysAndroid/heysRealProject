@@ -16,11 +16,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:orientation="horizontal"
-                android:paddingVertical="12dp">
+                android:paddingVertical="16dp">
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_back" />
 
@@ -52,7 +53,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
+                    android:paddingVertical="19dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -69,11 +70,9 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/btn_phone_chane"
+                        android:id="@+id/btn_phone_change"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="-8dp"
-                        android:padding="8dp"
                         android:text="변경"
                         android:textColor="@color/color_34d676"
                         android:textSize="14sp"
@@ -83,7 +82,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:paddingVertical="19dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -103,8 +102,6 @@
                         android:id="@+id/btn_password_change"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="-8dp"
-                        android:padding="8dp"
                         android:text="변경"
                         android:textColor="@color/color_34d676"
                         android:textSize="14sp"
@@ -114,16 +111,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="55dp"
+                    android:layout_marginTop="36dp"
                     android:text="지원"
                     android:textColor="@color/color_949494"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/ll_serviceTerm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
+                    android:paddingVertical="19dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -148,9 +146,10 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_privacy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:paddingVertical="19dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -177,7 +176,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="55dp"
+                    android:layout_marginTop="36dp"
                     android:text="앱 정보"
                     android:textColor="@color/color_949494"
                     android:textSize="12sp"
@@ -186,60 +185,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="20dp"
                     android:text="버전 정보"
                     android:textColor="@color/color_262626"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="현재 0.0.1 / 최신 0.1.1"
                     android:textColor="@color/color_828282"
                     android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="오픈소스 라이센스"
-                            android:textColor="@color/color_262626"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:text="도움이 된 멋진 소프트웨어"
-                            android:textColor="@color/color_828282"
-                            android:textSize="9sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_next_26" />
-                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -254,7 +213,7 @@
                     android:id="@+id/tv_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
+                    android:paddingVertical="19dp"
                     android:text="로그아웃하기"
                     android:textColor="@color/color_262626"
                     android:textSize="14sp"
@@ -264,7 +223,7 @@
                     android:id="@+id/btn_delete_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="9dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -278,7 +237,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="4dp"
                         android:text="헤이즈 활동 내역이 모두 삭제되며 복구가 불가능합니다."
                         android:textColor="@color/color_828282"
                         android:textSize="12sp" />
