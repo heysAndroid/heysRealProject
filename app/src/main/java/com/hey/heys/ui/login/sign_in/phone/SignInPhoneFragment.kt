@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hey.heys.CustomSnackBar
-import com.hey.heys.EventObserver
 import com.hey.heys.R
 import com.hey.heys.databinding.SignInPhoneFragmentBinding
 import com.hey.heys.model.network.NetworkResult
@@ -29,14 +28,12 @@ class SignInPhoneFragment : Fragment() {
 
    override fun onResume() {
       super.onResume()
-      val mainActivity = activity as MainActivity
-      mainActivity.hideBottomNavigation(true)
+      (requireActivity() as MainActivity).hideBottomNavigation(true)
    }
 
    override fun onDestroy() {
       super.onDestroy()
-      val mainActivity = activity as MainActivity
-      mainActivity.hideBottomNavigation(false)
+      (requireActivity() as MainActivity).hideBottomNavigation(false)
    }
 
    override fun onCreateView(
@@ -49,9 +46,7 @@ class SignInPhoneFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState) // livedata 사용할 때 객체 범위를 반드시 지정해줘야함!!
-
-      val mainActivity = activity as MainActivity
-      mainActivity.hideBottomNavigation(true)
+      (requireActivity() as MainActivity).hideBottomNavigation(true)
 
       binding.lifecycleOwner = this
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
@@ -64,7 +59,7 @@ class SignInPhoneFragment : Fragment() {
       inputMethodManager.showSoftInput(binding.phoneInput, 0)
 
       viewModel.showSnackBarEvent.observe(viewLifecycleOwner) {
-         if (it) com.hey.heys.CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
+         if (it) CustomSnackBar(binding.root, "일치하는 계정이 없어요!", binding.okButton).show()
       }
    }
 

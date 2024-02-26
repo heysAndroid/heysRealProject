@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -19,9 +20,9 @@ class MainActivity : AppCompatActivity() {
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      binding = MainActivityBinding.inflate(layoutInflater)
-      setContentView(binding.root)
-
+//      binding = MainActivityBinding.inflate(layoutInflater)
+//      setContentView(binding.root)
+      binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
       // 상태바 및 아이콘 색상 변경
       window.apply {
          //상태바
@@ -35,8 +36,10 @@ class MainActivity : AppCompatActivity() {
    }
 
    fun hideBottomNavigation(state: Boolean) {
-      if (state) binding.bottomNavigation.visibility = View.GONE
-      else binding.bottomNavigation.visibility = View.VISIBLE
+      if(::binding.isInitialized){
+         if(state) binding.bottomNavigation.visibility = View.GONE
+         else binding.bottomNavigation.visibility = View.VISIBLE
+      }
    }
 
    private fun setNavigationGraph(intent: String) {
