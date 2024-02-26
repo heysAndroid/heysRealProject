@@ -19,3 +19,5 @@ app/google-services.json
 *.apk
 *.der
 *.aab
+*.keystore
+*.pem
