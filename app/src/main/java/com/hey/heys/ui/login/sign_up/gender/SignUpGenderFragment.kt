@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hey.heys.R
 import com.hey.heys.databinding.SignUpGenderFragmentBinding
+import com.hey.heys.enums.Gender
 import com.hey.heys.ui.main.MainActivity
+import com.hey.heys.util.UserPreference
 
 class SignUpGenderFragment : Fragment() {
    private lateinit var binding: SignUpGenderFragmentBinding
@@ -43,6 +45,9 @@ class SignUpGenderFragment : Fragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
+      // default 세팅
+      UserPreference.gender = Gender.Male.genderEnglish
+
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.okButton.setOnClickListener {
          findNavController().navigate(R.id.action_signUpGenderFragment_to_signUpAgeFragment)
