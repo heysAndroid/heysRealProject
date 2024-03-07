@@ -35,8 +35,8 @@
                         android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:src="@drawable/main_logo"
+                        android:paddingVertical="12dp"
+                        android:src="@drawable/ic_heys_white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,7 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="24dp"
                         android:text="나에게 꼭 맞는"
                         android:textColor="@color/white"
                         android:textSize="16sp"

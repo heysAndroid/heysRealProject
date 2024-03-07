@@ -17,7 +17,7 @@
                 android:id="@+id/description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="편리한 heys의 서비스 이용을 위해 접근권한을 허용해주세요."
+                android:text="편리한 Heys의 서비스 이용을 위해 접근권한을 허용해주세요."
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
