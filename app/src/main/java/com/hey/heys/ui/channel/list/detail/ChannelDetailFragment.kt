@@ -504,7 +504,7 @@ class ChannelDetailFragment : Fragment() {
          content = Content(
             title = "함께 성장하는 청춘을 만들어가요!",
             description = "모바일 앱에서 확인해보세요.",
-            imageUrl = "https://i.ibb.co/HxMF3Dx/img-heys-logo.png",
+            imageUrl = "https://ibb.co/4gpGGt8",
             link = Link(
                mobileWebUrl = dynamicLink.uri.toString())),
 
