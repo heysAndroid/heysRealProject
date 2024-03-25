@@ -10,6 +10,7 @@ import com.hey.heys.model.network.UserEdit
 import com.hey.heys.model.network.WithdrawalReason
 import com.hey.heys.model.network.response.DefaultResponse
 import com.hey.heys.model.network.response.MyPageResponse
+import com.hey.heys.model.network.response.NotificationExistResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -37,6 +38,9 @@ interface UserApi {
 
    @GET("/app/notifications")
    suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
+
+   @GET("/app/notifications/new")
+   suspend fun getNotificationsExist(@Header("Authorization") token: String): Response<NotificationExistResponse>
 
    @PUT("/user/withDrawal")
    suspend fun withdrawal(@Header("Authorization") token: String, @Body reason: WithdrawalReason): Response<DefaultResponse>

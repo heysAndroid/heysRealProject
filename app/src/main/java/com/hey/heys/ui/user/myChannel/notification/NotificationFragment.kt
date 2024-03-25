@@ -47,6 +47,7 @@ class NotificationFragment : Fragment() {
       }!!
       binding.notificationList.adapter = adapter
       binding.notificationList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+      binding.imgBack.setOnClickListener { findNavController().navigateUp() }
       getNotificationList()
    }
 
