@@ -9,4 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class NotificationViewModel @Inject constructor(private val myPageRepository: MyPageRepository) : ViewModel() {
    fun getNotification(token: String) = myPageRepository.getNotifications(token).asLiveData()
+
+   fun putNotification(token: String) = myPageRepository.putNotifications(token).asLiveData()
 }

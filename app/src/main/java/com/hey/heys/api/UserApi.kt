@@ -39,6 +39,9 @@ interface UserApi {
    @GET("/app/notifications")
    suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationResponse>
 
+   @PUT("/app/notifications")
+   suspend fun putNotifications(@Header("Authorization") token: String): Response<DefaultResponse>
+
    @GET("/app/notifications/new")
    suspend fun getNotificationsExist(@Header("Authorization") token: String): Response<NotificationExistResponse>
 

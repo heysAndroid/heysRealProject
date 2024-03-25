@@ -49,6 +49,7 @@ class NotificationFragment : Fragment() {
       binding.notificationList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
       binding.imgBack.setOnClickListener { findNavController().navigateUp() }
       getNotificationList()
+      putNotificationList()
    }
 
    private fun getNotificationList() {
@@ -66,6 +67,24 @@ class NotificationFragment : Fragment() {
 
             is NetworkResult.Error -> {
                Log.w("getNoti", response.message.toString())
+            }
+         }
+      }
+   }
+
+   private fun putNotificationList() {
+      viewModel.putNotification("Bearer ${UserPreference.accessToken}").observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               Log.w("putNoti", "success")
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("putNoti", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("putNoti", response.message.toString())
             }
          }
       }

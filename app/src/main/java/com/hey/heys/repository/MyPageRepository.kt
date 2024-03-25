@@ -57,6 +57,12 @@ class MyPageRepository @Inject constructor(
       }.flowOn(Dispatchers.IO)
    }
 
+   fun putNotifications(token: String): Flow<NetworkResult<DefaultResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.putNotifications(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
    fun getNotificationsExist(token: String): Flow<NetworkResult<NotificationExistResponse>> {
       return flow {
          emit(safeApiCall { userApi.getNotificationsExist(token) })
