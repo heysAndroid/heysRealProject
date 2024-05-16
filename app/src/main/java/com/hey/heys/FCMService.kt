@@ -34,6 +34,8 @@ class FCMService : FirebaseMessagingService() {
       // 어떤 화면으로 이동할 건지 정의
       val intent = Intent(this, MainActivity::class.java).apply {
          flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+         putExtra(Intent.EXTRA_TEXT, "main")
+         type = "text/plain"
       }
 
       val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)

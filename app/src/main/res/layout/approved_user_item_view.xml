@@ -40,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:padding="12dp"
             android:text="프로필 보기"
             android:textColor="@color/color_34d676"
             android:textSize="14sp" />

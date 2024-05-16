@@ -39,6 +39,7 @@ import com.kakao.sdk.template.model.Content
 import com.kakao.sdk.template.model.FeedTemplate
 import com.kakao.sdk.template.model.Link
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class ChannelDetailFragment : Fragment() {
@@ -82,6 +83,7 @@ class ChannelDetailFragment : Fragment() {
       getChannelDetail(args.channelId)
       channelViewCountUp(args.channelId)
       setRelationshipWithMe()
+      setJoinBtnEnabled()
 
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnBookmark.setOnClickListener {
@@ -514,5 +516,19 @@ class ChannelDetailFragment : Fragment() {
                Link(
                   mobileWebUrl = dynamicLink.uri.toString())
             )))
+   }
+
+   private fun setJoinBtnEnabled() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         val lastRecruitDate = LocalDateTime.parse(it.lastRecruitDate)
+         val nowDate= LocalDateTime.now()
+         if (nowDate.isAfter(lastRecruitDate) || it.joinRemainCount <= 0){
+            binding.btnJoinVisitor.isEnabled = false
+            binding.btnJoinVisitor.text = "모집을 마감한 채널이에요"
+         }else{
+            binding.btnJoinVisitor.isEnabled = true
+            binding.btnJoinVisitor.text = "채널 참여하기"
+         }
+      }
    }
 }

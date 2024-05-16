@@ -20,6 +20,8 @@ data class ChannelDetail(
    @SerialName("interests") val interests: ArrayList<String>,
    @SerialName("contentText") val contentText: String,
    @SerialName("recruitText") val recruitText: String,
+   @SerialName("joinRemainCount") val joinRemainCount: Int,
+   @SerialName("pastDay") val pastDay: Int,
    @SerialName("leader") val leader: Leader,
    @SerialName("purposes") val purposes: ArrayList<ChannelPurpose>,
    @SerialName("links") val links: ArrayList<ChannelLink>,
