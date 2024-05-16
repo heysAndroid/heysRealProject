@@ -231,7 +231,7 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("joinChannel: ", response.data?.message.toString())
-               com.hey.heys.CustomSnackBar(binding.root, "채널 신청이 완료되었어요!", null, true).show()
+               CustomSnackBar(binding.root, "채널 신청이 완료되었어요!", null, true).show()
 
                viewModel.channelDetail.observe(viewLifecycleOwner) {
                   // 바로 승인
@@ -504,7 +504,7 @@ class ChannelDetailFragment : Fragment() {
          content = Content(
             title = "함께 성장하는 청춘을 만들어가요!",
             description = "모바일 앱에서 확인해보세요.",
-            imageUrl = "https://ibb.co/4gpGGt8",
+            imageUrl = "https://files.slack.com/files-tmb/T0446U9D33P-F06NG134G7N-a3e6d15ac4/heys-cover600_480.png",
             link = Link(
                mobileWebUrl = dynamicLink.uri.toString())),
 
