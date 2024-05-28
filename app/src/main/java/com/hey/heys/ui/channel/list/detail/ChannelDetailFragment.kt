@@ -142,6 +142,7 @@ class ChannelDetailFragment : Fragment() {
                setChannelRegion()
                setChannelRecruitmentMethod()
                viewModel.channelDetail.value?.online?.let { setChannelForm(it) }
+               setChannelCount()
                setLeaderImage()
                setApprovedUserList()
                initBookmark()
@@ -529,6 +530,13 @@ class ChannelDetailFragment : Fragment() {
             binding.btnJoinVisitor.isEnabled = true
             binding.btnJoinVisitor.text = "채널 참여하기"
          }
+      }
+   }
+
+   private fun setChannelCount(){
+      viewModel.channelDetail.observe(viewLifecycleOwner){
+         val approvedCnt = it.approvedCount+1
+         binding.tvUserCnt.text = "${it.limit}명 중에서 ${approvedCnt}명이 참여중이에요."
       }
    }
 }

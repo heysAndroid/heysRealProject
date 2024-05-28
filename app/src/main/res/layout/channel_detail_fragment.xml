@@ -196,9 +196,10 @@
                         android:src="@drawable/ic_person_34d676" />
 
                     <TextView
+                        android:id="@+id/tv_user_cnt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(vm.channelDetail.limit) +`명 중에서 1명이 참여중이에요.`}"
+                        android:text="10명 중에서 1명이 참여중이에요."
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="10명 중에서 1명이 참여중이에요." />
