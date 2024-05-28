@@ -22,7 +22,7 @@ class StudyItemRecyclerViewAdapter :
       fun bind(study: ChannelList) {
          binding.apply {
             tvTitle.text = study.name
-            tvPastday.text = "개설한지 ${study.pastDay}일"
+            tvPastday.text = "개설한지 ${study.pastDay+1}일"
             tvView.text = "${study.viewCount}"
             Glide.with(App.getInstance().applicationContext)
                .load(study.thumbnailUri)
