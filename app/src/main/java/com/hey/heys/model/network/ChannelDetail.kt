@@ -21,6 +21,7 @@ data class ChannelDetail(
    @SerialName("contentText") val contentText: String,
    @SerialName("recruitText") val recruitText: String,
    @SerialName("joinRemainCount") val joinRemainCount: Int,
+   @SerialName("approvedCount") val approvedCount:Int,
    @SerialName("pastDay") val pastDay: Int,
    @SerialName("leader") val leader: Leader,
    @SerialName("purposes") val purposes: ArrayList<ChannelPurpose>,
