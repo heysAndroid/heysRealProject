@@ -523,7 +523,9 @@ class ChannelDetailFragment : Fragment() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
          val lastRecruitDate = LocalDateTime.parse(it.lastRecruitDate)
          val nowDate= LocalDateTime.now()
-         if (nowDate.isAfter(lastRecruitDate) || it.joinRemainCount <= 0){
+         val remainCount = it.limit - it.approvedCount
+
+         if (nowDate.isAfter(lastRecruitDate) || remainCount <= 1){
             binding.btnJoinVisitor.isEnabled = false
             binding.btnJoinVisitor.text = "모집을 마감한 채널이에요"
          }else{
