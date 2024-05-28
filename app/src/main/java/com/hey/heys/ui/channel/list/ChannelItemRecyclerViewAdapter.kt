@@ -20,7 +20,7 @@ class ChannelItemRecyclerViewAdapter :
       fun bind(channel: ChannelList) {
          binding.apply {
             tvTitle.text = channel.name
-            tvPastDay.text = "개설한지 ${channel.pastDay}일"
+            tvPastDay.text = "개설한지 ${channel.pastDay+1}일"
             tvViewCount.text = "${channel.viewCount}"
 
             Glide.with(App.getInstance().applicationContext)
