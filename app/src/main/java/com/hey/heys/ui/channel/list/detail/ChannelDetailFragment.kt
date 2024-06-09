@@ -39,6 +39,7 @@ import com.kakao.sdk.template.model.Content
 import com.kakao.sdk.template.model.FeedTemplate
 import com.kakao.sdk.template.model.Link
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class ChannelDetailFragment : Fragment() {
@@ -82,6 +83,7 @@ class ChannelDetailFragment : Fragment() {
       getChannelDetail(args.channelId)
       channelViewCountUp(args.channelId)
       setRelationshipWithMe()
+      setJoinBtnEnabled()
 
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
       binding.btnBookmark.setOnClickListener {
@@ -140,6 +142,7 @@ class ChannelDetailFragment : Fragment() {
                setChannelRegion()
                setChannelRecruitmentMethod()
                viewModel.channelDetail.value?.online?.let { setChannelForm(it) }
+               setChannelCount()
                setLeaderImage()
                setApprovedUserList()
                initBookmark()
@@ -231,7 +234,7 @@ class ChannelDetailFragment : Fragment() {
          when (response) {
             is NetworkResult.Success -> {
                Log.d("joinChannel: ", response.data?.message.toString())
-               com.hey.heys.CustomSnackBar(binding.root, "채널 신청이 완료되었어요!", null, true).show()
+               CustomSnackBar(binding.root, "채널 신청이 완료되었어요!", null, true).show()
 
                viewModel.channelDetail.observe(viewLifecycleOwner) {
                   // 바로 승인
@@ -504,7 +507,7 @@ class ChannelDetailFragment : Fragment() {
          content = Content(
             title = "함께 성장하는 청춘을 만들어가요!",
             description = "모바일 앱에서 확인해보세요.",
-            imageUrl = "https://ibb.co/4gpGGt8",
+            imageUrl = "https://files.slack.com/files-tmb/T0446U9D33P-F06NG134G7N-a3e6d15ac4/heys-cover600_480.png",
             link = Link(
                mobileWebUrl = dynamicLink.uri.toString())),
 
@@ -514,5 +517,27 @@ class ChannelDetailFragment : Fragment() {
                Link(
                   mobileWebUrl = dynamicLink.uri.toString())
             )))
+   }
+
+   private fun setJoinBtnEnabled() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         val lastRecruitDate = LocalDateTime.parse(it.lastRecruitDate)
+         val nowDate = LocalDateTime.now()
+
+         if (nowDate.isAfter(lastRecruitDate) || it.capacityCount <= 1) {
+            binding.btnJoinVisitor.isEnabled = false
+            binding.btnJoinVisitor.text = "모집을 마감한 채널이에요"
+         } else {
+            binding.btnJoinVisitor.isEnabled = true
+            binding.btnJoinVisitor.text = "채널 참여하기"
+         }
+      }
+   }
+
+   private fun setChannelCount() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         val approvedUserCnt = it.approvedUserList.size + 1
+         binding.tvUserCnt.text = "${it.limit}명 중에서 ${approvedUserCnt}명이 참여중이에요."
+      }
    }
 }

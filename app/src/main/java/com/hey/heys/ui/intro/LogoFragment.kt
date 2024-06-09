@@ -68,16 +68,18 @@ class LogoFragment : Fragment() {
    }
 
    private fun initDeepLink() {
+      Log.i("initDeepLink ", "is called!")
       Firebase.dynamicLinks.getDynamicLink(requireActivity().intent)
          .addOnSuccessListener(requireActivity()) { pendingDynamicLinkData ->
             var deepLink: Uri? = null
-
+            Log.w("Deeplink: ", deepLink.toString())
             if (pendingDynamicLinkData != null) {
                deepLink = pendingDynamicLinkData.link
             }
 
             if (deepLink != null && deepLink.getBooleanQueryParameter("id", false)) {
                val id = deepLink.getQueryParameter("id")
+
                if (id != null) {
                   // 로그인 안된 유저
                   if (UserPreference.accessToken.isNullOrBlank()) {
@@ -85,6 +87,7 @@ class LogoFragment : Fragment() {
                      Handler(Looper.getMainLooper()).postDelayed({ moveToNext() }, 3000)
                   } else {
                      // 로그인
+                     Log.w("id::: ", deepLink.lastPathSegment.toString())
                      deepLink.lastPathSegment?.let { goToMain(it, id.toInt()) }
                   }
                }

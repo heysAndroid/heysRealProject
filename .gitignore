@@ -21,3 +21,4 @@ app/google-services.json
 *.aab
 *.keystore
 *.pem
+.idea/deploymentTargetDropDown.xml

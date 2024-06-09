@@ -1,6 +1,7 @@
 package com.hey.heys.ui.user.myChannel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hey.heys.R
 import com.hey.heys.databinding.HeysChannelFragmentBinding
+import com.hey.heys.model.network.NetworkResult
 import com.hey.heys.ui.main.MainActivity
 import com.hey.heys.ui.user.myChannel.allChannel.AllChannelFragment
 import com.hey.heys.ui.user.myChannel.list.MyChannelFragment
+import com.hey.heys.util.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HeysChannelFragment : Fragment() {
    private lateinit var binding: HeysChannelFragmentBinding
    private val viewModel: HeysChannelViewModel by viewModels()
@@ -33,6 +38,7 @@ class HeysChannelFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
+      getNotificationsExist()
 
       viewModel.isSelected.observe(viewLifecycleOwner) {
          if (it) {
@@ -46,7 +52,7 @@ class HeysChannelFragment : Fragment() {
          }
       }
 
-      binding.notification.setOnClickListener { gotoNotification() }
+      binding.imgNotification.setOnClickListener { gotoNotification() }
    }
 
    private fun gotoNotification() {
@@ -63,5 +69,28 @@ class HeysChannelFragment : Fragment() {
       requireActivity().supportFragmentManager.beginTransaction()
          .replace(R.id.heys_channel_frame_layout, AllChannelFragment())
          .commitAllowingStateLoss()
+   }
+
+   private fun getNotificationsExist() {
+      viewModel.getNotificationExist("Bearer ${UserPreference.accessToken}").observe(viewLifecycleOwner) { response ->
+         when (response) {
+            is NetworkResult.Success -> {
+               val isNewExist = response.data?.data as Boolean
+               if (isNewExist) {
+                  binding.imgNotification.setImageDrawable(requireContext().getDrawable(R.drawable.ic_noti_with_dot))
+               } else {
+                  binding.imgNotification.setImageDrawable(requireContext().getDrawable(R.drawable.ic_noti_without_dot))
+               }
+            }
+
+            is NetworkResult.Loading -> {
+               Log.w("notiExist", "loading")
+            }
+
+            is NetworkResult.Error -> {
+               Log.w("notiExist", response.message.toString())
+            }
+         }
+      }
    }
 }

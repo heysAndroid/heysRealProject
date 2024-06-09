@@ -12,6 +12,7 @@ import com.hey.heys.model.network.UserEdit
 import com.hey.heys.model.network.WithdrawalReason
 import com.hey.heys.model.network.response.DefaultResponse
 import com.hey.heys.model.network.response.MyPageResponse
+import com.hey.heys.model.network.response.NotificationExistResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -53,6 +54,18 @@ class MyPageRepository @Inject constructor(
    fun getNotifications(token: String): Flow<NetworkResult<NotificationResponse>> {
       return flow {
          emit(safeApiCall { userApi.getNotifications(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun putNotifications(token: String): Flow<NetworkResult<DefaultResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.putNotifications(token) })
+      }.flowOn(Dispatchers.IO)
+   }
+
+   fun getNotificationsExist(token: String): Flow<NetworkResult<NotificationExistResponse>> {
+      return flow {
+         emit(safeApiCall { userApi.getNotificationsExist(token) })
       }.flowOn(Dispatchers.IO)
    }
 

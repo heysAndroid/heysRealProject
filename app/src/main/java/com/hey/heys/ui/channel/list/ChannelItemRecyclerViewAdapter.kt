@@ -20,7 +20,7 @@ class ChannelItemRecyclerViewAdapter :
       fun bind(channel: ChannelList) {
          binding.apply {
             tvTitle.text = channel.name
-            tvPastDay.text = "개설한지 ${channel.dday}일"
+            tvPastDay.text = "개설한지 ${channel.pastDay+1}일"
             tvViewCount.text = "${channel.viewCount}"
 
             Glide.with(App.getInstance().applicationContext)
@@ -30,15 +30,15 @@ class ChannelItemRecyclerViewAdapter :
          }
 
          // 모집 마감일 지나지 않음
-         if (channel.dday > 0) {
+         if (channel.dday >= 0) {
             when {
                // 최대 참여정원 4명 이상
-               4 <= channel.joinRemainCount -> {
+               4 <= channel.capacityCount -> {
                   binding.tvStatus.text = "참여가능"
                   binding.tvStatus.setBackgroundResource(R.drawable.bg_status_available)
                }
 
-               1 <= channel.joinRemainCount -> {
+               2 <= channel.capacityCount -> {
                   binding.tvStatus.text = "${channel.joinRemainCount}명 참여가능"
                   binding.tvStatus.setBackgroundResource(R.drawable.bg_status_almost_closed)
                }
