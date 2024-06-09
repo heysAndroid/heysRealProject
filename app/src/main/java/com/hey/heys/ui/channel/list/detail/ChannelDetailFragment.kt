@@ -535,10 +535,10 @@ class ChannelDetailFragment : Fragment() {
       }
    }
 
-   private fun setChannelCount(){
-      viewModel.channelDetail.observe(viewLifecycleOwner){
-         val approvedCnt = it.approvedCount+1
-         binding.tvUserCnt.text = "${it.limit}명 중에서 ${approvedCnt}명이 참여중이에요."
+   private fun setChannelCount() {
+      viewModel.channelDetail.observe(viewLifecycleOwner) {
+         val approvedUserCnt = it.approvedUserList.size + 1
+         binding.tvUserCnt.text = "${it.limit}명 중에서 ${approvedUserCnt}명이 참여중이에요."
       }
    }
 }
