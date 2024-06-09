@@ -71,7 +71,7 @@ class ChannelRecruitmentMethodDialog : DialogFragment() {
    private fun selectApprovalButton() {
       binding.btnApproval.text = buildSpannedString {
          bold { append("바로 승인" + "\n") }
-         append("신청과 동시에 채널 입장이 가능합니다.")
+         append("신청과 동시에 채널 참여 가능합니다.")
       }
       binding.btnApproval.isSelected = true
       setTextSize()

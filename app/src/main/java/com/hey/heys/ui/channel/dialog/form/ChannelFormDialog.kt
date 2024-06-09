@@ -50,7 +50,7 @@ class ChannelFormDialog : DialogFragment() {
             }
             else -> {
                selectBothButton()
-               binding.regionContainer.visibility = View.VISIBLE
+               binding.regionContainer.visibility = View.GONE
             }
          }
       }
