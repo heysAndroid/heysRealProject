@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
+import com.chibatching.kotpref.livedata.asLiveData
 import com.hey.heys.R
 import com.hey.heys.databinding.ChannelInformFragmentBinding
 import com.hey.heys.ui.channel.dialog.capacity.ChannelCapacityDialog
@@ -25,12 +28,21 @@ import java.time.format.DateTimeFormatter
 class ChannelInformFragment : Fragment() {
    private lateinit var binding: ChannelInformFragmentBinding
    private val viewModel: ChannelInformViewModel by viewModels()
+   private val isEnabled: MediatorLiveData<Boolean> = MediatorLiveData()
+
+   val isPurposeSelected = MutableLiveData(false)
+   val isFormSelected = MutableLiveData(false)
+   val isCapacitySelected = MutableLiveData(false)
+   val isRecruitmentMethodSelected = MutableLiveData(false)
+   val isRecruitEndDaySelected = MutableLiveData(false)
+   val isInterestSelected = MutableLiveData(false)
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       val mainActivity = activity as MainActivity
       mainActivity.hideBottomNavigation(true)
    }
+
 
    override fun onDestroy() {
       super.onDestroy()
@@ -51,6 +63,7 @@ class ChannelInformFragment : Fragment() {
    }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
       super.onViewCreated(view, savedInstanceState)
       binding.lifecycleOwner = this
       binding.btnBack.setOnClickListener { findNavController().navigateUp() }
@@ -122,11 +135,60 @@ class ChannelInformFragment : Fragment() {
          interestDialog.show(childFragmentManager, null)
       }
 
+      checkAllSelected()
+      isEnabled.apply {
+         addSource(isPurposeSelected) { v -> isEnabled.value = onIsEnabled() }
+         addSource(isFormSelected) { v -> isEnabled.value = onIsEnabled() }
+         addSource(isCapacitySelected) { v -> isEnabled.value = onIsEnabled() }
+         addSource(isRecruitmentMethodSelected) { v -> isEnabled.value = onIsEnabled() }
+         addSource(isRecruitEndDaySelected) { v -> isEnabled.value = onIsEnabled() }
+         addSource(isInterestSelected) { v -> isEnabled.value = onIsEnabled() }
+      }
+      isEnabled.observe(viewLifecycleOwner) { binding.btnNext.isEnabled = it == true }
       binding.btnNext.setOnClickListener { goToName() }
+   }
+
+   private fun onIsEnabled(): Boolean {
+      return (isPurposeSelected.value == true
+              && isFormSelected.value == true
+              && isCapacitySelected.value == true
+              && isRecruitmentMethodSelected.value == true
+              && isRecruitEndDaySelected.value == true
+              && isInterestSelected.value == true)
    }
 
    private fun goToName() {
       findNavController().navigate(R.id.action_channelInformFragment_to_channelFreeFragment)
+   }
+
+   private fun checkAllSelected() {
+      ChannelPreference.asLiveData(ChannelPreference::channelPurposeArray).observe(viewLifecycleOwner) {
+         if (it.size > 0) {
+            isPurposeSelected.value = true
+         }
+      }
+
+      ChannelPreference.asLiveData(ChannelPreference::channelForm).observe(viewLifecycleOwner) {
+         isFormSelected.value = !it.isNullOrBlank()
+      }
+
+      ChannelPreference.asLiveData(ChannelPreference::channelCapacity).observe(viewLifecycleOwner) {
+         isCapacitySelected.value = !it.toString().isNullOrBlank()
+      }
+
+      ChannelPreference.asLiveData(ChannelPreference::channelRecruitmentMethod).observe(viewLifecycleOwner) {
+         isRecruitmentMethodSelected.value = !it.isNullOrBlank()
+      }
+
+      ChannelPreference.asLiveData(ChannelPreference::channelRecruitEndDay).observe(viewLifecycleOwner) {
+         isRecruitEndDaySelected.value = !it.isNullOrBlank()
+      }
+
+      ChannelPreference.asLiveData(ChannelPreference::channelInterestArray).observe(viewLifecycleOwner) {
+         if (it.size > 0) {
+            isInterestSelected.value = true
+         }
+      }
    }
 }
 
