@@ -522,13 +522,12 @@ class ChannelDetailFragment : Fragment() {
    private fun setJoinBtnEnabled() {
       viewModel.channelDetail.observe(viewLifecycleOwner) {
          val lastRecruitDate = LocalDateTime.parse(it.lastRecruitDate)
-         val nowDate= LocalDateTime.now()
-         val remainCount = it.limit - it.approvedCount
+         val nowDate = LocalDateTime.now()
 
-         if (nowDate.isAfter(lastRecruitDate) || remainCount <= 1){
+         if (nowDate.isAfter(lastRecruitDate) || it.capacityCount <= 1) {
             binding.btnJoinVisitor.isEnabled = false
             binding.btnJoinVisitor.text = "모집을 마감한 채널이에요"
-         }else{
+         } else {
             binding.btnJoinVisitor.isEnabled = true
             binding.btnJoinVisitor.text = "채널 참여하기"
          }

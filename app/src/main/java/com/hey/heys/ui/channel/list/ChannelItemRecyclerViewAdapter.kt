@@ -33,12 +33,12 @@ class ChannelItemRecyclerViewAdapter :
          if (channel.dday >= 0) {
             when {
                // 최대 참여정원 4명 이상
-               4 <= channel.joinRemainCount -> {
+               4 <= channel.capacityCount -> {
                   binding.tvStatus.text = "참여가능"
                   binding.tvStatus.setBackgroundResource(R.drawable.bg_status_available)
                }
 
-               1 <= channel.joinRemainCount -> {
+               2 <= channel.capacityCount -> {
                   binding.tvStatus.text = "${channel.joinRemainCount}명 참여가능"
                   binding.tvStatus.setBackgroundResource(R.drawable.bg_status_almost_closed)
                }

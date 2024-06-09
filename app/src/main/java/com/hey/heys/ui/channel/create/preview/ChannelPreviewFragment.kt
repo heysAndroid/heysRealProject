@@ -244,7 +244,7 @@ class ChannelPreviewFragment : Fragment() {
    }
 
    private fun setThumbnailImage(thumbnailUrl: String) {
-      Glide.with(com.hey.heys.App.getInstance().applicationContext)
+      Glide.with(App.getInstance().applicationContext)
          .load(thumbnailUrl)
          .error(R.drawable.bg_thumbnail_default).into(binding.imgThumbnail)
    }

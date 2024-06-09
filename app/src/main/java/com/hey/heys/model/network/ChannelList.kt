@@ -11,7 +11,7 @@ data class ChannelList(
    @SerialName("name") val name: String,
    @SerialName("viewCount") val viewCount: Int,
    @SerialName("joinRemainCount") val joinRemainCount: Int,
-   @SerialName("approvedCount") val approvedCount:Int,
+   @SerialName("capacityCount") val capacityCount:Int,
    @SerialName("pastDay") val pastDay: Int,
    @SerialName("thumbnailUri") val thumbnailUri: String,
    @SerialName("dday") val dday: Int
